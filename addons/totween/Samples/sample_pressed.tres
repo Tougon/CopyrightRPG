@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=8 format=3 uid="uid://byuyn0440viuh"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_dqm7y"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_slcm8"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_awsht"]
+
+[sub_resource type="Resource" id="Resource_e2fb4"]
+script = ExtResource("2_slcm8")
+target = ""
+property_name = "modulate"
+duration = 0.25
+delay = 0.0
+transition = 4
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0, 0.898039, 0.988235, 1)
+
+[sub_resource type="Resource" id="Resource_i1pu1"]
+script = ExtResource("3_awsht")
+frames = Array[ExtResource("2_slcm8")]([SubResource("Resource_e2fb4")])
+
+[sub_resource type="Resource" id="Resource_iq4v3"]
+script = ExtResource("2_slcm8")
+target = ""
+property_name = "modulate"
+duration = 0.25
+delay = 0.0
+transition = 4
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+"From Color" = Color(0, 0.898039, 0.988235, 1)
+
+[sub_resource type="Resource" id="Resource_tov71"]
+script = ExtResource("3_awsht")
+frames = Array[ExtResource("2_slcm8")]([SubResource("Resource_iq4v3")])
+
+[resource]
+script = ExtResource("1_dqm7y")
+tween_name = "Pressed"
+sequence = Array[ExtResource("3_awsht")]([SubResource("Resource_i1pu1"), SubResource("Resource_tov71")])

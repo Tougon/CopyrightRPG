@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c10sl16csn2e1"]
+
+[ext_resource type="Script" path="res://src/UIManager/Scripts/MenuPanel.gd" id="1_6slto"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_mr011"]
+
+[node name="MenuPanel" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_6slto")
+
+[node name="TweenPlayerUI" type="Node" parent="."]
+script = ExtResource("2_mr011")

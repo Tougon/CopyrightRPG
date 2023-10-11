@@ -1,0 +1,141 @@
+[gd_scene load_steps=22 format=3 uid="uid://db27vk00loejx"]
+
+[ext_resource type="PackedScene" uid="uid://c10sl16csn2e1" path="res://src/UIManager/Scenes/MenuPanel.tscn" id="1_ucjbk"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_kct4w"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_iumg3"]
+[ext_resource type="Resource" uid="uid://byuyn0440viuh" path="res://addons/totween/Samples/sample_pressed.tres" id="4_cg65v"]
+[ext_resource type="Resource" uid="uid://cu0vj53nh6iwp" path="res://addons/totween/Samples/sample_button_down.tres" id="5_s8jhm"]
+[ext_resource type="Resource" uid="uid://carbsn2q23u3t" path="res://addons/totween/Samples/sample_focus_entered.tres" id="6_761nx"]
+[ext_resource type="Resource" uid="uid://cw1latpwjpgyy" path="res://addons/totween/Samples/sample_focus_exited.tres" id="7_v7pnn"]
+[ext_resource type="Resource" uid="uid://dbehrqsxhshal" path="res://addons/totween/Samples/sample_mouse_entered.tres" id="8_e2ejg"]
+[ext_resource type="Resource" uid="uid://bnp80lo6oq264" path="res://addons/totween/Samples/sample_mouse_exited.tres" id="9_x56g3"]
+[ext_resource type="Resource" uid="uid://w528fj814a7l" path="res://addons/totween/Samples/sample_idle.tres" id="10_or66d"]
+[ext_resource type="Resource" uid="uid://n8tbm4rpw0nv" path="res://addons/totween/Samples/sample_focus.tres" id="11_d3n6j"]
+[ext_resource type="Resource" uid="uid://b3h5fgcgvqfp3" path="res://addons/totween/Samples/sample_hover.tres" id="12_66wrg"]
+
+[sub_resource type="Resource" id="Resource_rtchf"]
+script = ExtResource("3_iumg3")
+tween_name = "Pressed"
+tween_resource = ExtResource("4_cg65v")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_aem0t"]
+script = ExtResource("3_iumg3")
+tween_name = "Button Down"
+tween_resource = ExtResource("5_s8jhm")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_5kdko"]
+script = ExtResource("3_iumg3")
+tween_name = "Focus Entered"
+tween_resource = ExtResource("6_761nx")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_qm0wu"]
+script = ExtResource("3_iumg3")
+tween_name = "Focus Exited"
+tween_resource = ExtResource("7_v7pnn")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_abhwt"]
+script = ExtResource("3_iumg3")
+tween_name = "Mouse Entered"
+tween_resource = ExtResource("8_e2ejg")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_fkuac"]
+script = ExtResource("3_iumg3")
+tween_name = "Mouse Exited"
+tween_resource = ExtResource("9_x56g3")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_6qahb"]
+script = ExtResource("3_iumg3")
+tween_name = "Idle"
+tween_resource = ExtResource("10_or66d")
+play_on_start = false
+next_tween = "Idle"
+
+[sub_resource type="Resource" id="Resource_k0bi1"]
+script = ExtResource("3_iumg3")
+tween_name = "Focus"
+tween_resource = ExtResource("11_d3n6j")
+play_on_start = false
+next_tween = "Focus"
+
+[sub_resource type="Resource" id="Resource_jjwri"]
+script = ExtResource("3_iumg3")
+tween_name = "Hover"
+tween_resource = ExtResource("12_66wrg")
+play_on_start = false
+next_tween = "Hover"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuPanel" parent="CanvasLayer" node_paths=PackedStringArray("initial_selection") instance=ExtResource("1_ucjbk")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+initial_selection = NodePath("ScrollContainer/GridContainer/Button")
+start_open = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MenuPanel"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 304.0
+grow_vertical = 2
+color = Color(1, 1, 0.219608, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MenuPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.364583
+anchor_top = 0.319444
+anchor_right = 0.635417
+anchor_bottom = 0.680556
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MenuPanel/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/MenuPanel/ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "Test Button"
+
+[node name="TweenPlayerUI" type="Node" parent="CanvasLayer/MenuPanel/ScrollContainer/GridContainer/Button"]
+script = ExtResource("2_kct4w")
+sequence_list = Array[ExtResource("3_iumg3")]([SubResource("Resource_rtchf"), SubResource("Resource_aem0t"), SubResource("Resource_5kdko"), SubResource("Resource_qm0wu"), SubResource("Resource_abhwt"), SubResource("Resource_fkuac"), SubResource("Resource_6qahb"), SubResource("Resource_k0bi1"), SubResource("Resource_jjwri")])
+
+[node name="MenuPanel2" parent="CanvasLayer" instance=ExtResource("1_ucjbk")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
