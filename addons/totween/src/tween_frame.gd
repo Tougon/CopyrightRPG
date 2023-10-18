@@ -7,6 +7,7 @@ enum ValueType { INT, FLOAT, STRING, VECTOR2, VECTOR3, COLOR }
 
 @export var target: String;
 @export var property_name: String;
+@export var material_property : bool = false;
 @export var duration: float = 1;
 @export var delay: float = 0;
 @export var transition: Tween.TransitionType = Tween.TRANS_LINEAR;

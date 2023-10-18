@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=6 format=3 uid="uid://bccsvse0c2nyv"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_ld81f"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_g73c6"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_jiili"]
+
+[sub_resource type="Resource" id="Resource_e2fb4"]
+script = ExtResource("2_g73c6")
+target = ""
+property_name = "position"
+duration = 1.25
+delay = 0.0
+transition = 4
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, 0)
+"From Vector2" = Vector2(0, 720)
+
+[sub_resource type="Resource" id="Resource_i1pu1"]
+script = ExtResource("3_jiili")
+frames = Array[ExtResource("2_g73c6")]([SubResource("Resource_e2fb4")])
+
+[resource]
+script = ExtResource("1_ld81f")
+tween_name = "Menu Open"
+sequence = Array[ExtResource("3_jiili")]([SubResource("Resource_i1pu1")])

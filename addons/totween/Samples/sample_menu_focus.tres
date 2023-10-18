@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=6 format=3 uid="uid://ccf4kxxtsp7fb"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_8vbwc"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_gexqy"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_m03mb"]
+
+[sub_resource type="Resource" id="Resource_e2fb4"]
+script = ExtResource("2_gexqy")
+target = ""
+property_name = "modulate"
+duration = 0.25
+delay = 0.0
+transition = 4
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0.501961)
+
+[sub_resource type="Resource" id="Resource_i1pu1"]
+script = ExtResource("3_m03mb")
+frames = Array[ExtResource("2_gexqy")]([SubResource("Resource_e2fb4")])
+
+[resource]
+script = ExtResource("1_8vbwc")
+tween_name = "Menu Focus"
+sequence = Array[ExtResource("3_m03mb")]([SubResource("Resource_i1pu1")])

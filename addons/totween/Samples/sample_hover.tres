@@ -13,10 +13,9 @@ delay = 0.0
 transition = 0
 ease = 0
 relative = false
-"Use From" = true
+"Use From" = false
 "Value Type" = 5
 "Color Value" = Color(1, 1, 1, 1)
-"From Color" = Color(0.996078, 0.690196, 0.803922, 1)
 
 [sub_resource type="Resource" id="Resource_i1pu1"]
 script = ExtResource("3_3iywk")

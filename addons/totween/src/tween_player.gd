@@ -18,19 +18,24 @@ var current_resource_instance : TweenResourceInstance;
 func _ready():
 	# Add all tweens into the runtime lookup list
 	for sequence in sequence_list:
+		
+		if sequences.has(sequence.tween_name): continue;
+		
 		sequences[sequence.tween_name] = sequence;
 		
 		# Play this sequence immediately if it should be played on start
 		if sequence.play_on_start:
 			_play_tween_instance(sequence);
 
+func add_tween_runtime(sequence : TweenResourceInstance):
+	if !sequences.has(sequence.tween_name):
+		sequences[sequence.tween_name] = sequence;
 
 func play_tween_name(name: String):
 	if sequences.has(name) : _play_tween_instance(sequences[name]);
 
 
 func _play_tween_instance(tween: TweenResourceInstance):
-	print("Playing: " + tween.tween_name);
 	_reset_tween_state();
 	current_resource_instance = tween;
 	_play_tween(tween.tween_resource);
@@ -40,11 +45,10 @@ func _play_tween_instance(tween: TweenResourceInstance):
 func _play_tween(tween: TweenResource):
 	
 	if get_tree() == null : 
-		print("ERROR");
 		return;
 		
 	# Cancel the current tween
-	if current_tween != null && !current_tween.is_running():
+	if current_tween != null && current_tween.is_running():
 		current_tween.stop();
 	
 	# Create the tween and set its movement to parallel
@@ -72,6 +76,9 @@ func _play_tween(tween: TweenResource):
 			if target == null:
 				continue;
 			else:
+				if frame.material_property:
+					target = target.material;
+				
 				var property = current_tween.tween_property(target, frame.property_name, frame.get_value(), frame.duration);
 				property.set_trans(frame.transition)
 				property.set_ease(frame.ease)
@@ -94,17 +101,15 @@ func _on_tween_complete():
 	# Cache the next tween and reset it
 	var next = next_tween;
 	next_tween = "";
-	print("NEXT: " + next);
+	
 	# Check if resource instance is valid
 	if current_resource_instance != null:
 		tween_ended.emit(current_resource_instance.tween_name);
 		
 		# Run next tween according to the current instance
 		if next != "":
-			print("Hmm...: " + next);
 			play_tween_name(next);
 		else :
-			print("Goddamn: " + current_resource_instance.next_tween);
 			play_tween_name(current_resource_instance.next_tween);
 		
 	# Check if resource is valid
@@ -124,3 +129,7 @@ func _on_tween_complete():
 func _reset_tween_state():
 	current_resource_instance = null;
 	current_resource = null;
+
+
+func has_tween(name: String):
+	return sequences.has(name);

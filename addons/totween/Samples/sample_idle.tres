@@ -8,7 +8,7 @@
 script = ExtResource("2_qejx8")
 target = ""
 property_name = "modulate"
-duration = 0.25
+duration = 0.1
 delay = 0.0
 transition = 4
 ease = 1
