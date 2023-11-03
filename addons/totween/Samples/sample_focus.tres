@@ -8,6 +8,7 @@
 script = ExtResource("2_n01ru")
 target = ""
 property_name = "modulate"
+material_property = false
 duration = 1.0
 delay = 0.0
 transition = 0
@@ -25,6 +26,7 @@ frames = Array[ExtResource("2_n01ru")]([SubResource("Resource_e2fb4")])
 script = ExtResource("2_n01ru")
 target = ""
 property_name = "modulate"
+material_property = false
 duration = 1.0
 delay = 0.0
 transition = 0

@@ -8,6 +8,7 @@
 script = ExtResource("2_07d38")
 target = ""
 property_name = "modulate"
+material_property = false
 duration = 0.5
 delay = 0.0
 transition = 4

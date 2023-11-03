@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ujjia2gxvnn6"]
+
+[ext_resource type="FontFile" uid="uid://dm8kuq1rngj1g" path="res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf" id="1_fv7q3"]
+[ext_resource type="FontFile" uid="uid://d3r00o1ww02u" path="res://assets/Fonts/SometypeMono/SometypeMono-BoldItalic.ttf" id="2_83cob"]
+[ext_resource type="FontFile" uid="uid://kyugw8ojbyq7" path="res://assets/Fonts/SometypeMono/SometypeMono-Italic.ttf" id="3_rvpta"]
+[ext_resource type="FontFile" uid="uid://bsnf3wt32cv3d" path="res://assets/Fonts/SometypeMono/SometypeMono-VariableFont_wght.ttf" id="4_p48r1"]
+[ext_resource type="FontFile" uid="uid://d31ksbbfcgxmp" path="res://assets/Fonts/SometypeMono/SometypeMono-Regular.ttf" id="5_0b2fj"]
+
+[sub_resource type="FontVariation" id="FontVariation_g377r"]
+base_font = ExtResource("4_p48r1")
+spacing_glyph = 1
+spacing_space = 2
+
+[resource]
+RichTextLabel/constants/line_separation = 4
+RichTextLabel/constants/text_highlight_h_padding = 5
+RichTextLabel/constants/text_highlight_v_padding = 2
+RichTextLabel/font_sizes/bold_font_size = 24
+RichTextLabel/font_sizes/bold_italics_font_size = 24
+RichTextLabel/font_sizes/italics_font_size = 24
+RichTextLabel/font_sizes/mono_font_size = 24
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/bold_font = ExtResource("1_fv7q3")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_83cob")
+RichTextLabel/fonts/italics_font = ExtResource("3_rvpta")
+RichTextLabel/fonts/mono_font = ExtResource("5_0b2fj")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_g377r")

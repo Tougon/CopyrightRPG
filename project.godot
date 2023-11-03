@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+EventManager="*res://src/EventManager/EventManager.gd"
 UIManager="*res://src/UIManager/Scripts/UIManager.gd"
 
 [display]

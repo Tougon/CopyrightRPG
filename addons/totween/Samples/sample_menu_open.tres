@@ -8,6 +8,7 @@
 script = ExtResource("2_g73c6")
 target = ""
 property_name = "position"
+material_property = false
 duration = 1.25
 delay = 0.0
 transition = 4

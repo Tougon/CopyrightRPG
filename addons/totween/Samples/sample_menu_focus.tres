@@ -8,6 +8,7 @@
 script = ExtResource("2_gexqy")
 target = ""
 property_name = "modulate"
+material_property = false
 duration = 0.25
 delay = 0.0
 transition = 4

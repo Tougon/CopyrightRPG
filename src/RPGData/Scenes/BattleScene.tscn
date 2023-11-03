@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=13 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="VideoStream" path="res://video/test.ogv" id="1_h3xwy"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="2_vttnk"]
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
+[ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
+[ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ytua"]
 shader = ExtResource("3_8sqf3")
@@ -17,45 +20,15 @@ shader_parameter/mask = ExtResource("2_vttnk")
 
 [sub_resource type="Resource" id="Resource_fj4kx"]
 script = ExtResource("6_6cut8")
-tween_name = "Iris In"
+tween_name = "Fade In"
 tween_resource = ExtResource("7_yuhhm")
-play_on_start = true
+play_on_start = false
 next_tween = ""
 
-[node name="BattleScene" type="Node2D"]
-
-[node name="BG Fade" type="CanvasLayer" parent="."]
-
-[node name="Fade Iris" type="TextureRect" parent="BG Fade"]
-modulate = Color(0, 0, 0, 1)
-material = SubResource("ShaderMaterial_8ytua")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_tos7b")
-stretch_mode = 5
-
-[node name="Iris Center" type="ColorRect" parent="BG Fade/Fade Iris"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TweenPlayerUI" type="Node" parent="BG Fade/Fade Iris"]
-script = ExtResource("5_35o0w")
-sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx")])
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("fade_sequence", "sequencer")]
+script = ExtResource("1_nawhs")
+fade_sequence = NodePath("BG Fade Canvas/Fade Iris/TweenPlayerUI")
+sequencer = NodePath("Sequencer")
 
 [node name="BG Video Canvas" type="CanvasLayer" parent="."]
 
@@ -76,3 +49,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32549, 0.854902, 0.639216, 1)
+
+[node name="Dialogue Canvas" parent="." instance=ExtResource("9_4k33p")]
+dialogue_end_time = 0.5
+
+[node name="BG Fade Canvas" type="CanvasLayer" parent="."]
+
+[node name="Fade Iris" type="TextureRect" parent="BG Fade Canvas"]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_8ytua")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tos7b")
+stretch_mode = 5
+
+[node name="Iris Center" type="ColorRect" parent="BG Fade Canvas/Fade Iris"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TweenPlayerUI" type="Node" parent="BG Fade Canvas/Fade Iris"]
+script = ExtResource("5_35o0w")
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx")])
+
+[node name="Sequencer" parent="." instance=ExtResource("9_lx2fn")]

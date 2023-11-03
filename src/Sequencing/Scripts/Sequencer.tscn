@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://diyulx0atyop6"]
+
+[ext_resource type="Script" path="res://src/Sequencing/Scripts/sequencer.gd" id="1_wgos3"]
+
+[node name="Sequencer" type="Node"]
+script = ExtResource("1_wgos3")
