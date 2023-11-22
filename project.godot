@@ -34,7 +34,11 @@ project/assembly_name="Copyright RPG"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
+enabled=PackedStringArray("res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/Localization/TextDatabase.en.translation", "res://assets/Localization/TextDatabase.es.translation", "res://assets/Localization/TextDatabase.ja.translation")
 
 [rendering]
 

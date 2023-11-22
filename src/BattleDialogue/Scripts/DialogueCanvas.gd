@@ -41,6 +41,9 @@ func print_dialogue(text : String):
 	
 	if text_label.get_parsed_text().length() > 1:
 		text_label.add_text("\n");
+		
+		if text_label.get_paragraph_count() > (max_rows + 1):
+				text_label.remove_paragraph(1);
 	
 	match print_type:
 		PrintType.WORD:

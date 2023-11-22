@@ -9,10 +9,15 @@ func _ready():
 
 
 func _begin_battle():
+	
+	await get_tree().process_frame;
+	
+	# Fade in
 	if fade_sequence != null:
 		fade_sequence.play_tween_name("Fade In");
 		await fade_sequence.tween_ended;
-	# TODO: Send dialogue
+	
+	# Print the opening dialogue
 	EventManager.on_dialogue_queue.emit("I see no hear no evil, black writing's on the wall")
 	EventManager.on_dialogue_queue.emit("Unleashed a million faces, and one by one they fall")
 	EventManager.on_dialogue_queue.emit("Black hearted evil")

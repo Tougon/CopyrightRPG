@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=14 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="VideoStream" path="res://video/test.ogv" id="1_h3xwy"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
+[ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="11_dfx21"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ytua"]
 shader = ExtResource("3_8sqf3")
@@ -27,12 +28,15 @@ next_tween = ""
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("fade_sequence", "sequencer")]
 script = ExtResource("1_nawhs")
-fade_sequence = NodePath("BG Fade Canvas/Fade Iris/TweenPlayerUI")
-sequencer = NodePath("Sequencer")
+fade_sequence = NodePath("UI/BG Fade Canvas/Fade Iris/TweenPlayerUI")
+sequencer = NodePath("Core/Sequencer")
 
-[node name="BG Video Canvas" type="CanvasLayer" parent="."]
+[node name="Background" type="Node" parent="."]
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="BG Video Canvas"]
+[node name="BG Video Canvas" type="CanvasLayer" parent="Background"]
+layer = -10
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Background/BG Video Canvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,7 +46,7 @@ stream = ExtResource("1_h3xwy")
 expand = true
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="BG Video Canvas"]
+[node name="ColorRect" type="ColorRect" parent="Background/BG Video Canvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,12 +54,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32549, 0.854902, 0.639216, 1)
 
-[node name="Dialogue Canvas" parent="." instance=ExtResource("9_4k33p")]
+[node name="Core" type="Node" parent="."]
+
+[node name="Sequencer" parent="Core" instance=ExtResource("9_lx2fn")]
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="EntityBase" parent="Entities" instance=ExtResource("11_dfx21")]
+position = Vector2(244, 438)
+
+[node name="EntityBase2" parent="Entities" instance=ExtResource("11_dfx21")]
+position = Vector2(519, 441)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Dialogue Canvas" parent="UI" instance=ExtResource("9_4k33p")]
 dialogue_end_time = 0.5
 
-[node name="BG Fade Canvas" type="CanvasLayer" parent="."]
+[node name="BG Fade Canvas" type="CanvasLayer" parent="UI"]
+layer = 10
+visible = false
 
-[node name="Fade Iris" type="TextureRect" parent="BG Fade Canvas"]
+[node name="Fade Iris" type="TextureRect" parent="UI/BG Fade Canvas"]
 modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_8ytua")
 anchors_preset = 15
@@ -68,7 +88,7 @@ grow_vertical = 2
 texture = ExtResource("3_tos7b")
 stretch_mode = 5
 
-[node name="Iris Center" type="ColorRect" parent="BG Fade Canvas/Fade Iris"]
+[node name="Iris Center" type="ColorRect" parent="UI/BG Fade Canvas/Fade Iris"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -82,8 +102,6 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TweenPlayerUI" type="Node" parent="BG Fade Canvas/Fade Iris"]
+[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/Fade Iris"]
 script = ExtResource("5_35o0w")
 sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx")])
-
-[node name="Sequencer" parent="." instance=ExtResource("9_lx2fn")]

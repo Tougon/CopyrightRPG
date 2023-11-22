@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://cog3vibpn621y"]
+
+[ext_resource type="PackedScene" uid="uid://bicxs6b5o24lc" path="res://src/RPGData/Scenes/Entity/EntityBase.tscn" id="1_lyfeq"]
+[ext_resource type="Shader" path="res://assets/Shaders/EntityUniversal.gdshader" id="2_w1awl"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntitySprite.gd" id="2_xa1i0"]
+[ext_resource type="Texture2D" uid="uid://bxmp70haf151v" path="res://assets/Textures/overlay_raise.png" id="3_86yeq"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_jf67w"]
+[ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="4_aaexs"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="5_drux7"]
+
+[sub_resource type="Resource" id="Resource_t3jyv"]
+script = ExtResource("3_jf67w")
+target = ""
+property_name = "shader_param/overlay_color"
+material_property = true
+duration = 3.0
+delay = 0.0
+transition = 7
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(0, 1, 1, 1)
+"From Color" = Color(0, 1, 0, 1)
+
+[sub_resource type="Resource" id="Resource_g0swm"]
+script = ExtResource("3_jf67w")
+target = ""
+property_name = ""
+material_property = true
+duration = 2.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.8
+"From Float" = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_03x6k"]
+shader = ExtResource("2_w1awl")
+shader_parameter/overlay_color = Color(1, 1, 1, 1)
+shader_parameter/overlay_color_amount = 0.0
+shader_parameter/overlay_texture_offset = Vector2(0, 0)
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 0.0
+shader_parameter/overlay_texture = ExtResource("3_86yeq")
+
+[node name="EntityBase" instance=ExtResource("1_lyfeq")]
+script = ExtResource("2_xa1i0")
+test_color_tween = SubResource("Resource_t3jyv")
+test_amount_tween = SubResource("Resource_g0swm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_03x6k")
+texture = ExtResource("4_aaexs")
+
+[node name="TweenPlayer" type="Node" parent="." index="1"]
+script = ExtResource("5_drux7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]

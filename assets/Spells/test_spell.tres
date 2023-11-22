@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://d2ytypgrn8nvw"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/spell.gd" id="1_ggfhg"]
+
+[resource]
+script = ExtResource("1_ggfhg")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = ""
+spell_type = 0
+spell_target = 0
+spell_cost = 0
+spell_priority = 0
