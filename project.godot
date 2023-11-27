@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 EventManager="*res://src/EventManager/EventManager.gd"
 UIManager="*res://src/UIManager/Scripts/UIManager.gd"
+GrammarManager="*res://src/Localization/GrammarManager.gd"
 
 [display]
 

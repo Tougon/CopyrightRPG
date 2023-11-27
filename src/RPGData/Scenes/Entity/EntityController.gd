@@ -69,5 +69,9 @@ func entity_init():
 
 
 func create_move_list():
-	# TODO: Fetch this using the entity's current level
-	pass;
+	move_list.clear();
+	
+	if current_entity:
+		for move in current_entity.move_list.list:
+			if move != null && move.level <= level:
+				move_list.append(move.spell);

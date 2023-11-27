@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwasyygv0uw3e"]
+
+[ext_resource type="PackedScene" uid="uid://b1yeonj32wfeb" path="res://src/RPGData/Scenes/Entity/EntityController.tscn" id="1_hfutr"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EnemyController.gd" id="2_4tbuf"]
+
+[node name="EntityBase" instance=ExtResource("1_hfutr")]
+script = ExtResource("2_4tbuf")
