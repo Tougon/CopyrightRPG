@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_mr011"]
 
 [node name="MenuPanel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_6slto")

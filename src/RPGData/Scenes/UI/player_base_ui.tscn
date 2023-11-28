@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy3k2aw7r14mq"]
+
+[ext_resource type="Script" path="res://src/UIManager/Scripts/MenuPanel.gd" id="1_5yx2e"]
+[ext_resource type="PackedScene" uid="uid://cfwqqndo7yhc8" path="res://src/RPGData/Scenes/UI/entity_info.tscn" id="2_18f3h"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_wji45"]
+
+[node name="MenuPanel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yx2e")
+
+[node name="BG Area" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.257813, 0.566406, 0.734375, 1)
+
+[node name="Character Info" parent="BG Area" instance=ExtResource("2_18f3h")]
+layout_mode = 1
+
+[node name="TweenPlayerUI" type="Node" parent="."]
+script = ExtResource("2_wji45")

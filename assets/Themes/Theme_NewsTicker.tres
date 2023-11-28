@@ -12,6 +12,8 @@ spacing_glyph = 1
 spacing_space = 2
 
 [resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_fv7q3")
 RichTextLabel/constants/line_separation = 4
 RichTextLabel/constants/text_highlight_h_padding = 5
 RichTextLabel/constants/text_highlight_v_padding = 2

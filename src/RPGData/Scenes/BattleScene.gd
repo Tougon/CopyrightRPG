@@ -6,6 +6,8 @@ extends Node2D
 var players : Array[EntityController];
 var enemies : Array[EntityController];
 
+var current_player_index : int;
+
 
 func _ready():
 	EventManager.register_player.connect(_on_player_register);
@@ -25,19 +27,30 @@ func _begin_battle():
 	# Print the opening dialogue
 	EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
 	await EventManager.on_sequence_queue_empty;
-	print("Working");
+	
+	# Begin the turn
+	_begin_turn();
 
 
+func _begin_turn():
+	current_player_index = 0;
+	
+	if players.size() > 0:
+		EventManager.set_active_player.emit(players[current_player_index]);
+	
+	UIManager.open_menu_name("player_battle_main");
+
+
+# Event responses
 func _on_player_register(entity : EntityController):
-	print("Obtain");
 	players.append(entity);
 
 
 func _on_enemy_register(entity : EntityController):
-	print("Refrain");
 	enemies.append(entity);
 
 
+# Helper function for dialogue formatting
 func _format_dialogue(dialogue : String, name : String, entity : Entity) -> String:
 	# TODO: Add pronoun support
 	var entity_name = tr(entity.name_key)

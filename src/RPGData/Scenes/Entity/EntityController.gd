@@ -18,10 +18,15 @@ var evasion_stage : int;
 var accuracy_stage : int;
 var is_identified : bool = false;
 
+var current_hp : int;
+var current_mp : int;
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	level = 50; # TEMP CODE: Used to force legitimate calculations for levels
 	entity_init();
+
 
 func entity_init():
 	if current_entity != null:
@@ -38,7 +43,7 @@ func entity_init():
 		
 		# Initialize stats from base stats
 		param.entity_hp = ((current_entity.base_hp * 2 * level) / 100) + level + 10;
-		param.entity_mp = ((current_entity.base_mp * 2 * level) / 100) + level + 9;
+		param.entity_mp = ((current_entity.base_mp * 2 * level) / 100) + level + 6;
 		param.entity_atk = ((current_entity.base_atk * 2 * level) / 100) + 5;
 		param.entity_def = ((current_entity.base_def * 2 * level) / 100) + 5;
 		param.entity_sp_atk = ((current_entity.base_sp_atk * 2 * level) / 100) + 5;
@@ -56,6 +61,10 @@ func entity_init():
 		spd_stage = 0;
 		evasion_stage = 0;
 		accuracy_stage = 0;
+		
+		# NOTE: Players will have the ability to overwrite this
+		current_hp = max_hp;
+		current_mp = max_mp;
 		
 		create_move_list();
 		
@@ -75,3 +84,12 @@ func create_move_list():
 		for move in current_entity.move_list.list:
 			if move != null && move.level <= level:
 				move_list.append(move.spell);
+
+
+# Getter functions for UI and other areas
+func get_hp_percent() -> float:
+	return float(current_hp) / float(max_hp);
+
+
+func get_mp_percent() -> float:
+	return float(current_mp) / float(max_mp);

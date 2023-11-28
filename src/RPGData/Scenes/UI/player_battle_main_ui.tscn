@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3q7hew02l55r"]
+
+[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/player_base_ui.tscn" id="1_gohqw"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_main_ui.gd" id="2_stk7e"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_ftnx2"]
+[ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_battle_player_main_open.tres" id="4_4dddr"]
+
+[sub_resource type="Resource" id="Resource_cphot"]
+script = ExtResource("3_ftnx2")
+tween_name = "Open"
+tween_resource = ExtResource("4_4dddr")
+play_on_start = false
+next_tween = ""
+
+[node name="Player Main Menu" instance=ExtResource("1_gohqw")]
+script = ExtResource("2_stk7e")
+menu_name = "player_battle_main"
+sequence_list = Array[ExtResource("3_ftnx2")]([SubResource("Resource_cphot")])
+
+[node name="BG Area" parent="." index="0"]
+offset_top = -190.0

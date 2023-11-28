@@ -18,6 +18,8 @@ enum PrintType { CHARACTER, WORD, SYLLABLE }
 @export var print_type : PrintType;
 @export var print_delay_type : PrintType;
 @export var capitalize : bool = true;
+
+var is_printing : bool = false;
 var current_rows : int;
 
 var bbcode : String = "[bgcolor=000000D5][indent]"; 
@@ -27,14 +29,22 @@ var test_text : String = "NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERE
 func _ready():
 	text_label.clear();
 	EventManager.on_dialogue_queue.connect(_on_dialogue_queue);
+	EventManager.on_message_queue.connect(_on_message_queue);
 	await get_tree().process_frame;
 	text_label.append_text(bbcode);
+
 
 func _on_dialogue_queue(dialogue : String):
 	if capitalize: dialogue = dialogue.to_upper();
 	
 	var sequence = DialogueSequence.new(get_tree(), self, dialogue);
 	EventManager.on_sequence_queue.emit(sequence);
+
+
+func _on_message_queue(dialogue : String):
+	if capitalize: dialogue = dialogue.to_upper();
+	
+	var sequence = DialogueSequence.new(get_tree(), self, dialogue, true);
 
 
 func print_dialogue(text : String):
@@ -44,6 +54,8 @@ func print_dialogue(text : String):
 		
 		if text_label.get_paragraph_count() > (max_rows + 1):
 				text_label.remove_paragraph(1);
+	
+	is_printing = true;
 	
 	match print_type:
 		PrintType.WORD:
@@ -87,6 +99,7 @@ func _print_by_character(text : String):
 	_row_display_delay(current_line);
 	await get_tree().create_timer(dialogue_end_time).timeout;
 	on_dialogue_complete.emit();
+	is_printing = false;
 
 
 func _print_by_word(text : String):
@@ -130,6 +143,7 @@ func _print_by_word(text : String):
 	_row_display_delay(current_line);
 	await get_tree().create_timer(dialogue_end_time).timeout;
 	on_dialogue_complete.emit();
+	is_printing = false;
 
 
 func _row_display_delay(row : String):
