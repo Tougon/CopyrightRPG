@@ -25,7 +25,9 @@ func _begin_battle():
 		await fade_sequence.tween_ended;
 	
 	# Print the opening dialogue
-	EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
+	#EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
+	EventManager.on_dialogue_queue.emit("this is a song tht nevegv unoine noirngo inornegon noogineoring inoegn nuonfiuen nionfweinf niowfoienonf");
+	
 	await EventManager.on_sequence_queue_empty;
 	
 	# Begin the turn
@@ -33,12 +35,33 @@ func _begin_battle():
 
 
 func _begin_turn():
+	EventManager.on_turn_begin.emit();
+	# TODO: Wait until all turn begin effects have resolved
+	#await EventManager.on_sequence_queue_empty;
 	current_player_index = 0;
 	
+	# TODO: Sort players/turn order by speed;
 	if players.size() > 0:
 		EventManager.set_active_player.emit(players[current_player_index]);
 	
 	UIManager.open_menu_name("player_battle_main");
+	
+	_decision_phase();
+
+
+# Name may be changed but this is the phase where we choose actions for the turn.
+func _decision_phase():
+	await get_tree().create_timer(2.0).timeout
+	
+	while current_player_index < players.size():
+		await get_tree().process_frame;
+		
+		if players[current_player_index].is_ready:
+			current_player_index += 1;
+			EventManager.set_active_player.emit(players[current_player_index]);
+			UIManager.open_menu_name("player_battle_main");
+	
+	# TODO: Process enemy actions for the turn
 
 
 # Event responses
@@ -87,3 +110,9 @@ func _all_enemies_same() -> bool:
 		if enemy.current_entity != entity:
 			return false;
 	return true;
+
+
+func _on_destroy():
+	if EventManager != null:
+		EventManager.register_player.disconnect(_on_player_register);
+		EventManager.register_enemy.disconnect(_on_enemy_register);

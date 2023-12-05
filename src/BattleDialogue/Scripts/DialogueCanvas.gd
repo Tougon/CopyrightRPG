@@ -27,6 +27,7 @@ var test_text : String = "NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	current_rows = 0;
 	text_label.clear();
 	EventManager.on_dialogue_queue.connect(_on_dialogue_queue);
 	EventManager.on_message_queue.connect(_on_message_queue);
@@ -48,12 +49,13 @@ func _on_message_queue(dialogue : String):
 
 
 func print_dialogue(text : String):
+	current_rows += 1;
 	
 	if text_label.get_parsed_text().length() > 1:
 		text_label.add_text("\n");
 		
-		if text_label.get_paragraph_count() > (max_rows + 1):
-				text_label.remove_paragraph(1);
+		if current_rows > max_rows:
+			_remove_extra_rows();
 	
 	is_printing = true;
 	
@@ -122,14 +124,16 @@ func _print_by_word(text : String):
 		
 		# If the width exceeds the limit add a new line before continuing
 		if width >= text_label.get_rect().size.x:
-			if n < splits.size() - 1:
+			current_rows += 1;
+			
+			if n < splits.size():
 				await get_tree().create_timer(row_pause).timeout;
 				text_label.add_text("\n");
 				_row_display_delay(current_line);
 			
 			# If the number of lines are too great, immediately remove the first line
-			if text_label.get_paragraph_count() > (max_rows + 1):
-				text_label.remove_paragraph(1);
+			if current_rows > max_rows:
+				_remove_extra_rows();
 			current_line = "";
 		else:
 			if n > 0:
@@ -144,6 +148,26 @@ func _print_by_word(text : String):
 	await get_tree().create_timer(dialogue_end_time).timeout;
 	on_dialogue_complete.emit();
 	is_printing = false;
+
+
+func _remove_extra_rows():
+	
+	var current_display = text_label.get_parsed_text().split("\n");
+	
+	current_rows = 0;
+	text_label.clear();
+	text_label.append_text(bbcode);
+	
+	while current_display.size() > max_rows:
+		current_display.remove_at(0);
+	
+	for n in current_display.size():
+		
+		if n > 0:
+			text_label.add_text("\n");
+			
+		text_label.add_text(current_display[n].replace("\t", ""));
+		current_rows += 1;
 
 
 func _row_display_delay(row : String):
@@ -164,9 +188,9 @@ func _row_display_delay(row : String):
 	for n in current_display.size():
 		
 		var line = current_display[n].replace("\t", "").replace(" ", "");
-		
-		if line == row:
+		if line == row && to_remove == -1:
 			to_remove = n+1;
+			current_rows -= 1;
 			continue;
 			
 		if row_num > 0:

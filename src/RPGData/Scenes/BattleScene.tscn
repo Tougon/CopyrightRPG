@@ -65,6 +65,9 @@ color = Color(0.32549, 0.854902, 0.639216, 1)
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(200, 522)
 
+[node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
+position = Vector2(465, 522)
+
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 

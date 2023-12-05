@@ -21,10 +21,13 @@ var is_identified : bool = false;
 var current_hp : int;
 var current_mp : int;
 
+var is_ready : bool = false;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level = 50; # TEMP CODE: Used to force legitimate calculations for levels
+	level = 50; # TEMP CODE: Used to force legitimate calculations for stats
+	EventManager.on_turn_begin.connect(_on_turn_begin);
 	entity_init();
 
 
@@ -77,6 +80,10 @@ func entity_init():
 		# TODO: Reset entity UI
 
 
+func _on_turn_begin():
+	is_ready = false;
+
+
 func create_move_list():
 	move_list.clear();
 	
@@ -93,3 +100,8 @@ func get_hp_percent() -> float:
 
 func get_mp_percent() -> float:
 	return float(current_mp) / float(max_mp);
+
+
+func _on_destroy():
+	if EventManager != null:
+		EventManager.on_turn_begin.disconnect(_on_turn_begin);
