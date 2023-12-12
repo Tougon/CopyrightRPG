@@ -2,15 +2,33 @@ extends ColorRect
 class_name EntityInfoUI
 
 enum InfoType { Active, Specific }
+enum DisplayType { Full, Restricted }
 
 @export var info_type : InfoType;
+@export var display_type : DisplayType;
 var current_entity : EntityController;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if info_type == InfoType.Active:
 		EventManager.set_active_player.connect(_set_entity_info);
+	
+	match display_type:
+		DisplayType.Full:
+			$"HBoxContainer/HP Bar/ColorRect/VBoxContainer/RichTextLabel".visible = true;
+			$"HBoxContainer/MP Bar/ColorRect".visible = true;
+		DisplayType.Restricted:
+			$"HBoxContainer/HP Bar/ColorRect/VBoxContainer/RichTextLabel".visible = false;
+			$"HBoxContainer/MP Bar/ColorRect".visible = false;
 
+
+func set_specific_entity_info(entity : EntityController, all : bool):
+	if all:
+		$"HBoxContainer/Player Name".text = tr("T_NAME_ALL");
+		$"HBoxContainer/HP Bar/ColorRect".visible = false;
+	else:
+		_set_entity_info(entity);
+		$"HBoxContainer/HP Bar/ColorRect".visible = true;
 
 func _set_entity_info(entity : EntityController):
 	# Disconnect the previously selected entity

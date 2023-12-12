@@ -89,9 +89,9 @@ func _on_enemy_register(entity : EntityController):
 
 func _on_attack_select():
 	players[current_player_index].current_action = players[current_player_index].attack_action;
-	UIManager.close_menu_name("player_battle_main")
-	UIManager.open_menu_name("player_battle_target")
+	UIManager.close_menu_name("player_battle_main");
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
+	UIManager.open_menu_name("player_battle_target");
 
 
 # Helper function for dialogue formatting

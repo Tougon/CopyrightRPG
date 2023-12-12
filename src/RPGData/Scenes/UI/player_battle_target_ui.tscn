@@ -5,11 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://b322fahaaod4k" path="res://src/RPGData/Scenes/UI/player_battle_target_entry_ui.tscn" id="3_y6j45"]
 [ext_resource type="PackedScene" uid="uid://c474vq5ojc1tf" path="res://src/RPGData/Scenes/UI/player_battle_target_arrow_ui.tscn" id="4_u0smg"]
 
-[node name="Target Menu" instance=ExtResource("1_tr78i")]
+[node name="Target Menu" node_paths=PackedStringArray("entity_info") instance=ExtResource("1_tr78i")]
 script = ExtResource("2_oib4x")
 info_scene = ExtResource("3_y6j45")
 arrow_scene = ExtResource("4_u0smg")
 pool_size = 10
+entity_info = NodePath("BG Area/Character Info")
 menu_name = "player_battle_target"
 
 [node name="BG Area" parent="." index="0"]
@@ -23,3 +24,4 @@ offset_top = -60.0
 offset_bottom = 0.0
 grow_vertical = 0
 info_type = 1
+display_type = 1
