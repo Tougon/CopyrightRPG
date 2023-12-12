@@ -17,6 +17,9 @@ signal register_enemy(entity : EntityController);
 
 signal set_active_player(entity: EntityController);
 
+signal on_attack_select();
+signal initialize_target_menu(entity : EntityController);
+
 
 # Leaving this intact but given the dictionary might as well not exist, I'm not sure we need.
 func _ready():

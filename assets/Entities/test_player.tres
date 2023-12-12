@@ -4,18 +4,18 @@
 
 [resource]
 script = ExtResource("1_2h4bc")
-name_key = ""
-description_key = ""
+name_key = "T_NAME_PTOED"
+description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 generic = false
-base_hp = 0
-base_mp = 0
-base_atk = 0
-base_def = 0
-base_sp_atk = 0
-base_sp_def = 0
-base_spd = 0
+base_hp = 100
+base_mp = 100
+base_atk = 100
+base_def = 100
+base_sp_atk = 100
+base_sp_def = 100
+base_spd = 100
 base_crit_modifier = 1.0
 base_dodge_modifier = 1.0
 entity_sprites = Array[Texture2D]([])
-battle_intro_key = ""
+battle_intro_key = "T_BATTLE_INTRO_GENERIC"

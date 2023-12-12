@@ -11,3 +11,4 @@ spell_type = 0
 spell_target = 0
 spell_cost = 0
 spell_priority = 0
+spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])

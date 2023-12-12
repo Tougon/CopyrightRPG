@@ -17,3 +17,7 @@ func on_tween_end_active(tween_name : String):
 
 func _set_active_entity(entity : EntityController):
 	current_entity = entity;
+
+
+func _on_attack_button_pressed():
+	EventManager.on_attack_select.emit();

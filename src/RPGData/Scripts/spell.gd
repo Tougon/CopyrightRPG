@@ -7,8 +7,8 @@ const SEAL_COST_MULTIPLIER : float = 1.5;
 # Temp value used to fix damage calculation at 50
 const DAMAGE_CONSTANT : int = 50;
 
-enum SpellType { Other, Attack, Status, Buff, Debuff, Heal }
-enum SpellTarget { SingleEnemy, RandomEnemy, AllEnemy, Self, SingleParty, AllParty, All }
+enum SpellType { Other, Attack, Status, Buff, Debuff, Heal, Flavor }
+enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, SingleParty, AllParty, All }
 
 @export_group("Universal Spell Parameters")
 @export_subgroup("Spell Naming")
@@ -31,3 +31,68 @@ var spell_fail_message_key : String;
 # On Hit
 # On Success
 # Properties
+
+
+# Returns an instance of this spell using the spell data to calculate everything
+func cast(user : EntityController, targets : Array[EntityController]):
+	print("Currently under construction")
+	var result = [];
+	
+	var mp_check = check_mp(user);
+	
+	for target in targets:
+		var cast = SpellCast.new();
+		cast.spell = self;
+		cast.user = user;
+		cast.target = target;
+		
+		cast.success = mp_check;
+		
+		if cast.success:
+			cast.success = check_can_cast(user, targets);
+			
+			if cast.success:
+				# TODO: Apply spell properties.
+				# These may affect any calculation going forward.
+				cast.success = check_spell_hit(user, targets);
+				
+				if cast.success:
+					calculate_damage(user, targets, cast);
+					
+					if spell_type == SpellType.Flavor:
+						cast.success = true;
+					else:
+						cast.success = cast.has_spell_done_anything();
+				
+				# TODO: Deactivate properties
+		else:
+			cast.fail_message = tr("T_BATTLE_MP_BAD").format({entity = user.param.entity_name});
+		result.append(cast);
+	
+	return result;
+
+
+func check_mp(user : EntityController) -> bool:
+	var cost = spell_cost;
+	# TODO: Subtract more MP if sealing
+	
+	var result = user.current_mp <= cost;
+	
+	if result:
+		user.modify_mp(cost);
+	
+	return result;
+
+
+func check_can_cast(user : EntityController, targets : Array[EntityController]):
+	return true;
+
+
+func check_spell_hit(user : EntityController, targets : Array[EntityController], amt : float = -1):
+	return true;
+
+
+func calculate_damage(user : EntityController, targets : Array[EntityController], cast : SpellCast):
+	cast.set_damage([0]);
+	cast.set_hits([true]);
+	cast.set_critical([false]);

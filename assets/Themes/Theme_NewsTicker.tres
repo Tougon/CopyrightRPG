@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ujjia2gxvnn6"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://ujjia2gxvnn6"]
 
 [ext_resource type="FontFile" uid="uid://dm8kuq1rngj1g" path="res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf" id="1_fv7q3"]
 [ext_resource type="FontFile" uid="uid://d3r00o1ww02u" path="res://assets/Fonts/SometypeMono/SometypeMono-BoldItalic.ttf" id="2_83cob"]
@@ -6,12 +6,41 @@
 [ext_resource type="FontFile" uid="uid://bsnf3wt32cv3d" path="res://assets/Fonts/SometypeMono/SometypeMono-VariableFont_wght.ttf" id="4_p48r1"]
 [ext_resource type="FontFile" uid="uid://d31ksbbfcgxmp" path="res://assets/Fonts/SometypeMono/SometypeMono-Regular.ttf" id="5_0b2fj"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ab5"]
+bg_color = Color(0.235294, 0.380392, 0.611765, 0.901961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n461e"]
+bg_color = Color(0.105469, 0.203125, 0.363281, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_665ho"]
+bg_color = Color(0.234375, 0.378906, 0.613281, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brsjh"]
+bg_color = Color(0.234375, 0.378906, 0.617188, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tl5r4"]
+bg_color = Color(0.0784314, 0.164706, 0.298039, 1)
+
 [sub_resource type="FontVariation" id="FontVariation_g377r"]
 base_font = ExtResource("4_p48r1")
 spacing_glyph = 1
 spacing_space = 2
 
 [resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_disabled_color = Color(0.752941, 0.752941, 0.752941, 1)
+Button/colors/font_focus_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_color = Color(1, 1, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.996094, 0.847656, 0, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 0.85098, 0, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_fv7q3")
+Button/styles/disabled = SubResource("StyleBoxFlat_g0ab5")
+Button/styles/focus = SubResource("StyleBoxFlat_n461e")
+Button/styles/hover = SubResource("StyleBoxFlat_665ho")
+Button/styles/normal = SubResource("StyleBoxFlat_brsjh")
+Button/styles/pressed = SubResource("StyleBoxFlat_tl5r4")
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_fv7q3")
 RichTextLabel/constants/line_separation = 4

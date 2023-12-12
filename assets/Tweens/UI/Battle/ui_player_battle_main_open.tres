@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="TweenResource" load_steps=8 format=3 uid="uid://co1mhuro68xsc"]
 
-[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_nb248"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_ab8lt"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_uxe8n"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_7lebc"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_qc00b"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_4xr8k"]
 
 [sub_resource type="Resource" id="Resource_8nwru"]
-script = ExtResource("2_uxe8n")
+script = ExtResource("2_qc00b")
 target = ""
 property_name = "position"
 material_property = false
@@ -20,11 +20,11 @@ relative = false
 "From Vector2" = Vector2(0, 190)
 
 [sub_resource type="Resource" id="Resource_bxhn2"]
-script = ExtResource("2_ab8lt")
-frames = Array[ExtResource("2_uxe8n")]([SubResource("Resource_8nwru")])
+script = ExtResource("3_4xr8k")
+frames = Array[ExtResource("2_qc00b")]([SubResource("Resource_8nwru")])
 
 [sub_resource type="Resource" id="Resource_v5iqq"]
-script = ExtResource("2_uxe8n")
+script = ExtResource("2_qc00b")
 target = ""
 property_name = "position"
 material_property = false
@@ -39,10 +39,10 @@ relative = false
 "From Vector2" = Vector2(0, 130)
 
 [sub_resource type="Resource" id="Resource_637p8"]
-script = ExtResource("2_ab8lt")
-frames = Array[ExtResource("2_uxe8n")]([SubResource("Resource_v5iqq")])
+script = ExtResource("3_4xr8k")
+frames = Array[ExtResource("2_qc00b")]([SubResource("Resource_v5iqq")])
 
 [resource]
-script = ExtResource("1_nb248")
+script = ExtResource("1_7lebc")
 tween_name = "Menu Open"
-sequence = Array[ExtResource("2_ab8lt")]([SubResource("Resource_bxhn2"), SubResource("Resource_637p8")])
+sequence = Array[ExtResource("3_4xr8k")]([SubResource("Resource_bxhn2"), SubResource("Resource_637p8")])

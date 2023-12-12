@@ -12,6 +12,7 @@ var current_player_index : int;
 func _ready():
 	EventManager.register_player.connect(_on_player_register);
 	EventManager.register_enemy.connect(_on_enemy_register);
+	EventManager.on_attack_select.connect(_on_attack_select);
 	_begin_battle();
 
 
@@ -25,9 +26,7 @@ func _begin_battle():
 		await fade_sequence.tween_ended;
 	
 	# Print the opening dialogue
-	#EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
-	EventManager.on_dialogue_queue.emit("this is a song tht nevegv unoine noirngo inornegon noogineoring inoegn nuonfiuen nionfweinf niowfoienonf");
-	
+	EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
 	await EventManager.on_sequence_queue_empty;
 	
 	# Begin the turn
@@ -40,7 +39,22 @@ func _begin_turn():
 	#await EventManager.on_sequence_queue_empty;
 	current_player_index = 0;
 	
-	# TODO: Sort players/turn order by speed;
+	for player in players:
+		player.allies.clear();
+		player.allies.append_array(players);
+		player.enemies.clear();
+		player.enemies.append_array(enemies);
+	
+	for enemy in enemies:
+		enemy.allies.clear();
+		enemy.allies.append_array(enemies);
+		enemy.enemies.clear();
+		enemy.enemies.append_array(players);
+	
+	# Sort players/turn order by speed. Might cut this.
+	# It was really annoying in OMORI to have the order be fixed,
+	# Though I think that's moreso a problem with the game's UI design.
+	players.sort_custom(_compare_speed);
 	if players.size() > 0:
 		EventManager.set_active_player.emit(players[current_player_index]);
 	
@@ -71,6 +85,13 @@ func _on_player_register(entity : EntityController):
 
 func _on_enemy_register(entity : EntityController):
 	enemies.append(entity);
+
+
+func _on_attack_select():
+	players[current_player_index].current_action = players[current_player_index].attack_action;
+	UIManager.close_menu_name("player_battle_main")
+	UIManager.open_menu_name("player_battle_target")
+	EventManager.initialize_target_menu.emit(players[current_player_index]);
 
 
 # Helper function for dialogue formatting
@@ -112,7 +133,13 @@ func _all_enemies_same() -> bool:
 	return true;
 
 
+# Misc Functions
+func _compare_speed(a : EntityController, b : EntityController):
+	return EntityController.compare_speed(a, b);
+
+
 func _on_destroy():
 	if EventManager != null:
 		EventManager.register_player.disconnect(_on_player_register);
 		EventManager.register_enemy.disconnect(_on_enemy_register);
+		EventManager.on_attack_select.disconnect(_on_attack_select);

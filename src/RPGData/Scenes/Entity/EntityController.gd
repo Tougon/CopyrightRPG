@@ -4,6 +4,7 @@ class_name EntityController
 @export var current_entity : Entity;
 var move_list : Array[Spell];
 var param : EntityParams;
+var current_action : Spell;
 
 # Runtime values
 var level : int;
@@ -22,6 +23,9 @@ var current_hp : int;
 var current_mp : int;
 
 var is_ready : bool = false;
+
+var allies : Array[EntityController];
+var enemies : Array[EntityController];
 
 
 # Called when the node enters the scene tree for the first time.
@@ -51,6 +55,7 @@ func entity_init():
 		param.entity_def = ((current_entity.base_def * 2 * level) / 100) + 5;
 		param.entity_sp_atk = ((current_entity.base_sp_atk * 2 * level) / 100) + 5;
 		param.entity_sp_def = ((current_entity.base_sp_def * 2 * level) / 100) + 5;
+		param.entity_spd = ((current_entity.base_spd * 2 * level) / 100) + 5;
 		param.entity_crit_modifier = current_entity.base_crit_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
 		
@@ -87,10 +92,15 @@ func _on_turn_begin():
 func create_move_list():
 	move_list.clear();
 	
-	if current_entity:
+	if current_entity != null && current_entity.move_list != null:
 		for move in current_entity.move_list.list:
 			if move != null && move.level <= level:
 				move_list.append(move.spell);
+
+
+# Setter functions intended to be used to ensure gammeplay callbacks execute
+func modify_mp(amt : int):
+	current_mp += amt;
 
 
 # Getter functions for UI and other areas
@@ -100,6 +110,87 @@ func get_hp_percent() -> float:
 
 func get_mp_percent() -> float:
 	return float(current_mp) / float(max_mp);
+
+
+func _get_stat_modifier(stage : int) -> float:
+	return max(2.0, 2.0 + stage) / max(2.0, 2.0 - stage);
+
+
+func get_speed_modifier() -> float:
+	return _get_stat_modifier(spd_stage);
+
+
+func get_possible_targets() -> Array[EntityController]:
+	var result : Array[EntityController];
+	
+	match current_action.spell_target:
+		Spell.SpellTarget.All:
+			for enemy in enemies:
+				result.append(enemy);
+			for ally in allies:
+				result.append(ally);
+		Spell.SpellTarget.SingleEnemy:
+			for enemy in enemies:
+				result.append(enemy);
+		Spell.SpellTarget.RandomEnemy:
+			for enemy in enemies:
+				result.append(enemy);
+		Spell.SpellTarget.RandomEnemyPerHit:
+			for enemy in enemies:
+				result.append(enemy);
+		Spell.SpellTarget.AllEnemy:
+			for enemy in enemies:
+				result.append(enemy);
+		Spell.SpellTarget.SingleParty:
+			for ally in allies:
+				result.append(ally);
+		Spell.SpellTarget.AllParty:
+			for ally in allies:
+				result.append(ally);
+		Spell.SpellTarget.Self:
+			result.append(self);
+	
+	return result;
+
+
+# Misc functions
+static func compare_speed (a : EntityController, b : EntityController) -> int:
+	var priority_a = -10;
+	var priority_b = -10;
+	
+	if a.current_action != null:
+		priority_a = a.current_action.spell_priority;
+	
+	if b.current_action != null:
+		priority_b = b.current_action.spell_priority;
+	
+	if priority_a > priority_b:
+		return -1;
+	elif priority_b > priority_a:
+		return 1;
+	
+	var a_speed = round(a.param.entity_spd * a.get_speed_modifier());
+	var b_speed = round(b.param.entity_spd * b.get_speed_modifier());
+	
+	# TODO: Speed effect modifiers
+	
+	if a_speed > b_speed:
+		return -1;
+	elif b_speed > a_speed:
+		return 1;
+	
+	return 0;
+
+static func compare_speed_tie(a : EntityController, b : EntityController) -> int:
+	var result = compare_speed(a, b);
+	
+	if result == 0:
+		if randf() > 0.5:
+			return 1;
+		else:
+			return -1;
+	
+	return result;
 
 
 func _on_destroy():

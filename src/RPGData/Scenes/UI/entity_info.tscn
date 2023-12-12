@@ -18,12 +18,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
 [node name="Padding" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
+custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
 [node name="Player Name" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(281, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -32,8 +34,12 @@ theme_override_font_sizes/font_size = 36
 text = "PLAYER"
 vertical_alignment = 1
 
+[node name="Padding2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(19, 0)
+layout_mode = 2
+
 [node name="HP Bar" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 50)
+custom_minimum_size = Vector2(281, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -81,12 +87,12 @@ bbcode_enabled = true
 text = "[b]HP: [color=FFFF00]200[/color]/250"
 fit_content = true
 
-[node name="Padding2" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
+[node name="Padding3" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
 [node name="MP Bar" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 50)
+custom_minimum_size = Vector2(281, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -134,6 +140,6 @@ bbcode_enabled = true
 text = "[b]MP: [color=FFFF00]200[/color]/250"
 fit_content = true
 
-[node name="Padding3" type="Control" parent="HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
+[node name="Padding4" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
