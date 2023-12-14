@@ -85,3 +85,4 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 #TODO: More real tools
 @export_group("Moveset and Behavior")
 @export var move_list : MoveList;
+@export var behavior : EntityBehaviorObject;

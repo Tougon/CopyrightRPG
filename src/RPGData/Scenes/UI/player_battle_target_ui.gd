@@ -7,6 +7,7 @@ extends MenuPanel
 
 var target_info_pool : Array[UIBattleTargetInfo]
 var target_arrow_pool : Array[Control];
+var target_to_info: Dictionary;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,10 +34,21 @@ func _ready():
 	super._ready();
 
 
+func set_focus(state : bool):
+	super.set_focus(state);
+	
+	if state:
+		EventManager.click_target.connect(_on_target_clicked);
+	else:
+		EventManager.click_target.disconnect(_on_target_clicked);
+
+
+
 func _initialize_target_menu(entity : EntityController):
 	if entity.current_action == null:
 		return;
 	
+	target_to_info.clear();
 	var spell_target = entity.current_action.spell_target;
 	var targets = entity.get_possible_targets();
 	# TODO: implement behavior for random targetting.
@@ -54,6 +66,7 @@ func _initialize_target_menu(entity : EntityController):
 			info.global_position = target.global_position;
 			
 			info.initialize([target], [target_arrow_pool[i]], entity, false);
+			target_to_info[target] = info;
 		
 		for i in range(targets.size(), pool_size):
 			target_info_pool[i].visible = false;
@@ -65,6 +78,20 @@ func _on_target_highlighted(entity : EntityController, all : bool):
 		print("TODO: ALL");
 	elif entity != null :
 		entity_info.set_specific_entity_info(entity, all);
+
+
+func _on_target_clicked(entity : EntityController):
+	var info = target_to_info.get(entity);
+	if info:
+		if info.selected:
+			print("TODO: Select and advance")
+		else:
+			info.grab_focus();
+
+
+func on_menu_cancel():
+	UIManager.open_menu_name("player_battle_main");
+	super.on_menu_cancel();
 
 
 func _on_destroy():

@@ -30,10 +30,11 @@ tween_resource = ExtResource("7_yuhhm")
 play_on_start = false
 next_tween = ""
 
-[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("fade_sequence", "sequencer")]
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("fade_sequence", "sequencer", "dialogue_canvas")]
 script = ExtResource("1_nawhs")
 fade_sequence = NodePath("UI/BG Fade Canvas/Fade Iris/TweenPlayerUI")
 sequencer = NodePath("Core/Sequencer")
+dialogue_canvas = NodePath("UI/Dialogue Canvas")
 
 [node name="Background" type="Node" parent="."]
 

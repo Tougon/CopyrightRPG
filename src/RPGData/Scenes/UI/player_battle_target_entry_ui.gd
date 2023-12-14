@@ -5,6 +5,7 @@ var targets : Array[EntityController];
 var arrows : Array[Control];
 var player : EntityController;
 var all : bool = false;
+var selected : bool = false;
 
 @export var offset : Vector2 = Vector2(0, -50);
 
@@ -27,11 +28,18 @@ func initialize(targets : Array[EntityController], arrows : Array[Control], play
 
 
 func _on_focus_entered():
+	selected = true;
 	EventManager.highlight_target.emit(targets[0], all);
 	for i in arrows.size():
 		arrows[i].visible = true;
 
 
 func _on_focus_exited():
+	selected = false;
 	for i in arrows.size():
 		arrows[i].visible = false;
+
+
+func _on_pressed():
+	player.current_target = targets;
+	player.is_ready = true;

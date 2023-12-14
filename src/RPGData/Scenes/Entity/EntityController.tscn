@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1yeonj32wfeb"]
+[gd_scene load_steps=5 format=3 uid="uid://b1yeonj32wfeb"]
 
 [ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_u887t"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntityController.gd" id="2_cc50b"]
 [ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="3_d0a8t"]
+[ext_resource type="Script" path="res://src/ClickableSprite/ClickableSprite2D.gd" id="4_l5njq"]
 
 [node name="EntityBase" instance=ExtResource("1_u887t")]
 script = ExtResource("2_cc50b")
 current_entity = ExtResource("3_d0a8t")
+
+[node name="Sprite2D" parent="." index="0"]
+script = ExtResource("4_l5njq")
+
+[connection signal="sprite_clicked" from="Sprite2D" to="." method="_on_sprite_clicked"]

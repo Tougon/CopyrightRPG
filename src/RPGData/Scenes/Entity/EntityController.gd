@@ -5,6 +5,7 @@ class_name EntityController
 var move_list : Array[Spell];
 var param : EntityParams;
 var current_action : Spell;
+var current_target : Array[EntityController];
 
 # Runtime values
 var level : int;
@@ -191,6 +192,11 @@ static func compare_speed_tie(a : EntityController, b : EntityController) -> int
 			return -1;
 	
 	return result;
+
+
+# UI helper/polish functions
+func _on_sprite_clicked():
+	EventManager.click_target.emit(self);
 
 
 func _on_destroy():

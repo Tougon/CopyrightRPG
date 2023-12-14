@@ -2,6 +2,7 @@ extends Node2D
 
 @export var fade_sequence : TweenPlayer;
 @export var sequencer : Sequencer;
+@export var dialogue_canvas : DialogueCanvas;
 
 var players : Array[EntityController];
 var enemies : Array[EntityController];
@@ -13,6 +14,7 @@ func _ready():
 	EventManager.register_player.connect(_on_player_register);
 	EventManager.register_enemy.connect(_on_enemy_register);
 	EventManager.on_attack_select.connect(_on_attack_select);
+	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	_begin_battle();
 
 
@@ -72,8 +74,15 @@ func _decision_phase():
 		
 		if players[current_player_index].is_ready:
 			current_player_index += 1;
-			EventManager.set_active_player.emit(players[current_player_index]);
-			UIManager.open_menu_name("player_battle_main");
+			UIManager.close_menu_name("player_battle_target")
+			
+			if current_player_index < players.size():
+				EventManager.set_active_player.emit(players[current_player_index]);
+				UIManager.open_menu_name("player_battle_main");
+	
+	# Perhaps you'll want to remove the dialogue here instead of awaiting?
+	while dialogue_canvas.current_rows > 0:
+		await get_tree().process_frame;
 	
 	# TODO: Process enemy actions for the turn
 
@@ -92,6 +101,14 @@ func _on_attack_select():
 	UIManager.close_menu_name("player_battle_main");
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
+
+
+func _on_player_menu_cancel():
+	if current_player_index > 0:
+		current_player_index -= 1;
+		players[current_player_index].is_ready = false;
+		EventManager.set_active_player.emit(players[current_player_index]);
+		UIManager.open_menu_name("player_battle_main");
 
 
 # Helper function for dialogue formatting
@@ -143,3 +160,4 @@ func _on_destroy():
 		EventManager.register_player.disconnect(_on_player_register);
 		EventManager.register_enemy.disconnect(_on_enemy_register);
 		EventManager.on_attack_select.disconnect(_on_attack_select);
+		EventManager.player_menu_cancel.connect(_on_player_menu_cancel);

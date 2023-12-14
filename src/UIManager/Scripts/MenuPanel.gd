@@ -4,6 +4,7 @@ class_name MenuPanel
 
 @export var menu_name: String;
 @export var start_open : bool = false;
+@export var hide_on_unfocus : bool = false;
 @export_group("Selections")
 @export var initial_selection : Control;
 @export var all_selections : Array[Control];
@@ -40,10 +41,16 @@ func set_focus(state : bool):
 	focused = state;
 	
 	if focused : 
+		if hide_on_unfocus:
+			self.show();
+			
 		for selection in all_selections:
 			selection.mouse_filter = Control.MOUSE_FILTER_STOP;
 		
 		process_mode = Node.PROCESS_MODE_INHERIT;
+		
+		if tween_player.has_tween("Focus"):
+			tween_player.play_tween_name("Focus");
 	
 	else :
 		for selection in all_selections:
@@ -62,6 +69,12 @@ func set_focus(state : bool):
 			selection.mouse_filter = Control.MOUSE_FILTER_STOP;
 		
 		process_mode = Node.PROCESS_MODE_DISABLED;
+		
+		if tween_player.has_tween("Unfocus"):
+			tween_player.play_tween_name("Unfocus");
+		
+		if hide_on_unfocus:
+			self.hide();
 
 
 func get_all_children(in_node,arr:=[]):

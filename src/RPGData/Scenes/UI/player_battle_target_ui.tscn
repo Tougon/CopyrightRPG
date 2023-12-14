@@ -12,6 +12,7 @@ arrow_scene = ExtResource("4_u0smg")
 pool_size = 10
 entity_info = NodePath("BG Area/Character Info")
 menu_name = "player_battle_target"
+hide_on_unfocus = true
 
 [node name="BG Area" parent="." index="0"]
 color = Color(0.258824, 0.564706, 0.733333, 0)
