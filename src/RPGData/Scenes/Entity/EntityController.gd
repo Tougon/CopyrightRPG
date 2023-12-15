@@ -6,6 +6,7 @@ var move_list : Array[Spell];
 var param : EntityParams;
 var current_action : Spell;
 var current_target : Array[EntityController];
+var current_behavior : EntityBehaviorObject;
 
 # Runtime values
 var level : int;
@@ -20,6 +21,8 @@ var evasion_stage : int;
 var accuracy_stage : int;
 var is_identified : bool = false;
 
+var turn_number : int;
+
 var current_hp : int;
 var current_mp : int;
 
@@ -29,7 +32,7 @@ var allies : Array[EntityController];
 var enemies : Array[EntityController];
 
 
-# Called when the node enters the scene tree for the first time.
+# Initialization
 func _ready():
 	level = 50; # TEMP CODE: Used to force legitimate calculations for stats
 	EventManager.on_turn_begin.connect(_on_turn_begin);
@@ -82,6 +85,7 @@ func entity_init():
 		is_identified = false;
 		
 		# TODO: Implement support for effects and modifier arrays
+		current_behavior = current_entity.behavior;
 		
 		# TODO: Reset entity UI
 
@@ -97,6 +101,73 @@ func create_move_list():
 		for move in current_entity.move_list.list:
 			if move != null && move.level <= level:
 				move_list.append(move.spell);
+
+
+# Gameplay Functions
+func select_action():
+	if current_behavior != null && current_behavior.turn_behavior.size() > 0:
+		var behavior : EntityBehavior = null;
+		
+		if turn_number == 1 && current_behavior.first_turn_behavior != null:
+			behavior = current_behavior.first_turn_behavior;
+		else:
+			var turn_index = (turn_number - 1) % current_behavior.turn_behavior.size();
+			behavior = current_behavior.turn_behavior[turn_index];
+		
+		if behavior != null:
+			var result = behavior.get_result(self, allies, enemies);
+			
+			if result.action_success:
+				current_action = move_list[clamp(result.action_id, 0, move_list.size())];
+				
+				if check_target_match(current_action, result):
+					set_target(result.trigger_entity);
+				else:
+					set_target();
+			else:
+				select_random_action();
+	else:
+		select_random_action();
+
+
+func check_target_match(spell : Spell, result : BehaviorCheckResult) -> bool:
+	match spell.spell_target:
+		Spell.SpellTarget.Self:
+			return result.check_target == BehaviorCheck.CheckTarget.Self;
+		Spell.SpellTarget.SingleEnemy:
+			return result.check_target == BehaviorCheck.CheckTarget.Targets;
+		Spell.SpellTarget.SingleParty:
+			return result.check_target == BehaviorCheck.CheckTarget.Allies;
+	
+	return false;
+
+
+func select_random_action():
+	current_action = move_list[randi_range(0, move_list.size()-1)];
+	set_target();
+
+
+func set_target(trigger : EntityController = null):
+	var available = get_possible_targets();
+	var index = randi_range(0, available.size() - 1);
+	
+	match current_action.spell_target:
+		Spell.SpellTarget.SingleEnemy:
+			if trigger != null :
+				current_target = [trigger];
+			else:
+				current_target = [available[index]];
+		Spell.SpellTarget.SingleParty:
+			if trigger != null :
+				current_target = [trigger];
+			else:
+				current_target = [available[index]];
+		Spell.SpellTarget.RandomEnemy:
+			current_target = [available[index]];
+		Spell.SpellTarget.Self:
+			current_target = [self];
+		_:
+			current_target = available;
 
 
 # Setter functions intended to be used to ensure gammeplay callbacks execute

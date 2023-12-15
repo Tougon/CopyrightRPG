@@ -4,7 +4,7 @@ class_name BehaviorCheckHP
 
 @export_range(0, 1) var hp_percent : float;
 
-func check(user : EntityController, allies : EntityController, targets : EntityController, result : BehaviorCheckResult) -> bool:
+func check(user : EntityController, allies : Array[EntityController], targets : Array[EntityController], result : BehaviorCheckResult) -> bool:
 	
 	if check_target == CheckTarget.Self:
 		result.trigger_entity = user;

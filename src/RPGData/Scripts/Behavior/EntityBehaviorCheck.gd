@@ -11,7 +11,7 @@ enum CheckType {AND, OR}
 @export var action_id : Array[int];
 
 
-func determine_action(user : EntityController, allies : EntityController, targets : EntityController) -> BehaviorCheckResult:
+func determine_action(user : EntityController, allies : Array[EntityController], targets : Array[EntityController]) -> BehaviorCheckResult:
 	var result = BehaviorCheckResult.new(user);
 	
 	var success = true;

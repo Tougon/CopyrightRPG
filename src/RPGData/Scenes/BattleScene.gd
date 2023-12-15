@@ -46,12 +46,14 @@ func _begin_turn():
 		player.allies.append_array(players);
 		player.enemies.clear();
 		player.enemies.append_array(enemies);
+		player.turn_number += 1;
 	
 	for enemy in enemies:
 		enemy.allies.clear();
 		enemy.allies.append_array(enemies);
 		enemy.enemies.clear();
 		enemy.enemies.append_array(players);
+		enemy.turn_number += 1;
 	
 	# Sort players/turn order by speed. Might cut this.
 	# It was really annoying in OMORI to have the order be fixed,
@@ -85,6 +87,10 @@ func _decision_phase():
 		await get_tree().process_frame;
 	
 	# TODO: Process enemy actions for the turn
+	for enemy in enemies:
+		enemy.select_action();
+		enemy.is_ready = true;
+		print(enemy.current_action);
 
 
 # Event responses
