@@ -24,7 +24,8 @@ var spell_fail_message_key : String;
 @export var spell_priority : int;
 @export var spell_flags : Array[TFlag];
 
-# TODO: Remake the animation component
+@export_subgroup("Spell Animation")
+@export var animation_sequence : AnimationSequenceObject;
 
 # TODO: add support for effects
 #@export_subgroup("Spell Effects")
@@ -36,7 +37,7 @@ var spell_fail_message_key : String;
 # Returns an instance of this spell using the spell data to calculate everything
 func cast(user : EntityController, targets : Array[EntityController]):
 	print("Currently under construction")
-	var result = [];
+	var result : Array[SpellCast] = [];
 	
 	var mp_check = check_mp(user);
 	

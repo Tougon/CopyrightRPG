@@ -19,6 +19,7 @@ var sp_def_stage : int;
 var spd_stage : int;
 var evasion_stage : int;
 var accuracy_stage : int;
+var is_defeated : bool = false;
 var is_identified : bool = false;
 
 var turn_number : int;
@@ -31,9 +32,13 @@ var is_ready : bool = false;
 var allies : Array[EntityController];
 var enemies : Array[EntityController];
 
+var action_result : Array[SpellCast];
+
 
 # Initialization
 func _ready():
+	super._ready();
+	
 	level = 50; # TEMP CODE: Used to force legitimate calculations for stats
 	EventManager.on_turn_begin.connect(_on_turn_begin);
 	entity_init();

@@ -4,6 +4,7 @@ extends Node2D
 @export var sequencer : Sequencer;
 @export var dialogue_canvas : DialogueCanvas;
 
+var entities : Array[EntityController];
 var players : Array[EntityController];
 var enemies : Array[EntityController];
 
@@ -69,7 +70,7 @@ func _begin_turn():
 
 # Name may be changed but this is the phase where we choose actions for the turn.
 func _decision_phase():
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	while current_player_index < players.size():
 		await get_tree().process_frame;
@@ -90,15 +91,70 @@ func _decision_phase():
 	for enemy in enemies:
 		enemy.select_action();
 		enemy.is_ready = true;
-		print(enemy.current_action);
+	
+	_action_phase();
+
+
+func _action_phase():
+	# TODO: Execute turn start effects
+	await get_tree().process_frame;
+	
+	var turn_order : Array[EntityController];
+	
+	for entity in entities:
+		turn_order.append(entity);
+	
+	entities.sort_custom(_compare_speed);
+	
+	for entity in turn_order:
+		# TODO: Handle seals (copyright)
+		
+		if entity.is_defeated:
+			continue;
+		
+		var is_target_valid : bool = true;
+		
+		for target in entity.current_target:
+			if target.is_defeated:
+				is_target_valid = false;
+		
+		# TODO: Change target if target is invalid instead of skipping the turn
+		if !is_target_valid:
+			continue;
+		
+		# TODO: Execute effects on move selected
+		
+		# Cast the spell
+		var spell_cast = entity.current_action.cast(entity, entity.current_target);
+		entity.action_result = spell_cast;
+		
+		var pre_anim_dialogue : Array[String];
+		var post_anim_dialogue : Array[String];
+		
+		var any_cast_succeeded : bool = false;
+		
+		for spell in spell_cast : 
+			if spell.success : 
+				any_cast_succeeded = true;
+			
+			# TODO: Increase damage taken
+		
+		var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
+		EventManager.on_sequence_queue.emit(animation_seq);
+		
+		await EventManager.on_sequence_queue_empty;
+	
+	_begin_turn();
 
 
 # Event responses
 func _on_player_register(entity : EntityController):
+	entities.append(entity);
 	players.append(entity);
 
 
 func _on_enemy_register(entity : EntityController):
+	entities.append(entity);
 	enemies.append(entity);
 
 

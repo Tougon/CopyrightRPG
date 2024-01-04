@@ -4,12 +4,12 @@ class_name EntitySprite
 @onready var sprite : Sprite2D = $Sprite2D;
 @onready var animator : AnimationPlayer = $AnimationPlayer;
 @onready var tween : TweenPlayer = $TweenPlayer;
-var mat = Material;
+var mat = ShaderMaterial;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Instance the sprite's material
-	mat = sprite.material.duplicate();
+	mat = sprite.material.duplicate() as ShaderMaterial;
 	sprite.material = mat;
 
 

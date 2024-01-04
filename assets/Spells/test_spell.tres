@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://d2ytypgrn8nvw"]
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://d2ytypgrn8nvw"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/spell.gd" id="1_ggfhg"]
+[ext_resource type="Resource" uid="uid://bs6g8nyjbm8sq" path="res://assets/Animations/Sequences/test_anim.tres" id="1_ols74"]
 
 [resource]
 script = ExtResource("1_ggfhg")
@@ -12,3 +13,4 @@ spell_target = 0
 spell_cost = 0
 spell_priority = 0
 spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+animation_sequence = ExtResource("1_ols74")
