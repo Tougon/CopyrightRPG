@@ -2,7 +2,7 @@ extends Resource
 
 class_name AnimationSequenceAction
 
-enum Target { USER, TARGET }
+enum Target { USER, TARGET, EFFECT }
 
 func execute(sequence : AnimationSequence):
 	pass;
