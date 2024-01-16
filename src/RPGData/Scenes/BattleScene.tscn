@@ -72,6 +72,7 @@ position = Vector2(465, 522)
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
+scale = Vector2(-1, 1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(673, 314)

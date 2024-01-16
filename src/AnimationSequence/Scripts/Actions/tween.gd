@@ -2,6 +2,7 @@ extends AnimationSequenceAction
 
 class_name ASATween
 
+@export var use_directionality : bool;
 @export var target : AnimationSequenceAction.Target;
 @export var tween : TweenFrame;
 
@@ -23,7 +24,16 @@ func execute(sequence : AnimationSequence):
 	var current_tween = sequence.tree.create_tween();
 	current_tween.set_parallel(true);
 	
-	var property = current_tween.tween_property(tween_target, tween.property_name, tween.get_value(), tween.duration);
+	var value = tween.get_value();
+	
+	if use_directionality:
+		if value is float || value is int:
+			value *= sequence.direction_x;
+		if value is Vector2:
+			value.x *= sequence.direction_x;
+			value.y *= sequence.direction_y;
+	
+	var property = current_tween.tween_property(tween_target, tween.property_name, value, tween.duration);
 	
 	if property == null:
 		return;

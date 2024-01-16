@@ -26,6 +26,8 @@ var aso : AnimationSequenceObject;
 # Initial Values
 var user_position : Vector2;
 var target_position : Array[Vector2];
+var user_sprite_position : Vector2;
+var target_sprite_position : Array[Vector2];
 var user_rotation : float;
 var target_rotation : Array[float];
 var user_scale : Vector2;
@@ -66,6 +68,7 @@ func init_sequence(obj : AnimationSequenceObject, u : EntityController):
 	user_rotation = user.rotation;
 	user_scale = user.scale;
 	user_sprite = user.sprite;
+	if user_sprite != null : user_sprite_position = user.sprite.position;
 	user_color = user_sprite.modulate;
 	user_amount = user.mat.get_shader_parameter("overlay_color_amount");
 	
@@ -78,6 +81,8 @@ func init_sequence(obj : AnimationSequenceObject, u : EntityController):
 			target_rotation.append(t.rotation);
 			target_scale.append(t.scale);
 			target_sprite.append(t.sprite);
+			if t.sprite : target_sprite_position.append(t.sprite.position);
+			else : target_sprite_position.append(Vector2(0, 0));
 			target_color.append(t.sprite.modulate);
 			target_amount.append(t.mat.get_shader_parameter("overlay_color_amount"));
 	
@@ -116,7 +121,6 @@ func sequence_loop():
 
 
 func sequence_end():
-	print("Animation End")
 	while effects.size() > 0:
 		effects[0].queue_free();
 		effects.remove_at(0);
@@ -124,14 +128,18 @@ func sequence_end():
 	user.position = user_position;
 	user.rotation = user_rotation;
 	user.scale = user_scale;
-	user_sprite.modulate = user_color;
+	if user_sprite != null : 
+		user_sprite.modulate = user_color;
+		user_sprite.position = user_sprite_position;
 	user.mat.set_shader_parameter("overlay_color_amount", user_amount);
 	
 	for i in target.size():
 		target[i].position = target_position[i];
 		target[i].rotation = target_rotation[i];
 		target[i].scale = target_scale[i];
-		target_sprite[i].modulate = target_color[i];
+		if target_sprite[i] != null:
+			target_sprite[i].modulate = target_color[i];
+			target_sprite[i].position = target_sprite_position[i];
 		target[i].mat.set_shader_parameter("overlay_color_amount", target_amount[i]);
 	
 	super.sequence_end();
