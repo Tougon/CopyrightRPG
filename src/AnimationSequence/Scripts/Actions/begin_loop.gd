@@ -12,3 +12,6 @@ func execute(sequence : AnimationSequence):
 	var loop = AnimationSequenceLoop.new(sequence.current_frame, num_loops);
 	sequence.loops.append(loop);
 	sequence.looping = true;
+
+func ignore_on_success() -> bool:
+	return true;

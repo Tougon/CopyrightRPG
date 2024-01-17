@@ -12,3 +12,6 @@ func execute(sequence : AnimationSequence):
 		sequence.loops.erase(current_loop);
 	
 	sequence.looping = sequence.loops.size() > 0;
+
+func ignore_on_success() -> bool:
+	return true;

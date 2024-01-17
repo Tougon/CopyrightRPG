@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=29 format=3 uid="uid://bs6g8nyjbm8sq"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=36 format=3 uid="uid://bs6g8nyjbm8sq"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_42ti6"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_bx7of"]
@@ -7,6 +7,9 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_st50u"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="3_gvvo3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="5_fwsco"]
+[ext_resource type="PackedScene" uid="uid://b42b65hpv41b8" path="res://assets/Effects/Generic/EffectGeneric.tscn" id="5_wtn8j"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_kdqtu"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="7_iuwjk"]
 
 [sub_resource type="Resource" id="Resource_5quh4"]
 script = ExtResource("1_chofk")
@@ -37,6 +40,7 @@ relative = true
 script = ExtResource("1_bx7of")
 use_directionality = false
 target = 0
+effect_index = 0
 tween = SubResource("Resource_bu1ul")
 
 [sub_resource type="Resource" id="Resource_fbclg"]
@@ -44,6 +48,23 @@ script = ExtResource("2_st50u")
 frame = 5
 frame_order = 0
 action = SubResource("Resource_x7akk")
+
+[sub_resource type="Resource" id="Resource_vbnhx"]
+script = ExtResource("6_kdqtu")
+effect_scene = ExtResource("5_wtn8j")
+relative = 1
+effect_position = Vector2(50, 0)
+effect_rotation = 0.0
+effect_scale = Vector2(1, 1)
+child = false
+match_scale = true
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_khlsu"]
+script = ExtResource("2_st50u")
+frame = 7
+frame_order = 0
+action = SubResource("Resource_vbnhx")
 
 [sub_resource type="Resource" id="Resource_g3qyw"]
 script = ExtResource("2_hn3wi")
@@ -63,6 +84,7 @@ relative = true
 script = ExtResource("1_bx7of")
 use_directionality = false
 target = 0
+effect_index = 0
 tween = SubResource("Resource_g3qyw")
 
 [sub_resource type="Resource" id="Resource_1e5uo"]
@@ -70,6 +92,16 @@ script = ExtResource("2_st50u")
 frame = 20
 frame_order = 0
 action = SubResource("Resource_8miv5")
+
+[sub_resource type="Resource" id="Resource_e5ljk"]
+script = ExtResource("7_iuwjk")
+effect_id = 0
+
+[sub_resource type="Resource" id="Resource_6ya30"]
+script = ExtResource("2_st50u")
+frame = 23
+frame_order = 0
+action = SubResource("Resource_e5ljk")
 
 [sub_resource type="Resource" id="Resource_ne1jy"]
 script = ExtResource("5_fwsco")
@@ -98,6 +130,7 @@ relative = false
 script = ExtResource("1_bx7of")
 use_directionality = false
 target = 0
+effect_index = 0
 tween = SubResource("Resource_7127s")
 
 [sub_resource type="Resource" id="Resource_u0ohg"]
@@ -124,6 +157,7 @@ relative = false
 script = ExtResource("1_bx7of")
 use_directionality = false
 target = 0
+effect_index = 0
 tween = SubResource("Resource_w8f08")
 
 [sub_resource type="Resource" id="Resource_ebtrm"]
@@ -150,6 +184,7 @@ relative = false
 script = ExtResource("1_bx7of")
 use_directionality = false
 target = 0
+effect_index = 0
 tween = SubResource("Resource_plvga")
 
 [sub_resource type="Resource" id="Resource_16hyf"]
@@ -170,4 +205,4 @@ action = SubResource("Resource_mj1pb")
 [resource]
 script = ExtResource("1_42ti6")
 animation_name = "Test"
-animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fbclg"), SubResource("Resource_1e5uo"), SubResource("Resource_xc5jk"), SubResource("Resource_u0ohg"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])
+animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_1e5uo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_u0ohg"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])
