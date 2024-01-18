@@ -51,8 +51,8 @@ static func shake_position_2d(node : Node, duration : float, vibration_speed : f
 		strength *= decay_factor;
 		
 	node.position = original_position;
-	print(iterations)
-	print(step)
+	#print(iterations)
+	#print(step)
 
 
 static func _move_in_direction(node : Node, direction : Vector2, strength : Vector2, step : float, transition : Tween.TransitionType, ease : Tween.EaseType) -> Tween:

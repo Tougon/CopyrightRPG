@@ -14,7 +14,7 @@
 
 [sub_resource type="Resource" id="Resource_5quh4"]
 script = ExtResource("1_chofk")
-num_loops = 3
+num_loops = 1
 loop_targets = false
 
 [sub_resource type="Resource" id="Resource_3jtwj"]
@@ -66,6 +66,16 @@ script = ExtResource("2_st50u")
 frame = 7
 frame_order = 0
 action = SubResource("Resource_vbnhx")
+
+[sub_resource type="Resource" id="Resource_asoi5"]
+script = ExtResource("9_w7h8s")
+vibrate = true
+
+[sub_resource type="Resource" id="Resource_q3dud"]
+script = ExtResource("2_st50u")
+frame = 7
+frame_order = 2
+action = SubResource("Resource_asoi5")
 
 [sub_resource type="Resource" id="Resource_g3qyw"]
 script = ExtResource("2_hn3wi")
@@ -140,16 +150,6 @@ frame = 30
 frame_order = 0
 action = SubResource("Resource_7o3cw")
 
-[sub_resource type="Resource" id="Resource_asoi5"]
-script = ExtResource("9_w7h8s")
-vibrate = true
-
-[sub_resource type="Resource" id="Resource_q3dud"]
-script = ExtResource("2_st50u")
-frame = 30
-frame_order = 2
-action = SubResource("Resource_asoi5")
-
 [sub_resource type="Resource" id="Resource_w8f08"]
 script = ExtResource("2_hn3wi")
 target = "Sprite2D"
@@ -216,4 +216,4 @@ action = SubResource("Resource_mj1pb")
 [resource]
 script = ExtResource("1_42ti6")
 animation_name = "Test"
-animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_1e5uo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_u0ohg"), SubResource("Resource_q3dud"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])
+animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_q3dud"), SubResource("Resource_1e5uo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_u0ohg"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])

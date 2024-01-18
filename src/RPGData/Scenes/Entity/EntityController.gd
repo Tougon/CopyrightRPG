@@ -8,6 +8,9 @@ var current_action : Spell;
 var current_target : Array[EntityController];
 var current_behavior : EntityBehaviorObject;
 
+# constants
+const SHAKE_DURATION : float =  0.26;
+
 # Runtime values
 var level : int;
 var max_hp : int;
@@ -198,12 +201,12 @@ func set_target(trigger : EntityController = null):
 func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 	if is_defeated : return;
 	
-	print("Damaging for " + str(val));
+	#print("Damaging for " + str(val));
 	
 	if val == 0 : 
 		if vibrate : 
 			if hit : 
-				print("TODO: Weak Shake");
+				TweenExtensions.shake_position_2d(self, SHAKE_DURATION * 0.7, 22.5, Vector2(7.5, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
 				print("TODO: Dodge");
 	else :
@@ -216,9 +219,9 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 		
 		if vibrate : 
 			if crit || is_defeated : 
-				print("TODO: Shake aggressive");
+				TweenExtensions.shake_position_2d(self, SHAKE_DURATION, 45, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
-				print("TODO: Shake");
+				TweenExtensions.shake_position_2d(self, SHAKE_DURATION, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 
 
 func on_defeat():

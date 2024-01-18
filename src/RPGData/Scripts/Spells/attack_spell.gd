@@ -50,7 +50,6 @@ func check_spell_hit(user : EntityController, target : EntityController, amt : f
 	
 	var result = (randf() * 100) <= hit;
 	
-	print(str(hit) + " " + str(accuracy) + " " + str(evasion))
 	# TODO: Check if result failed and use that to handle the miss messaging
 	
 	return result;
@@ -94,7 +93,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		var critical = false;
 		if critical_chance > 0 && can_critical:
 			critical = randf() < (1.0 / critical_chance);
-		crit.append(true);
+		crit.append(critical);
 		
 		var atk_mod = user.get_attack_modifier();
 		if atk_type == SpellHitType.Special: atk_mod = user.get_sp_attack_modifier();
@@ -125,8 +124,6 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		if critical : damage *= 1.5
 		
-		print(damage);
-		print(roundi(damage));
 		result.append(roundi(damage));
 	
 	cast.set_damage(result);
