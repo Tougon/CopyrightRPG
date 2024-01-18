@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=19 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="VideoStream" path="res://video/test.ogv" id="1_h3xwy"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
+[ext_resource type="Resource" uid="uid://bg2eiaprg7wnq" path="res://assets/Entities/test_player.tres" id="6_j3wjk"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/player_battle_target_ui.tscn" id="8_q7178"]
@@ -68,10 +69,12 @@ color = Color(0.32549, 0.854902, 0.639216, 1)
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(200, 522)
 attack_action = ExtResource("5_7bqix")
+current_entity = ExtResource("6_j3wjk")
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(465, 522)
 attack_action = ExtResource("5_7bqix")
+current_entity = ExtResource("6_j3wjk")
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
@@ -87,13 +90,14 @@ position = Vector2(245, 314)
 
 [node name="Player UI" type="CanvasLayer" parent="UI"]
 
-[node name="Player Main Menu2" parent="UI/Player UI" instance=ExtResource("6_uymxx")]
+[node name="Player Main Menu" parent="UI/Player UI" instance=ExtResource("6_uymxx")]
 
 [node name="Target Menu" parent="UI/Player UI" instance=ExtResource("8_q7178")]
 
 [node name="Dialogue Canvas" parent="UI" instance=ExtResource("9_4k33p")]
 offset = Vector2(0, 20)
 transform = Transform2D(1, 0, 0, 1, 0, 20)
+word_pause = 0.1
 dialogue_end_time = 0.2
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI"]

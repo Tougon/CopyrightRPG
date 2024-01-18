@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://fc3f0fm8hsw0"]
+
+[ext_resource type="PackedScene" uid="uid://cfwqqndo7yhc8" path="res://src/RPGData/Scenes/UI/entity_info.tscn" id="1_xuebw"]
+
+[node name="Entity Info" instance=ExtResource("1_xuebw")]
+
+[node name="Padding" parent="HBoxContainer" index="0"]
+visible = false
+
+[node name="Player Name" parent="HBoxContainer" index="1"]
+visible = false

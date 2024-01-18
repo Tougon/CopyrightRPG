@@ -98,22 +98,22 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		var atk_mod = user.get_attack_modifier();
 		if atk_type == SpellHitType.Special: atk_mod = user.get_sp_attack_modifier();
 		var def_mod = target.get_defense_modifier();
-		if def_type == SpellHitType.Special: atk_mod = user.get_sp_defense_modifier();
+		if def_type == SpellHitType.Special: atk_mod = target.get_sp_defense_modifier();
 		
 		var atk = user.param.entity_atk;
 		if atk_type == SpellHitType.Special : atk = user.param.entity_sp_atk;
-		var def = user.param.entity_def;
-		if def_type == SpellHitType.Special : def = user.param.entity_sp_def;
+		var def = target.param.entity_def;
+		if def_type == SpellHitType.Special : def = target.param.entity_sp_def;
 		
 		if critical && atk_mod < 1 : atk_mod = 1;
 		if critical && def_mod > 1 : def_mod = 1;
 		
 		var damage = ((((2 * user.level) / 5) + 2) * spell_power * ((atk * atk_mod) / (def * def_mod))) / 50.0;
-		
+
 		var atk_mods_post = user.get_attack_modifiers();
 		if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
 		var def_mods_post = target.get_defense_modifiers();
-		if def_type == SpellHitType.Special: def_mods_post = user.get_sp_defense_modifier();
+		if def_type == SpellHitType.Special: def_mods_post = target.get_sp_defense_modifier();
 		
 		for f in atk_mods_post :
 			damage *= f;
