@@ -65,7 +65,6 @@ func init_sequence(obj : AnimationSequenceObject, u : EntityController):
 	aso = obj;
 	user = u;
 	root = u.get_parent();
-	print(root);
 	
 	user_position = user.position;
 	user_rotation = user.rotation;

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=36 format=3 uid="uid://bs6g8nyjbm8sq"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=39 format=3 uid="uid://bs6g8nyjbm8sq"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_42ti6"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_bx7of"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b42b65hpv41b8" path="res://assets/Effects/Generic/EffectGeneric.tscn" id="5_wtn8j"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_kdqtu"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="7_iuwjk"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="9_w7h8s"]
 
 [sub_resource type="Resource" id="Resource_5quh4"]
 script = ExtResource("1_chofk")
@@ -139,6 +140,16 @@ frame = 30
 frame_order = 0
 action = SubResource("Resource_7o3cw")
 
+[sub_resource type="Resource" id="Resource_asoi5"]
+script = ExtResource("9_w7h8s")
+vibrate = true
+
+[sub_resource type="Resource" id="Resource_q3dud"]
+script = ExtResource("2_st50u")
+frame = 30
+frame_order = 2
+action = SubResource("Resource_asoi5")
+
 [sub_resource type="Resource" id="Resource_w8f08"]
 script = ExtResource("2_hn3wi")
 target = "Sprite2D"
@@ -205,4 +216,4 @@ action = SubResource("Resource_mj1pb")
 [resource]
 script = ExtResource("1_42ti6")
 animation_name = "Test"
-animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_1e5uo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_u0ohg"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])
+animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_1e5uo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_u0ohg"), SubResource("Resource_q3dud"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])

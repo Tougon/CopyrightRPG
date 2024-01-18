@@ -19,6 +19,15 @@ var sp_def_stage : int;
 var spd_stage : int;
 var evasion_stage : int;
 var accuracy_stage : int;
+
+var atk_mods : Dictionary;
+var def_mods : Dictionary;
+var sp_atk_mods : Dictionary;
+var sp_def_mods : Dictionary;
+var spd_mods : Dictionary;
+var evasion_mods : Dictionary;
+var accuracy_mods : Dictionary;
+
 var is_defeated : bool = false;
 var is_identified : bool = false;
 
@@ -26,6 +35,7 @@ var turn_number : int;
 
 var current_hp : int;
 var current_mp : int;
+var last_hit : int;
 
 var is_ready : bool = false;
 
@@ -79,6 +89,14 @@ func entity_init():
 		evasion_stage = 0;
 		accuracy_stage = 0;
 		
+		atk_mods = {};
+		def_mods = {};
+		sp_atk_mods = {};
+		sp_def_mods = {};
+		spd_mods = {};
+		evasion_mods = {};
+		accuracy_mods = {};
+		
 		# NOTE: Players will have the ability to overwrite this
 		current_hp = max_hp;
 		current_mp = max_mp;
@@ -93,6 +111,7 @@ func entity_init():
 		current_behavior = current_entity.behavior;
 		
 		# TODO: Reset entity UI
+
 
 
 func _on_turn_begin():
@@ -175,6 +194,37 @@ func set_target(trigger : EntityController = null):
 			current_target = available;
 
 
+# HP and MP modification
+func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
+	if is_defeated : return;
+	
+	print("Damaging for " + str(val));
+	
+	if val == 0 : 
+		if vibrate : 
+			if hit : 
+				print("TODO: Weak Shake");
+			else :
+				print("TODO: Dodge");
+	else :
+		last_hit = val;
+		current_hp = clamp(current_hp - val, 0, max_hp);
+		
+		if current_hp <= 0 :
+			on_defeat();
+			is_defeated = true;
+		
+		if vibrate : 
+			if crit || is_defeated : 
+				print("TODO: Shake aggressive");
+			else :
+				print("TODO: Shake");
+
+
+func on_defeat():
+	print("TODO: Die");
+
+
 # Setter functions intended to be used to ensure gammeplay callbacks execute
 func modify_mp(amt : int):
 	current_mp += amt;
@@ -193,8 +243,32 @@ func _get_stat_modifier(stage : int) -> float:
 	return max(2.0, 2.0 + stage) / max(2.0, 2.0 - stage);
 
 
+func get_attack_modifier() -> float:
+	return _get_stat_modifier(atk_stage);
+
+
+func get_defense_modifier() -> float:
+	return _get_stat_modifier(def_stage);
+
+
+func get_sp_attack_modifier() -> float:
+	return _get_stat_modifier(sp_atk_stage);
+
+
+func get_sp_defense_modifier() -> float:
+	return _get_stat_modifier(sp_def_stage);
+
+
 func get_speed_modifier() -> float:
 	return _get_stat_modifier(spd_stage);
+
+
+func get_accuracy() -> float:
+	return 1;
+
+
+func get_evasion() -> float:
+	return param.entity_dodge_modifier;
 
 
 func get_possible_targets() -> Array[EntityController]:
@@ -228,6 +302,35 @@ func get_possible_targets() -> Array[EntityController]:
 			result.append(self);
 	
 	return result;
+
+
+# Stat Modifier Getters
+func get_attack_modifiers():
+	return atk_mods.values();
+
+
+func get_defense_modifiers():
+	return def_mods.values();
+
+
+func get_sp_attack_modifiers():
+	return sp_atk_mods.values();
+
+
+func get_sp_defense_modifiers():
+	return sp_def_mods.values();
+
+
+func get_speed_modifiers():
+	return spd_mods.values();
+
+
+func get_evasion_modifiers():
+	return evasion_mods.values();
+
+
+func get_accuracy_modifiers():
+	return accuracy_mods.values();
 
 
 # Misc functions

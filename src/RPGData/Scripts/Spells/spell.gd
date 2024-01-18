@@ -36,7 +36,6 @@ var spell_fail_message_key : String;
 
 # Returns an instance of this spell using the spell data to calculate everything
 func cast(user : EntityController, targets : Array[EntityController]):
-	print("Currently under construction")
 	var result : Array[SpellCast] = [];
 	
 	var mp_check = check_mp(user);
@@ -50,15 +49,18 @@ func cast(user : EntityController, targets : Array[EntityController]):
 		cast.success = mp_check;
 		
 		if cast.success:
-			cast.success = check_can_cast(user, targets);
+			# TODO: Implement actual checks for the below
+			cast.success = check_can_cast(user, target);
 			
 			if cast.success:
 				# TODO: Apply spell properties.
 				# These may affect any calculation going forward.
-				cast.success = check_spell_hit(user, targets);
+				
+				# TODO: Implement accuracy check
+				cast.success = check_spell_hit(user, target);
 				
 				if cast.success:
-					calculate_damage(user, targets, cast);
+					calculate_damage(user, target, cast);
 					
 					if spell_type == SpellType.Flavor:
 						cast.success = true;
@@ -77,7 +79,7 @@ func check_mp(user : EntityController) -> bool:
 	var cost = spell_cost;
 	# TODO: Subtract more MP if sealing
 	
-	var result = user.current_mp <= cost;
+	var result = user.current_mp >= cost;
 	
 	if result:
 		user.modify_mp(cost);
@@ -85,15 +87,15 @@ func check_mp(user : EntityController) -> bool:
 	return result;
 
 
-func check_can_cast(user : EntityController, targets : Array[EntityController]):
+func check_can_cast(user : EntityController, target : EntityController):
 	return true;
 
 
-func check_spell_hit(user : EntityController, targets : Array[EntityController], amt : float = -1):
+func check_spell_hit(user : EntityController, target : EntityController, amt : float = -1):
 	return true;
 
 
-func calculate_damage(user : EntityController, targets : Array[EntityController], cast : SpellCast):
+func calculate_damage(user : EntityController, target : EntityController, cast : SpellCast):
 	cast.set_damage([0]);
 	cast.set_hits([true]);
 	cast.set_critical([false]);
