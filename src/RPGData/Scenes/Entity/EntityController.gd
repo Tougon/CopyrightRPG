@@ -2,6 +2,10 @@ extends EntitySprite
 class_name EntityController
 
 @export var current_entity : Entity;
+# Tricks the animation sequence into thinking the entity is scaled differently
+@export var use_override_direction : bool = false;
+@export var override_direction : Vector2 = Vector2(1, 1);
+
 var move_list : Array[Spell];
 var param : EntityParams;
 var current_action : Spell;

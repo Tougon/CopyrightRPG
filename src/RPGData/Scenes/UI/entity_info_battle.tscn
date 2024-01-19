@@ -1,11 +1,127 @@
-[gd_scene load_steps=2 format=3 uid="uid://fc3f0fm8hsw0"]
+[gd_scene load_steps=3 format=3 uid="uid://cddpjekmhp1aq"]
 
-[ext_resource type="PackedScene" uid="uid://cfwqqndo7yhc8" path="res://src/RPGData/Scenes/UI/entity_info.tscn" id="1_xuebw"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/entity_info.gd" id="1_2etan"]
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="2_855ct"]
 
-[node name="Entity Info" instance=ExtResource("1_xuebw")]
+[node name="Entity Info Battle" type="ColorRect"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 108.0
+grow_horizontal = 2
+color = Color(0.2, 0.427451, 0.545098, 0)
+script = ExtResource("1_2etan")
 
-[node name="Padding" parent="HBoxContainer" index="0"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_right = -10.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Player Name" parent="HBoxContainer" index="1"]
-visible = false
+[node name="HP Bar" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(281, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HP Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.234375, 0.378906, 0.621094, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HP Bar/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0.105469, 0.203125, 0.363281, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HP Bar/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HP Bar/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_855ct")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[b]HP: [color=FFFF00]200[/color]/250"
+fit_content = true
+
+[node name="Padding" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MP Bar" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(281, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MP Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.234375, 0.378906, 0.621094, 1)
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MP Bar/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0.105469, 0.203125, 0.363281, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MP Bar/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MP Bar/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("2_855ct")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[b]MP: [color=FFFF00]200[/color]/250"
+fit_content = true

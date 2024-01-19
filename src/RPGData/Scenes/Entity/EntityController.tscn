@@ -8,6 +8,8 @@
 [node name="EntityBase" instance=ExtResource("1_u887t")]
 script = ExtResource("2_cc50b")
 current_entity = ExtResource("3_d0a8t")
+use_override_direction = false
+override_direction = Vector2(1, 1)
 
 [node name="Sprite2D" parent="." index="0"]
 script = ExtResource("4_l5njq")

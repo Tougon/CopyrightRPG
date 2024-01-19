@@ -39,7 +39,7 @@ relative = true
 
 [sub_resource type="Resource" id="Resource_x7akk"]
 script = ExtResource("1_bx7of")
-use_directionality = false
+use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_bu1ul")
@@ -58,7 +58,9 @@ effect_position = Vector2(50, 0)
 effect_rotation = 0.0
 effect_scale = Vector2(1, 1)
 child = false
-match_scale = true
+pos_match_sequence_dir = true
+rot_match_sequence_dir = false
+scl_match_sequence_dir = true
 effect_variance = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_khlsu"]
@@ -93,7 +95,7 @@ relative = true
 
 [sub_resource type="Resource" id="Resource_8miv5"]
 script = ExtResource("1_bx7of")
-use_directionality = false
+use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_g3qyw")

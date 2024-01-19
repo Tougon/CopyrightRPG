@@ -77,6 +77,10 @@ func init_sequence(obj : AnimationSequenceObject, u : EntityController):
 	direction_x = user.scale.x / abs(user.scale.x);
 	direction_y = user.scale.y / abs(user.scale.y);
 	
+	if user.use_override_direction :
+		direction_x = user.override_direction.x / abs(user.override_direction.x);
+		direction_y = user.override_direction.y / abs(user.override_direction.y);
+	
 	if target != null:
 		for t in target:
 			target_position.append(t.position);

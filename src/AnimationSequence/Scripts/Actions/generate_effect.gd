@@ -8,7 +8,9 @@ class_name ASAGenerateEffect
 @export var effect_rotation : float;
 @export var effect_scale : Vector2;
 @export var child : bool;
-@export var match_scale : bool;
+@export var pos_match_sequence_dir : bool;
+@export var rot_match_sequence_dir : bool;
+@export var scl_match_sequence_dir : bool;
 @export var effect_variance : Vector2;
 
 # TODO: Z-axis (layering)
@@ -26,8 +28,13 @@ func execute(sequence : AnimationSequence):
 		entity = sequence.target[sequence.target_index];
 	
 	if entity != null:
-		position.x = entity.global_position.x + (effect_position.x * sequence.direction_x);
-		position.y = entity.global_position.y + (effect_position.y * sequence.direction_y);
+		
+		if pos_match_sequence_dir :
+			position.x = entity.global_position.x + (effect_position.x * sequence.direction_x);
+			position.y = entity.global_position.y + (effect_position.y * sequence.direction_y);
+		else : 
+			position.x = entity.global_position.x + effect_position.x;
+			position.y = entity.global_position.y + effect_position.y;
 		
 		if child :
 			entity.add_child(effect);
@@ -40,9 +47,11 @@ func execute(sequence : AnimationSequence):
 	var scale = Vector2(effect_scale.x * sequence.direction_x, effect_scale.y * sequence.direction_y)
 	
 	effect.global_position = position + offset;
-	effect.rotation = effect_rotation * sequence.direction_x;
 	
-	if match_scale : effect.scale = scale;
+	if rot_match_sequence_dir : effect.rotation = effect_rotation * sequence.direction_x;
+	else : effect.rotation = effect_rotation;
+	
+	if scl_match_sequence_dir : effect.scale = scale;
 	else : effect.scale = effect_scale;
 	
 	sequence.effects.append(effect);

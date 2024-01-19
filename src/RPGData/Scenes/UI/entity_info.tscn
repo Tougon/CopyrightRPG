@@ -8,7 +8,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 60.0
 grow_horizontal = 2
-color = Color(0.199219, 0.425781, 0.546875, 1)
+color = Color(0.2, 0.427451, 0.545098, 1)
 script = ExtResource("1_7bfck")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
