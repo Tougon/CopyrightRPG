@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("2_isiqs")
-spell_name_key = ""
+spell_name_key = "T_SPELL_ATTACK"
 spell_description_key = ""
-spell_cast_message_key = ""
+spell_cast_message_key = "T_CAST_ATTACK"
 spell_type = 1
 spell_target = 0
 spell_cost = 0

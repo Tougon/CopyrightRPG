@@ -27,6 +27,8 @@ var spell_fail_message_key : String;
 @export_subgroup("Spell Animation")
 @export var animation_sequence : AnimationSequenceObject;
 
+var fail_message : String = "";
+
 # TODO: add support for effects
 #@export_subgroup("Spell Effects")
 # On Hit

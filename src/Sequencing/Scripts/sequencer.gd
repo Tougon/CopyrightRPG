@@ -37,6 +37,11 @@ func _on_sequence_ended():
 		EventManager.on_sequence_queue_empty.emit();
 
 
+func _unhandled_input(event):
+	if current_sequence != null:
+		current_sequence.unhandled_input(event);
+
+
 func _on_destroy():
 	if EventManager != null:
 		EventManager.on_sequence_queue.disconnect(_on_sequence_queue);

@@ -98,8 +98,12 @@ position = Vector2(245, 314)
 [node name="Dialogue Canvas" parent="UI" instance=ExtResource("9_4k33p")]
 offset = Vector2(0, 20)
 transform = Transform2D(1, 0, 0, 1, 0, 20)
-word_pause = 0.1
-dialogue_end_time = 0.2
+max_rows = 10
+character_pause = 0.04
+word_pause = 0.07
+expire_rows = false
+row_display_time = 1.5
+dialogue_end_time = 0.15
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI"]
 layer = 10

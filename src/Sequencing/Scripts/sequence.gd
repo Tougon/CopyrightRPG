@@ -28,3 +28,7 @@ func sequence_end():
 	sequence_ended.emit();
 	await tree.process_frame;
 	self.free();
+
+
+func unhandled_input(event : InputEvent):
+	pass;

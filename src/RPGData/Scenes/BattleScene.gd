@@ -137,10 +137,34 @@ func _action_phase():
 			if spell.success : 
 				any_cast_succeeded = true;
 			
-			# TODO: Increase damage taken
+			# TODO: Additional info
+			# Get damage messages based on cast result
+			if entity.current_action is DamageSpell : 
+				var damage_spell = entity.current_action is DamageSpell;
+				
+				if spell.get_damage_applied() > 0 :
+					if spell.critical : 
+						if spell_cast.size() > 1 :
+							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), entity.param.entity_name, entity.current_entity));
+						else : 
+							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), entity.param.entity_name, entity.current_entity));
+					
+					var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
+					damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
+					post_anim_dialogue.append(damage_msg);
+		
+		var cast_msg = _format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
+		# TODO: do additional formatting for target name perhaps?
+		pre_anim_dialogue.append(cast_msg);
+		
+		for dialogue in pre_anim_dialogue:
+			EventManager.on_dialogue_queue.emit(dialogue);
 		
 		var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
 		EventManager.on_sequence_queue.emit(animation_seq);
+		
+		for dialogue in post_anim_dialogue:
+			EventManager.on_dialogue_queue.emit(dialogue);
 		
 		await EventManager.on_sequence_queue_empty;
 	
@@ -176,8 +200,12 @@ func _on_player_menu_cancel():
 # Helper function for dialogue formatting
 func _format_dialogue(dialogue : String, name : String, entity : Entity) -> String:
 	# TODO: Add pronoun support
-	var entity_name = tr(entity.name_key)
-	return dialogue.format({article_indef = GrammarManager.get_indirect_article(name), article_def = GrammarManager.get_direct_article(name), entity = name});
+	var entity_name = name;
+	
+	if entity.generic : 
+		return dialogue.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(name), entity = name});
+	else:
+		return dialogue.format({article_indef = "", article_def = "", entity = name});
 
 
 # Helper functions for intro dialogue

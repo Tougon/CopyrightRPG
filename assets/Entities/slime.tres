@@ -16,7 +16,7 @@ list = Array[ExtResource("1_fc75y")]([SubResource("Resource_l1vsj")])
 
 [resource]
 script = ExtResource("1_tkvbf")
-name_key = "T_NAME_SLIME"
+name_key = "T_ENTITY_SLIME"
 description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 generic = true

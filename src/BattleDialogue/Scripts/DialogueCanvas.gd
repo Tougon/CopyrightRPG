@@ -3,6 +3,7 @@ extends CanvasLayer
 class_name DialogueCanvas
 
 signal on_dialogue_complete();
+signal on_dialogue_removed();
 
 enum PrintType { CHARACTER, WORD, SYLLABLE }
 
@@ -13,6 +14,7 @@ enum PrintType { CHARACTER, WORD, SYLLABLE }
 @export var character_pause : float = 0.1;
 @export var word_pause : float = 0.15;
 @export var row_pause : float = 0.3;
+@export var expire_rows : bool = true;
 @export var row_display_time : float = 3.0;
 @export var dialogue_end_time : float = 1.0;
 @export var print_type : PrintType;
@@ -20,7 +22,14 @@ enum PrintType { CHARACTER, WORD, SYLLABLE }
 @export var capitalize : bool = true;
 
 var is_printing : bool = false;
+# Used if dialogue sequence should await a keypress to advance
+var await_key : bool = false;
+var finish_print : bool = false;
 var current_rows : int;
+
+var interval_timer = Timer.new();
+var row_timer = Timer.new();
+var end_timer = Timer.new();
 
 var bbcode : String = "[bgcolor=000000D5][indent]"; 
 var test_text : String = "NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERENT PLANET. NO PEACE LOOKING AT THE SKY TROUBLE'S ALWAYS ALL AROUND SO WE STAY QUICK WITH THE GUNS AND CANNONS. STANDING AS LONG AS WE CAN UNTIL WE GET ALL DOLLS OFF THEN CALL OUR BETS OFF WE'LL BLOW THROUGH YOUR TAR, DEALING WITH LIFE'S MESSED UP";
@@ -29,6 +38,15 @@ var test_text : String = "NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERE
 func _ready():
 	current_rows = 0;
 	text_label.clear();
+	
+	self.add_child(interval_timer);
+	self.add_child(row_timer);
+	self.add_child(end_timer);
+	
+	interval_timer.one_shot = true;
+	row_timer.one_shot = true;
+	end_timer.one_shot = true;
+	
 	EventManager.on_dialogue_queue.connect(_on_dialogue_queue);
 	EventManager.on_message_queue.connect(_on_message_queue);
 	await get_tree().process_frame;
@@ -48,7 +66,14 @@ func _on_message_queue(dialogue : String):
 	var sequence = DialogueSequence.new(get_tree(), self, dialogue, true);
 
 
-func print_dialogue(text : String):
+func clear_dialogue():
+	current_rows = 0;
+	text_label.clear();
+	text_label.append_text(bbcode);
+
+
+func print_dialogue(text : String, await_key : bool = false):
+	self.await_key = await_key;
 	current_rows += 1;
 	
 	if text_label.get_parsed_text().length() > 1:
@@ -68,6 +93,12 @@ func print_dialogue(text : String):
 			_print_by_character(text);
 
 
+func skip_dialogue_to_end():
+	finish_print = true;
+	interval_timer.timeout.emit();
+	row_timer.timeout.emit();
+	end_timer.timeout.emit();
+
 func _print_by_character(text : String):
 	var current_line : String;
 	
@@ -83,7 +114,11 @@ func _print_by_character(text : String):
 		
 		# If the width exceeds the limit add a new line before continuing
 		if width >= text_label.get_rect().size.x:
-			await get_tree().create_timer(row_pause).timeout;
+			var row_pause_time = row_pause;
+			if finish_print :
+				row_timer.start(row_pause_time);
+				await row_timer.timeout;
+			
 			text_label.add_text("\n");
 			_row_display_delay(current_line);
 			
@@ -96,12 +131,20 @@ func _print_by_character(text : String):
 		text_label.add_text(chr);
 		current_line += (chr);
 		
-		await get_tree().create_timer(pause_time).timeout;
+		if !finish_print :
+			interval_timer.start(pause_time);
+			await interval_timer.timeout;
 	
 	_row_display_delay(current_line);
-	await get_tree().create_timer(dialogue_end_time).timeout;
+	
+	var end_time = dialogue_end_time;
+	if !finish_print:
+		end_timer.start(end_time);
+		await end_timer.timeout;
+	
 	on_dialogue_complete.emit();
 	is_printing = false;
+	finish_print = false;
 
 
 func _print_by_word(text : String):
@@ -126,10 +169,16 @@ func _print_by_word(text : String):
 		if width >= text_label.get_rect().size.x:
 			current_rows += 1;
 			
-			if n < splits.size():
-				await get_tree().create_timer(row_pause).timeout;
+			if n < splits.size() - 1:
+				var row_pause_time = row_pause;
+				
+				if !finish_print && row_pause_time > 0 : 
+					row_timer.start(row_pause_time);
+					await row_timer.timeout;
+				
 				text_label.add_text("\n");
-				_row_display_delay(current_line);
+				if expire_rows:
+					_row_display_delay(current_line);
 			
 			# If the number of lines are too great, immediately remove the first line
 			if current_rows > max_rows:
@@ -142,12 +191,22 @@ func _print_by_word(text : String):
 		text_label.add_text(word);
 		current_line += (word + " ");
 		
-		await get_tree().create_timer(pause_time).timeout;
+		# TODO: Do we need this? It'll be good for an effect maybe?
+		if n < splits.size() - 1 && !finish_print && pause_time > 0:
+			interval_timer.start(pause_time);
+			await interval_timer.timeout;
 	
-	_row_display_delay(current_line);
-	await get_tree().create_timer(dialogue_end_time).timeout;
+	if expire_rows :
+		_row_display_delay(current_line);
+	
+	var end_time = dialogue_end_time;
+	if !finish_print && end_time > 0:
+		end_timer.start(end_time);
+		await end_timer.timeout;
+	
 	on_dialogue_complete.emit();
 	is_printing = false;
+	finish_print = false;
 
 
 func _remove_extra_rows():

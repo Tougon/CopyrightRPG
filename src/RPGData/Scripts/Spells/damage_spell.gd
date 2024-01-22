@@ -1,10 +1,10 @@
 @tool
 extends Spell
-class_name AttackSpell
+class_name DamageSpell
 
 enum SpellHitType { Physical, Special }
 
-@export_group("Base Attack Spell Parameters")
+@export_group("Base Damage Spell Parameters")
 @export_range(0, 250) var spell_power : float = 50;
 @export var spell_attack_type : SpellHitType;
 @export var vary_defense_type : bool = false;
