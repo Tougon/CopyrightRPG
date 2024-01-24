@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://gfo2n17dga83"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_2h4bc"]
+
+[resource]
+script = ExtResource("1_2h4bc")
+name_key = "T_ENTITY_PTOED"
+description_key = "T_DESCRIPTION_SLIME"
+gender = 0
+generic = false
+base_hp = 90
+base_mp = 65
+base_atk = 120
+base_def = 100
+base_sp_atk = 120
+base_sp_def = 100
+base_spd = 100
+base_crit_modifier = 1.0
+base_dodge_modifier = 1.0
+entity_sprites = Array[Texture2D]([])
+battle_intro_key = "T_BATTLE_INTRO_GENERIC"

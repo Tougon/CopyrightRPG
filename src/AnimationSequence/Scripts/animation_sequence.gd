@@ -101,7 +101,8 @@ func sequence_start():
 	
 	super.sequence_start();
 	
-	# TODO: Disable UI calls
+	if aso.hide_ui_on_start :
+		EventManager.hide_entity_ui.emit();
 
 
 func sequence_loop():

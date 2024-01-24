@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=20 format=3 uid="uid://ddi8dyt27p6u7"]
 
-[ext_resource type="VideoStream" path="res://video/test.ogv" id="1_h3xwy"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
+[ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="2_vttnk"]
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="Resource" uid="uid://bg2eiaprg7wnq" path="res://assets/Entities/test_player.tres" id="6_j3wjk"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/player_battle_main_ui.tscn" id="6_uymxx"]
+[ext_resource type="Resource" uid="uid://gfo2n17dga83" path="res://assets/Entities/test_player_2.tres" id="7_vtb5m"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
@@ -42,23 +43,15 @@ dialogue_canvas = NodePath("UI/Dialogue Canvas")
 [node name="BG Video Canvas" type="CanvasLayer" parent="Background"]
 layer = -10
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Background/BG Video Canvas"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource("1_h3xwy")
-expand = true
-metadata/_edit_use_anchors_ = true
-
 [node name="ColorRect" type="ColorRect" parent="Background/BG Video Canvas"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.32549, 0.854902, 0.639216, 1)
+color = Color(0.296875, 0.296875, 0.296875, 1)
+
+[node name="VideoStreamPlayer" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
 
 [node name="Core" type="Node" parent="."]
 
@@ -70,11 +63,15 @@ color = Color(0.32549, 0.854902, 0.639216, 1)
 position = Vector2(200, 522)
 attack_action = ExtResource("5_7bqix")
 current_entity = ExtResource("6_j3wjk")
+use_override_direction = null
+override_direction = null
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(465, 522)
 attack_action = ExtResource("5_7bqix")
-current_entity = ExtResource("6_j3wjk")
+current_entity = ExtResource("7_vtb5m")
+use_override_direction = null
+override_direction = null
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
@@ -83,9 +80,13 @@ override_direction = Vector2(-1, 1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(673, 314)
+use_override_direction = null
+override_direction = null
 
 [node name="TempEnemy3" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(245, 314)
+use_override_direction = null
+override_direction = null
 
 [node name="UI" type="Node" parent="."]
 

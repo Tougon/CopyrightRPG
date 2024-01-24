@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3k0ig02qtnal"]
+
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_q67hi"]
+[ext_resource type="VideoStream" path="res://video/test_bw.ogv" id="2_vycep"]
+[ext_resource type="Script" path="res://src/VideoPlayer/video_player.gd" id="3_ipy4h"]
+
+[sub_resource type="Gradient" id="Gradient_sr4ea"]
+offsets = PackedFloat32Array(0, 0.497653, 1)
+colors = PackedColorArray(0.560784, 1, 0.529412, 1, 0, 0.345098, 0.345098, 1, 0.560784, 1, 0.529412, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
+gradient = SubResource("Gradient_sr4ea")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkfwh"]
+shader = ExtResource("1_q67hi")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 0.05
+shader_parameter/speed = 0.5
+shader_parameter/amplitude_vertical = 0.05
+shader_parameter/frequency_vertical = 12.0
+shader_parameter/speed_vertical = 3.0
+shader_parameter/scroll_direction = Vector2(0, -0.1)
+shader_parameter/scrolling_speed = 0.5
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/palette_speed = 0.4
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_size = 96
+shader_parameter/palette = SubResource("GradientTexture2D_suad4")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+texture_filter = 2
+texture_repeat = 3
+material = SubResource("ShaderMaterial_qkfwh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_vycep")
+autoplay = true
+expand = true
+script = ExtResource("3_ipy4h")
+metadata/_edit_use_anchors_ = true

@@ -5,6 +5,7 @@ class_name EntityController
 # Tricks the animation sequence into thinking the entity is scaled differently
 @export var use_override_direction : bool = false;
 @export var override_direction : Vector2 = Vector2(1, 1);
+@onready var entity_ui : EntityControllerUI = $"Entity Info Battle";
 
 var move_list : Array[Spell];
 var param : EntityParams;
@@ -117,7 +118,7 @@ func entity_init():
 		# TODO: Implement support for effects and modifier arrays
 		current_behavior = current_entity.behavior;
 		
-		# TODO: Reset entity UI
+		entity_ui.set_specific_entity_info(self);
 
 
 
@@ -210,7 +211,7 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 	if val == 0 : 
 		if vibrate : 
 			if hit : 
-				TweenExtensions.shake_position_2d(self, SHAKE_DURATION * 0.7, 22.5, Vector2(7.5, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION * 0.7, 22.5, Vector2(7.5, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
 				print("TODO: Dodge");
 	else :
@@ -223,9 +224,14 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 		
 		if vibrate : 
 			if crit || is_defeated : 
-				TweenExtensions.shake_position_2d(self, SHAKE_DURATION, 45, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
-				TweenExtensions.shake_position_2d(self, SHAKE_DURATION, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+
+
+func update_hp_ui():
+	if entity_ui : 
+		entity_ui.change_hp(current_hp);
 
 
 func on_defeat():

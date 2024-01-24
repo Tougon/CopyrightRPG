@@ -1,7 +1,72 @@
-[gd_scene load_steps=3 format=3 uid="uid://cddpjekmhp1aq"]
+[gd_scene load_steps=16 format=3 uid="uid://cddpjekmhp1aq"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/entity_info.gd" id="1_2etan"]
-[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="2_855ct"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/entity_info_battle.gd" id="1_s2jlx"]
+[ext_resource type="PackedScene" uid="uid://dia4envm7la1c" path="res://src/UIComponents/Scenes/underlay_bar.tscn" id="2_f6vck"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="3_lgwo2"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="4_k5ptv"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="5_qssom"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="6_f6b20"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="7_dw7an"]
+
+[sub_resource type="Resource" id="Resource_4beny"]
+script = ExtResource("6_f6b20")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.05
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_hib24"]
+script = ExtResource("7_dw7an")
+frames = Array[ExtResource("6_f6b20")]([SubResource("Resource_4beny")])
+
+[sub_resource type="Resource" id="Resource_cfj7e"]
+script = ExtResource("5_qssom")
+tween_name = "Show"
+sequence = Array[ExtResource("7_dw7an")]([SubResource("Resource_hib24")])
+
+[sub_resource type="Resource" id="Resource_q4mcm"]
+script = ExtResource("4_k5ptv")
+tween_name = "Show"
+tween_resource = SubResource("Resource_cfj7e")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_fp5kt"]
+script = ExtResource("6_f6b20")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_q8ecx"]
+script = ExtResource("7_dw7an")
+frames = Array[ExtResource("6_f6b20")]([SubResource("Resource_fp5kt")])
+
+[sub_resource type="Resource" id="Resource_73j37"]
+script = ExtResource("5_qssom")
+tween_name = "Hide"
+sequence = Array[ExtResource("7_dw7an")]([SubResource("Resource_q8ecx")])
+
+[sub_resource type="Resource" id="Resource_b7vq4"]
+script = ExtResource("4_k5ptv")
+tween_name = "Hide"
+tween_resource = SubResource("Resource_73j37")
+play_on_start = false
+next_tween = ""
 
 [node name="Entity Info Battle" type="ColorRect"]
 anchors_preset = 10
@@ -9,9 +74,9 @@ anchor_right = 1.0
 offset_bottom = 108.0
 grow_horizontal = 2
 color = Color(0.2, 0.427451, 0.545098, 0)
-script = ExtResource("1_2etan")
+script = ExtResource("1_s2jlx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,105 +88,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="HP Bar" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(281, 50)
+[node name="HP Bar" parent="Container" instance=ExtResource("2_f6vck")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+start_value = 0.5
+max_value = 1.0
+text_format = "[b]HP: [color=FFFF00]{current}[/color]/{max}"
+animation_type = 1
+bar_subtract_speed = 2.5
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HP Bar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.234375, 0.378906, 0.621094, 1)
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HP Bar/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 1)
-color = Color(0.105469, 0.203125, 0.363281, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HP Bar/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.5
-anchor_right = 0.95
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HP Bar/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("2_855ct")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 36
-bbcode_enabled = true
-text = "[b]HP: [color=FFFF00]200[/color]/250"
-fit_content = true
-
-[node name="Padding" type="Control" parent="VBoxContainer"]
+[node name="Padding" type="Control" parent="Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MP Bar" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(281, 50)
+[node name="MP Bar" parent="Container" instance=ExtResource("2_f6vck")]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+start_value = 0.5
+max_value = 1.0
+text_format = "[b]MP: [color=FFFF00]{current}[/color]/{max}"
+animation_type = 1
+bar_subtract_speed = 2.5
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MP Bar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.234375, 0.378906, 0.621094, 1)
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MP Bar/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.8, 1)
-color = Color(0.105469, 0.203125, 0.363281, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MP Bar/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.5
-anchor_right = 0.95
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -24.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/MP Bar/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("2_855ct")
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 36
-bbcode_enabled = true
-text = "[b]MP: [color=FFFF00]200[/color]/250"
-fit_content = true
+[node name="TweenPlayerUI" type="Node" parent="."]
+script = ExtResource("3_lgwo2")
+sequence_list = Array[ExtResource("4_k5ptv")]([SubResource("Resource_q4mcm"), SubResource("Resource_b7vq4")])

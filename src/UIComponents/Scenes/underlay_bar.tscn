@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dia4envm7la1c"]
+
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_jqoa6"]
+[ext_resource type="Script" path="res://src/UIComponents/Scenes/underlay_bar.gd" id="1_rkyd3"]
+
+[node name="UnderlayBar" type="Control"]
+custom_minimum_size = Vector2(281, 50)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+script = ExtResource("1_rkyd3")
+deplete_color = Color(0.796078, 0, 0, 1)
+refill_color = Color(0.105882, 0.556863, 0.168627, 1)
+
+[node name="BarBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.234375, 0.378906, 0.621094, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0.796078, 0, 0, 1)
+
+[node name="BarFill" type="ColorRect" parent="BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0.105469, 0.203125, 0.363281, 1)
+
+[node name="TextRoot" type="VBoxContainer" parent="BarBackground"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="BarBackground/TextRoot"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_jqoa6")
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 36
+bbcode_enabled = true
+text = "[b]HP: [color=FFFF00]200[/color]/250"
+fit_content = true

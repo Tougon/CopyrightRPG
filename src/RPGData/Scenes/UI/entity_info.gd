@@ -6,7 +6,13 @@ enum DisplayType { Full, Restricted }
 
 @export var info_type : InfoType;
 @export var display_type : DisplayType;
+
+@onready var tween_player : TweenPlayer = $TweenPlayerUI;
+@onready var hp_bar : UnderlayBar = $"Container/HP Bar";
+@onready var mp_bar : UnderlayBar = $"Container/MP Bar";
+
 var current_entity : EntityController;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,20 +21,21 @@ func _ready():
 	
 	match display_type:
 		DisplayType.Full:
-			$"HBoxContainer/HP Bar/ColorRect/VBoxContainer/RichTextLabel".visible = true;
-			$"HBoxContainer/MP Bar/ColorRect".visible = true;
+			hp_bar.set_text_visible(true);
+			mp_bar.set_bar_visible(true);
 		DisplayType.Restricted:
-			$"HBoxContainer/HP Bar/ColorRect/VBoxContainer/RichTextLabel".visible = false;
-			$"HBoxContainer/MP Bar/ColorRect".visible = false;
+			hp_bar.set_text_visible(false);
+			mp_bar.set_bar_visible(false);
 
 
-func set_specific_entity_info(entity : EntityController, all : bool):
+func set_specific_entity_info(entity : EntityController, all : bool = false):
 	if all:
-		$"HBoxContainer/Player Name".text = tr("T_NAME_ALL");
-		$"HBoxContainer/HP Bar/ColorRect".visible = false;
+		if $"Container/Player Name" != null : $"Container/Player Name".text = tr("T_NAME_ALL");
+		hp_bar.set_bar_visible(false);
 	else:
 		_set_entity_info(entity);
-		$"HBoxContainer/HP Bar/ColorRect".visible = true;
+		hp_bar.set_bar_visible(true);
+
 
 func _set_entity_info(entity : EntityController):
 	# Disconnect the previously selected entity
@@ -37,11 +44,11 @@ func _set_entity_info(entity : EntityController):
 	
 	current_entity = entity;
 	
-	# TODO: Connect to damage functions
 	# TODO: Leading zeroes
-	$"HBoxContainer/Player Name".text = entity.param.entity_name;
-	$"HBoxContainer/HP Bar/ColorRect/VBoxContainer/RichTextLabel".text = "[b]HP: [color=FFFF00]" + str(entity.current_hp) + "[/color]/" + str(entity.max_hp);
-	$"HBoxContainer/MP Bar/ColorRect/VBoxContainer/RichTextLabel".text = "[b]MP: [color=FFFF00]" + str(entity.current_mp) + "[/color]/" + str(entity.max_mp);
-	$"HBoxContainer/HP Bar/ColorRect/ColorRect".scale.x = entity.get_hp_percent();
-	$"HBoxContainer/MP Bar/ColorRect/ColorRect".scale.x = entity.get_mp_percent();
-	
+	if current_entity == null :
+		return;
+		
+	if $"Container/Player Name" != null : $"Container/Player Name".text = entity.param.entity_name;
+	hp_bar.set_values_immediate(entity.current_hp, 0, entity.max_hp);
+	mp_bar.set_values_immediate(entity.current_mp, 0, entity.max_mp);
+

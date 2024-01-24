@@ -167,6 +167,8 @@ func _action_phase():
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
 		await EventManager.on_sequence_queue_empty;
+		
+		EventManager.hide_entity_ui.emit();
 	
 	_begin_turn();
 
