@@ -55,7 +55,7 @@ func _init(in_tree : SceneTree, obj : AnimationSequenceObject, u : EntityControl
 	
 	if spell_cast != null : 
 		for spell in spell_cast:
-			if spell.get_number_of_hits() > loop : 
+			if spell != null && spell.get_number_of_hits() > loop : 
 				loop = spell.get_number_of_hits();
 	
 	super._init(in_tree);
@@ -139,6 +139,7 @@ func sequence_end():
 		user_sprite.modulate = user_color;
 		user_sprite.position = user_sprite_position;
 	user.mat.set_shader_parameter("overlay_color_amount", user_amount);
+	user.mat.set_shader_parameter("alpha_amount", 0);
 	
 	for i in target.size():
 		target[i].position = target_position[i];
@@ -148,6 +149,7 @@ func sequence_end():
 			target_sprite[i].modulate = target_color[i];
 			target_sprite[i].position = target_sprite_position[i];
 		target[i].mat.set_shader_parameter("overlay_color_amount", target_amount[i]);
+		target[i].mat.set_shader_parameter("alpha_amount", 0);
 	
 	super.sequence_end();
 

@@ -31,4 +31,5 @@ base_crit_modifier = 1.0
 base_dodge_modifier = 1.0
 entity_sprites = Array[Texture2D]([])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
+battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 move_list = SubResource("Resource_lg1m0")

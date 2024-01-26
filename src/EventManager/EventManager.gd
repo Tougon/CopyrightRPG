@@ -25,6 +25,8 @@ signal click_target(entity : EntityController);
 
 signal hide_entity_ui();
 
+signal on_enemy_defeated(entity : EntityController);
+
 
 # Leaving this intact but given the dictionary might as well not exist, I'm not sure we need.
 func _ready():

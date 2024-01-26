@@ -81,6 +81,8 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 @export_group("Visuals")
 @export var entity_sprites: Array[Texture2D];
 @export var battle_intro_key: String;
+@export var battle_defeat_key: String;
+@export var defeat_anim : AnimationSequenceObject;
 
 #TODO: More real tools
 @export_group("Moveset and Behavior")

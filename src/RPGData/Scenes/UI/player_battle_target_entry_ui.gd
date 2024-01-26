@@ -41,5 +41,9 @@ func _on_focus_exited():
 
 
 func _on_pressed():
+	select_target();
+
+
+func select_target():
 	player.current_target = targets;
 	player.is_ready = true;

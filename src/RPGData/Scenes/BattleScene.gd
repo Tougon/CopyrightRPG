@@ -8,6 +8,7 @@ var entities : Array[EntityController];
 var players : Array[EntityController];
 var enemies : Array[EntityController];
 
+var turn_number : int;
 var current_player_index : int;
 
 
@@ -16,6 +17,7 @@ func _ready():
 	EventManager.register_enemy.connect(_on_enemy_register);
 	EventManager.on_attack_select.connect(_on_attack_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
+	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
 	_begin_battle();
 
 
@@ -41,20 +43,29 @@ func _begin_turn():
 	# TODO: Wait until all turn begin effects have resolved
 	#await EventManager.on_sequence_queue_empty;
 	current_player_index = 0;
+	turn_number += 1;
+	
+	var allies : Array[EntityController];
+	var targets : Array[EntityController];
+	
+	for entity in entities:
+		entity.allies.clear();
+		entity.enemies.clear();
+		entity.turn_number += 1;
+		entity.is_ready = false;
+		entity.reset_action();
+		
+		if !entity.is_defeated :
+			if players.has(entity) : allies.append(entity);
+			if enemies.has(entity) : targets.append(entity);
 	
 	for player in players:
-		player.allies.clear();
-		player.allies.append_array(players);
-		player.enemies.clear();
-		player.enemies.append_array(enemies);
-		player.turn_number += 1;
+		player.allies.append_array(allies);
+		player.enemies.append_array(targets);
 	
 	for enemy in enemies:
-		enemy.allies.clear();
-		enemy.allies.append_array(enemies);
-		enemy.enemies.clear();
-		enemy.enemies.append_array(players);
-		enemy.turn_number += 1;
+		enemy.allies.append_array(targets);
+		enemy.enemies.append_array(allies);
 	
 	# Sort players/turn order by speed. Might cut this.
 	# It was really annoying in OMORI to have the order be fixed,
@@ -154,6 +165,7 @@ func _action_phase():
 					post_anim_dialogue.append(damage_msg);
 		
 		var cast_msg = _format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
+		
 		# TODO: do additional formatting for target name perhaps?
 		pre_anim_dialogue.append(cast_msg);
 		
@@ -163,6 +175,9 @@ func _action_phase():
 		var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
 		EventManager.on_sequence_queue.emit(animation_seq);
 		
+		# TODO: Evaluate if we want the death animation before or after dialogue.
+		#await EventManager.on_sequence_queue_empty;
+		
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
@@ -170,7 +185,17 @@ func _action_phase():
 		
 		EventManager.hide_entity_ui.emit();
 	
-	_begin_turn();
+	_end_phase();
+
+
+func _end_phase():
+	# TODO: Turn end behaviors for effects
+	
+	# TODO: Proper lose state
+	if (_all_players_defeated()) : return;
+	else :
+		# TODO: Check win state
+		_begin_turn();
 
 
 # Event responses
@@ -197,6 +222,15 @@ func _on_player_menu_cancel():
 		players[current_player_index].is_ready = false;
 		EventManager.set_active_player.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
+
+
+func _on_enemy_defeated(entity : EntityController):
+	var defeat_key = "T_BATTLE_INTRO_GENERIC";
+	if entity.current_entity.battle_intro_key != null :
+		defeat_key = entity.current_entity.battle_defeat_key;
+	
+	var defeat_msg = _format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
+	EventManager.on_dialogue_queue.emit(defeat_msg);
 
 
 # Helper function for dialogue formatting
@@ -243,6 +277,13 @@ func _all_enemies_same() -> bool:
 
 
 # Misc Functions
+func _all_players_defeated() -> bool:
+	for player in players:
+		if !player.is_defeated : return false;
+	
+	return true;
+
+
 func _compare_speed(a : EntityController, b : EntityController):
 	return EntityController.compare_speed(a, b);
 
@@ -252,4 +293,5 @@ func _on_destroy():
 		EventManager.register_player.disconnect(_on_player_register);
 		EventManager.register_enemy.disconnect(_on_enemy_register);
 		EventManager.on_attack_select.disconnect(_on_attack_select);
-		EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
+		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
+		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);

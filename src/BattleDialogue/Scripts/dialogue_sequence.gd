@@ -48,7 +48,6 @@ func on_dialogue_complete():
 
 
 func unhandled_input(event : InputEvent):
-	# TODO: FFW or skip from press advance?
 	if PRESS_ADVANCE :
 		if (event.is_action_pressed("ui_accept")):
 			if loop :

@@ -2,9 +2,11 @@ extends EntitySprite
 class_name EntityController
 
 @export var current_entity : Entity;
-# Tricks the animation sequence into thinking the entity is scaled differently
+## Tricks the animation sequence into thinking the entity is scaled differently
 @export var use_override_direction : bool = false;
 @export var override_direction : Vector2 = Vector2(1, 1);
+@export var default_defeat_anim : AnimationSequenceObject;
+
 @onready var entity_ui : EntityControllerUI = $"Entity Info Battle";
 
 var move_list : Array[Spell];
@@ -206,7 +208,7 @@ func set_target(trigger : EntityController = null):
 func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 	if is_defeated : return;
 	
-	print("Damaging for " + str(val));
+	#print("Damaging for " + str(val));
 	
 	if val == 0 : 
 		if vibrate : 
@@ -235,7 +237,29 @@ func update_hp_ui():
 
 
 func on_defeat():
-	print("TODO: Die");
+	#TODO: Probably want this to run in parallel for enemies, but not bosses.
+	var defeat_anim = default_defeat_anim;
+	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
+	
+	var animation_seq = AnimationSequence.new(get_tree(), defeat_anim, self, [self], [null]);
+	animation_seq.sequence_ended.connect(_on_defeat_complete);
+	EventManager.on_sequence_queue.emit(animation_seq);
+	
+	atk_stage = 0;
+	def_stage = 0;
+	sp_atk_stage = 0;
+	sp_def_stage = 0;
+	spd_stage = 0;
+	accuracy_stage = 0;
+	evasion_stage = 0;
+	
+	# TODO: Remove all volitile effects. This should also clear attack mods.
+	
+	# TODO: Remove all seals held by this entity
+
+
+func _on_defeat_complete():
+	pass;
 
 
 # Setter functions intended to be used to ensure gammeplay callbacks execute
@@ -347,6 +371,11 @@ func get_accuracy_modifiers():
 
 
 # Misc functions
+func reset_action():
+	current_action = null;
+	action_result = [null];
+
+
 static func compare_speed (a : EntityController, b : EntityController) -> int:
 	var priority_a = -10;
 	var priority_b = -10;
@@ -365,7 +394,8 @@ static func compare_speed (a : EntityController, b : EntityController) -> int:
 	var a_speed = round(a.param.entity_spd * a.get_speed_modifier());
 	var b_speed = round(b.param.entity_spd * b.get_speed_modifier());
 	
-	# TODO: Speed effect modifiers
+	for mod in a.get_speed_modifiers(): a_speed *= mod;
+	for mod in b.get_speed_modifiers(): b_speed *= mod;
 	
 	if a_speed > b_speed:
 		return -1;

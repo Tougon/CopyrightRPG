@@ -84,7 +84,7 @@ func _on_target_clicked(entity : EntityController):
 	var info = target_to_info.get(entity);
 	if info:
 		if info.selected:
-			print("TODO: Select and advance")
+			info.select_target();
 		else:
 			info.grab_focus();
 

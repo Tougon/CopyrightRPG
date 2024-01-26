@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform vec4 overlay_color: source_color = vec4(1,1,1,1);
 uniform float overlay_color_amount = 0.0;
+uniform float overlay_alpha_amount = 0.0;
 uniform sampler2D overlay_texture: hint_default_white, repeat_enable;
 uniform vec2 overlay_texture_offset;
 uniform vec2 overlay_texture_tiling = vec2(1,1);
@@ -29,6 +30,6 @@ void fragment()
 	// Blend the overlay with the sprite
 	COLOR = mix(col, tex, overlay_texture_amount);
 	
-	// Apply the original sprite alpha
-	COLOR.a = fragment_alpha;
+	// Apply the original sprite alpha mixed with overlay alpha
+	COLOR.a = mix(fragment_alpha, overlay_color.a * fragment_alpha, overlay_alpha_amount * overlay_color_amount);;
 }
