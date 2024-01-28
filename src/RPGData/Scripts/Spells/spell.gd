@@ -68,6 +68,10 @@ func cast(user : EntityController, targets : Array[EntityController]):
 						cast.success = true;
 					else:
 						cast.success = cast.has_spell_done_anything();
+				else :
+					cast.set_hits([false]);
+					cast.set_damage([0])
+					cast.set_critical([false])
 				
 				# TODO: Deactivate properties
 		else:
