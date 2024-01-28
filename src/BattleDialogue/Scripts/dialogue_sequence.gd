@@ -47,12 +47,16 @@ func on_dialogue_complete():
 	loop = false;
 
 
-func unhandled_input(event : InputEvent):
+func unhandled_input(event : InputEvent) -> bool:
 	if PRESS_ADVANCE :
-		if (event.is_action_pressed("ui_accept")):
+		if (event.is_action_pressed("ui_accept") || event.is_action_pressed("advance_dialogue")):
 			if loop :
 				on_dialogue_complete();
 				canvas.skip_dialogue_to_end();
 			else :
 				canvas.clear_dialogue();
 				sequence_end();
+			
+			return true;
+	
+	return false;

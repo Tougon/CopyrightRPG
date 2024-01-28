@@ -376,7 +376,7 @@ func reset_action():
 	action_result = [null];
 
 
-static func compare_speed (a : EntityController, b : EntityController) -> int:
+static func compare_speed (a : EntityController, b : EntityController) -> bool:
 	var priority_a = -10;
 	var priority_b = -10;
 	
@@ -387,9 +387,9 @@ static func compare_speed (a : EntityController, b : EntityController) -> int:
 		priority_b = b.current_action.spell_priority;
 	
 	if priority_a > priority_b:
-		return -1;
+		return true;
 	elif priority_b > priority_a:
-		return 1;
+		return false;
 	
 	var a_speed = round(a.param.entity_spd * a.get_speed_modifier());
 	var b_speed = round(b.param.entity_spd * b.get_speed_modifier());
@@ -398,20 +398,20 @@ static func compare_speed (a : EntityController, b : EntityController) -> int:
 	for mod in b.get_speed_modifiers(): b_speed *= mod;
 	
 	if a_speed > b_speed:
-		return -1;
+		return true;
 	elif b_speed > a_speed:
-		return 1;
+		return false;
 	
-	return 0;
+	return false;
 
-static func compare_speed_tie(a : EntityController, b : EntityController) -> int:
+static func compare_speed_tie(a : EntityController, b : EntityController) -> bool:
 	var result = compare_speed(a, b);
 	
 	if result == 0:
 		if randf() > 0.5:
-			return 1;
+			return true;
 		else:
-			return -1;
+			return false;
 	
 	return result;
 

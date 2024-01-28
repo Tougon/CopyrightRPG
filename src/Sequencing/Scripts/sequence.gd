@@ -30,5 +30,5 @@ func sequence_end():
 	self.free();
 
 
-func unhandled_input(event : InputEvent):
-	pass;
+func unhandled_input(event : InputEvent) -> bool:
+	return false;

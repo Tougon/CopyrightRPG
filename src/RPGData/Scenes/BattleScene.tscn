@@ -49,13 +49,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.296875, 0.296875, 0.296875, 1)
 
 [node name="VideoStreamPlayer" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
-
-[node name="Core" type="Node" parent="."]
-
-[node name="Sequencer" parent="Core" instance=ExtResource("9_lx2fn")]
+mouse_filter = 2
 
 [node name="Entities" type="Node" parent="."]
 
@@ -116,6 +114,7 @@ offset_top = -120.0
 offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 texture = ExtResource("3_tos7b")
 stretch_mode = 5
 
@@ -136,3 +135,7 @@ grow_vertical = 2
 [node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/Fade Iris"]
 script = ExtResource("5_35o0w")
 sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx")])
+
+[node name="Core" type="Node" parent="."]
+
+[node name="Sequencer" parent="Core" instance=ExtResource("9_lx2fn")]

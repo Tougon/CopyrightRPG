@@ -37,6 +37,14 @@ project/assembly_name="Copyright RPG"
 
 enabled=PackedStringArray("res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
 
+[input]
+
+advance_dialogue={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(418, 15),"global_position":Vector2(422, 58),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
 [internationalization]
 
 locale/translations=PackedStringArray("res://assets/Localization/TextDatabase.en.translation", "res://assets/Localization/TextDatabase.es.translation", "res://assets/Localization/TextDatabase.ja.translation")

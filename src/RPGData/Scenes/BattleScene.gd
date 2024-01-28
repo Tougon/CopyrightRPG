@@ -113,9 +113,10 @@ func _action_phase():
 	var turn_order : Array[EntityController];
 	
 	for entity in entities:
-		turn_order.append(entity);
+		if !entity.is_defeated :
+			turn_order.append(entity);
 	
-	entities.sort_custom(_compare_speed);
+	turn_order.sort_custom(_compare_speed);
 	
 	for entity in turn_order:
 		# TODO: Handle seals (copyright)

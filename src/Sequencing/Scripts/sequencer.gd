@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 class_name Sequencer
 
@@ -39,7 +39,10 @@ func _on_sequence_ended():
 
 func _unhandled_input(event):
 	if current_sequence != null:
-		current_sequence.unhandled_input(event);
+		var result = current_sequence.unhandled_input(event);
+		
+		if result :
+			accept_event();
 
 
 func _on_destroy():

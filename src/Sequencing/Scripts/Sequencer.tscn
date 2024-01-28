@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" path="res://src/Sequencing/Scripts/sequencer.gd" id="1_wgos3"]
 
-[node name="Sequencer" type="Node"]
+[node name="Sequencer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_wgos3")

@@ -18,6 +18,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 370.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
@@ -28,11 +29,13 @@ offset_left = 180.0
 offset_right = -180.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("2_r4wnr")
 bbcode_enabled = true
 text = "[bgcolor=000000D5][indent]NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERENT PLANET. NO PEACE LOOKING AT THE SKY TROUBLE'S ALWAYS ALL AROUND SO WE STAY QUICK WITH THE GUNS AND CANNONS. STANDING AS LONG AS WE CAN UNTIL WE GET ALL DOLLS OFF THEN CALL OUR BETS OFF WE'LL BLOW THROUGH YOUR TAR, DEALING WITH LIFE'S MESSED UP"
