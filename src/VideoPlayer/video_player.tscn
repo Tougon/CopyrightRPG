@@ -5,8 +5,9 @@
 [ext_resource type="Script" path="res://src/VideoPlayer/video_player.gd" id="3_ipy4h"]
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
-offsets = PackedFloat32Array(0, 0.267606, 0.497653, 0.7277, 1)
-colors = PackedColorArray(0.635294, 0.984314, 0.545098, 1, 0.211765, 0.517647, 0.8, 1, 0.309778, 0.112801, 0.460843, 1, 0.211765, 0.517647, 0.8, 1, 0.635294, 0.984314, 0.545098, 1)
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.295775, 0.535211, 0.70892, 1)
+colors = PackedColorArray(1, 0.537255, 0.447059, 1, 1, 0.858824, 0, 1, 1, 0.537255, 0.447059, 1, 1, 0.858824, 0, 1, 1, 0.537255, 0.447059, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
 gradient = SubResource("Gradient_sr4ea")
@@ -23,8 +24,8 @@ shader_parameter/speed_vertical = 3.0
 shader_parameter/scroll_direction = Vector2(0, -0.1)
 shader_parameter/scrolling_speed = 0.5
 shader_parameter/enable_palette_cycling = true
-shader_parameter/enable_scan_lines = true
-shader_parameter/palette_speed = 0.4
+shader_parameter/enable_scan_lines = false
+shader_parameter/palette_speed = 0.05
 shader_parameter/enable_pixelate = true
 shader_parameter/pixel_size = 96
 shader_parameter/palette = SubResource("GradientTexture2D_suad4")

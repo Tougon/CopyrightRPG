@@ -157,9 +157,9 @@ func _action_phase():
 				if spell.get_damage_applied() > 0 :
 					if spell.critical : 
 						if spell_cast.size() > 1 :
-							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), entity.param.entity_name, entity.current_entity));
+							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
 						else : 
-							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), entity.param.entity_name, entity.current_entity));
+							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), spell.target.param.entity_name, spell.target.current_entity));
 					
 					var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
 					damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});

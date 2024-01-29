@@ -102,14 +102,17 @@ func get_number_of_hits() -> int:
 
 #  Current Hit Operations
 func get_current_hit_damage() -> int:
+	if current_hit >= damage.size() : return 0;
 	return damage[current_hit];
 
 
 func get_current_hit_success() -> bool:
+	if current_hit >= hits.size() : return false;
 	return hits[current_hit];
 
 
 func get_current_hit_critical() -> bool:
+	if current_hit >= critical_hits.size() : return false;
 	return critical_hits[current_hit];
 
 

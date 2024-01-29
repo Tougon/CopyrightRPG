@@ -30,7 +30,7 @@ func _ready():
 
 func set_specific_entity_info(entity : EntityController, all : bool = false):
 	if all:
-		if $"Container/Player Name" != null : $"Container/Player Name".text = tr("T_NAME_ALL");
+		if $"Container/Player Name" != null : $"Container/Player Name".text = tr("T_ENTITY_ALL");
 		hp_bar.set_bar_visible(false);
 	else:
 		_set_entity_info(entity);

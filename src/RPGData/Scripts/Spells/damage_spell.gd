@@ -28,7 +28,7 @@ enum SpellHitType { Physical, Special }
 
 
 func check_spell_hit(user : EntityController, target : EntityController, amt : float = -1):
-	if !check_accuracy : return true;
+	if amt == -1 && !check_accuracy : return true;
 	
 	var accuracy = user.get_accuracy();
 	# TODO: Implement evasion modifiers?
@@ -56,7 +56,7 @@ func check_spell_hit(user : EntityController, target : EntityController, amt : f
 
 
 func calculate_damage(user : EntityController, target : EntityController, cast : SpellCast):
-	var num_hits = max_number_of_hits;
+	var num_hits = min_number_of_hits;
 	
 	if vary_hit_count :
 		if min_number_of_hits > max_number_of_hits :

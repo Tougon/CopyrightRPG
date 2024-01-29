@@ -54,9 +54,25 @@ func _initialize_target_menu(entity : EntityController):
 	# TODO: implement behavior for random targetting.
 	# This was not in the old project
 	
-	# TODO: All
 	if spell_target == Spell.SpellTarget.All || spell_target == Spell.SpellTarget.AllEnemy || spell_target == Spell.SpellTarget.AllParty:
-		pass;
+		var info = target_info_pool[0];
+		info.visible = true;
+		
+		var arrows : Array[Control];
+		
+		for i in targets.size():
+			var arrow = target_arrow_pool[i];
+			arrow.visible = true;
+			arrow.position = targets[i].position;
+			arrows.append(arrow);
+		
+		info.initialize(targets, arrows, entity, true);
+		
+		for i in range(1, pool_size):
+			if i > targets.size():
+				target_arrow_pool[i].visible = false;
+			target_info_pool[i].visible = false;
+		
 	else:
 		for i in targets.size():
 			var target = targets[i];
@@ -74,10 +90,7 @@ func _initialize_target_menu(entity : EntityController):
 
 
 func _on_target_highlighted(entity : EntityController, all : bool):
-	if all:
-		print("TODO: ALL");
-	elif entity != null :
-		entity_info.set_specific_entity_info(entity, all);
+	entity_info.set_specific_entity_info(entity, all);
 
 
 func _on_target_clicked(entity : EntityController):
