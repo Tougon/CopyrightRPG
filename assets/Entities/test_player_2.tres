@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_2h4bc")
-name_key = "T_ENTITY_PTOED"
+name_key = "T_ENTITY_OLDALLY"
 description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 generic = false

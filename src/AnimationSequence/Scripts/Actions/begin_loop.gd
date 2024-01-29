@@ -6,10 +6,14 @@ class_name ASABeginLoop
 @export var loop_targets : bool;
 
 func execute(sequence : AnimationSequence):
-	if loop_targets : 
-		num_loops = sequence.target.size();
+	var loops = num_loops;
 	
-	var loop = AnimationSequenceLoop.new(sequence.current_frame, num_loops);
+	if loop_targets : 
+		loops = sequence.target.size();
+	elif num_loops < 0 :
+		loops = sequence.loop;
+	
+	var loop = AnimationSequenceLoop.new(sequence.current_frame, loops);
 	sequence.loops.append(loop);
 	sequence.looping = true;
 

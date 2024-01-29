@@ -1,17 +1,22 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=3 format=3 uid="uid://bl7lkqotimci2"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=4 format=3 uid="uid://b2uuuo2sg36ek"]
 
 [ext_resource type="Resource" uid="uid://bs6g8nyjbm8sq" path="res://assets/Animations/Sequences/test_anim.tres" id="1_rhe1y"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="1_wntlk"]
 
+[sub_resource type="Curve" id="Curve_clwet"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
 [resource]
 script = ExtResource("1_wntlk")
-spell_power = 90.0
+spell_power = 10.0
 spell_attack_type = 0
 vary_defense_type = false
 spell_defense_type = 0
-vary_hit_count = false
-min_number_of_hits = 1
-max_number_of_hits = 1
+vary_hit_count = true
+min_number_of_hits = 2
+max_number_of_hits = 6
+hit_count_curve = SubResource("Curve_clwet")
 check_accuracy = true
 spell_accuracy = 100.0
 check_accuracy_per_hit = false
@@ -20,7 +25,7 @@ can_critical = true
 critical_chance = 16
 spell_name_key = "T_SPELL_ATTACK"
 spell_description_key = ""
-spell_cast_message_key = "T_CAST_ATTACK"
+spell_cast_message_key = "T_CAST_PARTYWIPE"
 spell_type = 1
 spell_target = 0
 spell_cost = 0

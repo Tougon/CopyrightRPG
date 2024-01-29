@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://src/VideoPlayer/video_player.gd" id="3_ipy4h"]
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
-offsets = PackedFloat32Array(0, 0.497653, 1)
-colors = PackedColorArray(0.635294, 0.984314, 0.545098, 1, 0.59053, 0.297286, 0.833678, 1, 0.635294, 0.984314, 0.545098, 1)
+offsets = PackedFloat32Array(0, 0.267606, 0.497653, 0.7277, 1)
+colors = PackedColorArray(0.635294, 0.984314, 0.545098, 1, 0.211765, 0.517647, 0.8, 1, 0.309778, 0.112801, 0.460843, 1, 0.211765, 0.517647, 0.8, 1, 0.635294, 0.984314, 0.545098, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
 gradient = SubResource("Gradient_sr4ea")
