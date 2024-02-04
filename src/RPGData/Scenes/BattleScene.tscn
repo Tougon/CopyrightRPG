@@ -59,15 +59,15 @@ mouse_filter = 2
 [node name="Entities" type="Node" parent="."]
 
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
-position = Vector2(200, 522)
-attack_action = ExtResource("4_7f42j")
+position = Vector2(200, 660)
+attack_action = ExtResource("5_7bqix")
 current_entity = ExtResource("6_j3wjk")
 use_override_direction = null
 override_direction = null
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
-position = Vector2(465, 522)
-attack_action = ExtResource("5_7bqix")
+position = Vector2(465, 660)
+attack_action = ExtResource("4_7f42j")
 current_entity = ExtResource("7_vtb5m")
 use_override_direction = null
 override_direction = null
@@ -78,10 +78,14 @@ use_override_direction = true
 override_direction = Vector2(-1, 1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
-position = Vector2(701, 314)
+position = Vector2(721, 294)
+use_override_direction = true
+override_direction = Vector2(-1, 1)
 
 [node name="TempEnemy3" parent="Entities" instance=ExtResource("5_c337l")]
-position = Vector2(245, 314)
+position = Vector2(225, 294)
+use_override_direction = true
+override_direction = Vector2(-1, 1)
 
 [node name="UI" type="Node" parent="."]
 

@@ -9,5 +9,8 @@ script = ExtResource("2_6enct")
 attack_action = ExtResource("3_w85cb")
 defend_action = null
 
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 1)
+
 [node name="Entity Info Battle" parent="." index="3"]
 display_type = 0

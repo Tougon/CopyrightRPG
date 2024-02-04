@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=7 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
+[ext_resource type="Texture2D" uid="uid://kaeeqjp8lc8k" path="res://assets/Sprites/Entities/ness_neutral.png" id="1_g14ou"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_tkvbf"]
-[ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/test_spell.tres" id="2_8eo1g"]
+[ext_resource type="Resource" uid="uid://bl7lkqotimci2" path="res://assets/Spells/test_attack_spell.tres" id="2_dxxge"]
+[ext_resource type="Texture2D" uid="uid://br4mg0sn4esrm" path="res://assets/Sprites/Entities/ness_damage.png" id="2_sasro"]
+[ext_resource type="Texture2D" uid="uid://bpc0mwo76jqba" path="res://assets/Sprites/Entities/ness_attack.png" id="3_nbhgj"]
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("2_8eo1g")
+spell = ExtResource("2_dxxge")
 level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]
@@ -29,7 +32,7 @@ base_sp_def = 30
 base_spd = 50
 base_crit_modifier = 1.0
 base_dodge_modifier = 1.0
-entity_sprites = Array[Texture2D]([])
+entity_sprites = Array[Texture2D]([ExtResource("1_g14ou"), ExtResource("2_sasro"), ExtResource("3_nbhgj")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 move_list = SubResource("Resource_lg1m0")

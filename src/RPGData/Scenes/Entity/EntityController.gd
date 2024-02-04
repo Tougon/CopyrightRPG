@@ -120,8 +120,10 @@ func entity_init():
 		# TODO: Implement support for effects and modifier arrays
 		current_behavior = current_entity.behavior;
 		
+		if current_entity.entity_sprites.size() > 0 :
+			sprite.texture = current_entity.entity_sprites[0];
+		
 		entity_ui.set_specific_entity_info(self);
-
 
 
 func _on_turn_begin():
@@ -223,12 +225,21 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 		if current_hp <= 0 :
 			on_defeat();
 			is_defeated = true;
+		else : set_damage_sprite();
 		
 		if vibrate : 
 			if crit || is_defeated : 
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+
+
+func set_damage_sprite():
+	if current_entity.entity_sprites.size() > 1:
+		var previous = sprite.texture;
+		sprite.texture = current_entity.entity_sprites[1];
+		await get_tree().create_timer(0.35).timeout
+		sprite.texture = previous;
 
 
 func update_hp_ui():
@@ -240,6 +251,9 @@ func on_defeat():
 	#TODO: Probably want this to run in parallel for enemies, but not bosses.
 	var defeat_anim = default_defeat_anim;
 	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
+	
+	if current_entity.entity_sprites.size() > 1:
+		sprite.texture = current_entity.entity_sprites[1];
 	
 	var animation_seq = AnimationSequence.new(get_tree(), defeat_anim, self, [self], [null]);
 	animation_seq.sequence_ended.connect(_on_defeat_complete);
