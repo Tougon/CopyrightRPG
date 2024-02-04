@@ -28,6 +28,9 @@ func initialize(targets : Array[EntityController], arrows : Array[Control], play
 
 
 func _on_focus_entered():
+	if targets.size() <= 0:
+		return;
+	
 	selected = true;
 	EventManager.highlight_target.emit(targets[0], all);
 	for i in arrows.size():

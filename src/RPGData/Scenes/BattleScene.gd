@@ -81,7 +81,8 @@ func _begin_turn():
 
 # Name may be changed but this is the phase where we choose actions for the turn.
 func _decision_phase():
-	await get_tree().create_timer(1.5).timeout
+	# For what purpose, Evan? For what purpose?
+	#await get_tree().create_timer(1.5).timeout
 	
 	while current_player_index < players.size():
 		await get_tree().process_frame;

@@ -21,6 +21,7 @@ var root : Node;
 var user : EntityController;
 var target : Array[EntityController];
 
+var spell_data : Spell;
 var spell_cast : Array[SpellCast];
 var aso : AnimationSequenceObject;
 
@@ -55,6 +56,8 @@ func _init(in_tree : SceneTree, obj : AnimationSequenceObject, u : EntityControl
 	
 	if spell_cast != null : 
 		for spell in spell_cast:
+			if spell.spell != null : 
+				spell_data = spell.spell;
 			if spell != null && spell.get_number_of_hits() > loop : 
 				loop = spell.get_number_of_hits();
 	

@@ -52,9 +52,18 @@ func _initialize_target_menu(entity : EntityController):
 	var spell_target = entity.current_action.spell_target;
 	var targets = entity.get_possible_targets();
 	# TODO: implement behavior for random targetting.
-	# This was not in the old project
+	if spell_target == Spell.SpellTarget.RandomEnemyPerHit :
+		entity.current_target = targets;
+		entity.is_ready = true;
+		return;
 	
-	if spell_target == Spell.SpellTarget.All || spell_target == Spell.SpellTarget.AllEnemy || spell_target == Spell.SpellTarget.AllParty:
+	elif spell_target == Spell.SpellTarget.RandomEnemy :
+		var random_index = randi_range(0, targets.size() - 1);
+		entity.current_target = [ targets[random_index] ];
+		entity.is_ready = true;
+		return;
+	
+	elif spell_target == Spell.SpellTarget.All || spell_target == Spell.SpellTarget.AllEnemy || spell_target == Spell.SpellTarget.AllParty:
 		var info = target_info_pool[0];
 		info.visible = true;
 		

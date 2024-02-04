@@ -15,6 +15,7 @@ signal on_turn_begin();
 signal register_player(entity : EntityController);
 signal register_enemy(entity : EntityController);
 
+signal set_player_ready();
 signal set_active_player(entity : EntityController);
 signal player_menu_cancel();
 
