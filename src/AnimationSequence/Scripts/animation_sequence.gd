@@ -9,7 +9,8 @@ var on_success : bool;
 
 var target_index : int;
 var current_frame : int;
-var loop : int;
+var loop_hits : int;
+var loop_targets : int;
 
 var current_time : float;
 var direction_x : float;
@@ -56,10 +57,15 @@ func _init(in_tree : SceneTree, obj : AnimationSequenceObject, u : EntityControl
 	
 	if spell_cast != null : 
 		for spell in spell_cast:
+			if spell == null : continue;
 			if spell.spell != null : 
 				spell_data = spell.spell;
-			if spell != null && spell.get_number_of_hits() > loop : 
-				loop = spell.get_number_of_hits();
+			if spell.get_number_of_hits() > loop_hits : 
+				loop_hits = spell.get_number_of_hits();
+	
+	if spell_data != null && spell_data.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
+		loop_targets = 1;
+	else : loop_targets = target.size();
 	
 	super._init(in_tree);
 

@@ -72,8 +72,13 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	var result : Array[int];
 	var crit : Array[bool];
 	var hit : Array[bool];
+	var index : Array[int];
 	
 	for i in num_hits:
+		if i > 0 && spell_target == SpellTarget.RandomEnemyPerHit :
+			target = cached_targets[randi_range(0, cached_targets.size() - 1)];
+		index.append(cached_targets.find(target));
+		
 		# This has a TODO in the original project but like...I dunno, fam. Seems fine to me
 		# Though I do think this may be an unfair roll. 
 		# Like, it rolls once for the spell, and then again later for the first hit.
@@ -129,3 +134,4 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	cast.set_damage(result);
 	cast.set_hits(hit);
 	cast.set_critical(crit);
+	cast.target_index_override = index;

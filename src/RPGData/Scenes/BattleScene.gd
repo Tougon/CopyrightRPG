@@ -153,18 +153,10 @@ func _action_phase():
 			# TODO: Additional info
 			# Get damage messages based on cast result
 			if entity.current_action is DamageSpell : 
-				var damage_spell = entity.current_action is DamageSpell;
-				
-				if spell.get_damage_applied() > 0 :
-					if spell.critical : 
-						if spell_cast.size() > 1 :
-							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
-						else : 
-							post_anim_dialogue.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), spell.target.param.entity_name, spell.target.current_entity));
-					
-					var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
-					damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
-					post_anim_dialogue.append(damage_msg);
+				if entity.current_action.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
+					_get_spell_hit_messages_rand(entity, spell_cast, spell, post_anim_dialogue);
+				else :
+					_get_spell_hit_messages(entity, spell_cast, spell, post_anim_dialogue);
 		
 		var cast_msg = _format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
 		
@@ -186,12 +178,66 @@ func _action_phase():
 		await EventManager.on_sequence_queue_empty;
 		
 		EventManager.hide_entity_ui.emit();
+		
+		for spell in spell_cast :
+			spell.free();
+		spell_cast.clear();
 	
 	_end_phase();
 
 
+func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):
+	var damage_spell = entity.current_action is DamageSpell;
+	
+	if spell.get_damage_applied() > 0 :
+		if spell.critical : 
+			if spell_cast.size() > 1 :
+				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+			else : 
+				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), spell.target.param.entity_name, spell.target.current_entity));
+		
+		var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
+		damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
+		output.append(damage_msg);
+
+
+func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):
+	var damage_spell = source.current_action is DamageSpell;
+	var entities : Array[EntityController];
+	var entity_damage = {}
+	var entity_crit = {}
+	
+	for i in spell.get_number_of_hits():
+		var entity_index = spell.target_index_override[i];
+		var entity = source.current_target[entity_index];
+		
+		if !entities.has(entity):
+			entities.append(entity);
+			entity_damage[entity] = 0;
+			entity_crit[entity] = false;
+		
+		entity_damage[entity] += spell.damage[i];
+		
+		if spell.critical_hits[i] :
+			entity_damage[entity] = true;
+	
+	for entity in entities :
+		if entity_damage[entity] <= 0 : continue;
+		
+		if entity_crit[entity] : 
+			if spell_cast.size() > 1 :
+				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), entity.param.entity_name, entity.current_entity));
+			else : 
+				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), entity.param.entity_name, entity.current_entity));
+		
+		var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), entity.param.entity_name, entity.current_entity);
+		damage_msg = damage_msg.format({damage = str(entity_damage[entity])});
+		output.append(damage_msg);
+
+
 func _end_phase():
 	# TODO: Turn end behaviors for effects
+	
 	
 	# TODO: Proper lose state
 	if (_all_players_defeated()) : return;

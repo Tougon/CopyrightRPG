@@ -9,9 +9,9 @@ func execute(sequence : AnimationSequence):
 	var loops = num_loops;
 	
 	if loop_targets : 
-		loops = sequence.target.size();
+		loops = sequence.loop_targets;
 	elif num_loops < 0 :
-		loops = sequence.loop;
+		loops = sequence.loop_hits;
 	
 	var loop = AnimationSequenceLoop.new(sequence.current_frame, loops);
 	sequence.loops.append(loop);

@@ -27,7 +27,9 @@ var spell_fail_message_key : String;
 @export_subgroup("Spell Animation")
 @export var animation_sequence : AnimationSequenceObject;
 
+# Runtime Values
 var fail_message : String = "";
+var cached_targets : Array[EntityController];
 
 # TODO: add support for effects
 #@export_subgroup("Spell Effects")
@@ -38,47 +40,57 @@ var fail_message : String = "";
 
 # Returns an instance of this spell using the spell data to calculate everything
 func cast(user : EntityController, targets : Array[EntityController]):
+	cached_targets = targets;
 	var result : Array[SpellCast] = [];
 	
 	var mp_check = check_mp(user);
 	
-	for target in targets:
-		var cast = SpellCast.new();
-		cast.spell = self;
-		cast.user = user;
-		cast.target = target;
-		
-		cast.success = mp_check;
-		
-		if cast.success:
-			# TODO: Implement actual checks for the below
-			cast.success = check_can_cast(user, target);
-			
-			if cast.success:
-				# TODO: Apply spell properties.
-				# These may affect any calculation going forward.
-				
-				# TODO: Implement accuracy check
-				cast.success = check_spell_hit(user, target);
-				
-				if cast.success:
-					calculate_damage(user, target, cast);
-					
-					if spell_type == SpellType.Flavor:
-						cast.success = true;
-					else:
-						cast.success = cast.has_spell_done_anything();
-				else :
-					cast.set_hits([false]);
-					cast.set_damage([0])
-					cast.set_critical([false])
-				
-				# TODO: Deactivate properties
-		else:
-			cast.fail_message = tr("T_BATTLE_MP_BAD").format({entity = user.param.entity_name});
-		result.append(cast);
+	if spell_target != SpellTarget.RandomEnemyPerHit:
+		for target in targets :
+			_cast(user, target, result, mp_check);
+	else :
+		var rand_index = randi_range(0, targets.size() - 1);
+		var target = targets[rand_index];
+		_cast(user, target, result, mp_check);
 	
 	return result;
+
+
+func _cast(user : EntityController, target : EntityController, result : Array[SpellCast], mp_check : bool):
+	var cast = SpellCast.new();
+	cast.spell = self;
+	cast.user = user;
+	cast.target = target;
+	
+	cast.success = mp_check;
+	
+	if cast.success:
+		# TODO: Implement actual checks for the below
+		cast.success = check_can_cast(user, target);
+		
+		if cast.success:
+			# TODO: Apply spell properties.
+			# These may affect any calculation going forward.
+			
+			# TODO: Implement accuracy check
+			cast.success = check_spell_hit(user, target);
+			
+			if cast.success:
+				calculate_damage(user, target, cast);
+				
+				if spell_type == SpellType.Flavor:
+					cast.success = true;
+				else:
+					cast.success = cast.has_spell_done_anything();
+			else :
+				cast.set_hits([false]);
+				cast.set_damage([0])
+				cast.set_critical([false])
+			
+			# TODO: Deactivate properties
+	else:
+		cast.fail_message = tr("T_BATTLE_MP_BAD").format({entity = user.param.entity_name});
+	result.append(cast);
 
 
 func check_mp(user : EntityController) -> bool:

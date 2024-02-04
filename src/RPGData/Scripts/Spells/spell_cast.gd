@@ -14,7 +14,10 @@ var hits : Array[bool];
 var critical : bool
 var critical_hits : Array[bool];
 
-# Used for animation processing in the original game. Not sure if needed.
+# Random per hit variables
+var target_index_override : Array[int];
+
+# Used for animation processing.
 var current_hit : int;
 
 # Dialogue
@@ -23,7 +26,7 @@ var fail_message : String;
 # TODO: Effects
 
 func _init():
-	print("Init SpellCast");
+	pass;
 
 
 # Spell Cast Operations
