@@ -35,4 +35,5 @@ base_dodge_modifier = 1.0
 entity_sprites = Array[Texture2D]([ExtResource("1_g14ou"), ExtResource("2_sasro"), ExtResource("3_nbhgj")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
+head_offset = Vector2(0, 130)
 move_list = SubResource("Resource_lg1m0")

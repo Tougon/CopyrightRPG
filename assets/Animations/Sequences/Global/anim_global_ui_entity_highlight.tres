@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=8 format=3 uid="uid://ddrqbf1mpi21x"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_33ltb"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_le4b3"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_oojbl"]
+
+[sub_resource type="Resource" id="Resource_lg8cu"]
+script = ExtResource("2_le4b3")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 1.0
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.6
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_6ohm0"]
+script = ExtResource("3_oojbl")
+frames = Array[ExtResource("2_le4b3")]([SubResource("Resource_lg8cu")])
+
+[sub_resource type="Resource" id="Resource_mfnmo"]
+script = ExtResource("2_le4b3")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 1.0
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 0.6
+
+[sub_resource type="Resource" id="Resource_lwx6l"]
+script = ExtResource("3_oojbl")
+frames = Array[ExtResource("2_le4b3")]([SubResource("Resource_mfnmo")])
+
+[resource]
+script = ExtResource("1_33ltb")
+tween_name = "Entity Highlight"
+sequence = Array[ExtResource("3_oojbl")]([SubResource("Resource_6ohm0"), SubResource("Resource_lwx6l")])

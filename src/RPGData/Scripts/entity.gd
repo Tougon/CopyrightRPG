@@ -83,6 +83,7 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 @export var battle_intro_key: String;
 @export var battle_defeat_key: String;
 @export var defeat_anim : AnimationSequenceObject;
+@export var head_offset : Vector2;
 
 #TODO: More real tools
 @export_group("Moveset and Behavior")

@@ -75,17 +75,17 @@ override_direction = null
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 use_override_direction = true
-override_direction = Vector2(-1, 1)
+override_direction = Vector2(-1, -1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(721, 294)
 use_override_direction = true
-override_direction = Vector2(-1, 1)
+override_direction = Vector2(-1, -1)
 
 [node name="TempEnemy3" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(225, 294)
 use_override_direction = true
-override_direction = Vector2(-1, 1)
+override_direction = Vector2(-1, -1)
 
 [node name="UI" type="Node" parent="."]
 

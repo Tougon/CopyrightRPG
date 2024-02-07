@@ -72,7 +72,6 @@ func _initialize_target_menu(entity : EntityController):
 		for i in targets.size():
 			var arrow = target_arrow_pool[i];
 			arrow.visible = true;
-			arrow.position = targets[i].position;
 			arrows.append(arrow);
 		
 		info.initialize(targets, arrows, entity, true);

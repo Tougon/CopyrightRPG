@@ -4,6 +4,7 @@ class_name UIBattleTargetInfo
 var targets : Array[EntityController];
 var arrows : Array[Control];
 var player : EntityController;
+
 var all : bool = false;
 var selected : bool = false;
 
@@ -22,7 +23,7 @@ func initialize(targets : Array[EntityController], arrows : Array[Control], play
 	
 	for i in arrows.size():
 		if i < targets.size():
-			arrows[i].global_position = targets[i].global_position + offset - (arrows[i].size / 2);
+			arrows[i].global_position = targets[i].global_position + offset - (arrows[i].size / 2) - targets[i].current_entity.head_offset;
 		else:
 			arrows[i].global_position = self.global_position + offset - (arrows[i].size / 2);
 
@@ -35,16 +36,27 @@ func _on_focus_entered():
 	EventManager.highlight_target.emit(targets[0], all);
 	for i in arrows.size():
 		arrows[i].visible = true;
+	
+	for target in targets:
+		if target != null : 
+			target.tween.play_tween_name("Entity Highlight");
 
 
 func _on_focus_exited():
 	selected = false;
 	for i in arrows.size():
 		arrows[i].visible = false;
+	
+	for target in targets:
+		if target != null : 
+			var mat = target.get_entity_material();
+			target.tween.cancel_tween();
+			mat.set_shader_parameter("overlay_color_amount", 0);
 
 
 func _on_pressed():
-	select_target();
+	pass;
+	#select_target();
 
 
 func select_target():

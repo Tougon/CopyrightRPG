@@ -49,7 +49,7 @@ func _play_tween(tween: TweenResource):
 		
 	# Cancel the current tween
 	if current_tween != null && current_tween.is_running():
-		current_tween.stop();
+		current_tween.kill();
 	
 	# Create the tween and set its movement to parallel
 	current_resource = tween;
@@ -124,6 +124,13 @@ func _on_tween_complete():
 		
 		if next != "":
 			play_tween_name(next);
+
+
+func cancel_tween():
+	next_tween = "";
+	if current_tween != null && current_tween.is_running():
+		current_tween.kill();
+	_reset_tween_state();
 
 
 func _reset_tween_state():
