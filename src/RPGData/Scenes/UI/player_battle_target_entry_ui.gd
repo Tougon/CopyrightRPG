@@ -49,14 +49,11 @@ func _on_focus_exited():
 	
 	for target in targets:
 		if target != null : 
-			var mat = target.get_entity_material();
-			target.tween.cancel_tween();
-			mat.set_shader_parameter("overlay_color_amount", 0);
+			target.tween.play_tween_name("Entity Highlight End");
 
 
 func _on_pressed():
-	pass;
-	#select_target();
+	select_target();
 
 
 func select_target():

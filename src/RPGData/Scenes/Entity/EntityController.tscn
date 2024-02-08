@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1yeonj32wfeb"]
+[gd_scene load_steps=16 format=3 uid="uid://b1yeonj32wfeb"]
 
 [ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_u887t"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntityController.gd" id="2_cc50b"]
@@ -7,6 +7,40 @@
 [ext_resource type="Resource" uid="uid://hsj4yrvafyg6" path="res://assets/Animations/Sequences/Global/anim_global_defeat.tres" id="4_wvte6"]
 [ext_resource type="PackedScene" uid="uid://cddpjekmhp1aq" path="res://src/RPGData/Scenes/UI/entity_info_battle.tscn" id="5_12ej3"]
 [ext_resource type="Resource" uid="uid://b8butrjniwrbr" path="res://assets/Animations/Sequences/Global/anim_global_ui_entity_highlight_resource.tres" id="6_rklrg"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="7_5uy3v"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="8_plqjl"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_5i4wj"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="10_fj1nh"]
+
+[sub_resource type="Resource" id="Resource_q13yv"]
+script = ExtResource("9_5i4wj")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.25
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_8cfsm"]
+script = ExtResource("10_fj1nh")
+frames = Array[ExtResource("9_5i4wj")]([SubResource("Resource_q13yv")])
+
+[sub_resource type="Resource" id="Resource_padva"]
+script = ExtResource("8_plqjl")
+tween_name = ""
+sequence = Array[ExtResource("10_fj1nh")]([SubResource("Resource_8cfsm")])
+
+[sub_resource type="Resource" id="Resource_8hfa6"]
+script = ExtResource("7_5uy3v")
+tween_name = "Entity Highlight End"
+tween_resource = SubResource("Resource_padva")
+play_on_start = false
+next_tween = ""
 
 [node name="EntityBase" instance=ExtResource("1_u887t")]
 script = ExtResource("2_cc50b")
@@ -19,7 +53,7 @@ default_defeat_anim = ExtResource("4_wvte6")
 script = ExtResource("4_l5njq")
 
 [node name="TweenPlayer" parent="." index="1"]
-sequence_list = Array[Resource("res://addons/totween/src/tween_resource_instance.gd")]([ExtResource("6_rklrg")])
+sequence_list = Array[ExtResource("7_5uy3v")]([ExtResource("6_rklrg"), SubResource("Resource_8hfa6")])
 
 [node name="Entity Info Battle" parent="." index="3" instance=ExtResource("5_12ej3")]
 modulate = Color(1, 1, 1, 0)

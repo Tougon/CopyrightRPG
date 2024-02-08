@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_target_entry_ui.gd" id="1_c0edl"]
 
 [node name="player_battle_target_entry" type="Button"]
+modulate = Color(1, 1, 1, 0)
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_c0edl")
