@@ -1,21 +1,57 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=21 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
 [ext_resource type="Texture2D" uid="uid://kaeeqjp8lc8k" path="res://assets/Sprites/Entities/ness_neutral.png" id="1_g14ou"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="1_lpo00"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_tkvbf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="2_cc3c8"]
 [ext_resource type="Resource" uid="uid://bl7lkqotimci2" path="res://assets/Spells/test_attack_spell.tres" id="2_dxxge"]
 [ext_resource type="Texture2D" uid="uid://br4mg0sn4esrm" path="res://assets/Sprites/Entities/ness_damage.png" id="2_sasro"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Texture2D" uid="uid://bpc0mwo76jqba" path="res://assets/Sprites/Entities/ness_attack.png" id="3_nbhgj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
+[ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/test_spell.tres" id="10_4pg74"]
+
+[sub_resource type="Resource" id="Resource_k3ayc"]
+script = ExtResource("2_cc3c8")
+hp_percent = 0.5
+check_target = 0
+negate = true
+
+[sub_resource type="Resource" id="Resource_5q53p"]
+script = ExtResource("3_fjnas")
+behavior_check = Array[Resource("res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd")]([SubResource("Resource_k3ayc")])
+check_type = 0
+action_id = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_nvu22"]
+script = ExtResource("3_fjnas")
+behavior_check = Array[Resource("res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd")]([])
+check_type = 0
+action_id = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_k0d1d"]
+script = ExtResource("4_l7lga")
+behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_5q53p"), SubResource("Resource_nvu22")])
+
+[sub_resource type="Resource" id="Resource_hf446"]
+script = ExtResource("1_lpo00")
+turn_behavior = Array[ExtResource("4_l7lga")]([SubResource("Resource_k0d1d")])
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
 spell = ExtResource("2_dxxge")
 level = 0
 
+[sub_resource type="Resource" id="Resource_k72ke"]
+script = ExtResource("1_fc75y")
+spell = ExtResource("10_4pg74")
+level = 0
+
 [sub_resource type="Resource" id="Resource_lg1m0"]
 script = ExtResource("1_44x03")
-list = Array[ExtResource("1_fc75y")]([SubResource("Resource_l1vsj")])
+list = Array[ExtResource("1_fc75y")]([SubResource("Resource_l1vsj"), SubResource("Resource_k72ke")])
 
 [resource]
 script = ExtResource("1_tkvbf")
@@ -37,3 +73,4 @@ battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, 130)
 move_list = SubResource("Resource_lg1m0")
+behavior = SubResource("Resource_hf446")

@@ -217,7 +217,22 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 			if hit : 
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION * 0.7, 22.5, Vector2(7.5, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
-				print("TODO: Dodge");
+				# TODO: Personalized dodge animations
+				var tween = get_tree().create_tween();
+				tween.set_parallel(false);
+				
+				var direction : float = 1;
+				if use_override_direction : direction = override_direction.x;
+				
+				var pos_in = tween.tween_property(sprite, "position:x", 100 * direction, 0.12);
+				pos_in.as_relative();
+				pos_in.set_trans(Tween.TRANS_CUBIC)
+				pos_in.set_ease(Tween.EASE_OUT);
+				
+				var pos_out = tween.tween_property(sprite, "position:x", 100 * -direction, 0.12);
+				pos_out.as_relative();
+				pos_out.set_trans(Tween.TRANS_CUBIC)
+				pos_out.set_ease(Tween.EASE_OUT);
 	else :
 		last_hit = val;
 		current_hp = clamp(current_hp - val, 0, max_hp);

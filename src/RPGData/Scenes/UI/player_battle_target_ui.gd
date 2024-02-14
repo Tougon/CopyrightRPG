@@ -51,7 +51,7 @@ func _initialize_target_menu(entity : EntityController):
 	target_to_info.clear();
 	var spell_target = entity.current_action.spell_target;
 	var targets = entity.get_possible_targets();
-	# TODO: implement behavior for random targetting.
+	
 	if spell_target == Spell.SpellTarget.RandomEnemyPerHit :
 		entity.current_target = targets;
 		entity.is_ready = true;
