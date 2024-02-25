@@ -23,7 +23,7 @@ func initialize(targets : Array[EntityController], arrows : Array[Control], play
 	
 	for i in arrows.size():
 		if i < targets.size():
-			arrows[i].global_position = targets[i].global_position + offset - (arrows[i].size / 2) - targets[i].current_entity.head_offset;
+			arrows[i].global_position = targets[i].global_position + offset - (arrows[i].size / 2) + targets[i].get_sprite_top_offset();
 		else:
 			arrows[i].global_position = self.global_position + offset - (arrows[i].size / 2);
 

@@ -7,5 +7,4 @@ func _input(event):
 		var point = to_local(event.position);
 		if get_rect().has_point(point):
 			if is_pixel_opaque(point):
-				print(get_parent().name)
 				sprite_clicked.emit();

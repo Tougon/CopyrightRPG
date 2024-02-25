@@ -104,6 +104,8 @@ func _decision_phase():
 		enemy.select_action();
 		enemy.is_ready = true;
 	
+	# Timer to resolve fadeout issues with the glow
+	await get_tree().create_timer(0.6).timeout
 	_action_phase();
 
 

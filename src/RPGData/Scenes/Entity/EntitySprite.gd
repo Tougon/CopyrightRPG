@@ -30,6 +30,27 @@ func get_sprite():
 	return sprite;
 
 
+func get_sprite_top_offset():
+	
+	if sprite == null: return Vector2(0,0);
+	
+	var min = Vector2(-sprite.texture.get_width() / 2, -sprite.texture.get_height() / 2);
+	var max = Vector2(sprite.texture.get_width() / 2, sprite.texture.get_height() / 2);
+	
+	# I hate that I have to do this, but normal nested loops do not work.
+	var y = min.y;
+	
+	while y <= max.y:
+		var x = min.x;
+		while x <= max.x:
+			if sprite.is_pixel_opaque(Vector2(x, y)):
+				return Vector2(x, y)
+			x += 1;
+		y += 1;
+	
+	return Vector2(0,0);
+
+
 # Animation control
 func set_animation(val : String):
 	animator.play(val);

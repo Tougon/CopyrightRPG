@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
-[ext_resource type="Texture2D" uid="uid://kaeeqjp8lc8k" path="res://assets/Sprites/Entities/ness_neutral.png" id="1_g14ou"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="1_lpo00"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_tkvbf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="2_cc3c8"]
 [ext_resource type="Resource" uid="uid://bl7lkqotimci2" path="res://assets/Spells/test_attack_spell.tres" id="2_dxxge"]
-[ext_resource type="Texture2D" uid="uid://br4mg0sn4esrm" path="res://assets/Sprites/Entities/ness_damage.png" id="2_sasro"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Texture2D" uid="uid://bpc0mwo76jqba" path="res://assets/Sprites/Entities/ness_attack.png" id="3_nbhgj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
+[ext_resource type="Texture2D" uid="uid://bbl4qai6jru65" path="res://assets/Sprites/Entities/slime_neutral.png" id="5_vh60y"]
+[ext_resource type="Texture2D" uid="uid://eao5aq6mkwlr" path="res://assets/Sprites/Entities/slime_damage.png" id="6_q3frx"]
 [ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/test_spell.tres" id="10_4pg74"]
 
 [sub_resource type="Resource" id="Resource_k3ayc"]
@@ -68,7 +68,7 @@ base_sp_def = 30
 base_spd = 50
 base_crit_modifier = 1.0
 base_dodge_modifier = 1.0
-entity_sprites = Array[Texture2D]([ExtResource("1_g14ou"), ExtResource("2_sasro"), ExtResource("3_nbhgj")])
+entity_sprites = Array[Texture2D]([ExtResource("5_vh60y"), ExtResource("6_q3frx"), ExtResource("3_nbhgj")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, 130)
