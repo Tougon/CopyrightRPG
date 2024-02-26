@@ -179,6 +179,18 @@ func _action_phase():
 		
 		await EventManager.on_sequence_queue_empty;
 		
+		for spell in spell_cast:
+			var effects = spell.effects;
+			
+			for effect in effects:
+				if spell.success : 
+					effect.on_activate();
+				else :
+					effect.on_failed_to_activate();
+		
+		# TODO: find a better way to do this. I don't really like accessing the queue
+		if sequencer.sequence_queue.size() > 0 :
+			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
 		
 		for spell in spell_cast :

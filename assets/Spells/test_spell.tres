@@ -14,3 +14,6 @@ spell_cost = 0
 spell_priority = 0
 spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
 animation_sequence = ExtResource("1_ols74")
+effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

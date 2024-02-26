@@ -31,10 +31,10 @@ var spell_fail_message_key : String;
 var fail_message : String = "";
 var cached_targets : Array[EntityController];
 
-# TODO: add support for effects
-#@export_subgroup("Spell Effects")
-# On Hit
-# On Success
+@export_subgroup("Spell Effects")
+@export var effects_on_hit : Array[EffectSetChance]
+@export var effects_on_success : Array[EffectSetChance]
+@export var properties : Array[Effect]
 # Properties
 
 

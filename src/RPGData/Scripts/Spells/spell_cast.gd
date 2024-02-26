@@ -23,7 +23,7 @@ var current_hit : int;
 # Dialogue
 var fail_message : String;
 
-# TODO: Effects
+var effects : Array[EffectInstance];
 
 func _init():
 	pass;
@@ -35,7 +35,25 @@ func set_damage(dm : Array[int]):
 	
 	for i in damage.size():
 		total_damage += damage[i];
-		# TODO: Do effect rolls
+		
+		if spell != null:
+			for n in spell.effects_on_hit.size():
+				var eff = spell.effects_on_hit[n].get_effect();
+				var proc = randf();
+				
+				if proc <= spell.effects_on_hit[n].chance && eff != null:
+					var exists = check_for_effect(eff)
+					
+					if !exists || (exists && eff.stackable):
+						var inst = eff.create_effect_instance(user, target, self);
+						effects.append(inst);
+
+
+func check_for_effect(effect : Effect) -> bool:
+	for eff in effects:
+		if eff.effect == effect:
+			return true;
+	return false;
 
 
 func set_critical(crt : Array[bool]):
@@ -53,7 +71,14 @@ func set_hits(hit : Array[bool]):
 # General Spell Checks and Accessors
 func has_spell_done_anything() -> bool:
 	# TODO: Check if effect was activated
-	return !(total_damage == 0 && (hits == null || (hits != null && hits.size() == 0)));
+	return !(total_damage == 0 && !get_effect_proc() && (hits == null || (hits != null && hits.size() == 0)));
+
+
+func get_effect_proc() -> bool:
+	for effect in effects:
+		if effect.cast_success :
+			return true;
+	return false;
 
 
 func get_damage_index(index : int) -> int:

@@ -1,7 +1,158 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=3 format=3 uid="uid://bl7lkqotimci2"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=26 format=3 uid="uid://bl7lkqotimci2"]
 
 [ext_resource type="Resource" uid="uid://bs6g8nyjbm8sq" path="res://assets/Animations/Sequences/test_anim.tres" id="1_rhe1y"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="1_wntlk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_74jph"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="2_idwye"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_kfuly"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_fero0"]
+
+[sub_resource type="Resource" id="Resource_wde1d"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_0"
+
+[sub_resource type="Resource" id="Resource_22qao"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_FAIL_0"
+
+[sub_resource type="Resource" id="Resource_lq6cm"]
+script = ExtResource("2_74jph")
+stackable = false
+cast_success = false
+effect_name = "Temp 0"
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_wde1d")])
+on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_22qao")])
+on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+
+[sub_resource type="Resource" id="Resource_utkob"]
+script = ExtResource("3_kfuly")
+chance = 1.0
+effect = SubResource("Resource_lq6cm")
+
+[sub_resource type="Resource" id="Resource_b2845"]
+script = ExtResource("4_fero0")
+chance = 1.0
+effect_set = Array[ExtResource("3_kfuly")]([SubResource("Resource_utkob")])
+
+[sub_resource type="Resource" id="Resource_lyx3r"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_1"
+
+[sub_resource type="Resource" id="Resource_yn466"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_FAIL_1"
+
+[sub_resource type="Resource" id="Resource_q60sk"]
+script = ExtResource("2_74jph")
+stackable = false
+cast_success = false
+effect_name = "Temp 1"
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_lyx3r")])
+on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_yn466")])
+on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+
+[sub_resource type="Resource" id="Resource_461su"]
+script = ExtResource("3_kfuly")
+chance = 0.5
+effect = SubResource("Resource_q60sk")
+
+[sub_resource type="Resource" id="Resource_1225v"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_2"
+
+[sub_resource type="Resource" id="Resource_yy6j7"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_FAIL_2"
+
+[sub_resource type="Resource" id="Resource_fpkfv"]
+script = ExtResource("2_74jph")
+stackable = false
+cast_success = false
+effect_name = "Temp 2"
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_1225v")])
+on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_yy6j7")])
+on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+
+[sub_resource type="Resource" id="Resource_qbmyo"]
+script = ExtResource("3_kfuly")
+chance = 0.5
+effect = SubResource("Resource_fpkfv")
+
+[sub_resource type="Resource" id="Resource_saq2w"]
+script = ExtResource("4_fero0")
+chance = 1.0
+effect_set = Array[ExtResource("3_kfuly")]([SubResource("Resource_461su"), SubResource("Resource_qbmyo")])
+
+[sub_resource type="Resource" id="Resource_geo43"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_3"
+
+[sub_resource type="Resource" id="Resource_0wsgd"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_FAIL_3"
+
+[sub_resource type="Resource" id="Resource_vo7ta"]
+script = ExtResource("2_74jph")
+stackable = false
+cast_success = false
+effect_name = "Temp 3"
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_geo43")])
+on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_0wsgd")])
+on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+
+[sub_resource type="Resource" id="Resource_8u2oq"]
+script = ExtResource("3_kfuly")
+chance = 1.0
+effect = SubResource("Resource_vo7ta")
+
+[sub_resource type="Resource" id="Resource_6q8n1"]
+script = ExtResource("4_fero0")
+chance = 0.5
+effect_set = Array[ExtResource("3_kfuly")]([SubResource("Resource_8u2oq")])
 
 [resource]
 script = ExtResource("1_wntlk")
@@ -27,3 +178,6 @@ spell_cost = 0
 spell_priority = 0
 spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
 animation_sequence = ExtResource("1_rhe1y")
+effects_on_hit = Array[ExtResource("4_fero0")]([SubResource("Resource_b2845"), SubResource("Resource_saq2w"), SubResource("Resource_6q8n1")])
+effects_on_success = Array[ExtResource("4_fero0")]([])
+properties = Array[ExtResource("2_74jph")]([])
