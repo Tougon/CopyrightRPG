@@ -183,10 +183,23 @@ func _action_phase():
 			var effects = spell.effects;
 			
 			for effect in effects:
-				if spell.success : 
+				if effect.cast_success : 
 					effect.on_activate();
 				else :
 					effect.on_failed_to_activate();
+		
+		for effect in entity.current_action.effects_on_success:
+			var e = effect.get_effect();
+			var proc = randf();
+			
+			if e != null && proc <= effect.chance:
+				var inst = e.create_effect_instance(entity, entity, null);
+				inst.check_success();
+				
+				if inst.cast_success && any_cast_succeeded: 
+					inst.on_activate();
+				else :
+					inst.on_failed_to_activate();
 		
 		# TODO: find a better way to do this. I don't really like accessing the queue
 		if sequencer.sequence_queue.size() > 0 :

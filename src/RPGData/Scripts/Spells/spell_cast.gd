@@ -46,6 +46,7 @@ func set_damage(dm : Array[int]):
 					
 					if !exists || (exists && eff.stackable):
 						var inst = eff.create_effect_instance(user, target, self);
+						inst.check_success();
 						effects.append(inst);
 
 

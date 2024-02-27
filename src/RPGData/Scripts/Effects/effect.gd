@@ -4,6 +4,7 @@ class_name Effect
 
 enum EffectType { Volitile, NonVolitile }
 enum EffectTarget { User, Target }
+enum EffectCheckType { AND, OR }
 
 @export_group("Universal Effect Parameters")
 ## Indicates if this event can stack
@@ -21,7 +22,10 @@ enum EffectTarget { User, Target }
 @export var effect_type : EffectType = EffectType.Volitile;
 
 # Replacements for BetterEvents
+@export_group("Effect Functions")
+@export var check_success_type : EffectCheckType;
 @export var check_success : Array[EffectFunction]
+@export var check_remain_active_type : EffectCheckType;
 @export var check_remain_active : Array[EffectFunction]
 @export var on_activate : Array[EffectFunction]
 @export var on_failed_to_activate : Array[EffectFunction]
@@ -52,6 +56,24 @@ func get_effect_name(instance : EffectInstance) -> String:
 
 func check_for_cast_success(instance : EffectInstance):
 	instance.cast_success = true;
+	for function in check_success:
+		function.execute(instance);
+		
+		if check_success_type == EffectCheckType.AND && instance.cast_success == false:
+			return;
+		elif check_success_type == EffectCheckType.OR && instance.cast_success == true:
+			return;
+
+
+func check_for_remain_active(instance : EffectInstance):
+	instance.cast_success = true;
+	for function in check_remain_active:
+		function.execute(instance);
+		
+		if check_remain_active_type == EffectCheckType.AND && instance.cast_success == false:
+			return;
+		elif check_remain_active_type == EffectCheckType.OR && instance.cast_success == true:
+			return;
 
 
 func on_activate_instance(instance : EffectInstance):

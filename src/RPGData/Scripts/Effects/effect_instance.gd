@@ -19,7 +19,10 @@ func get_effect_name() -> String:
 	return effect.get_effect_name(self);
 
 func check_success():
-	pass;
+	effect.check_for_cast_success(self);
+
+func check_remain_active():
+	effect.check_for_remain_active(self);
 
 func on_activate():
 	effect.on_activate_instance(self);

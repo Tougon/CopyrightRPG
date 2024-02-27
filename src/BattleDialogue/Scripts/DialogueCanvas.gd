@@ -169,7 +169,7 @@ func _print_by_word(text : String):
 		if width >= text_label.get_rect().size.x:
 			current_rows += 1;
 			
-			if n < splits.size() - 1:
+			if n < splits.size():
 				var row_pause_time = row_pause;
 				
 				if !finish_print && row_pause_time > 0 : 
