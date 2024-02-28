@@ -29,3 +29,12 @@ func on_activate():
 
 func on_failed_to_activate():
 	effect.on_failed_to_activate_instance(self);
+
+func on_apply():
+	effect.on_apply_instance(self);
+
+func on_stack():
+	effect.on_stack_instance(self);
+
+func on_deactivate():
+	effect.on_deactivate_instance(self);

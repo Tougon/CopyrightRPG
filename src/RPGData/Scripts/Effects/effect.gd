@@ -84,3 +84,18 @@ func on_activate_instance(instance : EffectInstance):
 func on_failed_to_activate_instance(instance : EffectInstance):
 	for function in on_failed_to_activate:
 		function.execute(instance);
+
+
+func on_apply_instance(instance : EffectInstance):
+	for function in on_apply:
+		function.execute(instance);
+
+
+func on_stack_instance(instance : EffectInstance):
+	for function in on_stack:
+		function.execute(instance);
+
+
+func on_deactivate_instance(instance : EffectInstance):
+	for function in on_deactivate:
+		function.execute(instance);

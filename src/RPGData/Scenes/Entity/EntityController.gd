@@ -54,6 +54,9 @@ var enemies : Array[EntityController];
 
 var action_result : Array[SpellCast];
 
+var effects : Array[EffectInstance];
+var properties : Array[EffectInstance];
+
 
 # Initialization
 func _ready():
@@ -397,6 +400,37 @@ func get_evasion_modifiers():
 
 func get_accuracy_modifiers():
 	return accuracy_mods.values();
+
+
+# Effect functions
+func apply_effect(instance : EffectInstance):
+	if is_defeated : return;
+	
+	if instance.effect.stackable:
+		var existing_instance = _find_effect_by_name(instance.get_effect_name());
+		
+		if existing_instance != null :
+			instance.on_stack();
+		else :
+			effects.append(instance);
+			instance.on_apply();
+	elif !_find_effect_by_name(instance.get_effect_name()) :
+		effects.append(instance);
+		instance.on_apply();
+	# TODO: Sort effects by priority
+
+
+func remove_effect(instance : EffectInstance, deactivate : bool = true):
+	if effects.has(instance) :
+		if deactivate : instance.on_deactivate();
+		effects.erase(instance);
+
+
+func _find_effect_by_name(name : String) -> EffectInstance:
+	for effect in effects:
+		if effect.get_effect_name() == name:
+			return effect;
+	return null;
 
 
 # Misc functions

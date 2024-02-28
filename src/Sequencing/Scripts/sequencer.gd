@@ -37,6 +37,10 @@ func _on_sequence_ended():
 		EventManager.on_sequence_queue_empty.emit();
 
 
+func is_sequence_playing_or_queued() -> bool:
+	return sequence_queue.size() > 0 || current_sequence != null;
+
+
 func _unhandled_input(event):
 	if current_sequence != null:
 		var result = current_sequence.unhandled_input(event);

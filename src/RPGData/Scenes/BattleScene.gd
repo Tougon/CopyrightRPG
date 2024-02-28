@@ -201,8 +201,7 @@ func _action_phase():
 				else :
 					inst.on_failed_to_activate();
 		
-		# TODO: find a better way to do this. I don't really like accessing the queue
-		if sequencer.sequence_queue.size() > 0 :
+		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
 		
