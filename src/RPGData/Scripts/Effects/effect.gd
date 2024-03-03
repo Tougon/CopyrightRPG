@@ -31,6 +31,7 @@ enum EffectCheckType { AND, OR }
 @export var on_failed_to_activate : Array[EffectFunction]
 @export var on_apply : Array[EffectFunction]
 @export var on_move_selected : Array[EffectFunction]
+@export var on_move_completed : Array[EffectFunction]
 @export var on_deactivate : Array[EffectFunction]
 @export var on_turn_start : Array[EffectFunction]
 @export var on_turn_end : Array[EffectFunction]
@@ -98,4 +99,24 @@ func on_stack_instance(instance : EffectInstance):
 
 func on_deactivate_instance(instance : EffectInstance):
 	for function in on_deactivate:
+		function.execute(instance);
+
+
+func on_turn_start_instance(instance : EffectInstance):
+	for function in on_turn_start:
+		function.execute(instance);
+
+
+func on_move_selected_instance(instance : EffectInstance):
+	for function in on_move_selected:
+		function.execute(instance);
+
+
+func on_move_completed_instance(instance : EffectInstance):
+	for function in on_move_completed:
+		function.execute(instance);
+
+
+func on_turn_end_instance(instance : EffectInstance):
+	for function in on_turn_end:
 		function.execute(instance);

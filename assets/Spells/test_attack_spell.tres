@@ -1,13 +1,22 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=30 format=3 uid="uid://bl7lkqotimci2"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=38 format=3 uid="uid://bl7lkqotimci2"]
 
 [ext_resource type="Resource" uid="uid://bs6g8nyjbm8sq" path="res://assets/Animations/Sequences/test_anim.tres" id="1_rhe1y"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="1_wntlk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_6hw32"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_74jph"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="2_idwye"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_hp.gd" id="2_j2g53"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_7kkmo"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_kfuly"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_fero0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="6_worrf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="7_xm4cx"]
+
+[sub_resource type="Resource" id="Resource_euxej"]
+script = ExtResource("2_6hw32")
+check_mode = 1
+use_limit = true
+turns = 3
 
 [sub_resource type="Resource" id="Resource_22fur"]
 script = ExtResource("2_j2g53")
@@ -25,11 +34,26 @@ deactivate = true
 
 [sub_resource type="Resource" id="Resource_o1ahw"]
 script = ExtResource("2_idwye")
-dialogue_key = "T_TEST_FAIL_0"
+dialogue_key = "T_TEST_0"
+
+[sub_resource type="Resource" id="Resource_nkys4"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_INACTIVE"
 
 [sub_resource type="Resource" id="Resource_22qao"]
 script = ExtResource("2_idwye")
 dialogue_key = "T_TEST_FAIL_0"
+
+[sub_resource type="Resource" id="Resource_t5fnp"]
+script = ExtResource("2_idwye")
+dialogue_key = "T_TEST_ACTIVE"
+
+[sub_resource type="Resource" id="Resource_qngoo"]
+script = ExtResource("6_worrf")
+target = 0
+
+[sub_resource type="Resource" id="Resource_fnmfl"]
+script = ExtResource("7_xm4cx")
 
 [sub_resource type="Resource" id="Resource_lq6cm"]
 script = ExtResource("2_74jph")
@@ -38,17 +62,18 @@ cast_success = false
 effect_name = "Temp 0"
 generic = false
 priority = 3
-turn_limit = 3
+turn_limit = 1
 effect_type = 0
 check_success_type = 0
 check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_22fur")])
 check_remain_active_type = 0
-check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_euxej")])
 on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_ikx6s")])
 on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_22qao")])
 on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_o1ahw")])
-on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_fnmfl")])
+on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_t5fnp"), SubResource("Resource_qngoo")])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_nkys4")])
 on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
@@ -88,6 +113,7 @@ on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.
 on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_yn466")])
 on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
@@ -123,6 +149,7 @@ on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.
 on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_yy6j7")])
 on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
@@ -163,6 +190,7 @@ on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.
 on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_0wsgd")])
 on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])

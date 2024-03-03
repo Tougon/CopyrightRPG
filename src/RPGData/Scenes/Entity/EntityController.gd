@@ -403,6 +403,32 @@ func get_accuracy_modifiers():
 
 
 # Effect functions
+# NOTE: It is unclear to me how GDScript/Python handle removing items in a loop.
+func execute_turn_start_effects():
+	for effect in effects :
+		effect.on_turn_start();
+
+
+func execute_remain_active_check():
+	for effect in effects :
+		effect.check_remain_active();
+
+
+func execute_move_selected_effects():
+	for effect in effects :
+		effect.on_move_selected();
+
+
+func execute_move_completed_effects():
+	for effect in effects :
+		effect.on_move_completed();
+
+
+func execute_turn_end_effects():
+	for effect in effects :
+		effect.on_turn_end();
+
+
 func apply_effect(instance : EffectInstance):
 	if is_defeated : return;
 	
@@ -414,10 +440,13 @@ func apply_effect(instance : EffectInstance):
 		else :
 			effects.append(instance);
 			instance.on_apply();
+	
 	elif !_find_effect_by_name(instance.get_effect_name()) :
 		effects.append(instance);
 		instance.on_apply();
-	# TODO: Sort effects by priority
+	
+	# Sort effects by priority
+	effects.sort_custom(compare_effect_priority);
 
 
 func remove_effect(instance : EffectInstance, deactivate : bool = true):
@@ -477,6 +506,24 @@ static func compare_speed_tie(a : EntityController, b : EntityController) -> boo
 			return false;
 	
 	return result;
+
+
+static func compare_effect_priority (a : EffectInstance, b : EffectInstance) -> bool:
+	var priority_a = -10;
+	var priority_b = -10;
+	
+	if a.effect != null:
+		priority_a = a.effect.priority;
+	
+	if b.effect != null:
+		priority_b = b.effect.priority;
+	
+	if priority_a > priority_b:
+		return true;
+	elif priority_b > priority_a:
+		return false;
+	
+	return false;
 
 
 # UI helper/polish functions

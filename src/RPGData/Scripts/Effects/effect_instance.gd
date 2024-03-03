@@ -38,3 +38,15 @@ func on_stack():
 
 func on_deactivate():
 	effect.on_deactivate_instance(self);
+
+func on_turn_start():
+	effect.on_turn_start_instance(self);
+
+func on_move_selected():
+	effect.on_move_selected_instance(self);
+
+func on_move_completed():
+	effect.on_move_completed_instance(self);
+
+func on_turn_end():
+	effect.on_turn_end_instance(self);

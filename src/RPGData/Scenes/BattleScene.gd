@@ -110,7 +110,11 @@ func _decision_phase():
 
 
 func _action_phase():
-	# TODO: Execute turn start effects
+	# Execute turn start effects
+	for entity in entities:
+		if !entity.is_defeated:
+			entity.execute_turn_start_effects();
+			
 	await get_tree().process_frame;
 	
 	var turn_order : Array[EntityController];
@@ -137,7 +141,8 @@ func _action_phase():
 		if !is_target_valid:
 			continue;
 		
-		# TODO: Execute effects on move selected
+		# Execute effects on move selected
+		entity.execute_move_selected_effects();
 		
 		# Cast the spell
 		var spell_cast = entity.current_action.cast(entity, entity.current_target);
@@ -201,6 +206,8 @@ func _action_phase():
 				else :
 					inst.on_failed_to_activate();
 		
+		entity.execute_move_completed_effects();
+		
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
@@ -262,8 +269,17 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 
 
 func _end_phase():
-	# TODO: Turn end behaviors for effects
+	# Execute turn end effect functions
+	for entity in entities:
+		if !entity.is_defeated:
+			# NOTE: In the original game, this is where we checked for remain active.
+			# This will no longer be done to give more control over when this occurs.
+			#entity.execute_remain_active_check();
+			entity.execute_turn_end_effects();
 	
+	if sequencer.is_sequence_playing_or_queued() :
+		await EventManager.on_sequence_queue_empty;
+	EventManager.hide_entity_ui.emit();
 	
 	# TODO: Proper lose state
 	if (_all_players_defeated()) : return;
