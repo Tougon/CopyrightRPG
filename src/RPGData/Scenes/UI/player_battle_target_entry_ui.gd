@@ -50,6 +50,7 @@ func _on_focus_exited():
 	
 	for i in arrows.size():
 		arrows[i].get_node("TweenPlayerUI").cancel_tween();
+		arrows[i].get_node("Arrow").position = Vector2(0,0);
 		arrows[i].visible = false;
 	
 	for target in targets:
