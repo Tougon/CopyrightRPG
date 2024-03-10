@@ -20,6 +20,7 @@ signal set_active_player(entity : EntityController);
 signal player_menu_cancel();
 
 signal on_attack_select();
+signal on_defend_select();
 signal initialize_target_menu(entity : EntityController);
 signal highlight_target(entity : EntityController, all : bool);
 signal click_target(entity : EntityController);

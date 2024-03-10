@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://dciwv5n41ixne"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="1_3anwj"]
+
+[resource]
+script = ExtResource("1_3anwj")
+spell_name_key = "T_SPELL_GENERIC_DEFEND"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_GENERIC_DEFEND"
+spell_type = 0
+spell_target = 4
+spell_cost = 0
+spell_priority = 5
+spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

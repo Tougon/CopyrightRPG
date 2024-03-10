@@ -109,3 +109,4 @@ theme_override_font_sizes/font_size = 32
 text = "Attack"
 
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button3" to="." method="_on_defend_button_pressed"]

@@ -23,5 +23,9 @@ func _on_attack_button_pressed():
 	EventManager.on_attack_select.emit();
 
 
+func _on_defend_button_pressed():
+	EventManager.on_defend_select.emit();
+
+
 func on_menu_cancel():
 	EventManager.player_menu_cancel.emit();

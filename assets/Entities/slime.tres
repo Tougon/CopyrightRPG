@@ -5,13 +5,13 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="1_lpo00"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_tkvbf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="2_cc3c8"]
-[ext_resource type="Resource" uid="uid://bl7lkqotimci2" path="res://assets/Spells/test_attack_spell.tres" id="2_dxxge"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
 [ext_resource type="Texture2D" uid="uid://bbl4qai6jru65" path="res://assets/Sprites/Entities/slime_neutral.png" id="5_vh60y"]
 [ext_resource type="Texture2D" uid="uid://eao5aq6mkwlr" path="res://assets/Sprites/Entities/slime_damage.png" id="6_q3frx"]
 [ext_resource type="Texture2D" uid="uid://db2sg54va4qdk" path="res://assets/Sprites/Entities/slime_attack.png" id="7_1630i"]
-[ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/test_spell.tres" id="10_4pg74"]
+[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="9_miihp"]
+[ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/reference/test_spell.tres" id="10_6f66q"]
 
 [sub_resource type="Resource" id="Resource_k3ayc"]
 script = ExtResource("2_cc3c8")
@@ -41,12 +41,12 @@ turn_behavior = Array[ExtResource("4_l7lga")]([SubResource("Resource_k0d1d")])
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("2_dxxge")
+spell = ExtResource("9_miihp")
 level = 0
 
 [sub_resource type="Resource" id="Resource_k72ke"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("10_4pg74")
+spell = ExtResource("10_6f66q")
 level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]

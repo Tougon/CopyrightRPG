@@ -110,11 +110,17 @@ func sequence_start():
 	
 	super.sequence_start();
 	
-	if aso.hide_ui_on_start :
+	if aso != null && aso.hide_ui_on_start :
 		EventManager.hide_entity_ui.emit();
 
 
 func sequence_loop():
+	# If there is no sequence, immediately end, operation is unneeded.
+	if aso == null || aso.animation_sequence == null: 
+		sequence_end();
+		active = false;
+		return;
+	
 	while running:
 		current_time += user.get_process_delta_time();
 		
