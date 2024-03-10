@@ -5,3 +5,6 @@
 
 [node name="EntityBase" instance=ExtResource("1_hfutr")]
 script = ExtResource("2_4tbuf")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.75, 0.75)

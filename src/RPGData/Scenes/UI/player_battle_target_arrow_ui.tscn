@@ -9,7 +9,7 @@
 script = ExtResource("3_80dx5")
 tween_name = "Arrow Bob"
 tween_resource = ExtResource("4_4mlxe")
-play_on_start = true
+play_on_start = false
 next_tween = "Arrow Bob"
 
 [node name="player_battle_target_arrow" type="Control"]

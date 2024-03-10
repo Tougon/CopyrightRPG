@@ -17,7 +17,7 @@
 script = ExtResource("2_cc3c8")
 hp_percent = 0.5
 check_target = 0
-negate = true
+negate = false
 
 [sub_resource type="Resource" id="Resource_5q53p"]
 script = ExtResource("3_fjnas")

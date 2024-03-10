@@ -25,8 +25,8 @@ func initialize(targets : Array[EntityController], arrows : Array[Control], play
 		if i < targets.size():
 			arrows[i].global_position = targets[i].global_position + offset - (arrows[i].size / 2) + targets[i].get_sprite_top_offset();
 		else:
-			arrows[i].global_position = self.global_position + offset - (arrows[i].size / 2);
-
+			arrows[i].global_position = self.global_position + offset - (arrows[i].size / 2)
+			
 
 func _on_focus_entered():
 	if targets.size() <= 0:
@@ -34,17 +34,22 @@ func _on_focus_entered():
 	
 	selected = true;
 	EventManager.highlight_target.emit(targets[0], all);
+	
 	for i in arrows.size():
 		arrows[i].visible = true;
+		arrows[i].get_node("TweenPlayerUI").play_tween_name("Arrow Bob");
 	
 	for target in targets:
 		if target != null : 
+			target.mat.set_shader_parameter("overlay_color", Color.WHITE);
 			target.tween.play_tween_name("Entity Highlight");
 
 
 func _on_focus_exited():
 	selected = false;
+	
 	for i in arrows.size():
+		arrows[i].get_node("TweenPlayerUI").cancel_tween();
 		arrows[i].visible = false;
 	
 	for target in targets:

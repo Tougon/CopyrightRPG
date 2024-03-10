@@ -7,10 +7,11 @@ enum EffectTarget { User, Target }
 enum EffectCheckType { AND, OR }
 
 @export_group("Universal Effect Parameters")
-## Indicates if this event can stack
+## Indicates if this effect can stack
 @export var stackable : bool = false;
-## Indicates if the current event should check if the cast was successful or not
-@export var cast_success : bool = false;
+## Indicates if the current effect should check if the cast was successful or not
+## Seems to be vestigal. If we run into problems, restore this.
+#@export var cast_success : bool = false;
 ## Used to identify instances of the effect internally
 @export var effect_name : String = "";
 ## Used to allow for certain effects to be applied independently while using the same name (i.e. stat buffs)
@@ -58,6 +59,7 @@ func get_effect_name(instance : EffectInstance) -> String:
 func check_for_cast_success(instance : EffectInstance):
 	instance.cast_success = true;
 	for function in check_success:
+		if function == null : continue;
 		function.execute(instance);
 		
 		if check_success_type == EffectCheckType.AND && instance.cast_success == false:
@@ -69,6 +71,7 @@ func check_for_cast_success(instance : EffectInstance):
 func check_for_remain_active(instance : EffectInstance):
 	instance.cast_success = true;
 	for function in check_remain_active:
+		if function == null : continue;
 		function.execute(instance);
 		
 		if check_remain_active_type == EffectCheckType.AND && instance.cast_success == false:
@@ -79,44 +82,53 @@ func check_for_remain_active(instance : EffectInstance):
 
 func on_activate_instance(instance : EffectInstance):
 	for function in on_activate:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_failed_to_activate_instance(instance : EffectInstance):
 	for function in on_failed_to_activate:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_apply_instance(instance : EffectInstance):
 	for function in on_apply:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_stack_instance(instance : EffectInstance):
 	for function in on_stack:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_deactivate_instance(instance : EffectInstance):
 	for function in on_deactivate:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_turn_start_instance(instance : EffectInstance):
 	for function in on_turn_start:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_move_selected_instance(instance : EffectInstance):
 	for function in on_move_selected:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_move_completed_instance(instance : EffectInstance):
 	for function in on_move_completed:
+		if function == null : continue;
 		function.execute(instance);
 
 
 func on_turn_end_instance(instance : EffectInstance):
 	for function in on_turn_end:
+		if function == null : continue;
 		function.execute(instance);
