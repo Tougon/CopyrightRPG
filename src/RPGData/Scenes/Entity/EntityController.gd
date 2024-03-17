@@ -462,6 +462,17 @@ func _find_effect_by_name(name : String) -> EffectInstance:
 	return null;
 
 
+# Effect functions
+func apply_property(instance : EffectInstance):
+	properties.append(instance);
+
+
+func clear_properties():
+	for p in properties:
+		p.on_deactivate();
+	properties.clear();
+
+
 # Misc functions
 func reset_action():
 	current_action = null;

@@ -58,7 +58,6 @@ script = ExtResource("7_xm4cx")
 [sub_resource type="Resource" id="Resource_lq6cm"]
 script = ExtResource("2_74jph")
 stackable = false
-cast_success = false
 effect_name = "Temp 0"
 generic = false
 priority = 3
@@ -99,7 +98,6 @@ dialogue_key = "T_TEST_FAIL_1"
 [sub_resource type="Resource" id="Resource_q60sk"]
 script = ExtResource("2_74jph")
 stackable = false
-cast_success = false
 effect_name = "Temp 1"
 generic = false
 priority = 3
@@ -135,7 +133,6 @@ dialogue_key = "T_TEST_FAIL_2"
 [sub_resource type="Resource" id="Resource_fpkfv"]
 script = ExtResource("2_74jph")
 stackable = false
-cast_success = false
 effect_name = "Temp 2"
 generic = false
 priority = 3
@@ -176,7 +173,6 @@ dialogue_key = "T_TEST_FAIL_3"
 [sub_resource type="Resource" id="Resource_vo7ta"]
 script = ExtResource("2_74jph")
 stackable = false
-cast_success = false
 effect_name = "Temp 3"
 generic = false
 priority = 3

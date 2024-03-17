@@ -69,8 +69,24 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 		cast.success = check_can_cast(user, target);
 		
 		if cast.success:
-			# TODO: Apply spell properties.
-			# These may affect any calculation going forward.
+			# Apply spell properties.
+			var prop_instances : Array[EffectInstance];
+			
+			for e in properties:
+				if !_check_is_property_in_list(prop_instances, e):
+					var eff = e.create_effect_instance(user, target, cast);
+					eff.check_success();
+					if eff.cast_success: 
+						eff.on_activate();
+						prop_instances.append(eff);
+			
+			var user_prop_instances = user.properties;
+			
+			for e in user_prop_instances:
+				e.check_success();
+				
+				if e.cast_success: 
+					e.on_activate();
 			
 			# TODO: Implement accuracy check
 			cast.success = check_spell_hit(user, target);
@@ -87,10 +103,22 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				cast.set_damage([0])
 				cast.set_critical([false])
 			
-			# TODO: Deactivate properties
+			# Deactivate properties
+			for p in prop_instances:
+				p.on_deactivate();
+			
+			user.clear_properties();
 	else:
 		cast.fail_message = tr("T_BATTLE_MP_BAD").format({entity = user.param.entity_name});
 	result.append(cast);
+
+
+func _check_is_property_in_list(props : Array[EffectInstance], eff : Effect) -> bool:
+	for p in props:
+		if p.effect == eff && !eff.stackable:
+			return true;
+	
+	return false;
 
 
 func check_mp(user : EntityController) -> bool:
