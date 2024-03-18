@@ -4,9 +4,10 @@ class_name ASAGenerateEffect
 
 @export var effect_scene : PackedScene;
 @export var relative : AnimationSequenceAction.Target;
+@export var effect_index : int;
 @export var effect_position : Vector2;
 @export var effect_rotation : float;
-@export var effect_scale : Vector2;
+@export var effect_scale : Vector2 = Vector2(1, 1);
 @export var child : bool;
 @export var pos_match_sequence_dir : bool;
 @export var rot_match_sequence_dir : bool;
@@ -26,6 +27,8 @@ func execute(sequence : AnimationSequence):
 		entity = sequence.user;
 	elif relative == Target.TARGET:
 		entity = sequence.target[sequence.target_index];
+	elif relative == Target.EFFECT && effect_index < sequence.effects.size() && effect_index >= 0:
+		entity = sequence.effects[effect_index];
 	
 	if entity != null:
 		

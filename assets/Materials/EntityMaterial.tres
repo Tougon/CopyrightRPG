@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dsqap206ajugs"]
+
+[ext_resource type="Shader" path="res://assets/Shaders/EntityUniversal.gdshader" id="1_mylni"]
+[ext_resource type="Texture2D" uid="uid://bxmp70haf151v" path="res://assets/Textures/overlay_raise.png" id="2_p46qv"]
+
+[resource]
+shader = ExtResource("1_mylni")
+shader_parameter/overlay_color = Color(1, 1, 1, 1)
+shader_parameter/overlay_color_amount = 0.0
+shader_parameter/overlay_alpha_amount = 0.0
+shader_parameter/overlay_texture_offset = Vector2(0, 0)
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 0.0
+shader_parameter/overlay_texture = ExtResource("2_p46qv")

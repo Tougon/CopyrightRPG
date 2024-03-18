@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=54 format=3 uid="uid://bs6g8nyjbm8sq"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=45 format=3 uid="uid://f33mxcf8k8fx"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_42ti6"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_bx7of"]
@@ -195,98 +195,17 @@ frame = 28
 frame_order = 0
 action = SubResource("Resource_6n31k")
 
-[sub_resource type="Resource" id="Resource_7127s"]
-script = ExtResource("2_hn3wi")
-target = "Sprite2D"
-property_name = "shader_parameter/overlay_color_amount"
-material_property = true
-duration = 0.4
-delay = 0.0
-transition = 0
-ease = 0
-relative = false
-"Use From" = false
-"Value Type" = 1
-"Float Value" = 0.5
-
-[sub_resource type="Resource" id="Resource_7o3cw"]
-script = ExtResource("1_bx7of")
-use_directionality = false
-target = 0
-effect_index = 0
-tween = SubResource("Resource_7127s")
-
-[sub_resource type="Resource" id="Resource_u0ohg"]
-script = ExtResource("2_st50u")
-frame = 30
-frame_order = 0
-action = SubResource("Resource_7o3cw")
-
-[sub_resource type="Resource" id="Resource_w8f08"]
-script = ExtResource("2_hn3wi")
-target = "Sprite2D"
-property_name = "shader_parameter/overlay_color"
-material_property = true
-duration = 0.4
-delay = 0.0
-transition = 0
-ease = 0
-relative = false
-"Use From" = false
-"Value Type" = 5
-"Color Value" = Color(1, 0, 1, 1)
-
-[sub_resource type="Resource" id="Resource_4u1tg"]
-script = ExtResource("1_bx7of")
-use_directionality = false
-target = 0
-effect_index = 0
-tween = SubResource("Resource_w8f08")
-
-[sub_resource type="Resource" id="Resource_ebtrm"]
-script = ExtResource("2_st50u")
-frame = 30
-frame_order = 1
-action = SubResource("Resource_4u1tg")
-
-[sub_resource type="Resource" id="Resource_plvga"]
-script = ExtResource("2_hn3wi")
-target = "Sprite2D"
-property_name = "shader_parameter/overlay_color"
-material_property = true
-duration = 0.3
-delay = 0.0
-transition = 0
-ease = 0
-relative = false
-"Use From" = false
-"Value Type" = 5
-"Color Value" = Color(0.517647, 0.866667, 0.690196, 1)
-
-[sub_resource type="Resource" id="Resource_u6u75"]
-script = ExtResource("1_bx7of")
-use_directionality = false
-target = 0
-effect_index = 0
-tween = SubResource("Resource_plvga")
-
-[sub_resource type="Resource" id="Resource_16hyf"]
-script = ExtResource("2_st50u")
-frame = 80
-frame_order = 0
-action = SubResource("Resource_u6u75")
-
 [sub_resource type="Resource" id="Resource_mj1pb"]
 script = ExtResource("3_gvvo3")
 
 [sub_resource type="Resource" id="Resource_iwrrj"]
 script = ExtResource("2_st50u")
-frame = 120
+frame = 40
 frame_order = 0
 action = SubResource("Resource_mj1pb")
 
 [resource]
 script = ExtResource("1_42ti6")
-animation_name = "Test"
+animation_name = "Attack"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_gsb1u"), SubResource("Resource_nsmpw"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_a0bpd"), SubResource("Resource_q3dud"), SubResource("Resource_atue2"), SubResource("Resource_1e5uo"), SubResource("Resource_indbo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_vucge"), SubResource("Resource_u0ohg"), SubResource("Resource_ebtrm"), SubResource("Resource_16hyf"), SubResource("Resource_iwrrj")])
+animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_gsb1u"), SubResource("Resource_nsmpw"), SubResource("Resource_fbclg"), SubResource("Resource_khlsu"), SubResource("Resource_a0bpd"), SubResource("Resource_q3dud"), SubResource("Resource_atue2"), SubResource("Resource_1e5uo"), SubResource("Resource_indbo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_vucge"), SubResource("Resource_iwrrj")])

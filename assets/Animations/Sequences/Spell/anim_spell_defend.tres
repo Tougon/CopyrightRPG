@@ -1,0 +1,347 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=50 format=3 uid="uid://c1yvqg3xp3v7d"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_f33oh"]
+[ext_resource type="PackedScene" uid="uid://dhdudp5upm5ur" path="res://assets/Effects/Generic/effect_spell_defend_0.tscn" id="1_fmkj2"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="1_nhj8r"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_p6bkq"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_wl3i4"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_sgabb"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="6_8mr73"]
+[ext_resource type="PackedScene" uid="uid://cd7i8pspt60i" path="res://assets/Effects/Generic/effect_spell_defend_1.tscn" id="6_v7c2m"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="6_vybql"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="7_25jrm"]
+
+[sub_resource type="Resource" id="Resource_12kpm"]
+script = ExtResource("1_nhj8r")
+effect_scene = ExtResource("1_fmkj2")
+relative = 0
+effect_index = 0
+effect_position = Vector2(0, 0)
+effect_rotation = 0.0
+effect_scale = Vector2(1, 1)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_7a851"]
+script = ExtResource("2_p6bkq")
+frame = 20
+frame_order = 0
+action = SubResource("Resource_12kpm")
+
+[sub_resource type="Resource" id="Resource_hfyfs"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_l8ft5"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_hfyfs")
+
+[sub_resource type="Resource" id="Resource_jmici"]
+script = ExtResource("2_p6bkq")
+frame = 20
+frame_order = 1
+action = SubResource("Resource_l8ft5")
+
+[sub_resource type="Resource" id="Resource_cki22"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 1.0
+
+[sub_resource type="Resource" id="Resource_nuj3f"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_cki22")
+
+[sub_resource type="Resource" id="Resource_i81vg"]
+script = ExtResource("2_p6bkq")
+frame = 20
+frame_order = 2
+action = SubResource("Resource_nuj3f")
+
+[sub_resource type="Resource" id="Resource_lhwu5"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_alpha_amount"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 1.0
+
+[sub_resource type="Resource" id="Resource_yff8a"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_lhwu5")
+
+[sub_resource type="Resource" id="Resource_alid5"]
+script = ExtResource("2_p6bkq")
+frame = 20
+frame_order = 3
+action = SubResource("Resource_yff8a")
+
+[sub_resource type="Resource" id="Resource_qlny7"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "scale"
+material_property = false
+duration = 1.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1.25, 1.25)
+
+[sub_resource type="Resource" id="Resource_fb5aa"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_qlny7")
+
+[sub_resource type="Resource" id="Resource_8qvtf"]
+script = ExtResource("2_p6bkq")
+frame = 21
+frame_order = 0
+action = SubResource("Resource_fb5aa")
+
+[sub_resource type="Resource" id="Resource_kofv4"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_alpha_amount"
+material_property = true
+duration = 1.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_qo76p"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_kofv4")
+
+[sub_resource type="Resource" id="Resource_wqxur"]
+script = ExtResource("2_p6bkq")
+frame = 21
+frame_order = 1
+action = SubResource("Resource_qo76p")
+
+[sub_resource type="Resource" id="Resource_ila7s"]
+script = ExtResource("1_nhj8r")
+effect_scene = ExtResource("6_v7c2m")
+relative = 0
+effect_index = 0
+effect_position = Vector2(0, 0)
+effect_rotation = 0.0
+effect_scale = Vector2(1.25, 1.25)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_b7ri5"]
+script = ExtResource("2_p6bkq")
+frame = 81
+frame_order = 0
+action = SubResource("Resource_ila7s")
+
+[sub_resource type="Resource" id="Resource_io85r"]
+script = ExtResource("7_25jrm")
+target = 0
+effect_index = 0
+duration = 0.25
+vibration_speed = 50.0
+strength = Vector2(15, 0)
+transition_type = 4
+ease_type = 2
+decay_factor = 0.35
+
+[sub_resource type="Resource" id="Resource_x2r7v"]
+script = ExtResource("2_p6bkq")
+frame = 81
+frame_order = 1
+action = SubResource("Resource_io85r")
+
+[sub_resource type="Resource" id="Resource_qk6xb"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "scale"
+material_property = false
+duration = 0.5
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(2.5, 2.5)
+
+[sub_resource type="Resource" id="Resource_hqcal"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 1
+tween = SubResource("Resource_qk6xb")
+
+[sub_resource type="Resource" id="Resource_64pf6"]
+script = ExtResource("2_p6bkq")
+frame = 81
+frame_order = 2
+action = SubResource("Resource_hqcal")
+
+[sub_resource type="Resource" id="Resource_kh8pn"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "scale"
+material_property = false
+duration = 0.5
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_0ky3v"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_kh8pn")
+
+[sub_resource type="Resource" id="Resource_aiaqv"]
+script = ExtResource("2_p6bkq")
+frame = 81
+frame_order = 3
+action = SubResource("Resource_0ky3v")
+
+[sub_resource type="Resource" id="Resource_ds6o4"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "modulate"
+material_property = false
+duration = 0.5
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_0fhit"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 1
+tween = SubResource("Resource_ds6o4")
+
+[sub_resource type="Resource" id="Resource_tkyak"]
+script = ExtResource("2_p6bkq")
+frame = 81
+frame_order = 4
+action = SubResource("Resource_0fhit")
+
+[sub_resource type="Resource" id="Resource_ambhf"]
+script = ExtResource("5_sgabb")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_alpha_amount"
+material_property = true
+duration = 0.5
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 1.0
+
+[sub_resource type="Resource" id="Resource_dgpo8"]
+script = ExtResource("4_wl3i4")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_ambhf")
+
+[sub_resource type="Resource" id="Resource_70mw6"]
+script = ExtResource("2_p6bkq")
+frame = 121
+frame_order = 0
+action = SubResource("Resource_dgpo8")
+
+[sub_resource type="Resource" id="Resource_qi5ho"]
+script = ExtResource("6_8mr73")
+effect_id = 1
+
+[sub_resource type="Resource" id="Resource_mxswi"]
+script = ExtResource("2_p6bkq")
+frame = 160
+frame_order = 0
+action = SubResource("Resource_qi5ho")
+
+[sub_resource type="Resource" id="Resource_n5uu1"]
+script = ExtResource("6_8mr73")
+effect_id = 0
+
+[sub_resource type="Resource" id="Resource_qw88o"]
+script = ExtResource("2_p6bkq")
+frame = 160
+frame_order = 1
+action = SubResource("Resource_n5uu1")
+
+[sub_resource type="Resource" id="Resource_kt3v1"]
+script = ExtResource("6_vybql")
+
+[sub_resource type="Resource" id="Resource_owc5u"]
+script = ExtResource("2_p6bkq")
+frame = 165
+frame_order = 0
+action = SubResource("Resource_kt3v1")
+
+[resource]
+script = ExtResource("1_f33oh")
+animation_name = "Defend"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("2_p6bkq")]([SubResource("Resource_7a851"), SubResource("Resource_jmici"), SubResource("Resource_i81vg"), SubResource("Resource_alid5"), SubResource("Resource_8qvtf"), SubResource("Resource_wqxur"), SubResource("Resource_b7ri5"), SubResource("Resource_x2r7v"), SubResource("Resource_64pf6"), SubResource("Resource_aiaqv"), SubResource("Resource_tkyak"), SubResource("Resource_70mw6"), SubResource("Resource_mxswi"), SubResource("Resource_qw88o"), SubResource("Resource_owc5u")])

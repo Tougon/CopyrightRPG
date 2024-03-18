@@ -5,12 +5,12 @@ class_name ASAShake
 @export var target : AnimationSequenceAction.Target;
 @export var effect_index : int;
 var node_path : String = "Sprite2D";
-var duration : float;
-var vibration_speed : float;
-var strength : Vector2;
-var transition_type : Tween.TransitionType = Tween.TRANS_QUAD;
-var ease_type : Tween.EaseType = Tween.EASE_IN_OUT;
-var decay_factor : float = 0.5;
+@export var duration : float;
+@export var vibration_speed : float;
+@export var strength : Vector2;
+@export var transition_type : Tween.TransitionType = Tween.TRANS_QUAD;
+@export var ease_type : Tween.EaseType = Tween.EASE_IN_OUT;
+@export var decay_factor : float = 0.5;
 
 func execute(sequence : AnimationSequence):
 	var entity : EntityBase;
