@@ -31,7 +31,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 0.400001
 offset_top = 0.150002
-offset_right = -9.40002
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -41,12 +40,13 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 15.0
-offset_right = -0.199951
+offset_right = -19.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
 
 [node name="GridContainer" type="GridContainer" parent="BG Area/Player Options/ScrollContainer" index="0"]
 layout_mode = 2
@@ -109,4 +109,5 @@ theme_override_font_sizes/font_size = 32
 text = "Attack"
 
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button2" to="." method="_on_magic_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button3" to="." method="_on_defend_button_pressed"]

@@ -19,6 +19,7 @@ uniform vec2 scroll_direction = vec2(0.0, 0.0);
 uniform float scrolling_speed = 0.08;
 uniform bool enable_palette_cycling = false;
 uniform bool enable_scan_lines = true;
+uniform int scan_line_mod = 2;
 uniform sampler2D palette;
 uniform float palette_speed = 0.1;
 uniform bool enable_pixelate = false;
@@ -54,5 +55,8 @@ void fragment()
 		COLOR = vec4(texture(palette, vec2(palette_swap, 0)).rgb, tex.a);
 	}
 	else COLOR = tex;
-	if (enable_scan_lines) COLOR = mix(vec4(0.0), COLOR, float(int(UV.y * screen_height) % 2));
+	
+	int scan_line = int(UV.y * screen_height) % scan_line_mod;
+	
+	if (enable_scan_lines && scan_line == 0) COLOR = mix(vec4(0.0), COLOR, 0.95);
 }

@@ -43,6 +43,7 @@ dialogue_canvas = NodePath("UI/Dialogue Canvas")
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="Background/BG Video Canvas"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

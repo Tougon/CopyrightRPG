@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=3 format=3 uid="uid://dbd0m0jyiphjx"]
 
-[ext_resource type="Resource" uid="uid://f33mxcf8k8fx" path="res://assets/Animations/Sequences/Spell/anim_spell_attack.tres" id="1_et0sp"]
+[ext_resource type="Resource" uid="uid://f33mxcf8k8fx" path="res://assets/Animations/Sequences/Spell/Generic/anim_spell_attack.tres" id="1_et0sp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="1_wntlk"]
 
 [resource]
@@ -13,7 +13,7 @@ vary_hit_count = false
 min_number_of_hits = 1
 max_number_of_hits = 1
 check_accuracy = true
-spell_accuracy = 100.0
+spell_accuracy = 95.0
 check_accuracy_per_hit = false
 spell_accuracy_per_hit = 100.0
 can_critical = true

@@ -27,5 +27,9 @@ func _on_defend_button_pressed():
 	EventManager.on_defend_select.emit();
 
 
+func _on_magic_button_pressed():
+	EventManager.on_magic_select.emit();
+
+
 func on_menu_cancel():
 	EventManager.player_menu_cancel.emit();
