@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=24 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="2_vttnk"]
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="3_h531l"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
@@ -16,6 +17,53 @@
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
+
+[sub_resource type="Gradient" id="Gradient_sr4ea"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
+colors = PackedColorArray(0.258824, 0.756863, 1, 0.8, 0.588235, 0.909804, 1, 0.541176, 0.258824, 0.756863, 1, 0.8, 0.588235, 0.909804, 1, 0.541176, 0.258824, 0.756863, 1, 0.8)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
+gradient = SubResource("Gradient_sr4ea")
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_opdml"]
+shader = ExtResource("3_h531l")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 0.05
+shader_parameter/speed = 0.5
+shader_parameter/amplitude_vertical = 0.05
+shader_parameter/frequency_vertical = 12.0
+shader_parameter/speed_vertical = 3.0
+shader_parameter/scroll_direction = Vector2(0, -0.1)
+shader_parameter/scrolling_speed = 0.5
+shader_parameter/enable_palette_cycling = false
+shader_parameter/enable_scan_lines = false
+shader_parameter/scan_line_mod = 2
+shader_parameter/palette_speed = 0.2
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_size = 96
+shader_parameter/palette = SubResource("GradientTexture2D_suad4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13jk6"]
+shader = ExtResource("3_h531l")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 0.05
+shader_parameter/speed = 0.5
+shader_parameter/amplitude_vertical = 0.05
+shader_parameter/frequency_vertical = 12.0
+shader_parameter/speed_vertical = 3.0
+shader_parameter/scroll_direction = Vector2(0, -0.1)
+shader_parameter/scrolling_speed = 0.5
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = false
+shader_parameter/scan_line_mod = 2
+shader_parameter/palette_speed = 0.2
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_size = 96
+shader_parameter/palette = SubResource("GradientTexture2D_suad4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ytua"]
 shader = ExtResource("3_8sqf3")
@@ -43,17 +91,33 @@ dialogue_canvas = NodePath("UI/Dialogue Canvas")
 layer = -10
 
 [node name="ColorRect" type="ColorRect" parent="Background/BG Video Canvas"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.298039, 0.298039, 0.298039, 1)
+color = Color(0.296875, 0.296875, 0.296875, 1)
 
 [node name="VideoStreamPlayer" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
+material = SubResource("ShaderMaterial_opdml")
 mouse_filter = 2
+
+[node name="VideoStreamPlayer2" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
+material = SubResource("ShaderMaterial_13jk6")
+mouse_filter = 2
+delay_start = true
+delay_time = 0.2
+
+[node name="VideoStreamPlayer3" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
+visible = false
+material = SubResource("ShaderMaterial_13jk6")
+offset_left = 960.0
+offset_right = 960.0
+scale = Vector2(-1, 1)
+mouse_filter = 2
+delay_start = true
+delay_time = 0.2
 
 [node name="Entities" type="Node" parent="."]
 

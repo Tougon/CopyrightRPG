@@ -52,7 +52,8 @@ void fragment()
 	
 	if (enable_palette_cycling)
 	{
-		COLOR = vec4(texture(palette, vec2(palette_swap, 0)).rgb, tex.a);
+		vec4 palette_sample = texture(palette, vec2(palette_swap, 0));
+		COLOR = vec4(palette_sample.rgb, tex.a * palette_sample.a);
 	}
 	else COLOR = tex;
 	

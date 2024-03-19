@@ -6,8 +6,8 @@
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.295775, 0.521866, 0.70892, 1)
-colors = PackedColorArray(0.588235, 0.909804, 1, 1, 0.611765, 0.447059, 1, 1, 0, 0.843137, 1, 1, 0.611765, 0.447059, 1, 1, 0.588235, 0.909804, 1, 1)
+offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
+colors = PackedColorArray(0.258824, 0.756863, 1, 0.8, 0.588235, 0.909804, 1, 0.541176, 0.258824, 0.756863, 1, 0.8, 0.588235, 0.909804, 1, 0.541176, 0.258824, 0.756863, 1, 0.8)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
 gradient = SubResource("Gradient_sr4ea")
@@ -42,7 +42,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("2_vycep")
-autoplay = true
 expand = true
 script = ExtResource("3_ipy4h")
 metadata/_edit_use_anchors_ = true
