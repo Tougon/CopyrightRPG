@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_target_index.gd" id="3_5ukh3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="3_gvvo3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="5_fwsco"]
-[ext_resource type="PackedScene" uid="uid://b42b65hpv41b8" path="res://assets/Effects/Generic/EffectGeneric.tscn" id="5_wtn8j"]
+[ext_resource type="PackedScene" uid="uid://b42b65hpv41b8" path="res://assets/VFX/Generic/EffectGeneric.tscn" id="5_wtn8j"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_kdqtu"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="7_iuwjk"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_8vu1s"]

@@ -1,6 +1,20 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://bn16op6jd3yb7"]
+[gd_resource type="Resource" script_class="Spell" load_steps=8 format=3 uid="uid://bn16op6jd3yb7"]
 
+[ext_resource type="Resource" uid="uid://c1yvqg3xp3v7d" path="res://assets/Animations/Sequences/Spell/Generic/anim_spell_defend.tres" id="1_6t3rg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="1_iiv5x"]
+[ext_resource type="Resource" uid="uid://cejp21u2amshl" path="res://assets/Effects/common/effect_common_buff_attack.tres" id="2_ah2tm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_3ddfm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_o2jhw"]
+
+[sub_resource type="Resource" id="Resource_6ud27"]
+script = ExtResource("3_3ddfm")
+chance = 1.0
+effect = ExtResource("2_ah2tm")
+
+[sub_resource type="Resource" id="Resource_m7m66"]
+script = ExtResource("4_o2jhw")
+chance = 1.0
+effect_set = Array[ExtResource("3_3ddfm")]([SubResource("Resource_6ud27")])
 
 [resource]
 script = ExtResource("1_iiv5x")
@@ -12,6 +26,7 @@ spell_target = 4
 spell_cost = 15
 spell_priority = 0
 spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
-effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+animation_sequence = ExtResource("1_6t3rg")
+effects_on_hit = Array[ExtResource("4_o2jhw")]([])
+effects_on_success = Array[ExtResource("4_o2jhw")]([SubResource("Resource_m7m66")])
 properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

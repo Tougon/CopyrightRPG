@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=2 format=3 uid="uid://cejp21u2amshl"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_pprul"]
+
+[resource]
+script = ExtResource("1_pprul")
+stackable = false
+effect_name = ""
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active_type = 0
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])

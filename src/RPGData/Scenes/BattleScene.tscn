@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=27 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -19,9 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
-colors = PackedColorArray(0.258824, 0.756863, 1, 0.8, 0.588235, 0.909804, 1, 0.541176, 0.258824, 0.756863, 1, 0.8, 0.588235, 0.909804, 1, 0.541176, 0.258824, 0.756863, 1, 0.8)
+offsets = PackedFloat32Array(0, 0.498542, 1)
+colors = PackedColorArray(0.403922, 1, 0.996078, 0.501961, 0.248325, 0.639879, 0.99999, 0.756863, 0.403922, 1, 0.996078, 0.501961)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
 gradient = SubResource("Gradient_sr4ea")
@@ -58,12 +57,39 @@ shader_parameter/speed_vertical = 3.0
 shader_parameter/scroll_direction = Vector2(0, -0.1)
 shader_parameter/scrolling_speed = 0.5
 shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/scan_line_mod = 4
+shader_parameter/palette_speed = 0.2
+shader_parameter/enable_pixelate = false
+shader_parameter/pixel_size = 96
+shader_parameter/palette = SubResource("GradientTexture2D_suad4")
+
+[sub_resource type="Gradient" id="Gradient_hbehj"]
+offsets = PackedFloat32Array(0, 0.163265, 0.282799, 0.431487, 0.501458, 0.714286, 0.825073, 1)
+colors = PackedColorArray(0.247059, 0.639216, 1, 0.768627, 0.0784314, 0.788235, 1, 0.501961, 0.34902, 0.878431, 0.996078, 0.501961, 0.6, 0.917647, 1, 0.501961, 0.247059, 0.639216, 1, 0.768627, 0.0784314, 0.788235, 1, 0.501961, 0.34902, 0.878431, 0.996078, 0.501961, 0.6, 0.917647, 1, 0.501961)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fpi4j"]
+gradient = SubResource("Gradient_hbehj")
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4nt8"]
+shader = ExtResource("3_h531l")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 0.05
+shader_parameter/speed = 0.5
+shader_parameter/amplitude_vertical = 0.05
+shader_parameter/frequency_vertical = 12.0
+shader_parameter/speed_vertical = 3.0
+shader_parameter/scroll_direction = Vector2(0, -0.1)
+shader_parameter/scrolling_speed = 0.5
+shader_parameter/enable_palette_cycling = true
 shader_parameter/enable_scan_lines = false
-shader_parameter/scan_line_mod = 2
+shader_parameter/scan_line_mod = 8
 shader_parameter/palette_speed = 0.2
 shader_parameter/enable_pixelate = true
 shader_parameter/pixel_size = 96
-shader_parameter/palette = SubResource("GradientTexture2D_suad4")
+shader_parameter/palette = SubResource("GradientTexture2D_fpi4j")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ytua"]
 shader = ExtResource("3_8sqf3")
@@ -107,17 +133,24 @@ mouse_filter = 2
 material = SubResource("ShaderMaterial_13jk6")
 mouse_filter = 2
 delay_start = true
-delay_time = 0.2
+delay_time = 0.5
+
+[node name="ColorRect2" type="ColorRect" parent="Background/BG Video Canvas"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.296875, 0.296875, 0.296875, 1)
 
 [node name="VideoStreamPlayer3" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
 visible = false
-material = SubResource("ShaderMaterial_13jk6")
-offset_left = 960.0
-offset_right = 960.0
-scale = Vector2(-1, 1)
+material = SubResource("ShaderMaterial_w4nt8")
 mouse_filter = 2
 delay_start = true
-delay_time = 0.2
+delay_time = 0.5
 
 [node name="Entities" type="Node" parent="."]
 
