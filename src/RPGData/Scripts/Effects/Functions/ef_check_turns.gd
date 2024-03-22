@@ -14,25 +14,25 @@ func execute(instance : EffectInstance):
 				instance.cast_success = false;
 		
 		EffectFunction.CheckMode.GREATER:
-			if (use_limit && instance.turns_active < instance.turn_limit) || (!use_limit && instance.turns_active < turns):
-				instance.cast_success = true;
-			else:
-				instance.cast_success = false;
-		
-		EffectFunction.CheckMode.GREATEREQUAL:
-			if (use_limit && instance.turns_active <= instance.turn_limit) || (!use_limit && instance.turns_active <= turns):
-				instance.cast_success = true;
-			else:
-				instance.cast_success = false;
-		
-		EffectFunction.CheckMode.LESS:
 			if (use_limit && instance.turns_active > instance.turn_limit) || (!use_limit && instance.turns_active > turns):
 				instance.cast_success = true;
 			else:
 				instance.cast_success = false;
 		
-		EffectFunction.CheckMode.LESSEQUAL:
+		EffectFunction.CheckMode.GREATEREQUAL:
 			if (use_limit && instance.turns_active >= instance.turn_limit) || (!use_limit && instance.turns_active >= turns):
+				instance.cast_success = true;
+			else:
+				instance.cast_success = false;
+		
+		EffectFunction.CheckMode.LESS:
+			if (use_limit && instance.turns_active < instance.turn_limit) || (!use_limit && instance.turns_active < turns):
+				instance.cast_success = true;
+			else:
+				instance.cast_success = false;
+		
+		EffectFunction.CheckMode.LESSEQUAL:
+			if (use_limit && instance.turns_active <= instance.turn_limit) || (!use_limit && instance.turns_active <= turns):
 				instance.cast_success = true;
 			else:
 				instance.cast_success = false;

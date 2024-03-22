@@ -17,6 +17,7 @@ var current_behavior : EntityBehaviorObject;
 
 # constants
 const SHAKE_DURATION : float =  0.26;
+const STAT_STAGE_LIMIT : int = 6;
 
 # Runtime values
 var level : int;

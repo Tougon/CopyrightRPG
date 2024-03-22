@@ -25,7 +25,7 @@ _data = {
 "slash": SubResource("Animation_fe8a7")
 }
 
-[node name="EntityBase" instance=ExtResource("1_whvu5")]
+[node name="EffectBase" instance=ExtResource("1_whvu5")]
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_weqn5")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=28 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
+[ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="5_aypok"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="Resource" uid="uid://bg2eiaprg7wnq" path="res://assets/Entities/test_player.tres" id="6_j3wjk"]
@@ -156,12 +157,14 @@ delay_time = 0.5
 
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(200, 660)
+attack_action = ExtResource("5_aypok")
 current_entity = ExtResource("6_j3wjk")
 use_override_direction = null
 override_direction = null
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(465, 660)
+attack_action = ExtResource("5_aypok")
 current_entity = ExtResource("7_vtb5m")
 use_override_direction = null
 override_direction = null

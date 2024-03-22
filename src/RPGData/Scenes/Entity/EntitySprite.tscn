@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="4_aaexs"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="5_drux7"]
 
-[node name="EntityBase" instance=ExtResource("1_lyfeq")]
+[node name="EntitySprite" instance=ExtResource("1_lyfeq")]
 script = ExtResource("2_xa1i0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
