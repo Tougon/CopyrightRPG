@@ -44,6 +44,7 @@ func create_effect_instance(user : EntityController, target : EntityController, 
 	instance.user = user;
 	instance.target = target;
 	instance.spell = cast;
+	if cast != null : instance.spell_data = cast.spell;
 	instance.effect = self;
 	instance.turn_limit = turn_limit;
 	
@@ -51,8 +52,8 @@ func create_effect_instance(user : EntityController, target : EntityController, 
 
 
 func get_effect_name(instance : EffectInstance) -> String:
-	if generic && instance != null && instance.spell != null && instance.spell.spell != null:
-		return instance.spell.spell.spell_name_key + " "  + effect_name;
+	if generic && instance != null && instance.spell_data != null:
+		return instance.spell_data.spell_name_key + " "  + effect_name;
 	return effect_name;
 
 

@@ -12,7 +12,7 @@ func execute(instance : EffectInstance):
 	var check_stage = stage;
 	
 	if max: check_stage = EntityController.STAT_STAGE_LIMIT;
-	if min: check_stage = -EntityController.STAT_STAGE_LIMIT;
+	elif min: check_stage = -EntityController.STAT_STAGE_LIMIT;
 	
 	var entity : EntityController;
 	if target == Target.USER:
@@ -32,6 +32,35 @@ func execute(instance : EffectInstance):
 			EffectFunction.Stat.ACCURACY: entity_stage = entity.accuracy_stage_stage;
 			EffectFunction.Stat.EVASION: entity_stage = entity.evasion_stage_stage;
 		
-		
+		match check_mode :
+			EffectFunction.CheckMode.EQUALS:
+				if entity_stage == check_stage:
+					instance.cast_success = true;
+				else:
+					instance.cast_success = false;
+			
+			EffectFunction.CheckMode.GREATER:
+				if entity_stage > check_stage:
+					instance.cast_success = true;
+				else:
+					instance.cast_success = false;
+			
+			EffectFunction.CheckMode.GREATEREQUAL:
+				if entity_stage >= check_stage:
+					instance.cast_success = true;
+				else:
+					instance.cast_success = false;
+			
+			EffectFunction.CheckMode.LESS:
+				if entity_stage < check_stage:
+					instance.cast_success = true;
+				else:
+					instance.cast_success = false;
+			
+			EffectFunction.CheckMode.LESSEQUAL:
+				if entity_stage <= check_stage:
+					instance.cast_success = true;
+				else:
+					instance.cast_success = false;
 		
 	else : instance.cast_success = false;

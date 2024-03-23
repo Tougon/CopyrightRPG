@@ -15,7 +15,7 @@ func _ready():
 
 # Visual control
 func set_entity_sprite(sprite : Texture2D):
-	sprite.texture = sprite;
+	self.sprite.texture = sprite;
 
 
 func set_overlay_sprite(sprite : Texture2D):

@@ -13,6 +13,7 @@ var user : EntityController;
 var target : EntityController;
 
 var spell : SpellCast;
+var spell_data : Spell
 var spell_override : Spell;
 
 func get_effect_name() -> String:

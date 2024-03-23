@@ -29,5 +29,7 @@ func execute(instance : EffectInstance):
 			target_article_indef = GrammarManager.get_indirect_article(target_name);
 	
 	var dialogue = tr(dialogue_key);
-	dialogue = dialogue.format({article_indef = user_article_indef, article_def = user_article_def, entity = user_name, t_article_indef = target_article_indef, t_article_def = target_article_def, t_entity = target_name});
+	var spell_name = "";
+	if instance.spell_data != null : spell_name = tr(instance.spell_data.spell_name_key);
+	dialogue = dialogue.format({article_indef = user_article_indef, article_def = user_article_def, entity = user_name, t_article_indef = target_article_indef, t_article_def = target_article_def, t_entity = target_name, spell = spell_name});
 	EventManager.on_dialogue_queue.emit(dialogue);
