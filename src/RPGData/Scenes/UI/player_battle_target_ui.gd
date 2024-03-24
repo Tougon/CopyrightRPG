@@ -8,6 +8,7 @@ extends MenuPanel
 var target_info_pool : Array[UIBattleTargetInfo]
 var target_arrow_pool : Array[Control];
 var target_to_info: Dictionary;
+var listening_target = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,10 +38,12 @@ func _ready():
 func set_focus(state : bool):
 	super.set_focus(state);
 	
-	if state:
+	if state && !listening_target:
+		listening_target = true;
 		EventManager.click_target.connect(_on_target_clicked);
-	else:
+	elif !state && listening_target:
 		EventManager.click_target.disconnect(_on_target_clicked);
+		listening_target = false;
 
 
 

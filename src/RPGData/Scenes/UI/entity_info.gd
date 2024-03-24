@@ -47,8 +47,10 @@ func _set_entity_info(entity : EntityController):
 	# TODO: Leading zeroes
 	if current_entity == null :
 		return;
-		
-	if $"Container/Player Name" != null : $"Container/Player Name".text = entity.param.entity_name;
+	
+	var player_name = get_node_or_null("Container/Player Name");
+	
+	if player_name != null : player_name.text = entity.param.entity_name;
 	hp_bar.set_values_immediate(entity.current_hp, 0, entity.max_hp);
 	mp_bar.set_values_immediate(entity.current_mp, 0, entity.max_mp);
 

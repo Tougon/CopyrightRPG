@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd7i8pspt60i"]
+[gd_scene load_steps=6 format=3 uid="uid://cd7i8pspt60i"]
 
 [ext_resource type="PackedScene" uid="uid://bicxs6b5o24lc" path="res://src/RPGData/Scenes/Entity/EntityBase.tscn" id="1_1a2cb"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntitySprite.gd" id="2_jjbni"]
 [ext_resource type="Texture2D" uid="uid://bt7ranbyffkjd" path="res://assets/Sprites/Effects/Generic/shield_1.png" id="2_ovl12"]
 [ext_resource type="Material" uid="uid://dsqap206ajugs" path="res://assets/Materials/EntityMaterial.tres" id="3_h0ex6"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="5_hm4ox"]
 
 [node name="EntityBase" instance=ExtResource("1_1a2cb")]
 script = ExtResource("2_jjbni")
@@ -11,3 +12,8 @@ script = ExtResource("2_jjbni")
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 material = ExtResource("3_h0ex6")
 texture = ExtResource("2_ovl12")
+
+[node name="TweenPlayer" type="Node" parent="." index="1"]
+script = ExtResource("5_hm4ox")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
