@@ -5,7 +5,7 @@ uniform float overlay_color_amount = 0.0;
 uniform float overlay_alpha_amount = 0.0;
 uniform sampler2D overlay_texture: hint_default_white, repeat_enable;
 uniform vec2 overlay_texture_offset;
-uniform vec2 overlay_texture_tiling = vec2(1,1);
+uniform vec2 overlay_texture_tiling = vec2(1.0,1.0);
 uniform float overlay_texture_amount = 0.0;
 
 
