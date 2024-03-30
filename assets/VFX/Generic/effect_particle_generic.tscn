@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca3lsqum5e1l5"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntityParticle.gd" id="1_a37vt"]
+[ext_resource type="Texture2D" uid="uid://34647mry3cpb" path="res://assets/Sprites/Effects/Generic/particle_generic_00.png" id="1_aiuuf"]
+
+[sub_resource type="Gradient" id="Gradient_ta0i3"]
+offsets = PackedFloat32Array(0, 0.504225, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.627451, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xg7e5"]
+gradient = SubResource("Gradient_ta0i3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ai0ip"]
+emission_shape = 3
+emission_box_extents = Vector3(20, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, -98, 0)
+spread = 40.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 275.0
+angular_velocity_min = -15.0
+angular_velocity_max = 15.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.4
+scale_max = 0.8
+color = Color(0.882353, 0.882353, 0.882353, 0.552941)
+color_ramp = SubResource("GradientTexture1D_xg7e5")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[node name="test_vent" type="Node2D"]
+script = ExtResource("1_a37vt")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_ai0ip")
+texture = ExtResource("1_aiuuf")
+one_shot = true
+explosiveness = 0.5
