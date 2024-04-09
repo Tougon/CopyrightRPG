@@ -46,7 +46,7 @@ func set_values_immediate(current : float, min : float, max : float):
 
 
 func _set_text(value : float):
-	text.text = text_format.replace("{current}", str(value)).replace("{max}", str(max_value));
+	text.text = tr(text_format).format({current = str(value), max = str(max_value)});
 
 
 func set_value_immediate(val : float):

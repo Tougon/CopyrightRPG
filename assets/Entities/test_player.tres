@@ -1,6 +1,18 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=2 format=3 uid="uid://bg2eiaprg7wnq"]
+[gd_resource type="Resource" script_class="Entity" load_steps=7 format=3 uid="uid://bg2eiaprg7wnq"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_2h4bc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_dnj6v"]
+[ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="2_gnlqj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="3_y26qt"]
+
+[sub_resource type="Resource" id="Resource_egsue"]
+script = ExtResource("1_dnj6v")
+spell = ExtResource("2_gnlqj")
+level = 0
+
+[sub_resource type="Resource" id="Resource_xqh42"]
+script = ExtResource("3_y26qt")
+list = Array[ExtResource("1_dnj6v")]([SubResource("Resource_egsue")])
 
 [resource]
 script = ExtResource("1_2h4bc")
@@ -21,3 +33,4 @@ entity_sprites = Array[Texture2D]([])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, 0)
+move_list = SubResource("Resource_xqh42")

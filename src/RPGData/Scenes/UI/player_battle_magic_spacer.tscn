@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8bkb5h3xvbyj"]
+
+[node name="Padding" type="Control"]
+custom_minimum_size = Vector2(19, 0)
+layout_mode = 3
+anchors_preset = 0

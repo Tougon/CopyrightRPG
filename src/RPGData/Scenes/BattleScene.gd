@@ -16,6 +16,8 @@ func _ready():
 	EventManager.register_player.connect(_on_player_register);
 	EventManager.register_enemy.connect(_on_enemy_register);
 	EventManager.on_attack_select.connect(_on_attack_select);
+	EventManager.on_magic_select.connect(_on_magic_select);
+	EventManager.on_action_selected.connect(_on_action_selected);
 	EventManager.on_defend_select.connect(_on_defend_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
@@ -307,6 +309,19 @@ func _on_attack_select():
 	UIManager.open_menu_name("player_battle_target");
 
 
+func _on_magic_select():
+	UIManager.close_menu_name("player_battle_main");
+	EventManager.initialize_magic_menu.emit(players[current_player_index]);
+	UIManager.open_menu_name("player_battle_magic");
+
+
+func _on_action_selected(action : Spell):
+	players[current_player_index].current_action = action;
+	UIManager.close_menu_name("player_battle_magic");
+	EventManager.initialize_target_menu.emit(players[current_player_index]);
+	UIManager.open_menu_name("player_battle_target");
+
+
 func _on_defend_select():
 	players[current_player_index].current_action = players[current_player_index].defend_action;
 	UIManager.close_menu_name("player_battle_main");
@@ -391,6 +406,8 @@ func _on_destroy():
 		EventManager.register_player.disconnect(_on_player_register);
 		EventManager.register_enemy.disconnect(_on_enemy_register);
 		EventManager.on_attack_select.disconnect(_on_attack_select);
+		EventManager.on_magic_select.disconnect(_on_magic_select);
+		EventManager.on_action_selected.disconnect(_on_action_selected);
 		EventManager.on_defend_select.disconnect(_on_defend_select);
 		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);

@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
-[ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="5_aypok"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="Resource" uid="uid://bg2eiaprg7wnq" path="res://assets/Entities/test_player.tres" id="6_j3wjk"]
@@ -18,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
+[ext_resource type="PackedScene" uid="uid://bj25wtcmfmgoc" path="res://src/RPGData/Scenes/UI/player_battle_magic_ui.tscn" id="11_og6hd"]
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
 offsets = PackedFloat32Array(0, 0.498542, 1)
@@ -157,7 +157,6 @@ delay_time = 0.5
 
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(200, 660)
-defend_action = ExtResource("5_aypok")
 current_entity = ExtResource("6_j3wjk")
 use_override_direction = null
 override_direction = null
@@ -190,6 +189,8 @@ override_direction = Vector2(-1, -1)
 [node name="Player Main Menu" parent="UI/Player UI" instance=ExtResource("6_uymxx")]
 
 [node name="Target Menu" parent="UI/Player UI" instance=ExtResource("8_q7178")]
+
+[node name="Player Magic Menu" parent="UI/Player UI" instance=ExtResource("11_og6hd")]
 
 [node name="Dialogue Canvas" parent="UI" instance=ExtResource("9_4k33p")]
 offset = Vector2(0, 20)

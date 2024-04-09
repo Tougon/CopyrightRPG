@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://bj25wtcmfmgoc"]
+
+[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/player_base_ui.tscn" id="1_4b6st"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_magic_ui.gd" id="2_p3grg"]
+[ext_resource type="PackedScene" uid="uid://b5tiyavs087su" path="res://src/RPGData/Scenes/UI/player_battle_magic_button.tscn" id="3_6w6k7"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_r2uoa"]
+[ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="4_olm6u"]
+[ext_resource type="PackedScene" uid="uid://8bkb5h3xvbyj" path="res://src/RPGData/Scenes/UI/player_battle_magic_spacer.tscn" id="4_yof1e"]
+
+[sub_resource type="Resource" id="Resource_m63hq"]
+script = ExtResource("3_r2uoa")
+tween_name = "Open"
+tween_resource = ExtResource("4_olm6u")
+play_on_start = false
+next_tween = ""
+
+[node name="Player Magic Menu" node_paths=PackedStringArray("button_root") instance=ExtResource("1_4b6st")]
+script = ExtResource("2_p3grg")
+button_count = 30
+move_button = ExtResource("3_6w6k7")
+button_spacer = ExtResource("4_yof1e")
+button_root = NodePath("BG Area/Player Options/ScrollContainer/GridContainer")
+menu_name = "player_battle_magic"
+hide_on_unfocus = true
+sequence_list = Array[ExtResource("3_r2uoa")]([SubResource("Resource_m63hq")])
+
+[node name="Player Options" type="Control" parent="BG Area" index="1"]
+layout_mode = 1
+anchor_top = 0.315
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.400001
+offset_top = 0.150002
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG Area/Player Options" index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 15.0
+offset_right = -19.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="BG Area/Player Options/ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 10
+columns = 6

@@ -92,7 +92,7 @@ theme_override_constants/separation = 0
 layout_mode = 2
 start_value = 0.5
 max_value = 1.0
-text_format = "[b]HP: [color=FFFF00]{current}[/color]/{max}"
+text_format = "T_HP_AMOUNT"
 animation_type = 1
 bar_subtract_speed = 2.5
 
@@ -105,7 +105,7 @@ size_flags_vertical = 3
 layout_mode = 2
 start_value = 0.5
 max_value = 1.0
-text_format = "[b]MP: [color=FFFF00]{current}[/color]/{max}"
+text_format = "T_MP_AMOUNT"
 animation_type = 1
 bar_subtract_speed = 2.5
 

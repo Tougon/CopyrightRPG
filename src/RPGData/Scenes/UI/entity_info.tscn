@@ -44,7 +44,7 @@ layout_mode = 2
 layout_mode = 2
 start_value = 0.5
 max_value = 1.0
-text_format = "[b]HP: [color=FFFF00]{current}[/color]/{max}"
+text_format = "T_HP_AMOUNT"
 bar_subtract_speed = 2.0
 
 [node name="Padding3" type="Control" parent="Container"]
@@ -55,8 +55,8 @@ layout_mode = 2
 layout_mode = 2
 start_value = 0.5
 max_value = 1.0
-text_format = "[b]MP: [color=FFFF00]{current}[/color]/{max}"
-bar_subtract_speed = 2.5
+text_format = "T_MP_AMOUNT"
+bar_subtract_speed = 2.0
 
 [node name="Padding4" type="Control" parent="Container"]
 custom_minimum_size = Vector2(19, 0)

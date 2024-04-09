@@ -1,4 +1,5 @@
 extends MenuPanel
+
 var current_entity : EntityController;
 
 
@@ -33,3 +34,8 @@ func _on_magic_button_pressed():
 
 func on_menu_cancel():
 	EventManager.player_menu_cancel.emit();
+
+func _on_destroy():
+	super._on_destroy();
+	if EventManager != null:
+		EventManager.set_active_player.disconnect(_set_active_entity);

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5tiyavs087su"]
+
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_5kehl"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_magic_button.gd" id="2_4etfd"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(281, 100)
+offset_right = 295.0
+offset_bottom = 100.0
+theme = ExtResource("1_5kehl")
+theme_override_font_sizes/font_size = 32
+text = "T_BATTLE_MAIN_UI_ATTACK"
+clip_text = true
+script = ExtResource("2_4etfd")
+
+[node name="MP Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -145.0
+offset_top = -33.0
+offset_right = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_5kehl")
+theme_override_font_sizes/font_size = 20
+text = "50 MP"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

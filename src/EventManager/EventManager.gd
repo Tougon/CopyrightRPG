@@ -23,6 +23,8 @@ signal on_attack_select();
 signal on_defend_select();
 signal on_magic_select();
 signal initialize_target_menu(entity : EntityController);
+signal initialize_magic_menu(entity : EntityController);
+signal on_action_selected(action : Spell);
 signal highlight_target(entity : EntityController, all : bool);
 signal click_target(entity : EntityController);
 
