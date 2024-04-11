@@ -267,6 +267,11 @@ func update_hp_ui():
 		entity_ui.change_hp(current_hp);
 
 
+func update_mp_ui():
+	if entity_ui : 
+		entity_ui.change_mp(current_mp);
+
+
 func on_defeat():
 	#TODO: Probably want this to run in parallel for enemies, but not bosses.
 	var defeat_anim = default_defeat_anim;
@@ -298,7 +303,8 @@ func _on_defeat_complete():
 
 # Setter functions intended to be used to ensure gammeplay callbacks execute
 func modify_mp(amt : int):
-	current_mp += amt;
+	current_mp = clamp(current_mp + amt, 0, max_mp);
+	update_mp_ui();
 
 
 # Getter functions for UI and other areas
