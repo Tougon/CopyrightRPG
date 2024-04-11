@@ -12,12 +12,28 @@ func _ready():
 func on_tween_end_active(tween_name : String):
 	super.on_tween_end_active(tween_name);
 	
+	# TODO: Re-evaluate?
 	#var msg = tr("T_BATTLE_TURN_READY").format({entity = current_entity.param.entity_name});
 	#EventManager.on_message_queue.emit(msg);
 
 
 func _set_active_entity(entity : EntityController):
 	current_entity = entity;
+
+
+func on_focus():
+	# TODO: As we add more options to the menu, this must be expanded.
+	if current_entity != null && (current_entity is PlayerController):
+		match (current_entity.prev_action_type):
+			PlayerController.ActionType.ATTACK:
+				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
+			PlayerController.ActionType.DEFEND:
+				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Defend";
+			PlayerController.ActionType.SPELL:
+				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Magic";
+				
+	else:
+		initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
 
 
 func _on_attack_button_pressed():

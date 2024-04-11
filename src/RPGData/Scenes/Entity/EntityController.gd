@@ -12,6 +12,7 @@ class_name EntityController
 var move_list : Array[Spell];
 var param : EntityParams;
 var current_action : Spell;
+var prev_action : Spell;
 var current_target : Array[EntityController];
 var current_behavior : EntityBehaviorObject;
 

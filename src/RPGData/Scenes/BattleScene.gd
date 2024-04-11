@@ -116,6 +116,7 @@ func _decision_phase():
 func _action_phase():
 	# Execute turn start effects
 	for entity in entities:
+		entity.prev_action = entity.current_action;
 		if !entity.is_defeated:
 			entity.execute_turn_start_effects();
 			
@@ -305,6 +306,7 @@ func _on_enemy_register(entity : EntityController):
 
 func _on_attack_select():
 	players[current_player_index].current_action = players[current_player_index].attack_action;
+	players[current_player_index].prev_action_type = PlayerController.ActionType.ATTACK;
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
 
@@ -316,12 +318,14 @@ func _on_magic_select():
 
 func _on_action_selected(action : Spell):
 	players[current_player_index].current_action = action;
+	players[current_player_index].prev_action_type = PlayerController.ActionType.SPELL;
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
 
 
 func _on_defend_select():
 	players[current_player_index].current_action = players[current_player_index].defend_action;
+	players[current_player_index].prev_action_type = PlayerController.ActionType.DEFEND;
 	players[current_player_index].current_target = [ players[current_player_index] ];
 	players[current_player_index].is_ready = true;
 

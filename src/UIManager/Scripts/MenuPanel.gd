@@ -51,6 +51,8 @@ func set_focus(state : bool):
 		
 		if tween_player.has_tween("Focus"):
 			tween_player.play_tween_name("Focus");
+		
+		on_focus();
 	
 	else :
 		for selection in all_selections:
@@ -75,6 +77,16 @@ func set_focus(state : bool):
 		
 		if hide_on_unfocus:
 			self.hide();
+		
+		on_unfocus();
+
+
+func on_focus():
+	pass;
+
+
+func on_unfocus():
+	pass;
 
 
 func get_all_children(in_node,arr:=[]):

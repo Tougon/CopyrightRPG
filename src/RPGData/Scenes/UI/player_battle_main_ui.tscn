@@ -17,8 +17,8 @@ next_tween = ""
 script = ExtResource("2_stk7e")
 menu_name = "player_battle_main"
 hide_on_unfocus = true
-initial_selection = NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Button")
-all_selections = [NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Button")]
+initial_selection = NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Attack")
+all_selections = [NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Attack")]
 sequence_list = Array[ExtResource("3_ftnx2")]([SubResource("Resource_j1ry4")])
 
 [node name="BG Area" parent="." index="0"]
@@ -59,7 +59,7 @@ columns = 6
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="1"]
+[node name="Attack" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="1"]
 custom_minimum_size = Vector2(281, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -72,7 +72,7 @@ clip_text = true
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="3"]
+[node name="Magic" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="3"]
 custom_minimum_size = Vector2(281, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -85,7 +85,7 @@ clip_text = true
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
-[node name="Button3" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="5"]
+[node name="Defend" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="5"]
 custom_minimum_size = Vector2(281, 100)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -108,6 +108,6 @@ theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
 text = "Attack"
 
-[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button2" to="." method="_on_magic_button_pressed"]
-[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Button3" to="." method="_on_defend_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Attack" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Magic" to="." method="_on_magic_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Defend" to="." method="_on_defend_button_pressed"]

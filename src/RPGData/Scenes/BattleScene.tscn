@@ -158,14 +158,10 @@ delay_time = 0.5
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(200, 660)
 current_entity = ExtResource("6_j3wjk")
-use_override_direction = null
-override_direction = null
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(465, 660)
 current_entity = ExtResource("7_vtb5m")
-use_override_direction = null
-override_direction = null
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)

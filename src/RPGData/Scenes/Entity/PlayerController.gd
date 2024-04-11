@@ -1,8 +1,11 @@
 extends EntityController
 class_name PlayerController
 
+enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
+
 @export var attack_action : Spell;
 @export var defend_action : Spell;
+var prev_action_type : ActionType;
 
 
 # Called when the node enters the scene tree for the first time.
