@@ -47,6 +47,11 @@ func open_menu(menu : MenuPanel):
 		suspend_selection();
 
 
+func close_all_menus():
+	while active_menus.size() > 0:
+		active_menus[active_menus.size() - 1].set_active(false);
+
+
 func close_menu(menu : MenuPanel):
 	var index = active_menus.find(menu);
 	

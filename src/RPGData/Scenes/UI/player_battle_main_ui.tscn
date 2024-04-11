@@ -6,9 +6,9 @@
 [ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="4_1vr4n"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="5_pm4r5"]
 
-[sub_resource type="Resource" id="Resource_cphot"]
+[sub_resource type="Resource" id="Resource_j1ry4"]
 script = ExtResource("3_ftnx2")
-tween_name = "Open"
+tween_name = "Focus"
 tween_resource = ExtResource("4_1vr4n")
 play_on_start = false
 next_tween = ""
@@ -19,7 +19,7 @@ menu_name = "player_battle_main"
 hide_on_unfocus = true
 initial_selection = NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Button")
 all_selections = [NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Button")]
-sequence_list = Array[ExtResource("3_ftnx2")]([SubResource("Resource_cphot")])
+sequence_list = Array[ExtResource("3_ftnx2")]([SubResource("Resource_j1ry4")])
 
 [node name="BG Area" parent="." index="0"]
 offset_top = -190.0

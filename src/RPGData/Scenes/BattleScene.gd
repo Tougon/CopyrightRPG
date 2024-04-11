@@ -108,6 +108,7 @@ func _decision_phase():
 		enemy.is_ready = true;
 	
 	# Timer to resolve fadeout issues with the glow
+	UIManager.close_all_menus();
 	await get_tree().create_timer(0.6).timeout
 	_action_phase();
 
@@ -304,27 +305,23 @@ func _on_enemy_register(entity : EntityController):
 
 func _on_attack_select():
 	players[current_player_index].current_action = players[current_player_index].attack_action;
-	UIManager.close_menu_name("player_battle_main");
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
 
 
 func _on_magic_select():
-	UIManager.close_menu_name("player_battle_main");
 	EventManager.initialize_magic_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_magic");
 
 
 func _on_action_selected(action : Spell):
 	players[current_player_index].current_action = action;
-	UIManager.close_menu_name("player_battle_magic");
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
 
 
 func _on_defend_select():
 	players[current_player_index].current_action = players[current_player_index].defend_action;
-	UIManager.close_menu_name("player_battle_main");
 	players[current_player_index].current_target = [ players[current_player_index] ];
 	players[current_player_index].is_ready = true;
 

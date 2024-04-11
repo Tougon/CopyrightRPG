@@ -114,7 +114,7 @@ func _on_target_clicked(entity : EntityController):
 
 
 func on_menu_cancel():
-	UIManager.open_menu_name("player_battle_main");
+	#UIManager.open_menu_name("player_battle_main");
 	super.on_menu_cancel();
 
 

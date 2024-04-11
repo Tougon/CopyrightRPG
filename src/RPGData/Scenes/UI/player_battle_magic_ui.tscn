@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_m63hq"]
 script = ExtResource("3_r2uoa")
-tween_name = "Open"
+tween_name = "Focus"
 tween_resource = ExtResource("4_olm6u")
 play_on_start = false
 next_tween = ""
