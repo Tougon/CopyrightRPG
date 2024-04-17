@@ -127,7 +127,7 @@ func check_mp(user : EntityController) -> bool:
 	
 	var result = user.current_mp >= cost;
 	
-	if result:
+	if result && cost > 0:
 		user.modify_mp(-cost);
 	
 	return result;

@@ -2,6 +2,7 @@ extends EntityInfoUI
 class_name EntityControllerUI
 
 var active : bool = false;
+var activating : bool = false;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,11 +30,14 @@ func change_mp(new_mp : float):
 
 
 func show_ui():
+	activating = true;
+	
 	if tween_player.has_tween("Show"):
 		tween_player.play_tween_name("Show");
 		await tween_player.tween_ended;
 	
 	active = true;
+	activating = false;
 
 
 func hide_ui():
@@ -43,9 +47,10 @@ func hide_ui():
 		tween_player.play_tween_name("Hide");
 		await tween_player.tween_ended;
 	
-	$"Container/HP Bar".visible = false;
-	$"Container/MP Bar".visible = false;
-	$"Container/Padding".visible = false;
+	if !active && !activating : 
+		$"Container/HP Bar".visible = false;
+		$"Container/MP Bar".visible = false;
+		$"Container/Padding".visible = false;
 
 
 func _on_destroy() :
