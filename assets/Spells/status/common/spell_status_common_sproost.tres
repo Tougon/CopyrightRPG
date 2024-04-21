@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=8 format=3 uid="uid://b8mcaocvteo5"]
+
+[ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/Status/Common/anim_spell_status_common_atoost.tres" id="1_21s3f"]
+[ext_resource type="Resource" uid="uid://cq78s1t2kuo47" path="res://assets/Effects/common/effect_common_buff_speed.tres" id="2_5bfdg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_47m4t"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_lvx1u"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="5_wo8tv"]
+
+[sub_resource type="Resource" id="Resource_e3lva"]
+script = ExtResource("3_47m4t")
+chance = 1.0
+effect = ExtResource("2_5bfdg")
+
+[sub_resource type="Resource" id="Resource_q1odl"]
+script = ExtResource("4_lvx1u")
+chance = 1.0
+effect_set = Array[ExtResource("3_47m4t")]([SubResource("Resource_e3lva")])
+
+[resource]
+script = ExtResource("5_wo8tv")
+spell_name_key = "T_SPELL_STATUS_COMMON_SPROOST"
+spell_description_key = "T_SPELL_STATUS_COMMON_SPROOST"
+spell_cast_message_key = "T_CAST_STATUS_COMMON_SPROOST"
+spell_type = 3
+spell_target = 4
+spell_cost = 20
+spell_priority = 0
+spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+animation_sequence = ExtResource("1_21s3f")
+effects_on_hit = Array[ExtResource("4_lvx1u")]([SubResource("Resource_q1odl")])
+effects_on_success = Array[ExtResource("4_lvx1u")]([])
+properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://bg2eiaprg7wnq"]
+[gd_resource type="Resource" script_class="Entity" load_steps=12 format=3 uid="uid://bg2eiaprg7wnq"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_2h4bc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_dnj6v"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="2_gnlqj"]
 [ext_resource type="Resource" uid="uid://ckm3lov2yqbuu" path="res://assets/Spells/status/common/spell_status_common_difoost.tres" id="3_joox0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="3_y26qt"]
+[ext_resource type="Resource" uid="uid://b8mcaocvteo5" path="res://assets/Spells/status/common/spell_status_common_sproost.tres" id="4_60x8g"]
 
 [sub_resource type="Curve" id="Curve_l7m1m"]
 max_value = 2.0
@@ -22,9 +23,14 @@ script = ExtResource("1_dnj6v")
 spell = ExtResource("3_joox0")
 level = 0
 
+[sub_resource type="Resource" id="Resource_ep2jl"]
+script = ExtResource("1_dnj6v")
+spell = ExtResource("4_60x8g")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("3_y26qt")
-list = Array[ExtResource("1_dnj6v")]([SubResource("Resource_egsue"), SubResource("Resource_n1e4x")])
+list = Array[ExtResource("1_dnj6v")]([SubResource("Resource_egsue"), SubResource("Resource_n1e4x"), SubResource("Resource_ep2jl")])
 
 [resource]
 script = ExtResource("1_2h4bc")
