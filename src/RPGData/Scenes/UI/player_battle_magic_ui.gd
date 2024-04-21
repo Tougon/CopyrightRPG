@@ -39,6 +39,7 @@ func _initialize_magic_menu(entity : EntityController):
 		
 		(all_selections[i] as MagicButtonUI).init_button(move);
 		all_selections[i].visible = true;
+		all_selections[i].disabled = entity.current_mp < move.spell_cost;
 	
 	for i in range(move_list.size(), all_selections.size()):
 		all_selections[i].visible = false;
