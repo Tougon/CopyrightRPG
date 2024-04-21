@@ -75,6 +75,8 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 		else:
 			base_dodge_modifier = new_dodge_modifier;
 
+@export var luck_curve : Curve;
+
 #TODO: Weakness was unimplemented in the old version.
 #@export_group("MODIFIERS")
 

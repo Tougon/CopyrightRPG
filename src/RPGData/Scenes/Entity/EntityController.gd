@@ -19,6 +19,7 @@ var current_behavior : EntityBehaviorObject;
 # constants
 const SHAKE_DURATION : float =  0.26;
 const STAT_STAGE_LIMIT : int = 6;
+const LEVEL_CAP : int = 100;
 
 # Runtime values
 var level : int;
@@ -92,6 +93,7 @@ func entity_init():
 		param.entity_spd = ((current_entity.base_spd * 2 * level) / 100) + 5;
 		param.entity_crit_modifier = current_entity.base_crit_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
+		param.entity_luck = current_entity.luck_curve.sample((level as float) / LEVEL_CAP);
 		
 		# Reset stats
 		max_hp = param.entity_hp;

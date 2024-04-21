@@ -17,5 +17,6 @@ var entity_sp_def : int;
 var entity_spd : int;
 var entity_crit_modifier : float = 1;
 var entity_dodge_modifier : float = 1;
+var entity_luck : float;
 
 var entity_sprites: Array[Texture2D];

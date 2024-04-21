@@ -2,6 +2,8 @@
 extends Spell
 class_name DamageSpell
 
+const ACCURACY_BONUS : int = 10;
+
 enum SpellHitType { Physical, Special }
 
 @export_group("Base Damage Spell Parameters")
@@ -34,14 +36,17 @@ func check_spell_hit(user : EntityController, target : EntityController, amt : f
 	# TODO: Implement evasion modifiers?
 	var evasion = target.get_evasion();
 	
+	var luck = user.param.entity_luck;
+	luck = clamp(luck - 1, 0, 10);
+	
 	# Should never happen but will otherwise divide by zero
 	if evasion == 0 : return false;
 	
 	var base_check = accuracy / evasion;
-	var hit = spell_accuracy * base_check;
+	var hit = (spell_accuracy + (ACCURACY_BONUS * luck)) * base_check;
 	
 	if amt != -1 :
-		hit = amt * base_check;
+		hit = (amt + (ACCURACY_BONUS * luck)) * base_check;
 	
 	var accuracy_mods = user.get_accuracy_modifiers();
 	
@@ -62,7 +67,10 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		if min_number_of_hits > max_number_of_hits :
 			min_number_of_hits = max_number_of_hits;
 		
-		var time = hit_count_curve.sample(randf());
+		var luck = 1;
+		if user.param.entity_luck > 1:
+			luck = user.param.entity_luck;
+		var time = hit_count_curve.sample(randf() * luck);
 		num_hits = roundi(lerp(min_number_of_hits, max_number_of_hits, time));
 	
 	var atk_type = spell_attack_type;
@@ -92,12 +100,15 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		# TODO: Defender crit modifiers to protect against critical hits
 		var crit_chance = 1;
+		if user.param.entity_luck > 1 :
+			crit_chance = user.param.entity_luck;
 		if user.param.entity_crit_modifier == 0 : crit_chance = 0;
-		else : critical_chance / user.param.entity_crit_modifier;
+		else : crit_chance / user.param.entity_crit_modifier;
 		
 		var critical = false;
 		if critical_chance > 0 && can_critical:
-			critical = randf() < (1.0 / critical_chance);
+			var chance = randf();
+			critical = chance < ((1.0 / critical_chance) * crit_chance);
 		crit.append(critical);
 		
 		var atk_mod = user.get_attack_modifier();
