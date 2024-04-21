@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_magic_button.gd" id="2_4etfd"]
 
 [node name="Button" type="Button"]
-custom_minimum_size = Vector2(281, 100)
+custom_minimum_size = Vector2(295, 100)
 offset_right = 295.0
 offset_bottom = 100.0
 theme = ExtResource("1_5kehl")
