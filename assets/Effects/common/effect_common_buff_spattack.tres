@@ -1,0 +1,99 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=25 format=3 uid="uid://boqwbtdtrpo3g"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_t46an"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_233sa"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_15tbj"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Global/anim_global_stat_raise.tres" id="4_48fye"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_play_animation.gd" id="5_rvmve"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_t042r"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="7_rg10s"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="8_ql7l1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="9_4ncv5"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="10_cpjpi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="11_no24a"]
+
+[sub_resource type="Resource" id="Resource_e81s6"]
+script = ExtResource("1_t46an")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_gc44m"]
+script = ExtResource("2_233sa")
+target = 0
+stat = 2
+check_mode = 2
+stage = 0
+max = true
+min = false
+
+[sub_resource type="Resource" id="Resource_n6pd0"]
+script = ExtResource("3_15tbj")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_gfuhy"]
+script = ExtResource("5_rvmve")
+target = 0
+animation = ExtResource("4_48fye")
+
+[sub_resource type="Resource" id="Resource_k3ub6"]
+script = ExtResource("6_t042r")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_ACTIVATE"
+
+[sub_resource type="Resource" id="Resource_gxsim"]
+script = ExtResource("7_rg10s")
+target = 0
+stat = 2
+amount = 1
+
+[sub_resource type="Resource" id="Resource_yxfi0"]
+script = ExtResource("6_t042r")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_2nj5p"]
+script = ExtResource("7_rg10s")
+target = 0
+stat = 2
+amount = -1
+
+[sub_resource type="Resource" id="Resource_wt4v6"]
+script = ExtResource("6_t042r")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_FAIL"
+
+[sub_resource type="Resource" id="Resource_fu0fp"]
+script = ExtResource("8_ql7l1")
+target = 0
+
+[sub_resource type="Resource" id="Resource_1mjhg"]
+script = ExtResource("9_4ncv5")
+
+[sub_resource type="Resource" id="Resource_jbouj"]
+script = ExtResource("10_cpjpi")
+
+[sub_resource type="Resource" id="Resource_xpvi6"]
+script = ExtResource("6_t042r")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_STACK"
+
+[resource]
+script = ExtResource("11_no24a")
+stackable = true
+effect_name = "Special Attack Buff"
+generic = true
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_gc44m")])
+check_remain_active_type = 0
+check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_e81s6")])
+on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_n6pd0")])
+on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_wt4v6")])
+on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_gfuhy"), SubResource("Resource_k3ub6"), SubResource("Resource_gxsim")])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_1mjhg")])
+on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_fu0fp")])
+on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_yxfi0"), SubResource("Resource_2nj5p")])
+on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_jbouj"), SubResource("Resource_xpvi6")])
