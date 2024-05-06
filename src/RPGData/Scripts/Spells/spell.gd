@@ -97,7 +97,9 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 					cast.success = true;
 				else:
 					cast.success = cast.has_spell_done_anything();
+					if !cast.success : cast.fail_type = SpellCast.SpellFailType.NoEffect;
 			else :
+				cast.fail_type = SpellCast.SpellFailType.Miss;
 				cast.set_hits([false]);
 				cast.set_damage([0])
 				cast.set_critical([false])
@@ -107,6 +109,7 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				p.on_deactivate();
 			
 			user.clear_properties();
+		else: cast.fail_type = SpellCast.SpellFailType.InvalidCast;
 	else:
 		cast.fail_type = SpellCast.SpellFailType.InvalidMP;
 		if user.current_entity.generic : 

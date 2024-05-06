@@ -3,7 +3,7 @@ class_name SpellCast
 
 # SpellCast is a class that represents the result of a spell use.
 
-enum SpellFailType { InvalidMP }
+enum SpellFailType { InvalidMP, InvalidCast, Miss, NoEffect }
 
 var success : bool = false;
 var spell : Spell;
