@@ -275,7 +275,7 @@ func update_mp_ui():
 
 
 func on_defeat():
-	#TODO: Probably want this to run in parallel for enemies, but not bosses.
+	# TODO: Probably want this to run in parallel for enemies, but not bosses.
 	var defeat_anim = default_defeat_anim;
 	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
 	
@@ -356,29 +356,38 @@ func get_possible_targets() -> Array[EntityController]:
 	match current_action.spell_target:
 		Spell.SpellTarget.All:
 			for enemy in enemies:
-				result.append(enemy);
+				if !enemy.is_defeated:
+					result.append(enemy);
 			for ally in allies:
-				result.append(ally);
+				if !ally.is_defeated:
+					result.append(ally);
 		Spell.SpellTarget.SingleEnemy:
 			for enemy in enemies:
-				result.append(enemy);
+				if !enemy.is_defeated:
+					result.append(enemy);
 		Spell.SpellTarget.RandomEnemy:
 			for enemy in enemies:
-				result.append(enemy);
+				if !enemy.is_defeated:
+					result.append(enemy);
 		Spell.SpellTarget.RandomEnemyPerHit:
 			for enemy in enemies:
-				result.append(enemy);
+				if !enemy.is_defeated:
+					result.append(enemy);
 		Spell.SpellTarget.AllEnemy:
 			for enemy in enemies:
-				result.append(enemy);
+				if !enemy.is_defeated:
+					result.append(enemy);
 		Spell.SpellTarget.SingleParty:
 			for ally in allies:
-				result.append(ally);
+				if !ally.is_defeated:
+					result.append(ally);
 		Spell.SpellTarget.AllParty:
 			for ally in allies:
-				result.append(ally);
+				if !ally.is_defeated:
+					result.append(ally);
 		Spell.SpellTarget.Self:
-			result.append(self);
+			if !is_defeated:
+				result.append(self);
 	
 	return result;
 

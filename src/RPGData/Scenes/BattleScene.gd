@@ -138,13 +138,33 @@ func _action_phase():
 		
 		var is_target_valid : bool = true;
 		
+		# Multi target moves still work if at least one target still exists.
 		for target in entity.current_target:
 			if target.is_defeated:
-				is_target_valid = false;
+				entity.current_target.erase(target);
 		
-		# TODO: Change target if target is invalid instead of skipping the turn
+		if entity.current_target.size() == 0:
+			is_target_valid = false;
+		
+		# If possible, change target if attempted target is invalid
 		if !is_target_valid:
-			continue;
+			# Check to see if there are any targets left
+			var alternate_targets = entity.get_possible_targets();
+			
+			# If no alternate targets exist, skip the turn.
+			if alternate_targets.size() == 0 : continue;
+			
+			var target_type = entity.current_action.spell_target;
+			
+			match target_type:
+				Spell.SpellTarget.SingleParty:
+					entity.current_target.append(alternate_targets[0]);
+				Spell.SpellTarget.SingleEnemy:
+					entity.current_target.append(alternate_targets[0]);
+				Spell.SpellTarget.RandomEnemy:
+					entity.current_target.append(alternate_targets);
+				Spell.SpellTarget.RandomEnemyPerHit:
+					entity.current_target.append(alternate_targets);
 		
 		# Execute effects on move selected
 		entity.execute_move_selected_effects();

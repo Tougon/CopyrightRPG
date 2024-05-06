@@ -200,7 +200,6 @@ dialogue_end_time = 0.15
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI"]
 layer = 10
-visible = false
 
 [node name="Fade Iris" type="TextureRect" parent="UI/BG Fade Canvas"]
 modulate = Color(0, 0, 0, 1)
