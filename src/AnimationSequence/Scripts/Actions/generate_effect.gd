@@ -6,6 +6,7 @@ class_name ASAGenerateEffect
 @export var relative : AnimationSequenceAction.Target;
 @export var effect_index : int;
 @export var effect_position : Vector2;
+@export var effect_layer : int;
 @export var effect_rotation : float;
 @export var effect_scale : Vector2 = Vector2(1, 1);
 @export var child : bool;
@@ -14,7 +15,6 @@ class_name ASAGenerateEffect
 @export var scl_match_sequence_dir : bool;
 @export var effect_variance : Vector2;
 
-# TODO: Z-axis (layering)
 
 func execute(sequence : AnimationSequence):
 	# Spawn the effect
@@ -41,6 +41,8 @@ func execute(sequence : AnimationSequence):
 		
 		if child :
 			entity.add_child(effect);
+		
+	effect.z_index = effect_layer;
 	
 	if !child : 
 		sequence.root.add_child(effect);
