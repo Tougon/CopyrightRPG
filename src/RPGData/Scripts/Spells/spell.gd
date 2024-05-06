@@ -15,7 +15,6 @@ enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, 
 @export var spell_name_key : String;
 @export var spell_description_key : String;
 @export var spell_cast_message_key : String;
-var spell_fail_message_key : String;
 
 @export_subgroup("Spell Core")
 @export var spell_type : SpellType;
@@ -109,7 +108,11 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 			
 			user.clear_properties();
 	else:
-		cast.fail_message = tr("T_BATTLE_MP_BAD").format({entity = user.param.entity_name});
+		cast.fail_type = SpellCast.SpellFailType.InvalidMP;
+		if user.current_entity.generic : 
+			cast.fail_message = tr("T_BATTLE_MP_BAD").format({article_def = GrammarManager.get_direct_article(user.param.entity_name), entity = user.param.entity_name});
+		else:
+			cast.fail_message = tr("T_BATTLE_MP_BAD").format({article_def = "", entity = user.param.entity_name});
 	result.append(cast);
 
 

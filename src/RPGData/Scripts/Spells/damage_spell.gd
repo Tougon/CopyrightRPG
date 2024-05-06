@@ -33,7 +33,6 @@ func check_spell_hit(user : EntityController, target : EntityController, amt : f
 	if amt == -1 && !check_accuracy : return true;
 	
 	var accuracy = user.get_accuracy();
-	# TODO: Implement evasion modifiers?
 	var evasion = target.get_evasion();
 	
 	var luck = user.param.entity_luck;

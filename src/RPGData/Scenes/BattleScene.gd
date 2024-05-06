@@ -177,12 +177,18 @@ func _action_phase():
 		var post_anim_dialogue : Array[String];
 		
 		var any_cast_succeeded : bool = false;
+		var play_animation : bool = true;
 		
 		for spell in spell_cast : 
 			if spell.success : 
 				any_cast_succeeded = true;
+			else :
+				if spell.fail_message != "" : post_anim_dialogue.append(spell.fail_message);
+				if spell.fail_type == SpellCast.SpellFailType.InvalidMP : play_animation = false;
 			
 			# TODO: Additional info
+			
+			
 			# Get damage messages based on cast result
 			if entity.current_action is DamageSpell : 
 				if entity.current_action.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
@@ -198,8 +204,9 @@ func _action_phase():
 		for dialogue in pre_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
-		var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
-		EventManager.on_sequence_queue.emit(animation_seq);
+		if play_animation :
+			var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
+			EventManager.on_sequence_queue.emit(animation_seq);
 		
 		# TODO: Evaluate if we want the death animation before or after dialogue.
 		#await EventManager.on_sequence_queue_empty;

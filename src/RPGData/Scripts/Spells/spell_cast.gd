@@ -3,6 +3,8 @@ class_name SpellCast
 
 # SpellCast is a class that represents the result of a spell use.
 
+enum SpellFailType { InvalidMP }
+
 var success : bool = false;
 var spell : Spell;
 var user : EntityController;
@@ -21,6 +23,7 @@ var target_index_override : Array[int];
 var current_hit : int;
 
 # Dialogue
+var fail_type : SpellFailType;
 var fail_message : String;
 
 var effects : Array[EffectInstance];
