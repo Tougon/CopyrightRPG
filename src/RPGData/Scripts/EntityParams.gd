@@ -15,7 +15,8 @@ var entity_def : int;
 var entity_sp_atk : int;
 var entity_sp_def : int;
 var entity_spd : int;
-var entity_crit_modifier : float = 1;
+var entity_crit_chance_modifier : float = 1;
+var entity_crit_resist_modifier : float = 1;
 var entity_dodge_modifier : float = 1;
 var entity_luck : float;
 

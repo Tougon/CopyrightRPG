@@ -91,7 +91,8 @@ func entity_init():
 		param.entity_sp_atk = ((current_entity.base_sp_atk * 2 * level) / 100) + 5;
 		param.entity_sp_def = ((current_entity.base_sp_def * 2 * level) / 100) + 5;
 		param.entity_spd = ((current_entity.base_spd * 2 * level) / 100) + 5;
-		param.entity_crit_modifier = current_entity.base_crit_modifier;
+		param.entity_crit_chance_modifier = current_entity.base_crit_chance_modifier;
+		param.entity_crit_resist_modifier = current_entity.base_crit_resist_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
 		param.entity_luck = current_entity.luck_curve.sample((level as float) / LEVEL_CAP);
 		
@@ -121,7 +122,7 @@ func entity_init():
 		create_move_list();
 		
 		# TODO: Save data for enemy types.
-		# This is variable is largely vestigal from older iterations and may be scrapped.
+		# This variable is largely vestigal from older iterations and may be scrapped.
 		is_identified = false;
 		
 		# TODO: Implement support for effects and modifier arrays

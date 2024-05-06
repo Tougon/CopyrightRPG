@@ -61,12 +61,19 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 		else:
 			base_spd = new_spd;
 
-@export var base_crit_modifier : float = 1 : 
+@export var base_crit_chance_modifier : float = 1 : 
 	set(new_crit_modifier):
 		if new_crit_modifier < 0:
-			base_crit_modifier = 0;
+			base_crit_chance_modifier = 0;
 		else:
-			base_crit_modifier = new_crit_modifier;
+			base_crit_chance_modifier = new_crit_modifier;
+
+@export var base_crit_resist_modifier : float = 1 : 
+	set(new_crit_modifier):
+		if new_crit_modifier < 0:
+			base_crit_resist_modifier = 0;
+		else:
+			base_crit_resist_modifier = new_crit_modifier;
 
 @export var base_dodge_modifier : float = 1 : 
 	set(new_dodge_modifier):

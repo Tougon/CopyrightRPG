@@ -191,7 +191,9 @@ func _print_by_word(text : String):
 		text_label.add_text(word);
 		current_line += (word + " ");
 		
-		# TODO: Do we need this? It'll be good for an effect maybe?
+		# TODO: Reevaluate the lack of a pause after the final word.
+		# Reason being it would be a good place to put a blinking effect.
+		# Original message was just nonsense.
 		if n < splits.size() - 1 && !finish_print && pause_time > 0:
 			interval_timer.start(pause_time);
 			await interval_timer.timeout;
