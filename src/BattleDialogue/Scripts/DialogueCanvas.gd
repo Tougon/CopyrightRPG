@@ -38,11 +38,13 @@ var test_text : String = "NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERE
 
 var horizontal_padding : int;
 var vertical_padding : int;
+var line_separation : int;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_rows = 0;
 	text_label.clear();
+	on_dialogue_print.emit();
 	
 	self.add_child(interval_timer);
 	self.add_child(row_timer);
@@ -62,6 +64,7 @@ func _ready():
 	if text_label.theme:
 		horizontal_padding = text_label.get_theme_constant("text_highlight_h_padding", "RichTextLabel");
 		vertical_padding = text_label.get_theme_constant("text_highlight_v_padding", "RichTextLabel");
+		line_separation = text_label.get_theme_constant("line_separation", "RichTextLabel");
 
 
 func _on_dialogue_queue(dialogue : String):
@@ -81,6 +84,7 @@ func clear_dialogue():
 	current_rows = 0;
 	text_label.clear();
 	text_label.append_text(bbcode);
+	on_dialogue_print.emit();
 
 
 func print_dialogue(text : String, await_key : bool = false):
@@ -169,7 +173,7 @@ func _print_by_word(text : String):
 		var word = splits[n];
 		
 		# Check if the width will exceed the line
-		var width = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size")).x;
+		var text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
 		
 		var pause_time = word_pause;
 		
@@ -181,7 +185,7 @@ func _print_by_word(text : String):
 		var added_space = false;
 		
 		# If the width exceeds the limit add a new line before continuing
-		if width >= text_label.get_rect().size.x:
+		if text_pos.x >= text_label.get_rect().size.x:
 			current_rows += 1;
 			
 			if n < splits.size():
@@ -199,6 +203,7 @@ func _print_by_word(text : String):
 			if current_rows > max_rows:
 				_remove_extra_rows();
 			current_line = "";
+			text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
 		else:
 			if n > 0:
 				text_label.add_text(" ");
@@ -207,23 +212,12 @@ func _print_by_word(text : String):
 		text_label.add_text(word);
 		current_line += (word + " ");
 		
-		if (current_rows == 1) :
-			var offset_width = width + horizontal_padding;
-			print(word)
-			print(current_line)
-			print("Dialogue")
-			print(width);
-			var offset = Vector2(offset_width, 0)
-			offset.x += (text_label.get_parent().position.x);
-			offset.y -= vertical_padding;
-			print(offset.x)
-			print("Icon")
-			on_set_dialogue_end_pos.emit(offset);
-			print("---------------------------------")
+		var row_index = current_rows - 1;
+		var offset = Vector2(text_pos.x + horizontal_padding, (text_pos.y * row_index) + (line_separation * row_index));
+		offset.x += (text_label.get_parent().position.x);
+		offset.y -= vertical_padding;
+		on_set_dialogue_end_pos.emit(offset);
 		
-		# TODO: Reevaluate the lack of a pause after the final word.
-		# Reason being it would be a good place to put a blinking effect.
-		# Original message was just nonsense.
 		if n < splits.size() - 1 && !finish_print && pause_time > 0:
 			interval_timer.start(pause_time);
 			await interval_timer.timeout;
@@ -263,6 +257,7 @@ func _remove_extra_rows():
 	current_rows = 0;
 	text_label.clear();
 	text_label.append_text(bbcode);
+	on_dialogue_print.emit();
 	
 	while current_display.size() > max_rows:
 		current_display.remove_at(0);
@@ -275,11 +270,6 @@ func _remove_extra_rows():
 		var line = current_display[n].replace("\t", "");
 		text_label.add_text(line);
 		current_rows += 1;
-		
-		#if n == current_display.size() - 1:
-		#	var offset = text_label.get_theme_font("font").get_string_size(("[indent]" + line).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
-		#	offset.height = offset.height * current_rows;
-		#	on_set_dialogue_end_pos.emit(offset);
 
 
 func _row_display_delay(row : String):
@@ -309,6 +299,17 @@ func _row_display_delay(row : String):
 			text_label.add_text("\n");
 		text_label.add_text(current_display[n].replace("\t", ""));
 		row_num += 1;
+		
+		if n == current_display.size() - 1:
+			var text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size(current_display[n].replace("\t", "").to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
+			var row_index = current_rows - 1;
+			var offset = Vector2(text_pos.x + horizontal_padding, (text_pos.y * row_index) + (line_separation * row_index));
+			offset.x += (text_label.get_parent().position.x);
+			offset.y -= vertical_padding;
+			on_set_dialogue_end_pos.emit(offset);
+	
+	if current_rows == 0:
+		on_dialogue_print.emit();
 
 
 func _on_destroy():
