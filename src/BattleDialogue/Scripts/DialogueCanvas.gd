@@ -2,8 +2,10 @@ extends CanvasLayer
 
 class_name DialogueCanvas
 
+signal on_dialogue_print();
 signal on_dialogue_complete();
 signal on_dialogue_removed();
+signal on_set_dialogue_end_pos(pos : Vector2);
 
 enum PrintType { CHARACTER, WORD, SYLLABLE }
 
@@ -31,8 +33,11 @@ var interval_timer = Timer.new();
 var row_timer = Timer.new();
 var end_timer = Timer.new();
 
-var bbcode : String = "[bgcolor=000000D5][indent]"; 
+@export var bbcode : String = "[bgcolor=000000D5]"; 
 var test_text : String = "NOT EVEN A DISTANT LAND WE'RE STUCK ON A WHOLE DIFFERENT PLANET. NO PEACE LOOKING AT THE SKY TROUBLE'S ALWAYS ALL AROUND SO WE STAY QUICK WITH THE GUNS AND CANNONS. STANDING AS LONG AS WE CAN UNTIL WE GET ALL DOLLS OFF THEN CALL OUR BETS OFF WE'LL BLOW THROUGH YOUR TAR, DEALING WITH LIFE'S MESSED UP";
+
+var horizontal_padding : int;
+var vertical_padding : int;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,7 +55,13 @@ func _ready():
 	EventManager.on_dialogue_queue.connect(_on_dialogue_queue);
 	EventManager.on_message_queue.connect(_on_message_queue);
 	await get_tree().process_frame;
+	
+	text_label.autowrap_mode = TextServer.AUTOWRAP_OFF;
 	text_label.append_text(bbcode);
+	
+	if text_label.theme:
+		horizontal_padding = text_label.get_theme_constant("text_highlight_h_padding", "RichTextLabel");
+		vertical_padding = text_label.get_theme_constant("text_highlight_v_padding", "RichTextLabel");
 
 
 func _on_dialogue_queue(dialogue : String):
@@ -73,6 +84,7 @@ func clear_dialogue():
 
 
 func print_dialogue(text : String, await_key : bool = false):
+	on_dialogue_print.emit();
 	self.await_key = await_key;
 	current_rows += 1;
 	
@@ -99,6 +111,7 @@ func skip_dialogue_to_end():
 	row_timer.timeout.emit();
 	end_timer.timeout.emit();
 
+
 func _print_by_character(text : String):
 	var current_line : String;
 	
@@ -110,7 +123,7 @@ func _print_by_character(text : String):
 			continue;
 		
 		# Check if the width will exceed the line
-		var width = text_label.get_theme_font("font").get_string_size(("[indent]" + current_line + chr).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size")).x;
+		var width = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size(("[indent]" + current_line + chr).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size")).x;
 		
 		# If the width exceeds the limit add a new line before continuing
 		if width >= text_label.get_rect().size.x:
@@ -156,7 +169,7 @@ func _print_by_word(text : String):
 		var word = splits[n];
 		
 		# Check if the width will exceed the line
-		var width = text_label.get_theme_font("font").get_string_size(("[indent]" + current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size")).x;
+		var width = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size")).x;
 		
 		var pause_time = word_pause;
 		
@@ -164,6 +177,8 @@ func _print_by_word(text : String):
 			
 			PrintType.WORD:
 				pause_time = character_pause * word.length();
+		
+		var added_space = false;
 		
 		# If the width exceeds the limit add a new line before continuing
 		if width >= text_label.get_rect().size.x:
@@ -187,9 +202,24 @@ func _print_by_word(text : String):
 		else:
 			if n > 0:
 				text_label.add_text(" ");
+				added_space = true;
 		
 		text_label.add_text(word);
 		current_line += (word + " ");
+		
+		if (current_rows == 1) :
+			var offset_width = width + horizontal_padding;
+			print(word)
+			print(current_line)
+			print("Dialogue")
+			print(width);
+			var offset = Vector2(offset_width, 0)
+			offset.x += (text_label.get_parent().position.x);
+			offset.y -= vertical_padding;
+			print(offset.x)
+			print("Icon")
+			on_set_dialogue_end_pos.emit(offset);
+			print("---------------------------------")
 		
 		# TODO: Reevaluate the lack of a pause after the final word.
 		# Reason being it would be a good place to put a blinking effect.
@@ -211,6 +241,21 @@ func _print_by_word(text : String):
 	finish_print = false;
 
 
+func _get_current_text() -> String:
+	
+	var current_display = text_label.get_parsed_text().split("\n");
+	var result = "[indent]";
+	
+	for n in current_display.size():
+		
+		if n > 0:
+			result += "\n";
+			
+		result += (current_display[n].replace("\t", ""));
+	
+	return result;
+
+
 func _remove_extra_rows():
 	
 	var current_display = text_label.get_parsed_text().split("\n");
@@ -226,9 +271,15 @@ func _remove_extra_rows():
 		
 		if n > 0:
 			text_label.add_text("\n");
-			
-		text_label.add_text(current_display[n].replace("\t", ""));
+		
+		var line = current_display[n].replace("\t", "");
+		text_label.add_text(line);
 		current_rows += 1;
+		
+		#if n == current_display.size() - 1:
+		#	var offset = text_label.get_theme_font("font").get_string_size(("[indent]" + line).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
+		#	offset.height = offset.height * current_rows;
+		#	on_set_dialogue_end_pos.emit(offset);
 
 
 func _row_display_delay(row : String):

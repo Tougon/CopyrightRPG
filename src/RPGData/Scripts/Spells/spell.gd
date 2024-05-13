@@ -101,8 +101,8 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 			else :
 				cast.fail_type = SpellCast.SpellFailType.Miss;
 				cast.set_hits([false]);
-				cast.set_damage([0])
-				cast.set_critical([false])
+				cast.set_damage([0]);
+				cast.set_critical([false]);
 			
 			# Deactivate properties
 			for p in prop_instances:
