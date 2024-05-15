@@ -86,9 +86,8 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			target = cached_targets[randi_range(0, cached_targets.size() - 1)];
 		index.append(cached_targets.find(target));
 		
-		# This has a TODO in the original project but like...I dunno, fam. Seems fine to me
-		# Though I do think this may be an unfair roll. 
-		# Like, it rolls once for the spell, and then again later for the first hit.
+		# I think this may be an unfair roll. 
+		# It rolls once for the spell, and then again later for the first hit.
 		if check_accuracy_per_hit && !check_spell_hit(user, target, spell_accuracy_per_hit):
 			hit.append(false);
 			crit.append(false);

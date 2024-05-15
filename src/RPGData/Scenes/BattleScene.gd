@@ -198,7 +198,10 @@ func _action_phase():
 		
 		var cast_msg = _format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
 		
-		# TODO: do additional formatting for target name perhaps?
+		# Format the cast message for targets
+		if spell_cast.size() > 0:
+			cast_msg = cast_msg.format({target = GrammarManager.get_plural_string(entity.current_target)})
+		
 		pre_anim_dialogue.append(cast_msg);
 		
 		for dialogue in pre_anim_dialogue:

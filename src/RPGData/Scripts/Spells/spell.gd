@@ -64,7 +64,6 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 	cast.success = mp_check;
 	
 	if cast.success:
-		# TODO: Implement actual checks for the below
 		cast.success = check_can_cast(user, target);
 		
 		if cast.success:
@@ -87,7 +86,6 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				if e.cast_success: 
 					e.on_activate();
 			
-			# TODO: Implement accuracy check
 			cast.success = check_spell_hit(user, target);
 			
 			if cast.success:
