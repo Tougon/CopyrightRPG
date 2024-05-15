@@ -44,7 +44,6 @@ func _set_entity_info(entity : EntityController):
 	
 	current_entity = entity;
 	
-	# TODO: Leading zeroes
 	if current_entity == null :
 		return;
 	

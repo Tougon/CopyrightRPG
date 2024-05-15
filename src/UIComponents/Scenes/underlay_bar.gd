@@ -19,6 +19,7 @@ enum AnimationType { Smooth, Delayed };
 @export var refill_color : Color;
 @export var animation_type : AnimationType = AnimationType.Smooth;
 @export var bar_subtract_speed : float = 1;
+@export var trailing_zeroes : bool = false;
 
 var current_value : float = 0;
 var fill_tween : Tween;
@@ -46,7 +47,22 @@ func set_values_immediate(current : float, min : float, max : float):
 
 
 func _set_text(value : float):
-	text.text = tr(text_format).format({current = str(value), max = str(max_value)});
+	var current_str = str(value);
+	var max_str = str(max_value);
+	
+	while current_str.length() < 3 :
+		if trailing_zeroes : 
+			current_str = "0" + current_str;
+		else:
+			current_str = " " + current_str;
+	
+	while max_str.length() < 3 :
+		if trailing_zeroes : 
+			max_str = "0" + max_str;
+		else:
+			max_str = " " + max_str;
+	
+	text.text = tr(text_format).format({current = current_str, max = max_str});
 
 
 func set_value_immediate(val : float):
