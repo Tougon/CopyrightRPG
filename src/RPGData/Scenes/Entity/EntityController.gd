@@ -218,8 +218,6 @@ func set_target(trigger : EntityController = null):
 func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 	if is_defeated : return;
 	
-	#print("Damaging for " + str(val));
-	
 	if val == 0 : 
 		if vibrate : 
 			if hit : 

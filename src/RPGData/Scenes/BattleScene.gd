@@ -187,7 +187,7 @@ func _action_phase():
 				if spell.fail_type == SpellCast.SpellFailType.InvalidMP : play_animation = false;
 			
 			for hit_result in spell.hit_results:
-				if hit_result.length() > 0 :
+				if hit_result.length() > 0 && !post_anim_dialogue.has(hit_result):
 					post_anim_dialogue.append(hit_result);
 			
 			# Get damage messages based on cast result
@@ -268,6 +268,11 @@ func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[Spell
 		var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
 		damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
 		output.append(damage_msg);
+	else :
+		for hit in spell.hits:
+			if hit :
+				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+				return;
 
 
 func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):
@@ -275,6 +280,7 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 	var entities : Array[EntityController];
 	var entity_damage = {}
 	var entity_crit = {}
+	var entity_miss = {};
 	
 	for i in spell.get_number_of_hits():
 		var entity_index = spell.target_index_override[i];
@@ -284,14 +290,21 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 			entities.append(entity);
 			entity_damage[entity] = 0;
 			entity_crit[entity] = false;
+			entity_miss[entity] = true;
 		
 		entity_damage[entity] += spell.damage[i];
 		
 		if spell.critical_hits[i] :
 			entity_damage[entity] = true;
+		if spell.hits[i] :
+			entity_miss[entity] = false;
 	
 	for entity in entities :
-		if entity_damage[entity] <= 0 : continue;
+		if entity_damage[entity] <= 0 : 
+			if entity_miss[entity] : continue;
+			else : 
+				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), entity.param.entity_name, entity.current_entity));
+				continue;
 		
 		if entity_crit[entity] : 
 			if spell_cast.size() > 1 :

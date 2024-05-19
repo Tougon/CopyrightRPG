@@ -95,7 +95,9 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 					cast.success = true;
 				else:
 					cast.success = cast.has_spell_done_anything();
-					if !cast.success : cast.fail_type = SpellCast.SpellFailType.NoEffect;
+					if !cast.success : 
+						cast.fail_type = SpellCast.SpellFailType.NoEffect;
+						cast.fail_message = tr("T_BATTLE_ACTION_FAIL");
 			else :
 				cast.fail_type = SpellCast.SpellFailType.Miss;
 				cast.set_hits([false]);
@@ -149,3 +151,4 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	cast.set_damage([0]);
 	cast.set_hits([true]);
 	cast.set_critical([false]);
+	cast.base_damage_cast = true;

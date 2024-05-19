@@ -17,6 +17,10 @@ var hit_results : Array[String];
 var critical : bool
 var critical_hits : Array[bool];
 
+# Indicates if the parent damage function was called.
+# This is effectively a "no effect" spell but is otherwise undetectable as such.
+var base_damage_cast : bool = false;
+
 # Random per hit variables
 var target_index_override : Array[int];
 
@@ -79,8 +83,7 @@ func add_hit_result(result : String):
 
 # General Spell Checks and Accessors
 func has_spell_done_anything() -> bool:
-	# TODO: Check if effect was activated
-	return !(total_damage == 0 && !get_effect_proc() && (hits == null || (hits != null && hits.size() == 0)));
+	return !(total_damage == 0 && !get_effect_proc() && (hits == null || (hits != null && (hits.size() == 0 || !hits[0] || base_damage_cast))));
 
 
 func get_effect_proc() -> bool:
@@ -162,6 +165,3 @@ func get_previous_hit_damage() -> int:
 
 func increment_hit():
 	current_hit += 1;
-
-
-# TODO: Spell Dialogue Functions (Might move these elsewhere?)

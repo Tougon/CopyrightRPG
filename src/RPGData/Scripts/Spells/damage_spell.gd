@@ -61,26 +61,29 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	
 	var result = (randf() * 100) <= hit;
 	
-	var hit_result = "";
-	var entity_name = "";
-	var generic = false;
-	var rand = randf();
+	if !result :
+		var hit_result = "";
+		var entity_name = "";
+		var generic = false;
+		var rand = randf();
+		
+		if evasion > accuracy  || rand < 0.5:
+			hit_result = tr("T_BATTLE_ACTION_DODGE");
+			entity_name = target.param.entity_name;
+			generic = target.param.entity_generic;
+		else :
+			hit_result = tr("T_BATTLE_ACTION_MISS");
+			entity_name = user.param.entity_name;
+			generic = user.param.entity_generic;
+		
+		if generic : 
+			hit_result = hit_result.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = entity_name});
+		else :
+			hit_result = hit_result.format({article_indef = "", article_def = "", entity = entity_name});
+		
+		cast.add_hit_result(hit_result);
+	else : cast.add_hit_result("");
 	
-	if evasion > accuracy  || rand < 0.5:
-		hit_result = tr("T_CAST_RESULT_GENERIC_DODGE");
-		entity_name = target.param.entity_name;
-		generic = target.param.entity_generic;
-	else :
-		hit_result = tr("T_CAST_RESULT_GENERIC_MISS");
-		entity_name = user.param.entity_name;
-		generic = user.param.entity_generic;
-	
-	if generic : 
-		hit_result = hit_result.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = entity_name});
-	else :
-		hit_result = hit_result.format({article_indef = "", article_def = "", entity = target.param.entity_name});
-	
-	cast.add_hit_result(hit_result);
 	return result;
 
 
