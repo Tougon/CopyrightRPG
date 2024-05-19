@@ -186,8 +186,9 @@ func _action_phase():
 				if spell.fail_message != "" : post_anim_dialogue.append(spell.fail_message);
 				if spell.fail_type == SpellCast.SpellFailType.InvalidMP : play_animation = false;
 			
-			# TODO: Additional info
-			
+			for hit_result in spell.hit_results:
+				if hit_result.length() > 0 :
+					post_anim_dialogue.append(hit_result);
 			
 			# Get damage messages based on cast result
 			if entity.current_action is DamageSpell : 

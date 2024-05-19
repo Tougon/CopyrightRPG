@@ -86,7 +86,7 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				if e.cast_success: 
 					e.on_activate();
 			
-			cast.success = check_spell_hit(user, target);
+			cast.success = check_spell_hit(cast, user, target);
 			
 			if cast.success:
 				calculate_damage(user, target, cast);
@@ -141,7 +141,7 @@ func check_can_cast(user : EntityController, target : EntityController):
 	return true;
 
 
-func check_spell_hit(user : EntityController, target : EntityController, amt : float = -1):
+func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityController, amt : float = -1):
 	return true;
 
 

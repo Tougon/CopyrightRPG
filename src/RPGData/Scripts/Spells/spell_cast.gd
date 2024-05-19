@@ -13,6 +13,7 @@ var target : EntityController;
 var damage : Array[int];
 var total_damage : int;
 var hits : Array[bool];
+var hit_results : Array[String];
 var critical : bool
 var critical_hits : Array[bool];
 
@@ -70,6 +71,10 @@ func set_critical(crt : Array[bool]):
 
 func set_hits(hit : Array[bool]):
 	hits = hit;
+
+
+func add_hit_result(result : String):
+	hit_results.append(result);
 
 
 # General Spell Checks and Accessors

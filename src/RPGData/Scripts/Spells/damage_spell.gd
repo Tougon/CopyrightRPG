@@ -29,7 +29,7 @@ enum SpellHitType { Physical, Special }
 @export_range(1, 24) var critical_chance : int = 16;
 
 
-func check_spell_hit(user : EntityController, target : EntityController, amt : float = -1):
+func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityController, amt : float = -1):
 	if amt == -1 && !check_accuracy : return true;
 	
 	var accuracy = user.get_accuracy();
@@ -51,11 +51,36 @@ func check_spell_hit(user : EntityController, target : EntityController, amt : f
 	
 	for mod in accuracy_mods:
 		hit *= mod;
+		accuracy *= mod;
+	
+	var evasion_mods = target.get_evasion_modifiers();
+	
+	for mod in evasion_mods:
+		hit /= mod;
+		evasion *= mod;
 	
 	var result = (randf() * 100) <= hit;
 	
-	# TODO: Check if result failed and use that to handle the miss messaging
+	var hit_result = "";
+	var entity_name = "";
+	var generic = false;
+	var rand = randf();
 	
+	if evasion > accuracy  || rand < 0.5:
+		hit_result = tr("T_CAST_RESULT_GENERIC_DODGE");
+		entity_name = target.param.entity_name;
+		generic = target.param.entity_generic;
+	else :
+		hit_result = tr("T_CAST_RESULT_GENERIC_MISS");
+		entity_name = user.param.entity_name;
+		generic = user.param.entity_generic;
+	
+	if generic : 
+		hit_result = hit_result.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = entity_name});
+	else :
+		hit_result = hit_result.format({article_indef = "", article_def = "", entity = target.param.entity_name});
+	
+	cast.add_hit_result(hit_result);
 	return result;
 
 
@@ -88,7 +113,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		# I think this may be an unfair roll. 
 		# It rolls once for the spell, and then again later for the first hit.
-		if check_accuracy_per_hit && !check_spell_hit(user, target, spell_accuracy_per_hit):
+		if check_accuracy_per_hit && !check_spell_hit(cast, user, target, spell_accuracy_per_hit):
 			hit.append(false);
 			crit.append(false);
 			result.append(0);
