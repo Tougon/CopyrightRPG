@@ -121,7 +121,7 @@ func entity_init():
 		
 		create_move_list();
 		
-		# TODO: Save data for enemy types.
+		# TODOGAME: Save data for enemy types.
 		# This variable is largely vestigal from older iterations and may be scrapped.
 		is_identified = false;
 		
@@ -293,7 +293,20 @@ func on_defeat():
 	accuracy_stage = 0;
 	evasion_stage = 0;
 	
-	# TODO: Remove all volitile effects. This should also clear attack mods.
+	for property in properties:
+		remove_effect(property, false);
+	
+	for effect in effects:
+		if effect.effect.effect_type == Effect.EffectType.Volitile:
+			remove_effect(effect, false);
+	
+	atk_mods.clear();
+	def_mods.clear();
+	sp_atk_mods.clear();
+	sp_def_mods.clear();
+	spd_mods.clear();
+	accuracy_mods.clear();
+	evasion_mods.clear();
 	
 	# TODO: Remove all seals held by this entity
 

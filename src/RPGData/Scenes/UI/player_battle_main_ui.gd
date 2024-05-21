@@ -22,7 +22,7 @@ func _set_active_entity(entity : EntityController):
 
 
 func on_focus():
-	# TODO: As we add more options to the menu, this must be expanded.
+	# TODOGAME: As we add more options to the menu, this must be expanded.
 	if current_entity != null && (current_entity is PlayerController):
 		match (current_entity.prev_action_type):
 			PlayerController.ActionType.ATTACK:

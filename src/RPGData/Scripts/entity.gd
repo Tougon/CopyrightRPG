@@ -84,7 +84,7 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 
 @export var luck_curve : Curve;
 
-#TODO: Weakness was unimplemented in the old version.
+# TODOGAME: Weakness was unimplemented in the old version.
 #@export_group("MODIFIERS")
 
 @export_group("Visuals")
@@ -94,7 +94,7 @@ enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
 @export var defeat_anim : AnimationSequenceObject;
 @export var head_offset : Vector2;
 
-#TODO: More real tools
+# TODO: More real tools
 @export_group("Moveset and Behavior")
 @export var move_list : MoveList;
 @export var behavior : EntityBehaviorObject;

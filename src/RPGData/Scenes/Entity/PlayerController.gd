@@ -11,7 +11,7 @@ var prev_action_type : ActionType;
 # Called when the node enters the scene tree for the first time.
 func entity_init():
 	
-	# TODO: Fetch levels and anything else from player data
+	# TODOGAME: Fetch levels and anything else from player data
 	
 	super.entity_init()
 	await get_tree().process_frame;

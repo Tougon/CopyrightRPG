@@ -393,13 +393,12 @@ func _on_enemy_defeated(entity : EntityController):
 
 # Helper function for dialogue formatting
 func _format_dialogue(dialogue : String, name : String, entity : Entity) -> String:
-	# TODO: Add pronoun support
 	var entity_name = name;
 	
 	if entity.generic : 
-		return dialogue.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(name), entity = name});
+		return dialogue.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(name), entity = name, pronoun1 = GrammarManager.get_pronoun(entity.gender, 1), pronoun2 = GrammarManager.get_pronoun(entity.gender, 2), pronoun3 = GrammarManager.get_pronoun(entity.gender, 3), pronoun4 = GrammarManager.get_pronoun(entity.gender, 4)});
 	else:
-		return dialogue.format({article_indef = "", article_def = "", entity = name});
+		return dialogue.format({article_indef = "", article_def = "", entity = name, pronoun1 = GrammarManager.get_pronoun(entity.gender, 1), pronoun2 = GrammarManager.get_pronoun(entity.gender, 2), pronoun3 = GrammarManager.get_pronoun(entity.gender, 3), pronoun4 = GrammarManager.get_pronoun(entity.gender, 4)});
 
 
 # Helper functions for intro dialogue

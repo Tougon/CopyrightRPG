@@ -39,3 +39,60 @@ func get_direct_article(name : String, gender : String = "U") -> String:
 		"en_US":
 			return "The ";
 	return "";
+
+
+func get_pronoun(gender : Entity.Gender, type : int) -> String:
+	match str(TranslationServer.get_locale()):
+		"en_US":
+			match gender:
+				Entity.Gender.NEUTRAL:
+					match type:
+						1:
+							return "it";
+						2:
+							return "it";
+						3: 
+							return "its";
+						4:
+							return "it's";
+				Entity.Gender.MALE:
+					match type:
+						1:
+							return "he";
+						2:
+							return "him";
+						3: 
+							return "his";
+						4:
+							return "he's";
+				Entity.Gender.FEMALE:
+					match type:
+						1:
+							return "she";
+						2:
+							return "her";
+						3: 
+							return "hers";
+						4:
+							return "her's";
+				Entity.Gender.NONBINARY:
+					match type:
+						1:
+							return "they";
+						2:
+							return "them";
+						3: 
+							return "theirs";
+						4:
+							return "theirs";
+				Entity.Gender.PLURAL:
+					match type:
+						1:
+							return "they";
+						2:
+							return "them";
+						3: 
+							return "theirs";
+						4:
+							return "theirs";
+	return "";
