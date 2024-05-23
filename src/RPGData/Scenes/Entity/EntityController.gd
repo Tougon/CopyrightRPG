@@ -261,6 +261,10 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+		
+		if crit && BattleManager.async_crit_text: 
+			var msg = tr("T_BATTLE_ACTION_CRITICAL_GENERIC").format({entity = param.entity_name});
+			EventManager.on_message_queue.emit(msg);
 
 
 func set_damage_sprite():
@@ -313,11 +317,12 @@ func _play_defeat_animation():
 	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
 	
 	var animation_seq = AnimationSequence.new(get_tree(), defeat_anim, self, [self], [null]);
-	animation_seq.sequence_ended.connect(_on_defeat_complete);
 	
 	if current_entity.type == Entity.Type.GENERIC:
+		_on_defeat_complete();
 		animation_seq.sequence_start();
 	else:
+		animation_seq.sequence_ended.connect(_on_defeat_complete);
 		EventManager.on_sequence_queue.emit(animation_seq);
 
 

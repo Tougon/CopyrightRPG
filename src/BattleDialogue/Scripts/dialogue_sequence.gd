@@ -48,7 +48,7 @@ func on_dialogue_complete():
 
 
 func unhandled_input(event : InputEvent) -> bool:
-	if PRESS_ADVANCE :
+	if PRESS_ADVANCE && !is_message:
 		if (event.is_action_pressed("ui_accept") || event.is_action_pressed("advance_dialogue")):
 			if loop :
 				on_dialogue_complete();

@@ -193,7 +193,7 @@ func _action_phase():
 					post_anim_dialogue.append(hit_result);
 			
 			# Get damage messages based on cast result
-			if entity.current_action is DamageSpell : 
+			if entity.current_action is DamageSpell && !BattleManager.async_damage_text : 
 				if entity.current_action.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
 					_get_spell_hit_messages_rand(entity, spell_cast, spell, post_anim_dialogue);
 				else :
@@ -258,7 +258,7 @@ func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[Spell
 	var damage_spell = entity.current_action is DamageSpell;
 	
 	if spell.get_damage_applied() > 0 :
-		if spell.critical : 
+		if spell.critical && !BattleManager.async_crit_text: 
 			if spell_cast.size() > 1 :
 				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
 			else : 
@@ -305,7 +305,7 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), entity.param.entity_name, entity.current_entity));
 				continue;
 		
-		if entity_crit[entity] : 
+		if entity_crit[entity] && !BattleManager.async_crit_text: 
 			if spell_cast.size() > 1 :
 				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), entity.param.entity_name, entity.current_entity));
 			else : 
@@ -387,8 +387,8 @@ func _on_player_menu_cancel():
 
 
 func _on_enemy_defeated(entity : EntityController):
-	var defeat_key = "T_BATTLE_INTRO_GENERIC";
-	if entity.current_entity.battle_intro_key != null :
+	var defeat_key = "T_BATTLE_DEFEAT_GENERIC";
+	if entity.current_entity.battle_defeat_key != null :
 		defeat_key = entity.current_entity.battle_defeat_key;
 	
 	var defeat_msg = _format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
