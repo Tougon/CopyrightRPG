@@ -4,11 +4,13 @@ extends Resource
 class_name Entity
 
 enum Gender { NEUTRAL, MALE, FEMALE, NONBINARY, PLURAL }
+enum Type { GENERIC, PLAYER, BOSS }
 
 @export_group("Identification")
 @export var name_key : String;
 @export var description_key : String;
 @export var gender : Gender;
+@export var type : Type;
 @export var generic : bool = true;
 
 @export_group("Stats")

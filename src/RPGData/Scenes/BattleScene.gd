@@ -12,6 +12,8 @@ var turn_number : int;
 var current_player_index : int;
 
 
+
+
 func _ready():
 	EventManager.register_player.connect(_on_player_register);
 	EventManager.register_enemy.connect(_on_enemy_register);
@@ -212,9 +214,6 @@ func _action_phase():
 			var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
 			EventManager.on_sequence_queue.emit(animation_seq);
 		
-		# TODO: Evaluate if we want the death animation before or after dialogue.
-		#await EventManager.on_sequence_queue_empty;
-		
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
@@ -331,9 +330,14 @@ func _end_phase():
 	EventManager.hide_entity_ui.emit();
 	
 	# TODO: Proper lose state
-	if (_all_players_defeated()) : return;
+	if (_all_players_defeated()) :
+		EventManager.on_players_defeated.emit(); 
+		EventManager.on_battle_completed.emit(false); 
+		return;
 	else :
-		# TODO: Check win state
+		if (_all_enemies_defeated()) :
+			EventManager.on_battle_completed.emit(true); 
+			return;
 		_begin_turn();
 
 
@@ -437,6 +441,13 @@ func _all_enemies_same() -> bool:
 func _all_players_defeated() -> bool:
 	for player in players:
 		if !player.is_defeated : return false;
+	
+	return true;
+
+
+func _all_enemies_defeated() -> bool:
+	for enemy in enemies:
+		if !enemy.is_defeated : return false;
 	
 	return true;
 

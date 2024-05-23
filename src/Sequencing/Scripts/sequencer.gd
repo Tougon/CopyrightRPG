@@ -9,12 +9,21 @@ var sequence_queue: Array[Sequence];
 func _ready():
 	tree_exiting.connect(_on_destroy);
 	EventManager.on_sequence_queue.connect(_on_sequence_queue);
+	EventManager.on_sequence_queue_first.connect(_on_sequence_queue_first);
 
 
 func _on_sequence_queue(sequence):
 	if sequence is Sequence:
 		if sequence_queue.size() > 0 || current_sequence != null:
 			sequence_queue.append(sequence);
+		else:
+			_play_sequence(sequence);
+
+
+func _on_sequence_queue_first(sequence):
+	if sequence is Sequence:
+		if sequence_queue.size() > 0 || current_sequence != null:
+			sequence_queue.insert(0, sequence);
 		else:
 			_play_sequence(sequence);
 
@@ -52,3 +61,4 @@ func _unhandled_input(event):
 func _on_destroy():
 	if EventManager != null:
 		EventManager.on_sequence_queue.disconnect(_on_sequence_queue);
+		EventManager.on_sequence_queue_first.disconnect(_on_sequence_queue_first);

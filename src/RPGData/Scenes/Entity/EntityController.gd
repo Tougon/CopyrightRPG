@@ -248,8 +248,16 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 			is_defeated = true;
 		else : set_damage_sprite();
 		
-		if vibrate : 
-			if crit || is_defeated : 
+		if is_defeated :
+			if current_entity.entity_sprites.size() > 1:
+				sprite.texture = current_entity.entity_sprites[1];
+			
+			TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+			await get_tree().create_timer(SHAKE_DURATION).timeout;
+			_play_defeat_animation();
+		
+		elif vibrate : 
+			if crit : 
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
@@ -274,17 +282,6 @@ func update_mp_ui():
 
 
 func on_defeat():
-	# TODO: Probably want this to run in parallel for enemies, but not bosses.
-	var defeat_anim = default_defeat_anim;
-	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
-	
-	if current_entity.entity_sprites.size() > 1:
-		sprite.texture = current_entity.entity_sprites[1];
-	
-	var animation_seq = AnimationSequence.new(get_tree(), defeat_anim, self, [self], [null]);
-	animation_seq.sequence_ended.connect(_on_defeat_complete);
-	EventManager.on_sequence_queue.emit(animation_seq);
-	
 	atk_stage = 0;
 	def_stage = 0;
 	sp_atk_stage = 0;
@@ -309,6 +306,19 @@ func on_defeat():
 	evasion_mods.clear();
 	
 	# TODO: Remove all seals held by this entity
+
+
+func _play_defeat_animation():
+	var defeat_anim = default_defeat_anim;
+	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
+	
+	var animation_seq = AnimationSequence.new(get_tree(), defeat_anim, self, [self], [null]);
+	animation_seq.sequence_ended.connect(_on_defeat_complete);
+	
+	if current_entity.type == Entity.Type.GENERIC:
+		animation_seq.sequence_start();
+	else:
+		EventManager.on_sequence_queue.emit(animation_seq);
 
 
 func _on_defeat_complete():

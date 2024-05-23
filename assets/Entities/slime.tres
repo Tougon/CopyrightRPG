@@ -86,6 +86,7 @@ script = ExtResource("1_tkvbf")
 name_key = "T_ENTITY_SLIME"
 description_key = "T_DESCRIPTION_SLIME"
 gender = 0
+type = 0
 generic = true
 base_hp = 50
 base_mp = 50

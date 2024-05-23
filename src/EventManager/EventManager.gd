@@ -2,6 +2,7 @@ extends Node
 
 # Sequencing Events
 signal on_sequence_queue(sequence);
+signal on_sequence_queue_first(sequence);
 signal on_sequence_queue_empty();
 
 # Dialogue Events
@@ -31,6 +32,8 @@ signal click_target(entity : EntityController);
 signal hide_entity_ui();
 
 signal on_enemy_defeated(entity : EntityController);
+signal on_players_defeated();
+signal on_battle_completed(victory : bool);
 
 
 # Leaving this intact but given the dictionary might as well not exist, I'm not sure we need.
