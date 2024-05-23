@@ -93,6 +93,7 @@ enum Type { GENERIC, PLAYER, BOSS }
 @export var entity_sprites: Array[Texture2D];
 @export var battle_intro_key: String;
 @export var battle_defeat_key: String;
+@export var dodge_anim : AnimationSequenceObject;
 @export var defeat_anim : AnimationSequenceObject;
 @export var head_offset : Vector2;
 

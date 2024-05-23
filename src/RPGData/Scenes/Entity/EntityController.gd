@@ -5,6 +5,7 @@ class_name EntityController
 ## Tricks the animation sequence into thinking the entity is scaled differently
 @export var use_override_direction : bool = false;
 @export var override_direction : Vector2 = Vector2(1, 1);
+@export var default_dodge_anim : AnimationSequenceObject;
 @export var default_defeat_anim : AnimationSequenceObject;
 
 @onready var entity_ui : EntityControllerUI = $"Entity Info Battle";
@@ -125,7 +126,6 @@ func entity_init():
 		# This variable is largely vestigal from older iterations and may be scrapped.
 		is_identified = false;
 		
-		# TODO: Implement support for effects and modifier arrays
 		current_behavior = current_entity.behavior;
 		
 		if current_entity.entity_sprites.size() > 0 :
@@ -223,22 +223,11 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 			if hit : 
 				TweenExtensions.shake_position_2d(sprite, SHAKE_DURATION * 0.7, 22.5, Vector2(7.5, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
-				# TODO: Personalized dodge animations
-				var tween_inst = get_tree().create_tween();
-				tween_inst.set_parallel(false);
+				var dodge_anim = default_dodge_anim;
+				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
 				
-				var direction : float = 1;
-				if use_override_direction : direction = override_direction.x;
-				
-				var pos_in = tween_inst.tween_property(sprite, "position:x", 100 * direction, 0.12);
-				pos_in.as_relative();
-				pos_in.set_trans(Tween.TRANS_CUBIC)
-				pos_in.set_ease(Tween.EASE_OUT);
-				
-				var pos_out = tween_inst.tween_property(sprite, "position:x", 100 * -direction, 0.12);
-				pos_out.as_relative();
-				pos_out.set_trans(Tween.TRANS_CUBIC)
-				pos_out.set_ease(Tween.EASE_OUT);
+				var animation_seq = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
+				animation_seq.sequence_start();
 	else :
 		last_hit = val;
 		current_hp = clamp(current_hp - val, 0, max_hp);

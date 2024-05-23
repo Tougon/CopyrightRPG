@@ -62,14 +62,14 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
 point_count = 2
 metadata/_snap_enabled = true
 
-[sub_resource type="Resource" id="Resource_l1vsj"]
-script = ExtResource("1_fc75y")
-spell = ExtResource("9_miihp")
-level = 0
-
 [sub_resource type="Resource" id="Resource_k72ke"]
 script = ExtResource("1_fc75y")
 spell = ExtResource("10_6f66q")
+level = 0
+
+[sub_resource type="Resource" id="Resource_l1vsj"]
+script = ExtResource("1_fc75y")
+spell = ExtResource("9_miihp")
 level = 0
 
 [sub_resource type="Resource" id="Resource_7of43"]
@@ -79,7 +79,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]
 script = ExtResource("1_44x03")
-list = Array[ExtResource("1_fc75y")]([SubResource("Resource_l1vsj"), SubResource("Resource_k72ke"), SubResource("Resource_7of43")])
+list = Array[ExtResource("1_fc75y")]([SubResource("Resource_k72ke"), SubResource("Resource_l1vsj"), SubResource("Resource_7of43")])
 
 [resource]
 script = ExtResource("1_tkvbf")

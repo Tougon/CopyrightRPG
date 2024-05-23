@@ -104,7 +104,6 @@ func _decision_phase():
 	while dialogue_canvas.current_rows > 0:
 		await get_tree().process_frame;
 	
-	# TODO: Process enemy actions for the turn
 	for enemy in enemies:
 		enemy.select_action();
 		enemy.is_ready = true;

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://b1yeonj32wfeb"]
+[gd_scene load_steps=17 format=3 uid="uid://b1yeonj32wfeb"]
 
 [ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_u887t"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntityController.gd" id="2_cc50b"]
 [ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="3_d0a8t"]
+[ext_resource type="Resource" uid="uid://ccrswqdtjja0y" path="res://assets/Animations/Sequences/Global/anim_global_dodge.tres" id="4_gkqeo"]
 [ext_resource type="Script" path="res://src/ClickableSprite/ClickableSprite2D.gd" id="4_l5njq"]
 [ext_resource type="Resource" uid="uid://hsj4yrvafyg6" path="res://assets/Animations/Sequences/Global/anim_global_defeat.tres" id="4_wvte6"]
 [ext_resource type="PackedScene" uid="uid://cddpjekmhp1aq" path="res://src/RPGData/Scenes/UI/entity_info_battle.tscn" id="5_12ej3"]
@@ -47,6 +48,7 @@ script = ExtResource("2_cc50b")
 current_entity = ExtResource("3_d0a8t")
 use_override_direction = false
 override_direction = Vector2(1, 1)
+default_dodge_anim = ExtResource("4_gkqeo")
 default_defeat_anim = ExtResource("4_wvte6")
 
 [node name="Sprite2D" parent="." index="0"]
