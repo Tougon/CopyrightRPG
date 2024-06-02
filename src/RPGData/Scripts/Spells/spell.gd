@@ -94,7 +94,7 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				if spell_type == SpellType.Flavor:
 					cast.success = true;
 				else:
-					cast.success = cast.has_spell_done_anything();
+					cast.success = cast.has_spell_done_anything() || effects_on_success.size() > 0;
 					if !cast.success : 
 						cast.fail_type = SpellCast.SpellFailType.NoEffect;
 						cast.fail_message = tr("T_BATTLE_ACTION_FAIL");
