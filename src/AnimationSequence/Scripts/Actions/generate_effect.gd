@@ -12,7 +12,8 @@ class_name ASAGenerateEffect
 @export var child : bool;
 @export var pos_match_sequence_dir : bool;
 @export var rot_match_sequence_dir : bool;
-@export var scl_match_sequence_dir : bool;
+@export var scl_match_sequence_dir_x : bool;
+@export var scl_match_sequence_dir_y : bool;
 @export var effect_variance : Vector2;
 
 
@@ -56,7 +57,9 @@ func execute(sequence : AnimationSequence):
 	if rot_match_sequence_dir : effect.rotation = effect_rotation * sequence.direction_x;
 	else : effect.rotation = effect_rotation;
 	
-	if scl_match_sequence_dir : effect.scale = scale;
-	else : effect.scale = effect_scale;
+	var inst_scale = effect_scale;
+	if scl_match_sequence_dir_x : inst_scale.x = scale.x;
+	if scl_match_sequence_dir_y : inst_scale.y = scale.y;
+	effect.scale = inst_scale;
 	
 	sequence.effects.append(effect);

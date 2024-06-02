@@ -29,17 +29,22 @@ func _set_active_entity(entity : EntityController):
 
 func _initialize_magic_menu(entity : EntityController):
 	var move_list = entity.move_list;
+	var default_selection = true;
 	
 	for i in move_list.size():
 		var move = move_list[i];
 		
-		# TODO: Check if action is last used attack
-		if i == 0 :
+		# If this is the last used attack, set selection
+		if move == current_entity.prev_action :
 			initial_selection = all_selections[i];
+			default_selection = false;
 		
 		(all_selections[i] as MagicButtonUI).init_button(move);
 		all_selections[i].visible = true;
 		all_selections[i].disabled = entity.current_mp < move.spell_cost;
+	
+	if default_selection && move_list.size() > 0:
+		initial_selection = move_list[0];
 	
 	for i in range(move_list.size(), all_selections.size()):
 		all_selections[i].visible = false;
