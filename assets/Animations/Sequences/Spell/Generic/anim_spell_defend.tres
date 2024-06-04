@@ -23,7 +23,8 @@ effect_scale = Vector2(1, 1)
 child = false
 pos_match_sequence_dir = false
 rot_match_sequence_dir = false
-scl_match_sequence_dir = false
+scl_match_sequence_dir_x = false
+scl_match_sequence_dir_y = false
 effect_variance = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_7a851"]
@@ -179,7 +180,8 @@ effect_scale = Vector2(1.25, 1.25)
 child = false
 pos_match_sequence_dir = false
 rot_match_sequence_dir = false
-scl_match_sequence_dir = false
+scl_match_sequence_dir_x = false
+scl_match_sequence_dir_y = false
 effect_variance = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_b7ri5"]

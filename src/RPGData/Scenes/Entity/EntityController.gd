@@ -215,7 +215,7 @@ func set_target(trigger : EntityController = null):
 
 
 # HP and MP modification
-func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
+func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, damage_time : float = 0.35):
 	if is_defeated : return;
 	
 	if val == 0 : 
@@ -235,7 +235,7 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 		if current_hp <= 0 :
 			on_defeat();
 			is_defeated = true;
-		else : set_damage_sprite();
+		else : set_damage_sprite(damage_time);
 		
 		if is_defeated :
 			if current_entity.entity_sprites.size() > 1:
@@ -256,11 +256,11 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true):
 			EventManager.on_message_queue.emit(msg);
 
 
-func set_damage_sprite():
+func set_damage_sprite(damage_time : float):
 	if current_entity.entity_sprites.size() > 1:
 		var previous = sprite.texture;
 		sprite.texture = current_entity.entity_sprites[1];
-		await get_tree().create_timer(0.35).timeout
+		await get_tree().create_timer(damage_time).timeout
 		sprite.texture = previous;
 
 

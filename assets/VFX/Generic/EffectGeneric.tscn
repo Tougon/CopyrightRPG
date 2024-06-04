@@ -30,7 +30,6 @@ _data = {
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_weqn5")
 hframes = 6
-frame = 3
 
 [node name="AnimationPlayer" parent="." index="2"]
 autoplay = "slash"

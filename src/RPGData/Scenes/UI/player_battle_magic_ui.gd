@@ -44,7 +44,7 @@ func _initialize_magic_menu(entity : EntityController):
 		all_selections[i].disabled = entity.current_mp < move.spell_cost;
 	
 	if default_selection && move_list.size() > 0:
-		initial_selection = move_list[0];
+		initial_selection = all_selections[0];
 	
 	for i in range(move_list.size(), all_selections.size()):
 		all_selections[i].visible = false;

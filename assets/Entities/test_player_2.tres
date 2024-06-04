@@ -1,12 +1,24 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=3 format=3 uid="uid://gfo2n17dga83"]
+[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://gfo2n17dga83"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_2h4bc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_vgrhk"]
+[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="2_xpkm1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="3_jvqhn"]
 
 [sub_resource type="Curve" id="Curve_h4c1v"]
 max_value = 2.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
 point_count = 2
 metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_73bkg"]
+script = ExtResource("1_vgrhk")
+spell = ExtResource("2_xpkm1")
+level = 0
+
+[sub_resource type="Resource" id="Resource_28e5y"]
+script = ExtResource("3_jvqhn")
+list = Array[ExtResource("1_vgrhk")]([SubResource("Resource_73bkg")])
 
 [resource]
 script = ExtResource("1_2h4bc")
@@ -30,3 +42,4 @@ entity_sprites = Array[Texture2D]([])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, 0)
+move_list = SubResource("Resource_28e5y")

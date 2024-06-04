@@ -131,6 +131,7 @@ func sequence_loop():
 				current_frame += 1;
 				
 				for frame in aso.animation_sequence:
+					
 					if frame.frame == current_frame:
 						call_sequence_function(frame.action);
 			

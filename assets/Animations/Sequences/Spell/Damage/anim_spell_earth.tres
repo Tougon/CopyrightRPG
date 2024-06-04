@@ -1,0 +1,97 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=21 format=3 uid="uid://ccb6lria8qu6t"]
+
+[ext_resource type="PackedScene" uid="uid://bpixrriovt8x3" path="res://assets/VFX/Spells/Damage/effect_spell_earth.tscn" id="1_rr1ac"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_lkrw3"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_2a4kl"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_wgxfp"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="7_khidy"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="9_ehl7e"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="10_qp41p"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="13_hq7ak"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="14_4r0wl"]
+
+[sub_resource type="Resource" id="Resource_rhl5j"]
+script = ExtResource("7_khidy")
+effect_scene = ExtResource("1_rr1ac")
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -40)
+effect_layer = 2
+effect_rotation = 0.0
+effect_scale = Vector2(0.8, 0.8)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = true
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ufi1u"]
+script = ExtResource("2_lkrw3")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_rhl5j")
+
+[sub_resource type="Resource" id="Resource_u3eqk"]
+script = ExtResource("5_wgxfp")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.75
+delay = 0.0
+transition = 0
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, -90)
+
+[sub_resource type="Resource" id="Resource_oory5"]
+script = ExtResource("4_2a4kl")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_u3eqk")
+
+[sub_resource type="Resource" id="Resource_xkyrv"]
+script = ExtResource("2_lkrw3")
+frame = 30
+frame_order = 0
+action = SubResource("Resource_oory5")
+
+[sub_resource type="Resource" id="Resource_5t3o6"]
+script = ExtResource("9_ehl7e")
+vibrate = true
+damage_time = 1.0
+
+[sub_resource type="Resource" id="Resource_ik65d"]
+script = ExtResource("2_lkrw3")
+frame = 90
+frame_order = 0
+action = SubResource("Resource_5t3o6")
+
+[sub_resource type="Resource" id="Resource_neec4"]
+script = ExtResource("10_qp41p")
+target = 1
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_gllrv"]
+script = ExtResource("2_lkrw3")
+frame = 90
+frame_order = 0
+action = SubResource("Resource_neec4")
+
+[sub_resource type="Resource" id="Resource_jim8f"]
+script = ExtResource("13_hq7ak")
+
+[sub_resource type="Resource" id="Resource_o1j1i"]
+script = ExtResource("2_lkrw3")
+frame = 140
+frame_order = 0
+action = SubResource("Resource_jim8f")
+
+[resource]
+script = ExtResource("14_4r0wl")
+animation_name = "Earth"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("2_lkrw3")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_gllrv"), SubResource("Resource_o1j1i")])
