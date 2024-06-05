@@ -17,6 +17,7 @@ next_tween = ""
 [node name="Player Magic Menu" node_paths=PackedStringArray("button_root") instance=ExtResource("1_4b6st")]
 script = ExtResource("2_p3grg")
 button_count = 30
+buttons_per_row = 3
 move_button = ExtResource("3_6w6k7")
 button_spacer = ExtResource("4_yof1e")
 button_root = NodePath("BG Area/Player Options/ScrollContainer/GridContainer")
