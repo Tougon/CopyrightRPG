@@ -9,6 +9,7 @@ func execute(sequence : AnimationSequence):
 	
 	if current_loop.num_iterations < current_loop.num_loops:
 		sequence.current_frame = current_loop.start_frame;
+		sequence.current_action_index = current_loop.start_order;
 	else:
 		sequence.loops.erase(current_loop);
 	

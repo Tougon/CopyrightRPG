@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn4o3grp80fvc"]
+
+[ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_jau1f"]
+[ext_resource type="Texture2D" uid="uid://bcdl7qmlps58t" path="res://addons/Spellbook2D/fire_weak.png" id="2_w033u"]
+
+[sub_resource type="Animation" id="Animation_mam4f"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 20]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uu8c8"]
+_data = {
+"fire": SubResource("Animation_mam4f")
+}
+
+[node name="Fire" instance=ExtResource("1_jau1f")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_w033u")
+hframes = 21
+
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_uu8c8")
+}

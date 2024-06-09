@@ -158,7 +158,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		var atk_mods_post = user.get_attack_modifiers();
 		if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
 		var def_mods_post = target.get_defense_modifiers();
-		if def_type == SpellHitType.Special: def_mods_post = target.get_sp_defense_modifier();
+		if def_type == SpellHitType.Special: def_mods_post = target.get_sp_defense_modifiers();
 		
 		for f in atk_mods_post :
 			damage *= f;

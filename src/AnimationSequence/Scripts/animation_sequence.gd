@@ -9,6 +9,7 @@ var on_success : bool;
 
 var target_index : int;
 var current_frame : int;
+var current_action_index : int;
 var loop_hits : int;
 var loop_targets : int;
 
@@ -130,10 +131,18 @@ func sequence_loop():
 			for i in num_frames:
 				current_frame += 1;
 				
-				for frame in aso.animation_sequence:
-					
+				# TODO: Order is not acknowledged. Please do something about.
+				current_action_index = 0;
+				
+				while current_action_index < aso.animation_sequence.size():
+					var frame = aso.animation_sequence[current_action_index];
 					if frame.frame == current_frame:
 						call_sequence_function(frame.action);
+					current_action_index += 1;
+					
+				#for frame in aso.animation_sequence:
+				#	if frame.frame == current_frame:
+				#		call_sequence_function(frame.action);
 			
 			current_time -= (num_frames * (1.0 / 60.0))
 		

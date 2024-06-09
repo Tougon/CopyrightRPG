@@ -13,7 +13,7 @@ func execute(sequence : AnimationSequence):
 	elif num_loops < 0 :
 		loops = sequence.loop_hits;
 	
-	var loop = AnimationSequenceLoop.new(sequence.current_frame, loops);
+	var loop = AnimationSequenceLoop.new(sequence.current_frame, sequence.current_action_index, loops);
 	sequence.loops.append(loop);
 	sequence.looping = true;
 

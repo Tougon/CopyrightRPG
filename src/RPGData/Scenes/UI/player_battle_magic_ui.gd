@@ -56,6 +56,9 @@ func _initialize_magic_menu(entity : EntityController):
 		if i >= last_row_index:
 			var index = i % buttons_per_row;
 			all_selections[i].focus_neighbor_bottom = all_selections[index].get_path();
+			
+			if i == move_list.size() - 1 : 
+				all_selections[i].focus_neighbor_right = all_selections[last_row_index].get_path();
 		
 		# At the start and end of a row, wrap around.
 		if i % buttons_per_row == 0:

@@ -7,11 +7,11 @@
 [ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="3_h531l"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
+[ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="5_4hfrl"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="Resource" uid="uid://bg2eiaprg7wnq" path="res://assets/Entities/test_player.tres" id="6_j3wjk"]
-[ext_resource type="Resource" uid="uid://b2uuuo2sg36ek" path="res://assets/Spells/reference/test_multi_attack_spell.tres" id="6_rievv"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Resource" uid="uid://gfo2n17dga83" path="res://assets/Entities/test_player_2.tres" id="7_vtb5m"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
@@ -158,11 +158,11 @@ delay_time = 0.5
 
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(200, 660)
+attack_action = ExtResource("5_4hfrl")
 current_entity = ExtResource("6_j3wjk")
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(465, 660)
-attack_action = ExtResource("6_rievv")
 current_entity = ExtResource("7_vtb5m")
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
