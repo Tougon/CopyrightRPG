@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=38 format=3 uid="uid://60hj70maoc1o"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=54 format=3 uid="uid://60hj70maoc1o"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_7qsql"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_p5oxi"]
@@ -9,7 +9,11 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_4esm2"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="7_hnd12"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="7_o7ofu"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="7_wxjo7"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="8_jtad6"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="9_itpy1"]
+[ext_resource type="PackedScene" uid="uid://cn4o3grp80fvc" path="res://assets/VFX/Spells/Damage/effect_spell_fire.tscn" id="12_7vygv"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="13_hj7so"]
 
 [sub_resource type="Resource" id="Resource_uyg3g"]
 script = ExtResource("2_0ckai")
@@ -23,7 +27,7 @@ ease = 0
 relative = false
 "Use From" = false
 "Value Type" = 5
-"Color Value" = Color(0.764706, 0, 0, 1)
+"Color Value" = Color(1, 0.321569, 0, 1)
 
 [sub_resource type="Resource" id="Resource_bydyb"]
 script = ExtResource("1_p5oxi")
@@ -88,7 +92,7 @@ tween = SubResource("Resource_rraj5")
 
 [sub_resource type="Resource" id="Resource_jh0om"]
 script = ExtResource("3_ctbia")
-frame = 15
+frame = 36
 frame_order = 0
 action = SubResource("Resource_odatg")
 
@@ -115,7 +119,7 @@ tween = SubResource("Resource_11jhv")
 
 [sub_resource type="Resource" id="Resource_rncbj"]
 script = ExtResource("3_ctbia")
-frame = 15
+frame = 30
 frame_order = 0
 action = SubResource("Resource_cxbw6")
 
@@ -142,7 +146,7 @@ tween = SubResource("Resource_ecar6")
 
 [sub_resource type="Resource" id="Resource_32ch1"]
 script = ExtResource("3_ctbia")
-frame = 24
+frame = 48
 frame_order = 0
 action = SubResource("Resource_o1n6k")
 
@@ -176,8 +180,17 @@ damage_time = 0.55
 [sub_resource type="Resource" id="Resource_x538y"]
 script = ExtResource("3_ctbia")
 frame = 50
-frame_order = 2
+frame_order = 5
 action = SubResource("Resource_6cp3h")
+
+[sub_resource type="Resource" id="Resource_cpw3g"]
+script = ExtResource("7_wxjo7")
+
+[sub_resource type="Resource" id="Resource_r2emo"]
+script = ExtResource("3_ctbia")
+frame = 50
+frame_order = 7
+action = SubResource("Resource_cpw3g")
 
 [sub_resource type="Resource" id="Resource_fkb3d"]
 script = ExtResource("7_o7ofu")
@@ -187,8 +200,17 @@ ui_type = 0
 [sub_resource type="Resource" id="Resource_mke3a"]
 script = ExtResource("3_ctbia")
 frame = 50
-frame_order = 3
+frame_order = 8
 action = SubResource("Resource_fkb3d")
+
+[sub_resource type="Resource" id="Resource_5op62"]
+script = ExtResource("9_itpy1")
+
+[sub_resource type="Resource" id="Resource_yov2k"]
+script = ExtResource("3_ctbia")
+frame = 50
+frame_order = 9
+action = SubResource("Resource_5op62")
 
 [sub_resource type="Resource" id="Resource_e1b33"]
 script = ExtResource("7_hnd12")
@@ -204,12 +226,65 @@ script = ExtResource("8_jtad6")
 
 [sub_resource type="Resource" id="Resource_1h7gr"]
 script = ExtResource("3_ctbia")
-frame = 80
+frame = 90
 frame_order = 0
 action = SubResource("Resource_xsu06")
+
+[sub_resource type="Resource" id="Resource_h0yni"]
+script = ExtResource("4_4ws4p")
+num_loops = 0
+loop_targets = true
+
+[sub_resource type="Resource" id="Resource_6rysy"]
+script = ExtResource("3_ctbia")
+frame = 38
+frame_order = 0
+action = SubResource("Resource_h0yni")
+
+[sub_resource type="Resource" id="Resource_ajdtm"]
+script = ExtResource("5_8n5mf")
+index = 0
+set_to_loop = true
+
+[sub_resource type="Resource" id="Resource_qjfpx"]
+script = ExtResource("3_ctbia")
+frame = 38
+frame_order = 1
+action = SubResource("Resource_ajdtm")
+
+[sub_resource type="Resource" id="Resource_iuej5"]
+script = ExtResource("13_hj7so")
+effect_scene = ExtResource("12_7vygv")
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -60)
+effect_layer = 5
+effect_rotation = 0.0
+effect_scale = Vector2(0.6, 0.6)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = true
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(30, 0)
+
+[sub_resource type="Resource" id="Resource_l4vw8"]
+script = ExtResource("3_ctbia")
+frame = 38
+frame_order = 2
+action = SubResource("Resource_iuej5")
+
+[sub_resource type="Resource" id="Resource_5hvwq"]
+script = ExtResource("7_hnd12")
+
+[sub_resource type="Resource" id="Resource_mfa6o"]
+script = ExtResource("3_ctbia")
+frame = 38
+frame_order = 4
+action = SubResource("Resource_5hvwq")
 
 [resource]
 script = ExtResource("1_7qsql")
 animation_name = ""
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ctbia")]([SubResource("Resource_j5jio"), SubResource("Resource_m6pbp"), SubResource("Resource_jh0om"), SubResource("Resource_rncbj"), SubResource("Resource_32ch1"), SubResource("Resource_mdq8p"), SubResource("Resource_gwd7r"), SubResource("Resource_x538y"), SubResource("Resource_mke3a"), SubResource("Resource_a58w8"), SubResource("Resource_1h7gr")])
+animation_sequence = Array[ExtResource("3_ctbia")]([SubResource("Resource_j5jio"), SubResource("Resource_m6pbp"), SubResource("Resource_jh0om"), SubResource("Resource_rncbj"), SubResource("Resource_32ch1"), SubResource("Resource_mdq8p"), SubResource("Resource_gwd7r"), SubResource("Resource_x538y"), SubResource("Resource_r2emo"), SubResource("Resource_mke3a"), SubResource("Resource_yov2k"), SubResource("Resource_a58w8"), SubResource("Resource_1h7gr"), SubResource("Resource_6rysy"), SubResource("Resource_qjfpx"), SubResource("Resource_l4vw8"), SubResource("Resource_mfa6o")])

@@ -5,6 +5,7 @@
 
 [sub_resource type="Animation" id="Animation_mam4f"]
 resource_name = "fire"
+length = 1.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,7 +13,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 1.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 20]
@@ -28,8 +29,10 @@ _data = {
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_w033u")
 hframes = 21
+frame = 20
 
 [node name="AnimationPlayer" parent="." index="2"]
+autoplay = "fire"
 libraries = {
 "": SubResource("AnimationLibrary_uu8c8")
 }

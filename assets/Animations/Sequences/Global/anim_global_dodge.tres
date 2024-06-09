@@ -72,5 +72,5 @@ action = SubResource("Resource_3pm8e")
 [resource]
 script = ExtResource("1_avfto")
 animation_name = "Dodge"
-hide_ui_on_start = true
+hide_ui_on_start = false
 animation_sequence = Array[ExtResource("3_lufta")]([SubResource("Resource_3v7k7"), SubResource("Resource_h288w"), SubResource("Resource_dkot2")])

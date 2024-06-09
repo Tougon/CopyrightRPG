@@ -47,7 +47,7 @@ func _initialize_magic_menu(entity : EntityController):
 		all_selections[i].disabled = entity.current_mp < move.spell_cost;
 		
 		# If we're in the first row, wrap to the bottom
-		if i < buttons_per_row :
+		if i < buttons_per_row && move_list.size() > buttons_per_row:
 			var index = last_row_index + (i % buttons_per_row);
 			while index >= move_list.size() : index -= 1;
 			all_selections[i].focus_neighbor_top = all_selections[index].get_path();
@@ -69,6 +69,8 @@ func _initialize_magic_menu(entity : EntityController):
 			var index = i;
 			while index % buttons_per_row != 0: index -= 1;
 			all_selections[i].focus_neighbor_right = all_selections[index].get_path();
+		elif i == move_list.size() - 1 && move_list.size() <= buttons_per_row:
+			all_selections[i].focus_neighbor_right = all_selections[0].get_path();
 	
 	if default_selection && move_list.size() > 0:
 		initial_selection = all_selections[0];

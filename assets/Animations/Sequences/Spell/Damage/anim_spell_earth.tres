@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=21 format=3 uid="uid://ccb6lria8qu6t"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=27 format=3 uid="uid://ccb6lria8qu6t"]
 
 [ext_resource type="PackedScene" uid="uid://bpixrriovt8x3" path="res://assets/VFX/Spells/Damage/effect_spell_earth.tscn" id="1_rr1ac"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_lkrw3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_2a4kl"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_wgxfp"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="7_euyra"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="7_khidy"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="9_ehl7e"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="9_s85sp"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="10_qp41p"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="13_hq7ak"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="14_4r0wl"]
@@ -70,6 +72,15 @@ frame = 90
 frame_order = 0
 action = SubResource("Resource_5t3o6")
 
+[sub_resource type="Resource" id="Resource_hkvxv"]
+script = ExtResource("7_euyra")
+
+[sub_resource type="Resource" id="Resource_87u8w"]
+script = ExtResource("2_lkrw3")
+frame = 90
+frame_order = 1
+action = SubResource("Resource_hkvxv")
+
 [sub_resource type="Resource" id="Resource_neec4"]
 script = ExtResource("10_qp41p")
 target = 1
@@ -78,8 +89,17 @@ ui_type = 0
 [sub_resource type="Resource" id="Resource_gllrv"]
 script = ExtResource("2_lkrw3")
 frame = 90
-frame_order = 0
+frame_order = 2
 action = SubResource("Resource_neec4")
+
+[sub_resource type="Resource" id="Resource_t5frq"]
+script = ExtResource("9_s85sp")
+
+[sub_resource type="Resource" id="Resource_nbfkv"]
+script = ExtResource("2_lkrw3")
+frame = 90
+frame_order = 4
+action = SubResource("Resource_t5frq")
 
 [sub_resource type="Resource" id="Resource_jim8f"]
 script = ExtResource("13_hq7ak")
@@ -94,4 +114,4 @@ action = SubResource("Resource_jim8f")
 script = ExtResource("14_4r0wl")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("2_lkrw3")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_gllrv"), SubResource("Resource_o1j1i")])
+animation_sequence = Array[ExtResource("2_lkrw3")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i")])
