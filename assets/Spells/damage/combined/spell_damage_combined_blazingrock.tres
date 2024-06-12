@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=5 format=3 uid="uid://dnykwi6f8o7wm"]
+
+[ext_resource type="Resource" uid="uid://doisqgkbm1wym" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_blazingrock.tres" id="1_gle6i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_841te"]
+[ext_resource type="Resource" uid="uid://b8rhhshmwvhvo" path="res://assets/Flags/earth.tres" id="3_ippmn"]
+[ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="4_vluxi"]
+
+[resource]
+script = ExtResource("2_841te")
+spell_power = 90.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+check_accuracy = true
+spell_accuracy = 90.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+can_critical = false
+critical_chance = 16
+spell_name_key = "T_SPELL_DAMAGE_COMBINED_BLAZINGROCK"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_COMBINED_BLAZINGROCK"
+spell_type = 1
+spell_target = 0
+spell_cost = 20
+spell_priority = 0
+spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("3_ippmn"), ExtResource("4_vluxi")])
+animation_sequence = ExtResource("1_gle6i")
+effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

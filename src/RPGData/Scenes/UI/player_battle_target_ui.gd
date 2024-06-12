@@ -83,7 +83,33 @@ func _initialize_target_menu(entity : EntityController):
 			if i > targets.size():
 				target_arrow_pool[i].visible = false;
 			target_info_pool[i].visible = false;
+	
+	elif spell_target == Spell.SpellTarget.AllEnemyExcept :
+		var arrows : Array[Control];
+		var temp_targets : Array[EntityController];
 		
+		for i in targets.size():
+			var arrow = target_arrow_pool[i];
+			arrow.visible = false;
+			arrows.append(arrow);
+			temp_targets.append(targets[i]);
+		
+		for i in targets.size():
+			var arrow = arrows[i];
+			arrows.erase(arrow);
+			temp_targets.erase(targets[i]);
+			
+			var info = target_info_pool[i];
+			info.visible = true;
+			info.global_position = targets[i].global_position;
+			
+			info.initialize(temp_targets.duplicate(), arrows.duplicate(), entity, false);
+			target_to_info[targets[i]] = info;
+			
+			temp_targets.insert(i, targets[i]);
+			arrows.insert(i, arrow);
+		return;
+	
 	else:
 		for i in targets.size():
 			var target = targets[i];

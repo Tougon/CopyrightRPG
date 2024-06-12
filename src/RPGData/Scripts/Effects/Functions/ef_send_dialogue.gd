@@ -19,24 +19,26 @@ func execute(instance : EffectInstance):
 	if instance.user != null :
 		user_name = instance.user.param.entity_name;
 		
+		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 1));
+		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 2));
+		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 3));
+		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 4));
+		
 		if instance.user.current_entity.generic:
 			user_article_def = GrammarManager.get_direct_article(user_name);
 			user_article_indef = GrammarManager.get_indirect_article(user_name);
-			user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 1));
-			user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 2));
-			user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 3));
-			user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 4));
 	
 	if instance.target != null :
 		target_name = instance.target.param.entity_name;
 		
+		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 1));
+		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 2));
+		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 3));
+		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 4));
+		
 		if instance.target.current_entity.generic:
 			target_article_def = GrammarManager.get_direct_article(target_name);
 			target_article_indef = GrammarManager.get_indirect_article(target_name);
-			target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 1));
-			target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 2));
-			target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 3));
-			target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 4));
 	
 	var dialogue = tr(dialogue_key);
 	var spell_name = "";

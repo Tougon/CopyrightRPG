@@ -8,7 +8,7 @@ const SEAL_COST_MULTIPLIER : float = 1.5;
 const DAMAGE_CONSTANT : int = 50;
 
 enum SpellType { Other, Attack, Status, Buff, Debuff, Heal, Flavor }
-enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, SingleParty, AllParty, All }
+enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, SingleParty, AllParty, All, AllEnemyExcept }
 
 @export_group("Universal Spell Parameters")
 @export_subgroup("Spell Naming")
