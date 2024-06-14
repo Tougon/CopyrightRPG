@@ -370,10 +370,14 @@ func get_evasion() -> float:
 	return param.entity_dodge_modifier;
 
 
-func get_possible_targets() -> Array[EntityController]:
+func get_possible_targets(spell : Spell = null) -> Array[EntityController]:
 	var result : Array[EntityController];
 	
-	match current_action.spell_target:
+	var action_to_check = current_action;
+	
+	if spell != null : action_to_check = spell;
+	
+	match action_to_check.spell_target:
 		Spell.SpellTarget.All:
 			for enemy in enemies:
 				if !enemy.is_defeated:

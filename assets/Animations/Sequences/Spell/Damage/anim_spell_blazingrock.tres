@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=27 format=3 uid="uid://doisqgkbm1wym"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=31 format=3 uid="uid://doisqgkbm1wym"]
 
 [ext_resource type="PackedScene" uid="uid://bpixrriovt8x3" path="res://assets/VFX/Spells/Damage/effect_spell_earth.tscn" id="1_60tc5"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_uce07"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_4ncfy"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="7_vm7av"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_y1xv2"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/cast_sub_spell.gd" id="9_0qm61"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="9_ev8gp"]
+[ext_resource type="Resource" uid="uid://6kinr54u5ofy" path="res://assets/Spells/damage/combined/spell_damage_combined_blazingrock_b.tres" id="10_o71gs"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_qnaw1"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_nnogh"]
 
@@ -92,13 +94,26 @@ frame = 90
 frame_order = 2
 action = SubResource("Resource_neec4")
 
+[sub_resource type="Resource" id="Resource_bk2gt"]
+script = ExtResource("9_0qm61")
+spell = ExtResource("10_o71gs")
+vibrate = true
+damage_time = 0.35
+show_ui = true
+
+[sub_resource type="Resource" id="Resource_bh5j5"]
+script = ExtResource("3_oy0gp")
+frame = 98
+frame_order = 3
+action = SubResource("Resource_bk2gt")
+
 [sub_resource type="Resource" id="Resource_t5frq"]
 script = ExtResource("9_ev8gp")
 
 [sub_resource type="Resource" id="Resource_nbfkv"]
 script = ExtResource("3_oy0gp")
-frame = 90
-frame_order = 4
+frame = 100
+frame_order = 10
 action = SubResource("Resource_t5frq")
 
 [sub_resource type="Resource" id="Resource_jim8f"]
@@ -114,4 +129,4 @@ action = SubResource("Resource_jim8f")
 script = ExtResource("11_nnogh")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_oy0gp")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i")])
+animation_sequence = Array[ExtResource("3_oy0gp")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_bh5j5"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i")])
