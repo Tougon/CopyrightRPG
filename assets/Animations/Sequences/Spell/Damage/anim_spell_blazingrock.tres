@@ -66,7 +66,7 @@ action = SubResource("Resource_oory5")
 [sub_resource type="Resource" id="Resource_5t3o6"]
 script = ExtResource("6_4ncfy")
 vibrate = true
-damage_time = 1.0
+damage_time = 1.1
 
 [sub_resource type="Resource" id="Resource_ik65d"]
 script = ExtResource("3_oy0gp")
@@ -98,12 +98,13 @@ action = SubResource("Resource_neec4")
 script = ExtResource("9_0qm61")
 spell = ExtResource("10_o71gs")
 vibrate = true
-damage_time = 0.35
+damage_time = 0.6
+damage_delay = 0.2
 show_ui = true
 
 [sub_resource type="Resource" id="Resource_bh5j5"]
 script = ExtResource("3_oy0gp")
-frame = 98
+frame = 91
 frame_order = 3
 action = SubResource("Resource_bk2gt")
 

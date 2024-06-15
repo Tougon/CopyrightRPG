@@ -5,6 +5,7 @@ class_name ASACastSubspell
 @export var spell : Spell;
 @export var vibrate : bool = true;
 @export var damage_time : float = 0.35;
+@export var damage_delay : float = 0;
 @export var show_ui : bool = true;
 
 func execute(sequence : AnimationSequence):
@@ -56,22 +57,27 @@ func execute(sequence : AnimationSequence):
 			hit = hit || cast.get_current_hit_success();
 			cast.increment_hit();
 		
-		cast.target.apply_damage(dmg, crit, vibrate, hit, damage_time);
+		cast.target.apply_damage(dmg, crit, vibrate, hit, damage_time, damage_delay);
 		
 		if show_ui && hit : cast.target.update_hp_ui();
-		if dmg > 0 && !BattleManager.async_damage_text:
-			var messages : Array[String];
-			if crit : 
-				if !BattleManager.async_crit_text: 
-					messages.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+		if dmg > 0:
+			if spell.animation_sequence :
+				var animation_seq = AnimationSequence.new(user.get_tree(), spell.animation_sequence, user, [ cast.target ], [ cast.spell ]);
+				animation_seq.sequence_start();
 			
-			var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), cast.target.param.entity_name, cast.target.current_entity);
-			damage_msg = damage_msg.format({damage = str(cast.get_damage_applied())});
-			messages.append(damage_msg);
-			
-			if messages.size() > 0 :
-				for message in messages :
-					EventManager.on_dialogue_queue.emit(message);
+			if !BattleManager.async_damage_text:
+				var messages : Array[String];
+				if crit : 
+					if !BattleManager.async_crit_text: 
+						messages.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+				
+				var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), cast.target.param.entity_name, cast.target.current_entity);
+				damage_msg = damage_msg.format({damage = str(cast.get_damage_applied())});
+				messages.append(damage_msg);
+				
+				if messages.size() > 0 :
+					for message in messages :
+						EventManager.on_dialogue_queue.emit(message);
 
 
 # Helper function for dialogue formatting. Should really move this to grammar manager.

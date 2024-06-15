@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://gfo2n17dga83"]
+[gd_resource type="Resource" script_class="Entity" load_steps=12 format=3 uid="uid://gfo2n17dga83"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="1_2h4bc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_vgrhk"]
 [ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="2_xpkm1"]
 [ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="3_2iw5o"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="3_jvqhn"]
+[ext_resource type="Resource" uid="uid://dnykwi6f8o7wm" path="res://assets/Spells/damage/combined/spell_damage_combined_blazingrock.tres" id="4_yn1eu"]
 
 [sub_resource type="Curve" id="Curve_h4c1v"]
 max_value = 2.0
@@ -22,9 +23,14 @@ script = ExtResource("1_vgrhk")
 spell = ExtResource("3_2iw5o")
 level = 0
 
+[sub_resource type="Resource" id="Resource_tck2f"]
+script = ExtResource("1_vgrhk")
+spell = ExtResource("4_yn1eu")
+level = 0
+
 [sub_resource type="Resource" id="Resource_28e5y"]
 script = ExtResource("3_jvqhn")
-list = Array[ExtResource("1_vgrhk")]([SubResource("Resource_73bkg"), SubResource("Resource_uu4s6")])
+list = Array[ExtResource("1_vgrhk")]([SubResource("Resource_73bkg"), SubResource("Resource_uu4s6"), SubResource("Resource_tck2f")])
 
 [resource]
 script = ExtResource("1_2h4bc")

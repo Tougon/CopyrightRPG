@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=10 format=3 uid="uid://vvdqgx4g43x8"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_icilr"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="11_wtkrh"]
+[ext_resource type="PackedScene" uid="uid://cn4o3grp80fvc" path="res://assets/VFX/Spells/Damage/effect_spell_fire.tscn" id="12_4y6yy"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="13_j7xeq"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="14_o4yx5"]
+
+[sub_resource type="Resource" id="Resource_xsu06"]
+script = ExtResource("11_wtkrh")
+
+[sub_resource type="Resource" id="Resource_1h7gr"]
+script = ExtResource("3_icilr")
+frame = 60
+frame_order = 0
+action = SubResource("Resource_xsu06")
+
+[sub_resource type="Resource" id="Resource_iuej5"]
+script = ExtResource("13_j7xeq")
+effect_scene = ExtResource("12_4y6yy")
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -60)
+effect_layer = 5
+effect_rotation = 0.0
+effect_scale = Vector2(0.6, 0.6)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = true
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(30, 0)
+
+[sub_resource type="Resource" id="Resource_l4vw8"]
+script = ExtResource("3_icilr")
+frame = 1
+frame_order = 1
+action = SubResource("Resource_iuej5")
+
+[resource]
+script = ExtResource("14_o4yx5")
+animation_name = ""
+hide_ui_on_start = false
+animation_sequence = Array[ExtResource("3_icilr")]([SubResource("Resource_1h7gr"), SubResource("Resource_l4vw8")])
