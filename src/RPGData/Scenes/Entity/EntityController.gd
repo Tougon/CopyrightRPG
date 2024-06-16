@@ -14,6 +14,7 @@ var move_list : Array[Spell];
 var param : EntityParams;
 var current_action : Spell;
 var prev_action : Spell;
+var sealing : bool;
 var current_target : Array[EntityController];
 var current_behavior : EntityBehaviorObject;
 
@@ -306,6 +307,7 @@ func on_defeat():
 	evasion_mods.clear();
 	
 	# TODO: Remove all seals held by this entity
+	sealing = false;
 
 
 func _play_defeat_animation():
@@ -556,6 +558,7 @@ static func compare_speed (a : EntityController, b : EntityController) -> bool:
 		return false;
 	
 	return false;
+
 
 static func compare_speed_tie(a : EntityController, b : EntityController) -> bool:
 	var result = compare_speed(a, b);

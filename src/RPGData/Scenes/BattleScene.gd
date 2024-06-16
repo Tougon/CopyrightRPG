@@ -1,8 +1,12 @@
 extends Node2D
+class_name BattleScene
 
 @export var fade_sequence : TweenPlayer;
 @export var sequencer : Sequencer;
 @export var dialogue_canvas : DialogueCanvas;
+@export var seal_manager : SealManager
+
+static var Instance : BattleScene;
 
 var entities : Array[EntityController];
 var players : Array[EntityController];
@@ -12,9 +16,9 @@ var turn_number : int;
 var current_player_index : int;
 
 
-
-
 func _ready():
+	Instance = self;
+	
 	EventManager.register_player.connect(_on_player_register);
 	EventManager.register_enemy.connect(_on_enemy_register);
 	EventManager.on_attack_select.connect(_on_attack_select);
@@ -29,6 +33,8 @@ func _ready():
 func _begin_battle():
 	
 	await get_tree().process_frame;
+	
+	EventManager.on_battle_begin.emit();
 	
 	# Fade in
 	if fade_sequence != null:
@@ -318,6 +324,8 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 func _end_phase():
 	# Execute turn end effect functions
 	for entity in entities:
+		entity.sealing = false;
+		
 		if !entity.is_defeated:
 			# NOTE: In the original game, this is where we checked for remain active.
 			# This will no longer be done to give more control over when this occurs.
@@ -338,6 +346,14 @@ func _end_phase():
 			EventManager.on_battle_completed.emit(true); 
 			return;
 		_begin_turn();
+
+
+# Support functions for sealing
+func can_seal(spell : Spell) -> bool:
+	for player in players:
+		if player.sealing : return false;
+	
+	return seal_manager.can_seal_spell(spell);
 
 
 # Event responses
@@ -363,8 +379,9 @@ func _on_magic_select():
 	UIManager.open_menu_name("player_battle_magic");
 
 
-func _on_action_selected(action : Spell):
+func _on_action_selected(action : Spell, sealing : bool):
 	players[current_player_index].current_action = action;
+	players[current_player_index].sealing = sealing;
 	players[current_player_index].prev_action_type = PlayerController.ActionType.SPELL;
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
@@ -381,6 +398,7 @@ func _on_player_menu_cancel():
 	if current_player_index > 0:
 		current_player_index -= 1;
 		players[current_player_index].is_ready = false;
+		players[current_player_index].sealing = false;
 		EventManager.set_active_player.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
 
@@ -465,3 +483,6 @@ func _on_destroy():
 		EventManager.on_defend_select.disconnect(_on_defend_select);
 		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
+	
+	if Instance == self:
+		Instance = null;

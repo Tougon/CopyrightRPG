@@ -131,7 +131,8 @@ func sequence_loop():
 			for i in num_frames:
 				current_frame += 1;
 				
-				# TODO: Order is not acknowledged. Please do something about.
+				# NOTE: Frame Order is not acknowledged.
+				# With Godot's workflow, this isn't a huge concern, but is notable.
 				current_action_index = 0;
 				
 				while current_action_index < aso.animation_sequence.size():

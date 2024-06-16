@@ -42,13 +42,12 @@ func _initialize_magic_menu(entity : EntityController):
 		var move = move_list[i];
 		
 		# If this is the last used attack, set selection
-		if move == current_entity.prev_action :
+		if (current_entity.current_action != null && move == current_entity.current_action) || move == current_entity.prev_action :
 			initial_selection = all_selections[i];
 			default_selection = false;
 		
-		(all_selections[i] as MagicButtonUI).init_button(move);
+		(all_selections[i] as MagicButtonUI).init_button(move, entity);
 		all_selections[i].visible = true;
-		all_selections[i].disabled = entity.current_mp < move.spell_cost;
 		
 		all_selections[i].focus_neighbor_top = "";
 		all_selections[i].focus_neighbor_left = "";
