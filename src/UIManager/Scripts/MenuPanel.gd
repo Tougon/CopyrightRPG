@@ -143,6 +143,14 @@ func on_menu_cancel():
 	set_active(false);
 
 
+func on_ui_aux_1():
+	pass;
+
+
+func on_ui_aux_2():
+	pass;
+
+
 func _on_destroy():
 	if ui_manager != null:
 		ui_manager.remove_menu(self);

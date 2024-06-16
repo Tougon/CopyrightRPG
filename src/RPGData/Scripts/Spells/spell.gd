@@ -2,7 +2,6 @@
 extends Resource
 class_name Spell
 
-
 const SEAL_COST_MULTIPLIER : float = 1.5;
 # Temp value used to fix damage calculation at 50
 const DAMAGE_CONSTANT : int = 50;

@@ -1,6 +1,8 @@
 extends MenuPanel
 
 var current_entity : EntityController;
+var is_sealing : bool = false;
+
 @export var button_count : int = 30;
 @export var buttons_per_row : int = 3;
 @export var move_button : PackedScene;
@@ -34,6 +36,8 @@ func _initialize_magic_menu(entity : EntityController):
 	var default_selection = true;
 	var last_row_index = _get_bottom_row_start_index(move_list.size());
 	
+	is_sealing = false;
+	
 	for i in move_list.size():
 		var move = move_list[i];
 		
@@ -45,6 +49,11 @@ func _initialize_magic_menu(entity : EntityController):
 		(all_selections[i] as MagicButtonUI).init_button(move);
 		all_selections[i].visible = true;
 		all_selections[i].disabled = entity.current_mp < move.spell_cost;
+		
+		all_selections[i].focus_neighbor_top = "";
+		all_selections[i].focus_neighbor_left = "";
+		all_selections[i].focus_neighbor_right = "";
+		all_selections[i].focus_neighbor_bottom = "";
 		
 		# If we're in the first row, wrap to the bottom
 		if i < buttons_per_row && move_list.size() > buttons_per_row:
@@ -88,6 +97,15 @@ func _get_bottom_row_start_index(size : int) -> int:
 func on_menu_cancel():
 	UIManager.open_menu_name("player_battle_main");
 	super.on_menu_cancel();
+
+
+func on_ui_aux_1():
+	is_sealing = !is_sealing;
+	
+	for button in all_selections:
+		(button as MagicButtonUI).set_sealing(is_sealing);
+	
+	super.on_ui_aux_1();
 
 
 func _on_destroy():

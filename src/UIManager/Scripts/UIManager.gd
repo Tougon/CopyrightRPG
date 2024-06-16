@@ -15,6 +15,14 @@ func _unhandled_input(event):
 			if (event.is_action_pressed("ui_cancel")):
 				current.on_menu_cancel();
 				accept_event();
+			
+			if (event.is_action_pressed("ui_aux_1")):
+				current.on_ui_aux_1();
+				accept_event();
+			
+			if (event.is_action_pressed("ui_aux_2")):
+				current.on_ui_aux_2();
+				accept_event();
 
 
 func add_menu(menu : MenuPanel):
