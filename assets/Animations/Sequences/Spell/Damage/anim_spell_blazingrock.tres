@@ -99,7 +99,7 @@ script = ExtResource("9_0qm61")
 spell = ExtResource("10_o71gs")
 vibrate = true
 damage_time = 0.6
-damage_delay = 0.2
+damage_delay = 0.14
 show_ui = true
 
 [sub_resource type="Resource" id="Resource_bh5j5"]

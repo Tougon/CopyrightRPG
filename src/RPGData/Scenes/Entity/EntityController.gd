@@ -219,8 +219,8 @@ func set_target(trigger : EntityController = null):
 func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, damage_time : float = 0.35, damage_delay : float = 0.0):
 	if is_defeated : return;
 	
-	#if damage_delay > 0:
-	#	await get_tree().create_timer(damage_delay).timeout;
+	if damage_delay > 0:
+		await get_tree().create_timer(damage_delay).timeout;
 	
 	var shake = SHAKE_DURATION;
 	if damage_time < shake:
@@ -306,8 +306,8 @@ func on_defeat():
 	accuracy_mods.clear();
 	evasion_mods.clear();
 	
-	# TODO: Remove all seals held by this entity
 	sealing = false;
+	EventManager.on_entity_defeated.emit(self);
 
 
 func _play_defeat_animation():

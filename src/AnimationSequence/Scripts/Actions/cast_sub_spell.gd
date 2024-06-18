@@ -59,7 +59,8 @@ func execute(sequence : AnimationSequence):
 		
 		cast.target.apply_damage(dmg, crit, vibrate, hit, damage_time, damage_delay);
 		
-		if show_ui && hit : cast.target.update_hp_ui();
+		if show_ui && hit : 
+			_update_ui_after_delay(cast.target, damage_delay);
 		if dmg > 0:
 			if spell.animation_sequence :
 				var animation_seq = AnimationSequence.new(user.get_tree(), spell.animation_sequence, user, [ cast.target ], [ cast.spell ]);
@@ -78,6 +79,12 @@ func execute(sequence : AnimationSequence):
 				if messages.size() > 0 :
 					for message in messages :
 						EventManager.on_dialogue_queue.emit(message);
+
+
+func _update_ui_after_delay(entity : EntityController, delay : float):
+	if damage_delay > 0:
+		await entity.get_tree().create_timer(damage_delay).timeout;
+	entity.update_hp_ui();
 
 
 # Helper function for dialogue formatting. Should really move this to grammar manager.

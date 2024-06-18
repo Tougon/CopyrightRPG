@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=54 format=3 uid="uid://60hj70maoc1o"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=59 format=3 uid="uid://60hj70maoc1o"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_7qsql"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_p5oxi"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="9_itpy1"]
 [ext_resource type="PackedScene" uid="uid://cn4o3grp80fvc" path="res://assets/VFX/Spells/Damage/effect_spell_fire.tscn" id="12_7vygv"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="13_hj7so"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_sprite.gd" id="14_68h5b"]
 
 [sub_resource type="Resource" id="Resource_uyg3g"]
 script = ExtResource("2_0ckai")
@@ -283,8 +284,32 @@ frame = 38
 frame_order = 4
 action = SubResource("Resource_5hvwq")
 
+[sub_resource type="Resource" id="Resource_vitke"]
+script = ExtResource("14_68h5b")
+index = 2
+target = 0
+effect_index = 0
+
+[sub_resource type="Resource" id="Resource_sn5ts"]
+script = ExtResource("3_ctbia")
+frame = 35
+frame_order = 0
+action = SubResource("Resource_vitke")
+
+[sub_resource type="Resource" id="Resource_0qjxh"]
+script = ExtResource("14_68h5b")
+index = 0
+target = 0
+effect_index = 0
+
+[sub_resource type="Resource" id="Resource_p04lh"]
+script = ExtResource("3_ctbia")
+frame = 52
+frame_order = 0
+action = SubResource("Resource_0qjxh")
+
 [resource]
 script = ExtResource("1_7qsql")
 animation_name = ""
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ctbia")]([SubResource("Resource_j5jio"), SubResource("Resource_m6pbp"), SubResource("Resource_jh0om"), SubResource("Resource_rncbj"), SubResource("Resource_32ch1"), SubResource("Resource_mdq8p"), SubResource("Resource_gwd7r"), SubResource("Resource_x538y"), SubResource("Resource_r2emo"), SubResource("Resource_mke3a"), SubResource("Resource_yov2k"), SubResource("Resource_a58w8"), SubResource("Resource_1h7gr"), SubResource("Resource_6rysy"), SubResource("Resource_qjfpx"), SubResource("Resource_l4vw8"), SubResource("Resource_mfa6o")])
+animation_sequence = Array[ExtResource("3_ctbia")]([SubResource("Resource_j5jio"), SubResource("Resource_m6pbp"), SubResource("Resource_jh0om"), SubResource("Resource_rncbj"), SubResource("Resource_32ch1"), SubResource("Resource_mdq8p"), SubResource("Resource_gwd7r"), SubResource("Resource_x538y"), SubResource("Resource_r2emo"), SubResource("Resource_mke3a"), SubResource("Resource_yov2k"), SubResource("Resource_a58w8"), SubResource("Resource_1h7gr"), SubResource("Resource_6rysy"), SubResource("Resource_qjfpx"), SubResource("Resource_l4vw8"), SubResource("Resource_mfa6o"), SubResource("Resource_sn5ts"), SubResource("Resource_p04lh")])

@@ -128,7 +128,8 @@ func _check_is_property_in_list(props : Array[EffectInstance], eff : Effect) -> 
 
 func check_mp(user : EntityController) -> bool:
 	var cost = spell_cost;
-	# TODO: Subtract more MP if sealing
+	
+	if user.sealing : cost = ceili(cost * Spell.SEAL_COST_MULTIPLIER);
 	
 	var result = user.current_mp >= cost;
 	

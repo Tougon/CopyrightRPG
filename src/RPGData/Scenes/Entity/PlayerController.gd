@@ -5,6 +5,7 @@ enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 
 @export var attack_action : Spell;
 @export var defend_action : Spell;
+@export var seal_effect : Effect;
 var prev_action_type : ActionType;
 
 

@@ -51,8 +51,10 @@ func _begin_battle():
 
 func _begin_turn():
 	EventManager.on_turn_begin.emit();
-	# TODO: Wait until all turn begin effects have resolved
-	#await EventManager.on_sequence_queue_empty;
+	
+	if sequencer.is_sequence_playing_or_queued() :
+		await EventManager.on_sequence_queue_empty;
+	
 	current_player_index = 0;
 	turn_number += 1;
 	
@@ -138,7 +140,7 @@ func _action_phase():
 	turn_order.sort_custom(_compare_speed);
 	
 	for entity in turn_order:
-		# TODO: Handle seals (copyright)
+		EventManager.on_entity_move.emit(entity);
 		
 		if entity.is_defeated:
 			continue;
@@ -223,6 +225,22 @@ func _action_phase():
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
 		await EventManager.on_sequence_queue_empty;
+		
+		if entity.sealing:
+			if seal_manager.can_seal_spell(entity.current_action):
+				# Create the seal
+				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
+				
+				var seal_msg = _format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
+				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
+				EventManager.on_dialogue_queue.emit(seal_msg);
+				await EventManager.on_sequence_queue_empty;
+			# TODO: Dialogue if seal failed
+		
+		# Check if action is sealed
+		seal_manager.check_for_seal(entity, players.has(entity));
+		if sequencer.is_sequence_playing_or_queued() :
+			await EventManager.on_sequence_queue_empty;
 		
 		for spell in spell_cast:
 			var effects = spell.effects;

@@ -31,6 +31,9 @@ signal click_target(entity : EntityController);
 
 signal hide_entity_ui();
 
+signal on_entity_move(entity : EntityController);
+
+signal on_entity_defeated(entity : EntityController);
 signal on_enemy_defeated(entity : EntityController);
 signal on_players_defeated();
 signal on_battle_completed(victory : bool);

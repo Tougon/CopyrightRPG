@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bbl4qai6jru65" path="res://assets/Sprites/Entities/slime_neutral.png" id="5_vh60y"]
 [ext_resource type="Texture2D" uid="uid://eao5aq6mkwlr" path="res://assets/Sprites/Entities/slime_damage.png" id="6_q3frx"]
 [ext_resource type="Texture2D" uid="uid://db2sg54va4qdk" path="res://assets/Sprites/Entities/slime_attack.png" id="7_1630i"]
-[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="9_miihp"]
 [ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/reference/test_spell.tres" id="10_6f66q"]
+[ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="11_npa5t"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="12_7w274"]
 
 [sub_resource type="Resource" id="Resource_n61wj"]
@@ -69,7 +69,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("9_miihp")
+spell = ExtResource("11_npa5t")
 level = 0
 
 [sub_resource type="Resource" id="Resource_7of43"]

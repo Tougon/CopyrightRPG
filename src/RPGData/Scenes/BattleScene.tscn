@@ -167,16 +167,19 @@ current_entity = ExtResource("7_vtb5m")
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
+seal_effect = null
 use_override_direction = true
 override_direction = Vector2(-1, -1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(721, 294)
+seal_effect = null
 use_override_direction = true
 override_direction = Vector2(-1, -1)
 
 [node name="TempEnemy3" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(225, 294)
+seal_effect = null
 use_override_direction = true
 override_direction = Vector2(-1, -1)
 
