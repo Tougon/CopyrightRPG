@@ -51,6 +51,8 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 	for seal in seal_instances:
 		if seal.player_side == player_side : continue;
 		
+		# NOTE: This will double effects up and do a violation per flag.
+		# Maybe we don't want this?
 		for flag in action.spell_flags:
 			if seal.seal_source.spell_flags.has(flag):
 				

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://tjima4g6laog"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_f25ii"]
+
+[resource]
+script = ExtResource("1_f25ii")
+flag_name_key = "speed"

@@ -11,6 +11,15 @@ enum SpellHitType { Physical, Special }
 @export var spell_attack_type : SpellHitType;
 @export var vary_defense_type : bool = false;
 @export var spell_defense_type : SpellHitType;
+@export var ignore_attack_modifiers : bool = false;
+@export var ignore_defense_modifiers : bool = false;
+@export var ignore_attack_stage : bool = false;
+@export var ignore_defense_stage : bool = false;
+@export var fixed_damage : bool = false;
+@export_range(0, 9999) var fixed_damage_amt : int = 40;
+@export var percent_damage : bool = false;
+@export_range(0, 1) var percent_damage_amt : float = 0.5;
+@export var negate : bool = false;
 
 @export_group("Multi-Hit Parameters")
 @export var vary_hit_count : bool = false;
@@ -52,6 +61,7 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	for mod in accuracy_mods:
 		hit *= mod;
 		accuracy *= mod;
+		
 	
 	var evasion_mods = target.get_evasion_modifiers();
 	
@@ -124,6 +134,29 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		hit.append(true);
 		
+		# Deals damage using a percentage of the target's current HP
+		# Will never defeat an enemy except in very exceptional situations
+		if fixed_damage && percent_damage :
+			crit.append(false);
+			var percent = percent_damage_amt * target.current_hp;
+			if negate : result.append(-roundi(percent));
+			else : result.append(roundi(percent));
+			continue;
+		# Deals damage using a percentage of the target's maximum HP
+		# Use sparingly or for heals
+		elif percent_damage : 
+			crit.append(false);
+			var percent = percent_damage_amt * target.max_hp;
+			if negate : result.append(-roundi(percent));
+			else : result.append(roundi(percent));
+			continue;
+		# Deals direct damage using the fixed damage amount
+		elif fixed_damage : 
+			crit.append(false);
+			if negate : result.append(-fixed_damage_amt);
+			else : result.append(fixed_damage_amt);
+			continue;
+		
 		var crit_chance = 1;
 		if user.param.entity_luck > 1 :
 			crit_chance = user.param.entity_luck;
@@ -150,26 +183,32 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		var def = target.param.entity_def;
 		if def_type == SpellHitType.Special : def = target.param.entity_sp_def;
 		
+		if ignore_attack_stage : atk_mod = 1;
+		if ignore_defense_stage : def_mod = 1;
+		
 		if critical && atk_mod < 1 : atk_mod = 1;
 		if critical && def_mod > 1 : def_mod = 1;
 		
-		var damage = ((((2 * user.level) / 5) + 2) * spell_power * ((atk * atk_mod) / (def * def_mod))) / 50.0;
+		var damage = ((((2 * user.level) / 5) + 2) * spell_power * (((float)(atk * atk_mod)) / ((float)(def * def_mod)))) / 50.0;
 
 		var atk_mods_post = user.get_attack_modifiers();
 		if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
 		var def_mods_post = target.get_defense_modifiers();
 		if def_type == SpellHitType.Special: def_mods_post = target.get_sp_defense_modifiers();
 		
-		for f in atk_mods_post :
-			damage *= f;
-		for f in def_mods_post:
-			damage /= f;
+		if !ignore_attack_modifiers:
+			for f in atk_mods_post :
+				damage *= f;
+		if !ignore_defense_modifiers:
+			for f in def_mods_post:
+				damage /= f;
 		
 		damage *= randf_range(0.85, 1.0);
 		
 		if critical : damage *= 1.5
 		
-		result.append(roundi(damage));
+		if negate : result.append(-roundi(damage));
+		else : result.append(roundi(damage));
 	
 	cast.set_damage(result);
 	cast.set_hits(hit);

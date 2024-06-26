@@ -13,7 +13,7 @@ func execute(sequence : AnimationSequence):
 		entity = sequence.user;
 	elif target == Target.TARGET:
 		# Only tween the target if they aren't currently animating (defeat)
-		if sequence.target[sequence.targe_index].current_entity.type == Entity.Type.GENERIC && !sequence.target[sequence.target_index].is_defeated:
+		if sequence.target[sequence.target_index].current_entity.type == Entity.Type.GENERIC && !sequence.target[sequence.target_index].is_defeated:
 			entity = sequence.target[sequence.target_index];
 	else:
 		entity = sequence.effects[effect_index];

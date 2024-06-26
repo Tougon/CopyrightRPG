@@ -290,7 +290,7 @@ func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[Spell
 		var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
 		damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
 		output.append(damage_msg);
-	else :
+	elif spell.get_damage_applied() == 0 :
 		for hit in spell.hits:
 			if hit :
 				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
@@ -322,7 +322,7 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 			entity_miss[entity] = false;
 	
 	for entity in entities :
-		if entity_damage[entity] <= 0 : 
+		if entity_damage[entity] == 0 : 
 			if entity_miss[entity] : continue;
 			else : 
 				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), entity.param.entity_name, entity.current_entity));

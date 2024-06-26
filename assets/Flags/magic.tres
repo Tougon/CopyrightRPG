@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://b8u43886g26bp"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_6qfbi"]
+
+[resource]
+script = ExtResource("1_6qfbi")
+flag_name_key = "magic"

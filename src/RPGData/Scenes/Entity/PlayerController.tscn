@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/PlayerController.gd" id="2_6enct"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="3_8bhdk"]
 [ext_resource type="Resource" uid="uid://dciwv5n41ixne" path="res://assets/Spells/generic/spell_generic_defend.tres" id="4_su36j"]
-[ext_resource type="Resource" uid="uid://m1yoeo2nsd0e" path="res://assets/Effects/common/effect_common_buff_defense.tres" id="5_8v7qb"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="5_yqsgs"]
 
 [node name="EntityBase" instance=ExtResource("1_it6kr")]
 script = ExtResource("2_6enct")
 attack_action = ExtResource("3_8bhdk")
 defend_action = ExtResource("4_su36j")
-seal_effect = ExtResource("5_8v7qb")
+seal_effect = ExtResource("5_yqsgs")
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 1)
