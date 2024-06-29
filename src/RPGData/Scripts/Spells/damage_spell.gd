@@ -3,6 +3,7 @@ extends Spell
 class_name DamageSpell
 
 const ACCURACY_BONUS : int = 10;
+const BASE_STAT : float = 50;
 
 enum SpellHitType { Physical, Special }
 
@@ -11,6 +12,7 @@ enum SpellHitType { Physical, Special }
 @export var spell_attack_type : SpellHitType;
 @export var vary_defense_type : bool = false;
 @export var spell_defense_type : SpellHitType;
+@export var ignore_target_defense : bool = false;
 @export var ignore_attack_modifiers : bool = false;
 @export var ignore_defense_modifiers : bool = false;
 @export var ignore_attack_stage : bool = false;
@@ -189,8 +191,15 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		if critical && atk_mod < 1 : atk_mod = 1;
 		if critical && def_mod > 1 : def_mod = 1;
 		
-		var damage = ((((2 * user.level) / 5) + 2) * spell_power * (((float)(atk * atk_mod)) / ((float)(def * def_mod)))) / 50.0;
-
+		var damage = (((2.0 * ((user.level + BattleManager.level_offset) as float)) / 5.0) + 2) * spell_power;
+		if !ignore_target_defense :
+			damage *= (((float)(atk * atk_mod)) / ((float)(def * def_mod)));
+		else : 
+			var relative_def = ((BASE_STAT * 2 * (user.level + BattleManager.level_offset)) / 100) + 5;
+			damage *= (((float)(atk * atk_mod)) / ((float)(relative_def * def_mod)));
+		
+		damage /= 50;
+		
 		var atk_mods_post = user.get_attack_modifiers();
 		if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
 		var def_mods_post = target.get_defense_modifiers();
@@ -203,7 +212,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			for f in def_mods_post:
 				damage /= f;
 		
-		damage *= randf_range(0.85, 1.0);
+		#damage *= randf_range(0.85, 1.0);
 		
 		if critical : damage *= 1.5
 		

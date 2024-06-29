@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=28 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=29 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://eao5aq6mkwlr" path="res://assets/Sprites/Entities/slime_damage.png" id="6_q3frx"]
 [ext_resource type="Texture2D" uid="uid://db2sg54va4qdk" path="res://assets/Sprites/Entities/slime_attack.png" id="7_1630i"]
 [ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/reference/test_spell.tres" id="10_6f66q"]
-[ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="11_npa5t"]
+[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="11_ul1t6"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="12_7w274"]
 
 [sub_resource type="Resource" id="Resource_n61wj"]
@@ -57,6 +57,10 @@ script = ExtResource("1_lpo00")
 first_turn_behavior = SubResource("Resource_lakch")
 turn_behavior = Array[ExtResource("4_l7lga")]([SubResource("Resource_k0d1d")])
 
+[sub_resource type="Curve" id="Curve_k6ron"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Curve" id="Curve_h4c1v"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
 point_count = 2
@@ -69,7 +73,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("11_npa5t")
+spell = ExtResource("11_ul1t6")
 level = 0
 
 [sub_resource type="Resource" id="Resource_7of43"]
@@ -99,6 +103,9 @@ base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0
 luck_curve = SubResource("Curve_h4c1v")
+min_level = 20
+max_level = 20
+level_curve = SubResource("Curve_k6ron")
 entity_sprites = Array[Texture2D]([ExtResource("5_vh60y"), ExtResource("6_q3frx"), ExtResource("7_1630i")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"

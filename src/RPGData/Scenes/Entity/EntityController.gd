@@ -67,7 +67,14 @@ var properties : Array[EffectInstance];
 func _ready():
 	super._ready();
 	
-	level = 50; # TEMP CODE: Used to force legitimate calculations for stats
+	if !visible:
+		return;
+	
+	# Used to force legitimate calculations for stats.
+	# Will never be used in the final game.
+	if level == 0 : 
+		level = 50;
+	
 	EventManager.on_turn_begin.connect(_on_turn_begin);
 	entity_init();
 
@@ -86,17 +93,17 @@ func entity_init():
 		param.entity_generic = current_entity.generic;
 		
 		# Initialize stats from base stats
-		param.entity_hp = ((current_entity.base_hp * 2 * level) / 100) + level + 10;
-		param.entity_mp = ((current_entity.base_mp * 2 * level) / 100) + level + 6;
-		param.entity_atk = ((current_entity.base_atk * 2 * level) / 100) + 5;
-		param.entity_def = ((current_entity.base_def * 2 * level) / 100) + 5;
-		param.entity_sp_atk = ((current_entity.base_sp_atk * 2 * level) / 100) + 5;
-		param.entity_sp_def = ((current_entity.base_sp_def * 2 * level) / 100) + 5;
-		param.entity_spd = ((current_entity.base_spd * 2 * level) / 100) + 5;
+		param.entity_hp = roundi(((current_entity.base_hp * 2 * (level + BattleManager.level_offset)) as float / 100.0) + (level + BattleManager.level_offset) + 10);
+		param.entity_mp = roundi(((current_entity.base_mp * 2 * (level + BattleManager.level_offset)) as float / 100.0) + (level + BattleManager.level_offset) + 6);
+		param.entity_atk = roundi(((current_entity.base_atk * 2 * (level + BattleManager.level_offset)) as float / 100.0) + 5);
+		param.entity_def = roundi(((current_entity.base_def * 2 * (level + BattleManager.level_offset)) as float / 100.0) + 5);
+		param.entity_sp_atk = roundi(((current_entity.base_sp_atk * 2 * (level + BattleManager.level_offset)) as float / 100.0) + 5);
+		param.entity_sp_def = roundi(((current_entity.base_sp_def * 2 * (level + BattleManager.level_offset)) as float / 100.0) + 5);
+		param.entity_spd = roundi(((current_entity.base_spd * 2 * (level + BattleManager.level_offset)) as float / 100.0) + 5);
 		param.entity_crit_chance_modifier = current_entity.base_crit_chance_modifier;
 		param.entity_crit_resist_modifier = current_entity.base_crit_resist_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
-		param.entity_luck = current_entity.luck_curve.sample((level as float) / LEVEL_CAP);
+		param.entity_luck = current_entity.luck_curve.sample(((level + 4) as float) / LEVEL_CAP);
 		
 		# Reset stats
 		max_hp = param.entity_hp;

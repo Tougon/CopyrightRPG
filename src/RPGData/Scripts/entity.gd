@@ -87,7 +87,16 @@ enum Type { GENERIC, PLAYER, BOSS }
 @export var luck_curve : Curve;
 
 # TODOGAME: Weakness was unimplemented in the old version.
-#@export_group("MODIFIERS")
+@export_group("Modifiers")
+@export var min_level : int = 50;
+@export var max_level : int = 50 :
+	set(new_max_level):
+		if new_max_level < min_level:
+			max_level = min_level;
+		else:
+			max_level = new_max_level;
+
+@export var level_curve : Curve;
 
 @export_group("Visuals")
 @export var entity_sprites: Array[Texture2D];
