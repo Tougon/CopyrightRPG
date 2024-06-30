@@ -103,7 +103,7 @@ func entity_init():
 		param.entity_crit_chance_modifier = current_entity.base_crit_chance_modifier;
 		param.entity_crit_resist_modifier = current_entity.base_crit_resist_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
-		param.entity_luck = current_entity.luck_curve.sample(((level + 4) as float) / LEVEL_CAP);
+		param.entity_luck = current_entity.luck_curve.sample((level as float) / LEVEL_CAP);
 		
 		# Reset stats
 		max_hp = param.entity_hp;

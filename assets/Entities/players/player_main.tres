@@ -1,12 +1,8 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=18 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
-[ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="2_qi74b"]
-[ext_resource type="Resource" uid="uid://ckm3lov2yqbuu" path="res://assets/Spells/status/common/spell_status_common_difoost.tres" id="3_yimcn"]
-[ext_resource type="Resource" uid="uid://b8mcaocvteo5" path="res://assets/Spells/status/common/spell_status_common_sproost.tres" id="4_j1jf4"]
-[ext_resource type="Resource" uid="uid://cf0sbyy40032e" path="res://assets/Spells/status/common/spell_status_common_spatoost.tres" id="5_0x1hn"]
-[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="6_8kflb"]
-[ext_resource type="Resource" uid="uid://dnykwi6f8o7wm" path="res://assets/Spells/damage/combined/spell_damage_combined_blazingrock.tres" id="7_n7e5d"]
+[ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="2_j0hut"]
+[ext_resource type="Resource" uid="uid://dxrqonq18v24m" path="res://assets/Spells/damage/common/spell_damage_common_raging_wind.tres" id="3_f71h0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="8_6wkou"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="9_4wdni"]
 
@@ -18,37 +14,17 @@ metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("1_2apw3")
-spell = ExtResource("2_qi74b")
+spell = ExtResource("2_j0hut")
 level = 0
 
-[sub_resource type="Resource" id="Resource_n1e4x"]
+[sub_resource type="Resource" id="Resource_fc1ry"]
 script = ExtResource("1_2apw3")
-spell = ExtResource("3_yimcn")
-level = 0
-
-[sub_resource type="Resource" id="Resource_ep2jl"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("4_j1jf4")
-level = 0
-
-[sub_resource type="Resource" id="Resource_gcpk3"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("5_0x1hn")
-level = 0
-
-[sub_resource type="Resource" id="Resource_dix3n"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("6_8kflb")
-level = 0
-
-[sub_resource type="Resource" id="Resource_fsrx6"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("7_n7e5d")
+spell = ExtResource("3_f71h0")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("8_6wkou")
-list = Array[ExtResource("1_2apw3")]([SubResource("Resource_egsue"), SubResource("Resource_n1e4x"), SubResource("Resource_ep2jl"), SubResource("Resource_gcpk3"), SubResource("Resource_dix3n"), SubResource("Resource_fsrx6")])
+list = Array[ExtResource("1_2apw3")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry")])
 
 [resource]
 script = ExtResource("9_4wdni")
@@ -57,13 +33,13 @@ description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 1
 generic = false
-base_hp = 80
+base_hp = 90
 base_mp = 80
 base_atk = 80
 base_def = 70
 base_sp_atk = 80
 base_sp_def = 70
-base_spd = 85
+base_spd = 90
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0

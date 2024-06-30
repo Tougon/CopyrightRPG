@@ -5,15 +5,25 @@
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_8p4wc"]
 
 [sub_resource type="Curve" id="Curve_rwg6p"]
-_data = [Vector2(0, 0), 0.0, 0.536842, 0, 0, Vector2(0.828431, 1), 2.97328, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.993635, 0, 0, Vector2(0.8, 1), 2.26135, 0.0, 0, 0]
 point_count = 2
 
 [resource]
 script = ExtResource("2_jrjhx")
-spell_power = 18.0
+spell_power = 20.0
 spell_attack_type = 0
 vary_defense_type = false
 spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
 vary_hit_count = true
 min_number_of_hits = 2
 max_number_of_hits = 4

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_temx2"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="3_h25ff"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_m5g6q"]
-[ext_resource type="PackedScene" uid="uid://du3foht1mkt34" path="res://assets/VFX/Spells/Damage/entity_spell_air_s.tscn" id="4_ohqyc"]
+[ext_resource type="PackedScene" uid="uid://du3foht1mkt34" path="res://assets/VFX/Spells/Damage/effect_spell_air_s.tscn" id="4_ohqyc"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_bf6p6"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_asdka"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="8_y0kxa"]
@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="10_632ef"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_e2i4j"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_fu44g"]
-[ext_resource type="PackedScene" uid="uid://duplrat4t1xe2" path="res://assets/VFX/Spells/Damage/entity_spell_air_charge.tscn" id="11_n5o7m"]
+[ext_resource type="PackedScene" uid="uid://duplrat4t1xe2" path="res://assets/VFX/Spells/Damage/effect_spell_air_charge.tscn" id="11_n5o7m"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="12_bkqde"]
 
 [sub_resource type="Resource" id="Resource_t8bkv"]

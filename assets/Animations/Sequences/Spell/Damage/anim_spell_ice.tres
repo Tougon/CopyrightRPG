@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=47 format=3 uid="uid://ces1w71i7vopk"]
 
-[ext_resource type="PackedScene" uid="uid://bgwxvsxeoe4ui" path="res://assets/VFX/Spells/Damage/entity_spell_ice_s.tscn" id="1_7dkch"]
+[ext_resource type="PackedScene" uid="uid://bgwxvsxeoe4ui" path="res://assets/VFX/Spells/Damage/effect_spell_ice_s.tscn" id="1_7dkch"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_6so8d"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_db3sq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_gpsnp"]

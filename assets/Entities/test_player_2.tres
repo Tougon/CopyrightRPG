@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="2_xpkm1"]
 [ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="3_2iw5o"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="3_jvqhn"]
-[ext_resource type="Resource" uid="uid://dnykwi6f8o7wm" path="res://assets/Spells/damage/combined/spell_damage_combined_blazingrock.tres" id="4_yn1eu"]
+[ext_resource type="Resource" uid="uid://dnykwi6f8o7wm" path="res://assets/Spells/damage/common/spell_damage_common_blazingrock.tres" id="4_yn1eu"]
 
 [sub_resource type="Curve" id="Curve_h4c1v"]
 max_value = 2.0
@@ -50,6 +50,8 @@ base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0
 luck_curve = SubResource("Curve_h4c1v")
+min_level = 50
+max_level = 50
 entity_sprites = Array[Texture2D]([])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""

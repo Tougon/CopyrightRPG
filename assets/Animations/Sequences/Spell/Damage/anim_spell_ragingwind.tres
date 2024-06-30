@@ -1,0 +1,135 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=27 format=3 uid="uid://bbtsfwsy6n5yi"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_0asyo"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_f42at"]
+[ext_resource type="PackedScene" uid="uid://upwjm7euakv4" path="res://assets/VFX/Spells/Damage/effect_spell_raging_wind.tscn" id="3_tif7i"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_s7usd"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_ntsrl"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_sshqq"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_r1ser"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_nmq6i"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_ytgg8"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="12_esbc3"]
+
+[sub_resource type="Resource" id="Resource_t8bkv"]
+script = ExtResource("10_nmq6i")
+
+[sub_resource type="Resource" id="Resource_v3imt"]
+script = ExtResource("3_f42at")
+frame = 115
+frame_order = 0
+action = SubResource("Resource_t8bkv")
+
+[sub_resource type="Resource" id="Resource_tsiyj"]
+script = ExtResource("2_0asyo")
+effect_scene = ExtResource("3_tif7i")
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -25)
+effect_layer = 1
+effect_rotation = 0.0
+effect_scale = Vector2(1, 1)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = false
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(100, 50)
+
+[sub_resource type="Resource" id="Resource_acntq"]
+script = ExtResource("3_f42at")
+frame = 5
+frame_order = 1
+action = SubResource("Resource_tsiyj")
+
+[sub_resource type="Resource" id="Resource_drvv4"]
+script = ExtResource("6_sshqq")
+vibrate = true
+damage_time = 0.2
+
+[sub_resource type="Resource" id="Resource_v7itg"]
+script = ExtResource("3_f42at")
+frame = 65
+frame_order = 2
+action = SubResource("Resource_drvv4")
+
+[sub_resource type="Resource" id="Resource_8fagv"]
+script = ExtResource("8_r1ser")
+target = 1
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_o00ip"]
+script = ExtResource("3_f42at")
+frame = 65
+frame_order = 3
+action = SubResource("Resource_8fagv")
+
+[sub_resource type="Resource" id="Resource_1qt74"]
+script = ExtResource("5_ntsrl")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 1
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(9, -35)
+
+[sub_resource type="Resource" id="Resource_1r1di"]
+script = ExtResource("4_s7usd")
+use_directionality = true
+target = 0
+effect_index = 0
+tween = SubResource("Resource_1qt74")
+
+[sub_resource type="Resource" id="Resource_1yuiq"]
+script = ExtResource("3_f42at")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_1r1di")
+
+[sub_resource type="Resource" id="Resource_5lihy"]
+script = ExtResource("5_ntsrl")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 1
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(-9, 35)
+
+[sub_resource type="Resource" id="Resource_3l5pu"]
+script = ExtResource("4_s7usd")
+use_directionality = true
+target = 0
+effect_index = 0
+tween = SubResource("Resource_5lihy")
+
+[sub_resource type="Resource" id="Resource_0tkgk"]
+script = ExtResource("3_f42at")
+frame = 12
+frame_order = 0
+action = SubResource("Resource_3l5pu")
+
+[sub_resource type="Resource" id="Resource_00ldt"]
+script = ExtResource("12_esbc3")
+effect_id = 0
+
+[sub_resource type="Resource" id="Resource_vyigm"]
+script = ExtResource("3_f42at")
+frame = 94
+frame_order = 0
+action = SubResource("Resource_00ldt")
+
+[resource]
+script = ExtResource("11_ytgg8")
+animation_name = "Raging Wind"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("3_f42at")]([SubResource("Resource_v3imt"), SubResource("Resource_acntq"), SubResource("Resource_v7itg"), SubResource("Resource_o00ip"), SubResource("Resource_1yuiq"), SubResource("Resource_0tkgk"), SubResource("Resource_vyigm")])

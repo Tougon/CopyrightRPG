@@ -212,7 +212,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			for f in def_mods_post:
 				damage /= f;
 		
-		#damage *= randf_range(0.85, 1.0);
+		damage *= randf_range(0.85, 1.0);
 		
 		if critical : damage *= 1.5
 		
