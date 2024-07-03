@@ -60,6 +60,9 @@ action = SubResource("Resource_tsiyj")
 script = ExtResource("6_bf6p6")
 vibrate = true
 damage_time = 0.2
+damage_delay = 0.0
+shake_duration = 0.0
+shake_decay = 0.35
 
 [sub_resource type="Resource" id="Resource_v7itg"]
 script = ExtResource("3_m5g6q")

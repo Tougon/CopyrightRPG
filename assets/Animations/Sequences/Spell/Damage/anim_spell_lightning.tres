@@ -1,0 +1,177 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=33 format=3 uid="uid://d1l6fqklh58v5"]
+
+[ext_resource type="PackedScene" uid="uid://dqc17oit0tlcm" path="res://assets/VFX/Spells/Damage/effect_spell_lightning.tscn" id="1_jopet"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_t2a03"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_ssbr4"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_4jmod"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="7_h2bv7"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_jg0vv"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="9_rhgw3"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="9_yxrg3"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="10_5fi2u"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_7fq5r"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_ujdrb"]
+
+[sub_resource type="Resource" id="Resource_rhl5j"]
+script = ExtResource("2_t2a03")
+effect_scene = ExtResource("1_jopet")
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -85)
+effect_layer = 2
+effect_rotation = 0.0
+effect_scale = Vector2(0.8, 0.8)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = true
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ufi1u"]
+script = ExtResource("3_ssbr4")
+frame = 5
+frame_order = 0
+action = SubResource("Resource_rhl5j")
+
+[sub_resource type="Resource" id="Resource_5t3o6"]
+script = ExtResource("6_4jmod")
+vibrate = true
+damage_time = 1.0
+damage_delay = 0.0
+shake_duration = 0.5
+shake_decay = 0.7
+
+[sub_resource type="Resource" id="Resource_ik65d"]
+script = ExtResource("3_ssbr4")
+frame = 42
+frame_order = 0
+action = SubResource("Resource_5t3o6")
+
+[sub_resource type="Resource" id="Resource_hkvxv"]
+script = ExtResource("7_h2bv7")
+
+[sub_resource type="Resource" id="Resource_87u8w"]
+script = ExtResource("3_ssbr4")
+frame = 42
+frame_order = 1
+action = SubResource("Resource_hkvxv")
+
+[sub_resource type="Resource" id="Resource_neec4"]
+script = ExtResource("8_jg0vv")
+target = 1
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_gllrv"]
+script = ExtResource("3_ssbr4")
+frame = 42
+frame_order = 2
+action = SubResource("Resource_neec4")
+
+[sub_resource type="Resource" id="Resource_t5frq"]
+script = ExtResource("9_rhgw3")
+
+[sub_resource type="Resource" id="Resource_nbfkv"]
+script = ExtResource("3_ssbr4")
+frame = 81
+frame_order = 4
+action = SubResource("Resource_t5frq")
+
+[sub_resource type="Resource" id="Resource_jim8f"]
+script = ExtResource("10_7fq5r")
+
+[sub_resource type="Resource" id="Resource_o1j1i"]
+script = ExtResource("3_ssbr4")
+frame = 90
+frame_order = 0
+action = SubResource("Resource_jim8f")
+
+[sub_resource type="Resource" id="Resource_w600q"]
+script = ExtResource("10_5fi2u")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="Resource" id="Resource_2f2le"]
+script = ExtResource("9_yxrg3")
+use_directionality = false
+target = 1
+effect_index = 0
+tween = SubResource("Resource_w600q")
+override_defeated = true
+
+[sub_resource type="Resource" id="Resource_tksyp"]
+script = ExtResource("3_ssbr4")
+frame = 42
+frame_order = 0
+action = SubResource("Resource_2f2le")
+
+[sub_resource type="Resource" id="Resource_cspn6"]
+script = ExtResource("10_5fi2u")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.08
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.8
+
+[sub_resource type="Resource" id="Resource_bjs7u"]
+script = ExtResource("9_yxrg3")
+use_directionality = false
+target = 1
+effect_index = 0
+tween = SubResource("Resource_cspn6")
+override_defeated = true
+
+[sub_resource type="Resource" id="Resource_ktfgl"]
+script = ExtResource("3_ssbr4")
+frame = 42
+frame_order = 0
+action = SubResource("Resource_bjs7u")
+
+[sub_resource type="Resource" id="Resource_leate"]
+script = ExtResource("10_5fi2u")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.15
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_coivm"]
+script = ExtResource("9_yxrg3")
+use_directionality = false
+target = 1
+effect_index = 0
+tween = SubResource("Resource_leate")
+override_defeated = false
+
+[sub_resource type="Resource" id="Resource_bnsfo"]
+script = ExtResource("3_ssbr4")
+frame = 80
+frame_order = 0
+action = SubResource("Resource_coivm")
+
+[resource]
+script = ExtResource("11_ujdrb")
+animation_name = "Earth"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_ufi1u"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo")])

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqc17oit0tlcm"]
+
+[ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_hbf7m"]
+[ext_resource type="Texture2D" uid="uid://cnxf51qbeukrx" path="res://addons/Spellbook2D/lightning_part.png" id="2_qyexm"]
+
+[sub_resource type="Animation" id="Animation_qptr3"]
+resource_name = "lightning"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.597129, 0.637564, 1.03392),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 18, 18, 24]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvaok"]
+_data = {
+"lightning": SubResource("Animation_qptr3")
+}
+
+[node name="EntitySprite" instance=ExtResource("1_hbf7m")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_qyexm")
+hframes = 25
+frame = 24
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "lightning"
+libraries = {
+"": SubResource("AnimationLibrary_mvaok")
+}

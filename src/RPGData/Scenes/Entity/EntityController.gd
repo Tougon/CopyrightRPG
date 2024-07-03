@@ -223,13 +223,15 @@ func set_target(trigger : EntityController = null):
 
 
 # HP and MP modification
-func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, damage_time : float = 0.35, damage_delay : float = 0.0):
+func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, damage_time : float = 0.35, damage_delay : float = 0.0, shake_duration : float = 0.0, shake_decay : float = 0.35):
 	if is_defeated : return;
 	
 	if damage_delay > 0:
 		await get_tree().create_timer(damage_delay).timeout;
 	
 	var shake = SHAKE_DURATION;
+	if shake_duration > 0:
+		shake = shake_duration
 	if damage_time < shake:
 		shake = damage_time;
 	
@@ -256,15 +258,15 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 			if current_entity.entity_sprites.size() > 1:
 				sprite.texture = current_entity.entity_sprites[1];
 			
-			TweenExtensions.shake_position_2d(sprite, shake, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+			TweenExtensions.shake_position_2d(sprite, shake, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shake_decay);
 			await get_tree().create_timer(shake).timeout;
 			_play_defeat_animation();
 		
 		elif vibrate : 
 			if crit : 
-				TweenExtensions.shake_position_2d(sprite, shake, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+				TweenExtensions.shake_position_2d(sprite, shake, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shake_decay);
 			else :
-				TweenExtensions.shake_position_2d(sprite, shake, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+				TweenExtensions.shake_position_2d(sprite, shake, 35, Vector2(40, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shake_decay);
 		
 		if crit && BattleManager.async_crit_text: 
 			var msg = tr("T_BATTLE_ACTION_CRITICAL_GENERIC").format({entity = param.entity_name});

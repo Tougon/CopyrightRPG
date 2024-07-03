@@ -6,6 +6,7 @@ class_name ASATween
 @export var target : AnimationSequenceAction.Target;
 @export var effect_index : int;
 @export var tween : TweenFrame;
+@export var override_defeated : bool = false;
 
 func execute(sequence : AnimationSequence):
 	var entity : EntityBase;
@@ -13,10 +14,12 @@ func execute(sequence : AnimationSequence):
 		entity = sequence.user;
 	elif target == Target.TARGET:
 		# Only tween the target if they aren't currently animating (defeat)
-		if sequence.target[sequence.target_index].current_entity.type == Entity.Type.GENERIC && !sequence.target[sequence.target_index].is_defeated:
+		if sequence.target[sequence.target_index].current_entity.type == Entity.Type.GENERIC && (!sequence.target[sequence.target_index].is_defeated || override_defeated):
 			entity = sequence.target[sequence.target_index];
 	else:
 		entity = sequence.effects[effect_index];
+	
+	if entity == null : return;
 	
 	var tween_target = entity.get_node(NodePath(tween.target));
 	# Check if the target is valid. If so, add this frame to the tween
