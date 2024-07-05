@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://b2q6alnhkwh3m"]
+
+[ext_resource type="Resource" uid="uid://c1yvqg3xp3v7d" path="res://assets/Animations/Sequences/Spell/Generic/anim_spell_defend.tres" id="1_l2tpd"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="7_ach3j"]
+
+[resource]
+script = ExtResource("7_ach3j")
+spell_name_key = "T_SPELL_STATUS_FLAVOR_STUNNED"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_FLAVOR_STUNNED"
+spell_type = 6
+spell_target = 4
+spell_cost = 0
+spell_priority = 1
+spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+animation_sequence = ExtResource("1_l2tpd")
+effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

@@ -1,8 +1,21 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=4 format=3 uid="uid://dxrqonq18v24m"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://dxrqonq18v24m"]
 
 [ext_resource type="Resource" uid="uid://bbtsfwsy6n5yi" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_ragingwind.tres" id="1_hmi3k"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_6krri"]
+[ext_resource type="Resource" uid="uid://dx4uieatfu3hr" path="res://assets/Effects/common/effect_common_status_stun.tres" id="2_ol1id"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_1t7w1"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_d31es"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_wpoc2"]
+
+[sub_resource type="Resource" id="Resource_vjx65"]
+script = ExtResource("3_1t7w1")
+chance = 1.0
+effect = ExtResource("2_ol1id")
+
+[sub_resource type="Resource" id="Resource_n0af7"]
+script = ExtResource("4_wpoc2")
+chance = 1.0
+effect_set = Array[ExtResource("3_1t7w1")]([SubResource("Resource_vjx65")])
 
 [resource]
 script = ExtResource("2_6krri")
@@ -38,6 +51,6 @@ spell_cost = 16
 spell_priority = 0
 spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("3_d31es")])
 animation_sequence = ExtResource("1_hmi3k")
-effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+effects_on_hit = Array[ExtResource("4_wpoc2")]([SubResource("Resource_n0af7")])
+effects_on_success = Array[ExtResource("4_wpoc2")]([])
 properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])
