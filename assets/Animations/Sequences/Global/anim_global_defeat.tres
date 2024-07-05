@@ -27,6 +27,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_6f4jc")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_f80l7"]
 script = ExtResource("3_gtr20")
@@ -54,6 +55,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_ny536")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_444i8"]
 script = ExtResource("3_gtr20")
@@ -81,6 +83,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_he7t6")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_h10t7"]
 script = ExtResource("3_gtr20")
@@ -108,6 +111,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_bytg2")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_2fami"]
 script = ExtResource("3_gtr20")

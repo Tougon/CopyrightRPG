@@ -88,6 +88,8 @@ enum Type { GENERIC, PLAYER, BOSS }
 
 # TODOGAME: Weakness was unimplemented in the old version.
 @export_group("Modifiers")
+@export var weakness : Array[FlagModifier];
+@export var resistance : Array[FlagModifier];
 @export var min_level : int = 50;
 @export var max_level : int = 50 :
 	set(new_max_level):

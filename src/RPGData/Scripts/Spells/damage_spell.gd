@@ -200,6 +200,10 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		damage /= 50;
 		
+		for flag in spell_flags:
+			if target.flag_modifiers.has(flag.flag_name_key):
+				damage *= target.flag_modifiers[flag.flag_name_key];
+		
 		var atk_mods_post = user.get_attack_modifiers();
 		if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
 		var def_mods_post = target.get_defense_modifiers();

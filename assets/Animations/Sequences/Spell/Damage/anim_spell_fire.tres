@@ -36,6 +36,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_uyg3g")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_j5jio"]
 script = ExtResource("3_ctbia")
@@ -63,6 +64,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_33r5c")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_m6pbp"]
 script = ExtResource("3_ctbia")
@@ -90,6 +92,7 @@ use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_rraj5")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_jh0om"]
 script = ExtResource("3_ctbia")
@@ -117,6 +120,7 @@ use_directionality = false
 target = 0
 effect_index = 0
 tween = SubResource("Resource_11jhv")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_rncbj"]
 script = ExtResource("3_ctbia")
@@ -144,6 +148,7 @@ use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_ecar6")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_32ch1"]
 script = ExtResource("3_ctbia")

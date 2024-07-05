@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://chmxhwc5lgoiu"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_0cir6"]
+
+[resource]
+script = ExtResource("1_0cir6")
+flag_name_key = "banish"

@@ -54,6 +54,7 @@ use_directionality = false
 target = 2
 effect_index = 0
 tween = SubResource("Resource_u3eqk")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_xkyrv"]
 script = ExtResource("2_lkrw3")

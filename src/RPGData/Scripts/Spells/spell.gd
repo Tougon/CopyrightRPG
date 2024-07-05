@@ -85,7 +85,8 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				if e.cast_success: 
 					e.on_activate();
 			
-			cast.success = check_spell_hit(cast, user, target);
+			var immune = check_spell_immune(target);
+			cast.success = !immune && check_spell_hit(cast, user, target);
 			
 			if cast.success:
 				calculate_damage(user, target, cast);
@@ -98,10 +99,17 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 						cast.fail_type = SpellCast.SpellFailType.NoEffect;
 						cast.fail_message = tr("T_BATTLE_ACTION_FAIL");
 			else :
-				cast.fail_type = SpellCast.SpellFailType.Miss;
-				cast.set_hits([false]);
-				cast.set_damage([0]);
-				cast.set_critical([false]);
+				if immune : 
+					cast.set_hits([true]);
+					cast.set_damage([0]);
+					cast.set_critical([false]);
+					cast.fail_type = SpellCast.SpellFailType.NoEffect;
+					cast.fail_message = tr("T_BATTLE_ACTION_FAIL");
+				else :
+					cast.set_hits([false]);
+					cast.set_damage([0]);
+					cast.set_critical([false]);
+					cast.fail_type = SpellCast.SpellFailType.Miss;
 			
 			# Deactivate properties
 			for p in prop_instances:
@@ -141,6 +149,13 @@ func check_mp(user : EntityController) -> bool:
 
 func check_can_cast(user : EntityController, target : EntityController):
 	return true;
+
+
+func check_spell_immune(target : EntityController):
+	for flag in spell_flags:
+		if target.flag_modifiers.has(flag.flag_name_key) && target.flag_modifiers[flag.flag_name_key] == 0:
+			return true;
+	return false;
 
 
 func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityController, amt : float = -1):

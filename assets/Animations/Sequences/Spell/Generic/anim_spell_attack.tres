@@ -70,6 +70,7 @@ use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_bu1ul")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_fbclg"]
 script = ExtResource("2_st50u")
@@ -174,6 +175,7 @@ use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_g3qyw")
+override_defeated = false
 
 [sub_resource type="Resource" id="Resource_1e5uo"]
 script = ExtResource("2_st50u")
