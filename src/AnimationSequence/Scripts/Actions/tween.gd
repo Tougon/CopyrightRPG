@@ -7,6 +7,10 @@ class_name ASATween
 @export var effect_index : int;
 @export var tween : TweenFrame;
 @export var override_defeated : bool = false;
+@export var relative_to_object : bool = false;
+@export var relative_object_type : AnimationSequenceAction.Target;
+@export var relative_effect_index : int;
+@export var relative_amount : float = 1.0;
 
 func execute(sequence : AnimationSequence):
 	var entity : EntityBase;
@@ -33,6 +37,19 @@ func execute(sequence : AnimationSequence):
 	current_tween.set_parallel(true);
 	
 	var value = tween.get_value();
+	
+	if relative_object_type && value is Vector2:
+		var relative_target : EntityBase
+		
+		if relative_object_type == Target.USER:
+			relative_target = sequence.user;
+		elif relative_object_type == Target.TARGET:
+			relative_target = sequence.target[sequence.target_index];
+		else:
+			relative_target = sequence.effects[relative_effect_index];
+		
+		if relative_target != null:
+			value = (relative_target.global_position - entity.global_position) * relative_amount;
 	
 	if use_directionality:
 		if value is float || value is int:

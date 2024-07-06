@@ -107,6 +107,10 @@ target = 1
 effect_index = 0
 tween = SubResource("Resource_w600q")
 override_defeated = true
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_tksyp"]
 script = ExtResource("3_ssbr4")
@@ -135,6 +139,10 @@ target = 1
 effect_index = 0
 tween = SubResource("Resource_cspn6")
 override_defeated = true
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_ktfgl"]
 script = ExtResource("3_ssbr4")
@@ -163,6 +171,10 @@ target = 1
 effect_index = 0
 tween = SubResource("Resource_leate")
 override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_bnsfo"]
 script = ExtResource("3_ssbr4")
