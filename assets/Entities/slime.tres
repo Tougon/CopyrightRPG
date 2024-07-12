@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="2_cc3c8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
-[ext_resource type="Texture2D" uid="uid://bbl4qai6jru65" path="res://assets/Sprites/Entities/slime_neutral.png" id="5_vh60y"]
-[ext_resource type="Texture2D" uid="uid://eao5aq6mkwlr" path="res://assets/Sprites/Entities/slime_damage.png" id="6_q3frx"]
-[ext_resource type="Texture2D" uid="uid://db2sg54va4qdk" path="res://assets/Sprites/Entities/slime_attack.png" id="7_1630i"]
+[ext_resource type="Texture2D" uid="uid://chgw0jaec0vx3" path="res://assets/Sprites/Entities/slime_n_neutral.png" id="6_5fqbn"]
+[ext_resource type="Texture2D" uid="uid://3yafwxteo4o0" path="res://assets/Sprites/Entities/slime_n_damage.png" id="7_0oseo"]
+[ext_resource type="Texture2D" uid="uid://dvi6peplvfuds" path="res://assets/Sprites/Entities/slime_n_attack.png" id="8_hc7u7"]
 [ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/reference/test_spell.tres" id="10_6f66q"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="11_ul1t6"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="12_7w274"]
@@ -108,7 +108,7 @@ resistance = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
 min_level = 20
 max_level = 20
 level_curve = SubResource("Curve_k6ron")
-entity_sprites = Array[Texture2D]([ExtResource("5_vh60y"), ExtResource("6_q3frx"), ExtResource("7_1630i")])
+entity_sprites = Array[Texture2D]([ExtResource("6_5fqbn"), ExtResource("7_0oseo"), ExtResource("8_hc7u7")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, 130)

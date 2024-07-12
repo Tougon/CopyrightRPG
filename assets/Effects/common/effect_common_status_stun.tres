@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=20 format=3 uid="uid://dx4uieatfu3hr"]
+[gd_resource type="Resource" script_class="Effect" load_steps=19 format=3 uid="uid://dx4uieatfu3hr"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_prcf1"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_tree2"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="3_vn5w6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="4_ghbnw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="4_myiwe"]
-[ext_resource type="Resource" uid="uid://b2q6alnhkwh3m" path="res://assets/Spells/flavor/spell_flavor_stuned.tres" id="5_spu5u"]
+[ext_resource type="Resource" uid="uid://b2q6alnhkwh3m" path="res://assets/Spells/flavor/spell_flavor_stunned.tres" id="5_1gmdp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="5_ukfdq"]
 
 [sub_resource type="Resource" id="Resource_mfdjw"]
@@ -33,14 +33,10 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_STUN_DEACTIVATE"
 [sub_resource type="Resource" id="Resource_ykeef"]
 script = ExtResource("4_ghbnw")
 
-[sub_resource type="Resource" id="Resource_jn3dk"]
-script = ExtResource("3_vn5w6")
-dialogue_key = "T_TEST_ACTIVE_TARGET"
-
 [sub_resource type="Resource" id="Resource_svwto"]
 script = ExtResource("5_ukfdq")
 target = 1
-action = ExtResource("5_spu5u")
+action = ExtResource("5_1gmdp")
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_c16dt"]
@@ -60,7 +56,7 @@ stackable = true
 effect_name = "Stun"
 generic = false
 priority = 5
-turn_limit = 3
+turn_limit = 1
 effect_type = 0
 check_success_type = 0
 check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
@@ -69,7 +65,7 @@ check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_f
 on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_7qcvy")])
 on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
 on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_gekn3")])
-on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_jn3dk"), SubResource("Resource_svwto")])
+on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_svwto")])
 on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_ykeef")])
 on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_fdc8l")])
 on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
