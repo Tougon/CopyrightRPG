@@ -20,7 +20,7 @@ func execute(sequence : AnimationSequence):
 		# Only tween the target if they aren't currently animating (defeat)
 		if sequence.target[sequence.target_index].current_entity.type == Entity.Type.GENERIC && (!sequence.target[sequence.target_index].is_defeated || override_defeated):
 			entity = sequence.target[sequence.target_index];
-	else:
+	elif target == Target.EFFECT && effect_index < sequence.effects.size():
 		entity = sequence.effects[effect_index];
 	
 	if entity == null : return;

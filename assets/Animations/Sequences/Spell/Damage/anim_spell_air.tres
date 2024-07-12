@@ -63,6 +63,7 @@ damage_time = 0.2
 damage_delay = 0.0
 shake_duration = 0.0
 shake_decay = 0.35
+force_dodge = true
 
 [sub_resource type="Resource" id="Resource_v7itg"]
 script = ExtResource("3_m5g6q")
