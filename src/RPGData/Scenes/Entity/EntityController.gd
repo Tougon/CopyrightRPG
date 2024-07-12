@@ -234,7 +234,7 @@ func set_target(trigger : EntityController = null):
 
 
 # HP and MP modification
-func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, damage_time : float = 0.35, damage_delay : float = 0.0, shake_duration : float = 0.0, shake_decay : float = 0.35):
+func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, damage_time : float = 0.35, damage_delay : float = 0.0, shake_duration : float = 0.0, shake_decay : float = 0.35, dodge_anyway : bool = true):
 	if is_defeated : return;
 	
 	if damage_delay > 0:
@@ -251,6 +251,13 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 			if hit : 
 				TweenExtensions.shake_position_2d(sprite, shake * 0.7, 22.5, Vector2(7.5, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
 			else :
+				var dodge_anim = default_dodge_anim;
+				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
+				
+				var animation_seq = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
+				animation_seq.sequence_start();
+		else :
+			if dodge_anyway && !hit:
 				var dodge_anim = default_dodge_anim;
 				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
 				

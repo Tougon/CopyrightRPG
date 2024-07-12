@@ -40,22 +40,6 @@ func _init():
 # Spell Cast Operations
 func set_damage(dm : Array[int]):
 	damage = dm;
-	
-	for i in damage.size():
-		total_damage += damage[i];
-		
-		if spell != null:
-			for n in spell.effects_on_hit.size():
-				var eff = spell.effects_on_hit[n].get_effect();
-				var proc = randf();
-				
-				if proc <= spell.effects_on_hit[n].chance && eff != null:
-					var exists = check_for_effect(eff)
-					
-					if !exists || (exists && eff.stackable):
-						var inst = eff.create_effect_instance(user, target, self);
-						inst.check_success();
-						effects.append(inst);
 
 
 func check_for_effect(effect : Effect) -> bool:
@@ -75,6 +59,21 @@ func set_critical(crt : Array[bool]):
 
 func set_hits(hit : Array[bool]):
 	hits = hit;
+	
+	for i in hits.size():
+		
+		if spell != null && hits[i] == true:
+			for n in spell.effects_on_hit.size():
+				var eff = spell.effects_on_hit[n].get_effect();
+				var proc = randf();
+				
+				if proc <= spell.effects_on_hit[n].chance && eff != null:
+					var exists = check_for_effect(eff)
+					
+					if !exists || (exists && eff.stackable):
+						var inst = eff.create_effect_instance(user, target, self);
+						inst.check_success();
+						effects.append(inst);
 
 
 func add_hit_result(result : String):

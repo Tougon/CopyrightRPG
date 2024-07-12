@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=14 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=16 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
 [ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="2_j0hut"]
 [ext_resource type="Resource" uid="uid://dxrqonq18v24m" path="res://assets/Spells/damage/common/spell_damage_common_raging_wind.tres" id="3_f71h0"]
 [ext_resource type="Resource" uid="uid://dd7qdkx4ewdkn" path="res://assets/Spells/damage/player/spell_damage_player_lightning.tres" id="4_3rwqi"]
 [ext_resource type="Resource" uid="uid://b2ejapgqyhh2p" path="res://assets/Spells/damage/player/spell_damage_player_smite_2.tres" id="5_cmf3g"]
+[ext_resource type="Resource" uid="uid://d0u6gmpqwd7c" path="res://assets/Spells/status/player/spell_status_player_static.tres" id="6_opxk2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="8_6wkou"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="9_4wdni"]
 
@@ -34,9 +35,14 @@ script = ExtResource("1_2apw3")
 spell = ExtResource("5_cmf3g")
 level = 0
 
+[sub_resource type="Resource" id="Resource_vp2t4"]
+script = ExtResource("1_2apw3")
+spell = ExtResource("6_opxk2")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("8_6wkou")
-list = Array[ExtResource("1_2apw3")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_doaht"), SubResource("Resource_1ajxd")])
+list = Array[ExtResource("1_2apw3")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_doaht"), SubResource("Resource_1ajxd"), SubResource("Resource_vp2t4")])
 
 [resource]
 script = ExtResource("9_4wdni")

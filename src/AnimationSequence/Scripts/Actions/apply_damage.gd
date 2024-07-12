@@ -7,6 +7,7 @@ class_name ASAApplyDamage
 @export var damage_delay : float = 0.0;
 @export var shake_duration : float = 0.0;
 @export var shake_decay : float = 0.35;
+@export var force_dodge : bool = true;
 
 func execute(sequence : AnimationSequence):
 	var index = sequence.target_index;
@@ -17,5 +18,5 @@ func execute(sequence : AnimationSequence):
 	var crit = sequence.spell_cast[index].get_current_hit_critical();
 	var hit = sequence.spell_cast[index].get_current_hit_success();
 	
-	sequence.target[sequence.target_index].apply_damage(dmg, crit, vibrate, hit, damage_time, damage_delay, shake_duration, shake_decay);
+	sequence.target[sequence.target_index].apply_damage(dmg, crit, vibrate, hit, damage_time, damage_delay, shake_duration, shake_decay, force_dodge);
 	sequence.spell_cast[index].increment_hit();
