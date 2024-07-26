@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxadfl0p5b3o2"]
+
+[ext_resource type="AudioStream" uid="uid://dsln6g5vd145k" path="res://assets/Audio/BGM/MF2.ogg" id="1_d6sxs"]
+
+[node name="AudioManager" type="Node"]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="BGM" type="Node" parent="."]
+
+[node name="BGM_1" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource("1_d6sxs")
+bus = &"BGM"
+
+[node name="BGM_2" type="AudioStreamPlayer" parent="BGM"]
+bus = &"BGM"
+
+[node name="BGM_3" type="AudioStreamPlayer" parent="BGM"]
+bus = &"BGM"
+
+[node name="BGM_4" type="AudioStreamPlayer" parent="BGM"]
+bus = &"BGM"
+
+[node name="BGM_5" type="AudioStreamPlayer" parent="BGM"]
+bus = &"BGM"

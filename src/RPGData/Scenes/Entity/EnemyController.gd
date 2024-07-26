@@ -1,7 +1,7 @@
 extends EntityController
 class_name EnemyController
 
-@export var seal_effect : Effect;
+@export var seal_effect : SealEffectGroup;
 
 # Called when the node enters the scene tree for the first time.
 func entity_init():

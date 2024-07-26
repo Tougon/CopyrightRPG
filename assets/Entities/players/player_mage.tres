@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=18 format=3 uid="uid://cuq4qm0mplqgp"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_cso64"]
+[ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="2_nxhdp"]
+[ext_resource type="Resource" uid="uid://dxrqonq18v24m" path="res://assets/Spells/damage/common/spell_damage_common_raging_wind.tres" id="3_hf7jm"]
+[ext_resource type="Resource" uid="uid://bm0i5srkohn42" path="res://assets/Spells/damage/player/spell_damage_player_quickzap.tres" id="4_t6x3f"]
+[ext_resource type="Resource" uid="uid://d0u6gmpqwd7c" path="res://assets/Spells/status/player/spell_status_player_static.tres" id="5_k41ro"]
+[ext_resource type="Resource" uid="uid://dd7qdkx4ewdkn" path="res://assets/Spells/damage/player/spell_damage_player_lightning.tres" id="6_jocpb"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="7_0r171"]
+[ext_resource type="Resource" uid="uid://c3go87srhogl5" path="res://assets/Spells/status/common/spell_status_common_heal.tres" id="7_32lxi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="8_178lu"]
+
+[sub_resource type="Curve" id="Curve_ya8tb"]
+_data = [Vector2(0, 0.1), 0.0, 0.7, 0, 1, Vector2(1, 0.8), 0.7, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_egsue"]
+script = ExtResource("1_cso64")
+spell = ExtResource("2_nxhdp")
+level = 0
+
+[sub_resource type="Resource" id="Resource_fc1ry"]
+script = ExtResource("1_cso64")
+spell = ExtResource("3_hf7jm")
+level = 0
+
+[sub_resource type="Resource" id="Resource_j1wii"]
+script = ExtResource("1_cso64")
+spell = ExtResource("4_t6x3f")
+level = 0
+
+[sub_resource type="Resource" id="Resource_vp2t4"]
+script = ExtResource("1_cso64")
+spell = ExtResource("5_k41ro")
+level = 0
+
+[sub_resource type="Resource" id="Resource_doaht"]
+script = ExtResource("1_cso64")
+spell = ExtResource("6_jocpb")
+level = 0
+
+[sub_resource type="Resource" id="Resource_b3mxk"]
+script = ExtResource("1_cso64")
+spell = ExtResource("7_32lxi")
+level = 0
+
+[sub_resource type="Resource" id="Resource_xqh42"]
+script = ExtResource("7_0r171")
+list = Array[ExtResource("1_cso64")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_j1wii"), SubResource("Resource_vp2t4"), SubResource("Resource_doaht"), SubResource("Resource_b3mxk")])
+
+[resource]
+script = ExtResource("8_178lu")
+name_key = "T_ENTITY_PLAYER_MAGE"
+description_key = "T_DESCRIPTION_SLIME"
+gender = 0
+type = 1
+generic = false
+base_hp = 65
+base_mp = 120
+base_atk = 40
+base_def = 60
+base_sp_atk = 110
+base_sp_def = 60
+base_spd = 70
+base_crit_chance_modifier = 1.0
+base_crit_resist_modifier = 1.0
+base_dodge_modifier = 1.0
+luck_curve = SubResource("Curve_ya8tb")
+weakness = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
+resistance = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
+min_level = 50
+max_level = 50
+entity_sprites = Array[Texture2D]([])
+battle_intro_key = "T_BATTLE_INTRO_GENERIC"
+battle_defeat_key = ""
+head_offset = Vector2(0, 0)
+move_list = SubResource("Resource_xqh42")

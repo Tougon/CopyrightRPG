@@ -4,6 +4,7 @@ class_name BehaviorCheckResult
 
 var action_id : int;
 var action_success : bool;
+var action_sealing : bool;
 var trigger_entity: EntityController;
 var check_target : BehaviorCheck.CheckTarget;
 

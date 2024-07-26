@@ -65,6 +65,9 @@ func _ready():
 		horizontal_padding = text_label.get_theme_constant("text_highlight_h_padding", "RichTextLabel");
 		vertical_padding = text_label.get_theme_constant("text_highlight_v_padding", "RichTextLabel");
 		line_separation = text_label.get_theme_constant("line_separation", "RichTextLabel");
+		
+		if BattleManager.dialogue_canvas == null:
+			BattleManager.dialogue_canvas = self;
 
 
 func _on_dialogue_queue(dialogue : String):
@@ -315,3 +318,6 @@ func _row_display_delay(row : String):
 func _on_destroy():
 	if EventManager != null:
 		EventManager.on_dialogue_queue.disconnect(_on_dialogue_queue);
+	
+	if BattleManager != null && BattleManager.dialogue_canvas == self:
+		BattleManager.dialogue_canvas = null;

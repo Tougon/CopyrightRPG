@@ -12,6 +12,9 @@ func _ready():
 	EventManager.on_battle_begin.connect(_on_battle_begin);
 	EventManager.on_entity_defeated.connect(_on_entity_defeated);
 	EventManager.on_entity_move.connect(_on_entity_move);
+	
+	if BattleManager.seal_manager == null:
+		BattleManager.seal_manager = self;
 
 
 func _on_battle_begin():
@@ -34,7 +37,7 @@ func can_seal_spell(spell : Spell) -> bool:
 	return !sealed_spells.has(spell);
 
 
-func create_seal_instance(entity : EntityController, spell : Spell, effect : Effect, player_side : bool):
+func create_seal_instance(entity : EntityController, spell : Spell, effect : SealEffectGroup, player_side : bool):
 	if effect == null : return;
 	
 	var seal_inst = SealInstance.new(entity, spell, effect, SEAL_TURN_COUNT, player_side);
@@ -74,11 +77,12 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 					EventManager.on_dialogue_queue.emit(seal_msg);
 					
 				
-				var eff_instance = seal.seal_effect.create_effect_instance(seal.seal_entity, entity, null);
-				# May be vestigal with how seals work now
-				eff_instance.spell_override = seal.seal_source;
-				eff_instance.check_success();
-				if eff_instance.cast_success : eff_instance.on_activate();
+				for eff in seal.seal_effect.seal_effects:
+					var eff_instance = eff.create_effect_instance(seal.seal_entity, entity, null);
+					# May be vestigal with how seals work now
+					eff_instance.spell_override = seal.seal_source;
+					eff_instance.check_success();
+					if eff_instance.cast_success : eff_instance.on_activate();
 	
 	return sealed;
 
@@ -99,3 +103,6 @@ func _on_destroy():
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
 		EventManager.on_entity_defeated.disconnect(_on_entity_defeated);
 		EventManager.on_entity_move.disconnect(_on_entity_move);
+	
+	if BattleManager != null && BattleManager.seal_manager == self:
+		BattleManager.seal_manager = null;

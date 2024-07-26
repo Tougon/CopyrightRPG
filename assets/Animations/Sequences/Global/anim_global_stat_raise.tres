@@ -31,7 +31,7 @@ ease = 0
 relative = false
 "Use From" = false
 "Value Type" = 3
-"Vector2 Value" = Vector2(0, 0.675)
+"Vector2 Value" = Vector2(0, 1.1)
 
 [sub_resource type="Resource" id="Resource_bx424"]
 script = ExtResource("4_kaptb")
@@ -56,7 +56,7 @@ script = ExtResource("5_38wqo")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_texture_amount"
 material_property = true
-duration = 0.5
+duration = 0.2
 delay = 0.0
 transition = 0
 ease = 0
@@ -88,7 +88,7 @@ script = ExtResource("5_38wqo")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_texture_amount"
 material_property = true
-duration = 0.3
+duration = 0.2
 delay = 0.0
 transition = 0
 ease = 0
@@ -111,7 +111,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_taqyx"]
 script = ExtResource("3_he4fw")
-frame = 64
+frame = 42
 frame_order = 0
 action = SubResource("Resource_mkopj")
 
@@ -143,7 +143,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_t8as0"]
 script = ExtResource("3_he4fw")
-frame = 90
+frame = 59
 frame_order = 0
 action = SubResource("Resource_53nii")
 
@@ -152,7 +152,7 @@ script = ExtResource("6_wdb4r")
 
 [sub_resource type="Resource" id="Resource_6na2o"]
 script = ExtResource("3_he4fw")
-frame = 90
+frame = 60
 frame_order = 1
 action = SubResource("Resource_gipj6")
 

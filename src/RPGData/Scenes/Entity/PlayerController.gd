@@ -5,7 +5,7 @@ enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 
 @export var attack_action : Spell;
 @export var defend_action : Spell;
-@export var seal_effect : Effect;
+@export var seal_effect : SealEffectGroup;
 var prev_action_type : ActionType;
 
 
@@ -13,8 +13,8 @@ var prev_action_type : ActionType;
 func entity_init():
 	
 	# TODOGAME: Fetch levels and anything else from player data
-	# NOTE: Temp code used to estimate "midgame" stats to make better decisions
-	level = 20;
+	# NOTE: Temp code used to estimate "endgame" stats to make better decisions
+	level = 30;
 	
 	super.entity_init()
 	await get_tree().process_frame;
