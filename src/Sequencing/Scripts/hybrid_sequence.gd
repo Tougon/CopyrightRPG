@@ -15,12 +15,15 @@ func _init(in_tree : SceneTree, in_dialogue : DialogueSequence, in_animation : A
 	
 	dialogue = in_dialogue;
 	animation = in_animation;
-	
+
+
+func sequence_start():
 	BattleManager.dialogue_canvas.on_dialogue_complete.connect(_on_dialogue_end);
 	animation.sequence_ended.connect(_on_animation_end);
 	
 	dialogue.sequence_start();
 	animation.sequence_start();
+	super.sequence_start();
 
 
 func _on_animation_end():

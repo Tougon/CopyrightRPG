@@ -23,3 +23,9 @@ func execute(instance : EffectInstance):
 					if !entity.def_mods.has(name) : entity.def_mods[name] = amount
 				else : 
 					entity.def_mods.erase(name);
+			
+			EffectFunction.Stat.SPDEFENSE:
+				if apply :
+					if !entity.sp_def_mods.has(name) : entity.sp_def_mods[name] = amount
+				else : 
+					entity.sp_def_mods.erase(name);

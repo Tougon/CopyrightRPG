@@ -75,7 +75,7 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 					
 					seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
 					EventManager.on_dialogue_queue.emit(seal_msg);
-					
+				
 				
 				for eff in seal.seal_effect.seal_effects:
 					var eff_instance = eff.create_effect_instance(seal.seal_entity, entity, null);

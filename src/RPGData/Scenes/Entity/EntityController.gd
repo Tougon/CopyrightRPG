@@ -182,6 +182,7 @@ func select_action():
 			
 			if result.action_success:
 				current_action = move_list[clamp(result.action_id, 0, move_list.size())];
+				sealing = result.action_sealing;
 				
 				if check_target_match(current_action, result):
 					set_target(result.trigger_entity);
