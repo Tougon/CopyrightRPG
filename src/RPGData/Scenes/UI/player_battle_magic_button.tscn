@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_magic_button.gd" id="2_4etfd"]
 
 [node name="Button" type="Button"]
-custom_minimum_size = Vector2(295, 100)
+custom_minimum_size = Vector2(295, 50)
 offset_right = 295.0
-offset_bottom = 100.0
+offset_bottom = 60.0
 theme = ExtResource("1_5kehl")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "T_BATTLE_MAIN_UI_ATTACK"
 clip_text = true
 script = ExtResource("2_4etfd")
@@ -26,7 +26,7 @@ offset_right = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_5kehl")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "50 MP"
 horizontal_alignment = 2
 vertical_alignment = 1

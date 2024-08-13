@@ -84,7 +84,10 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 			entity_name = target.param.entity_name;
 			generic = target.param.entity_generic;
 		else :
-			hit_result = tr("T_BATTLE_ACTION_MISS");
+			if spell_target == SpellTarget.All ||  spell_target == SpellTarget.AllEnemy || spell_target == SpellTarget.AllExceptSelf || spell_target == SpellTarget.AllParty:
+				hit_result = tr("T_BATTLE_ACTION_MISS_PLURAL");
+			else:
+				hit_result = tr("T_BATTLE_ACTION_MISS");
 			entity_name = user.param.entity_name;
 			generic = user.param.entity_generic;
 		
@@ -92,6 +95,14 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 			hit_result = hit_result.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = entity_name});
 		else :
 			hit_result = hit_result.format({article_indef = "", article_def = "", entity = entity_name});
+		
+		entity_name = target.param.entity_name;
+		generic = target.param.entity_generic;
+		
+		if generic : 
+			hit_result = hit_result.format({t_article_indef = GrammarManager.get_indirect_article(entity_name), t_article_def = GrammarManager.get_direct_article(entity_name), t_entity = entity_name});
+		else :
+			hit_result = hit_result.format({t_article_indef = "", t_article_def = "", t_entity = entity_name});
 		
 		cast.add_hit_result(hit_result);
 	else : cast.add_hit_result("");

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=10 format=3 uid="uid://cuyfwsc6iqt2u"]
 
-[ext_resource type="Resource" uid="uid://3n2f4lh32rmw" path="res://assets/Animations/Sequences/Spell/Status/Player/anim_status_static.tres" id="1_2go41"]
+[ext_resource type="Resource" uid="uid://60hj70maoc1o" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_fire.tres" id="1_vmlas"]
 [ext_resource type="Resource" uid="uid://gpm3ab27cqfb" path="res://assets/Effects/common/effect_common_status_drowsy.tres" id="2_ixrrd"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_2sv6j"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_3r7bq"]
@@ -51,7 +51,7 @@ spell_target = 9
 spell_cost = 32
 spell_priority = 0
 spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("6_tbkbp"), ExtResource("7_24poy")])
-animation_sequence = ExtResource("1_2go41")
+animation_sequence = ExtResource("1_vmlas")
 effects_on_hit = Array[ExtResource("4_3r7bq")]([SubResource("Resource_yifa3")])
 effects_on_success = Array[ExtResource("4_3r7bq")]([])
 properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

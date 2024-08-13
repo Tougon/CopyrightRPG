@@ -182,6 +182,7 @@ seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("6_tugar")
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
+visible = false
 position = Vector2(380, 660)
 current_entity = ExtResource("6_0d7yk")
 
@@ -203,12 +204,14 @@ use_override_direction = true
 override_direction = Vector2(-1, -1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
+visible = false
 position = Vector2(721, 294)
 seal_effect = null
 use_override_direction = true
 override_direction = Vector2(-1, -1)
 
 [node name="TempEnemy3" parent="Entities" instance=ExtResource("5_c337l")]
+visible = false
 position = Vector2(225, 294)
 seal_effect = null
 use_override_direction = true
