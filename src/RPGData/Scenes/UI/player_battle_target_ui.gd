@@ -66,7 +66,7 @@ func _initialize_target_menu(entity : EntityController):
 		entity.is_ready = true;
 		return;
 	
-	elif spell_target == Spell.SpellTarget.All || spell_target == Spell.SpellTarget.AllEnemy || spell_target == Spell.SpellTarget.AllParty:
+	elif spell_target == Spell.SpellTarget.All || spell_target == Spell.SpellTarget.AllEnemy || spell_target == Spell.SpellTarget.AllParty || spell_target == Spell.SpellTarget.AllExceptSelf:
 		var info = target_info_pool[0];
 		info.visible = true;
 		

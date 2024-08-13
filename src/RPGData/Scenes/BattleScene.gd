@@ -237,11 +237,6 @@ func _action_phase():
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed
 		
-		# Check if action is sealed
-		seal_manager.check_for_seal(entity, players.has(entity));
-		if sequencer.is_sequence_playing_or_queued() :
-			await EventManager.on_sequence_queue_empty;
-		
 		for spell in spell_cast:
 			var effects = spell.effects;
 			
@@ -269,6 +264,11 @@ func _action_phase():
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
+		
+		# Check if action is sealed
+		seal_manager.check_for_seal(entity, players.has(entity));
+		if sequencer.is_sequence_playing_or_queued() :
+			await EventManager.on_sequence_queue_empty;
 		
 		for spell in spell_cast :
 			spell.free();

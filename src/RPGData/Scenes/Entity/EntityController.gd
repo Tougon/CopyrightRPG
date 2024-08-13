@@ -438,6 +438,13 @@ func get_possible_targets(spell : Spell = null) -> Array[EntityController]:
 			for enemy in enemies:
 				if !enemy.is_defeated:
 					result.append(enemy);
+		Spell.SpellTarget.AllExceptSelf:
+			for enemy in enemies:
+				if !enemy.is_defeated:
+					result.append(enemy);
+			for ally in allies:
+				if !ally.is_defeated && !ally == self:
+					result.append(ally);
 		Spell.SpellTarget.SingleParty:
 			for ally in allies:
 				if !ally.is_defeated:
