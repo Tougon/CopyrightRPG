@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://4ch7ihyb6wyn"]
+
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Status/anim_status_stunned.tres" id="1_ct770"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="2_1o1ae"]
+
+[resource]
+script = ExtResource("2_1o1ae")
+spell_name_key = "T_SPELL_STATUS_FLAVOR_DROWSY"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_FLAVOR_DROWSY"
+spell_type = 6
+spell_target = 4
+spell_cost = 0
+spell_priority = 1
+spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+animation_sequence = ExtResource("1_ct770")
+effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
+properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])

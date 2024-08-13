@@ -182,6 +182,7 @@ seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("6_tugar")
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
+visible = false
 position = Vector2(380, 660)
 current_entity = ExtResource("6_0d7yk")
 
