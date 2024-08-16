@@ -14,54 +14,40 @@ enum Type { GENERIC, PLAYER, BOSS }
 @export var generic : bool = true;
 
 @export_group("Stats")
-@export var base_hp : int : 
-	set(new_hp):
-		if new_hp < 0:
-			base_hp = 0;
-		else:
-			base_hp = new_hp;
+@export var hp : EntityStat;
+func get_hp(level : int) -> int:
+	if hp == null : return 50;
+	return hp.get_current(level);
 
-@export var base_mp : int : 
-	set(new_mp):
-		if new_mp < 0:
-			base_mp = 0;
-		else:
-			base_mp = new_mp;
+@export var mp : EntityStat;
+func get_mp(level : int) -> int:
+	if mp == null : return 50;
+	return mp.get_current(level);
 
-@export var base_atk : int : 
-	set(new_atk):
-		if new_atk < 0:
-			base_atk = 0;
-		else:
-			base_atk = new_atk;
+@export var atk : EntityStat;
+func get_atk(level : int) -> int:
+	if atk == null : return 50;
+	return atk.get_current(level);
 
-@export var base_def : int : 
-	set(new_def):
-		if new_def < 0:
-			base_def = 0;
-		else:
-			base_def = new_def;
+@export var def : EntityStat;
+func get_def(level : int) -> int:
+	if def == null : return 50;
+	return def.get_current(level);
 
-@export var base_sp_atk : int : 
-	set(new_sp_atk):
-		if new_sp_atk < 0:
-			base_sp_atk = 0;
-		else:
-			base_sp_atk = new_sp_atk;
+@export var sp_atk : EntityStat;
+func get_sp_atk(level : int) -> int:
+	if sp_atk == null : return 50;
+	return sp_atk.get_current(level);
 
-@export var base_sp_def : int : 
-	set(new_sp_def):
-		if new_sp_def < 0:
-			base_sp_def = 0;
-		else:
-			base_sp_def = new_sp_def;
+@export var sp_def : EntityStat;
+func get_sp_def(level : int) -> int:
+	if sp_def == null : return 50;
+	return sp_def.get_current(level);
 
-@export var base_spd : int : 
-	set(new_spd):
-		if new_spd < 0:
-			base_spd = 0;
-		else:
-			base_spd = new_spd;
+@export var spd : EntityStat;
+func get_spd(level : int) -> int:
+	if spd == null : return 50;
+	return spd.get_current(level);
 
 @export var base_crit_chance_modifier : float = 1 : 
 	set(new_crit_modifier):

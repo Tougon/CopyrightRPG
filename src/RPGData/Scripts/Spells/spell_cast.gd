@@ -67,7 +67,11 @@ func set_hits(hit : Array[bool]):
 				var eff = spell.effects_on_hit[n].get_effect();
 				var proc = randf();
 				
-				if proc <= spell.effects_on_hit[n].chance && eff != null:
+				var luck = 1;
+				if user.param.entity_luck > 1:
+					luck = user.param.entity_luck;
+				
+				if proc <= (spell.effects_on_hit[n].chance * luck) && eff != null:
 					var exists = check_for_effect(eff)
 					
 					if !exists || (exists && eff.stackable):

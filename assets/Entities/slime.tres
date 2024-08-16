@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=29 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=32 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://chgw0jaec0vx3" path="res://assets/Sprites/Entities/slime_n_neutral.png" id="6_5fqbn"]
 [ext_resource type="Texture2D" uid="uid://3yafwxteo4o0" path="res://assets/Sprites/Entities/slime_n_damage.png" id="7_0oseo"]
 [ext_resource type="Texture2D" uid="uid://dvi6peplvfuds" path="res://assets/Sprites/Entities/slime_n_attack.png" id="8_hc7u7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/EntityStat.gd" id="9_n0rge"]
 [ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/reference/test_spell.tres" id="10_6f66q"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="11_ul1t6"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="12_7w274"]
@@ -60,6 +61,16 @@ script = ExtResource("1_lpo00")
 first_turn_behavior = SubResource("Resource_lakch")
 turn_behavior = Array[ExtResource("4_l7lga")]([SubResource("Resource_k0d1d")])
 
+[sub_resource type="Curve" id="Curve_xe662"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_aptt0"]
+script = ExtResource("9_n0rge")
+min = 50
+max = 50
+growth = SubResource("Curve_xe662")
+
 [sub_resource type="Curve" id="Curve_k6ron"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
@@ -95,7 +106,7 @@ description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 0
 generic = true
-base_hp = 50
+hp = SubResource("Resource_aptt0")
 base_mp = 50
 base_atk = 45
 base_def = 40

@@ -51,7 +51,6 @@ description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 1
 generic = false
-base_hp = 115
 base_mp = 55
 base_atk = 100
 base_def = 95

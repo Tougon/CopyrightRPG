@@ -250,7 +250,11 @@ func _action_phase():
 			var e = effect.get_effect();
 			var proc = randf();
 			
-			if e != null && proc <= effect.chance:
+			var luck = 1;
+			if entity.param.entity_luck > 1:
+				luck = entity.param.entity_luck;
+			
+			if e != null && proc <= effect.chance * luck:
 				var inst = e.create_effect_instance(entity, entity, null);
 				inst.check_success();
 				

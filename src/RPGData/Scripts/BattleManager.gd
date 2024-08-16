@@ -6,6 +6,9 @@ extends Node
 var async_damage_text : bool = false;
 var async_crit_text : bool = true;
 
+# Determines level cap
+var level_cap : int = 99;
+
 # Determines starting level offset for stat calculations
 var level_offset : int = 24;
 
