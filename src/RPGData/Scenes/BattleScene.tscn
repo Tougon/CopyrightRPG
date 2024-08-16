@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
 [ext_resource type="PackedScene" uid="uid://bj25wtcmfmgoc" path="res://src/RPGData/Scenes/UI/player_battle_magic_ui.tscn" id="11_og6hd"]
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="12_fxbwv"]
-[ext_resource type="Resource" uid="uid://bpb4i6fogs6ir" path="res://assets/Entities/test_boss.tres" id="13_gnyi3"]
+[ext_resource type="Resource" uid="uid://c6w0f7wojiuxh" path="res://assets/Entities/tanky_slime.tres" id="13_fjbr3"]
 [ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="13_vk0ot"]
 [ext_resource type="Resource" uid="uid://c0uavcv162qr0" path="res://assets/Effects/seal/effect_seal_buff_sp_defense.tres" id="14_8yaa2"]
 [ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/seal/effect_seal_buff_speed.tres" id="15_dvv4b"]
@@ -193,7 +193,9 @@ position = Vector2(800, 660)
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
-current_entity = ExtResource("13_gnyi3")
+current_entity = ExtResource("13_fjbr3")
+use_override_direction = true
+override_direction = Vector2(1, -1)
 
 [node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
 visible = false

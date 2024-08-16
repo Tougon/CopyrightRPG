@@ -202,11 +202,11 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		if critical && atk_mod < 1 : atk_mod = 1;
 		if critical && def_mod > 1 : def_mod = 1;
 		
-		var damage = (((2.0 * ((user.level + BattleManager.level_offset) as float)) / 5.0) + 2) * spell_power;
+		var damage = (((2.0 * ((user.level) as float)) / 5.0) + 2) * spell_power;
 		if !ignore_target_defense :
 			damage *= (((float)(atk * atk_mod)) / ((float)(def * def_mod)));
 		else : 
-			var relative_def = ((BASE_STAT * 2 * (user.level + BattleManager.level_offset)) / 100) + 5;
+			var relative_def = ((BASE_STAT * 2 * (user.level)) / 100) + 5;
 			damage *= (((float)(atk * atk_mod)) / ((float)(relative_def * def_mod)));
 		
 		damage /= 50;

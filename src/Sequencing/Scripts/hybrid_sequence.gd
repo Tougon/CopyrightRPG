@@ -44,6 +44,11 @@ func sequence_loop():
 		sequence_end();
 
 
+func sequence_end():
+	await tree.process_frame;
+	super.sequence_end();
+
+
 func unhandled_input(event : InputEvent) -> bool:
 	if dialogue != null && !_pressed:
 		var _dialogue_already_over = _dialogue_ended

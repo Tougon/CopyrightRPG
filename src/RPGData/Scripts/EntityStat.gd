@@ -24,4 +24,5 @@ func get_current(level : int) -> int:
 		level = BattleManager.level_cap;
 	
 	var percent = (level as float) / (BattleManager.level_cap as float);
+	print(roundi(lerp(min, max, growth.sample(percent))));
 	return roundi(lerp(min, max, growth.sample(percent)));
