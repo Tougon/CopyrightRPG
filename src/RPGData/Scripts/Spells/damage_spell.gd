@@ -202,14 +202,17 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		if critical && atk_mod < 1 : atk_mod = 1;
 		if critical && def_mod > 1 : def_mod = 1;
 		
-		var damage = (((2.0 * ((user.level) as float)) / 5.0) + 2) * spell_power;
+		# Originally used Pokemon's formula exactly, but this leads to bizarre scaling
+		# This formula is preserved below but will likely not be restored
+		var damage = spell_power; #(((2.0 * ((user.level) as float)) / 5.0) + 2) * spell_power;
 		if !ignore_target_defense :
 			damage *= (((float)(atk * atk_mod)) / ((float)(def * def_mod)));
 		else : 
 			var relative_def = ((BASE_STAT * 2 * (user.level)) / 100) + 5;
 			damage *= (((float)(atk * atk_mod)) / ((float)(relative_def * def_mod)));
 		
-		damage /= 50;
+		# Originally used 50, derived from Pokemon's damage formula
+		damage /= 2.5; #50;
 		
 		for flag in spell_flags:
 			if target.flag_modifiers.has(flag.flag_name_key):
@@ -227,7 +230,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			for f in def_mods_post:
 				damage /= f;
 		
-		damage *= randf_range(0.85, 1.0);
+		#damage *= randf_range(0.85, 1.0);
 		
 		if critical : damage *= 1.5
 		

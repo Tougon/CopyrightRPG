@@ -20,9 +20,11 @@ class_name EntityStat
 @export var growth : Curve;
 
 func get_current(level : int) -> int:
-	if level > BattleManager.level_cap:
-		level = BattleManager.level_cap;
+	# Level 1 is the minimum so it needs to be counted as 0
+	level -= 1;
+	
+	if level > BattleManager.level_cap: level = BattleManager.level_cap;
+	if level < 0 : level = 0;
 	
 	var percent = (level as float) / (BattleManager.level_cap as float);
-	print(roundi(lerp(min, max, growth.sample(percent))));
 	return roundi(lerp(min, max, growth.sample(percent)));
