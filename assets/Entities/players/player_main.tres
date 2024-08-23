@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=39 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=41 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/EntityStat.gd" id="1_s5su1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/EntityStatFloat.gd" id="2_aba5b"]
 [ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="2_j0hut"]
 [ext_resource type="Resource" uid="uid://dxrqonq18v24m" path="res://assets/Spells/damage/common/spell_damage_common_raging_wind.tres" id="3_f71h0"]
 [ext_resource type="Resource" uid="uid://dd7qdkx4ewdkn" path="res://assets/Spells/damage/player/spell_damage_player_lightning.tres" id="4_3rwqi"]
@@ -20,8 +21,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_4w176"]
 script = ExtResource("1_s5su1")
-min = 30
-max = 250
+min = 24
+max = 220
 growth = SubResource("Curve_v435p")
 
 [sub_resource type="Curve" id="Curve_yobbd"]
@@ -30,8 +31,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_5yws8"]
 script = ExtResource("1_s5su1")
-min = 30
-max = 250
+min = 26
+max = 225
 growth = SubResource("Curve_yobbd")
 
 [sub_resource type="Curve" id="Curve_uflwe"]
@@ -44,11 +45,15 @@ min = 50
 max = 350
 growth = SubResource("Curve_uflwe")
 
-[sub_resource type="Curve" id="Curve_l7m1m"]
-max_value = 2.0
-_data = [Vector2(0, 1), 0.0, 0.6, 0, 1, Vector2(1, 1.6), 0.6, 0.0, 1, 0]
+[sub_resource type="Curve" id="Curve_ci2gw"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_a3wnt"]
+script = ExtResource("2_aba5b")
+min = 1.0
+max = 1.6
+growth = SubResource("Curve_ci2gw")
 
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("1_2apw3")
@@ -115,8 +120,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_al7x6"]
 script = ExtResource("1_s5su1")
-min = 30
-max = 250
+min = 28
+max = 245
 growth = SubResource("Curve_5aqne")
 
 [sub_resource type="Curve" id="Curve_qoifh"]
@@ -125,8 +130,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_l78rs"]
 script = ExtResource("1_s5su1")
-min = 30
-max = 250
+min = 26
+max = 225
 growth = SubResource("Curve_qoifh")
 
 [sub_resource type="Curve" id="Curve_qrpy0"]
@@ -135,8 +140,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_ueyej"]
 script = ExtResource("1_s5su1")
-min = 30
-max = 250
+min = 31
+max = 270
 growth = SubResource("Curve_qrpy0")
 
 [resource]
@@ -156,7 +161,7 @@ spd = SubResource("Resource_ueyej")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0
-luck_curve = SubResource("Curve_l7m1m")
+luck = SubResource("Resource_a3wnt")
 weakness = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
 resistance = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
 min_level = 50

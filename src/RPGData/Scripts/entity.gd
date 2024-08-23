@@ -70,7 +70,10 @@ func get_spd(level : int) -> int:
 		else:
 			base_dodge_modifier = new_dodge_modifier;
 
-@export var luck_curve : Curve;
+@export var luck : EntityStatFloat;
+func get_lck(level : int) -> float:
+	if luck == null : return 1;
+	return luck.get_current(level);
 
 # TODOGAME: Weakness was unimplemented in the old version.
 @export_group("Modifiers")

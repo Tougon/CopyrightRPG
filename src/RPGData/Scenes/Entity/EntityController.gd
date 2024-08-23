@@ -104,7 +104,9 @@ func entity_init():
 		param.entity_crit_chance_modifier = current_entity.base_crit_chance_modifier;
 		param.entity_crit_resist_modifier = current_entity.base_crit_resist_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
-		param.entity_luck = current_entity.luck_curve.sample((level as float) / BattleManager.level_cap);
+		param.entity_luck = current_entity.get_lck(level);
+		
+		print(param.entity_name + ", Lvl " + str(level) + ", HP: " + str(param.entity_hp) + ", MP: " + str(param.entity_mp) + ", Atk: " + str(param.entity_atk) + ", Def: " + str(param.entity_def) + ", SpAtk: " + str(param.entity_sp_atk) + ", SpDef: " + str(param.entity_sp_def) + ", Spd: " + str(param.entity_spd) + ", Lck: " + str(param.entity_luck));
 		
 		# Reset stats
 		max_hp = param.entity_hp;

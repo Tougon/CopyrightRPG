@@ -118,8 +118,10 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			min_number_of_hits = max_number_of_hits;
 		
 		var luck = 1;
-		if user.param.entity_luck > 1:
-			luck = user.param.entity_luck;
+		# Originally included to prevent negative luck but...
+		# we kind of want that, no?
+		#if user.param.entity_luck > 1:
+		luck = user.param.entity_luck;
 		var time = hit_count_curve.sample(randf() * luck);
 		num_hits = roundi(lerp(min_number_of_hits, max_number_of_hits, time));
 	
@@ -171,8 +173,10 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			continue;
 		
 		var crit_chance = 1;
-		if user.param.entity_luck > 1 :
-			crit_chance = user.param.entity_luck;
+		# Originally included to prevent negative luck but...
+		# we kind of want that, no?
+		#if user.param.entity_luck > 1 :
+		crit_chance = user.param.entity_luck;
 		# If user crit chance modifier is 0, user cannot crit
 		if user.param.entity_crit_chance_modifier == 0 : crit_chance = 0;
 		else : crit_chance *= user.param.entity_crit_chance_modifier;
@@ -230,7 +234,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			for f in def_mods_post:
 				damage /= f;
 		
-		#damage *= randf_range(0.85, 1.0);
+		damage *= randf_range(0.85, 1.0);
 		
 		if critical : damage *= 1.5
 		

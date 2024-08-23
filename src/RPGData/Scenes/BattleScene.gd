@@ -251,8 +251,10 @@ func _action_phase():
 			var proc = randf();
 			
 			var luck = 1;
-			if entity.param.entity_luck > 1:
-				luck = entity.param.entity_luck;
+			# Originally included to prevent negative luck but...
+			# we kind of want that, no?
+			#if entity.param.entity_luck > 1:
+			luck = entity.param.entity_luck;
 			
 			if e != null && proc <= effect.chance * luck:
 				var inst = e.create_effect_instance(entity, entity, null);

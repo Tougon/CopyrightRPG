@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=37 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -22,7 +22,6 @@
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="12_fxbwv"]
 [ext_resource type="Resource" uid="uid://c6w0f7wojiuxh" path="res://assets/Entities/tanky_slime.tres" id="13_fjbr3"]
 [ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="13_vk0ot"]
-[ext_resource type="Resource" uid="uid://c0uavcv162qr0" path="res://assets/Effects/seal/effect_seal_buff_sp_defense.tres" id="14_8yaa2"]
 [ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/seal/effect_seal_buff_speed.tres" id="15_dvv4b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="19_et6o3"]
 [ext_resource type="PackedScene" uid="uid://dxadfl0p5b3o2" path="res://src/AudioManager/AudioManager.tscn" id="21_53vg0"]
@@ -107,7 +106,7 @@ seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([E
 
 [sub_resource type="Resource" id="Resource_ssevn"]
 script = ExtResource("6_1yw0j")
-seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("12_fxbwv"), ExtResource("13_vk0ot"), ExtResource("7_iqjjj"), ExtResource("14_8yaa2"), ExtResource("15_dvv4b")])
+seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("12_fxbwv"), ExtResource("13_vk0ot"), ExtResource("15_dvv4b")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ytua"]
 shader = ExtResource("3_8sqf3")
