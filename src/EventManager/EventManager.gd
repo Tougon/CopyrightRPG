@@ -29,14 +29,17 @@ signal on_action_selected(action : Spell, sealing : bool);
 signal highlight_target(entity : EntityController, all : bool);
 signal click_target(entity : EntityController);
 
-signal hide_entity_ui();
-
 signal on_entity_move(entity : EntityController);
 
 signal on_entity_defeated(entity : EntityController);
 signal on_enemy_defeated(entity : EntityController);
 signal on_players_defeated();
 signal on_battle_completed(victory : bool);
+
+# Battle UI Events
+signal hide_entity_ui();
+signal battle_fade_start(fade_in : bool);
+signal battle_fade_completed(fade_in : bool);
 
 
 # Leaving this intact but given the dictionary might as well not exist, I'm not sure we need.

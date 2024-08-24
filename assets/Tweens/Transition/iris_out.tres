@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=7 format=3 uid="uid://7ahtxfao7d4d"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_vwnss"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_jy7af"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_qlc7x"]
+
+[sub_resource type="Resource" id="Resource_vfrj8"]
+script = ExtResource("2_jy7af")
+target = ""
+property_name = "shader_parameter/scale"
+material_property = true
+duration = 0.85
+delay = 0.0
+transition = 3
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 200.0
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_if5xa"]
+script = ExtResource("2_jy7af")
+target = "Iris Center"
+property_name = "modulate"
+material_property = false
+duration = 0.02
+delay = 0.75
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(0, 0, 0, 1)
+"From Color" = Color(0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_oyu5f"]
+script = ExtResource("3_qlc7x")
+frames = Array[ExtResource("2_jy7af")]([SubResource("Resource_vfrj8"), SubResource("Resource_if5xa")])
+
+[resource]
+script = ExtResource("1_vwnss")
+tween_name = "Iris In"
+sequence = Array[ExtResource("3_qlc7x")]([SubResource("Resource_oyu5f")])

@@ -26,7 +26,7 @@ func _unhandled_input(event):
 
 
 func add_menu(menu : MenuPanel):
-	if !menus.has(menu.menu_name):
+	if !menus.has(menu.menu_name) || menus[menu.menu_name] == null:
 		menus[menu.menu_name] = menu;
 
 

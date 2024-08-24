@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=47 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -15,16 +15,22 @@
 [ext_resource type="Resource" uid="uid://dyc1rwxffmh78" path="res://assets/Entities/players/player_main.tres" id="7_5gsqw"]
 [ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="7_iqjjj"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
+[ext_resource type="Resource" uid="uid://c0uavcv162qr0" path="res://assets/Effects/seal/effect_seal_buff_sp_defense.tres" id="8_7fbn6"]
+[ext_resource type="Resource" uid="uid://bnwh1ljsi2ph" path="res://assets/Entities/players/player_fighter.tres" id="8_hn632"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
+[ext_resource type="Resource" uid="uid://8i7hybweexe0" path="res://assets/Entities/players/player_healer.tres" id="10_66vq4"]
 [ext_resource type="PackedScene" uid="uid://bj25wtcmfmgoc" path="res://src/RPGData/Scenes/UI/player_battle_magic_ui.tscn" id="11_og6hd"]
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="12_fxbwv"]
-[ext_resource type="Resource" uid="uid://c6w0f7wojiuxh" path="res://assets/Entities/tanky_slime.tres" id="13_fjbr3"]
+[ext_resource type="Resource" uid="uid://cuq4qm0mplqgp" path="res://assets/Entities/players/player_mage.tres" id="12_qpkyi"]
 [ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="13_vk0ot"]
 [ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/seal/effect_seal_buff_speed.tres" id="15_dvv4b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="19_et6o3"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/battle_fade_ui.gd" id="20_ija8q"]
 [ext_resource type="PackedScene" uid="uid://dxadfl0p5b3o2" path="res://src/AudioManager/AudioManager.tscn" id="21_53vg0"]
+[ext_resource type="Resource" uid="uid://7ahtxfao7d4d" path="res://assets/Tweens/Transition/iris_out.tres" id="27_xi51v"]
+[ext_resource type="Script" path="res://temp/Restarter.gd" id="29_6pl1e"]
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
 interpolation_mode = 2
@@ -102,7 +108,19 @@ shader_parameter/palette = SubResource("GradientTexture2D_fpi4j")
 
 [sub_resource type="Resource" id="Resource_pjtk0"]
 script = ExtResource("6_1yw0j")
-seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("7_iqjjj")])
+seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("15_dvv4b")])
+
+[sub_resource type="Resource" id="Resource_b3uow"]
+script = ExtResource("6_1yw0j")
+seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("7_iqjjj"), ExtResource("8_7fbn6")])
+
+[sub_resource type="Resource" id="Resource_j4r6v"]
+script = ExtResource("6_1yw0j")
+seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("13_vk0ot")])
+
+[sub_resource type="Resource" id="Resource_vh4sl"]
+script = ExtResource("6_1yw0j")
+seal_effects = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([ExtResource("12_fxbwv")])
 
 [sub_resource type="Resource" id="Resource_ssevn"]
 script = ExtResource("6_1yw0j")
@@ -122,9 +140,15 @@ tween_resource = ExtResource("7_yuhhm")
 play_on_start = false
 next_tween = ""
 
-[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("fade_sequence", "sequencer", "dialogue_canvas", "seal_manager")]
+[sub_resource type="Resource" id="Resource_hrdhm"]
+script = ExtResource("6_6cut8")
+tween_name = "Fade Out"
+tween_resource = ExtResource("27_xi51v")
+play_on_start = false
+next_tween = ""
+
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("sequencer", "dialogue_canvas", "seal_manager")]
 script = ExtResource("1_nawhs")
-fade_sequence = NodePath("UI/BG Fade Canvas/Fade Iris/TweenPlayerUI")
 sequencer = NodePath("Core/Sequencer")
 dialogue_canvas = NodePath("UI/Dialogue Canvas")
 seal_manager = NodePath("Core/SealManager")
@@ -178,21 +202,23 @@ seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("7_5gsqw")
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
-visible = false
 position = Vector2(380, 660)
+seal_effect = SubResource("Resource_b3uow")
+current_entity = ExtResource("10_66vq4")
 
 [node name="TempPlayer3" parent="Entities" instance=ExtResource("4_al1wb")]
-visible = false
 position = Vector2(600, 660)
+seal_effect = SubResource("Resource_j4r6v")
+current_entity = ExtResource("12_qpkyi")
 
 [node name="TempPlayer4" parent="Entities" instance=ExtResource("4_al1wb")]
-visible = false
 position = Vector2(800, 660)
+seal_effect = SubResource("Resource_vh4sl")
+current_entity = ExtResource("8_hn632")
 
 [node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
-current_entity = ExtResource("13_fjbr3")
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
@@ -226,8 +252,10 @@ expire_rows = false
 row_display_time = 1.5
 dialogue_end_time = 0.15
 
-[node name="BG Fade Canvas" type="CanvasLayer" parent="UI"]
+[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
 layer = 10
+script = ExtResource("20_ija8q")
+fade_sequence = NodePath("Fade Iris/TweenPlayerUI")
 
 [node name="Fade Iris" type="TextureRect" parent="UI/BG Fade Canvas"]
 modulate = Color(0, 0, 0, 1)
@@ -259,7 +287,7 @@ grow_vertical = 2
 
 [node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/Fade Iris"]
 script = ExtResource("5_35o0w")
-sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx")])
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx"), SubResource("Resource_hrdhm")])
 
 [node name="Core" type="Node" parent="."]
 
@@ -269,3 +297,8 @@ sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx")])
 script = ExtResource("19_et6o3")
 
 [node name="AudioManager" parent="." instance=ExtResource("21_53vg0")]
+
+[node name="Temp" type="Node" parent="."]
+
+[node name="Restarter" type="Node" parent="Temp"]
+script = ExtResource("29_6pl1e")

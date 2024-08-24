@@ -1,7 +1,6 @@
 extends Node2D
 class_name BattleScene
 
-@export var fade_sequence : TweenPlayer;
 @export var sequencer : Sequencer;
 @export var dialogue_canvas : DialogueCanvas;
 @export var seal_manager : SealManager
@@ -37,9 +36,8 @@ func _begin_battle():
 	EventManager.on_battle_begin.emit();
 	
 	# Fade in
-	if fade_sequence != null:
-		fade_sequence.play_tween_name("Fade In");
-		await fade_sequence.tween_ended;
+	EventManager.battle_fade_start.emit(true);
+	await EventManager.battle_fade_completed;
 	
 	# Print the opening dialogue
 	EventManager.on_dialogue_queue.emit(_get_intro_dialogue());

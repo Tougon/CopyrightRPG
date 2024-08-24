@@ -1,15 +1,51 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://8i7hybweexe0"]
+[gd_resource type="Resource" script_class="Entity" load_steps=25 format=3 uid="uid://8i7hybweexe0"]
 
+[ext_resource type="Script" path="res://src/RPGData/Scripts/EntityStat.gd" id="1_blvyb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_no42s"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/EntityStatFloat.gd" id="2_f1tbc"]
 [ext_resource type="Resource" uid="uid://c3go87srhogl5" path="res://assets/Spells/status/common/spell_status_common_heal.tres" id="7_e05th"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/move_list.gd" id="7_q7nfq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="8_th2jv"]
 
-[sub_resource type="Curve" id="Curve_84bj0"]
-max_value = 2.0
-_data = [Vector2(0, 0.25), 0.0, 1.1, 0, 1, Vector2(1, 1.35), 1.1, 0.0, 1, 0]
+[sub_resource type="Curve" id="Curve_juo7r"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
-metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_7tl0b"]
+script = ExtResource("1_blvyb")
+min = 32
+max = 250
+growth = SubResource("Curve_juo7r")
+
+[sub_resource type="Curve" id="Curve_fb6e8"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_a3b6h"]
+script = ExtResource("1_blvyb")
+min = 23
+max = 210
+growth = SubResource("Curve_fb6e8")
+
+[sub_resource type="Curve" id="Curve_epash"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_u8oy2"]
+script = ExtResource("1_blvyb")
+min = 62
+max = 340
+growth = SubResource("Curve_epash")
+
+[sub_resource type="Curve" id="Curve_mxe6p"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_qu4vm"]
+script = ExtResource("2_f1tbc")
+min = 0.8
+max = 1.3
+growth = SubResource("Curve_mxe6p")
 
 [sub_resource type="Resource" id="Resource_i3ueo"]
 script = ExtResource("1_no42s")
@@ -20,6 +56,46 @@ level = 0
 script = ExtResource("7_q7nfq")
 list = Array[ExtResource("1_no42s")]([SubResource("Resource_i3ueo")])
 
+[sub_resource type="Curve" id="Curve_1mgh0"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_ror5s"]
+script = ExtResource("1_blvyb")
+min = 50
+max = 305
+growth = SubResource("Curve_1mgh0")
+
+[sub_resource type="Curve" id="Curve_xswv8"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_b8858"]
+script = ExtResource("1_blvyb")
+min = 25
+max = 230
+growth = SubResource("Curve_xswv8")
+
+[sub_resource type="Curve" id="Curve_gp0t4"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_kdl7y"]
+script = ExtResource("1_blvyb")
+min = 27
+max = 240
+growth = SubResource("Curve_gp0t4")
+
+[sub_resource type="Curve" id="Curve_o22ga"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_s7w2h"]
+script = ExtResource("1_blvyb")
+min = 29
+max = 250
+growth = SubResource("Curve_o22ga")
+
 [resource]
 script = ExtResource("8_th2jv")
 name_key = "T_ENTITY_PLAYER_HEALER"
@@ -27,17 +103,17 @@ description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 1
 generic = false
-base_hp = 85
-base_mp = 115
-base_atk = 90
-base_def = 80
-base_sp_atk = 85
-base_sp_def = 80
-base_spd = 75
+hp = SubResource("Resource_u8oy2")
+mp = SubResource("Resource_ror5s")
+atk = SubResource("Resource_7tl0b")
+def = SubResource("Resource_a3b6h")
+sp_atk = SubResource("Resource_b8858")
+sp_def = SubResource("Resource_kdl7y")
+spd = SubResource("Resource_s7w2h")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0
-luck_curve = SubResource("Curve_84bj0")
+luck = SubResource("Resource_qu4vm")
 weakness = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
 resistance = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
 min_level = 50
