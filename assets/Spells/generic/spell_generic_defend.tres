@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=17 format=3 uid="uid://dciwv5n41ixne"]
+[gd_resource type="Resource" script_class="Spell" load_steps=19 format=3 uid="uid://dciwv5n41ixne"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="1_3anwj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_ijy4m"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="2_1v07i"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="2_kad87"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="3_s18sb"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_2l02i"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="9_wvwts"]
 
 [sub_resource type="Resource" id="Resource_q3vou"]
 script = ExtResource("1_xw038")
@@ -57,18 +59,18 @@ priority = 5
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_success = Array[ExtResource("4_2l02i")]([])
 check_remain_active_type = 0
-check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_q3vou")])
-on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_00eq3"), SubResource("Resource_u3sc1")])
-on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_rcybr"), SubResource("Resource_fvcgi")])
-on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_hyoc8")])
-on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
+check_remain_active = Array[ExtResource("4_2l02i")]([])
+on_activate = Array[ExtResource("4_2l02i")]([SubResource("Resource_q3vou")])
+on_failed_to_activate = Array[ExtResource("4_2l02i")]([])
+on_apply = Array[ExtResource("4_2l02i")]([SubResource("Resource_00eq3"), SubResource("Resource_u3sc1")])
+on_move_selected = Array[ExtResource("4_2l02i")]([])
+on_move_completed = Array[ExtResource("4_2l02i")]([])
+on_deactivate = Array[ExtResource("4_2l02i")]([SubResource("Resource_rcybr"), SubResource("Resource_fvcgi")])
+on_turn_start = Array[ExtResource("4_2l02i")]([])
+on_turn_end = Array[ExtResource("4_2l02i")]([SubResource("Resource_hyoc8")])
+on_stack = Array[ExtResource("4_2l02i")]([])
 
 [sub_resource type="Resource" id="Resource_mwms7"]
 script = ExtResource("2_kad87")
@@ -89,7 +91,7 @@ spell_type = 0
 spell_target = 4
 spell_cost = 0
 spell_priority = 5
-spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+spell_flags = Array[ExtResource("9_wvwts")]([])
 animation_sequence = ExtResource("1_ljbdi")
 effects_on_hit = Array[ExtResource("3_s18sb")]([])
 effects_on_success = Array[ExtResource("3_s18sb")]([SubResource("Resource_aqxlw")])

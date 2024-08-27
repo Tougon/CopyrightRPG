@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=3 format=3 uid="uid://b2q6alnhkwh3m"]
+[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://b2q6alnhkwh3m"]
 
 [ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Status/anim_status_stunned.tres" id="1_qs5c4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="2_gsgdg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_r6wp4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_qc4yk"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_i3e2q"]
 
 [resource]
 script = ExtResource("2_gsgdg")
@@ -12,8 +15,8 @@ spell_type = 6
 spell_target = 4
 spell_cost = 0
 spell_priority = 1
-spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([])
+spell_flags = Array[ExtResource("5_i3e2q")]([])
 animation_sequence = ExtResource("1_qs5c4")
-effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])
+effects_on_hit = Array[ExtResource("2_r6wp4")]([])
+effects_on_success = Array[ExtResource("2_r6wp4")]([])
+properties = Array[ExtResource("3_qc4yk")]([])

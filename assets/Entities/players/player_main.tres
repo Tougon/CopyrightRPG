@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=41 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=42 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/EntityStat.gd" id="1_s5su1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/entity.gd" id="9_4wdni"]
 [ext_resource type="Resource" uid="uid://cuyfwsc6iqt2u" path="res://assets/Spells/status/player/spell_status_player_monologue.tres" id="9_5yohg"]
 [ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="10_vqvko"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/flag_modifier.gd" id="14_hl2ui"]
 
 [sub_resource type="Curve" id="Curve_v435p"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -162,8 +163,8 @@ base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_a3wnt")
-weakness = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
-resistance = Array[Resource("res://src/RPGData/Scripts/flag_modifier.gd")]([])
+weakness = Array[ExtResource("14_hl2ui")]([])
+resistance = Array[ExtResource("14_hl2ui")]([])
 min_level = 50
 max_level = 50
 entity_sprites = Array[Texture2D]([])

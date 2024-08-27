@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=6 format=3 uid="uid://dd7qdkx4ewdkn"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://dd7qdkx4ewdkn"]
 
 [ext_resource type="Resource" uid="uid://d1l6fqklh58v5" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_lightning.tres" id="1_3knji"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="1_11kg3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_tj0vm"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_2ecmr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_hjttx"]
 [ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="4_x75jl"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_7vm60"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="5_w3nyk"]
 
 [resource]
@@ -38,8 +41,8 @@ spell_type = 1
 spell_target = 0
 spell_cost = 24
 spell_priority = 0
-spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("3_2ecmr"), ExtResource("4_x75jl"), ExtResource("5_w3nyk")])
+spell_flags = Array[ExtResource("5_7vm60")]([ExtResource("3_2ecmr"), ExtResource("4_x75jl"), ExtResource("5_w3nyk")])
 animation_sequence = ExtResource("1_3knji")
-effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])
+effects_on_hit = Array[ExtResource("2_tj0vm")]([])
+effects_on_success = Array[ExtResource("2_tj0vm")]([])
+properties = Array[ExtResource("3_hjttx")]([])

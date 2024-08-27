@@ -91,6 +91,9 @@ func clear_dialogue():
 
 
 func print_dialogue(text : String, await_key : bool = false):
+	is_printing = true;
+	await get_tree().process_frame;
+	
 	on_dialogue_print.emit();
 	self.await_key = await_key;
 	current_rows += 1;
@@ -101,7 +104,6 @@ func print_dialogue(text : String, await_key : bool = false):
 		if current_rows > max_rows:
 			_remove_extra_rows();
 	
-	is_printing = true;
 	
 	match print_type:
 		PrintType.WORD:
