@@ -9,6 +9,9 @@ signal on_sequence_queue_empty();
 signal on_dialogue_queue(dialogue : String);
 signal on_message_queue(message : String);
 
+# Global Overworld Events
+signal on_overworld_player_moved(direction : Vector2, amount : Vector2);
+
 # Global Battle Events
 signal on_battle_begin();
 signal on_turn_begin();

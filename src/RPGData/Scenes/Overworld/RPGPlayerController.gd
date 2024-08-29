@@ -31,3 +31,6 @@ func _process(_delta):
 func move(direction : Vector2):
 	velocity = direction * speed;
 	move_and_slide();
+	
+	if direction.length() > 0 : 
+		EventManager.on_overworld_player_moved.emit(direction, velocity);
