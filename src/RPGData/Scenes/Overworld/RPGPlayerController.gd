@@ -6,7 +6,8 @@ var movement_bounds : float = 0.5;
 #TODO: Modify how the sprites work entirely.
 
 func _ready():
-	pass;
+	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
+	EventManager.on_battle_dequeue.connect(_on_overworld_battle_dequeued);
 
 func _process(_delta):
 	var h = Input.get_axis("move_l","move_r");
@@ -34,3 +35,17 @@ func move(direction : Vector2):
 	
 	if direction.length() > 0 : 
 		EventManager.on_overworld_player_moved.emit(direction, velocity);
+
+
+func _on_overworld_battle_queued():
+	set_process(false);
+
+
+func _on_overworld_battle_dequeued():
+	set_process(true);
+
+
+func _on_destroy():
+	if EventManager != null:
+		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
+		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);

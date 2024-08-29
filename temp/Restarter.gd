@@ -17,13 +17,8 @@ func _on_battle_complete(victory : bool):
 	EventManager.battle_fade_start.emit(false);
 	await EventManager.battle_fade_completed;
 	
-	get_tree().reload_current_scene();
-	
 	# Scene removal code.
-	# Will be required when we additively open the battle scenes
-	#var root = get_tree().get_root()
-	#var current_scene = root.get_child(root.get_child_count() - 1)
-	#current_scene.queue_free()
+	EventManager.on_battle_end.emit();
 
 
 func _on_destroy():

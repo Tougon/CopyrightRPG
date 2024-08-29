@@ -12,6 +12,7 @@ var encounter_time : float = 0;
 
 func _ready():
 	EventManager.on_overworld_player_moved.connect(_on_overworld_player_moved);
+	EventManager.on_battle_queue.connect(_reset_encounter_variables);
 	
 	_reset_encounter_variables();
 
@@ -29,8 +30,7 @@ func _on_overworld_player_moved(direction : Vector2, amount : Vector2):
 			encounter_time = 0;
 		
 		if encounter_chance < current_chance:
-			print("RANDOM ENCOUNTER START");
-			_reset_encounter_variables();
+			EventManager.on_battle_queue.emit();
 		else:
 			current_chance += (encounter_increase_rate * delta);
 
@@ -46,3 +46,4 @@ func _reset_encounter_variables():
 func _on_destroy():
 	if EventManager != null:
 		EventManager.on_overworld_player_moved.disconnect(_on_overworld_player_moved);
+		EventManager.on_battle_queue.disconnect(_reset_encounter_variables);

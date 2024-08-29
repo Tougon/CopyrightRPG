@@ -11,6 +11,8 @@ signal on_message_queue(message : String);
 
 # Global Overworld Events
 signal on_overworld_player_moved(direction : Vector2, amount : Vector2);
+signal on_battle_queue();
+signal on_battle_dequeue();
 
 # Global Battle Events
 signal on_battle_begin();
@@ -38,6 +40,7 @@ signal on_entity_defeated(entity : EntityController);
 signal on_enemy_defeated(entity : EntityController);
 signal on_players_defeated();
 signal on_battle_completed(victory : bool);
+signal on_battle_end();
 
 # Battle UI Events
 signal hide_entity_ui();
