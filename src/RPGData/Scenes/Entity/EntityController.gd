@@ -75,8 +75,8 @@ func _ready():
 	if level == 0 : 
 		level = 50;
 	
+	EventManager.on_battle_begin.connect(_on_battle_begin);
 	EventManager.on_turn_begin.connect(_on_turn_begin);
-	entity_init();
 
 
 func entity_init():
@@ -152,7 +152,16 @@ func entity_init():
 		if current_entity.entity_sprites.size() > 0 :
 			sprite.texture = current_entity.entity_sprites[0];
 		
+		sprite.visible = true;
+		
 		entity_ui.set_specific_entity_info(self);
+		
+		is_ready = false;
+		is_defeated = false;
+
+
+func _on_battle_begin():
+	entity_init();
 
 
 func _on_turn_begin():
@@ -634,4 +643,5 @@ func _on_sprite_clicked():
 
 func _on_destroy():
 	if EventManager != null:
+		EventManager.on_battle_begin.disconnect(_on_battle_begin);
 		EventManager.on_turn_begin.disconnect(_on_turn_begin);

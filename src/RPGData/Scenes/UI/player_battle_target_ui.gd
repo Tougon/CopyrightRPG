@@ -12,9 +12,6 @@ var listening_target = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventManager.initialize_target_menu.connect(_initialize_target_menu);
-	EventManager.highlight_target.connect(_on_target_highlighted);
-	
 	for i in pool_size:
 		var info = info_scene.instantiate() as UIBattleTargetInfo;
 		$".".add_child(info);
@@ -33,6 +30,12 @@ func _ready():
 		target_arrow_pool.append(arrow);
 	
 	super._ready();
+
+
+func _enter_tree():
+	super._enter_tree();
+	EventManager.initialize_target_menu.connect(_initialize_target_menu);
+	EventManager.highlight_target.connect(_on_target_highlighted);
 
 
 func set_focus(state : bool):
@@ -144,7 +147,7 @@ func on_menu_cancel():
 	super.on_menu_cancel();
 
 
-func _on_destroy():
+func _on_panel_removed():
 	if EventManager != null:
 		EventManager.initialize_target_menu.disconnect(_initialize_target_menu);
 		EventManager.highlight_target.disconnect(_on_target_highlighted);

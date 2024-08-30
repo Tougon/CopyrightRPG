@@ -4,6 +4,7 @@ class_name BattleScene
 @export var sequencer : Sequencer;
 @export var dialogue_canvas : DialogueCanvas;
 @export var seal_manager : SealManager
+@export var begin_battle_on_ready : bool = true;
 
 static var Instance : BattleScene;
 
@@ -26,12 +27,17 @@ func _ready():
 	EventManager.on_defend_select.connect(_on_defend_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
-	_begin_battle();
+	
+	if begin_battle_on_ready : begin_battle();
 
 
-func _begin_battle():
+func begin_battle():
 	
 	await get_tree().process_frame;
+	
+	entities = [];
+	players = [];
+	enemies = [];
 	
 	EventManager.on_battle_begin.emit();
 	

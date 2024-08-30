@@ -1,12 +1,19 @@
 extends Node2D
 
-var current_battle : BattleScene = null;
-@export var battle_scene : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
+var battle_scene : BattleScene = null;
+@export var battle_scene_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_end.connect(_on_battle_end);
+	
+	# TODO: Replace with global battle scene instead of having a battle scene per overworld
+	await get_tree().process_frame;
+	
+	if battle_scene_ref != null : 
+		battle_scene = battle_scene_ref.instantiate() as BattleScene;
+		battle_scene.begin_battle_on_ready = false;
 
 
 func _on_overworld_battle_queued():
@@ -15,19 +22,16 @@ func _on_overworld_battle_queued():
 	visible = false;
 	set_process(false);
 	
-	# Instantiate battle scene
-	if battle_scene != null : 
-		current_battle = battle_scene.instantiate() as BattleScene;
-		get_tree().root.add_child(current_battle);
-	else : print("Huh...")
+	get_tree().root.add_child(battle_scene);
+	battle_scene.begin_battle();
 
 
 func _on_battle_end():
-	current_battle.queue_free();
+	get_tree().root.remove_child(battle_scene);
 	EventManager.on_battle_dequeue.emit();
 	
-	visible = true;
 	set_process(true);
+	visible = true;
 
 
 func _on_destroy():

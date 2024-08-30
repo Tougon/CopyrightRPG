@@ -5,8 +5,13 @@ var current_entity : EntityController;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventManager.set_active_player.connect(_set_active_entity);
 	super._ready();
+
+
+func _enter_tree():
+	super._enter_tree();
+	
+	EventManager.set_active_player.connect(_set_active_entity);
 
 
 func on_tween_end_active(tween_name : String):
@@ -51,7 +56,7 @@ func _on_magic_button_pressed():
 func on_menu_cancel():
 	EventManager.player_menu_cancel.emit();
 
-func _on_destroy():
-	super._on_destroy();
+func _on_panel_removed():
+	super._on_panel_removed();
 	if EventManager != null:
 		EventManager.set_active_player.disconnect(_set_active_entity);

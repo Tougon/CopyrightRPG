@@ -16,10 +16,7 @@ var ui_manager;
 var tween_player : TweenPlayer;
 
 func _ready():
-	tree_exiting.connect(_on_destroy);
-	
-	ui_manager = UIManager;
-	ui_manager.add_menu(self);
+	tree_exiting.connect(_on_panel_removed);
 	
 	tween_player = $TweenPlayerUI;
 	
@@ -27,6 +24,11 @@ func _ready():
 		tween_player.add_tween_runtime(sequence);
 	
 	set_active_forced(start_open);
+
+
+func _enter_tree():
+	ui_manager = UIManager;
+	ui_manager.add_menu(self);
 
 
 func set_active_forced(state : bool):
@@ -151,6 +153,6 @@ func on_ui_aux_2():
 	pass;
 
 
-func _on_destroy():
+func _on_panel_removed():
 	if ui_manager != null:
 		ui_manager.remove_menu(self);

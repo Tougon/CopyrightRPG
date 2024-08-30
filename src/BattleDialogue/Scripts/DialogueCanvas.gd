@@ -70,6 +70,11 @@ func _ready():
 			BattleManager.dialogue_canvas = self;
 
 
+func _enter_tree():
+	await get_tree().process_frame;
+	clear_dialogue();
+
+
 func _on_dialogue_queue(dialogue : String):
 	if capitalize: dialogue = dialogue.to_upper();
 	
@@ -323,3 +328,5 @@ func _on_destroy():
 	
 	if BattleManager != null && BattleManager.dialogue_canvas == self:
 		BattleManager.dialogue_canvas = null;
+	
+	print("Huh...")

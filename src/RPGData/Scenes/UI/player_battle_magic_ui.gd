@@ -12,9 +12,6 @@ var is_sealing : bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	EventManager.set_active_player.connect(_set_active_entity);
-	EventManager.initialize_magic_menu.connect(_initialize_magic_menu);
-	
 	for i in button_count :
 		var button = move_button.instantiate() as MagicButtonUI;
 		var spacer = button_spacer.instantiate() as Control;
@@ -25,6 +22,13 @@ func _ready():
 		all_selections.append(button);
 	
 	super._ready();
+
+
+func _enter_tree():
+	super._enter_tree();
+	
+	EventManager.set_active_player.connect(_set_active_entity);
+	EventManager.initialize_magic_menu.connect(_initialize_magic_menu);
 
 
 func _set_active_entity(entity : EntityController):
@@ -107,8 +111,8 @@ func on_ui_aux_1():
 	super.on_ui_aux_1();
 
 
-func _on_destroy():
-	super._on_destroy();
+func _on_panel_removed():
+	super._on_panel_removed();
 	if EventManager != null:
 		EventManager.set_active_player.disconnect(_set_active_entity);
 		EventManager.initialize_magic_menu.disconnect(_initialize_magic_menu);
