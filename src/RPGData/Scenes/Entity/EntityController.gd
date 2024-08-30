@@ -151,6 +151,7 @@ func entity_init():
 		
 		if current_entity.entity_sprites.size() > 0 :
 			sprite.texture = current_entity.entity_sprites[0];
+		_reset_shader_parameters();
 		
 		sprite.visible = true;
 		

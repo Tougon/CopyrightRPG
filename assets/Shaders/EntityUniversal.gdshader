@@ -31,5 +31,5 @@ void fragment()
 	COLOR = mix(col, tex, overlay_texture_amount);
 	
 	// Apply the original sprite alpha mixed with overlay alpha
-	COLOR.a = mix(fragment_alpha, overlay_color.a * fragment_alpha, overlay_alpha_amount * overlay_color_amount);;
+	COLOR.a = mix(fragment_alpha, overlay_color.a * fragment_alpha, overlay_alpha_amount * overlay_color_amount);
 }

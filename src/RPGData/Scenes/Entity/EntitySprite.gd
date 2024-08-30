@@ -13,6 +13,14 @@ func _ready():
 	sprite.material = mat;
 
 
+func _reset_shader_parameters():
+	if mat != null :
+		mat.set_shader_parameter("overlay_color", Color.WHITE);
+		mat.set_shader_parameter("overlay_color_amount", 0.0);
+		mat.set_shader_parameter("overlay_alpha_amount", 0.0);
+		mat.set_shader_parameter("overlay_texture_amount", 0.0);
+
+
 # Visual control
 func set_entity_sprite(sprite : Texture2D):
 	self.sprite.texture = sprite;
