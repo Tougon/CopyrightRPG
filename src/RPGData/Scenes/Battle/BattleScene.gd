@@ -366,7 +366,6 @@ func _end_phase():
 		await EventManager.on_sequence_queue_empty;
 	EventManager.hide_entity_ui.emit();
 	
-	# TODO: Proper lose state
 	if (_all_players_defeated()) :
 		EventManager.on_players_defeated.emit(); 
 		EventManager.on_battle_completed.emit(false); 

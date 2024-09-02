@@ -5,7 +5,6 @@ class_name EnemyController
 
 # Called when the node enters the scene tree for the first time.
 func entity_init():
-	# TODO: Randomize level based on the applicable range
 	if current_entity != null:
 		var level_relative = current_entity.level_curve.sample(randf());
 		level = lerp(current_entity.min_level, current_entity.max_level, level_relative);

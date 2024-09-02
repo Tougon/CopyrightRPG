@@ -33,6 +33,7 @@ func add_tween_runtime(sequence : TweenResourceInstance):
 
 func play_tween_name(name: String):
 	if sequences.has(name) : _play_tween_instance(sequences[name]);
+	else : tween_ended.emit();
 
 
 func _play_tween_instance(tween: TweenResourceInstance):

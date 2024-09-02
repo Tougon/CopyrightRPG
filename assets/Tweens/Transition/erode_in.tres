@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=6 format=3 uid="uid://c3njfcjmrqtit"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_oghhp"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_epxvs"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_yukan"]
+
+[sub_resource type="Resource" id="Resource_fa36d"]
+script = ExtResource("3_yukan")
+target = "Erode"
+property_name = "shader_parameter/uv_amount"
+material_property = true
+duration = 2.2
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 7.0
+
+[sub_resource type="Resource" id="Resource_04ogw"]
+script = ExtResource("2_epxvs")
+frames = Array[ExtResource("3_yukan")]([SubResource("Resource_fa36d")])
+
+[resource]
+script = ExtResource("1_oghhp")
+tween_name = "Erode In"
+sequence = Array[ExtResource("2_epxvs")]([SubResource("Resource_04ogw")])

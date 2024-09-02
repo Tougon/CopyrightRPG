@@ -1,9 +1,19 @@
-[gd_scene load_steps=7 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=22 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
 [ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/RPGPlayerController.tscn" id="2_pvxte"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/EncounterManager.gd" id="3_tr7o3"]
+[ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="5_j2ssa"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="5_yfalh"]
+[ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="6_1u0pu"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="7_m4t6q"]
+[ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="8_bnvh2"]
+[ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="9_68vxx"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="11_hflvv"]
+[ext_resource type="Resource" uid="uid://c3njfcjmrqtit" path="res://assets/Tweens/Transition/erode_in.tres" id="12_1vitb"]
+[ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="12_ndoer"]
+[ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="13_f5fkg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_haj4c"]
 texture = ExtResource("1_cvjr8")
@@ -506,6 +516,44 @@ texture = ExtResource("1_cvjr8")
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_haj4c")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
+shader = ExtResource("6_1u0pu")
+shader_parameter/blur_amount = 4.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = null
+shader_parameter/focus_radius = 0.25
+shader_parameter/focus_edge = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8r6xq"]
+shader = ExtResource("9_68vxx")
+shader_parameter/noise_strength = 25.0
+shader_parameter/noise_floor = 0.01
+shader_parameter/use_time = true
+shader_parameter/uv_offset = Vector2(1, 0.333)
+shader_parameter/uv_amount = 0.0
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_1vddh"]
+script = ExtResource("11_hflvv")
+tween_name = "Fade In"
+tween_resource = ExtResource("12_1vitb")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_8srpl"]
+script = ExtResource("11_hflvv")
+tween_name = "Fade Out"
+tween_resource = ExtResource("12_ndoer")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_kd3c1"]
+script = ExtResource("11_hflvv")
+tween_name = "Fade Complete"
+tween_resource = ExtResource("13_f5fkg")
+play_on_start = false
+next_tween = ""
+
 [node name="TestRoom" type="Node2D"]
 script = ExtResource("1_kiva8")
 
@@ -518,3 +566,24 @@ position = Vector2(460, 384)
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
+script = ExtResource("5_yfalh")
+fade_sequence = NodePath("TweenPlayerUI")
+
+[node name="Blur" parent="UI/BG Fade Canvas" instance=ExtResource("5_j2ssa")]
+visible = false
+material = SubResource("ShaderMaterial_dyxed")
+
+[node name="Grain Noise" parent="UI/BG Fade Canvas" instance=ExtResource("8_bnvh2")]
+visible = false
+material = SubResource("ShaderMaterial_8r6xq")
+
+[node name="Erode" parent="UI/BG Fade Canvas" instance=ExtResource("8_bnvh2")]
+material = SubResource("ShaderMaterial_8r6xq")
+
+[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas"]
+script = ExtResource("7_m4t6q")
+sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1")])

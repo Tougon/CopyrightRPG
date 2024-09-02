@@ -1,6 +1,6 @@
 extends Node2D
 
-var battle_scene : BattleScene = null;
+static var battle_scene : BattleScene = null;
 @export var battle_scene_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
 
 # Called when the node enters the scene tree for the first time.
@@ -8,17 +8,18 @@ func _ready() -> void:
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_end.connect(_on_battle_end);
 	
-	# TODO: Replace with global battle scene instead of having a battle scene per overworld
 	await get_tree().process_frame;
 	
-	if battle_scene_ref != null : 
+	if battle_scene_ref != null && battle_scene == null: 
 		battle_scene = battle_scene_ref.instantiate() as BattleScene;
 		battle_scene.begin_battle_on_ready = false;
 
 
 func _on_overworld_battle_queued():
 	# TODO: Battle details as param
-	# TODO: Animation and crud (will vary based on details)
+	EventManager.overworld_battle_fade_start.emit(false);
+	await EventManager.overworld_battle_fade_completed;
+	
 	visible = false;
 	set_process(false);
 	
@@ -27,11 +28,17 @@ func _on_overworld_battle_queued():
 
 
 func _on_battle_end():
+	EventManager.overworld_battle_fade_start.emit(true);
+	
+	await get_tree().process_frame;
 	get_tree().root.remove_child(battle_scene);
-	EventManager.on_battle_dequeue.emit();
 	
 	set_process(true);
 	visible = true;
+	
+	await EventManager.overworld_battle_fade_completed;
+	
+	EventManager.on_battle_dequeue.emit();
 
 
 func _on_destroy():
