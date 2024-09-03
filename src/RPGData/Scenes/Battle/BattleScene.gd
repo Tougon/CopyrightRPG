@@ -32,6 +32,8 @@ func _ready():
 
 
 func begin_battle():
+	var reference_height = get_window().size.y;
+	get_window().size = Vector2i((reference_height * 4 / 3), reference_height);
 	
 	await get_tree().process_frame;
 	

@@ -1,7 +1,9 @@
 extends Node2D
 
 static var battle_scene : BattleScene = null;
+static var battle_scene_window : Window = null;
 @export var battle_scene_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
+var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,9 +12,16 @@ func _ready() -> void:
 	
 	await get_tree().process_frame;
 	
-	if battle_scene_ref != null && battle_scene == null: 
-		battle_scene = battle_scene_ref.instantiate() as BattleScene;
-		battle_scene.begin_battle_on_ready = false;
+	if BattleManager.instance_battle_window :
+		if battle_scene_ref != null && battle_scene == null: 
+			battle_scene_window = battle_scene_window_ref.instantiate() as Window;
+			self.add_child(battle_scene_window);
+			battle_scene_window.visible = false;
+			battle_scene = battle_scene_window.get_node("BattleScene") as BattleScene;
+	else:
+		if battle_scene_ref != null && battle_scene == null: 
+			battle_scene = battle_scene_ref.instantiate() as BattleScene;
+			battle_scene.begin_battle_on_ready = false;
 
 
 func _on_overworld_battle_queued():
@@ -20,18 +29,26 @@ func _on_overworld_battle_queued():
 	EventManager.overworld_battle_fade_start.emit(false);
 	await EventManager.overworld_battle_fade_completed;
 	
-	visible = false;
 	set_process(false);
 	
-	get_tree().root.add_child(battle_scene);
-	battle_scene.begin_battle();
+	if BattleManager.instance_battle_window :
+		battle_scene_window.visible = true;
+		battle_scene.begin_battle();
+	else:
+		visible = false;
+		get_tree().root.add_child(battle_scene);
+		battle_scene.begin_battle();
 
 
 func _on_battle_end():
 	EventManager.overworld_battle_fade_start.emit(true);
 	
 	await get_tree().process_frame;
-	get_tree().root.remove_child(battle_scene);
+	
+	if BattleManager.instance_battle_window :
+			battle_scene_window.visible = false;
+	else:
+		get_tree().root.remove_child(battle_scene);
 	
 	set_process(true);
 	visible = true;

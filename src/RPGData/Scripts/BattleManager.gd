@@ -1,6 +1,7 @@
 extends Node
 
 # Class that defines constant variables for the battle system
+var instance_battle_window : bool = false;
 
 # Determines if text should print asynchonously
 var async_damage_text : bool = false;

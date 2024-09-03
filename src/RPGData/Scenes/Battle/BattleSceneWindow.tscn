@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://ff6kxovbdsud"]
+
+[ext_resource type="PackedScene" uid="uid://ddi8dyt27p6u7" path="res://src/RPGData/Scenes/Battle/BattleScene.tscn" id="1_8meey"]
+
+[node name="BattleSceneWindow" type="Window"]
+title = "Battle!"
+initial_position = 3
+size = Vector2i(960, 720)
+current_screen = 0
+transient = true
+unresizable = true
+borderless = true
+popup_window = true
+
+[node name="BattleScene" parent="." instance=ExtResource("1_8meey")]
+begin_battle_on_ready = false
