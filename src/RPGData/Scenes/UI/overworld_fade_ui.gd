@@ -6,6 +6,7 @@ extends CanvasLayer
 # We will eventually want different animations for bosses and the like
 func _ready():
 	EventManager.overworld_battle_fade_start.connect(_fade_action);
+	visible = true;
 
 
 func _fade_action(fade_in : bool):

@@ -43,7 +43,7 @@ func _reset_encounter_variables():
 	encounter_chance = randf();
 
 
-func _on_destroy():
+func _exit_tree():
 	if EventManager != null:
 		EventManager.on_overworld_player_moved.disconnect(_on_overworld_player_moved);
 		EventManager.on_battle_queue.disconnect(_reset_encounter_variables);

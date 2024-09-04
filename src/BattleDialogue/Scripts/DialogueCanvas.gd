@@ -328,5 +328,3 @@ func _on_destroy():
 	
 	if BattleManager != null && BattleManager.dialogue_canvas == self:
 		BattleManager.dialogue_canvas = null;
-	
-	print("Huh...")

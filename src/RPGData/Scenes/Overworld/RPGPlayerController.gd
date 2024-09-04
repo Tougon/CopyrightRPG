@@ -45,7 +45,7 @@ func _on_overworld_battle_dequeued():
 	set_process(true);
 
 
-func _on_destroy():
+func _exit_tree():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);

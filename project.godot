@@ -19,8 +19,10 @@ config/icon="res://icon.svg"
 
 EventManager="*res://src/EventManager/EventManager.gd"
 UIManager="*res://src/UIManager/Scripts/UIManager.gd"
+OverworldManager="*res://src/RPGData/Scripts/System/OverworldManager.gd"
+BattleManager="*res://src/RPGData/Scripts/System/BattleManager.gd"
 GrammarManager="*res://src/Localization/GrammarManager.gd"
-BattleManager="*res://src/RPGData/Scripts/BattleManager.gd"
+DataManager="*res://src/RPGData/Scripts/System/DataManager.gd"
 
 [display]
 
