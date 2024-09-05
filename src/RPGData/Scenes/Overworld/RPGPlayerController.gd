@@ -8,8 +8,17 @@ var movement_bounds : float = 0.5;
 func _ready():
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_dequeue.connect(_on_overworld_battle_dequeued);
+	
+	UIManager.on_menu_opened.connect(_on_menu_opened);
+	UIManager.on_all_menus_closed.connect(_on_all_menus_closed);
 
 func _process(_delta):
+	# Handle pause input
+	if Input.is_action_just_pressed("pause"):
+		UIManager.open_menu_name("overworld_menu_main");
+		return;
+	
+	# Handle movement
 	var h = Input.get_axis("move_l","move_r");
 	var v = Input.get_axis("move_u", "move_d");
 	
@@ -45,7 +54,21 @@ func _on_overworld_battle_dequeued():
 	set_process(true);
 
 
+func _on_menu_opened(menu : MenuPanel):
+	set_process(false);
+
+
+func _on_all_menus_closed():
+	await get_tree().process_frame;
+	await get_tree().process_frame;
+	set_process(true);
+
+
 func _exit_tree():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);
+	
+	if UIManager != null:
+		UIManager.on_menu_opened.connect(_on_menu_opened);
+		UIManager.on_all_menus_closed.connect(_on_all_menus_closed);

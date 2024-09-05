@@ -30,8 +30,6 @@ func _ready() -> void:
 
 
 func _on_overworld_battle_queued():
-	# TODO: Remove
-	DataManager.save_data();
 	# TODO: Battle details as param
 	EventManager.overworld_battle_fade_start.emit(false);
 	await EventManager.overworld_battle_fade_completed;

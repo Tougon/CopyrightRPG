@@ -5,6 +5,9 @@ var menus = {};
 var current_hover : Control;
 
 signal current_hover_changed(hover_item);
+signal on_menu_opened(panel : MenuPanel);
+signal on_menu_closed(panel : MenuPanel);
+signal on_all_menus_closed();
 
 
 func _unhandled_input(event):
@@ -53,11 +56,14 @@ func open_menu(menu : MenuPanel):
 		menu.initial_selection.grab_focus();
 	else: 
 		suspend_selection();
+	
+	on_menu_opened.emit(menu);
 
 
 func close_all_menus():
 	while active_menus.size() > 0:
 		active_menus[active_menus.size() - 1].set_active(false);
+	on_all_menus_closed.emit();
 
 
 func close_menu(menu : MenuPanel):
@@ -67,9 +73,13 @@ func close_menu(menu : MenuPanel):
 	if index > -1:
 		active_menus.remove_at(index);
 	
+	on_menu_closed.emit(menu);
+	
 	if active_menus.size() > 0:
 		active_menus[active_menus.size() - 1].initial_selection.grab_focus();
 		active_menus[active_menus.size() - 1].set_focus(true);
+	else:
+		on_all_menus_closed.emit();
 
 
 func open_menu_name(menu_name : String):

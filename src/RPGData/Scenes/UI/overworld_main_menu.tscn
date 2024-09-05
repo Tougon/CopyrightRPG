@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://drqpg4ss303dj"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
+[ext_resource type="Theme" uid="uid://c1hoowgrbo62t" path="res://assets/Themes/Theme_OverworldMain.tres" id="2_l1t7y"]
+
+[node name="OverworldMainMenu" type="Panel" node_paths=PackedStringArray("initial_selection", "all_selections")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(960, 720)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ywfua")
+menu_name = "overworld_menu_main"
+initial_selection = NodePath("BG Area/Options/GridContainer/Save")
+all_selections = [NodePath("BG Area/Options/GridContainer/Save"), NodePath("BG Area/Options/GridContainer/Load"), NodePath("BG Area/Options/GridContainer/Delete")]
+
+[node name="BG Area" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Options" type="Control" parent="BG Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="BG Area/Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_right = 0.97
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/v_separation = 8
+
+[node name="Spacer" type="Control" parent="BG Area/Options/GridContainer"]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="BG Area/Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_l1t7y")
+theme_override_font_sizes/font_size = 32
+text = "T_MENU_COMMON_SAVE"
+clip_text = true
+
+[node name="Load" type="Button" parent="BG Area/Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_l1t7y")
+theme_override_font_sizes/font_size = 32
+text = "T_MENU_COMMON_LOAD"
+clip_text = true
+
+[node name="Delete" type="Button" parent="BG Area/Options/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_l1t7y")
+theme_override_font_sizes/font_size = 32
+text = "T_MENU_COMMON_DELETE"
+clip_text = true
+
+[node name="Spacer2" type="Control" parent="BG Area/Options/GridContainer"]
+layout_mode = 2
+
+[node name="TweenPlayerUI" type="Node" parent="."]
+script = ExtResource("2_fajv7")
+
+[connection signal="pressed" from="BG Area/Options/GridContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="BG Area/Options/GridContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="BG Area/Options/GridContainer/Delete" to="." method="_on_delete_pressed"]

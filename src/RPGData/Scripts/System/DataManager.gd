@@ -6,8 +6,6 @@ var current_save : SaveData;
 func _ready():
 	current_save = SaveData.new();
 	await get_tree().process_frame;
-	# TEMP: Auto loading data. 
-	load_data();
 
 
 func load_data():
