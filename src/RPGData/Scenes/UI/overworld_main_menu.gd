@@ -14,4 +14,4 @@ func _on_load_pressed():
 
 
 func _on_delete_pressed():
-	pass;
+	DataManager.delete_data();
