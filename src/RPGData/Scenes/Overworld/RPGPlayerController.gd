@@ -40,9 +40,13 @@ func _process(_delta):
 
 func move(direction : Vector2):
 	velocity = direction * speed;
+	var orig_pos = position;
+	
 	move_and_slide();
 	
-	if direction.length() > 0 : 
+	var delta_pos = position - orig_pos;
+	
+	if delta_pos.length() > 0 : 
 		EventManager.on_overworld_player_moved.emit(direction, velocity);
 
 
@@ -59,9 +63,10 @@ func _on_menu_opened(menu : MenuPanel):
 
 
 func _on_all_menus_closed():
-	await get_tree().process_frame;
-	await get_tree().process_frame;
-	set_process(true);
+	if BattleManager.is_battle_active == false:
+		await get_tree().process_frame;
+		await get_tree().process_frame;
+		set_process(true);
 
 
 func _exit_tree():

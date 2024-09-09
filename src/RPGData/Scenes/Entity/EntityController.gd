@@ -79,7 +79,7 @@ func _ready():
 	EventManager.on_turn_begin.connect(_on_turn_begin);
 
 
-func entity_init():
+func entity_init(params : BattleParams):
 	if current_entity != null:
 		param = EntityParams.new();
 		
@@ -161,8 +161,8 @@ func entity_init():
 		is_defeated = false;
 
 
-func _on_battle_begin():
-	entity_init();
+func _on_battle_begin(params : BattleParams):
+	entity_init(params);
 
 
 func _on_turn_begin():

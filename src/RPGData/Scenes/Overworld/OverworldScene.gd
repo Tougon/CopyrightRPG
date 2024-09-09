@@ -17,7 +17,7 @@ func _ready() -> void:
 	
 	await get_tree().process_frame;
 	
-	if BattleManager.instance_battle_window :
+	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		if battle_scene_ref != null && battle_scene == null: 
 			battle_scene_window = battle_scene_window_ref.instantiate() as Window;
 			self.add_child(battle_scene_window);
@@ -30,28 +30,50 @@ func _ready() -> void:
 
 
 func _on_overworld_battle_queued():
+	BattleManager.is_battle_active = true;
+	
 	# TODO: Battle details as param
 	EventManager.overworld_battle_fade_start.emit(false);
 	await EventManager.overworld_battle_fade_completed;
 	
 	set_process(false);
 	
-	if BattleManager.instance_battle_window :
+	# Perpare battle parameters
+	var params = BattleParams.new();
+	
+	for i in GameplayConstants.MAX_PARTY_SIZE:
+		if DataManager.party_data[i].unlocked:
+			var player = BattleParamEntity.new();
+			player.override_level = DataManager.party_data[i].level;
+			player.hp_offset = DataManager.party_data[i].hp_dmg;
+			player.mp_offset = DataManager.party_data[i].mp_dmg;
+			params.players.append(player);
+		else : params.players.append(null);
+	
+	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		battle_scene_window.visible = true;
-		battle_scene.begin_battle();
+		battle_scene.begin_battle(params);
 	else:
 		visible = false;
 		get_tree().root.add_child(battle_scene);
-		battle_scene.begin_battle();
+		battle_scene.begin_battle(params);
 
 
-func _on_battle_end():
+func _on_battle_end(result : BattleResult):
+	# Process result
+	print(result.exp);
+	
+	for i in result.players.size():
+		var player = result.players[i];
+		DataManager.party_data[player.id].hp_dmg = player.hp_offset;
+		DataManager.party_data[player.id].mp_dmg = player.mp_offset;
+	
 	EventManager.overworld_battle_fade_start.emit(true);
 	
 	await get_tree().process_frame;
 	
-	if BattleManager.instance_battle_window :
-			battle_scene_window.visible = false;
+	if BattleManager.INSTANCE_BATTLE_WINDOW :
+		battle_scene_window.visible = false;
 	else:
 		get_tree().root.remove_child(battle_scene);
 	
@@ -61,6 +83,7 @@ func _on_battle_end():
 	await EventManager.overworld_battle_fade_completed;
 	
 	EventManager.on_battle_dequeue.emit();
+	BattleManager.is_battle_active = false;
 
 
 func _exit_tree():

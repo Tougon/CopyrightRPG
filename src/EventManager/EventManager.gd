@@ -18,7 +18,7 @@ signal overworld_battle_fade_start(fade_in : bool);
 signal overworld_battle_fade_completed(fade_in : bool);
 
 # Global Battle Events
-signal on_battle_begin();
+signal on_battle_begin(params : BattleParams);
 signal on_turn_begin();
 
 signal register_player(entity : EntityController);
@@ -42,8 +42,8 @@ signal on_entity_move(entity : EntityController);
 signal on_entity_defeated(entity : EntityController);
 signal on_enemy_defeated(entity : EntityController);
 signal on_players_defeated();
-signal on_battle_completed(victory : bool);
-signal on_battle_end();
+signal on_battle_completed(result : BattleResult);
+signal on_battle_end(result : BattleResult);
 
 # Battle UI Events
 signal hide_entity_ui();

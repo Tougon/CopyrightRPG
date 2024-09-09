@@ -3,20 +3,35 @@ class_name PlayerController
 
 enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 
+@export var player_id : int;
 @export var attack_action : Spell;
 @export var defend_action : Spell;
 @export var seal_effect : SealEffectGroup;
 var prev_action_type : ActionType;
 
 
-# Called when the node enters the scene tree for the first time.
-func entity_init():
+func entity_init(params : BattleParams):
+	var hp_mod = 0;
+	var mp_mod = 0;
 	
-	# TODOGAME: Fetch levels and anything else from player data
-	# NOTE: Temp code used to estimate "endgame" stats to make better decisions
-	level = 30;
+	if params != null:
+		# If player is null, they are locked. Do not use this entity.
+		if params.players[player_id] == null : 
+			visible = false;
+			return;
+		
+		level = params.players[player_id].override_level;
+		hp_mod = params.players[player_id].hp_offset;
+		mp_mod = params.players[player_id].mp_offset;
+	else:
+		level = 30;
 	
-	super.entity_init()
+	super.entity_init(params)
+	
+	# TODO: Apply additional modifiers and moveset
+	current_hp -= hp_mod;
+	current_mp -= mp_mod;
+	
 	await get_tree().process_frame;
 	EventManager.register_player.emit(self);
 	

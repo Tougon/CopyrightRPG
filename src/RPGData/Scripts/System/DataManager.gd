@@ -9,11 +9,12 @@ func _ready():
 	party_data = [];
 	
 	# TODO: Better initialization for player
-	for i in 1:
+	for i in GameplayConstants.MAX_PARTY_SIZE:
 		var member = PartyMemberData.new();
 		member.id = "main";
-		member.level = 1;
+		member.level = 30;
 		member.exp = 0;
+		member.unlocked = i == 0;
 		party_data.append(member);
 	
 	await get_tree().process_frame;
@@ -42,7 +43,6 @@ func load_data():
 			
 			if member != null:
 				party_data.append(member);
-				print(member.id);
 			else : print("Corrupt Save File")
 		
 	else : print("No Save File")

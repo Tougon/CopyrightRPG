@@ -6,7 +6,7 @@ func _ready():
 	pass;
 
 # Entity specific initialization
-func entity_init():
+func entity_init(params : BattleParams):
 	pass
 
 

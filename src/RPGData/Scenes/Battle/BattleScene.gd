@@ -15,6 +15,8 @@ var enemies : Array[EntityController];
 var turn_number : int;
 var current_player_index : int;
 
+var defeated_enemies : Array[DefeatedEntity];
+
 
 func _ready():
 	Instance = self;
@@ -28,10 +30,10 @@ func _ready():
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
 	
-	if begin_battle_on_ready : begin_battle();
+	if begin_battle_on_ready : begin_battle(null);
 
 
-func begin_battle():
+func begin_battle(params : BattleParams):
 	var reference_height = get_window().size.y;
 	get_window().size = Vector2i((reference_height * 4 / 3), reference_height);
 	
@@ -40,8 +42,9 @@ func begin_battle():
 	entities = [];
 	players = [];
 	enemies = [];
+	defeated_enemies = [];
 	
-	EventManager.on_battle_begin.emit();
+	EventManager.on_battle_begin.emit(params);
 	
 	# Fade in
 	EventManager.battle_fade_start.emit(true);
@@ -369,12 +372,32 @@ func _end_phase():
 	EventManager.hide_entity_ui.emit();
 	
 	if (_all_players_defeated()) :
+		# TODO: Do we even need this?
 		EventManager.on_players_defeated.emit(); 
-		EventManager.on_battle_completed.emit(false); 
+		
+		var reward = BattleResult.new();
+		reward.victory = false;
+		
+		EventManager.on_battle_completed.emit(reward); 
 		return;
 	else :
 		if (_all_enemies_defeated()) :
-			EventManager.on_battle_completed.emit(true); 
+			var reward = BattleResult.new();
+			reward.victory = true;
+			
+			for enemy in defeated_enemies:
+				reward.exp += enemy.entity.get_reward_exp(enemy.level);
+			
+			# TODO: Determine if EXP should be awarded.
+			# TODO: Calculate level up.
+			for player in players:
+				var result_player = BattleParamEntity.new();
+				result_player.id = (player as PlayerController).player_id;
+				result_player.hp_offset = player.max_hp - player.current_hp;
+				result_player.mp_offset = player.max_mp - player.current_mp
+				reward.players.append(result_player);
+			
+			EventManager.on_battle_completed.emit(reward); 
 			return;
 		_begin_turn();
 
@@ -435,6 +458,11 @@ func _on_player_menu_cancel():
 
 
 func _on_enemy_defeated(entity : EntityController):
+	var defeated = DefeatedEntity.new();
+	defeated.entity = entity.current_entity;
+	defeated.level = entity.level;
+	defeated_enemies.append(defeated);
+	
 	var defeat_key = "T_BATTLE_DEFEAT_GENERIC";
 	if entity.current_entity.battle_defeat_key != null :
 		defeat_key = entity.current_entity.battle_defeat_key;

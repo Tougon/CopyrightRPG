@@ -199,21 +199,25 @@ delay_time = 0.5
 
 [node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(160, 660)
+player_id = 0
 seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("7_5gsqw")
 
 [node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(380, 660)
+player_id = 1
 seal_effect = SubResource("Resource_b3uow")
 current_entity = ExtResource("10_66vq4")
 
 [node name="TempPlayer3" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(600, 660)
+player_id = 2
 seal_effect = SubResource("Resource_j4r6v")
 current_entity = ExtResource("12_qpkyi")
 
 [node name="TempPlayer4" parent="Entities" instance=ExtResource("4_al1wb")]
 position = Vector2(800, 660)
+player_id = 3
 seal_effect = SubResource("Resource_vh4sl")
 current_entity = ExtResource("8_hn632")
 

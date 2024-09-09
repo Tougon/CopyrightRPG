@@ -89,6 +89,11 @@ func get_lck(level : int) -> float:
 
 @export var level_curve : Curve;
 
+@export var reward_exp : EntityStat;
+func get_reward_exp(level : int) -> int:
+	if reward_exp == null : return 50;
+	return reward_exp.get_current(level);
+
 @export_group("Visuals")
 @export var entity_sprites: Array[Texture2D];
 @export var battle_intro_key: String;

@@ -17,7 +17,7 @@ func _ready():
 		BattleManager.seal_manager = self;
 
 
-func _on_battle_begin():
+func _on_battle_begin(params : BattleParams):
 	seal_instances = [];
 	sealed_spells = [];
 
