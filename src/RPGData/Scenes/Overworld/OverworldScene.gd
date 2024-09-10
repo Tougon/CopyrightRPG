@@ -84,6 +84,9 @@ func _on_battle_end(result : BattleResult):
 	
 	EventManager.on_battle_dequeue.emit();
 	BattleManager.is_battle_active = false;
+	
+	result.destroy();
+	result.free();
 
 
 func _exit_tree():

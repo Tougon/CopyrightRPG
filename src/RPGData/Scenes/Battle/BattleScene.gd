@@ -56,6 +56,11 @@ func begin_battle(params : BattleParams):
 	
 	# Begin the turn
 	_begin_turn();
+	
+	# Free the params from memory
+	if params != null:
+		params.destroy();
+		params.free();
 
 
 func _begin_turn():
