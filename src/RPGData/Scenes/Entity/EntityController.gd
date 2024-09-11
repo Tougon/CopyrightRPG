@@ -77,10 +77,14 @@ func _ready():
 	
 	EventManager.on_battle_begin.connect(_on_battle_begin);
 	EventManager.on_turn_begin.connect(_on_turn_begin);
+	EventManager.on_battle_end.connect(_on_battle_end);
 
 
 func entity_init(params : BattleParams):
 	if current_entity != null:
+		
+		if param != null : param.free();
+		
 		param = EntityParams.new();
 		
 		# Fetch text data from localization
@@ -143,14 +147,16 @@ func entity_init(params : BattleParams):
 		
 		create_move_list();
 		
+		# Load sprites
+		
 		# TODOGAME: Save data for enemy types.
 		# This variable is largely vestigal from older iterations and may be scrapped.
 		is_identified = false;
 		
 		current_behavior = current_entity.behavior;
 		
-		if current_entity.entity_sprites.size() > 0 :
-			sprite.texture = current_entity.entity_sprites[0];
+		if param.entity_sprites.size() > 0 :
+			sprite.texture = param.entity_sprites[0];
 		_reset_shader_parameters();
 		
 		sprite.visible = true;
@@ -167,6 +173,10 @@ func _on_battle_begin(params : BattleParams):
 
 func _on_turn_begin():
 	is_ready = false;
+
+
+func _on_battle_end(result : BattleResult):
+	if param != null : param.free();
 
 
 func create_move_list():
@@ -286,8 +296,8 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 		else : set_damage_sprite(damage_time);
 		
 		if is_defeated :
-			if current_entity.entity_sprites.size() > 1:
-				sprite.texture = current_entity.entity_sprites[1];
+			if param.entity_sprites.size() > 1:
+				sprite.texture = param.entity_sprites[1];
 			
 			TweenExtensions.shake_position_2d(sprite, shake, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shake_decay);
 			await get_tree().create_timer(shake).timeout;
@@ -305,9 +315,9 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 
 
 func set_damage_sprite(damage_time : float):
-	if current_entity.entity_sprites.size() > 1:
+	if param.entity_sprites.size() > 1:
 		var previous = sprite.texture;
-		sprite.texture = current_entity.entity_sprites[1];
+		sprite.texture = param.entity_sprites[1];
 		await get_tree().create_timer(damage_time).timeout
 		sprite.texture = previous;
 
@@ -646,3 +656,4 @@ func _on_destroy():
 	if EventManager != null:
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
 		EventManager.on_turn_begin.disconnect(_on_turn_begin);
+		EventManager.on_battle_end.disconnect(_on_battle_end);

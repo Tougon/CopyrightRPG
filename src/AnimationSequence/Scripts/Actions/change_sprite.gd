@@ -18,5 +18,5 @@ func execute(sequence : AnimationSequence):
 	else:
 		entity = sequence.effects[effect_index];
 	
-	if controller && index < controller.current_entity.entity_sprites.size():
-		controller.sprite.texture = controller.current_entity.entity_sprites[index];
+	if controller && index < controller.param.entity_sprites.size():
+		controller.sprite.texture = controller.param.entity_sprites[index];
