@@ -148,6 +148,10 @@ func entity_init(params : BattleParams):
 		create_move_list();
 		
 		# Load sprites
+		param.entity_sprites = [];
+		
+		for path in current_entity.entity_sprites:
+			if path != null : load_sprite(path);
 		
 		# TODOGAME: Save data for enemy types.
 		# This variable is largely vestigal from older iterations and may be scrapped.
@@ -167,6 +171,12 @@ func entity_init(params : BattleParams):
 		is_defeated = false;
 
 
+func load_sprite(path : String):
+	if ResourceLoader.exists(path, "Texture2D"):
+		var sprite = ResourceLoader.load(path, "Texture2D") as Texture2D;
+		param.entity_sprites.append(sprite);
+
+
 func _on_battle_begin(params : BattleParams):
 	entity_init(params);
 
@@ -176,7 +186,10 @@ func _on_turn_begin():
 
 
 func _on_battle_end(result : BattleResult):
-	if param != null : param.free();
+	sprite.texture = null;
+	if param != null : 
+		param.destroy();
+		param.free();
 
 
 func create_move_list():

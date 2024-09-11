@@ -1,19 +1,17 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=50 format=3 uid="uid://c1yvqg3xp3v7d"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=48 format=3 uid="uid://c1yvqg3xp3v7d"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_f33oh"]
-[ext_resource type="PackedScene" uid="uid://dhdudp5upm5ur" path="res://assets/VFX/Generic/effect_spell_defend_0.tscn" id="1_fmkj2"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="1_nhj8r"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_p6bkq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_wl3i4"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_sgabb"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="6_8mr73"]
-[ext_resource type="PackedScene" uid="uid://cd7i8pspt60i" path="res://assets/VFX/Generic/effect_spell_defend_1.tscn" id="6_v7c2m"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="6_vybql"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="7_25jrm"]
 
 [sub_resource type="Resource" id="Resource_12kpm"]
 script = ExtResource("1_nhj8r")
-effect_scene = ExtResource("1_fmkj2")
+effect_scene_path = "res://assets/VFX/Generic/effect_spell_defend_0.tscn"
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)
@@ -195,7 +193,7 @@ action = SubResource("Resource_qo76p")
 
 [sub_resource type="Resource" id="Resource_ila7s"]
 script = ExtResource("1_nhj8r")
-effect_scene = ExtResource("6_v7c2m")
+effect_scene_path = "res://assets/VFX/Generic/effect_spell_defend_1.tscn"
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)

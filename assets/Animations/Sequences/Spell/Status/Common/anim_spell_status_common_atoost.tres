@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=33 format=3 uid="uid://gkfjngwxt7wo"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=32 format=3 uid="uid://gkfjngwxt7wo"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_a7dlq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_ce3cq"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_e6v1s"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_7eidf"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="4_fxuqd"]
-[ext_resource type="PackedScene" uid="uid://css12he0k3pv7" path="res://assets/VFX/Generic/effect_particle_attack_boost_generic.tscn" id="5_t0tiy"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_64c6f"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="7_g3hnk"]
 
@@ -93,7 +92,7 @@ action = SubResource("Resource_0uaex")
 
 [sub_resource type="Resource" id="Resource_f0qsm"]
 script = ExtResource("6_64c6f")
-effect_scene = ExtResource("5_t0tiy")
+effect_scene_path = "res://assets/VFX/Generic/effect_particle_attack_boost_generic.tscn"
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)
@@ -164,7 +163,7 @@ action = SubResource("Resource_vn763")
 
 [sub_resource type="Resource" id="Resource_sa8da"]
 script = ExtResource("6_64c6f")
-effect_scene = ExtResource("5_t0tiy")
+effect_scene_path = ""
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)

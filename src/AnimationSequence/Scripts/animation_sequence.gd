@@ -68,6 +68,9 @@ func _init(in_tree : SceneTree, obj : AnimationSequenceObject, u : EntityControl
 		loop_targets = 1;
 	else : loop_targets = target.size();
 	
+	for frame in aso.animation_sequence:
+		frame.action.warmup();
+	
 	super._init(in_tree);
 
 
@@ -176,6 +179,9 @@ func sequence_end():
 			target_sprite[i].position = target_sprite_position[i];
 		target[i].mat.set_shader_parameter("overlay_color_amount", target_amount[i]);
 		target[i].mat.set_shader_parameter("alpha_amount", 0);
+	
+	for frame in aso.animation_sequence:
+		frame.action.cooldown();
 	
 	super.sequence_end();
 

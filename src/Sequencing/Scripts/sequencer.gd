@@ -34,6 +34,7 @@ func _play_sequence(sequence):
 
 
 func _on_sequence_ended():
+	var prev_sequence = current_sequence;
 	current_sequence.sequence_ended.disconnect(_on_sequence_ended);
 	current_sequence = null;
 	
@@ -43,6 +44,9 @@ func _on_sequence_ended():
 		_play_sequence(sequence);
 	else:
 		EventManager.on_sequence_queue_empty.emit();
+	
+	await get_tree().process_frame;
+	prev_sequence.free();
 
 
 func is_sequence_playing_or_queued() -> bool:

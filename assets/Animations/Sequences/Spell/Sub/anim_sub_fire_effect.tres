@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=10 format=3 uid="uid://vvdqgx4g43x8"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=9 format=3 uid="uid://vvdqgx4g43x8"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_icilr"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="11_wtkrh"]
-[ext_resource type="PackedScene" uid="uid://cn4o3grp80fvc" path="res://assets/VFX/Spells/Damage/effect_spell_fire.tscn" id="12_4y6yy"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="13_j7xeq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="14_o4yx5"]
 
@@ -17,7 +16,7 @@ action = SubResource("Resource_xsu06")
 
 [sub_resource type="Resource" id="Resource_iuej5"]
 script = ExtResource("13_j7xeq")
-effect_scene = ExtResource("12_4y6yy")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_fire.tscn"
 relative = 1
 effect_index = 0
 effect_position = Vector2(0, -60)

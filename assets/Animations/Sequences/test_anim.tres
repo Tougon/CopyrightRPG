@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=54 format=3 uid="uid://bs6g8nyjbm8sq"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=53 format=3 uid="uid://bs6g8nyjbm8sq"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_42ti6"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_bx7of"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_target_index.gd" id="3_5ukh3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="3_gvvo3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="5_fwsco"]
-[ext_resource type="PackedScene" uid="uid://b42b65hpv41b8" path="res://assets/VFX/Generic/EffectGeneric.tscn" id="5_wtn8j"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_kdqtu"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="7_iuwjk"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_8vu1s"]
@@ -82,7 +81,7 @@ action = SubResource("Resource_x7akk")
 
 [sub_resource type="Resource" id="Resource_vbnhx"]
 script = ExtResource("6_kdqtu")
-effect_scene = ExtResource("5_wtn8j")
+effect_scene_path = ""
 relative = 1
 effect_index = 0
 effect_position = Vector2(50, 0)

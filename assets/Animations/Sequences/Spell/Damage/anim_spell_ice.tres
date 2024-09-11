@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=47 format=3 uid="uid://ces1w71i7vopk"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=46 format=3 uid="uid://ces1w71i7vopk"]
 
-[ext_resource type="PackedScene" uid="uid://bgwxvsxeoe4ui" path="res://assets/VFX/Spells/Damage/effect_spell_ice_s.tscn" id="1_7dkch"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_6so8d"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_db3sq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_gpsnp"]
@@ -34,6 +33,11 @@ use_directionality = false
 target = 1
 effect_index = 0
 tween = SubResource("Resource_uyg3g")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_j5jio"]
 script = ExtResource("3_db3sq")
@@ -61,6 +65,11 @@ use_directionality = false
 target = 1
 effect_index = 0
 tween = SubResource("Resource_33r5c")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_m6pbp"]
 script = ExtResource("3_db3sq")
@@ -88,6 +97,11 @@ use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_rraj5")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_jh0om"]
 script = ExtResource("3_db3sq")
@@ -115,6 +129,11 @@ use_directionality = false
 target = 1
 effect_index = 0
 tween = SubResource("Resource_11jhv")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_rncbj"]
 script = ExtResource("3_db3sq")
@@ -142,6 +161,11 @@ use_directionality = true
 target = 0
 effect_index = 0
 tween = SubResource("Resource_ecar6")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_32ch1"]
 script = ExtResource("3_db3sq")
@@ -153,6 +177,10 @@ action = SubResource("Resource_o1n6k")
 script = ExtResource("6_8tvym")
 vibrate = false
 damage_time = 0.55
+damage_delay = 0.0
+shake_duration = 0.0
+shake_decay = 0.35
+force_dodge = true
 
 [sub_resource type="Resource" id="Resource_x538y"]
 script = ExtResource("3_db3sq")
@@ -200,7 +228,7 @@ action = SubResource("Resource_xsu06")
 
 [sub_resource type="Resource" id="Resource_iuej5"]
 script = ExtResource("2_6so8d")
-effect_scene = ExtResource("1_7dkch")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_ice_s.tscn"
 relative = 1
 effect_index = 0
 effect_position = Vector2(0, -60)

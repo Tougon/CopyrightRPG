@@ -32,7 +32,7 @@ texture = ExtResource("2_weqn5")
 hframes = 6
 
 [node name="AnimationPlayer" parent="." index="2"]
-autoplay = "slash"
 libraries = {
 "": SubResource("AnimationLibrary_6ejsh")
 }
+autoplay = "slash"

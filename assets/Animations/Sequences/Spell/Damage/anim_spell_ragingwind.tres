@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=27 format=3 uid="uid://bbtsfwsy6n5yi"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=26 format=3 uid="uid://bbtsfwsy6n5yi"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_0asyo"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_f42at"]
-[ext_resource type="PackedScene" uid="uid://upwjm7euakv4" path="res://assets/VFX/Spells/Damage/effect_spell_raging_wind.tscn" id="3_tif7i"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_s7usd"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_ntsrl"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_sshqq"]
@@ -22,7 +21,7 @@ action = SubResource("Resource_t8bkv")
 
 [sub_resource type="Resource" id="Resource_tsiyj"]
 script = ExtResource("2_0asyo")
-effect_scene = ExtResource("3_tif7i")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_raging_wind.tscn"
 relative = 1
 effect_index = 0
 effect_position = Vector2(0, -25)

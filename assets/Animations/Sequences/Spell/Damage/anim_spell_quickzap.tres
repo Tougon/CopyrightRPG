@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=54 format=3 uid="uid://de72bta3y26yq"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=53 format=3 uid="uid://de72bta3y26yq"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_645n5"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_06228"]
-[ext_resource type="PackedScene" uid="uid://bmravcxdk67uk" path="res://assets/VFX/Spells/Status/effect_status_zap.tscn" id="4_ll0g1"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_7cmfv"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="7_hglmy"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_sprite.gd" id="8_d5h0w"]
@@ -48,7 +47,7 @@ action = SubResource("Resource_x7akk")
 
 [sub_resource type="Resource" id="Resource_vbnhx"]
 script = ExtResource("7_hglmy")
-effect_scene = ExtResource("4_ll0g1")
+effect_scene_path = "res://assets/VFX/Spells/Status/effect_status_zap.tscn"
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)

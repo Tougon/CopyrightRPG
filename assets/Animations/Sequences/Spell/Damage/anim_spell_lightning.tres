@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=33 format=3 uid="uid://d1l6fqklh58v5"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=32 format=3 uid="uid://d1l6fqklh58v5"]
 
-[ext_resource type="PackedScene" uid="uid://dqc17oit0tlcm" path="res://assets/VFX/Spells/Damage/effect_spell_lightning.tscn" id="1_jopet"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_t2a03"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_ssbr4"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_4jmod"]
@@ -14,7 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_rhl5j"]
 script = ExtResource("2_t2a03")
-effect_scene = ExtResource("1_jopet")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_lightning.tscn"
 relative = 1
 effect_index = 0
 effect_position = Vector2(0, -85)

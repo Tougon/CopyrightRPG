@@ -2,7 +2,7 @@ extends AnimationSequenceAction
 
 class_name ASAGenerateEffect
 
-@export var effect_scene : PackedScene;
+@export_file("*.tscn") var effect_scene_path: String;
 @export var relative : AnimationSequenceAction.Target;
 @export var effect_index : int;
 @export var effect_position : Vector2;
@@ -16,9 +16,25 @@ class_name ASAGenerateEffect
 @export var scl_match_sequence_dir_y : bool;
 @export var effect_variance : Vector2;
 
+var effect_scene : PackedScene;
+
+func warmup():
+	print("Preloading scene:")
+	if ResourceLoader.exists(effect_scene_path, "PackedScene"):
+		ResourceLoader.load_threaded_request(effect_scene_path, "PackedScene")
+
 
 func execute(sequence : AnimationSequence):
 	# Spawn the effect
+	var result = ResourceLoader.load_threaded_get_status(effect_scene_path);
+	
+	if result == ResourceLoader.THREAD_LOAD_LOADED:
+		effect_scene = ResourceLoader.load_threaded_get(effect_scene_path) as PackedScene;
+	
+	if effect_scene == null:
+		print("Load Fail.")
+		return;
+	
 	var effect = effect_scene.instantiate() as EntityBase;
 	var position = effect_position;
 	
@@ -63,3 +79,7 @@ func execute(sequence : AnimationSequence):
 	effect.scale = inst_scale;
 	
 	sequence.effects.append(effect);
+
+
+func cooldown():
+	effect_scene = null;

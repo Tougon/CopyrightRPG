@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=27 format=3 uid="uid://dqv1pbxtgcxup"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=26 format=3 uid="uid://dqv1pbxtgcxup"]
 
-[ext_resource type="PackedScene" uid="uid://bpixrriovt8x3" path="res://assets/VFX/Spells/Damage/effect_spell_earth.tscn" id="1_0l8dc"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_2wpe5"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_vge56"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_hk15e"]
@@ -14,7 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_rhl5j"]
 script = ExtResource("2_2wpe5")
-effect_scene = ExtResource("1_0l8dc")
+effect_scene_path = "res://assets/VFX/Generic/effect_particle_attack_boost_generic.tscn"
 relative = 1
 effect_index = 0
 effect_position = Vector2(0, -40)
