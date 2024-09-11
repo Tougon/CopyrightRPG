@@ -3,15 +3,20 @@ extends Node
 var current_save : SaveData;
 var party_data : Array[PartyMemberData]
 
+var entity_database : EntityDatabase = preload("res://assets/Entities/entity_database.tres")
+
+
 func _ready():
 	current_save = SaveData.new();
 	
 	party_data = [];
 	
+	if entity_database == null : print("Entity Database does not exist.");
+	
 	# TODO: Better initialization for player
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		var member = PartyMemberData.new();
-		member.id = "main";
+		member.id = 0;
 		member.level = 30;
 		member.exp = 0;
 		member.unlocked = i == 0;
@@ -29,7 +34,7 @@ func load_data():
 		if save != null:
 			current_save = save;
 			
-			# TODO: Add load(s) elsewhere. Where to though?
+			# TODO: Add load(s) elsewhere. Probably with a loaded delegate
 			OverworldManager.player_controller.position = current_save.player_position;
 		else: print("Corrupt Save File")
 		
@@ -37,7 +42,7 @@ func load_data():
 		party_data = [];
 		
 		var party_size = save_file.get_var(true);
-		print(party_size);
+		
 		for i in party_size:
 			var member = save_file.get_var(true);
 			

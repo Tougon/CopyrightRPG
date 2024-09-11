@@ -41,6 +41,15 @@ project/assembly_name="Copyright RPG"
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://assets/Entities/": "red",
+"res://assets/Spells/": "green",
+"res://assets/VFX/": "blue",
+"res://temp/": "gray"
+}
+
 [input]
 
 ui_left={

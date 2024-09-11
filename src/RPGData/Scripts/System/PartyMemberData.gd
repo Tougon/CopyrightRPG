@@ -1,7 +1,7 @@
 extends Object
 class_name PartyMemberData
 
-var id : String;
+var id : int;
 var level : int;
 var exp : int;
 var unlocked : bool;
@@ -16,7 +16,7 @@ func _get_property_list() -> Array:
 	
 	ret.append({
 		"name": "ID",
-		"type": TYPE_STRING,
+		"type": TYPE_INT,
 		"usage": PROPERTY_USAGE_STORAGE
 	})
 	ret.append({
