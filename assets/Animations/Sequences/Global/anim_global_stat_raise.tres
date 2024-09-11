@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=24 format=3 uid="uid://bbab6mfd06u03"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=23 format=3 uid="uid://bbab6mfd06u03"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_sawn4"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_overlay_texture.gd" id="1_wqw3y"]
-[ext_resource type="Texture2D" uid="uid://bxmp70haf151v" path="res://assets/Textures/overlay_raise.png" id="2_2m3dp"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_he4fw"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_kaptb"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_38wqo"]
@@ -11,7 +10,7 @@
 [sub_resource type="Resource" id="Resource_8kaat"]
 script = ExtResource("1_wqw3y")
 target = 0
-texture = ExtResource("2_2m3dp")
+texture_path = "res://assets/Textures/overlay_raise.png"
 
 [sub_resource type="Resource" id="Resource_bb3p7"]
 script = ExtResource("3_he4fw")

@@ -19,7 +19,6 @@ class_name ASAGenerateEffect
 var effect_scene : PackedScene;
 
 func warmup():
-	print("Preloading scene:")
 	if ResourceLoader.exists(effect_scene_path, "PackedScene"):
 		ResourceLoader.load_threaded_request(effect_scene_path, "PackedScene")
 
