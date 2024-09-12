@@ -10,11 +10,29 @@ func _on_battle_complete(result : BattleResult):
 		if result.exp > 0:
 			var exp : String;
 			
-			# TODO: Check living players in battle result and evaluate
 			exp = tr("T_BATTLE_RESULT_VICTORY_EXP")
 			
 			exp = exp.format({amount = result.exp});
 			EventManager.on_dialogue_queue.emit(exp);
+			
+			for player in result.players:
+				if player.should_award_exp:
+					var level = player.override_level;
+					
+					var award_exp = result.exp;
+					var current_exp = DataManager.party_data[player.id].exp;
+					var next_level_amt = player.override_entity.get_level_exp(level);
+					
+					while award_exp + current_exp >= next_level_amt && player.override_level < BattleManager.level_cap:
+						# TODO: Level up screen/animation
+						EventManager.on_dialogue_queue.emit("LEVEL UP!");
+						level += 1;
+						award_exp -= (next_level_amt - current_exp);
+						current_exp = 0;
+						next_level_amt = player.override_entity.get_level_exp(level);
+					
+					player.override_level = level;
+					player.modified_exp_amt = award_exp;
 	else:
 		EventManager.on_dialogue_queue.emit(tr("T_BATTLE_RESULT_DEFEAT"));
 	

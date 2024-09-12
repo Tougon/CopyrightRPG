@@ -393,13 +393,14 @@ func _end_phase():
 			for enemy in defeated_enemies:
 				reward.exp += enemy.entity.get_reward_exp(enemy.level);
 			
-			# TODO: Determine if EXP should be awarded.
-			# TODO: Calculate level up.
 			for player in players:
 				var result_player = BattleParamEntity.new();
+				result_player.override_entity = player.current_entity;
+				result_player.override_level = player.level;
 				result_player.id = (player as PlayerController).player_id;
 				result_player.hp_offset = player.max_hp - player.current_hp;
 				result_player.mp_offset = player.max_mp - player.current_mp
+				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
 				reward.players.append(result_player);
 			
 			EventManager.on_battle_completed.emit(reward); 

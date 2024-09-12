@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=42 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_s5su1"]
@@ -45,6 +45,16 @@ script = ExtResource("1_s5su1")
 min = 50
 max = 300
 growth = SubResource("Curve_uflwe")
+
+[sub_resource type="Curve" id="Curve_lr1dx"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_w2t4l"]
+script = ExtResource("1_s5su1")
+min = 10
+max = 10
+growth = SubResource("Curve_lr1dx")
 
 [sub_resource type="Curve" id="Curve_ci2gw"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -163,6 +173,7 @@ base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_a3wnt")
+level_exp = SubResource("Resource_w2t4l")
 weakness = Array[ExtResource("14_hl2ui")]([])
 resistance = Array[ExtResource("14_hl2ui")]([])
 min_level = 50

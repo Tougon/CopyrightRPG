@@ -26,6 +26,7 @@ func entity_init(params : BattleParams):
 	else:
 		level = 30;
 	
+	current_entity = params.players[player_id].override_entity;
 	super.entity_init(params)
 	
 	# TODO: Apply additional modifiers and moveset

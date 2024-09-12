@@ -75,6 +75,11 @@ func get_lck(level : int) -> float:
 	if luck == null : return 1;
 	return luck.get_current(level);
 
+@export var level_exp : EntityStat;
+func get_level_exp(level : int) -> int:
+	if level_exp == null : return 50;
+	return level_exp.get_current(level);
+
 # TODOGAME: Weakness was unimplemented in the old version.
 @export_group("Modifiers")
 @export var weakness : Array[FlagModifier];
@@ -89,6 +94,7 @@ func get_lck(level : int) -> float:
 
 @export var level_curve : Curve;
 
+@export_group("Rewards")
 @export var reward_exp : EntityStat;
 func get_reward_exp(level : int) -> int:
 	if reward_exp == null : return 50;

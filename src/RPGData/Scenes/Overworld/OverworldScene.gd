@@ -44,6 +44,7 @@ func _on_overworld_battle_queued():
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		if DataManager.party_data[i].unlocked:
 			var player = BattleParamEntity.new();
+			player.override_entity = DataManager.entity_database.get_entity(DataManager.party_data[i].id, true)
 			player.override_level = DataManager.party_data[i].level;
 			player.hp_offset = DataManager.party_data[i].hp_dmg;
 			player.mp_offset = DataManager.party_data[i].mp_dmg;
@@ -61,12 +62,14 @@ func _on_overworld_battle_queued():
 
 func _on_battle_end(result : BattleResult):
 	# Process result
-	print(result.exp);
-	
 	for i in result.players.size():
 		var player = result.players[i];
 		DataManager.party_data[player.id].hp_dmg = player.hp_offset;
 		DataManager.party_data[player.id].mp_dmg = player.mp_offset;
+		
+		if player.should_award_exp :
+			DataManager.party_data[player.id].level = player.override_level;
+			DataManager.party_data[player.id].exp = player.modified_exp_amt;
 	
 	EventManager.overworld_battle_fade_start.emit(true);
 	
