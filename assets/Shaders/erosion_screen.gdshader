@@ -15,14 +15,14 @@ void fragment() {
 	vec3 noise = vec3(mod((mod(x, 13.0) + 1.0) * (mod(x, 123.0) + 1.0), 0.01) - 0.005) * noise_strength + vec3(noise_floor, noise_floor, noise_floor);
 	float noise_len = length(noise);
 	float amount = noise_len < noise_floor ? noise_floor : noise_len;
-	
+
 	//vec2 coords = UV;
 	//vec2 invrs_coords = vec2(1,1) - UV;
 	float y = 1.0 - UV.y;
-	
+
 	vec2 offset = (uv_offset * amount * uv_amount * y);
 	//vec2 offset = (uv_offset * uv_amount);
-	
+
 	// Sample texture
 	vec4 tex = texture(SCREEN_TEXTURE, UV + offset);
 	COLOR = abs(length(UV + offset) * uv_amount) > 0.5 ? bg_color : vec4(tex.rgb, 1.0);

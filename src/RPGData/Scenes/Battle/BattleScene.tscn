@@ -148,11 +148,12 @@ tween_resource = ExtResource("27_xi51v")
 play_on_start = false
 next_tween = ""
 
-[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("sequencer", "dialogue_canvas", "seal_manager")]
+[node name="BattleScene" type="Node2D" node_paths=PackedStringArray("sequencer", "dialogue_canvas", "seal_manager", "enemy_positions")]
 script = ExtResource("1_nawhs")
 sequencer = NodePath("Core/Sequencer")
 dialogue_canvas = NodePath("UI/Dialogue Canvas")
 seal_manager = NodePath("Core/SealManager")
+enemy_positions = NodePath("Entities/Enemy Positions")
 
 [node name="Background" type="Node" parent="."]
 
@@ -197,43 +198,120 @@ delay_time = 0.5
 
 [node name="Entities" type="Node" parent="."]
 
-[node name="TempPlayer" parent="Entities" instance=ExtResource("4_al1wb")]
+[node name="Players" type="Node" parent="Entities"]
+
+[node name="P1" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 position = Vector2(160, 660)
 player_id = 0
 seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("7_5gsqw")
 
-[node name="TempPlayer2" parent="Entities" instance=ExtResource("4_al1wb")]
+[node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 position = Vector2(380, 660)
 player_id = 1
 seal_effect = SubResource("Resource_b3uow")
 current_entity = ExtResource("10_66vq4")
 
-[node name="TempPlayer3" parent="Entities" instance=ExtResource("4_al1wb")]
+[node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 position = Vector2(600, 660)
 player_id = 2
 seal_effect = SubResource("Resource_j4r6v")
 current_entity = ExtResource("12_qpkyi")
 
-[node name="TempPlayer4" parent="Entities" instance=ExtResource("4_al1wb")]
+[node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 position = Vector2(800, 660)
 player_id = 3
 seal_effect = SubResource("Resource_vh4sl")
 current_entity = ExtResource("8_hn632")
 
-[node name="TempEnemy" parent="Entities" instance=ExtResource("5_c337l")]
+[node name="Enemies" type="Node" parent="Entities"]
+
+[node name="E1" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
-[node name="TempEnemy2" parent="Entities" instance=ExtResource("5_c337l")]
-visible = false
-position = Vector2(721, 294)
+[node name="E2" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
 
-[node name="TempEnemy3" parent="Entities" instance=ExtResource("5_c337l")]
-visible = false
-position = Vector2(225, 294)
+[node name="E3" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E4" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E5" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="Enemy Positions" type="Node" parent="Entities"]
+
+[node name="1" type="Node" parent="Entities/Enemy Positions"]
+
+[node name="Root1" type="Node2D" parent="Entities/Enemy Positions/1"]
+position = Vector2(480, 314)
+
+[node name="2" type="Node" parent="Entities/Enemy Positions"]
+
+[node name="Root2" type="Node2D" parent="Entities/Enemy Positions/2"]
+position = Vector2(640, 314)
+
+[node name="Root1" type="Node2D" parent="Entities/Enemy Positions/2"]
+position = Vector2(340, 314)
+
+[node name="3" type="Node" parent="Entities/Enemy Positions"]
+
+[node name="Root3" type="Node2D" parent="Entities/Enemy Positions/3"]
+position = Vector2(230, 294)
+
+[node name="Root2" type="Node2D" parent="Entities/Enemy Positions/3"]
+position = Vector2(720, 294)
+
+[node name="Root1" type="Node2D" parent="Entities/Enemy Positions/3"]
+position = Vector2(480, 314)
+
+[node name="4" type="Node" parent="Entities/Enemy Positions"]
+
+[node name="Root4" type="Node2D" parent="Entities/Enemy Positions/4"]
+position = Vector2(720, 294)
+
+[node name="Root3" type="Node2D" parent="Entities/Enemy Positions/4"]
+position = Vector2(230, 294)
+
+[node name="Root2" type="Node2D" parent="Entities/Enemy Positions/4"]
+position = Vector2(600, 314)
+
+[node name="Root1" type="Node2D" parent="Entities/Enemy Positions/4"]
+position = Vector2(380, 314)
+
+[node name="5" type="Node" parent="Entities/Enemy Positions"]
+
+[node name="Root5" type="Node2D" parent="Entities/Enemy Positions/5"]
+position = Vector2(180, 314)
+
+[node name="Root4" type="Node2D" parent="Entities/Enemy Positions/5"]
+position = Vector2(770, 314)
+
+[node name="Root3" type="Node2D" parent="Entities/Enemy Positions/5"]
+position = Vector2(300, 294)
+
+[node name="Root2" type="Node2D" parent="Entities/Enemy Positions/5"]
+position = Vector2(650, 294)
+
+[node name="Root1" type="Node2D" parent="Entities/Enemy Positions/5"]
+position = Vector2(480, 314)
 
 [node name="UI" type="Node" parent="."]
 

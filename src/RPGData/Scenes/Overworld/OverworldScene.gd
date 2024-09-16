@@ -29,10 +29,10 @@ func _ready() -> void:
 			battle_scene.begin_battle_on_ready = false;
 
 
-func _on_overworld_battle_queued():
+func _on_overworld_battle_queued(encounter : Encounter):
 	BattleManager.is_battle_active = true;
 	
-	# TODO: Battle details as param
+	# TODO: Different fade animations based on encounter params
 	EventManager.overworld_battle_fade_start.emit(false);
 	await EventManager.overworld_battle_fade_completed;
 	
@@ -41,6 +41,7 @@ func _on_overworld_battle_queued():
 	# Perpare battle parameters
 	var params = BattleParams.new();
 	
+	# Initialize player data
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		if DataManager.party_data[i].unlocked:
 			var player = BattleParamEntity.new();
@@ -50,6 +51,10 @@ func _on_overworld_battle_queued():
 			player.mp_offset = DataManager.party_data[i].mp_dmg;
 			params.players.append(player);
 		else : params.players.append(null);
+	
+	# Initialize enemy data
+	for enemy in encounter.enemies:
+		params.enemies.append(enemy);
 	
 	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		battle_scene_window.visible = true;

@@ -11,7 +11,7 @@ signal on_message_queue(message : String);
 
 # Global Overworld Events
 signal on_overworld_player_moved(direction : Vector2, amount : Vector2);
-signal on_battle_queue();
+signal on_battle_queue(encounter : Encounter);
 signal on_battle_dequeue();
 
 signal overworld_battle_fade_start(fade_in : bool);

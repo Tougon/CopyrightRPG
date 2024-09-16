@@ -4,6 +4,7 @@ class_name BattleScene
 @export var sequencer : Sequencer;
 @export var dialogue_canvas : DialogueCanvas;
 @export var seal_manager : SealManager
+@export var enemy_positions : Node;
 @export var begin_battle_on_ready : bool = true;
 
 static var Instance : BattleScene;
@@ -45,6 +46,16 @@ func begin_battle(params : BattleParams):
 	defeated_enemies = [];
 	
 	EventManager.on_battle_begin.emit(params);
+	
+	await get_tree().process_frame;
+	
+	# Initialize enemy positions
+	var amt = enemies.size();
+	var pos_root = enemy_positions.get_child(amt - 1);
+	
+	for i in amt:
+		var enemy = enemies[i];
+		enemy.set_enemy_position((pos_root.get_child((amt - 1) - i) as Node2D).position);
 	
 	# Fade in
 	EventManager.battle_fade_start.emit(true);
@@ -127,6 +138,7 @@ func _decision_phase():
 		await get_tree().process_frame;
 	
 	for enemy in enemies:
+		if enemy.is_defeated : continue;
 		enemy.select_action();
 		enemy.is_ready = true;
 	
@@ -160,6 +172,7 @@ func _action_phase():
 			continue;
 		
 		var is_target_valid : bool = true;
+		var num_active = get_num_active_enemies();
 		
 		# Multi target moves still work if at least one target still exists.
 		for target in entity.current_target:
@@ -250,6 +263,20 @@ func _action_phase():
 				EventManager.on_dialogue_queue.emit(seal_msg);
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed
+		
+		# Reposition enemies if any have been defeated
+		var amt = get_num_active_enemies();
+		if num_active != amt:
+			var index = 0;
+			var pos_root = enemy_positions.get_child(amt - 1);
+			
+			for enemy in enemies:
+				if !enemy.is_defeated : 
+					enemy.set_enemy_position((pos_root.get_child((amt - 1) - index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
+					index += 1;
+			
+			await get_tree().create_timer(BattleManager.ENEMY_REPOSITION_TIME).timeout
+			await get_tree().process_frame;
 		
 		for spell in spell_cast:
 			var effects = spell.effects;
@@ -408,12 +435,21 @@ func _end_phase():
 		_begin_turn();
 
 
-# Support functions for sealing
+# Support functions
 func can_seal(spell : Spell) -> bool:
 	for player in players:
 		if player.sealing : return false;
 	
 	return seal_manager.can_seal_spell(spell);
+
+
+func get_num_active_enemies() -> int:
+	var result = 0;
+	
+	for enemy in enemies:
+		if !enemy.is_defeated : result += 1;
+	
+	return result;
 
 
 # Event responses
@@ -468,6 +504,10 @@ func _on_enemy_defeated(entity : EntityController):
 	defeated.entity = entity.current_entity;
 	defeated.level = entity.level;
 	defeated_enemies.append(defeated);
+	
+	# Send the unused controller to the back of the list
+	enemies.erase(entity);
+	enemies.append(entity);
 	
 	var defeat_key = "T_BATTLE_DEFEAT_GENERIC";
 	if entity.current_entity.battle_defeat_key != null :

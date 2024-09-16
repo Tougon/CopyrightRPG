@@ -1,13 +1,16 @@
-[gd_scene load_steps=23 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=28 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
 [ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/RPGPlayerController.tscn" id="2_pvxte"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/EncounterManager.gd" id="3_tr7o3"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/EncounterManager.gd" id="3_tr7o3"]
 [ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="5_j2ssa"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="5_utklg"]
 [ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/overworld_main_menu.tscn" id="5_wk541"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="5_yfalh"]
 [ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="6_1u0pu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="6_yjk5t"]
+[ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="7_6bnft"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="7_m4t6q"]
 [ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="8_bnvh2"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="9_68vxx"]
@@ -517,6 +520,16 @@ texture = ExtResource("1_cvjr8")
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_haj4c")
 
+[sub_resource type="Resource" id="Resource_1tfly"]
+script = ExtResource("5_utklg")
+enemies = Array[ExtResource("6_yjk5t")]([ExtResource("7_6bnft")])
+odds = 0.1
+
+[sub_resource type="Resource" id="Resource_s1unj"]
+script = ExtResource("5_utklg")
+enemies = Array[ExtResource("6_yjk5t")]([ExtResource("7_6bnft"), ExtResource("7_6bnft")])
+odds = 0.9
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("6_1u0pu")
 shader_parameter/blur_amount = 4.0
@@ -568,6 +581,7 @@ position = Vector2(460, 384)
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]
 

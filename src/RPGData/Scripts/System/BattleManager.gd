@@ -3,6 +3,9 @@ extends Node
 # Class that defines constant variables for the battle system
 const INSTANCE_BATTLE_WINDOW : bool = false;
 
+# Determines the length of the tweens for enemy repositioning
+const ENEMY_REPOSITION_TIME : float = 0.35;
+
 # Determines if text should print asynchonously
 # TODO: change to const
 var async_damage_text : bool = false;

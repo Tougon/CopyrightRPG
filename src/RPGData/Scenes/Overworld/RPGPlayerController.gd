@@ -50,7 +50,7 @@ func move(direction : Vector2):
 		EventManager.on_overworld_player_moved.emit(direction, velocity);
 
 
-func _on_overworld_battle_queued():
+func _on_overworld_battle_queued(encounter : Encounter):
 	set_process(false);
 
 
