@@ -523,12 +523,12 @@ sources/2 = SubResource("TileSetAtlasSource_haj4c")
 [sub_resource type="Resource" id="Resource_1tfly"]
 script = ExtResource("5_utklg")
 enemies = Array[ExtResource("6_yjk5t")]([ExtResource("7_6bnft")])
-odds = 0.1
+odds = 0.95
 
 [sub_resource type="Resource" id="Resource_s1unj"]
 script = ExtResource("5_utklg")
 enemies = Array[ExtResource("6_yjk5t")]([ExtResource("7_6bnft"), ExtResource("7_6bnft")])
-odds = 0.9
+odds = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("6_1u0pu")
