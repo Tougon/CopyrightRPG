@@ -193,6 +193,11 @@ run={
 
 locale/translations=PackedStringArray("res://assets/Localization/TextDatabase.en.translation", "res://assets/Localization/TextDatabase.es.translation", "res://assets/Localization/TextDatabase.ja.translation")
 
+[layer_names]
+
+2d_physics/layer_1="Physical"
+2d_physics/layer_2="Interaction"
+
 [rendering]
 
 renderer/rendering_method="mobile"

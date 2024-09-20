@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=30 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
-[ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/RPGPlayerController.tscn" id="2_pvxte"]
+[ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.tscn" id="2_pvxte"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/EncounterManager.gd" id="3_tr7o3"]
 [ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="5_j2ssa"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="5_utklg"]
@@ -13,11 +13,13 @@
 [ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="7_6bnft"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="7_m4t6q"]
 [ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="8_bnvh2"]
+[ext_resource type="PackedScene" uid="uid://vevt3q612r55" path="res://src/RPGData/Scenes/Overworld/Interaction/TangibleInteractable.tscn" id="8_scqk0"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="9_68vxx"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="11_hflvv"]
 [ext_resource type="Resource" uid="uid://c3njfcjmrqtit" path="res://assets/Tweens/Transition/erode_in.tres" id="12_1vitb"]
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="12_ndoer"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="13_f5fkg"]
+[ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="20_nrspv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_haj4c"]
 texture = ExtResource("1_cvjr8")
@@ -581,6 +583,7 @@ position = Vector2(460, 384)
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]
@@ -608,3 +611,12 @@ material = SubResource("ShaderMaterial_8r6xq")
 [node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas"]
 script = ExtResource("7_m4t6q")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1")])
+
+[node name="Interactable" parent="." instance=ExtResource("8_scqk0")]
+position = Vector2(265, 374)
+
+[node name="Interactable3" parent="." instance=ExtResource("8_scqk0")]
+position = Vector2(255, 294)
+
+[node name="Interactable2" parent="." instance=ExtResource("20_nrspv")]
+position = Vector2(619, 372)
