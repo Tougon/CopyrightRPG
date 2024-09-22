@@ -12,6 +12,7 @@ var direction_facing : Vector2 = Vector2(0, 1);
 var _movement_bounds : float = 0.5;
 var _prev_direction : Vector2;
 var _can_move : bool = true;
+var _in_dialogue : bool = false;
 
 #TODO: Modify how the sprites work entirely.
 
@@ -27,7 +28,7 @@ func _ready():
 
 
 func _process(_delta):
-	if !_can_move : return;
+	if !_can_move || _in_dialogue : return;
 	
 	# Handle pause input
 	if Input.is_action_just_pressed("pause"):
@@ -73,7 +74,7 @@ func move(direction : Vector2):
 	
 	var delta_pos = position - orig_pos;
 	
-	if delta_pos.length() > 0 : 
+	if delta_pos.length() > 0 && !_in_dialogue: 
 		EventManager.on_overworld_player_moved.emit(direction, velocity);
 	
 	if direction.length_squared() != 0:
@@ -94,11 +95,11 @@ func skid(initial : Vector2, final : Vector2):
 	var time = 0;
 	_can_move = false;
 	
-	while (time < skid_duration && skid_duration > 0):
+	while (time < skid_duration && skid_duration > 0 && !_in_dialogue):
 		await get_tree().process_frame;
 		velocity = lerp(orig_velocity, final, time / skid_duration);
-		EventManager.on_overworld_player_moved.emit(direction, velocity);
 		move_and_slide();
+		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity);
 		time += get_process_delta_time();
 	
 	_prev_direction = _get_movement_vector();
@@ -118,11 +119,11 @@ func _on_menu_opened(menu : MenuPanel):
 
 
 func _on_dialogue_begin():
-	_can_move = false;
+	_in_dialogue = true;
 
 
 func _on_dialogue_end():
-	_can_move = true;
+	_in_dialogue = false;
 
 
 func _on_all_menus_closed():

@@ -55,7 +55,6 @@ func begin_battle(params : BattleParams):
 	
 	for i in amt:
 		var enemy = enemies[i];
-		print(enemy.name + " " + pos_root.get_child((amt - 1) - i).name)
 		enemy.set_enemy_position((pos_root.get_child((amt - 1) - i) as Node2D).position);
 	
 	# Fade in
@@ -270,12 +269,22 @@ func _action_phase():
 		if num_active != amt:
 			var index = 0;
 			var pos_root = enemy_positions.get_child(amt - 1);
+			var used : Array[int] = [];
 			
-			for enemy in enemies:
-				if !enemy.is_defeated : 
-					print(enemy.name + " " + pos_root.get_child((amt - 1) - index).name)
-					enemy.set_enemy_position((pos_root.get_child((amt - 1) - index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
-					index += 1;
+			for i in range(enemies.size() - 1, -1, -1):
+				var enemy = enemies[i];
+				if !enemy.is_defeated:
+					index = _get_closest_unused_root_to_entity(enemy, pos_root, used);
+					
+					if index != -1 :
+						enemy.set_enemy_position((pos_root.get_child(index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
+						used.append(index);
+			
+			#for enemy in enemies:
+			#	if !enemy.is_defeated : 
+			#		print(enemy.name + " " + pos_root.get_child((amt - 1) - index).name)
+			#		enemy.set_enemy_position((pos_root.get_child((amt - 1) - index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
+			#		index += 1;
 			
 			await get_tree().create_timer(BattleManager.ENEMY_REPOSITION_TIME).timeout
 			await get_tree().process_frame;
@@ -452,6 +461,23 @@ func get_num_active_enemies() -> int:
 		if !enemy.is_defeated : result += 1;
 	
 	return result;
+
+
+func _get_closest_unused_root_to_entity(enemy : EntityController, root : Node, used : Array[int]) -> int:
+	var index = -1;
+	var distance = 1000000000;
+	
+	for i in root.get_child_count():
+		if used.has(i) : continue;
+		
+		var child = root.get_child(i) as Node2D;
+		var d = enemy.global_position.distance_to(child.global_position);
+		
+		if d < distance:
+			distance = d;
+			index = i;
+	
+	return index;
 
 
 # Event responses
