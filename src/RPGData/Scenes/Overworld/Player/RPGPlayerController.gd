@@ -21,6 +21,9 @@ func _ready():
 	
 	UIManager.on_menu_opened.connect(_on_menu_opened);
 	UIManager.on_all_menus_closed.connect(_on_all_menus_closed);
+	
+	Dialogic.timeline_started.connect(_on_dialogue_begin);
+	Dialogic.timeline_ended.connect(_on_dialogue_end);
 
 
 func _process(_delta):
@@ -37,15 +40,15 @@ func _process(_delta):
 	
 	# Debug
 	# TODO: Fix so that diagonals work properly. 1,1 is correct here ONLY
-	$Sprite2D2.position = (direction_facing) * COLLISION_DETECTION_RANGE;
+	$"Direction Root".position = (direction_facing) * COLLISION_DETECTION_RANGE;
 	if direction_facing.length() > 0.5 : 
-		$Sprite2D2.rotation_degrees = rad_to_deg(direction_facing.angle()) - 90;
-	else : $Sprite2D2.rotation_degrees = 0;
+		$"Direction Root".rotation_degrees = rad_to_deg(direction_facing.angle()) - 90;
+	else : $"Direction Root".rotation_degrees = 0;
 	# End Debug
 	
 	if Input.is_action_just_pressed("interact") && _can_move:
 		if $"Direction Root/Sight".closest_interactable != null :
-			print($"Direction Root/Sight".closest_interactable.name);
+			$"Direction Root/Sight".closest_interactable.interact();
 
 
 func _get_movement_vector() -> Vector2:
@@ -112,6 +115,14 @@ func _on_overworld_battle_dequeued():
 
 func _on_menu_opened(menu : MenuPanel):
 	set_process(false);
+
+
+func _on_dialogue_begin():
+	_can_move = false;
+
+
+func _on_dialogue_end():
+	_can_move = true;
 
 
 func _on_all_menus_closed():

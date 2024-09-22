@@ -25,7 +25,7 @@ func _on_battle_complete(result : BattleResult):
 					
 					while award_exp + current_exp >= next_level_amt && player.override_level < BattleManager.level_cap:
 						# TODO: Level up screen/animation
-						EventManager.on_dialogue_queue.emit("LEVEL UP!");
+						#EventManager.on_dialogue_queue.emit("LEVEL UP!");
 						level += 1;
 						award_exp -= (next_level_amt - current_exp);
 						current_exp = 0;

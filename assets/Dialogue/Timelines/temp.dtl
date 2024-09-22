@@ -4,5 +4,8 @@ temp_character_1: How's it going?
 - Good
 	temp_character_1: Glad to hear it!
 - Bad
-	Oh... That's a shame.
-leave temp_character_1 [animation="Zoom Out" wait="true"]
+	temp_character_1: Will this help?
+	[begin_battle path="res://assets/Encounters/temp.tres"]
+	join temp_character_1 center [animation="Zoom Center In" wait="true"]
+	temp_character_1: That was a good battle!
+leave temp_character_1 [animation="Zoom Center Out" wait="true"]

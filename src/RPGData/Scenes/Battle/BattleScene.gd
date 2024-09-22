@@ -55,6 +55,7 @@ func begin_battle(params : BattleParams):
 	
 	for i in amt:
 		var enemy = enemies[i];
+		print(enemy.name + " " + pos_root.get_child((amt - 1) - i).name)
 		enemy.set_enemy_position((pos_root.get_child((amt - 1) - i) as Node2D).position);
 	
 	# Fade in
@@ -272,6 +273,7 @@ func _action_phase():
 			
 			for enemy in enemies:
 				if !enemy.is_defeated : 
+					print(enemy.name + " " + pos_root.get_child((amt - 1) - index).name)
 					enemy.set_enemy_position((pos_root.get_child((amt - 1) - index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
 					index += 1;
 			

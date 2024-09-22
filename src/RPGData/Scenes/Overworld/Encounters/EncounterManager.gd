@@ -38,7 +38,6 @@ func _on_overworld_player_moved(direction : Vector2, amount : Vector2):
 		
 		if encounter_chance < current_chance:
 			var encounter = _get_random_encounter();
-			print(encounter.enemies.size());
 			EventManager.on_battle_queue.emit(encounter);
 			process_encounters = false;
 		else:
