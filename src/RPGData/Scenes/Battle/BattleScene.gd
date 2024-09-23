@@ -280,12 +280,6 @@ func _action_phase():
 						enemy.set_enemy_position((pos_root.get_child(index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
 						used.append(index);
 			
-			#for enemy in enemies:
-			#	if !enemy.is_defeated : 
-			#		print(enemy.name + " " + pos_root.get_child((amt - 1) - index).name)
-			#		enemy.set_enemy_position((pos_root.get_child((amt - 1) - index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
-			#		index += 1;
-			
 			await get_tree().create_timer(BattleManager.ENEMY_REPOSITION_TIME).timeout
 			await get_tree().process_frame;
 		
