@@ -620,3 +620,4 @@ position = Vector2(255, 294)
 
 [node name="Interactable2" parent="." instance=ExtResource("20_nrspv")]
 position = Vector2(619, 372)
+interact_dialogue = "temp_quest"

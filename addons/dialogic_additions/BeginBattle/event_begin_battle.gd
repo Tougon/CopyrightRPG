@@ -61,6 +61,7 @@ func get_shortcode_parameters() -> Dictionary:
 		#param_name : property_info
 		"path"		: {"property": "encounter", 	"default": ""},
 		"cancel_dialogue"		: {"property": "cancel_dialogue_on_defeat", 	"default": true},
+		"delay"		: {"property": "delay", 	"default": 0.5},
 	}
 
 
@@ -72,3 +73,5 @@ func build_event_editor() -> void:
 			'placeholder' 	: "None" })
 	add_body_edit('cancel_dialogue_on_defeat', ValueType.BOOL, {
 			'left_text'		: 'Cancel Dialogue on Defeat'})
+	add_body_edit('delay', ValueType.NUMBER, {
+			'left_text'		: 'Delay'})

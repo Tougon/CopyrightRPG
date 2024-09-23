@@ -8,6 +8,8 @@
 
 config_version=5
 
+recent_projects=["res://assets/Quests/temp.quest"]
+
 [application]
 
 config/name="Copyright RPG"
@@ -33,7 +35,8 @@ directories/dch_directory={
 "temp_character_1": "res://assets/Dialogue/Characters/temp_character_1.dch"
 }
 directories/dtl_directory={
-"temp": "res://assets/Dialogue/Timelines/temp.dtl"
+"temp": "res://assets/Dialogue/Timelines/temp.dtl",
+"temp_quest": "res://assets/Dialogue/Timelines/temp_quest.dtl"
 }
 layout/style_list=[]
 layout/default_style="Default"

@@ -4,6 +4,7 @@ var current_save : SaveData;
 var party_data : Array[PartyMemberData]
 
 var entity_database : EntityDatabase = preload("res://assets/Entities/entity_database.tres")
+var quest_database : QuestDatabase = preload("res://assets/Quests/quest_database.tres")
 
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 	party_data = [];
 	
 	if entity_database == null : print("Entity Database does not exist.");
+	if quest_database == null : print("Quest Database does not exist.");
 	
 	# TODO: Better initialization for player
 	for i in GameplayConstants.MAX_PARTY_SIZE:
@@ -50,6 +52,12 @@ func load_data():
 				party_data.append(member);
 			else : print("Corrupt Save File")
 		
+		var quest_data = save_file.get_var(true);
+		
+		if quest_data != null:
+			QuestManager.load_saved_quest_data(quest_data);
+		else : print("Corrupt Save File or Invalid Quest Data")
+		
 	else : print("No Save File")
 
 
@@ -65,6 +73,9 @@ func save_data():
 	
 	for member in party_data:
 		save_file.store_var(member, true);
+	
+	var quest_data = QuestManager.get_save_quest_data();
+	save_file.store_var(quest_data, true);
 
 
 func delete_data():

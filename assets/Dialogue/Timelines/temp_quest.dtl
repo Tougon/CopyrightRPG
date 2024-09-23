@@ -1,0 +1,4 @@
+join temp_character_1 center [animation="Zoom Center In" wait="true"]
+temp_character_1: Hey, could you defeat 3 enemies for me?
+[begin_quest quest="Defeat3Enemies"]
+leave temp_character_1 [animation="Zoom Center Out" wait="true"]

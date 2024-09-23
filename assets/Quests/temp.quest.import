@@ -1,0 +1,15 @@
+[remap]
+
+importer="quest_importer"
+type="Resource"
+uid="uid://yra4mmseryxw"
+path="res://.godot/imported/temp.quest-95369c0b28f687cf31a70fda2e319d62.tres"
+
+[deps]
+
+source_file="res://assets/Quests/temp.quest"
+dest_files=["res://.godot/imported/temp.quest-95369c0b28f687cf31a70fda2e319d62.tres"]
+
+[params]
+
+defaults=true
