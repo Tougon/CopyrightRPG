@@ -86,8 +86,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("9_n0rge")
-min = 50
-max = 50
+min = 25
+max = 40
 growth = SubResource("Curve_xe662")
 
 [sub_resource type="Curve" id="Curve_k6ron"]
@@ -193,8 +193,8 @@ base_dodge_modifier = 1.0
 luck = SubResource("Resource_m1s8s")
 weakness = Array[ExtResource("16_rv22r")]([])
 resistance = Array[ExtResource("16_rv22r")]([])
-min_level = 20
-max_level = 20
+min_level = 10
+max_level = 10
 level_curve = SubResource("Curve_k6ron")
 reward_exp = SubResource("Resource_x0kwu")
 entity_sprites = Array[String](["res://assets/Sprites/Entities/slime_n_neutral.png", "res://assets/Sprites/Entities/slime_n_damage.png", "res://assets/Sprites/Entities/slime_n_attack.png"])

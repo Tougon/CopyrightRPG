@@ -424,6 +424,7 @@ func _end_phase():
 			
 			for enemy in defeated_enemies:
 				reward.exp += enemy.entity.get_reward_exp(enemy.level);
+				reward.enemies.append(enemy.entity.name_key)
 			
 			for player in players:
 				var result_player = BattleParamEntity.new();

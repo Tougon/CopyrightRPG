@@ -75,10 +75,11 @@ func progress_quest(quest_id:String,step_id:String, item_name:String="",quantity
 		ACTION_STEP:
 			complete_step(quest_id,step)
 		INCREMENTAL_STEP:
-			step.collected += quantity
-			step_updated.emit(step)
-			if step.collected >= step.required:
-				complete_step(quest_id,step)
+			if step.item_name == "" || step.item_name == item_name:
+				step.collected += quantity
+				step_updated.emit(step)
+				if step.collected >= step.required:
+					complete_step(quest_id,step)
 		ITEMS_STEP:
 			var all_item_collected = true
 			for item in step.item_list:

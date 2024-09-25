@@ -19,7 +19,7 @@ func _ready():
 	EventManager.on_battle_queue.connect(_reset_encounter_variables);
 	EventManager.on_battle_end.connect(_on_battle_end);
 	
-	_reset_encounter_variables();
+	_reset_encounter_variables(null);
 
 
 func _on_overworld_player_moved(direction : Vector2, amount : Vector2):
@@ -68,7 +68,7 @@ func _get_random_encounter() -> Encounter:
 	return encounters[encounters.size() - 1];
 
 
-func _reset_encounter_variables():
+func _reset_encounter_variables(encounter : Encounter):
 	wait_time = 0;
 	encounter_time = 0;
 	

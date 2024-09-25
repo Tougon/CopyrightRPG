@@ -27,7 +27,11 @@ func _ready() -> void:
 		if battle_scene_ref != null && battle_scene == null: 
 			battle_scene = battle_scene_ref.instantiate() as BattleScene;
 			battle_scene.begin_battle_on_ready = false;
+	
+	QuestManager.quest_completed.connect(quest_complete)
 
+func quest_complete(quest):
+	print(quest.quest_rewards.money)
 
 func _on_overworld_battle_queued(encounter : Encounter):
 	BattleManager.is_battle_active = true;
@@ -75,6 +79,18 @@ func _on_battle_end(result : BattleResult):
 		if player.should_award_exp :
 			DataManager.party_data[player.id].level = player.override_level;
 			DataManager.party_data[player.id].exp = player.modified_exp_amt;
+	
+	for id in QuestManager.player_quests:
+		var metadata = QuestManager.get_meta_data(QuestManager.player_quests[id].quest_name);
+		
+		for data in metadata:
+			# Check the quest metadata to see if it should progress based on battle result
+			if data == "battle_auto":
+				var step = QuestManager.player_quests[id].next_id
+				QuestManager.progress_quest(id, step, "enemy", result.enemies.size())
+				
+				for enemy in result.enemies:
+					QuestManager.progress_quest(id, step, enemy, 1)
 	
 	EventManager.overworld_battle_fade_start.emit(true);
 	

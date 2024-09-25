@@ -5,6 +5,7 @@ var victory : bool;
 var exp : int;
 
 var players : Array[BattleParamEntity]
+var enemies : Array[String]
 
 func destroy():
 	for player in players:
