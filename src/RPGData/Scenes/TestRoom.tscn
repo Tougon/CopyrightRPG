@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=37 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="12_ndoer"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="13_f5fkg"]
 [ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="20_nrspv"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/ActiveCheckGroup.gd" id="20_ybg78"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="21_6y80r"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="22_g6foi"]
 
@@ -572,6 +573,20 @@ tween_resource = ExtResource("13_f5fkg")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="Resource" id="Resource_cemoq"]
+script = ExtResource("22_g6foi")
+quest_name = "Defeat3Enemies"
+check_type = 0
+use_step = false
+step_name = ""
+negate = false
+
+[sub_resource type="Resource" id="Resource_8ofoh"]
+script = ExtResource("20_ybg78")
+active_state = true
+check_type = 0
+active_conditions = Array[ExtResource("22_g6foi")]([SubResource("Resource_cemoq")])
+
 [sub_resource type="Resource" id="Resource_5eyfh"]
 script = ExtResource("22_g6foi")
 quest_name = "Defeat3Enemies"
@@ -599,7 +614,6 @@ position = Vector2(460, 384)
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
-enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]
@@ -630,9 +644,12 @@ sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), S
 
 [node name="Interactable" parent="." instance=ExtResource("8_scqk0")]
 position = Vector2(265, 374)
+default_active_state = false
+additional_active_state = Array[ExtResource("20_ybg78")]([SubResource("Resource_8ofoh")])
 
 [node name="Interactable3" parent="." instance=ExtResource("8_scqk0")]
 position = Vector2(255, 294)
+default_active_state = false
 
 [node name="Interactable2" parent="." instance=ExtResource("20_nrspv")]
 position = Vector2(619, 372)
