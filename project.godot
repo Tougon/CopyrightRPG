@@ -36,7 +36,8 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "temp": "res://assets/Dialogue/Timelines/temp.dtl",
-"temp_quest": "res://assets/Dialogue/Timelines/temp_quest.dtl"
+"temp_quest": "res://assets/Dialogue/Timelines/temp_quest.dtl",
+"temp_quest_win": "res://assets/Dialogue/Timelines/temp_quest_win.dtl"
 }
 layout/style_list=[]
 layout/default_style="Default"

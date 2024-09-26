@@ -1,0 +1,4 @@
+join temp_character_1 center [animation="Zoom Center In" wait="true"]
+temp_character_1: Oh hey, you did it!
+leave temp_character_1 [animation="Zoom Center Out" wait="true"]
+[end_timeline]

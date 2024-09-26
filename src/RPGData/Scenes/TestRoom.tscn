@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=34 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -20,6 +20,8 @@
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="12_ndoer"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="13_f5fkg"]
 [ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="20_nrspv"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="21_6y80r"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="22_g6foi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_haj4c"]
 texture = ExtResource("1_cvjr8")
@@ -570,6 +572,20 @@ tween_resource = ExtResource("13_f5fkg")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="Resource" id="Resource_5eyfh"]
+script = ExtResource("22_g6foi")
+quest_name = "Defeat3Enemies"
+check_type = 1
+use_step = false
+step_name = ""
+negate = false
+
+[sub_resource type="Resource" id="Resource_vuma2"]
+script = ExtResource("21_6y80r")
+interact_dialogue = "temp_quest_win"
+check_type = 0
+active_conditions = Array[ExtResource("22_g6foi")]([SubResource("Resource_5eyfh")])
+
 [node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller")]
 script = ExtResource("1_kiva8")
 player_controller = NodePath("Player")
@@ -620,4 +636,5 @@ position = Vector2(255, 294)
 
 [node name="Interactable2" parent="." instance=ExtResource("20_nrspv")]
 position = Vector2(619, 372)
-interact_dialogue = "temp_quest"
+default_dialogue = "temp_quest"
+additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
