@@ -6,6 +6,8 @@ var party_data : Array[PartyMemberData]
 var entity_database : EntityDatabase = preload("res://assets/Entities/entity_database.tres")
 var quest_database : QuestDatabase = preload("res://assets/Quests/quest_database.tres")
 
+signal on_data_loaded();
+
 
 func _ready():
 	current_save = SaveData.new();
@@ -59,6 +61,8 @@ func load_data():
 		else : print("Corrupt Save File or Invalid Quest Data")
 		
 	else : print("No Save File")
+	
+	on_data_loaded.emit();
 
 
 func save_data():

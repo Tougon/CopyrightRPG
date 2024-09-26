@@ -13,6 +13,7 @@ func _ready():
 	QuestManager.next_step.connect(_on_update_step)
 	QuestManager.quest_completed.connect(_on_quest_complete)
 	QuestManager.quest_failed.connect(_on_quest_failed)
+	DataManager.on_data_loaded.connect(_update_active_state)
 	
 	_update_active_state();
 
@@ -23,6 +24,7 @@ func _exit_tree():
 	QuestManager.next_step.disconnect(_on_update_step)
 	QuestManager.quest_completed.disconnect(_on_quest_complete)
 	QuestManager.quest_failed.disconnect(_on_quest_failed)
+	DataManager.on_data_loaded.disconnect(_update_active_state)
 
 
 func _on_update_step(step):
