@@ -28,6 +28,7 @@ GrammarManager="*res://src/Localization/GrammarManager.gd"
 DataManager="*res://src/RPGData/Scripts/System/DataManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 QuestManager="*res://addons/quest_manager/QuestManager.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogic]
 
@@ -76,7 +77,7 @@ project/assembly_name="Copyright RPG"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/quest_manager/plugin.cfg", "res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/quest_manager/plugin.cfg", "res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
 
 [file_customization]
 
@@ -202,6 +203,11 @@ locale/translations=PackedStringArray("res://assets/Localization/TextDatabase.en
 
 2d_physics/layer_1="Physical"
 2d_physics/layer_2="Interaction"
+2d_physics/layer_3="Camera"
+
+[physics]
+
+common/physics_interpolation=true
 
 [rendering]
 
