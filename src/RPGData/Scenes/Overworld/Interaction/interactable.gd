@@ -1,4 +1,4 @@
-extends Node2D
+extends CutsceneObject
 class_name Interactable
 
 @export var default_active_state : bool = true;
@@ -8,6 +8,8 @@ class_name Interactable
 
 
 func _ready():
+	super._ready();
+	
 	QuestManager.step_updated.connect(_on_update_step)
 	QuestManager.step_complete.connect(_on_update_step)
 	QuestManager.next_step.connect(_on_update_step)
@@ -41,7 +43,10 @@ func _on_quest_failed(quest):
 
 func _update_active_state():
 	var active = _get_active_state();
-	visible = active;
+	# For completely unknown reasons, we need this self here.
+	self.visible = active;
+	for child in get_children(false):
+		child.visible = active;
 	$Collider/CollisionShape2D.disabled = !active;
 
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cviyt63wxucnc"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.gd" id="1_1wsnh"]
-[ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="2_mfwqq"]
+[ext_resource type="Texture2D" uid="uid://dcbk1bp22es5y" path="res://assets/Sprites/Overworld/THE CULPRIT.png" id="2_wa4l6"]
 [ext_resource type="Texture2D" uid="uid://c88xb0y4eiiu5" path="res://assets/Sprites/UI/Battle/targetting_arrow.png" id="3_rngrh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
@@ -18,7 +18,8 @@ script = ExtResource("1_1wsnh")
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mfwqq")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_wa4l6")
 
 [node name="Direction Root" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

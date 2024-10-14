@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vevt3q612r55"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/interactable.gd" id="1_lg0ch"]
-[ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="2_ktaa0"]
+[ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="2_njlc0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmrkh"]
 size = Vector2(100, 100)
@@ -10,7 +10,7 @@ size = Vector2(100, 100)
 script = ExtResource("1_lg0ch")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ktaa0")
+texture = ExtResource("2_njlc0")
 
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_layer = 3

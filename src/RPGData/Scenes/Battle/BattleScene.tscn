@@ -393,6 +393,7 @@ script = ExtResource("29_6pl1e")
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 position = Vector2(480, 320)
 script = ExtResource("33_fk14b")
-priority = 5
+priority = 10
 tween_resource = SubResource("Resource_krv0w")
 tween_on_load = false
+draw_limits = true
