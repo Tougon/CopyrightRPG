@@ -29,6 +29,7 @@ DataManager="*res://src/RPGData/Scripts/System/DataManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 QuestManager="*res://addons/quest_manager/QuestManager.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+CutsceneObjectManager="*res://src/CutsceneInterface/CutsceneObjectManager.gd"
 
 [dialogic]
 

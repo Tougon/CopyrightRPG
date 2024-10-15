@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=47 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -27,6 +27,8 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="24_tm1wa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="25_p4i8l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="26_goqi0"]
+[ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="28_6btiu"]
+[ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_63qe4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
 texture = ExtResource("2_qntub")
@@ -705,19 +707,30 @@ limit_target = NodePath("../Camera Limits/CollisionShape2D")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("2_pvxte")]
 position = Vector2(460, 360)
+run_multiplier = 1.75
 
 [node name="Interactables" type="Node2D" parent="."]
 
 [node name="Interactable" parent="Interactables" instance=ExtResource("8_scqk0")]
-position = Vector2(265, 374)
+position = Vector2(194, 446)
 default_active_state = false
 additional_active_state = Array[ExtResource("20_ybg78")]([SubResource("Resource_8ofoh")])
 
 [node name="Interactable3" parent="Interactables" instance=ExtResource("8_scqk0")]
-position = Vector2(255, 294)
+position = Vector2(193, 316)
 default_active_state = false
 
 [node name="Interactable2" parent="Interactables" instance=ExtResource("20_nrspv")]
 position = Vector2(715, 311)
 default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
+object_id = "temp_quest_giver"
+
+[node name="CutsceneObject" type="Node2D" parent="."]
+visible = false
+script = ExtResource("28_6btiu")
+object_id = "test_obj_1"
+
+[node name="Sprite2D" type="Sprite2D" parent="CutsceneObject"]
+position = Vector2(341, 193)
+texture = ExtResource("29_63qe4")
