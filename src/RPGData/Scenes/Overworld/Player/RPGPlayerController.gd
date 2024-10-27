@@ -139,5 +139,8 @@ func _exit_tree():
 		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);
 	
 	if UIManager != null:
-		UIManager.on_menu_opened.connect(_on_menu_opened);
-		UIManager.on_all_menus_closed.connect(_on_all_menus_closed);
+		UIManager.on_menu_opened.disconnect(_on_menu_opened);
+		UIManager.on_all_menus_closed.disconnect(_on_all_menus_closed);
+	
+	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
+	Dialogic.timeline_ended.disconnect(_on_dialogue_end);

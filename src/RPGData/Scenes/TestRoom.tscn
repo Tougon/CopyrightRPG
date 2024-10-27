@@ -593,15 +593,6 @@ tween_resource = ExtResource("13_f5fkg")
 play_on_start = false
 next_tween = ""
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqlgo"]
-size = Vector2(1276, 720)
-
-[sub_resource type="Resource" id="Resource_6ugjw"]
-script = ExtResource("25_p4i8l")
-duration = 1.0
-transition = 0
-ease = 2
-
 [sub_resource type="Resource" id="Resource_cemoq"]
 script = ExtResource("22_g6foi")
 quest_name = "Defeat3Enemies"
@@ -630,9 +621,20 @@ interact_dialogue = "temp_quest_win"
 check_type = 0
 active_conditions = Array[ExtResource("22_g6foi")]([SubResource("Resource_5eyfh")])
 
-[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqlgo"]
+size = Vector2(1276, 720)
+
+[sub_resource type="Resource" id="Resource_6ugjw"]
+script = ExtResource("25_p4i8l")
+duration = 0.25
+transition = 0
+ease = 2
+
+[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera")]
 script = ExtResource("1_kiva8")
 player_controller = NodePath("Player Controller")
+game_camera = NodePath("Game PhantomCamera")
+free_camera = NodePath("Free PhantomCamera")
 
 [node name="TileMapFloor" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAEAAAACAAAAAQAAAAAAAAACAAEAAQACAAAAAAACAAIAAQABAAAAAAACAAMAAQACAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAEAAAADAAAAAQAAAAAAAAADAAEAAQABAAAAAAADAAIAAQADAAAAAAADAAMAAQABAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAEAAAAEAAAAAQAAAAAAAAAEAAEAAQACAAAAAAAEAAIAAQABAAAAAAAEAAMAAQACAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQAAAAEAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAAAAQAAAAAAAAAGAAEAAQACAAAAAAAGAAIAAQABAAAAAAAGAAMAAQACAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAEAAAAHAAAAAQAAAAAAAAAHAAEAAQABAAAAAAAHAAIAAQADAAAAAAAHAAMAAQABAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAEAAAAIAAAAAQAAAAAAAAAIAAEAAQACAAAAAAAIAAIAAQABAAAAAAAIAAMAAQACAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAEAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAEAAAA=")
@@ -673,38 +675,6 @@ material = SubResource("ShaderMaterial_8r6xq")
 script = ExtResource("7_m4t6q")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1")])
 
-[node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
-position = Vector2(480, 360)
-limit_left = 0
-limit_top = 0
-limit_right = 1276
-limit_bottom = 720
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("26_goqi0")
-
-[node name="Camera Limits" type="Area2D" parent="."]
-position = Vector2(480, 360)
-collision_layer = 4
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera Limits"]
-position = Vector2(158, 0)
-shape = SubResource("RectangleShape2D_xqlgo")
-
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(480, 360)
-script = ExtResource("24_tm1wa")
-follow_mode = 5
-follow_target = NodePath("../Player Controller")
-tween_resource = SubResource("Resource_6ugjw")
-follow_damping = true
-dead_zone_width = 0.1
-dead_zone_height = 0.1
-draw_limits = true
-limit_target = NodePath("../Camera Limits/CollisionShape2D")
-
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("2_pvxte")]
 position = Vector2(460, 360)
 run_multiplier = 1.75
@@ -726,11 +696,56 @@ default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
 object_id = "temp_quest_giver"
 
-[node name="CutsceneObject" type="Node2D" parent="."]
-visible = false
+[node name="CutsceneObject Test" type="Node2D" parent="."]
+position = Vector2(1085, 392)
 script = ExtResource("28_6btiu")
 object_id = "test_obj_1"
 
-[node name="Sprite2D" type="Sprite2D" parent="CutsceneObject"]
-position = Vector2(341, 193)
+[node name="Sprite2D" type="Sprite2D" parent="CutsceneObject Test"]
 texture = ExtResource("29_63qe4")
+
+[node name="-----" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(480, 360)
+limit_left = 0
+limit_top = 0
+limit_right = 1276
+limit_bottom = 720
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("26_goqi0")
+
+[node name="Camera Limits" type="Area2D" parent="."]
+position = Vector2(480, 360)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera Limits"]
+position = Vector2(158, 0)
+shape = SubResource("RectangleShape2D_xqlgo")
+
+[node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+position = Vector2(480, 360)
+script = ExtResource("24_tm1wa")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../Player Controller")
+tween_resource = SubResource("Resource_6ugjw")
+follow_damping = true
+dead_zone_width = 0.1
+dead_zone_height = 0.1
+draw_limits = true
+limit_target = NodePath("../Camera Limits/CollisionShape2D")
+
+[node name="Free PhantomCamera" type="Node2D" parent="."]
+position = Vector2(480, 360)
+script = ExtResource("24_tm1wa")
+follow_mode = 5
+tween_resource = SubResource("Resource_6ugjw")
+follow_damping = true
+dead_zone_width = 0.1
+dead_zone_height = 0.1
+draw_limits = true
+limit_target = NodePath("../Camera Limits/CollisionShape2D")

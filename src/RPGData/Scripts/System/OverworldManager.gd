@@ -4,6 +4,7 @@ extends Node
 
 # Runtime variables
 var player_controller : RPGPlayerController;
+var free_camera : PhantomCamera2D;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() :

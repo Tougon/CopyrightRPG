@@ -4,6 +4,8 @@ static var battle_scene : BattleScene = null;
 static var battle_scene_window : Window = null;
 @export var battle_scene_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
 @export var player_controller : RPGPlayerController;
+@export var game_camera : PhantomCamera2D;
+@export var free_camera : PhantomCamera2D;
 
 # May as well be deprecated
 var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
@@ -14,6 +16,7 @@ func _ready() -> void:
 	EventManager.on_battle_end.connect(_on_battle_end);
 	
 	OverworldManager.player_controller = player_controller;
+	OverworldManager.free_camera = free_camera;
 	
 	await get_tree().process_frame;
 	
@@ -29,9 +32,25 @@ func _ready() -> void:
 			battle_scene.begin_battle_on_ready = false;
 	
 	QuestManager.quest_completed.connect(quest_complete)
+	Dialogic.timeline_started.connect(_on_dialogue_begin);
+	Dialogic.timeline_ended.connect(_on_dialogue_end);
+
 
 func quest_complete(quest):
-	print(quest.quest_rewards.money)
+	print("REWARD MONEY: " + quest.quest_rewards.money)
+
+
+func _on_dialogue_begin():
+	if free_camera != null && game_camera != null :
+		free_camera.position = game_camera.position;
+		free_camera.priority = 2;
+
+
+func _on_dialogue_end():
+	if free_camera != null :
+		free_camera.follow_target = null;
+		free_camera.priority = 0;
+
 
 func _on_overworld_battle_queued(encounter : Encounter):
 	BattleManager.is_battle_active = true;
@@ -117,3 +136,7 @@ func _exit_tree():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_end.disconnect(_on_battle_end);
+		
+	QuestManager.quest_completed.disconnect(quest_complete)
+	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
+	Dialogic.timeline_ended.disconnect(_on_dialogue_end);

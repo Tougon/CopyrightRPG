@@ -1,6 +1,8 @@
 Hey.
+[set_camera_target id="test_obj_1"]
 join temp_character_1 center [animation="Zoom Center In" wait="true"]
 temp_character_1: How's it going?
+[set_camera_target id="player"]
 - Good
 	temp_character_1: Glad to hear it!
 - Bad
