@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=59 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -20,6 +20,8 @@
 [ext_resource type="Resource" uid="uid://c3njfcjmrqtit" path="res://assets/Tweens/Transition/erode_in.tres" id="12_1vitb"]
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="12_ndoer"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="13_f5fkg"]
+[ext_resource type="Resource" uid="uid://bnvdca7lgydy3" path="res://assets/Tweens/Transition/fade_in.tres" id="19_m5x1e"]
+[ext_resource type="Resource" uid="uid://b7evdmbcxg6wl" path="res://assets/Tweens/Transition/fade_out.tres" id="20_7yo5a"]
 [ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="20_nrspv"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/ActiveCheckGroup.gd" id="20_ybg78"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="21_6y80r"]
@@ -578,22 +580,36 @@ shader_parameter/bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_1vddh"]
 script = ExtResource("11_hflvv")
-tween_name = "Fade In"
+tween_name = "Battle Fade In"
 tween_resource = ExtResource("12_1vitb")
 play_on_start = false
 next_tween = ""
 
 [sub_resource type="Resource" id="Resource_8srpl"]
 script = ExtResource("11_hflvv")
-tween_name = "Fade Out"
+tween_name = "Battle Fade Out"
 tween_resource = ExtResource("12_ndoer")
 play_on_start = false
 next_tween = ""
 
 [sub_resource type="Resource" id="Resource_kd3c1"]
 script = ExtResource("11_hflvv")
-tween_name = "Fade Complete"
+tween_name = "Battle Fade Complete"
 tween_resource = ExtResource("13_f5fkg")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_ynn0l"]
+script = ExtResource("11_hflvv")
+tween_name = "Cutscene Fade In"
+tween_resource = ExtResource("19_m5x1e")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_qagoa"]
+script = ExtResource("11_hflvv")
+tween_name = "Cutscene Fade Out"
+tween_resource = ExtResource("20_7yo5a")
 play_on_start = false
 next_tween = ""
 
@@ -690,6 +706,7 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 [node name="OverworldMainMenu" parent="UI/Player UI" instance=ExtResource("5_wk541")]
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
+layer = 5
 visible = false
 script = ExtResource("5_yfalh")
 fade_sequence = NodePath("TweenPlayerUI")
@@ -705,9 +722,18 @@ material = SubResource("ShaderMaterial_8r6xq")
 [node name="Erode" parent="UI/BG Fade Canvas" instance=ExtResource("8_bnvh2")]
 material = SubResource("ShaderMaterial_8r6xq")
 
+[node name="Fade" type="ColorRect" parent="UI/BG Fade Canvas"]
+z_index = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
 [node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas"]
 script = ExtResource("7_m4t6q")
-sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1")])
+sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa")])
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("2_pvxte")]
 position = Vector2(460, 360)

@@ -1,5 +1,7 @@
 Hey.
+[fade]
 [set_camera_target id="test_obj_1"]
+[fade in="true" pre="0.2"]
 [play_object_animation id="test_obj_1" anim_name="slide"]
 join temp_character_1 center [animation="Zoom Center In" wait="true"]
 temp_character_1: How's it going?

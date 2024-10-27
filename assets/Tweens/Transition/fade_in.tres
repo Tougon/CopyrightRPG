@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=6 format=3 uid="uid://bnvdca7lgydy3"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_5nxf1"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_vfmg4"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_wab2t"]
+
+[sub_resource type="Resource" id="Resource_0aj7b"]
+script = ExtResource("3_wab2t")
+target = "Fade"
+property_name = "color"
+material_property = false
+duration = 1.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(0, 0, 0, 0)
+"From Color" = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_d74cx"]
+script = ExtResource("2_vfmg4")
+frames = Array[ExtResource("3_wab2t")]([SubResource("Resource_0aj7b")])
+
+[resource]
+script = ExtResource("1_5nxf1")
+tween_name = "Fade In"
+sequence = Array[ExtResource("2_vfmg4")]([SubResource("Resource_d74cx")])
