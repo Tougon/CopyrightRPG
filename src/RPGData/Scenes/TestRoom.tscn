@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=55 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -27,8 +27,12 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="24_tm1wa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="25_p4i8l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="26_goqi0"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="27_aqp1h"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="28_6btiu"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="28_mltki"]
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_63qe4"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="29_l7h75"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="30_t6yj7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
 texture = ExtResource("2_qntub")
@@ -621,12 +625,42 @@ interact_dialogue = "temp_quest_win"
 check_type = 0
 active_conditions = Array[ExtResource("22_g6foi")]([SubResource("Resource_5eyfh")])
 
+[sub_resource type="Resource" id="Resource_ol2e6"]
+script = ExtResource("30_t6yj7")
+target = ""
+property_name = "position"
+material_property = false
+duration = 2.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(-800, 0)
+
+[sub_resource type="Resource" id="Resource_c4mci"]
+script = ExtResource("29_l7h75")
+frames = Array[ExtResource("30_t6yj7")]([SubResource("Resource_ol2e6")])
+
+[sub_resource type="Resource" id="Resource_nhfo7"]
+script = ExtResource("28_mltki")
+tween_name = "slide"
+sequence = Array[ExtResource("29_l7h75")]([SubResource("Resource_c4mci")])
+
+[sub_resource type="Resource" id="Resource_jh7gi"]
+script = ExtResource("11_hflvv")
+tween_name = "slide"
+tween_resource = SubResource("Resource_nhfo7")
+play_on_start = false
+next_tween = ""
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xqlgo"]
 size = Vector2(1276, 720)
 
 [sub_resource type="Resource" id="Resource_6ugjw"]
 script = ExtResource("25_p4i8l")
-duration = 0.25
+duration = 0.0
 transition = 0
 ease = 2
 
@@ -696,28 +730,37 @@ default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
 object_id = "temp_quest_giver"
 
-[node name="CutsceneObject Test" type="Node2D" parent="."]
+[node name="CutsceneObject Test" type="Node2D" parent="." node_paths=PackedStringArray("tween_player")]
 position = Vector2(1085, 392)
 script = ExtResource("28_6btiu")
 object_id = "test_obj_1"
+tween_player = NodePath("TweenPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="CutsceneObject Test"]
 texture = ExtResource("29_63qe4")
+
+[node name="TweenPlayer" type="Node" parent="CutsceneObject Test"]
+script = ExtResource("27_aqp1h")
+sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_jh7gi")])
 
 [node name="-----" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(480, 360)
+process_callback = 0
 limit_left = 0
 limit_top = 0
-limit_right = 1276
+limit_right = 1280
 limit_bottom = 720
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("26_goqi0")
 
 [node name="Camera Limits" type="Area2D" parent="."]
+visible = false
 position = Vector2(480, 360)
 collision_layer = 4
 collision_mask = 4
@@ -737,7 +780,7 @@ follow_damping = true
 dead_zone_width = 0.1
 dead_zone_height = 0.1
 draw_limits = true
-limit_target = NodePath("../Camera Limits/CollisionShape2D")
+limit_target = NodePath("../TileMapWalls")
 
 [node name="Free PhantomCamera" type="Node2D" parent="."]
 position = Vector2(480, 360)
@@ -748,4 +791,4 @@ follow_damping = true
 dead_zone_width = 0.1
 dead_zone_height = 0.1
 draw_limits = true
-limit_target = NodePath("../Camera Limits/CollisionShape2D")
+limit_target = NodePath("../TileMapWalls")
