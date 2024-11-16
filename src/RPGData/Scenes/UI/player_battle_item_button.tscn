@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://be5mqb53supdl"]
+
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_1twg6"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_item_button.gd" id="2_rmpkp"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(295, 50)
+offset_right = 295.0
+offset_bottom = 60.0
+theme = ExtResource("1_1twg6")
+theme_override_font_sizes/font_size = 24
+text = "T_BATTLE_MAIN_UI_ATTACK"
+clip_text = true
+script = ExtResource("2_rmpkp")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

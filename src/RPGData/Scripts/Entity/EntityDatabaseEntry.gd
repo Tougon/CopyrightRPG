@@ -1,5 +1,6 @@
 extends Resource
 class_name EntityDatabaseEntry
 
-@export var entity : Entity;
+var entity : Entity;
+@export_file("*.tres") var entity_path: String;
 @export var playable : bool = false;

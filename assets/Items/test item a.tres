@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=4 format=3 uid="uid://pgrl2ap5uhne"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_hmsku"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/consumable_item.gd" id="2_366gw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_function.gd" id="2_bdopr"]
+
+[resource]
+script = ExtResource("2_366gw")
+on_use = Array[ExtResource("2_bdopr")]([])
+use_battle = true
+use_overworld = false
+item_name_key = "T_ITEM_NAME_TEMPA"
+item_description_key = ""
+item_flags = Array[ExtResource("1_hmsku")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

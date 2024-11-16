@@ -55,7 +55,6 @@ func _get_random_encounter() -> Encounter:
 	
 	var current = 0.0;
 	var random = randf();
-	print(random);
 	
 	for encounter in encounters:
 		if encounter != null:

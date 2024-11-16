@@ -5,6 +5,7 @@ var party_data : Array[PartyMemberData]
 
 var entity_database : EntityDatabase = preload("res://assets/Entities/entity_database.tres")
 var quest_database : QuestDatabase = preload("res://assets/Quests/quest_database.tres")
+var item_database : ItemDatabase = preload("res://assets/Items/item_database.tres")
 
 signal on_data_loaded();
 
@@ -16,6 +17,25 @@ func _ready():
 	
 	if entity_database == null : print("Entity Database does not exist.");
 	if quest_database == null : print("Quest Database does not exist.");
+	if item_database == null : print("Item Database does not exist.");
+	
+	for entry_id in entity_database.entries.size() :
+		var entry = entity_database.entries[entry_id];
+		
+		if entry.entity_path != null :
+			if ResourceLoader.exists(entry.entity_path, "Entity"):
+				entry.entity = ResourceLoader.load(entry.entity_path, "Entity") as Entity;
+			else:
+				print("WARNING: Entity path at index " + str(entry_id) + " is invalid!");
+	
+	for item_id in item_database.entries.size() :
+		var entry = item_database.entries[item_id];
+		
+		if entry.item_path != null :
+			if ResourceLoader.exists(entry.item_path, "Item"):
+				entry.item = ResourceLoader.load(entry.item_path, "Item") as Item;
+			else:
+				print("WARNING: Entity path at index " + str(item_id) + " is invalid!");
 	
 	# TODO: Better initialization for player
 	for i in GameplayConstants.MAX_PARTY_SIZE:

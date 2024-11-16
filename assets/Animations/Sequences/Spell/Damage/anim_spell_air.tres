@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=34 format=3 uid="uid://m7uxb0m8my0u"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=40 format=3 uid="uid://m7uxb0m8my0u"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_temx2"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="3_h25ff"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_m5g6q"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_bf6p6"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="6_jaknt"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_asdka"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="8_o2qxv"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="8_y0kxa"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="9_ht6wg"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="10_632ef"]
@@ -69,6 +71,15 @@ frame = 65
 frame_order = 2
 action = SubResource("Resource_drvv4")
 
+[sub_resource type="Resource" id="Resource_7cp4h"]
+script = ExtResource("6_jaknt")
+
+[sub_resource type="Resource" id="Resource_umf6t"]
+script = ExtResource("3_m5g6q")
+frame = 65
+frame_order = 3
+action = SubResource("Resource_7cp4h")
+
 [sub_resource type="Resource" id="Resource_8fagv"]
 script = ExtResource("8_asdka")
 target = 1
@@ -77,8 +88,17 @@ ui_type = 0
 [sub_resource type="Resource" id="Resource_o00ip"]
 script = ExtResource("3_m5g6q")
 frame = 65
-frame_order = 3
+frame_order = 5
 action = SubResource("Resource_8fagv")
+
+[sub_resource type="Resource" id="Resource_sgrrp"]
+script = ExtResource("8_o2qxv")
+
+[sub_resource type="Resource" id="Resource_02trx"]
+script = ExtResource("3_m5g6q")
+frame = 65
+frame_order = 7
+action = SubResource("Resource_sgrrp")
 
 [sub_resource type="Resource" id="Resource_sdndn"]
 script = ExtResource("8_y0kxa")
@@ -189,4 +209,4 @@ action = SubResource("Resource_00ldt")
 script = ExtResource("11_fu44g")
 animation_name = "Air"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_m5g6q")]([SubResource("Resource_v3imt"), SubResource("Resource_64ijk"), SubResource("Resource_acntq"), SubResource("Resource_v7itg"), SubResource("Resource_o00ip"), SubResource("Resource_8wrl0"), SubResource("Resource_1yuiq"), SubResource("Resource_0tkgk"), SubResource("Resource_6qxxg"), SubResource("Resource_vyigm")])
+animation_sequence = Array[ExtResource("3_m5g6q")]([SubResource("Resource_v3imt"), SubResource("Resource_64ijk"), SubResource("Resource_acntq"), SubResource("Resource_v7itg"), SubResource("Resource_umf6t"), SubResource("Resource_o00ip"), SubResource("Resource_02trx"), SubResource("Resource_8wrl0"), SubResource("Resource_1yuiq"), SubResource("Resource_0tkgk"), SubResource("Resource_6qxxg"), SubResource("Resource_vyigm")])

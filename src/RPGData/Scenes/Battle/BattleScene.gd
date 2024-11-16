@@ -28,6 +28,7 @@ func _ready():
 	EventManager.on_magic_select.connect(_on_magic_select);
 	EventManager.on_action_selected.connect(_on_action_selected);
 	EventManager.on_defend_select.connect(_on_defend_select);
+	EventManager.on_item_select.connect(_on_item_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
 	
@@ -513,6 +514,11 @@ func _on_defend_select():
 	players[current_player_index].is_ready = true;
 
 
+func _on_item_select():
+	EventManager.initialize_item_menu.emit(players[current_player_index]);
+	UIManager.open_menu_name("player_battle_item");
+
+
 func _on_player_menu_cancel():
 	if current_player_index > 0:
 		current_player_index -= 1;
@@ -609,6 +615,7 @@ func _on_destroy():
 		EventManager.on_magic_select.disconnect(_on_magic_select);
 		EventManager.on_action_selected.disconnect(_on_action_selected);
 		EventManager.on_defend_select.disconnect(_on_defend_select);
+		EventManager.on_item_select.disconnect(_on_item_select);
 		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
 	

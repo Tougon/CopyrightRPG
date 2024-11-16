@@ -11,6 +11,8 @@ class_name EntityController
 @onready var entity_ui : EntityControllerUI = $"Entity Info Battle";
 
 var move_list : Array[Spell];
+# Dictionary of Item, int that determines quantity of items
+var item_list : Dictionary;
 var param : EntityParams;
 var current_action : Spell;
 var prev_action : Spell;
@@ -146,6 +148,7 @@ func entity_init(params : BattleParams):
 		current_mp = max_mp;
 		
 		create_move_list();
+		create_item_list();
 		
 		# Load sprites
 		param.entity_sprites = [];
@@ -195,10 +198,20 @@ func _on_battle_end(result : BattleResult):
 func create_move_list():
 	move_list.clear();
 	
-	if current_entity != null && current_entity.move_list != null:
-		for move in current_entity.move_list.list:
-			if move != null && move.level <= level:
-				move_list.append(move.spell);
+	if current_entity != null:
+		if current_entity.move_list != null:
+			for move in current_entity.move_list.list:
+				if move != null && move.level <= level:
+					move_list.append(move.spell);
+		else :
+			print(current_entity.name_key + " has no move list!")
+
+
+func create_item_list():
+	item_list.clear();
+	# IMPORTANT
+	# Very Much Temp Code, please remove when items are fully supported
+	item_list[DataManager.item_database.get_item(0)] = 2;
 
 
 # Gameplay Functions

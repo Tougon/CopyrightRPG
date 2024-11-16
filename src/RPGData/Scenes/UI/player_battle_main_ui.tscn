@@ -95,19 +95,49 @@ text = "T_BATTLE_MAIN_UI_DEFEND"
 clip_text = true
 
 [node name="Padding4" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="6"]
+custom_minimum_size = Vector2(19, 0)
+layout_mode = 2
+
+[node name="Item" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="7"]
+custom_minimum_size = Vector2(281, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+text = "T_BATTLE_MAIN_UI_ITEM"
+clip_text = true
+
+[node name="Padding5" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="8"]
 visible = false
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
-[node name="Button4" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="7"]
+[node name="Item2" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="9"]
 visible = false
 custom_minimum_size = Vector2(281, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
-text = "Attack"
+text = "T_BATTLE_MAIN_UI_DEFEND"
+clip_text = true
+
+[node name="Padding6" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="10"]
+visible = false
+custom_minimum_size = Vector2(19, 0)
+layout_mode = 2
+
+[node name="Item3" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="11"]
+visible = false
+custom_minimum_size = Vector2(281, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+text = "T_BATTLE_MAIN_UI_DEFEND"
+clip_text = true
 
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Attack" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Magic" to="." method="_on_magic_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Defend" to="." method="_on_defend_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Item" to="." method="_on_item_button_pressed"]

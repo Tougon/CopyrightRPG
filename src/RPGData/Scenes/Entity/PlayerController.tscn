@@ -8,6 +8,7 @@
 
 [node name="EntityBase" instance=ExtResource("1_it6kr")]
 script = ExtResource("2_6enct")
+player_id = 0
 attack_action = ExtResource("3_8bhdk")
 defend_action = ExtResource("4_su36j")
 seal_effect = ExtResource("5_yqsgs")

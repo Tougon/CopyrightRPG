@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/SometypeMono-SemiBold.ttf-2d4b0f4cb59b140b423
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
