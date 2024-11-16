@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=57 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -10,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/overworld_main_menu.tscn" id="5_wk541"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="5_yfalh"]
 [ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="6_1u0pu"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="6_yjk5t"]
-[ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="7_6bnft"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="7_m4t6q"]
 [ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="8_bnvh2"]
 [ext_resource type="PackedScene" uid="uid://vevt3q612r55" path="res://src/RPGData/Scenes/Overworld/Interaction/TangibleInteractable.tscn" id="8_scqk0"]
@@ -553,12 +551,12 @@ sources/2 = SubResource("TileSetAtlasSource_haj4c")
 
 [sub_resource type="Resource" id="Resource_1tfly"]
 script = ExtResource("5_utklg")
-enemies = Array[ExtResource("6_yjk5t")]([ExtResource("7_6bnft")])
+enemy_ids = Array[int]([4])
 odds = 0.99
 
 [sub_resource type="Resource" id="Resource_s1unj"]
 script = ExtResource("5_utklg")
-enemies = Array[ExtResource("6_yjk5t")]([ExtResource("7_6bnft"), ExtResource("7_6bnft")])
+enemy_ids = Array[int]([4, 4])
 odds = 0.01
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]

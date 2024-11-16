@@ -76,8 +76,11 @@ func _on_overworld_battle_queued(encounter : Encounter):
 		else : params.players.append(null);
 	
 	# Initialize enemy data
-	for enemy in encounter.enemies:
-		params.enemies.append(enemy);
+	for enemy_id in encounter.enemy_ids:
+		var enemy = DataManager.entity_database.get_entity(enemy_id);
+		
+		if enemy != null:
+			params.enemies.append(enemy);
 	
 	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		battle_scene_window.visible = true;

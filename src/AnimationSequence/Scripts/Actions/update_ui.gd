@@ -13,5 +13,8 @@ func execute(sequence : AnimationSequence):
 	elif target == Target.TARGET:
 		entity = sequence.target[sequence.target_index];
 	
+	if entity == null : return;
+	
 	if ui_type == UIType.HP:
-		entity.update_hp_ui();
+		if entity.last_hit:
+			entity.update_hp_ui();

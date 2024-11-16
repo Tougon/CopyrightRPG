@@ -18,5 +18,7 @@ func execute(sequence : AnimationSequence):
 	var crit = sequence.spell_cast[index].get_current_hit_critical();
 	var hit = sequence.spell_cast[index].get_current_hit_success();
 	
+	sequence.target[sequence.target_index].last_hit = 0;
+	
 	sequence.target[sequence.target_index].apply_damage(dmg, crit, vibrate, hit, damage_time, damage_delay, shake_duration, shake_decay, force_dodge);
 	sequence.spell_cast[index].increment_hit();

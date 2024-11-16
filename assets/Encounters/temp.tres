@@ -1,10 +1,8 @@
-[gd_resource type="Resource" script_class="Encounter" load_steps=4 format=3 uid="uid://bu1frt4houra0"]
+[gd_resource type="Resource" script_class="Encounter" load_steps=2 format=3 uid="uid://bu1frt4houra0"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="1_fwwm3"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="2_17jkg"]
-[ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="2_ch8yv"]
 
 [resource]
 script = ExtResource("2_17jkg")
-enemies = Array[ExtResource("1_fwwm3")]([ExtResource("2_ch8yv"), ExtResource("2_ch8yv"), ExtResource("2_ch8yv")])
+enemy_ids = Array[int]([4, 4])
 odds = 1.0
