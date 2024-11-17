@@ -32,6 +32,7 @@ func _enter_tree():
 
 func _set_active_entity(entity : EntityController):
 	current_entity = entity;
+	current_entity.current_item = null;
 
 
 func _initialize_item_menu(entity : EntityController):
@@ -100,6 +101,8 @@ func _get_bottom_row_start_index(size : int) -> int:
 
 
 func on_menu_cancel():
+	current_entity.current_item = null;
+	
 	UIManager.open_menu_name("player_battle_main");
 	super.on_menu_cancel();
 

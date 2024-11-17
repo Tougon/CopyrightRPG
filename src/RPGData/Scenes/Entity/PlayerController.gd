@@ -38,3 +38,10 @@ func entity_init(params : BattleParams):
 	
 	await get_tree().create_timer(1.0).timeout
 	#TweenExtensions.shake_position_2d($Sprite2D, 0.28, 35, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+
+
+func execute_turn_start_effects():
+	super.execute_turn_start_effects();
+	
+	if current_item != null : add_item(current_item);
+	print("putting item back:")

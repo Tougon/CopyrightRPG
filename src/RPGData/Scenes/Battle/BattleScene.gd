@@ -127,6 +127,8 @@ func _decision_phase():
 		await get_tree().process_frame;
 		
 		if players[current_player_index].is_ready:
+			if players[current_player_index].current_item != null:
+				players[current_player_index].subtract_item(players[current_player_index].current_item);
 			current_player_index += 1;
 			UIManager.close_menu_name("player_battle_target")
 			
@@ -228,7 +230,7 @@ func _action_phase():
 					post_anim_dialogue.append(hit_result);
 			
 			# Get damage messages based on cast result
-			if entity.current_action is DamageSpell && !BattleManager.async_damage_text : 
+			if entity.current_action is DamageSpell && entity.current_action.spell_type != Spell.SpellType.Flavor && !BattleManager.async_damage_text : 
 				if entity.current_action.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
 					_get_spell_hit_messages_rand(entity, spell_cast, spell, post_anim_dialogue);
 				else :
@@ -524,6 +526,11 @@ func _on_player_menu_cancel():
 		current_player_index -= 1;
 		players[current_player_index].is_ready = false;
 		players[current_player_index].sealing = false;
+		
+		if players[current_player_index].current_item != null :
+			players[current_player_index].add_item(players[current_player_index].current_item);
+			players[current_player_index].current_item = null;
+		
 		EventManager.set_active_player.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
 

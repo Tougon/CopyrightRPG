@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=17 format=3 uid="uid://b0k07wbgbdkf5"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_oxiby"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_bya6v"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="3_dqqxb"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_a718m"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/consume_item.gd" id="5_mmxcn"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="9_g30h1"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="10_rdg1m"]
+
+[sub_resource type="Resource" id="Resource_rhl5j"]
+script = ExtResource("2_bya6v")
+effect_scene_path = "res://assets/VFX/Generic/effect_particle_attack_boost_generic.tscn"
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -40)
+effect_layer = 2
+effect_rotation = 0.0
+effect_scale = Vector2(0.8, 0.8)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = true
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ufi1u"]
+script = ExtResource("1_oxiby")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_rhl5j")
+
+[sub_resource type="Resource" id="Resource_u3eqk"]
+script = ExtResource("4_a718m")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.75
+delay = 0.0
+transition = 0
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, -90)
+
+[sub_resource type="Resource" id="Resource_oory5"]
+script = ExtResource("3_dqqxb")
+use_directionality = false
+target = 2
+effect_index = 0
+tween = SubResource("Resource_u3eqk")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_xkyrv"]
+script = ExtResource("1_oxiby")
+frame = 30
+frame_order = 0
+action = SubResource("Resource_oory5")
+
+[sub_resource type="Resource" id="Resource_1etwd"]
+script = ExtResource("5_mmxcn")
+
+[sub_resource type="Resource" id="Resource_ik65d"]
+script = ExtResource("1_oxiby")
+frame = 90
+frame_order = 0
+action = SubResource("Resource_1etwd")
+
+[sub_resource type="Resource" id="Resource_jim8f"]
+script = ExtResource("9_g30h1")
+
+[sub_resource type="Resource" id="Resource_o1j1i"]
+script = ExtResource("1_oxiby")
+frame = 140
+frame_order = 0
+action = SubResource("Resource_jim8f")
+
+[resource]
+script = ExtResource("10_rdg1m")
+animation_name = "Item Heal"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_oxiby")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_o1j1i")])

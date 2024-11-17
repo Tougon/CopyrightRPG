@@ -16,6 +16,7 @@ var item_list : Dictionary;
 var param : EntityParams;
 var current_action : Spell;
 var prev_action : Spell;
+var current_item : Item;
 var sealing : bool;
 var current_target : Array[EntityController];
 var current_behavior : EntityBehaviorObject;
@@ -280,6 +281,30 @@ func set_target(trigger : EntityController = null):
 			current_target = [self];
 		_:
 			current_target = available;
+
+
+# Item Functions
+func consume_item(item : Item = null):
+	if item == null : item = current_item;
+	if item == null : return;
+	
+	subtract_item(item)
+	if item_list.has(item) && item_list[item] <= 0 : item_list.erase(item);
+
+
+func add_item(item : Item):
+	if item == null : return;
+	
+	if item_list.has(item) : item_list[item] += 1;
+	else : item_list[item] = 1;
+	print(item_list[item])
+
+
+func subtract_item(item : Item):
+	if item == null || !item_list.has(item) : return;
+	
+	item_list[current_item] -= 1;
+	print(item_list[item])
 
 
 # HP and MP modification
