@@ -27,9 +27,9 @@ func _ready():
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	if !_can_move || _in_dialogue : return;
-	
+	print("FPS " + str(Engine.get_frames_per_second()))
 	# Handle pause input
 	if Input.is_action_just_pressed("pause"):
 		UIManager.open_menu_name("overworld_menu_main");

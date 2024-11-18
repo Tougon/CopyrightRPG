@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://db2kardnnx3w3"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/interactable.gd" id="1_e78w4"]
-[ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="2_l0xw3"]
+[ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_3ltti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmrkh"]
 size = Vector2(100, 100)
@@ -10,7 +10,7 @@ size = Vector2(100, 100)
 script = ExtResource("1_e78w4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_l0xw3")
+texture = ExtResource("2_3ltti")
 
 [node name="Collider" type="Area2D" parent="."]
 collision_layer = 3

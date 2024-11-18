@@ -15,6 +15,8 @@ recent_projects=["res://assets/Quests/temp.quest"]
 config/name="Copyright RPG"
 run/main_scene="res://src/RPGData/Scenes/TestRoom.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
+run/max_fps=60
+run/delta_smoothing=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -208,10 +210,12 @@ locale/translations=PackedStringArray("res://assets/Localization/TextDatabase.en
 2d_physics/layer_2="Interaction"
 2d_physics/layer_3="Camera"
 
+[phantom_camera]
+
+tips/show_jitter_tips=false
+
 [physics]
 
+common/physics_ticks_per_second=30
+common/physics_jitter_fix=0.0
 common/physics_interpolation=true
-
-[rendering]
-
-renderer/rendering_method="mobile"
