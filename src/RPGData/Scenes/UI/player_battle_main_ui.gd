@@ -36,9 +36,13 @@ func on_focus():
 				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Defend";
 			PlayerController.ActionType.SPELL:
 				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Magic";
+			PlayerController.ActionType.ITEM:
+				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Item";
 				
 	else:
 		initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
+	
+	$"BG Area/Player Options/ScrollContainer".ensure_control_visible(initial_selection);
 
 
 func _on_attack_button_pressed():

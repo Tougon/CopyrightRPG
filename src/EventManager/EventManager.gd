@@ -42,6 +42,8 @@ signal on_action_selected(action : Spell, sealing : bool);
 signal highlight_target(entity : EntityController, all : bool);
 signal click_target(entity : EntityController);
 
+signal on_player_items_changed(items : Dictionary);
+
 signal on_entity_move(entity : EntityController);
 
 signal on_entity_defeated(entity : EntityController);

@@ -10,6 +10,12 @@ enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 var prev_action_type : ActionType;
 
 
+func _ready():
+	super._ready();
+	
+	EventManager.on_player_items_changed.connect(_on_player_items_changed);
+
+
 func entity_init(params : BattleParams):
 	var hp_mod = 0;
 	var mp_mod = 0;
@@ -44,4 +50,38 @@ func execute_turn_start_effects():
 	super.execute_turn_start_effects();
 	
 	if current_item != null : add_item(current_item);
-	print("putting item back:")
+
+
+func create_item_list():
+	if player_id == 0 :
+		super.create_item_list();
+		
+		# TODO: Fetch player items from inventory, P1 only
+		EventManager.on_player_items_changed.emit(item_list);
+
+
+# Item Functions
+func consume_item(item : Item = null):
+	super.consume_item(item);
+	EventManager.on_player_items_changed.emit(item_list);
+
+
+func add_item(item : Item):
+	super.add_item(item);
+	EventManager.on_player_items_changed.emit(item_list);
+
+
+func subtract_item(item : Item):
+	super.subtract_item(item);
+	EventManager.on_player_items_changed.emit(item_list);
+
+
+func _on_player_items_changed(items : Dictionary):
+	item_list = items;
+
+
+func _on_destroy():
+	super._on_destroy();
+	
+	if EventManager != null:
+		EventManager.on_player_items_changed.connect(_on_player_items_changed);

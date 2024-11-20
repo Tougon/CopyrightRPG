@@ -504,7 +504,12 @@ func _on_magic_select():
 func _on_action_selected(action : Spell, sealing : bool):
 	players[current_player_index].current_action = action;
 	players[current_player_index].sealing = sealing;
-	players[current_player_index].prev_action_type = PlayerController.ActionType.SPELL;
+	
+	if players[current_player_index].current_item != null :
+		players[current_player_index].prev_action_type = PlayerController.ActionType.ITEM;
+	else:
+		players[current_player_index].prev_action_type = PlayerController.ActionType.SPELL;
+	
 	EventManager.initialize_target_menu.emit(players[current_player_index]);
 	UIManager.open_menu_name("player_battle_target");
 

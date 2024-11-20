@@ -519,8 +519,9 @@ func get_possible_targets(spell : Spell = null) -> Array[EntityController]:
 				if !ally.is_defeated && !ally == self:
 					result.append(ally);
 		Spell.SpellTarget.SingleParty:
+			result.append(self);
 			for ally in allies:
-				if !ally.is_defeated:
+				if !ally.is_defeated && !ally == self:
 					result.append(ally);
 		Spell.SpellTarget.AllParty:
 			for ally in allies:

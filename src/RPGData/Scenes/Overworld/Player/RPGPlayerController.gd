@@ -11,6 +11,7 @@ var direction_facing : Vector2 = Vector2(0, 1);
 
 var _movement_bounds : float = 0.5;
 var _prev_direction : Vector2;
+var _process : bool = true;
 var _can_move : bool = true;
 var _in_dialogue : bool = false;
 
@@ -28,8 +29,8 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if !_can_move || _in_dialogue : return;
-	print("FPS " + str(Engine.get_frames_per_second()))
+	if !_can_move || _in_dialogue || !_process : return;
+	
 	# Handle pause input
 	if Input.is_action_just_pressed("pause"):
 		UIManager.open_menu_name("overworld_menu_main");
@@ -107,14 +108,18 @@ func skid(initial : Vector2, final : Vector2):
 
 
 func _on_overworld_battle_queued(encounter : Encounter):
+	_process = false;
 	set_process(false);
 
 
 func _on_overworld_battle_dequeued():
+	_process = true;
 	set_process(true);
 
 
 func _on_menu_opened(menu : MenuPanel):
+	velocity = Vector2.ZERO;
+	_process = false;
 	set_process(false);
 
 
@@ -130,6 +135,7 @@ func _on_all_menus_closed():
 	if BattleManager.is_battle_active == false:
 		await get_tree().process_frame;
 		await get_tree().process_frame;
+		_process = true
 		set_process(true);
 
 

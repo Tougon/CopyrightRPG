@@ -13,7 +13,10 @@ func init_button(_item : Item, _action : Spell, _entity : EntityController):
 	entity = _entity;
 	text = action.spell_name_key;
 	if _entity.item_list.has(_item) : 
-		quantity_label.text = "x" + str(_entity.item_list[_item]);
+		var amt = _entity.item_list[_item];
+		quantity_label.text = "x" + str(amt);
+		disabled = amt <= 0;
+	
 	theme_type_variation = "Button";
 
 
