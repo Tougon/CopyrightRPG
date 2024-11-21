@@ -212,7 +212,7 @@ func create_item_list():
 	item_list.clear();
 	# IMPORTANT
 	# Very Much Temp Code, please remove when items are fully supported
-	item_list[DataManager.item_database.get_item(0)] = 0;
+	item_list[DataManager.item_database.get_item(0)] = 2;
 
 
 # Gameplay Functions

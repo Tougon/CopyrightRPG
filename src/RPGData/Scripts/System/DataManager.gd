@@ -40,7 +40,7 @@ func _ready():
 	# TODO: Better initialization for player
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		var member = PartyMemberData.new();
-		member.id = 0;
+		member.id = i;
 		member.level = 30;
 		member.exp = 0;
 		member.unlocked = i < 3;
