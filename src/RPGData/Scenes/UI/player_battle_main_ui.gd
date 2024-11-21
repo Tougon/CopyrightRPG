@@ -37,11 +37,13 @@ func on_focus():
 			PlayerController.ActionType.SPELL:
 				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Magic";
 			PlayerController.ActionType.ITEM:
-				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Item";
-				
+				if current_entity.has_any_items:
+					initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Item";
+		
 	else:
 		initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
 	
+	$"BG Area/Player Options/ScrollContainer/GridContainer/Item".disabled = !current_entity.has_any_items();
 	$"BG Area/Player Options/ScrollContainer".ensure_control_visible(initial_selection);
 
 

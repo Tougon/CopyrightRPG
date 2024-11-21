@@ -212,7 +212,7 @@ func create_item_list():
 	item_list.clear();
 	# IMPORTANT
 	# Very Much Temp Code, please remove when items are fully supported
-	item_list[DataManager.item_database.get_item(0)] = 2;
+	item_list[DataManager.item_database.get_item(0)] = 0;
 
 
 # Gameplay Functions
@@ -305,6 +305,14 @@ func subtract_item(item : Item):
 	
 	item_list[current_item] -= 1;
 	print(item_list[item])
+
+
+func has_any_items() -> bool:
+	for key in item_list.keys():
+		if item_list[key] > 0:
+			return true;
+	
+	return false;
 
 
 # HP and MP modification
