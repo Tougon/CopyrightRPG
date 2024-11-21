@@ -219,6 +219,18 @@ func _action_phase():
 		var play_animation : bool = true;
 		
 		for spell in spell_cast : 
+			# Emergency check for item based actions
+			if entity.current_item != null:
+				var item = entity.current_item;
+				
+				# If item is no longer in the list through another action, fail the spell
+				if !entity.item_list.has(item) || entity.item_list[item] <= 0:
+					spell.success = false;
+					play_animation = false;
+					
+					var item_fail_msg = _format_dialogue(tr("T_BATTLE_ACTION_ITEM_FAIL"), entity.param.entity_name, entity.current_entity);
+					post_anim_dialogue.append(item_fail_msg);
+			
 			if spell.success : 
 				any_cast_succeeded = true;
 			else :

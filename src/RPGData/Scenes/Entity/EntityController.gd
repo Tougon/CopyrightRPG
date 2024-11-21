@@ -297,14 +297,14 @@ func add_item(item : Item):
 	
 	if item_list.has(item) : item_list[item] += 1;
 	else : item_list[item] = 1;
-	print(item_list[item])
+	#print(item_list[item])
 
 
 func subtract_item(item : Item):
 	if item == null || !item_list.has(item) : return;
 	
 	item_list[current_item] -= 1;
-	print(item_list[item])
+	#print(item_list[item])
 
 
 func has_any_items() -> bool:
