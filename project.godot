@@ -16,7 +16,6 @@ config/name="Copyright RPG"
 run/main_scene="res://src/RPGData/Scenes/TestRoom.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
-run/delta_smoothing=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -216,6 +215,4 @@ tips/show_jitter_tips=false
 
 [physics]
 
-common/physics_ticks_per_second=30
-common/physics_jitter_fix=0.0
 common/physics_interpolation=true

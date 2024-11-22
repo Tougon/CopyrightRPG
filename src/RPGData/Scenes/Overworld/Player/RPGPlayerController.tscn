@@ -20,9 +20,11 @@ speed = 350.0
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+physics_interpolation_mode = 1
 texture = ExtResource("2_jq6bs")
 
 [node name="Direction Root" type="Sprite2D" parent="."]
+physics_interpolation_mode = 2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rngrh")
 

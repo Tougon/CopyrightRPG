@@ -22,10 +22,8 @@ func _ready():
 	_reset_encounter_variables(null);
 
 
-func _on_overworld_player_moved(direction : Vector2, amount : Vector2):
+func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float):
 	if !enabled  || !process_encounters: return;
-	
-	var delta = get_process_delta_time();
 	
 	if wait_time < grace_period : 
 		wait_time += delta;

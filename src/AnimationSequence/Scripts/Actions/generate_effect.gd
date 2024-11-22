@@ -78,6 +78,7 @@ func execute(sequence : AnimationSequence):
 	effect.scale = inst_scale;
 	
 	sequence.effects.append(effect);
+	effect.reset_physics_interpolation();
 
 
 func cooldown():

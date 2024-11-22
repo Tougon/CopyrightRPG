@@ -38,7 +38,7 @@ func _physics_process(_delta):
 	
 	# Handle movement
 	var direction = _get_movement_vector();
-	move(direction);
+	move(direction, _delta);
 	
 	# Debug
 	# TODO: Fix so that diagonals work properly. 1,1 is correct here ONLY
@@ -66,7 +66,7 @@ func _get_movement_vector() -> Vector2:
 	return direction;
 
 
-func move(direction : Vector2):
+func move(direction : Vector2, delta : float):
 	velocity = direction * speed;
 	if Input.is_action_pressed("run") : velocity *= run_multiplier;
 	var orig_pos = position;
@@ -76,7 +76,7 @@ func move(direction : Vector2):
 	var delta_pos = position - orig_pos;
 	
 	if delta_pos.length() > 0 && !_in_dialogue: 
-		EventManager.on_overworld_player_moved.emit(direction, velocity);
+		EventManager.on_overworld_player_moved.emit(direction, velocity, delta);
 	
 	if direction.length_squared() != 0:
 		direction_facing = direction;
@@ -96,11 +96,12 @@ func skid(initial : Vector2, final : Vector2):
 	var time = 0;
 	_can_move = false;
 	
+	# TODO: Fix this as it isn't using physics properly
 	while (time < skid_duration && skid_duration > 0 && !_in_dialogue):
 		await get_tree().process_frame;
 		velocity = lerp(orig_velocity, final, time / skid_duration);
 		move_and_slide();
-		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity);
+		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity, 0);
 		time += get_process_delta_time();
 	
 	_prev_direction = _get_movement_vector();
