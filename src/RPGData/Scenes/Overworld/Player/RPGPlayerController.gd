@@ -96,13 +96,12 @@ func skid(initial : Vector2, final : Vector2):
 	var time = 0;
 	_can_move = false;
 	
-	# TODO: Fix this as it isn't using physics properly
 	while (time < skid_duration && skid_duration > 0 && !_in_dialogue):
-		await get_tree().process_frame;
 		velocity = lerp(orig_velocity, final, time / skid_duration);
 		move_and_slide();
-		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity, 0);
-		time += get_process_delta_time();
+		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity, get_physics_process_delta_time());
+		time += get_physics_process_delta_time();
+		await get_tree().physics_frame;
 	
 	_prev_direction = _get_movement_vector();
 	_can_move = true;
