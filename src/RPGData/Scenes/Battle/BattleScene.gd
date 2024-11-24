@@ -17,6 +17,7 @@ var turn_number : int;
 var current_player_index : int;
 
 var defeated_enemies : Array[DefeatedEntity];
+var result_items : Dictionary;
 
 
 func _ready():
@@ -31,6 +32,7 @@ func _ready():
 	EventManager.on_item_select.connect(_on_item_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
+	EventManager.on_player_items_changed.connect(_on_player_items_changed);
 	
 	if begin_battle_on_ready : begin_battle(null);
 
@@ -45,6 +47,7 @@ func begin_battle(params : BattleParams):
 	players = [];
 	enemies = [];
 	defeated_enemies = [];
+	result_items.clear();
 	
 	EventManager.on_battle_begin.emit(params);
 	
@@ -131,6 +134,7 @@ func _decision_phase():
 				players[current_player_index].subtract_item(players[current_player_index].current_item);
 			current_player_index += 1;
 			UIManager.close_menu_name("player_battle_target")
+			await get_tree().process_frame;
 			
 			if current_player_index < players.size():
 				EventManager.set_active_player.emit(players[current_player_index]);
@@ -451,6 +455,8 @@ func _end_phase():
 				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
 				reward.players.append(result_player);
 			
+			reward.item = result_items;
+			
 			EventManager.on_battle_completed.emit(reward); 
 			return;
 		_begin_turn();
@@ -631,6 +637,14 @@ func _compare_speed(a : EntityController, b : EntityController):
 	return EntityController.compare_speed(a, b);
 
 
+func _on_player_items_changed(items : Dictionary, delta : Item):
+	for item in items.keys():
+		result_items[item] = items[item];
+	
+	if !items.has(delta) && !result_items.has(delta):
+		result_items[delta] = 0;
+
+
 func _on_destroy():
 	if EventManager != null:
 		EventManager.register_player.disconnect(_on_player_register);
@@ -642,6 +656,7 @@ func _on_destroy():
 		EventManager.on_item_select.disconnect(_on_item_select);
 		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
+		EventManager.on_player_items_changed.disconnect(_on_player_items_changed);
 	
 	if Instance == self:
 		Instance = null;

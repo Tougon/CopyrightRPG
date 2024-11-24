@@ -57,26 +57,26 @@ func create_item_list():
 		super.create_item_list();
 		
 		# TODO: Fetch player items from inventory, P1 only
-		EventManager.on_player_items_changed.emit(item_list);
+		EventManager.on_player_items_changed.emit(item_list, null);
 
 
 # Item Functions
 func consume_item(item : Item = null):
 	super.consume_item(item);
-	EventManager.on_player_items_changed.emit(item_list);
+	EventManager.on_player_items_changed.emit(item_list, item);
 
 
 func add_item(item : Item):
 	super.add_item(item);
-	EventManager.on_player_items_changed.emit(item_list);
+	EventManager.on_player_items_changed.emit(item_list, item);
 
 
 func subtract_item(item : Item):
 	super.subtract_item(item);
-	EventManager.on_player_items_changed.emit(item_list);
+	EventManager.on_player_items_changed.emit(item_list, item);
 
 
-func _on_player_items_changed(items : Dictionary):
+func _on_player_items_changed(items : Dictionary, delta : Item):
 	item_list = items;
 
 

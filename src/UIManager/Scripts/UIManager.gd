@@ -69,9 +69,9 @@ func close_all_menus():
 func close_menu(menu : MenuPanel):
 	var index = active_menus.find(menu);
 	
-	# Remove menu if it is in the list
 	if index > -1:
 		active_menus.remove_at(index);
+	else : return;
 	
 	on_menu_closed.emit(menu);
 	

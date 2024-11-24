@@ -11,10 +11,13 @@ var direction_facing : Vector2 = Vector2(0, 1);
 
 var _movement_bounds : float = 0.5;
 var _prev_direction : Vector2;
-var _process : bool = true;
+var _will_process : bool = true;
 var _can_move : bool = true;
 var _in_dialogue : bool = false;
 
+@onready var _player_visual: Node2D = $Sprite2D
+var _physics_body_trans_last: Transform2D
+var _physics_body_trans_current: Transform2D
 #TODO: Modify how the sprites work entirely.
 
 func _ready():
@@ -28,8 +31,18 @@ func _ready():
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 
 
+func _process(_delta: float) -> void:	
+	_player_visual.global_position = _physics_body_trans_last.interpolate_with(
+		_physics_body_trans_current,
+		Engine.get_physics_interpolation_fraction()
+	).origin
+	
+
 func _physics_process(_delta):
-	if !_can_move || _in_dialogue || !_process : return;
+	_physics_body_trans_last = _physics_body_trans_current
+	_physics_body_trans_current = global_transform
+	
+	if !_can_move || _in_dialogue || !_will_process : return;
 	
 	# Handle pause input
 	if Input.is_action_just_pressed("pause"):
@@ -108,18 +121,18 @@ func skid(initial : Vector2, final : Vector2):
 
 
 func _on_overworld_battle_queued(encounter : Encounter):
-	_process = false;
+	_will_process = false;
 	set_process(false);
 
 
 func _on_overworld_battle_dequeued():
-	_process = true;
+	_will_process = true;
 	set_process(true);
 
 
 func _on_menu_opened(menu : MenuPanel):
 	velocity = Vector2.ZERO;
-	_process = false;
+	_will_process = false;
 	set_process(false);
 
 
@@ -135,7 +148,7 @@ func _on_all_menus_closed():
 	if BattleManager.is_battle_active == false:
 		await get_tree().process_frame;
 		await get_tree().process_frame;
-		_process = true
+		_will_process = true
 		set_process(true);
 
 
