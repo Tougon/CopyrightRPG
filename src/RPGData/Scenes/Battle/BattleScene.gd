@@ -134,10 +134,10 @@ func _decision_phase():
 				players[current_player_index].subtract_item(players[current_player_index].current_item);
 			current_player_index += 1;
 			UIManager.close_menu_name("player_battle_target")
-			await get_tree().process_frame;
 			
 			if current_player_index < players.size():
 				EventManager.set_active_player.emit(players[current_player_index]);
+				await get_tree().process_frame;
 				UIManager.open_menu_name("player_battle_main");
 	
 	# Perhaps you'll want to remove the dialogue here instead of awaiting?

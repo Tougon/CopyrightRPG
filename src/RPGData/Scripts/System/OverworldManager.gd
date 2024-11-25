@@ -9,3 +9,10 @@ var free_camera : PhantomCamera2D;
 # Called when the node enters the scene tree for the first time.
 func _ready() :
 	pass
+
+
+func get_player_screen_position() -> Vector2:
+	var screen = get_viewport().get_visible_rect().size;
+	var origin = Vector2(player_controller.get_screen_transform().origin.x / screen.x, player_controller.get_screen_transform().origin.y / screen.y)
+	
+	return origin;

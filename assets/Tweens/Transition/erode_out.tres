@@ -9,14 +9,14 @@ script = ExtResource("3_tkmnj")
 target = "Erode"
 property_name = "shader_parameter/uv_amount"
 material_property = true
-duration = 2.2
+duration = 1.5
 delay = 0.0
 transition = 4
 ease = 0
 relative = false
 "Use From" = true
 "Value Type" = 1
-"Float Value" = 7.0
+"Float Value" = 2.0
 "From Float" = 0.0
 
 [sub_resource type="Resource" id="Resource_04ogw"]

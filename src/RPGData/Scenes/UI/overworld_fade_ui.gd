@@ -11,6 +11,10 @@ func _ready():
 
 
 func _fade_action_battle(fade_in : bool):
+	var origin = OverworldManager.get_player_screen_position();
+	print(origin)
+	$Erode.material.set_shader_parameter("origin", origin);
+	
 	if fade_sequence != null:
 		if fade_in:
 			fade_sequence.play_tween_name("Battle Fade In");

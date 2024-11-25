@@ -122,18 +122,18 @@ func skid(initial : Vector2, final : Vector2):
 
 func _on_overworld_battle_queued(encounter : Encounter):
 	_will_process = false;
-	set_process(false);
+	#set_process(false);
 
 
 func _on_overworld_battle_dequeued():
 	_will_process = true;
-	set_process(true);
+	#set_process(true);
 
 
 func _on_menu_opened(menu : MenuPanel):
 	velocity = Vector2.ZERO;
 	_will_process = false;
-	set_process(false);
+	#set_process(false);
 
 
 func _on_dialogue_begin():
@@ -149,7 +149,7 @@ func _on_all_menus_closed():
 		await get_tree().process_frame;
 		await get_tree().process_frame;
 		_will_process = true
-		set_process(true);
+		#set_process(true);
 
 
 func _exit_tree():

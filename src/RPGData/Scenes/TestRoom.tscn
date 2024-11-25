@@ -569,12 +569,15 @@ shader_parameter/focus_edge = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8r6xq"]
 shader = ExtResource("9_68vxx")
-shader_parameter/noise_strength = 25.0
+shader_parameter/noise_size = 1.0
+shader_parameter/noise_strength = 0.5
+shader_parameter/noise_magnitude = Vector2(1, 0.333)
 shader_parameter/noise_floor = 0.01
 shader_parameter/use_time = true
-shader_parameter/uv_offset = Vector2(1, 0.333)
+shader_parameter/aspect_ratio = Vector2(1, 1.333)
 shader_parameter/uv_amount = 0.0
 shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/origin = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_1vddh"]
 script = ExtResource("11_hflvv")
@@ -704,7 +707,6 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
 layer = 5
-visible = false
 script = ExtResource("5_yfalh")
 fade_sequence = NodePath("TweenPlayerUI")
 
