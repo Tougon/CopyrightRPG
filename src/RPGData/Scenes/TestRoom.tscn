@@ -707,6 +707,7 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
 layer = 5
+visible = false
 script = ExtResource("5_yfalh")
 fade_sequence = NodePath("TweenPlayerUI")
 
@@ -722,6 +723,7 @@ material = SubResource("ShaderMaterial_8r6xq")
 material = SubResource("ShaderMaterial_8r6xq")
 
 [node name="Fade" type="ColorRect" parent="UI/BG Fade Canvas"]
+visible = false
 z_index = 50
 anchors_preset = 15
 anchor_right = 1.0

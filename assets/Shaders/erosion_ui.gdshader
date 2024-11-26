@@ -1,29 +1,57 @@
 shader_type canvas_item;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear;
-
-uniform float noise_strength = 50.0;
-uniform float noise_floor : hint_range(0, 1) = 0.01;
+uniform float noise_size = 1.0;
+uniform float noise_strength = 1.0;
+uniform vec2 noise_magnitude = vec2(1, 0.333);
 uniform bool use_time = true;
-uniform vec2 uv_offset = vec2(0,0);
+uniform vec2 aspect_ratio = vec2(1,1.333);
 uniform float uv_amount = 0;
-uniform vec4 bg_color : source_color = vec4(1,1,1,1);
+uniform float taper_amount : hint_range(0, 1) = 0;
+uniform vec2 origin = vec2(0.5,0.5);
+uniform bool use_color = true;
+
+
+float random(vec2 uv) {
+	return fract(sin(dot(uv, vec2(12.9898,78.233))) * 43758.5453123);
+}
+
 
 void fragment() {
+	// Map the location of the iris effect
+	vec2 clamp_origin = vec2(clamp(origin.x, 0.0, 1.0), clamp(origin.y, 0.0, 1.0));
+	vec2 inv_origin = vec2(1.0 - clamp_origin.x, 1.0 - clamp_origin.y);
+	vec2 adjusted = (UV - clamp_origin);
+	
+	float x_sign = UV.x < clamp_origin.x ? 1.0 : -1.0;
+	float y_sign = UV.y < clamp_origin.y ? 1.0 : -1.0;
+	x_sign = x_sign / aspect_ratio.y;
+	y_sign = y_sign / aspect_ratio.x;
+	
+	vec2 to_origin = vec2(abs(adjusted.x), abs(adjusted.y));
+	
+	if (UV.x < clamp_origin.x) to_origin = vec2(to_origin.x / clamp_origin.x, to_origin.y);
+	else to_origin = vec2(to_origin.x / inv_origin.x, to_origin.y);
+	
+	if (UV.y < clamp_origin.y) to_origin = vec2(to_origin.x, to_origin.y / clamp_origin.y);
+	else to_origin = vec2(to_origin.x, to_origin.y / inv_origin.y);
+	
+	to_origin = vec2(clamp(to_origin.x, 0.0, 1.0) / aspect_ratio.x, clamp(to_origin.y, 0.0, 1.0) / aspect_ratio.y);
+	
+	vec2 relative = origin + adjusted;
+	
+	float origin_scaler = length(to_origin);
+	
 	// Generate noise
-	float x = use_time ? (UV.x + 4.0) * (UV.y + 4.0) * (TIME * 10.0) : (UV.x + 4.0) * (UV.y + 4.0) * (10.0);
-	vec3 noise = vec3(mod((mod(x, 13.0) + 1.0) * (mod(x, 123.0) + 1.0), 0.01) - 0.005) * noise_strength + vec3(noise_floor, noise_floor, noise_floor);
-	float noise_len = length(noise);
-	float amount = noise_len < noise_floor ? noise_floor : noise_len;
-
-	//vec2 coords = UV;
-	//vec2 invrs_coords = vec2(1,1) - UV;
-	float y = 1.0 - UV.y;
-
-	vec2 offset = (uv_offset * amount * uv_amount * y);
-	//vec2 offset = (uv_offset * uv_amount);
+	float rand = use_time ? random(UV * TIME) : random(UV);
+	vec4 noise = vec4(rand, rand, rand, 1);
 
 	// Sample texture
-	vec4 tex = texture(SCREEN_TEXTURE, UV + offset);
-	COLOR = abs(length(UV + offset) * uv_amount) > 0.5 ? bg_color : vec4(tex.rgb, 1.0);
+	vec2 direction = vec2(x_sign, y_sign);
+	vec2 uv_offset = ((noise_magnitude) * uv_amount * (rand * noise_strength)) * direction * to_origin;
+	vec2 sample_coord = UV + uv_offset;
+	
+	vec4 tex = use_color ? texture(TEXTURE, sample_coord) * COLOR : texture(TEXTURE, sample_coord); // + offset
+	tex = vec4(tex.r, tex.g, tex.b, tex.a);//vec4(to_origin.r + uv_offset.x, to_origin.g + uv_offset.y, 0.0, 1.0);
+	
+	COLOR = mix(tex, vec4(0,0,0,0), taper_amount);
 }

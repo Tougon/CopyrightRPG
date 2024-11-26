@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=7 format=3 uid="uid://pg5scnlw34lm"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_cltie"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_pecgd"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_oeldh"]
+
+[sub_resource type="Resource" id="Resource_vfrj8"]
+script = ExtResource("3_oeldh")
+target = ""
+property_name = "shader_parameter/amount"
+material_property = true
+duration = 0.35
+delay = 0.0
+transition = 3
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 1.0
+
+[sub_resource type="Resource" id="Resource_if5xa"]
+script = ExtResource("3_oeldh")
+target = ""
+property_name = "shader_parameter/stablization"
+material_property = true
+duration = 0.55
+delay = 0.3
+transition = 3
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 1.0
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_oyu5f"]
+script = ExtResource("2_pecgd")
+frames = Array[ExtResource("3_oeldh")]([SubResource("Resource_vfrj8"), SubResource("Resource_if5xa")])
+
+[resource]
+script = ExtResource("1_cltie")
+tween_name = "Distort In"
+sequence = Array[ExtResource("2_pecgd")]([SubResource("Resource_oyu5f")])

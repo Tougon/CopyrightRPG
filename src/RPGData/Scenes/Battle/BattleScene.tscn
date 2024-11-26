@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=58 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -33,6 +33,9 @@
 [ext_resource type="PackedScene" uid="uid://dxadfl0p5b3o2" path="res://src/AudioManager/AudioManager.tscn" id="21_53vg0"]
 [ext_resource type="Resource" uid="uid://7ahtxfao7d4d" path="res://assets/Tweens/Transition/iris_out.tres" id="27_xi51v"]
 [ext_resource type="Script" path="res://temp/Restarter.gd" id="29_6pl1e"]
+[ext_resource type="Shader" path="res://assets/Shaders/vhs_distort.gdshader" id="30_r1nti"]
+[ext_resource type="Resource" uid="uid://pg5scnlw34lm" path="res://assets/Tweens/Transition/distort_in.tres" id="31_lfqyf"]
+[ext_resource type="Resource" uid="uid://ctvsirdlykue5" path="res://assets/Tweens/Transition/distort_out.tres" id="32_fepss"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="33_fk14b"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="34_hseuq"]
 
@@ -148,6 +151,38 @@ next_tween = ""
 script = ExtResource("6_6cut8")
 tween_name = "Fade Out"
 tween_resource = ExtResource("27_xi51v")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vx2hx"]
+shader = ExtResource("30_r1nti")
+shader_parameter/curvature = 5.0
+shader_parameter/skip = 0.1
+shader_parameter/image_flicker = 1.0
+shader_parameter/vignette_flicker_speed = 0.1
+shader_parameter/vignette_strength = 1.3
+shader_parameter/small_scanlines_speed = 1.0
+shader_parameter/small_scanlines_proximity = 1.0
+shader_parameter/small_scanlines_opacity = 0.37
+shader_parameter/scanlines_opacity = 1.37
+shader_parameter/scanlines_speed = 1.0
+shader_parameter/scanline_thickness = 0.48
+shader_parameter/scanlines_spacing = 0.59
+shader_parameter/stablization = 0.0
+shader_parameter/amount = 1.0
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_42b2y"]
+script = ExtResource("6_6cut8")
+tween_name = "Fade In"
+tween_resource = ExtResource("31_lfqyf")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_d45v6"]
+script = ExtResource("6_6cut8")
+tween_name = "Fade Out"
+tween_resource = ExtResource("32_fepss")
 play_on_start = false
 next_tween = ""
 
@@ -347,9 +382,10 @@ dialogue_end_time = 0.15
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
 layer = 10
 script = ExtResource("20_ija8q")
-fade_sequence = NodePath("Fade Iris/TweenPlayerUI")
+fade_sequence = NodePath("ColorRect/TweenPlayerUI")
 
 [node name="Fade Iris" type="TextureRect" parent="UI/BG Fade Canvas"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_8ytua")
 anchors_preset = 15
@@ -380,6 +416,18 @@ grow_vertical = 2
 [node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/Fade Iris"]
 script = ExtResource("5_35o0w")
 sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx"), SubResource("Resource_hrdhm")])
+
+[node name="ColorRect" type="ColorRect" parent="UI/BG Fade Canvas"]
+material = SubResource("ShaderMaterial_vx2hx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/ColorRect"]
+script = ExtResource("5_35o0w")
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_42b2y"), SubResource("Resource_d45v6")])
 
 [node name="Core" type="Node" parent="."]
 
