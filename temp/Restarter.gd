@@ -39,6 +39,9 @@ func _on_battle_complete(result : BattleResult):
 	await EventManager.on_sequence_queue_empty;
 	
 	# Fade Out
+	EventManager.set_player_group_state.emit(false);
+	await get_tree().create_timer(0.1).timeout
+	
 	EventManager.battle_fade_start.emit(false);
 	await EventManager.battle_fade_completed;
 	

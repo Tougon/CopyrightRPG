@@ -165,6 +165,7 @@ func entity_init(params : BattleParams):
 		
 		if param.entity_sprites.size() > 0 :
 			sprite.texture = param.entity_sprites[0];
+		else : sprite.texture = null;
 		_reset_shader_parameters();
 		
 		sprite.visible = true;

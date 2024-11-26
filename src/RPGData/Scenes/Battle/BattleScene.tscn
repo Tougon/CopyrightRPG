@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=67 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -38,6 +38,10 @@
 [ext_resource type="Resource" uid="uid://ctvsirdlykue5" path="res://assets/Tweens/Transition/distort_out.tres" id="32_fepss"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="33_fk14b"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="34_hseuq"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="39_a3c23"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="40_0nnbl"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="41_ktutj"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="42_mqdqo"]
 
 [sub_resource type="Gradient" id="Gradient_sr4ea"]
 interpolation_mode = 2
@@ -191,6 +195,41 @@ script = ExtResource("34_hseuq")
 duration = 0.0
 transition = 0
 ease = 2
+
+[sub_resource type="Resource" id="Resource_4jgiu"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([])
+
+[sub_resource type="Resource" id="Resource_2236n"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "zoom"
+material_property = false
+duration = 1.0
+delay = 0.0
+transition = 3
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+"From Vector2" = Vector2(1.3, 1.3)
+
+[sub_resource type="Resource" id="Resource_susux"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_2236n")])
+
+[sub_resource type="Resource" id="Resource_2evgq"]
+script = ExtResource("40_0nnbl")
+tween_name = "Zoom In"
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_4jgiu"), SubResource("Resource_susux")])
+
+[sub_resource type="Resource" id="Resource_hglxi"]
+script = ExtResource("6_6cut8")
+tween_name = "Transition Zoom In"
+tween_resource = SubResource("Resource_2evgq")
+play_on_start = false
+next_tween = ""
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("sequencer", "dialogue_canvas", "seal_manager", "enemy_positions")]
 position = Vector2(0, 40)
@@ -379,10 +418,11 @@ expire_rows = false
 row_display_time = 1.5
 dialogue_end_time = 0.15
 
-[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
+[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence", "camera_fade_sequence")]
 layer = 10
 script = ExtResource("20_ija8q")
 fade_sequence = NodePath("ColorRect/TweenPlayerUI")
+camera_fade_sequence = NodePath("../../PhantomCamera2D/TweenPlayer")
 
 [node name="Fade Iris" type="TextureRect" parent="UI/BG Fade Canvas"]
 visible = false
@@ -448,3 +488,7 @@ priority = 10
 tween_resource = SubResource("Resource_krv0w")
 tween_on_load = false
 draw_limits = true
+
+[node name="TweenPlayer" type="Node" parent="PhantomCamera2D"]
+script = ExtResource("39_a3c23")
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_hglxi")])

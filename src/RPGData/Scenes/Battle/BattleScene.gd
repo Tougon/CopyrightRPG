@@ -69,6 +69,10 @@ func begin_battle(params : BattleParams):
 	EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
 	await EventManager.on_sequence_queue_empty;
 	
+	# Move the player controllers into view
+	EventManager.set_player_group_state.emit(true);
+	await get_tree().create_timer(0.5).timeout
+	
 	# Begin the turn
 	_begin_turn();
 	

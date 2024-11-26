@@ -23,6 +23,7 @@ signal overworld_battle_fade_completed(fade_in : bool);
 # Global Battle Events
 signal on_battle_begin(params : BattleParams);
 signal on_turn_begin();
+signal set_player_group_state(active : bool);
 
 signal register_player(entity : EntityController);
 signal register_enemy(entity : EntityController);

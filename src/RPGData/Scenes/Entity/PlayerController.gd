@@ -9,11 +9,40 @@ enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 @export var seal_effect : SealEffectGroup;
 var prev_action_type : ActionType;
 
+var default_color : Color;
+
 
 func _ready():
 	super._ready();
 	
 	EventManager.on_player_items_changed.connect(_on_player_items_changed);
+	EventManager.set_player_group_state.connect(_on_player_group_state_changed);
+
+
+func _on_battle_begin(params : BattleParams):
+	super._on_battle_begin(params);
+	
+	modulate = Color.WHITE;
+	sprite.position = _get_sprite_start_position();
+
+
+func _on_player_group_state_changed(active : bool):
+	if active:
+		var variance = randf_range(-0.1, 0.1);
+		
+		var tween = get_tree().create_tween();
+		tween.set_parallel(true);
+		tween.tween_property(sprite, "position", Vector2.ZERO, 0.4 + variance);
+		tween.set_ease(Tween.EASE_OUT);
+		tween.set_trans(Tween.TRANS_QUART);
+		tween.tween_property(sprite, "scale", Vector2.ONE, 0.4 + variance).from(Vector2(1.2,1.2));
+		tween.set_ease(Tween.EASE_OUT);
+		tween.set_trans(Tween.TRANS_QUART);
+	else:
+		var tween = get_tree().create_tween();
+		tween.tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 0.0), 0.12);
+		tween.set_ease(Tween.EASE_OUT);
+		tween.set_trans(Tween.TRANS_QUART);
 
 
 func entity_init(params : BattleParams):
@@ -80,8 +109,17 @@ func _on_player_items_changed(items : Dictionary, delta : Item):
 	item_list = items;
 
 
+# Misc Functions
+func _get_sprite_start_position() -> Vector2:
+	var center = get_viewport().get_visible_rect().size / 2.0;
+	var direction = (center - position).normalized();
+	
+	return position - (direction * 300);
+
+
 func _on_destroy():
 	super._on_destroy();
 	
 	if EventManager != null:
-		EventManager.on_player_items_changed.connect(_on_player_items_changed);
+		EventManager.on_player_items_changed.disconnect(_on_player_items_changed);
+		EventManager.set_player_group_state.disconnect(_on_player_group_state_changed);
