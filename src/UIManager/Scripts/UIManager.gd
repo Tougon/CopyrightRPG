@@ -9,6 +9,8 @@ signal on_menu_opened(panel : MenuPanel);
 signal on_menu_closed(panel : MenuPanel);
 signal on_all_menus_closed();
 
+var is_closing_all = false;
+
 
 func _unhandled_input(event):
 	if active_menus.size() > 0 :
@@ -61,9 +63,11 @@ func open_menu(menu : MenuPanel):
 
 
 func close_all_menus():
+	is_closing_all = true;
 	while active_menus.size() > 0:
 		active_menus[active_menus.size() - 1].set_active(false);
 	on_all_menus_closed.emit();
+	is_closing_all = false;
 
 
 func close_menu(menu : MenuPanel):
@@ -76,8 +80,9 @@ func close_menu(menu : MenuPanel):
 	on_menu_closed.emit(menu);
 	
 	if active_menus.size() > 0:
-		active_menus[active_menus.size() - 1].initial_selection.grab_focus();
-		active_menus[active_menus.size() - 1].set_focus(true);
+		if !is_closing_all:
+			active_menus[active_menus.size() - 1].initial_selection.grab_focus();
+			active_menus[active_menus.size() - 1].set_focus(true);
 	else:
 		on_all_menus_closed.emit();
 

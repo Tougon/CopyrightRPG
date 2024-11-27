@@ -43,7 +43,7 @@ func _ready():
 		member.id = i;
 		member.level = 30;
 		member.exp = 0;
-		member.unlocked = i < 3;
+		member.unlocked = i == 0;
 		party_data.append(member);
 	
 	await get_tree().process_frame;

@@ -80,18 +80,23 @@ func set_value_immediate(val : float):
 
 
 func set_value(val : float):
-	# Set up underlay
-	if use_underlay : 
-		underlay.visible = true;
-		underlay.scale.x = fill.scale.x;
-		
-		if val > current_value : underlay.color = refill_color;
-		else : underlay.color = deplete_color;
+	var is_refilling = val > current_value;
 	
 	# Calculate new scale
 	var old_percent = fill.scale.x;
 	current_value = clamp(val, min_value, max_value);
 	var percent = ((current_value - min_value) / (max_value - min_value));
+	
+	# Set up underlay
+	if use_underlay : 
+		underlay.visible = true;
+		
+		if is_refilling : 
+			underlay.color = refill_color;
+			underlay.scale.x = percent;
+		else :
+			underlay.color = deplete_color;
+			underlay.scale.x = old_percent;
 	
 	# Kill any active tweens
 	if fill_tween != null && fill_tween.is_running() : fill_tween.kill();
@@ -113,8 +118,10 @@ func set_value(val : float):
 			property.set_ease(Tween.EASE_OUT);
 			property.set_trans(Tween.TRANS_CUBIC);
 		AnimationType.Delayed:
-			_set_text(val); 
-			fill.scale.x = percent;
+			_set_text(val);
+			
+			if !is_refilling:
+				fill.scale.x = percent;
 			fill_tween.tween_callback(_on_fill_bar_complete).set_delay(duration);
 
 
@@ -127,6 +134,9 @@ func _update_text(value : float):
 
 func _on_fill_bar_complete():
 	underlay.visible = false;
+	
+	var percent = ((current_value - min_value) / (max_value - min_value));
+	fill.scale.x = percent;
 
 
 func set_bar_visible(val : bool):
