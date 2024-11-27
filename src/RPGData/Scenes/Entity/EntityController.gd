@@ -353,7 +353,9 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 		if current_hp <= 0 :
 			on_defeat();
 			is_defeated = true;
-		else : set_damage_sprite(damage_time);
+		else : 
+			on_damage(crit);
+			set_damage_sprite(damage_time);
 		
 		if is_defeated :
 			if param.entity_sprites.size() > 1:
@@ -390,6 +392,10 @@ func update_hp_ui():
 func update_mp_ui():
 	if entity_ui : 
 		entity_ui.change_mp(current_mp);
+
+
+func on_damage(crit : bool):
+	pass;
 
 
 func on_defeat():

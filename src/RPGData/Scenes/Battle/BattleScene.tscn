@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=74 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
@@ -31,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://bax2rjs6ennqq" path="res://src/RPGData/Scenes/UI/player_battle_item_ui.tscn" id="20_dvxdd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/battle_fade_ui.gd" id="20_ija8q"]
 [ext_resource type="PackedScene" uid="uid://dxadfl0p5b3o2" path="res://src/AudioManager/AudioManager.tscn" id="21_53vg0"]
+[ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="22_0arau"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/damage_effect_canvas.gd" id="22_5fosr"]
 [ext_resource type="Resource" uid="uid://7ahtxfao7d4d" path="res://assets/Tweens/Transition/iris_out.tres" id="27_xi51v"]
 [ext_resource type="Script" path="res://temp/Restarter.gd" id="29_6pl1e"]
 [ext_resource type="Shader" path="res://assets/Shaders/vhs_distort.gdshader" id="30_r1nti"]
@@ -136,6 +138,43 @@ seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
 [sub_resource type="Resource" id="Resource_ssevn"]
 script = ExtResource("6_1yw0j")
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv"), ExtResource("13_vk0ot"), ExtResource("15_dvv4b")])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjsv2"]
+shader = ExtResource("22_0arau")
+shader_parameter/chaos = 0.0
+shader_parameter/radius = 1.4
+shader_parameter/attenuation = 2.5
+
+[sub_resource type="Resource" id="Resource_b4ay6"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/chaos"
+material_property = true
+duration = 0.25
+delay = 0.0
+transition = 5
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 14.0
+
+[sub_resource type="Resource" id="Resource_rvo4q"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_b4ay6")])
+
+[sub_resource type="Resource" id="Resource_nwx81"]
+script = ExtResource("40_0nnbl")
+tween_name = "Damage"
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_rvo4q")])
+
+[sub_resource type="Resource" id="Resource_we0kq"]
+script = ExtResource("6_6cut8")
+tween_name = "Damage"
+tween_resource = SubResource("Resource_nwx81")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ytua"]
 shader = ExtResource("3_8sqf3")
@@ -418,8 +457,25 @@ expire_rows = false
 row_display_time = 1.5
 dialogue_end_time = 0.15
 
+[node name="Damage Effect Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("tween_player")]
+script = ExtResource("22_5fosr")
+tween_player = NodePath("Chromatic Abberation/TweenPlayerUI")
+
+[node name="Chromatic Abberation" type="ColorRect" parent="UI/Damage Effect Canvas"]
+material = SubResource("ShaderMaterial_qjsv2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TweenPlayerUI" type="Node" parent="UI/Damage Effect Canvas/Chromatic Abberation"]
+script = ExtResource("5_35o0w")
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_we0kq")])
+
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence", "camera_fade_sequence")]
 layer = 10
+visible = false
 script = ExtResource("20_ija8q")
 fade_sequence = NodePath("ColorRect/TweenPlayerUI")
 camera_fade_sequence = NodePath("../../PhantomCamera2D/TweenPlayer")

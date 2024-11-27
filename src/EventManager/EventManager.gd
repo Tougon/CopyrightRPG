@@ -49,6 +49,7 @@ signal on_entity_move(entity : EntityController);
 
 signal on_entity_defeated(entity : EntityController);
 signal on_enemy_defeated(entity : EntityController);
+signal on_player_take_damage(defeated : bool, crit : bool);
 signal on_players_defeated();
 signal on_battle_completed(result : BattleResult);
 signal on_battle_end(result : BattleResult);

@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var camera_fade_sequence : TweenPlayer;
 
 func _ready():
+	self.visible = true;
 	EventManager.battle_fade_start.connect(_fade_action);
 
 

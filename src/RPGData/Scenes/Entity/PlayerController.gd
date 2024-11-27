@@ -110,6 +110,13 @@ func _on_player_items_changed(items : Dictionary, delta : Item):
 
 
 # Misc Functions
+func on_damage(crit : bool):
+	super.on_damage(crit);
+	
+	if current_action != defend_action:
+		EventManager.on_player_take_damage.emit(false, crit);
+
+
 func _get_sprite_start_position() -> Vector2:
 	var center = get_viewport().get_visible_rect().size / 2.0;
 	var direction = (center - position).normalized();
