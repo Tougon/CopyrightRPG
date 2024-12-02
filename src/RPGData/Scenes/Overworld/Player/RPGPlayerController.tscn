@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cviyt63wxucnc"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.gd" id="1_1wsnh"]
-[ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_jq6bs"]
+[ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_ix7x6"]
 [ext_resource type="Texture2D" uid="uid://c88xb0y4eiiu5" path="res://assets/Sprites/UI/Battle/targetting_arrow.png" id="3_rngrh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
@@ -14,14 +14,12 @@ size = Vector2(512, 128)
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
 script = ExtResource("1_1wsnh")
-speed = 350.0
+speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jbqi3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-physics_interpolation_mode = 1
-texture = ExtResource("2_jq6bs")
+[node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
 
 [node name="Direction Root" type="Sprite2D" parent="."]
 physics_interpolation_mode = 2

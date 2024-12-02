@@ -15,7 +15,7 @@ var _will_process : bool = true;
 var _can_move : bool = true;
 var _in_dialogue : bool = false;
 
-@onready var _player_visual: Node2D = $Sprite2D
+@onready var _player_visual: RPGCharacter = $RPGCharacter
 var _physics_body_trans_last: Transform2D
 var _physics_body_trans_current: Transform2D
 #TODO: Modify how the sprites work entirely.
@@ -100,7 +100,16 @@ func move(direction : Vector2, delta : float):
 		if angle_dif == 0 || angle_dif > 91 : 
 			skid(_prev_direction * speed * run_multiplier, _prev_direction * speed);
 	
-	if _prev_direction != direction: _prev_direction = direction;
+	if _prev_direction != direction: 
+		_prev_direction = direction;
+		
+		# Animation update if not sliding
+		if _can_move : 
+			_player_visual.set_direction(direction);
+			
+			if Input.is_action_pressed("run") : _player_visual.set_state(RPGCharacter.AnimationState.RUN);
+			elif direction.length_squared() > 0 : _player_visual.set_state(RPGCharacter.AnimationState.WALK);
+			else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
 
 
 func skid(initial : Vector2, final : Vector2):
@@ -118,6 +127,7 @@ func skid(initial : Vector2, final : Vector2):
 	
 	_prev_direction = _get_movement_vector();
 	_can_move = true;
+	_player_visual.set_state(RPGCharacter.AnimationState.IDLE);
 
 
 func _on_overworld_battle_queued(encounter : Encounter):

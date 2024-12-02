@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvi6peplvfuds"
-path="res://.godot/imported/slime_n_attack.png-f91416c1cdb7a6dd2c00e1598287d1c1.ctex"
+uid="uid://begxfe4ctaihc"
+path="res://.godot/imported/player_main_04.png-bcde50de2ab6951281043e21275a417b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Entities/slime_n_attack.png"
-dest_files=["res://.godot/imported/slime_n_attack.png-f91416c1cdb7a6dd2c00e1598287d1c1.ctex"]
+source_file="res://assets/Sprites/Overworld/player_main/player_main_04.png"
+dest_files=["res://.godot/imported/player_main_04.png-bcde50de2ab6951281043e21275a417b.ctex"]
 
 [params]
 
