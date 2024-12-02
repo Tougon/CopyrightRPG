@@ -1,7 +1,7 @@
 extends Node2D
 class_name RPGCharacter;
 
-enum AnimationState { IDLE, WALK, RUN };
+enum AnimationState { NONE, IDLE, WALK, RUN };
 
 @onready var sprite : Sprite2D = $Sprite2D;
 
@@ -17,6 +17,8 @@ var _current_frame : int;
 var _current_frame_time : float;
 var _current_walk_frame : int = 0;
 var _current_run_frame : int = 0;
+
+var _playing_one_shot : bool = false;
 
 
 func _ready():
@@ -40,6 +42,10 @@ func _update_sprite():
 	
 	if _current_frame >= _current_anim.sequence.size():
 		_current_frame = 0;
+		
+		if _playing_one_shot : 
+			set_state(AnimationState.IDLE)
+			_playing_one_shot = false;
 	
 	sprite.texture = _current_anim.sequence[_current_frame].frame_sprite;
 
@@ -52,6 +58,8 @@ func set_direction(new_direction : Vector2):
 
 
 func set_state(new_state : AnimationState):
+	if _current_state == new_state : return;
+	
 	_current_state = new_state;
 	
 	var anim_group : RPGCharacterAnimationGroup;
@@ -67,5 +75,23 @@ func set_state(new_state : AnimationState):
 	if anim_group == null : return;
 	
 	_current_anim = anim_group.get_anim(_direction, _previous_direction);
+	
+	_update_sprite();
+
+
+func play_one_shot(anim_name : String):
+	var anim_group : RPGCharacterAnimationGroup;
+	
+	match (anim_name.to_lower()):
+		"slide":
+			anim_group = character.slide;
+	
+	if anim_group == null : return;
+	
+	_current_frame = 0;
+	_current_frame_time = 0;
+	_current_anim = anim_group.get_anim(_direction, _previous_direction);
+	
+	_playing_one_shot = true;
 	
 	_update_sprite();

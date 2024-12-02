@@ -11,32 +11,32 @@
 [sub_resource type="Resource" id="Resource_mg5aq"]
 script = ExtResource("2_u87f7")
 frame_sprite = ExtResource("3_fl4m2")
-frame_time = 0.1
+frame_time = 0.08
 
 [sub_resource type="Resource" id="Resource_xsxpr"]
 script = ExtResource("2_u87f7")
 frame_sprite = ExtResource("4_ckim4")
-frame_time = 0.1
+frame_time = 0.08
 
 [sub_resource type="Resource" id="Resource_ijn4b"]
 script = ExtResource("2_u87f7")
 frame_sprite = ExtResource("5_tts61")
-frame_time = 0.1
+frame_time = 0.08
 
 [sub_resource type="Resource" id="Resource_6vnw6"]
 script = ExtResource("2_u87f7")
 frame_sprite = ExtResource("6_ee4k3")
-frame_time = 0.1
+frame_time = 0.08
 
 [sub_resource type="Resource" id="Resource_r523f"]
 script = ExtResource("2_u87f7")
 frame_sprite = ExtResource("7_unteu")
-frame_time = 0.1
+frame_time = 0.08
 
 [sub_resource type="Resource" id="Resource_f1vob"]
 script = ExtResource("2_u87f7")
 frame_sprite = ExtResource("5_tts61")
-frame_time = 0.1
+frame_time = 0.08
 
 [resource]
 script = ExtResource("1_eynqi")

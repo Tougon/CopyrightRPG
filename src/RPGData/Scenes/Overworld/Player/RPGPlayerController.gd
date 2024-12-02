@@ -103,13 +103,17 @@ func move(direction : Vector2, delta : float):
 	if _prev_direction != direction: 
 		_prev_direction = direction;
 		
-		# Animation update if not sliding
-		if _can_move : 
-			_player_visual.set_direction(direction);
-			
-			if Input.is_action_pressed("run") : _player_visual.set_state(RPGCharacter.AnimationState.RUN);
-			elif direction.length_squared() > 0 : _player_visual.set_state(RPGCharacter.AnimationState.WALK);
-			else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
+	# Animation update if not sliding
+	if _can_move : 
+		update_locomotion_animation(direction);
+
+
+func update_locomotion_animation(direction : Vector2):
+	_player_visual.set_direction(direction);
+	
+	if Input.is_action_pressed("run") : _player_visual.set_state(RPGCharacter.AnimationState.RUN);
+	elif direction.length_squared() > 0 : _player_visual.set_state(RPGCharacter.AnimationState.WALK);
+	else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
 
 
 func skid(initial : Vector2, final : Vector2):
@@ -117,6 +121,8 @@ func skid(initial : Vector2, final : Vector2):
 	var orig_velocity = initial;
 	var time = 0;
 	_can_move = false;
+	
+	_player_visual.play_one_shot("slide");
 	
 	while (time < skid_duration && skid_duration > 0 && !_in_dialogue):
 		velocity = lerp(orig_velocity, final, time / skid_duration);
@@ -127,22 +133,25 @@ func skid(initial : Vector2, final : Vector2):
 	
 	_prev_direction = _get_movement_vector();
 	_can_move = true;
-	_player_visual.set_state(RPGCharacter.AnimationState.IDLE);
+	update_locomotion_animation(_prev_direction);
 
 
 func _on_overworld_battle_queued(encounter : Encounter):
 	_will_process = false;
+	_player_visual.set_process(false);
 	#set_process(false);
 
 
 func _on_overworld_battle_dequeued():
 	_will_process = true;
+	_player_visual.set_process(true);
 	#set_process(true);
 
 
 func _on_menu_opened(menu : MenuPanel):
 	velocity = Vector2.ZERO;
 	_will_process = false;
+	_player_visual.set_process(false);
 	#set_process(false);
 
 
@@ -159,6 +168,7 @@ func _on_all_menus_closed():
 		await get_tree().process_frame;
 		await get_tree().process_frame;
 		_will_process = true
+		_player_visual.set_process(true);
 		#set_process(true);
 
 
