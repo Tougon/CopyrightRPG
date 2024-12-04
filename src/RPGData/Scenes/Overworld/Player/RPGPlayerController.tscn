@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbqi3"]
-size = Vector2(128, 128)
+size = Vector2(128, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqi8"]
 size = Vector2(512, 128)
@@ -17,6 +17,7 @@ script = ExtResource("1_1wsnh")
 speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
@@ -33,3 +34,6 @@ script = ExtResource("4_ex8ft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Direction Root/Sight"]
 shape = SubResource("RectangleShape2D_ysqi8")
+
+[node name="FadeOffset" type="Node2D" parent="."]
+position = Vector2(0, -39)

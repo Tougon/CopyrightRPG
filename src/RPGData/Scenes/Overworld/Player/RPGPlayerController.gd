@@ -15,6 +15,7 @@ var _will_process : bool = true;
 var _can_move : bool = true;
 var _in_dialogue : bool = false;
 
+@onready var player_fade_offset: Node2D = $FadeOffset
 @onready var _player_visual: RPGCharacter = $RPGCharacter
 var _physics_body_trans_last: Transform2D
 var _physics_body_trans_current: Transform2D
@@ -105,14 +106,14 @@ func move(direction : Vector2, delta : float):
 		
 	# Animation update if not sliding
 	if _can_move : 
-		update_locomotion_animation(direction);
+		update_locomotion_animation(direction, delta_pos.length_squared());
 
 
-func update_locomotion_animation(direction : Vector2):
+func update_locomotion_animation(direction : Vector2, delta : float):
 	_player_visual.set_direction(direction);
 	
-	if Input.is_action_pressed("run") : _player_visual.set_state(RPGCharacter.AnimationState.RUN);
-	elif direction.length_squared() > 0 : _player_visual.set_state(RPGCharacter.AnimationState.WALK);
+	if Input.is_action_pressed("run") && delta > 0 : _player_visual.set_state(RPGCharacter.AnimationState.RUN);
+	elif direction.length_squared() > 0 && delta > 0 : _player_visual.set_state(RPGCharacter.AnimationState.WALK);
 	else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
 
 
@@ -133,7 +134,7 @@ func skid(initial : Vector2, final : Vector2):
 	
 	_prev_direction = _get_movement_vector();
 	_can_move = true;
-	update_locomotion_animation(_prev_direction);
+	update_locomotion_animation(_prev_direction, _prev_direction.length());
 
 
 func _on_overworld_battle_queued(encounter : Encounter):

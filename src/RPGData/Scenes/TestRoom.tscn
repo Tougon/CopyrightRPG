@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=58 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/ActiveCheckGroup.gd" id="20_ybg78"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="21_6y80r"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="22_g6foi"]
+[ext_resource type="Texture2D" uid="uid://dl5diybtryreg" path="res://assets/Sprites/Overworld/player_main/2514.png" id="24_otr7g"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="24_tm1wa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="25_p4i8l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="26_goqi0"]
@@ -552,12 +553,12 @@ sources/2 = SubResource("TileSetAtlasSource_haj4c")
 [sub_resource type="Resource" id="Resource_1tfly"]
 script = ExtResource("5_utklg")
 enemy_ids = Array[int]([4])
-odds = 0.99
+odds = 0.9
 
 [sub_resource type="Resource" id="Resource_s1unj"]
 script = ExtResource("5_utklg")
 enemy_ids = Array[int]([4, 4])
-odds = 0.01
+odds = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("6_1u0pu")
@@ -754,6 +755,11 @@ default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
 object_id = "temp_quest_giver"
 
+[node name="Sprite2D" type="Sprite2D" parent="Interactables"]
+position = Vector2(606, 376)
+scale = Vector2(5, 5)
+texture = ExtResource("24_otr7g")
+
 [node name="CutsceneObject Test" type="Node2D" parent="." node_paths=PackedStringArray("tween_player")]
 position = Vector2(1085, 392)
 script = ExtResource("28_6btiu")
@@ -818,7 +824,7 @@ script = ExtResource("24_tm1wa")
 follow_mode = 5
 tween_resource = SubResource("Resource_6ugjw")
 follow_damping = true
-dead_zone_width = 0.1
-dead_zone_height = 0.1
+dead_zone_width = 0.06
+dead_zone_height = 0.06
 draw_limits = true
 limit_target = NodePath("../TileMapWalls")

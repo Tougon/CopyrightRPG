@@ -438,7 +438,6 @@ position = Vector2(480, 314)
 [node name="UI" type="Node" parent="."]
 
 [node name="Player UI" type="CanvasLayer" parent="UI"]
-visible = false
 
 [node name="Player Main Menu" parent="UI/Player UI" instance=ExtResource("6_uymxx")]
 
