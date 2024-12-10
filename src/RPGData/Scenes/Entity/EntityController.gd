@@ -291,6 +291,7 @@ func consume_item(item : Item = null):
 	
 	subtract_item(item)
 	if item_list.has(item) && item_list[item] <= 0 : item_list.erase(item);
+	
 
 
 func add_item(item : Item):
@@ -353,7 +354,7 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 		if current_hp <= 0 :
 			on_defeat();
 			is_defeated = true;
-		else : 
+		elif val > 0 : 
 			on_damage(crit);
 			set_damage_sprite(damage_time);
 		

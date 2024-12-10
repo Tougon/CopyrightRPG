@@ -4,6 +4,18 @@ class_name EntityDatabase
 # Database representing a list of every entity in the game
 @export var entries: Array[EntityDatabaseEntry];
 
+
+func initialize():
+	for entry_id in entries.size() :
+		var entry = entries[entry_id];
+		
+		if entry.entity_path != null :
+			if ResourceLoader.exists(entry.entity_path, "Entity"):
+				entry.entity = ResourceLoader.load(entry.entity_path, "Entity") as Entity;
+			else:
+				print("WARNING: Entity path at index " + str(entry_id) + " is invalid!");
+
+
 func get_entity(id : int, playable : bool = false) -> Entity:
 	var last_playable : Entity;
 	

@@ -83,16 +83,23 @@ func execute_turn_start_effects():
 
 func create_item_list():
 	if player_id == 0 :
-		super.create_item_list();
+		item_list.clear();
 		
-		# TODO: Fetch player items from inventory, P1 only
+		# Fetch player items from inventory, P1 only
+		var items = DataManager.get_battle_items();
+		
+		for id in items.keys():
+			item_list[DataManager.item_database.get_item(id)] = items[id];
+		
 		EventManager.on_player_items_changed.emit(item_list, null);
 
 
 # Item Functions
 func consume_item(item : Item = null):
 	super.consume_item(item);
-	EventManager.on_player_items_changed.emit(item_list, item);
+	
+	EventManager.on_player_item_consumed.emit(current_item);
+	EventManager.on_player_items_changed.emit(item_list, current_item);
 
 
 func add_item(item : Item):

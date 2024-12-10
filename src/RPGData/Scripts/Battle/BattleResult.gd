@@ -6,7 +6,8 @@ var exp : int;
 
 var players : Array[BattleParamEntity]
 var enemies : Array[String]
-var item : Dictionary
+var player_items : Dictionary
+var reward_items : Dictionary
 
 func destroy():
 	for player in players:

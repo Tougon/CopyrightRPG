@@ -19,23 +19,9 @@ func _ready():
 	if quest_database == null : print("Quest Database does not exist.");
 	if item_database == null : print("Item Database does not exist.");
 	
-	for entry_id in entity_database.entries.size() :
-		var entry = entity_database.entries[entry_id];
-		
-		if entry.entity_path != null :
-			if ResourceLoader.exists(entry.entity_path, "Entity"):
-				entry.entity = ResourceLoader.load(entry.entity_path, "Entity") as Entity;
-			else:
-				print("WARNING: Entity path at index " + str(entry_id) + " is invalid!");
-	
-	for item_id in item_database.entries.size() :
-		var entry = item_database.entries[item_id];
-		
-		if entry.item_path != null :
-			if ResourceLoader.exists(entry.item_path, "Item"):
-				entry.item = ResourceLoader.load(entry.item_path, "Item") as Item;
-			else:
-				print("WARNING: Entity path at index " + str(item_id) + " is invalid!");
+	# Initialize Databases
+	entity_database.initialize();
+	item_database.initialize();
 	
 	# TODO: Better initialization for player
 	for i in GameplayConstants.MAX_PARTY_SIZE:
@@ -45,6 +31,9 @@ func _ready():
 		member.exp = 0;
 		member.unlocked = i == 0;
 		party_data.append(member);
+	
+	# TODO: Remove this. This is temp item stuff.
+	current_save.inventory[0] = 2;
 	
 	await get_tree().process_frame;
 
@@ -104,3 +93,29 @@ func save_data():
 
 func delete_data():
 	DirAccess.remove_absolute("user://savegame.save");
+
+
+# Item Functions
+
+func get_battle_items() -> Dictionary:
+	var result : Dictionary;
+	
+	for id in current_save.inventory.keys():
+		var item = item_database.get_item(id);
+		
+		if item != null && item is ConsumableItem && item.use_battle :
+			result[id] = current_save.inventory[id];
+	
+	return result;
+
+
+func change_item_amount(id : int, amount : int):
+	if amount > 0:
+		if !current_save.inventory.has(id):
+			current_save.inventory[id] = amount;
+		else : current_save.inventory[id] += amount;
+	else : 
+		current_save.inventory[id] += amount;
+		
+		if current_save.inventory[id] <= 0:
+			current_save.inventory.erase(id);

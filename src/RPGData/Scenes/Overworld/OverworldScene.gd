@@ -6,6 +6,7 @@ static var battle_scene_window : Window = null;
 @export var player_controller : RPGPlayerController;
 @export var game_camera : PhantomCamera2D;
 @export var free_camera : PhantomCamera2D;
+@export var canvas_modulate : CanvasModulate;
 
 # May as well be deprecated
 var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
@@ -82,6 +83,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 		if enemy != null:
 			params.enemies.append(enemy);
 	
+	canvas_modulate.visible = false;
 	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		battle_scene_window.visible = true;
 		battle_scene.begin_battle(params);
@@ -92,6 +94,8 @@ func _on_overworld_battle_queued(encounter : Encounter):
 
 
 func _on_battle_end(result : BattleResult):
+	canvas_modulate.visible = true;
+	
 	# Process result
 	for i in result.players.size():
 		var player = result.players[i];
@@ -101,6 +105,9 @@ func _on_battle_end(result : BattleResult):
 		if player.should_award_exp :
 			DataManager.party_data[player.id].level = player.override_level;
 			DataManager.party_data[player.id].exp = player.modified_exp_amt;
+	
+	for id in result.player_items.keys() :
+		DataManager.change_item_amount(id, result.player_items[id]);
 	
 	for id in QuestManager.player_quests:
 		var metadata = QuestManager.get_meta_data(QuestManager.player_quests[id].quest_name);

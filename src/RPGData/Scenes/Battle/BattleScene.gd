@@ -17,7 +17,7 @@ var turn_number : int;
 var current_player_index : int;
 
 var defeated_enemies : Array[DefeatedEntity];
-var result_items : Dictionary;
+var player_item_delta : Dictionary;
 
 
 func _ready():
@@ -32,7 +32,7 @@ func _ready():
 	EventManager.on_item_select.connect(_on_item_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
-	EventManager.on_player_items_changed.connect(_on_player_items_changed);
+	EventManager.on_player_item_consumed.connect(_on_player_item_consumed);
 	
 	if begin_battle_on_ready : begin_battle(null);
 
@@ -47,7 +47,7 @@ func begin_battle(params : BattleParams):
 	players = [];
 	enemies = [];
 	defeated_enemies = [];
-	result_items.clear();
+	player_item_delta.clear();
 	
 	EventManager.on_battle_begin.emit(params);
 	
@@ -459,7 +459,7 @@ func _end_phase():
 				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
 				reward.players.append(result_player);
 			
-			reward.item = result_items;
+			reward.player_items = player_item_delta;
 			
 			EventManager.on_battle_completed.emit(reward); 
 			return;
@@ -641,12 +641,12 @@ func _compare_speed(a : EntityController, b : EntityController):
 	return EntityController.compare_speed(a, b);
 
 
-func _on_player_items_changed(items : Dictionary, delta : Item):
-	for item in items.keys():
-		result_items[item] = items[item];
+func _on_player_item_consumed(item : Item):
+	var id = DataManager.item_database.get_id(item);
+	if !player_item_delta.has(id):
+		player_item_delta[id] = 0;
 	
-	if !items.has(delta) && !result_items.has(delta):
-		result_items[delta] = 0;
+	player_item_delta[id] -= 1;
 
 
 func _on_destroy():
@@ -660,7 +660,7 @@ func _on_destroy():
 		EventManager.on_item_select.disconnect(_on_item_select);
 		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
-		EventManager.on_player_items_changed.disconnect(_on_player_items_changed);
+		EventManager.on_player_item_consumed.disconnect(_on_player_item_consumed);
 	
 	if Instance == self:
 		Instance = null;

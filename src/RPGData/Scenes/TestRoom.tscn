@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=61 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="22_g6foi"]
 [ext_resource type="Texture2D" uid="uid://dl5diybtryreg" path="res://assets/Sprites/Overworld/player_main/2514.png" id="24_otr7g"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="24_tm1wa"]
+[ext_resource type="Texture2D" uid="uid://bfhb6f4v6d7w4" path="res://assets/Sprites/Overworld/player_main/shaded_test.png" id="25_1ucg2"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="25_p4i8l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="26_goqi0"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="27_aqp1h"]
@@ -34,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_63qe4"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="29_l7h75"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="30_t6yj7"]
+[ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="32_14mn0"]
+[ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="32_ufq1w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
 texture = ExtResource("2_qntub")
@@ -682,11 +685,12 @@ duration = 0.1
 transition = 0
 ease = 2
 
-[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera")]
+[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera", "canvas_modulate")]
 script = ExtResource("1_kiva8")
-player_controller = NodePath("Player Controller")
+player_controller = NodePath("Scene Sorting/Sorted Items/Player Controller")
 game_camera = NodePath("Game PhantomCamera")
 free_camera = NodePath("Free PhantomCamera")
+canvas_modulate = NodePath("UI/CanvasModulate")
 
 [node name="TileMapFloor" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAEAAAACAAAAAQAAAAAAAAACAAEAAQACAAAAAAACAAIAAQABAAAAAAACAAMAAQACAAAAAAACAAQAAQAAAAAAAAACAAUAAQAAAAEAAAADAAAAAQAAAAAAAAADAAEAAQABAAAAAAADAAIAAQADAAAAAAADAAMAAQABAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAEAAAAEAAAAAQAAAAAAAAAEAAEAAQACAAAAAAAEAAIAAQABAAAAAAAEAAMAAQACAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQAAAAEAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAEAAAAGAAAAAQAAAAAAAAAGAAEAAQACAAAAAAAGAAIAAQABAAAAAAAGAAMAAQACAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAEAAAAHAAAAAQAAAAAAAAAHAAEAAQABAAAAAAAHAAIAAQADAAAAAAAHAAMAAQABAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAEAAAAIAAAAAQAAAAAAAAAIAAEAAQACAAAAAAAIAAIAAQABAAAAAAAIAAMAAQACAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAEAAAAJAAAAAQAAAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAEAAAACAP//AQACAAAAAAAEAP//AQACAAAAAAAGAP//AQACAAAAAAAIAP//AQACAAAAAAADAP//AQABAAAAAAACAP7/AQABAAAAAAAEAP7/AQABAAAAAAAGAP7/AQABAAAAAAAIAP7/AQABAAAAAAAHAP//AQABAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAP7/AQAAAAAAAAAJAP//AQAAAAAAAAAJAP7/AQAAAAAAAAAAAP//AQAAAAEAAAAAAP7/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAEAAAACAP3/AQAAAAEAAAADAP3/AQAAAAEAAAAEAP3/AQAAAAEAAAAFAP3/AQAAAAEAAAAGAP3/AQAAAAEAAAAHAP3/AQAAAAEAAAAIAP3/AQAAAAEAAAAJAP3/AQAAAAEAAAA=")
@@ -698,7 +702,6 @@ tile_set = SubResource("TileSet_whai2")
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
-enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]
@@ -738,44 +741,94 @@ color = Color(0, 0, 0, 0)
 script = ExtResource("7_m4t6q")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa")])
 
-[node name="Interactables" type="Node2D" parent="."]
+[node name="CanvasModulate" type="CanvasModulate" parent="UI"]
+color = Color(0.55, 0.55, 0.55, 1)
 
-[node name="Interactable" parent="Interactables" instance=ExtResource("8_scqk0")]
+[node name="Scene Sorting" type="Node2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(5, 5)
+
+[node name="Sorted Items" type="Node2D" parent="Scene Sorting"]
+y_sort_enabled = true
+scale = Vector2(0.2, 0.2)
+
+[node name="Interactable" parent="Scene Sorting/Sorted Items" instance=ExtResource("8_scqk0")]
 position = Vector2(194, 446)
 default_active_state = false
 additional_active_state = Array[ExtResource("20_ybg78")]([SubResource("Resource_8ofoh")])
 
-[node name="Interactable3" parent="Interactables" instance=ExtResource("8_scqk0")]
-position = Vector2(193, 316)
+[node name="Interactable3" parent="Scene Sorting/Sorted Items" instance=ExtResource("8_scqk0")]
+position = Vector2(217, 294)
 default_active_state = false
 
-[node name="Interactable2" parent="Interactables" instance=ExtResource("20_nrspv")]
+[node name="Interactable2" parent="Scene Sorting/Sorted Items" instance=ExtResource("20_nrspv")]
 position = Vector2(715, 311)
 default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
 object_id = "temp_quest_giver"
 
-[node name="Sprite2D" type="Sprite2D" parent="Interactables"]
+[node name="Sprite2D" type="Sprite2D" parent="Scene Sorting/Sorted Items"]
+visible = false
 position = Vector2(606, 376)
 scale = Vector2(5, 5)
 texture = ExtResource("24_otr7g")
 
-[node name="CutsceneObject Test" type="Node2D" parent="." node_paths=PackedStringArray("tween_player")]
+[node name="Sprite2D2" type="Sprite2D" parent="Scene Sorting/Sorted Items"]
+visible = false
+position = Vector2(1001, -117)
+texture = ExtResource("25_1ucg2")
+
+[node name="CutsceneObject Test" type="Node2D" parent="Scene Sorting/Sorted Items" node_paths=PackedStringArray("tween_player")]
+visible = false
 position = Vector2(1085, 392)
 script = ExtResource("28_6btiu")
 object_id = "test_obj_1"
 tween_player = NodePath("TweenPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="CutsceneObject Test"]
+[node name="Sprite2D" type="Sprite2D" parent="Scene Sorting/Sorted Items/CutsceneObject Test"]
 texture = ExtResource("29_63qe4")
 
-[node name="TweenPlayer" type="Node" parent="CutsceneObject Test"]
+[node name="TweenPlayer" type="Node" parent="Scene Sorting/Sorted Items/CutsceneObject Test"]
 script = ExtResource("27_aqp1h")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_jh7gi")])
 
-[node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("2_pvxte")]
+[node name="Player Controller" parent="Scene Sorting/Sorted Items" groups=["Player"] instance=ExtResource("2_pvxte")]
 position = Vector2(460, 360)
 run_multiplier = 1.75
+
+[node name="Lighting" type="Node2D" parent="Scene Sorting"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Scene Sorting/Lighting"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(140.4, -43.2)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("32_14mn0")
+
+[node name="PointLight2D" type="PointLight2D" parent="Scene Sorting/Lighting/Sprite2D"]
+scale = Vector2(10, 10)
+color = Color(0.97, 0.94284, 0.6984, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("32_ufq1w")
+texture_scale = 0.5
+
+[node name="Sprite2D2" type="Sprite2D" parent="Scene Sorting/Lighting"]
+visible = false
+z_index = 5
+position = Vector2(140.4, 123.6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("32_14mn0")
+
+[node name="PointLight2D" type="PointLight2D" parent="Scene Sorting/Lighting/Sprite2D2"]
+scale = Vector2(10, 10)
+color = Color(0.97, 0.94284, 0.6984, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("32_ufq1w")
+texture_scale = 0.5
 
 [node name="----------" type="Node" parent="."]
 
@@ -809,7 +862,7 @@ position = Vector2(480, 360)
 script = ExtResource("24_tm1wa")
 priority = 1
 follow_mode = 5
-follow_target = NodePath("../Player Controller")
+follow_target = NodePath("../Scene Sorting/Sorted Items/Player Controller")
 tween_resource = SubResource("Resource_6ugjw")
 tween_on_load = false
 follow_damping = true

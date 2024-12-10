@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbqi3"]
-size = Vector2(128, 180)
+size = Vector2(96, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqi8"]
 size = Vector2(512, 128)
@@ -17,13 +17,14 @@ script = ExtResource("1_1wsnh")
 speed = 300.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 48)
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
 
 [node name="Direction Root" type="Sprite2D" parent="."]
 physics_interpolation_mode = 2
+visible = false
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rngrh")
 

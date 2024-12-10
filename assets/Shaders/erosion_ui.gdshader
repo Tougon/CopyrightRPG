@@ -21,26 +21,26 @@ void fragment() {
 	vec2 clamp_origin = vec2(clamp(origin.x, 0.0, 1.0), clamp(origin.y, 0.0, 1.0));
 	vec2 inv_origin = vec2(1.0 - clamp_origin.x, 1.0 - clamp_origin.y);
 	vec2 adjusted = (UV - clamp_origin);
-	
+
 	float x_sign = UV.x < clamp_origin.x ? 1.0 : -1.0;
 	float y_sign = UV.y < clamp_origin.y ? 1.0 : -1.0;
 	x_sign = x_sign / aspect_ratio.y;
 	y_sign = y_sign / aspect_ratio.x;
-	
+
 	vec2 to_origin = vec2(abs(adjusted.x), abs(adjusted.y));
-	
+
 	if (UV.x < clamp_origin.x) to_origin = vec2(to_origin.x / clamp_origin.x, to_origin.y);
 	else to_origin = vec2(to_origin.x / inv_origin.x, to_origin.y);
-	
+
 	if (UV.y < clamp_origin.y) to_origin = vec2(to_origin.x, to_origin.y / clamp_origin.y);
 	else to_origin = vec2(to_origin.x, to_origin.y / inv_origin.y);
-	
+
 	to_origin = vec2(clamp(to_origin.x, 0.0, 1.0) / aspect_ratio.x, clamp(to_origin.y, 0.0, 1.0) / aspect_ratio.y);
-	
+
 	vec2 relative = origin + adjusted;
-	
+
 	float origin_scaler = length(to_origin);
-	
+
 	// Generate noise
 	float rand = use_time ? random(UV * TIME) : random(UV);
 	vec4 noise = vec4(rand, rand, rand, 1);
@@ -49,9 +49,9 @@ void fragment() {
 	vec2 direction = vec2(x_sign, y_sign);
 	vec2 uv_offset = ((noise_magnitude) * uv_amount * (rand * noise_strength)) * direction * to_origin;
 	vec2 sample_coord = UV + uv_offset;
-	
+
 	vec4 tex = use_color ? texture(TEXTURE, sample_coord) * COLOR : texture(TEXTURE, sample_coord); // + offset
 	tex = vec4(tex.r, tex.g, tex.b, tex.a);//vec4(to_origin.r + uv_offset.x, to_origin.g + uv_offset.y, 0.0, 1.0);
-	
+
 	COLOR = mix(tex, vec4(0,0,0,0), taper_amount);
 }
