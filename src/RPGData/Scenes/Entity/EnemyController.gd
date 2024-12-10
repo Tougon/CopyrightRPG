@@ -10,7 +10,9 @@ func entity_init(params : BattleParams):
 		if get_index() >= params.enemies.size() || params.enemies[get_index()] == null: 
 			visible = false;
 			return;
-		else : current_entity = params.enemies[get_index()];
+		else : 
+			visible = true;
+			current_entity = params.enemies[get_index()];
 	
 	if current_entity != null:
 		var level_relative = current_entity.level_curve.sample(randf());
