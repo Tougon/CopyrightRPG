@@ -285,13 +285,27 @@ func set_target(trigger : EntityController = null):
 
 
 # Item Functions
+func can_use_item(item : Item = null) -> bool:
+	if item == null : item = current_item;
+	if item == null : return false;
+	
+	if item is ConsumableItem :
+		# If the item would affect any target, it can be used.
+		for target in current_target:
+			if (item as ConsumableItem).check_can_use_item_battle(self, target):
+				return true;
+		
+		return false;
+	
+	return true;
+
+
 func consume_item(item : Item = null):
 	if item == null : item = current_item;
 	if item == null : return;
 	
 	subtract_item(item)
 	if item_list.has(item) && item_list[item] <= 0 : item_list.erase(item);
-	
 
 
 func add_item(item : Item):
@@ -425,6 +439,8 @@ func on_defeat():
 	
 	sealing = false;
 	EventManager.on_entity_defeated.emit(self);
+	
+	current_item = null;
 
 
 func _play_defeat_animation():

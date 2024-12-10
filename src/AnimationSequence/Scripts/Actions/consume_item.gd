@@ -14,7 +14,7 @@ func execute(sequence : AnimationSequence):
 	elif target == Target.TARGET:
 		entity = sequence.target[sequence.target_index];
 	
-	if entity != null:
+	if entity != null && entity.current_item.check_can_use_item_battle(sequence.user, sequence.target[sequence.target_index]):
 		for effect in entity.current_item.on_use:
 			effect.execute_battle(sequence.user, sequence.target[sequence.target_index]);
 		

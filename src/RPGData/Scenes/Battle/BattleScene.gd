@@ -238,7 +238,14 @@ func _action_phase():
 					spell.success = false;
 					play_animation = false;
 					
-					var item_fail_msg = _format_dialogue(tr("T_BATTLE_ACTION_ITEM_FAIL"), entity.param.entity_name, entity.current_entity);
+					var item_fail_msg = _format_dialogue(tr("T_BATTLE_ACTION_ITEM_FAIL_NONE"), entity.param.entity_name, entity.current_entity);
+					post_anim_dialogue.append(item_fail_msg);
+				# If item cannot be used, don't use it
+				elif !entity.can_use_item(item):
+					spell.success = false;
+					play_animation = false;
+					
+					var item_fail_msg = _format_dialogue(tr("T_BATTLE_ACTION_FAIL"), entity.param.entity_name, entity.current_entity);
 					post_anim_dialogue.append(item_fail_msg);
 			
 			if spell.success : 

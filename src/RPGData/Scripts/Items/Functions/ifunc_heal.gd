@@ -11,7 +11,7 @@ class_name IFuncHeal
 func execute_overworld(target : int):
 	pass;
 
-func execute_battle(user : EntityController, target : EntityController):
+func execute_battle(user : EntityController, target : EntityController, item : Item = null):
 	var entity : EntityController;
 	if self.target == Target.USER: entity = user
 	elif self.target == Target.TARGET: entity = target;

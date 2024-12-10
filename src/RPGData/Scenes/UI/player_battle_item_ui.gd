@@ -43,7 +43,7 @@ func _initialize_item_menu(entity : EntityController):
 	for i in item_list.keys().size():
 		var item = item_list.keys()[i] as ConsumableItem;
 		
-		# TODO: This originally blocked if item quantity was 0.
+		# NOTE: This originally blocked if item quantity was 0.
 		# I personally think a better way to handle this is grey out 0 count items
 		# The only time the player sees them is on their turn before it's used
 		if item == null : continue;

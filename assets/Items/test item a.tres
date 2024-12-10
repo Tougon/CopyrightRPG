@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ConsumableItem" load_steps=11 format=3 uid="uid://pgrl2ap5uhne"]
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=14 format=3 uid="uid://pgrl2ap5uhne"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_hmsku"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_uha6e"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/consumable_item.gd" id="2_366gw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_function.gd" id="2_bdopr"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="3_8c2p3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_hp_check.gd" id="7_07hva"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_heal.gd" id="7_n85r2"]
 
 [sub_resource type="Resource" id="Resource_cwj80"]
@@ -47,6 +48,22 @@ effects_on_hit = Array[ExtResource("1_uha6e")]([])
 effects_on_success = Array[ExtResource("1_uha6e")]([])
 properties = Array[ExtResource("2_5rade")]([])
 
+[sub_resource type="Resource" id="Resource_r8hmh"]
+script = ExtResource("7_07hva")
+target = 1
+check_mode = 2
+percent_amount = 1.0
+use_amount = false
+hp_amount = 0
+
+[sub_resource type="Resource" id="Resource_i260v"]
+script = ExtResource("7_07hva")
+target = 1
+check_mode = 1
+percent_amount = 0.5
+use_amount = true
+hp_amount = 0
+
 [sub_resource type="Resource" id="Resource_bbeex"]
 script = ExtResource("7_n85r2")
 target = 0
@@ -61,6 +78,8 @@ on_use = Array[ExtResource("2_bdopr")]([SubResource("Resource_bbeex")])
 use_battle = true
 battle_effect = SubResource("Resource_cwj80")
 use_overworld = true
+check_can_use = Array[ExtResource("2_bdopr")]([SubResource("Resource_r8hmh"), SubResource("Resource_i260v")])
+check_type = 0
 item_name_key = "T_ITEM_NAME_TEMPA"
 item_description_key = ""
 item_flags = Array[ExtResource("1_hmsku")]([])
