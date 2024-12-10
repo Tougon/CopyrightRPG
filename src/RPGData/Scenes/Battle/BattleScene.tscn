@@ -34,7 +34,7 @@
 [ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="22_0arau"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/damage_effect_canvas.gd" id="22_5fosr"]
 [ext_resource type="Resource" uid="uid://7ahtxfao7d4d" path="res://assets/Tweens/Transition/iris_out.tres" id="27_xi51v"]
-[ext_resource type="Script" path="res://temp/Restarter.gd" id="29_6pl1e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Battle/BattleRewardManager.gd" id="29_6pl1e"]
 [ext_resource type="Shader" path="res://assets/Shaders/vhs_distort.gdshader" id="30_r1nti"]
 [ext_resource type="Resource" uid="uid://pg5scnlw34lm" path="res://assets/Tweens/Transition/distort_in.tres" id="31_lfqyf"]
 [ext_resource type="Resource" uid="uid://ctvsirdlykue5" path="res://assets/Tweens/Transition/distort_out.tres" id="32_fepss"]
@@ -532,7 +532,7 @@ sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_42b2y"), Su
 [node name="SealManager" type="Node" parent="Core"]
 script = ExtResource("19_et6o3")
 
-[node name="Restarter" type="Node" parent="Core"]
+[node name="BattleRewardManager" type="Node" parent="Core"]
 script = ExtResource("29_6pl1e")
 
 [node name="AudioManager" parent="." instance=ExtResource("21_53vg0")]
