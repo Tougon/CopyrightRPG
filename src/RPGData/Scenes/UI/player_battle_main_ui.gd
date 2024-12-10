@@ -17,7 +17,7 @@ func _enter_tree():
 func on_tween_end_active(tween_name : String):
 	super.on_tween_end_active(tween_name);
 	
-	# TODOGAME: Re-evaluate?
+	# TODO: Re-evaluate?
 	#var msg = tr("T_BATTLE_TURN_READY").format({entity = current_entity.param.entity_name});
 	#EventManager.on_message_queue.emit(msg);
 
@@ -27,7 +27,7 @@ func _set_active_entity(entity : EntityController):
 
 
 func on_focus():
-	# TODOGAME: As we add more options to the menu, this must be expanded.
+	# TODO: As we add more options to the menu, this must be expanded.
 	if current_entity != null && (current_entity is PlayerController):
 		match (current_entity.prev_action_type):
 			PlayerController.ActionType.ATTACK:

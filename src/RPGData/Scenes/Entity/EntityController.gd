@@ -157,7 +157,7 @@ func entity_init(params : BattleParams):
 		for path in current_entity.entity_sprites:
 			if path != null : load_sprite(path);
 		
-		# TODOGAME: Save data for enemy types.
+		# TODO: Save data for enemy types.
 		# This variable is largely vestigal from older iterations and may be scrapped.
 		is_identified = false;
 		

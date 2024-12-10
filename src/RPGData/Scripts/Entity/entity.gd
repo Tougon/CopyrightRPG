@@ -80,7 +80,7 @@ func get_level_exp(level : int) -> int:
 	if level_exp == null : return 50;
 	return level_exp.get_current(level);
 
-# TODOGAME: Weakness was unimplemented in the old version.
+# TODO: Weakness was unimplemented in the old version.
 @export_group("Modifiers")
 @export var weakness : Array[FlagModifier];
 @export var resistance : Array[FlagModifier];
