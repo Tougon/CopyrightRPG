@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=62 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -37,6 +37,7 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="30_t6yj7"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="32_14mn0"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="32_ufq1w"]
+[ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="33_ytqpp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
 texture = ExtResource("2_qntub")
@@ -702,6 +703,7 @@ tile_set = SubResource("TileSet_whai2")
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]
@@ -795,6 +797,14 @@ sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_jh7gi")])
 [node name="Player Controller" parent="Scene Sorting/Sorted Items" groups=["Player"] instance=ExtResource("2_pvxte")]
 position = Vector2(460, 360)
 run_multiplier = 1.75
+
+[node name="RPGOverworldFollower" parent="Scene Sorting/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("33_ytqpp")]
+position = Vector2(461, 300)
+target = NodePath("../Player Controller")
+
+[node name="RPGOverworldFollower2" parent="Scene Sorting/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("33_ytqpp")]
+position = Vector2(461, 300)
+target = NodePath("../RPGOverworldFollower")
 
 [node name="Lighting" type="Node2D" parent="Scene Sorting"]
 

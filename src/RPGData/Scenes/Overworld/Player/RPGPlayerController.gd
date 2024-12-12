@@ -19,7 +19,7 @@ var _in_dialogue : bool = false;
 @onready var _player_visual: RPGCharacter = $RPGCharacter
 var _physics_body_trans_last: Transform2D
 var _physics_body_trans_current: Transform2D
-#TODO: Modify how the sprites work entirely.
+
 
 func _ready():
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);

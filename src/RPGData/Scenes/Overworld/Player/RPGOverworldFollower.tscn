@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkrbdy7uuagi1"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.gd" id="1_ys4go"]
+[ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_efbox"]
+
+[node name="RPGOverworldFollower" type="Node2D"]
+script = ExtResource("1_ys4go")
+
+[node name="RPGCharacter" parent="." instance=ExtResource("2_efbox")]
