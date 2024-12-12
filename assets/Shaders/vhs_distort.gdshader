@@ -91,7 +91,7 @@ void fragment()
 	video += noise(uv*2., uv)/2.;
 	video *= mix((12./small_scanlines_opacity+mod(uv.y*30.*small_scanlines_proximity+TIME*small_scanlines_speed,1.))/13.*small_scanlines_opacity, 1, stablization);
 	video *= mix(vignette, 1, stablization);
-	
+
 	vec4 tex = texture(screen_texture, UV);
 	COLOR = mix(vec4(video,1.0), vec4(video,1.0) * (bg_color), amount);
 }

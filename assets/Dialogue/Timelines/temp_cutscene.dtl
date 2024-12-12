@@ -1,0 +1,9 @@
+[fade inst="true"]
+[set_camera_target id="Test Camera Pos 1"]
+[wait time="0.5"]
+[fade in="true"]
+[play_object_animation id="Test Camera Pos 1" anim_name="Move 1"]
+[wait time="8.0"]
+join temp_character_1 center
+temp_character_1: Guh, what the heck?
+[fade]

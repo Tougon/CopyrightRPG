@@ -7,6 +7,7 @@ extends CanvasLayer
 func _ready():
 	EventManager.overworld_battle_fade_start.connect(_fade_action_battle);
 	EventManager.overworld_cutscene_fade_start.connect(_fade_action_cutscene);
+	EventManager.overworld_cutscene_fade_initialize.connect(_fade_action_cutscene_initialize);
 	visible = true;
 
 
@@ -39,7 +40,19 @@ func _fade_action_cutscene(fade_in : bool):
 	EventManager.overworld_cutscene_fade_completed.emit(fade_in);
 
 
+func _fade_action_cutscene_initialize(fade_in : bool):
+	if fade_sequence != null:
+		if fade_in:
+			fade_sequence.play_tween_name("Cutscene Fade In Instant");
+		else:
+			fade_sequence.play_tween_name("Cutscene Fade Out Instant");
+		await fade_sequence.tween_ended;
+	
+	EventManager.overworld_cutscene_fade_completed.emit(fade_in);
+
+
 func _on_destroy():
 	if EventManager != null:
 		EventManager.overworld_battle_fade_start.disconnect(_fade_action_battle);
 		EventManager.overworld_cutscene_fade_start.disconnect(_fade_action_cutscene);
+		EventManager.overworld_cutscene_fade_initialize.disconnect(_fade_action_cutscene_initialize);

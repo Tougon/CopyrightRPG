@@ -25,6 +25,7 @@ func _execute() -> void:
 func _init() -> void:
 	event_name = "Set Camera Target"
 	event_category = "RPG"
+	event_sorting_index = 10
 	set_default_color('Color3')
 
 
