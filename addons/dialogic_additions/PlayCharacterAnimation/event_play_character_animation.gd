@@ -4,6 +4,8 @@ class_name DialogicPlayCharacterAnimationEvent
 
 var object_id := "";
 var animation_name := "";
+var change_direction := false;
+var direction : Vector2;
 
 func _execute() -> void:
 	var obj = CutsceneObjectManager.get_object(object_id);
@@ -21,6 +23,9 @@ func _execute() -> void:
 					character.set_state(RPGCharacter.AnimationState.RUN);
 				_:
 					character.play_one_shot(animation_name.to_lower())
+			
+			if change_direction :
+				character.set_direction(direction);
 	
 	finish()
 
@@ -47,6 +52,8 @@ func get_shortcode_parameters() -> Dictionary:
 		#param_name 		: property_info
 		"id"		: {"property": "object_id", 	"default": ""},
 		"anim_name"		: {"property": "animation_name", 	"default": ""},
+		"change_dir"		: {"property": "change_direction", 	"default": false},
+		"dir"		: {"property": "direction", 	"default": Vector2.ZERO},
 	}
 
 # You can alternatively overwrite these 3 functions: to_text(), from_text(), is_valid_event()
@@ -57,10 +64,14 @@ func get_shortcode_parameters() -> Dictionary:
 ################################################################################
 
 func build_event_editor() -> void:
-	add_header_label('Play Object Animation')
+	add_header_label('Play Character Animation')
 	add_body_edit('object_id', ValueType.SINGLELINE_TEXT, {
 			'left_text'		: 'Object ID'})
 	add_body_edit('animation_name', ValueType.SINGLELINE_TEXT, {
 			'left_text'		: 'Animation Name'})
+	add_body_edit('change_direction', ValueType.BOOL, {
+			'left_text'		: 'Change Direction'})
+	add_body_edit('direction', ValueType.VECTOR2, {
+			'left_text'		: 'Direction'})
 
 #endregion

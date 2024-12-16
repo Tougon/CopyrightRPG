@@ -8,6 +8,8 @@ static var battle_scene_window : Window = null;
 @export var free_camera : PhantomCamera2D;
 @export var canvas_modulate : CanvasModulate;
 
+var _faded_out_cutscene : bool = false;
+
 # May as well be deprecated
 var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
 
@@ -35,6 +37,17 @@ func _ready() -> void:
 	QuestManager.quest_completed.connect(quest_complete)
 	Dialogic.timeline_started.connect(_on_dialogue_begin);
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
+	
+	EventManager.overworld_cutscene_fade_start.connect(_fade_action_cutscene);
+	EventManager.overworld_cutscene_fade_initialize.connect(_fade_action_cutscene_initialize);
+
+
+func _fade_action_cutscene(fade_in : bool):
+	_faded_out_cutscene = !fade_in;
+
+
+func _fade_action_cutscene_initialize(fade_in : bool):
+	_faded_out_cutscene = !fade_in;
 
 
 func quest_complete(quest):
@@ -52,7 +65,12 @@ func _on_dialogue_end():
 		free_camera.follow_target = null;
 		free_camera.priority = 0;
 	
-	# TODO: Auto fade-in if faded out during cutscene
+	if _faded_out_cutscene :
+		player_controller._can_move = false;
+		_faded_out_cutscene = false;
+		EventManager.overworld_cutscene_fade_start.emit(true);
+		await EventManager.overworld_cutscene_fade_completed;
+		player_controller._can_move = true;
 	# TODO: Prevent player from moving during fade sequence
 	
 
