@@ -21,6 +21,7 @@ position = Vector2(0, 48)
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
+object_id = "main_character"
 
 [node name="Direction Root" type="Sprite2D" parent="."]
 physics_interpolation_mode = 2

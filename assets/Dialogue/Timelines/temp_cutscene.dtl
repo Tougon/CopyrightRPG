@@ -3,7 +3,11 @@
 [wait time="0.5"]
 [fade in="true"]
 [play_object_animation id="Test Camera Pos 1" anim_name="Move 1"]
-[wait time="8.0"]
+[wait time="5.0"]
+[play_character_animation id="main_character" anim_name="walk"]
+[wait time="0.5"]
 join temp_character_1 center
 temp_character_1: Guh, what the heck?
+leave temp_character_1
 [fade]
+[end_timeline]

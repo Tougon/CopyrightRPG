@@ -1,4 +1,4 @@
-extends Node2D
+extends CutsceneObject
 class_name RPGCharacter;
 
 enum AnimationState { NONE, IDLE, WALK, RUN };
@@ -22,8 +22,13 @@ var _playing_one_shot : bool = false;
 
 
 func _ready():
+	super._ready();
+	
 	set_state(AnimationState.IDLE);
 	set_direction(_direction);
+	
+	Dialogic.timeline_started.connect(_on_dialogue_begin);
+	Dialogic.timeline_ended.connect(_on_dialogue_end);
 
 
 # Strictly handles frame switching
@@ -95,3 +100,16 @@ func play_one_shot(anim_name : String):
 	_playing_one_shot = true;
 	
 	_update_sprite();
+
+
+func _on_dialogue_begin():
+	pass;
+
+
+func _on_dialogue_end():
+	set_state(AnimationState.IDLE);
+
+func _exit_tree():
+	super._exit_tree();
+	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
+	Dialogic.timeline_ended.disconnect(_on_dialogue_end);

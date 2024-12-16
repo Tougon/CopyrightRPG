@@ -11,12 +11,16 @@ var _target_positions : Array[Vector2];
 var _prev_target_position : Vector2;
 var _direction : Vector2;
 var _initialized;
+var _in_dialogue : bool = false;
 
 var _physics_body_trans_last: Transform2D
 var _physics_body_trans_current: Transform2D
 
 func _init() :
 	if target != null : _initialize_position();
+	
+	Dialogic.timeline_started.connect(_on_dialogue_begin);
+	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
 	
 func _process(_delta: float) -> void:	
@@ -61,3 +65,19 @@ func update_locomotion_animation(direction : Vector2, delta : float):
 	#if Input.is_action_pressed("run") && delta > 0 : _player_visual.set_state(RPGCharacter.AnimationState.RUN);
 	if direction.length_squared() > 0 && delta > 0 : _player_visual.set_state(RPGCharacter.AnimationState.WALK);
 	else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
+
+
+func _on_dialogue_begin():
+	_in_dialogue = true;
+
+
+func _on_dialogue_end():
+	_in_dialogue = false;
+	
+	# Force reset player position
+	_player_visual.position = Vector2.ZERO;
+
+
+func _exit_tree():
+	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
+	Dialogic.timeline_ended.disconnect(_on_dialogue_end);

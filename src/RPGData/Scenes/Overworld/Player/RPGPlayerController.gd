@@ -32,7 +32,10 @@ func _ready():
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 
 
-func _process(_delta: float) -> void:	
+func _process(_delta: float) -> void:
+	# We don't want to modify position while in dialogue for obvious reasons
+	if _in_dialogue : return;
+	
 	_player_visual.global_position = _physics_body_trans_last.interpolate_with(
 		_physics_body_trans_current,
 		Engine.get_physics_interpolation_fraction()
@@ -162,6 +165,9 @@ func _on_dialogue_begin():
 
 func _on_dialogue_end():
 	_in_dialogue = false;
+	
+	# Force reset player position
+	_player_visual.position = Vector2.ZERO;
 
 
 func _on_all_menus_closed():

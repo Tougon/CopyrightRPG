@@ -51,6 +51,10 @@ func _on_dialogue_end():
 	if free_camera != null :
 		free_camera.follow_target = null;
 		free_camera.priority = 0;
+	
+	# TODO: Auto fade-in if faded out during cutscene
+	# TODO: Prevent player from moving during fade sequence
+	
 
 
 func _on_overworld_battle_queued(encounter : Encounter):
