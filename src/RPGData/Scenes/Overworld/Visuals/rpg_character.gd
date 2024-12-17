@@ -19,6 +19,7 @@ var _current_walk_frame : int = 0;
 var _current_run_frame : int = 0;
 
 var _playing_one_shot : bool = false;
+var _frame_speed_modifier : float = 1;
 
 
 func _ready():
@@ -33,7 +34,7 @@ func _ready():
 
 # Strictly handles frame switching
 func _process(delta: float):
-	_current_frame_time += delta;
+	_current_frame_time += (delta * _frame_speed_modifier);
 	
 	if _current_anim != null && _current_frame_time >= _current_anim.sequence[_current_frame].frame_time :
 		_current_frame += 1;
@@ -102,11 +103,16 @@ func play_one_shot(anim_name : String):
 	_update_sprite();
 
 
+func set_frame_speed_modifier(modifier : float):
+	_frame_speed_modifier = modifier;
+
+
 func _on_dialogue_begin():
 	pass;
 
 
 func _on_dialogue_end():
+	_frame_speed_modifier = 1.0;
 	set_state(AnimationState.IDLE);
 
 func _exit_tree():
