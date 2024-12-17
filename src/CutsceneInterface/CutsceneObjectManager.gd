@@ -18,6 +18,8 @@ func add_object(object : CutsceneObject):
 
 
 func get_object(id : String) -> CutsceneObject :
+	if id.is_empty() : return;
+	
 	if !_object_list.has(id):
 		print("ERROR: Object ID " + id + " does not exist.");
 		return null;

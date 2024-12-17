@@ -4,6 +4,8 @@
 [fade in="true"]
 [play_object_animation id="Test Camera Pos 1" anim_name="Move 1"]
 [wait time="5.0"]
+[move_character id="main_character" duration="2.0" await="true" dest="Vector2(300, 0)"]
+[wait time="0.5"]
 [set_character_frame_speed id="main_character" mod="3.0"]
 [play_character_animation id="main_character" anim_name="walk" change_dir="true" dir="Vector2(-1, 0)"]
 [wait time="0.5"]

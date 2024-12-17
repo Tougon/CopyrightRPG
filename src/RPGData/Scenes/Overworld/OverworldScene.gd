@@ -71,8 +71,6 @@ func _on_dialogue_end():
 		EventManager.overworld_cutscene_fade_start.emit(true);
 		await EventManager.overworld_cutscene_fade_completed;
 		player_controller._can_move = true;
-	# TODO: Prevent player from moving during fade sequence
-	
 
 
 func _on_overworld_battle_queued(encounter : Encounter):
