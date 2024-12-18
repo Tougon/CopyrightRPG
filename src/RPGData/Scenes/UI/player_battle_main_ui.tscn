@@ -137,7 +137,10 @@ theme_override_font_sizes/font_size = 32
 text = "T_BATTLE_MAIN_UI_DEFEND"
 clip_text = true
 
+[connection signal="focus_entered" from="BG Area/Player Options/ScrollContainer/GridContainer/Attack" to="." method="_on_attack_focus_entered"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Attack" to="." method="_on_attack_button_pressed"]
+[connection signal="focus_entered" from="BG Area/Player Options/ScrollContainer/GridContainer/Magic" to="." method="_on_magic_focus_entered"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Magic" to="." method="_on_magic_button_pressed"]
+[connection signal="focus_entered" from="BG Area/Player Options/ScrollContainer/GridContainer/Defend" to="." method="_on_defend_focus_entered"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Defend" to="." method="_on_defend_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Item" to="." method="_on_item_button_pressed"]

@@ -9,8 +9,8 @@ func _ready():
 	finished.connect(on_finished);
 
 
-func play_video():
-	if delay_start : await get_tree().create_timer(delay_time).timeout
+func play_video(use_delay : bool = true):
+	if delay_start && use_delay : await get_tree().create_timer(delay_time).timeout
 	play();
 
 

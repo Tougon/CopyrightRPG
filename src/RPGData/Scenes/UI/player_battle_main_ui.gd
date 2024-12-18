@@ -70,3 +70,16 @@ func _on_panel_removed():
 	super._on_panel_removed();
 	if EventManager != null:
 		EventManager.set_active_player.disconnect(_set_active_entity);
+
+
+#TEMP SHIT
+func _on_attack_focus_entered() -> void:
+	EventManager.on_attack_highlight.emit();
+
+
+func _on_magic_focus_entered() -> void:
+	EventManager.on_other_highlight.emit();
+
+
+func _on_defend_focus_entered() -> void:
+	EventManager.on_defend_highlight.emit();

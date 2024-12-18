@@ -15,12 +15,20 @@ var _material_ghost : Material;
 var _attack_to_video_map : Dictionary
 var _attack_to_shader_map : Dictionary
 
+#TEMP SHIT
+@export var attack : VideoStream;
+@export var defend : VideoStream;
+#END TEMP
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_set_static(true);
 	
 	EventManager.on_battle_begin.connect(_on_battle_begin);
+	EventManager.on_attack_highlight.connect(_on_attack_highlight);
+	EventManager.on_defend_highlight.connect(_on_defend_highlight);
+	EventManager.on_other_highlight.connect(_on_other_highlight);
 
 
 func _on_battle_begin(params : BattleParams):
@@ -82,3 +90,37 @@ func _set_static(active : bool) :
 func _on_destroy():
 	if EventManager != null:
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
+
+
+#TEMP SHIT
+func _on_attack_highlight():
+	video_main.stop();
+	video_main.stream = attack;
+	video_main.play_video();
+	
+	await get_tree().create_timer(video_ghost.delay_time).timeout;
+	video_ghost.stop();
+	video_ghost.stream = attack;
+	video_ghost.play_video(false);
+	
+
+func _on_defend_highlight():
+	video_main.stop();
+	video_main.stream = defend;
+	video_main.play_video();
+	
+	await get_tree().create_timer(video_ghost.delay_time).timeout;
+	video_ghost.stop();
+	video_ghost.stream = defend;
+	video_ghost.play_video(false);
+
+func _on_other_highlight():
+	video_main.stop();
+	video_main.stream = _video_main;
+	video_main.play_video();
+	
+	await get_tree().create_timer(video_ghost.delay_time).timeout;
+	video_ghost.stop();
+	video_ghost.stream = _video_main;
+	video_ghost.play_video(false);
+#END TEMP

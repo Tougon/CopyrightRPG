@@ -62,6 +62,13 @@ signal battle_fade_start(fade_in : bool);
 signal battle_fade_completed(fade_in : bool);
 
 
+#TEMP SHIT
+signal on_attack_highlight();
+signal on_defend_highlight();
+signal on_other_highlight();
+#END TEMP
+
+
 # Leaving this intact but given the dictionary might as well not exist, I'm not sure we need.
 func _ready():
 	pass
