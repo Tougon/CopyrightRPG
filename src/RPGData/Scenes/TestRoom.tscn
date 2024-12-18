@@ -747,7 +747,6 @@ tile_set = SubResource("TileSet_whai2")
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
-enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]

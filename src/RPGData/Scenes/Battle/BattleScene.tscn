@@ -1,17 +1,20 @@
-[gd_scene load_steps=74 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=71 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="2_686ui"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="2_ddg1s"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="2_vttnk"]
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
-[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="3_h531l"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
+[ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="4_aq814"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
+[ext_resource type="Material" uid="uid://df8am7viydj08" path="res://assets/Materials/VideoMaterials/entity_test_00.tres" id="5_oi0b5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="6_1yw0j"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="6_2fssi"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
+[ext_resource type="Material" uid="uid://dstlbr5jfxhco" path="res://assets/Materials/VideoMaterials/entity_test_01.tres" id="6_oqqib"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Resource" uid="uid://dyc1rwxffmh78" path="res://assets/Entities/players/player_main.tres" id="7_5gsqw"]
 [ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="7_iqjjj"]
@@ -45,79 +48,11 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="41_ktutj"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="42_mqdqo"]
 
-[sub_resource type="Gradient" id="Gradient_sr4ea"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
-colors = PackedColorArray(0.729412, 0.635294, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.729412, 0.635294, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.729412, 0.635294, 1, 0.8)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
-gradient = SubResource("Gradient_sr4ea")
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_opdml"]
-shader = ExtResource("3_h531l")
-shader_parameter/screen_height = 720.0
-shader_parameter/amplitude = 0.1
-shader_parameter/frequency = 0.05
-shader_parameter/speed = 0.5
-shader_parameter/amplitude_vertical = 0.05
-shader_parameter/frequency_vertical = 12.0
-shader_parameter/speed_vertical = 3.0
-shader_parameter/scroll_direction = Vector2(0, -0.1)
-shader_parameter/scrolling_speed = 0.5
-shader_parameter/enable_palette_cycling = false
-shader_parameter/enable_scan_lines = false
-shader_parameter/scan_line_mod = 2
-shader_parameter/palette_speed = 0.2
-shader_parameter/enable_pixelate = true
-shader_parameter/pixel_size = 96
-shader_parameter/palette = SubResource("GradientTexture2D_suad4")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_13jk6"]
-shader = ExtResource("3_h531l")
-shader_parameter/screen_height = 720.0
-shader_parameter/amplitude = 0.1
-shader_parameter/frequency = 0.05
-shader_parameter/speed = 0.5
-shader_parameter/amplitude_vertical = 0.05
-shader_parameter/frequency_vertical = 12.0
-shader_parameter/speed_vertical = 3.0
-shader_parameter/scroll_direction = Vector2(0, -0.1)
-shader_parameter/scrolling_speed = 0.5
-shader_parameter/enable_palette_cycling = true
-shader_parameter/enable_scan_lines = true
-shader_parameter/scan_line_mod = 4
-shader_parameter/palette_speed = 0.2
-shader_parameter/enable_pixelate = false
-shader_parameter/pixel_size = 96
-shader_parameter/palette = SubResource("GradientTexture2D_suad4")
-
-[sub_resource type="Gradient" id="Gradient_hbehj"]
-offsets = PackedFloat32Array(0, 0.163265, 0.282799, 0.431487, 0.501458, 0.714286, 0.825073, 1)
-colors = PackedColorArray(0.247059, 0.639216, 1, 0.768627, 0.0784314, 0.788235, 1, 0.501961, 0.34902, 0.878431, 0.996078, 0.501961, 0.6, 0.917647, 1, 0.501961, 0.247059, 0.639216, 1, 0.768627, 0.0784314, 0.788235, 1, 0.501961, 0.34902, 0.878431, 0.996078, 0.501961, 0.6, 0.917647, 1, 0.501961)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fpi4j"]
-gradient = SubResource("Gradient_hbehj")
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4nt8"]
-shader = ExtResource("3_h531l")
-shader_parameter/screen_height = 720.0
-shader_parameter/amplitude = 0.1
-shader_parameter/frequency = 0.05
-shader_parameter/speed = 0.5
-shader_parameter/amplitude_vertical = 0.05
-shader_parameter/frequency_vertical = 12.0
-shader_parameter/speed_vertical = 3.0
-shader_parameter/scroll_direction = Vector2(0, -0.1)
-shader_parameter/scrolling_speed = 0.5
-shader_parameter/enable_palette_cycling = true
-shader_parameter/enable_scan_lines = false
-shader_parameter/scan_line_mod = 8
-shader_parameter/palette_speed = 0.2
-shader_parameter/enable_pixelate = true
-shader_parameter/pixel_size = 96
-shader_parameter/palette = SubResource("GradientTexture2D_fpi4j")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_44pux"]
+shader = ExtResource("4_aq814")
+shader_parameter/color_primary = null
+shader_parameter/color_secondary = Color(1, 1, 1, 1)
+shader_parameter/resolution = Vector2(266.667, 200)
 
 [sub_resource type="Resource" id="Resource_pjtk0"]
 script = ExtResource("6_1yw0j")
@@ -280,8 +215,22 @@ enemy_positions = NodePath("Entities/Enemy Positions")
 
 [node name="Background" type="Node" parent="."]
 
-[node name="BG Video Canvas" type="CanvasLayer" parent="Background"]
+[node name="BG Video Canvas" type="CanvasLayer" parent="Background" node_paths=PackedStringArray("video_main", "video_ghost", "solid_layer", "static_layer")]
 layer = -10
+script = ExtResource("2_686ui")
+video_main = NodePath("Main Video")
+video_ghost = NodePath("Ghost Video")
+solid_layer = NodePath("ColorRect")
+static_layer = NodePath("Static")
+
+[node name="Static" type="ColorRect" parent="Background/BG Video Canvas"]
+visible = false
+material = SubResource("ShaderMaterial_44pux")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Background/BG Video Canvas"]
 anchors_preset = 15
@@ -292,30 +241,15 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.296875, 0.296875, 0.296875, 1)
 
-[node name="VideoStreamPlayer" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
-material = SubResource("ShaderMaterial_opdml")
+[node name="Main Video" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
+material = ExtResource("5_oi0b5")
 mouse_filter = 2
+stream = null
 
-[node name="VideoStreamPlayer2" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
-material = SubResource("ShaderMaterial_13jk6")
+[node name="Ghost Video" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
+material = ExtResource("6_oqqib")
 mouse_filter = 2
-delay_start = true
-delay_time = 0.5
-
-[node name="ColorRect2" type="ColorRect" parent="Background/BG Video Canvas"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.296875, 0.296875, 0.296875, 1)
-
-[node name="VideoStreamPlayer3" parent="Background/BG Video Canvas" instance=ExtResource("2_ddg1s")]
-visible = false
-material = SubResource("ShaderMaterial_w4nt8")
-mouse_filter = 2
+stream = null
 delay_start = true
 delay_time = 0.5
 

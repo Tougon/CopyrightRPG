@@ -7,7 +7,9 @@ class_name LoopingVideoPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	finished.connect(on_finished);
-	
+
+
+func play_video():
 	if delay_start : await get_tree().create_timer(delay_time).timeout
 	play();
 
