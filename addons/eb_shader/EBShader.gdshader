@@ -25,6 +25,9 @@ uniform float palette_speed = 0.1;
 uniform bool enable_pixelate = false;
 uniform int pixel_size : hint_range(4, 1080) = 96;
 
+uniform sampler2D transition_palette;
+uniform float transition = 1.0;
+
 void fragment()
 {
 	vec2 uv = UV;
@@ -52,8 +55,10 @@ void fragment()
 
 	if (enable_palette_cycling)
 	{
+		vec4 transition_palette_sample = texture(transition_palette, vec2(palette_swap, 0));
 		vec4 palette_sample = texture(palette, vec2(palette_swap, 0));
-		COLOR = vec4(palette_sample.rgb, tex.a * palette_sample.a);
+		vec4 palette_final = mix(transition_palette_sample, palette_sample, transition);
+		COLOR = vec4(palette_final.rgb, tex.a * palette_final.a);
 	}
 	else COLOR = tex;
 

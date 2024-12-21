@@ -31,6 +31,7 @@ signal register_enemy(entity : EntityController);
 
 signal set_player_ready();
 signal set_active_player(entity : EntityController);
+signal set_player_bg(entity : EntityController);
 signal player_menu_cancel();
 
 signal on_attack_select();

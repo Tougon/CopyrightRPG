@@ -3,24 +3,33 @@ class_name BGVideoCanvas
 
 enum LoadType { ENTITY, ATTACK }
 
-@export var video_main : LoopingVideoPlayer;
-@export var video_ghost : LoopingVideoPlayer;
+@export var video_layer : LoopingVideoPlayer;
+@export var color_layer : LoopingVideoPlayer;
 @export var solid_layer : ColorRect;
 @export var static_layer : ColorRect;
+@export var start_static : bool = true;
 
+# Cached video and material instances
 var _video_main : VideoStream;
 var _material_main : Material;
 var _material_ghost : Material;
 
-var _attack_to_video_map : Dictionary
-var _attack_to_shader_map : Dictionary
+var _attack_to_video_map : Dictionary = {};
+var _entity_to_color_mat_map : Dictionary = {};
+# May not be used? Thinking if anything, 
+# attacks will have the option of overwriting the movement layer. Not sure though.
+var _attack_to_shader_map : Dictionary = {};
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_set_static(true);
-	
 	EventManager.on_battle_begin.connect(_on_battle_begin);
+	EventManager.set_player_bg.connect(_set_player_bg);
+	
+	if start_static : _set_static(true);
+	else : 
+		video_layer.play_video();
+		color_layer.play_video();
 
 
 func _on_battle_begin(params : BattleParams):
@@ -30,11 +39,45 @@ func _on_battle_begin(params : BattleParams):
 	_material_ghost = null;
 	_attack_to_video_map.clear();
 	_attack_to_shader_map.clear();
+	_entity_to_color_mat_map.clear();
+	
+	for player_index in params.players.size():
+		if params.players[player_index] != null :
+			var player = params.players[player_index].override_entity;
+			
+			if !_entity_to_color_mat_map.has(player):
+				var color = load_material(player.entity_video_material_secondary);
+				_entity_to_color_mat_map[player] = color;
 	
 	for enemy_index in params.enemies.size():
 		var enemy = params.enemies[enemy_index];
 		if enemy_index == 0 : 
 			load_video_full(enemy.entity_video, enemy.entity_video_material_primary, enemy.entity_video_material_secondary, LoadType.ENTITY, enemy);
+		
+		if !_entity_to_color_mat_map.has(enemy):
+			var color = load_material(enemy.entity_video_material_secondary);
+			_entity_to_color_mat_map[enemy] = color;
+
+
+func _set_player_bg(entity : EntityController):
+	if _entity_to_color_mat_map.has(entity.current_entity):
+		var previous = color_layer.material.get_shader_parameter("palette");
+		color_layer.material = _entity_to_color_mat_map[entity.current_entity].duplicate() as ShaderMaterial;
+		color_layer.material.set_shader_parameter("transition_palette", previous);
+		
+		var tween = get_tree().create_tween();
+		tween.set_parallel(true);
+		
+		var property = tween.tween_property(color_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, 1.0);
+		
+		if property == null : 
+			return;
+		else:
+			property.set_trans(Tween.TRANS_QUART)
+			property.set_ease(Tween.EASE_OUT)
+			property.from(0);
+		
+		print("Fuck")
 
 
 func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, load_type : LoadType, aux : Resource):
@@ -47,15 +90,15 @@ func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, 
 		_material_main = mat1;
 		_material_ghost = mat2;
 		
-		video_main.stream = _video_main;
-		video_main.material = mat1;
-		video_ghost.stream = _video_main;
-		video_ghost.material = mat2;
+		video_layer.stream = _video_main;
+		video_layer.material = mat1;
+		color_layer.stream = _video_main;
+		color_layer.material = mat2;
 		
 		_set_static(false);
 		
-		video_main.play_video();
-		video_ghost.play_video();
+		video_layer.play_video();
+		color_layer.play_video();
 
 
 func load_video(path : String) -> VideoStream:
@@ -75,10 +118,11 @@ func load_material(path : String) -> Material:
 func _set_static(active : bool) :
 	static_layer.visible = active;
 	solid_layer.visible = !active;
-	video_main.visible = !active;
-	video_ghost.visible = !active;
+	video_layer.visible = !active;
+	color_layer.visible = !active;
 
 
 func _on_destroy():
 	if EventManager != null:
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
+		EventManager.set_player_bg.disconnect(_set_player_bg);

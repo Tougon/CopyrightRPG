@@ -206,6 +206,7 @@ enemy_positions = NodePath("Entities/Enemy Positions")
 [node name="Background" type="Node" parent="."]
 
 [node name="BG Video Canvas" parent="Background" instance=ExtResource("2_qgvky")]
+start_static = true
 
 [node name="Entities" type="Node" parent="."]
 

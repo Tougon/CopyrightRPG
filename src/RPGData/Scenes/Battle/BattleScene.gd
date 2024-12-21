@@ -119,6 +119,7 @@ func _begin_turn():
 	players.sort_custom(_compare_speed);
 	if players.size() > 0:
 		EventManager.set_active_player.emit(players[current_player_index]);
+		EventManager.set_player_bg.emit(players[current_player_index]);
 	
 	UIManager.open_menu_name("player_battle_main");
 	
@@ -143,6 +144,7 @@ func _decision_phase():
 			
 			if current_player_index < players.size():
 				EventManager.set_active_player.emit(players[current_player_index]);
+				EventManager.set_player_bg.emit(players[current_player_index]);
 				await get_tree().process_frame;
 				UIManager.open_menu_name("player_battle_main");
 	
@@ -183,6 +185,8 @@ func _action_phase():
 		
 		if entity.is_defeated:
 			continue;
+		
+		EventManager.set_player_bg.emit(entity);
 		
 		var is_target_valid : bool = true;
 		var num_active = get_num_active_enemies();
@@ -568,6 +572,7 @@ func _on_player_menu_cancel():
 			players[current_player_index].current_item = null;
 		
 		EventManager.set_active_player.emit(players[current_player_index]);
+		EventManager.set_player_bg.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
 
 

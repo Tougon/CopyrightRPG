@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="1_jecyy"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="2_k620y"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="3_8xmgu"]
-[ext_resource type="Material" uid="uid://df8am7viydj08" path="res://assets/Materials/VideoMaterials/entity_test_00.tres" id="4_5wgit"]
-[ext_resource type="Material" uid="uid://dstlbr5jfxhco" path="res://assets/Materials/VideoMaterials/entity_test_01.tres" id="5_w28bd"]
+[ext_resource type="Material" uid="uid://cv8f0hk7x1upg" path="res://assets/Materials/VideoMaterials/entity_player_main_00.tres" id="4_jecf6"]
+[ext_resource type="Material" uid="uid://3nygt7s0yhyq" path="res://assets/Materials/VideoMaterials/entity_player_main_01.tres" id="5_3u2dt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44pux"]
 shader = ExtResource("2_k620y")
@@ -12,13 +12,14 @@ shader_parameter/color_primary = null
 shader_parameter/color_secondary = Color(1, 1, 1, 1)
 shader_parameter/resolution = Vector2(266.667, 200)
 
-[node name="BG Video Canvas" type="CanvasLayer" node_paths=PackedStringArray("video_main", "video_ghost", "solid_layer", "static_layer")]
+[node name="BG Video Canvas" type="CanvasLayer" node_paths=PackedStringArray("video_layer", "color_layer", "solid_layer", "static_layer")]
 layer = -10
 script = ExtResource("1_jecyy")
-video_main = NodePath("Main Video")
-video_ghost = NodePath("Ghost Video")
+video_layer = NodePath("Video Layer")
+color_layer = NodePath("Color Layer")
 solid_layer = NodePath("ColorRect")
 static_layer = NodePath("Static")
+start_static = false
 
 [node name="Static" type="ColorRect" parent="."]
 visible = false
@@ -38,14 +39,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.296875, 0.296875, 0.296875, 1)
 
-[node name="Main Video" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("4_5wgit")
+[node name="Video Layer" parent="." instance=ExtResource("3_8xmgu")]
+material = ExtResource("4_jecf6")
 mouse_filter = 2
-stream = null
 
-[node name="Ghost Video" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("5_w28bd")
+[node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]
+material = ExtResource("5_3u2dt")
 mouse_filter = 2
-stream = null
 delay_start = true
 delay_time = 0.5
