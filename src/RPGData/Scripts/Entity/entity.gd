@@ -107,9 +107,9 @@ func get_reward_exp(level : int) -> int:
 @export var dodge_anim : AnimationSequenceObject;
 @export var defeat_anim : AnimationSequenceObject;
 @export var head_offset : Vector2;
-@export_file("*.ogv") var entity_video: String;
-@export_file("*.tres") var entity_video_material_primary: String;
-@export_file("*.tres") var entity_video_material_secondary: String;
+@export_file("*.tres") var entity_video: String;
+@export_file("*.tres") var entity_video_material: String;
+@export_file("*.tres") var entity_thought_pattern_material: String;
 
 # TODO: More real tools
 @export_group("Moveset and Behavior")

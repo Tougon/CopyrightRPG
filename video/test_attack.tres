@@ -1,0 +1,4 @@
+[gd_resource type="FFmpegVideoStream" format=3 uid="uid://3up5toi4a11o"]
+
+[resource]
+file = "res://video/attack.mp4"

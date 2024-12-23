@@ -16,6 +16,17 @@ func play_video():
 	play();
 
 
+func play_video_at(time : float):
+	play();
+	
+	while time > get_stream_length() && get_stream_length() > 0:
+		time -= get_stream_length();
+	
+	if time < 0 : time += get_stream_length();
+	
+	stream_position = time;
+
+
 func on_finished():
 	play();
 

@@ -16,15 +16,20 @@ var _material_ghost : Material;
 
 var _attack_to_video_map : Dictionary = {};
 var _entity_to_color_mat_map : Dictionary = {};
-# May not be used? Thinking if anything, 
-# attacks will have the option of overwriting the movement layer. Not sure though.
 var _attack_to_shader_map : Dictionary = {};
 
+var _current_spell : Spell;
+var _runtime_main : float;
+
+# TODO: Async loading Probably
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventManager.on_battle_begin.connect(_on_battle_begin);
 	EventManager.set_player_bg.connect(_set_player_bg);
+	EventManager.set_spell_bg.connect(_set_spell_bg);
+	EventManager.register_player.connect(_load_entity_spell_data);
+	EventManager.register_enemy.connect(_load_entity_spell_data);
 	
 	if start_static : _set_static(true);
 	else : 
@@ -46,17 +51,32 @@ func _on_battle_begin(params : BattleParams):
 			var player = params.players[player_index].override_entity;
 			
 			if !_entity_to_color_mat_map.has(player):
-				var color = load_material(player.entity_video_material_secondary);
+				var color = load_material(player.entity_thought_pattern_material);
 				_entity_to_color_mat_map[player] = color;
 	
 	for enemy_index in params.enemies.size():
 		var enemy = params.enemies[enemy_index];
 		if enemy_index == 0 : 
-			load_video_full(enemy.entity_video, enemy.entity_video_material_primary, enemy.entity_video_material_secondary, LoadType.ENTITY, enemy);
+			load_video_full(enemy.entity_video, enemy.entity_video_material, enemy.entity_thought_pattern_material, LoadType.ENTITY, enemy);
 		
 		if !_entity_to_color_mat_map.has(enemy):
-			var color = load_material(enemy.entity_video_material_secondary);
+			var color = load_material(enemy.entity_thought_pattern_material);
 			_entity_to_color_mat_map[enemy] = color;
+
+
+func _load_entity_spell_data(entity : EntityController):
+	for move in entity.move_list:
+		if move.spell_video != null && !_attack_to_video_map.has(move):
+			var video = load_video(move.spell_video);
+			
+			if video != null : 
+				_attack_to_video_map[move] = video;
+		
+		if move.spell_video_material != null && !_attack_to_shader_map.has(move):
+			var mat = load_material(move.spell_video_material);
+			
+			if mat != null : 
+				_attack_to_shader_map[move] = mat;
 
 
 func _set_player_bg(entity : EntityController):
@@ -76,8 +96,42 @@ func _set_player_bg(entity : EntityController):
 			property.set_trans(Tween.TRANS_QUART)
 			property.set_ease(Tween.EASE_OUT)
 			property.from(0);
+
+
+func _set_spell_bg(spell : Spell):
+	if spell == null && _current_spell != null: 
+		var offset_amount = video_layer.stream_position;
 		
-		print("Fuck")
+		video_layer.stop();
+		#color_layer.stop();
+		
+		video_layer.material = _material_main;
+		video_layer.stream = _video_main;
+		#color_layer.stream = _video_main;
+		
+		video_layer.play_video_at(_runtime_main + offset_amount);
+		#color_layer.play_video_at(_runtime_main + offset_amount - color_layer.delay_time);
+		
+		_current_spell = null;
+	else :
+		if _attack_to_video_map.has(spell):
+			# Cache video runtime
+			_runtime_main = video_layer.stream_position;
+			
+			video_layer.stop();
+			#color_layer.stop();
+			
+			var vid = _attack_to_video_map[spell];
+			var mat = _attack_to_shader_map[spell];
+			
+			video_layer.material = mat;
+			video_layer.stream = vid;
+			#color_layer.stream = vid;
+			
+			video_layer.play_video_at(0);
+			#color_layer.play_video_at(0);
+			
+			_current_spell = spell;
 
 
 func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, load_type : LoadType, aux : Resource):
@@ -126,3 +180,6 @@ func _on_destroy():
 	if EventManager != null:
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
 		EventManager.set_player_bg.disconnect(_set_player_bg);
+		EventManager.set_spell_bg.disconnect(_set_spell_bg);
+		EventManager.register_player.disconnect(_load_entity_spell_data);
+		EventManager.register_enemy.disconnect(_load_entity_spell_data);
