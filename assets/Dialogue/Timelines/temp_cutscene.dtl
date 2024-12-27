@@ -1,3 +1,4 @@
+[begin_quest quest="Temp" resource="Tutorial"]
 [fade inst="true"]
 [set_camera_target id="Test Camera Pos 1"]
 [wait time="0.5"]
@@ -11,6 +12,7 @@
 [wait time="0.5"]
 join temp_character_1 center
 temp_character_1: Guh, what the heck?
+[progress_quest quest="Tutorial"]
 [clear time="0.2"]
 [fade]
 [set_camera_target id="player"]

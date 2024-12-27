@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="QuestDatabase" load_steps=5 format=3 uid="uid://dxphr6tet5vr2"]
+[gd_resource type="Resource" script_class="QuestDatabase" load_steps=6 format=3 uid="uid://dxphr6tet5vr2"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/System/QuestDatabaseEntry.gd" id="1_j5sa6"]
 [ext_resource type="Resource" uid="uid://yra4mmseryxw" path="res://assets/Quests/temp.quest" id="2_7b8qt"]
@@ -9,6 +9,11 @@ script = ExtResource("1_j5sa6")
 quest = ExtResource("2_7b8qt")
 quest_name = "Defeat3Enemies"
 
+[sub_resource type="Resource" id="Resource_c48b4"]
+script = ExtResource("1_j5sa6")
+quest = ExtResource("2_7b8qt")
+quest_name = "Tutorial"
+
 [resource]
 script = ExtResource("3_2dw22")
-quests = Array[ExtResource("1_j5sa6")]([SubResource("Resource_axicn")])
+quests = Array[ExtResource("1_j5sa6")]([SubResource("Resource_axicn"), SubResource("Resource_c48b4")])

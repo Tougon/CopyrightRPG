@@ -184,6 +184,6 @@ battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, 0)
 entity_video = ""
-entity_video_material = null
+entity_video_material = ""
 entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_player_main_01.tres"
 move_list = SubResource("Resource_xqh42")
