@@ -12,6 +12,11 @@ uniform float modulate_amount : hint_range(0., 1.) = 0.;
 uniform bool invert = false;
 uniform float final_amount : hint_range(0., 1.) = 1.;
 
+uniform bool vignette = false;
+uniform float alpha = 1.0;
+uniform float inner_radius = 0.0;
+uniform float outer_radius = 1.0;
+
 varying vec2 amount_r;
 varying vec2 amount_g;
 varying vec2 amount_b;
@@ -41,6 +46,10 @@ void fragment() {
 
     chaos_v *= 1. - pow(att, attenuation);
 	
+	float x = abs(UV.r-.5)*2.0;
+	float y = abs(UV.g-.5)*2.0;
+	float q = 1.0-(1.0-sqrt(x*x+y*y)/outer_radius)/(1.0-inner_radius);
+	
 	vec4 screen_tex = texture(SCREEN_TEXTURE, SCREEN_UV);
 
 	float r = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_r).r;
@@ -59,7 +68,10 @@ void fragment() {
 	r = mix(max_color * mix(1, modulate.r, modulate_amount), r, saturation);
 	g = mix(max_color * mix(1, modulate.g, modulate_amount), g, saturation);
 	b = mix(max_color * mix(1, modulate.b, modulate_amount), b, saturation);
-
-    COLOR = mix(screen_tex, vec4(r, g, b, 1.), final_amount);
+	
+	float v = clamp(1.0 - (q * alpha), 0, 1);
+	if (!vignette) v = 1.;
+	
+    COLOR = mix(screen_tex, vec4(r * v, g * v, b * v, 1.), final_amount);
 	
 }

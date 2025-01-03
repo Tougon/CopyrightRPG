@@ -754,6 +754,7 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 [node name="Player UI" type="CanvasLayer" parent="UI"]
 
 [node name="OverworldMainMenu" parent="UI/Player UI" instance=ExtResource("5_wk541")]
+visible = false
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
 layer = 5

@@ -74,6 +74,10 @@ shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/modulate_amount = 0.0
 shader_parameter/invert = false
 shader_parameter/final_amount = 1.0
+shader_parameter/vignette = false
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
 
 [sub_resource type="Resource" id="Resource_b4ay6"]
 script = ExtResource("42_mqdqo")

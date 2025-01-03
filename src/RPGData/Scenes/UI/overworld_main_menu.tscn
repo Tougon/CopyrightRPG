@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=24 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_ui.gdshader" id="2_7lr2f"]
@@ -17,10 +17,14 @@ shader_parameter/chaos = 24.0
 shader_parameter/radius = 1.5
 shader_parameter/attenuation = 4.0
 shader_parameter/saturation = 0.015
-shader_parameter/modulate = Color(0.0771161, 0.011392, 0, 1)
+shader_parameter/modulate = Color(0.0784314, 0.0117647, 0, 1)
 shader_parameter/modulate_amount = 1.0
 shader_parameter/invert = true
 shader_parameter/final_amount = 1.0
+shader_parameter/vignette = true
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.65
+shader_parameter/outer_radius = 1.2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rry0e"]
 shader = ExtResource("2_7lr2f")
@@ -49,9 +53,24 @@ relative = false
 "Float Value" = 1.0
 "From Float" = 0.0
 
+[sub_resource type="Resource" id="Resource_tv1mv"]
+script = ExtResource("9_7mkwv")
+target = "Distortion"
+property_name = "shader_parameter/alpha"
+material_property = true
+duration = 0.35
+delay = 0.15
+transition = 7
+ease = 2
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 1.0
+"From Float" = 0.0
+
 [sub_resource type="Resource" id="Resource_ig1wf"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv")])
 
 [sub_resource type="Resource" id="Resource_d1135"]
 script = ExtResource("7_2gsnx")
@@ -80,9 +99,24 @@ relative = false
 "Float Value" = 0.0
 "From Float" = 1.0
 
+[sub_resource type="Resource" id="Resource_ou1q5"]
+script = ExtResource("9_7mkwv")
+target = "Distortion"
+property_name = "shader_parameter/alpha"
+material_property = true
+duration = 0.35
+delay = 0.0
+transition = 7
+ease = 2
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 1.0
+
 [sub_resource type="Resource" id="Resource_psnsu"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5")])
 
 [sub_resource type="Resource" id="Resource_bdl6l"]
 script = ExtResource("7_2gsnx")
