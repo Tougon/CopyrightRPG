@@ -69,6 +69,11 @@ shader = ExtResource("22_0arau")
 shader_parameter/chaos = 0.0
 shader_parameter/radius = 1.4
 shader_parameter/attenuation = 2.5
+shader_parameter/saturation = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/modulate_amount = 0.0
+shader_parameter/invert = false
+shader_parameter/final_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_b4ay6"]
 script = ExtResource("42_mqdqo")

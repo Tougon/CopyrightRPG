@@ -58,8 +58,6 @@ func open_menu(menu : MenuPanel):
 		menu.initial_selection.grab_focus();
 	else: 
 		suspend_selection();
-	
-	on_menu_opened.emit(menu);
 
 
 func close_all_menus():

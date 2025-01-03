@@ -6,6 +6,11 @@ uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 uniform float chaos : hint_range(0., 32.) = 1.;
 uniform float radius : hint_range(0., 3.) = 0.5;
 uniform float attenuation : hint_range(1., 5.) = 2.;
+uniform float saturation : hint_range(0., 1.) = 1.;
+uniform vec4 modulate: source_color = vec4(1,1,1,1);
+uniform float modulate_amount : hint_range(0., 1.) = 0.;
+uniform bool invert = false;
+uniform float final_amount : hint_range(0., 1.) = 1.;
 
 varying vec2 amount_r;
 varying vec2 amount_g;
@@ -35,10 +40,26 @@ void fragment() {
     float att = clamp(dist / radius, 0., 1.);
 
     chaos_v *= 1. - pow(att, attenuation);
+	
+	vec4 screen_tex = texture(SCREEN_TEXTURE, SCREEN_UV);
 
-    COLOR = vec4(
-        texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_r).r,
-        texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_g).g,
-        texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_b).b,
-        1.);
+	float r = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_r).r;
+	float g = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_g).g;
+	float b = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_b).b;
+	
+	if (invert)
+	{
+		r = 1. - r;
+		g = 1. - g;
+		b = 1. - b;
+	}
+	
+	float max_color = max(r, max(g, b));
+	
+	r = mix(max_color * mix(1, modulate.r, modulate_amount), r, saturation);
+	g = mix(max_color * mix(1, modulate.g, modulate_amount), g, saturation);
+	b = mix(max_color * mix(1, modulate.b, modulate_amount), b, saturation);
+
+    COLOR = mix(screen_tex, vec4(r, g, b, 1.), final_amount);
+	
 }

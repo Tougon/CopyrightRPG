@@ -1,10 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=22 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_ui.gdshader" id="2_7lr2f"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
 [ext_resource type="Theme" uid="uid://c1hoowgrbo62t" path="res://assets/Themes/Theme_OverworldMain.tres" id="2_l1t7y"]
+[ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="2_x4i24"]
 [ext_resource type="Texture2D" uid="uid://dcbk1bp22es5y" path="res://assets/Sprites/Overworld/THE CULPRIT.png" id="5_fprwb"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_i4er7"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="7_2gsnx"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_5bptp"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_7mkwv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
+shader = ExtResource("2_x4i24")
+shader_parameter/chaos = 24.0
+shader_parameter/radius = 1.5
+shader_parameter/attenuation = 4.0
+shader_parameter/saturation = 0.015
+shader_parameter/modulate = Color(0.0771161, 0.011392, 0, 1)
+shader_parameter/modulate_amount = 1.0
+shader_parameter/invert = true
+shader_parameter/final_amount = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rry0e"]
 shader = ExtResource("2_7lr2f")
@@ -17,6 +33,68 @@ shader_parameter/uv_amount = 1.3
 shader_parameter/taper_amount = 0.0
 shader_parameter/origin = Vector2(0.32, -0.115)
 shader_parameter/use_color = true
+
+[sub_resource type="Resource" id="Resource_b0o5m"]
+script = ExtResource("9_7mkwv")
+target = "Distortion"
+property_name = "shader_parameter/final_amount"
+material_property = true
+duration = 0.5
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 1.0
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_ig1wf"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m")])
+
+[sub_resource type="Resource" id="Resource_d1135"]
+script = ExtResource("7_2gsnx")
+tween_name = "Open"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_ig1wf")])
+
+[sub_resource type="Resource" id="Resource_vu4gh"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = SubResource("Resource_d1135")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_ixc86"]
+script = ExtResource("9_7mkwv")
+target = "Distortion"
+property_name = "shader_parameter/final_amount"
+material_property = true
+duration = 0.5
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 1.0
+
+[sub_resource type="Resource" id="Resource_psnsu"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86")])
+
+[sub_resource type="Resource" id="Resource_bdl6l"]
+script = ExtResource("7_2gsnx")
+tween_name = "Close"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_psnsu")])
+
+[sub_resource type="Resource" id="Resource_vgeiw"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = SubResource("Resource_bdl6l")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ma1t"]
 shader = ExtResource("2_7lr2f")
@@ -42,6 +120,15 @@ script = ExtResource("1_ywfua")
 menu_name = "overworld_menu_main"
 initial_selection = NodePath("BG Area/Options/GridContainer/Save")
 all_selections = [NodePath("BG Area/Options/GridContainer/Save"), NodePath("BG Area/Options/GridContainer/Load"), NodePath("BG Area/Options/GridContainer/Delete")]
+
+[node name="Distortion" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_a7w6f")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BG Area" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_rry0e")
@@ -106,6 +193,7 @@ layout_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false

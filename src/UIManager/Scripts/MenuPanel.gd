@@ -109,6 +109,8 @@ func set_active(state : bool):
 			tween_player.play_tween_name("Open");
 		else :
 			on_menu_active();
+		
+		UIManager.on_menu_opened.emit(self);
 	
 	else :
 		set_focus(false);
