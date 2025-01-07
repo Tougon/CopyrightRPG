@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=10 format=3 uid="uid://bswvqsme1b5di"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_dgpu0"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_i8h3e"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_s5lh2"]
+
+[sub_resource type="Resource" id="Resource_aa6b8"]
+script = ExtResource("3_s5lh2")
+target = ""
+property_name = "pivot_offset"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(90, 17)
+
+[sub_resource type="Resource" id="Resource_ct3lh"]
+script = ExtResource("3_s5lh2")
+target = ""
+property_name = "rotation_degrees"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 8.0
+
+[sub_resource type="Resource" id="Resource_ychr2"]
+script = ExtResource("3_s5lh2")
+target = ""
+property_name = "scale"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1.25, 1.25)
+
+[sub_resource type="Resource" id="Resource_her81"]
+script = ExtResource("3_s5lh2")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_d4bna"]
+script = ExtResource("3_s5lh2")
+target = ""
+property_name = "shader_parameter/overlay_radius"
+material_property = true
+duration = 0.7
+delay = 0.0
+transition = 4
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.5
+
+[sub_resource type="Resource" id="Resource_mh4b5"]
+script = ExtResource("2_i8h3e")
+frames = Array[ExtResource("3_s5lh2")]([SubResource("Resource_aa6b8"), SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_her81"), SubResource("Resource_d4bna")])
+
+[resource]
+script = ExtResource("1_dgpu0")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("2_i8h3e")]([SubResource("Resource_mh4b5")])

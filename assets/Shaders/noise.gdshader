@@ -13,9 +13,9 @@ void fragment() {
 	vec2 uv = UV;
 	uv.x = round(uv.x * resolution.x) / resolution.x;
 	uv.y = round(uv.y * resolution.y) / resolution.y;
-	
+
 	float noise = random(uv, TIME);
 	vec4 color = mix(color_primary, color_secondary, noise);
-	
+
 	COLOR = color;
 }

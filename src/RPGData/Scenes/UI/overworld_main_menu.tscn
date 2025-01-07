@@ -1,14 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=34 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_ui.gdshader" id="2_7lr2f"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
-[ext_resource type="Theme" uid="uid://c1hoowgrbo62t" path="res://assets/Themes/Theme_OverworldMain.tres" id="2_l1t7y"]
 [ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="2_x4i24"]
+[ext_resource type="Theme" uid="uid://ddu4xmidfcls5" path="res://assets/Themes/Theme_UI_MainMenu_Button.tres" id="4_q6orv"]
+[ext_resource type="Shader" path="res://assets/Shaders/ui_dirt.gdshader" id="4_xq5bg"]
 [ext_resource type="Texture2D" uid="uid://dcbk1bp22es5y" path="res://assets/Sprites/Overworld/THE CULPRIT.png" id="5_fprwb"]
+[ext_resource type="Texture2D" uid="uid://cdlgmr2btwog1" path="res://assets/Textures/dirt.png" id="5_xpgnr"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_i4er7"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="7_2gsnx"]
+[ext_resource type="Resource" uid="uid://bswvqsme1b5di" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusEntered.tres" id="7_k53x4"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_5bptp"]
+[ext_resource type="Resource" uid="uid://2maq8tdqt2px" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusExit.tres" id="8_e10re"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_7mkwv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
@@ -16,7 +20,7 @@ shader = ExtResource("2_x4i24")
 shader_parameter/chaos = 24.0
 shader_parameter/radius = 1.5
 shader_parameter/attenuation = 4.0
-shader_parameter/saturation = 0.015
+shader_parameter/saturation = 0.05
 shader_parameter/modulate = Color(0.0784314, 0.0117647, 0, 1)
 shader_parameter/modulate_amount = 1.0
 shader_parameter/invert = true
@@ -24,19 +28,61 @@ shader_parameter/final_amount = 1.0
 shader_parameter/vignette = true
 shader_parameter/alpha = 1.0
 shader_parameter/inner_radius = 0.65
-shader_parameter/outer_radius = 1.2
+shader_parameter/outer_radius = 1.3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rry0e"]
-shader = ExtResource("2_7lr2f")
-shader_parameter/noise_size = 1.0
-shader_parameter/noise_strength = 50.0
-shader_parameter/noise_magnitude = Vector2(1, 0.333)
-shader_parameter/use_time = true
-shader_parameter/aspect_ratio = Vector2(1, 0.213)
-shader_parameter/uv_amount = 1.3
-shader_parameter/taper_amount = 0.0
-shader_parameter/origin = Vector2(0.32, -0.115)
-shader_parameter/use_color = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpxoc"]
+shader = ExtResource("4_xq5bg")
+shader_parameter/overlay_texture_offset = null
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="Resource" id="Resource_i8lkg"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = ExtResource("7_k53x4")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_381eq"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Exited"
+tween_resource = ExtResource("8_e10re")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cudql"]
+shader = ExtResource("4_xq5bg")
+shader_parameter/overlay_texture_offset = null
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_am32w"]
+shader = ExtResource("4_xq5bg")
+shader_parameter/overlay_texture_offset = null
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oy30"]
+shader = ExtResource("4_xq5bg")
+shader_parameter/overlay_texture_offset = null
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8u8k"]
+shader = ExtResource("4_xq5bg")
+shader_parameter/overlay_texture_offset = null
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
 [sub_resource type="Resource" id="Resource_b0o5m"]
 script = ExtResource("9_7mkwv")
@@ -142,7 +188,7 @@ shader_parameter/taper_amount = 0.0
 shader_parameter/origin = Vector2(1.27, 1.36)
 shader_parameter/use_color = false
 
-[node name="OverworldMainMenu" type="Panel" node_paths=PackedStringArray("initial_selection", "all_selections")]
+[node name="OverworldMainMenu" type="Panel" node_paths=PackedStringArray("header_icons")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(960, 720)
 anchors_preset = 15
@@ -151,9 +197,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ywfua")
+header_icons = [NodePath("Header/Options Headers/GridContainer/Party/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Inventory/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Notepad/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Options/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/System/TweenPlayerUI")]
 menu_name = "overworld_menu_main"
-initial_selection = NodePath("BG Area/Options/GridContainer/Save")
-all_selections = [NodePath("BG Area/Options/GridContainer/Save"), NodePath("BG Area/Options/GridContainer/Load"), NodePath("BG Area/Options/GridContainer/Delete")]
 
 [node name="Distortion" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_a7w6f")
@@ -164,17 +209,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG Area" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_rry0e")
+[node name="Header" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.7
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_vertical = 2
-color = Color(0, 0, 0, 0.8)
+offset_top = 20.0
+offset_bottom = 92.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0)
 
-[node name="Options" type="Control" parent="BG Area"]
+[node name="Options Headers" type="Control" parent="Header"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -182,48 +226,95 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="BG Area/Options"]
+[node name="GridContainer" type="GridContainer" parent="Header/Options Headers"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03
 anchor_right = 0.97
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 16.0
+offset_bottom = 72.0
 theme_override_constants/v_separation = 8
+columns = 5
 
-[node name="Spacer" type="Control" parent="BG Area/Options/GridContainer"]
-layout_mode = 2
-
-[node name="Save" type="Button" parent="BG Area/Options/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("2_l1t7y")
-theme_override_font_sizes/font_size = 32
-text = "T_MENU_COMMON_SAVE"
-clip_text = true
-
-[node name="Load" type="Button" parent="BG Area/Options/GridContainer"]
+[node name="Party" type="Button" parent="Header/Options Headers/GridContainer"]
+material = SubResource("ShaderMaterial_dpxoc")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_l1t7y")
+focus_neighbor_left = NodePath("../System")
+focus_neighbor_right = NodePath("../Inventory")
+theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
-text = "T_MENU_COMMON_LOAD"
+text = "T_MENU_COMMON_PARTY"
 clip_text = true
 
-[node name="Delete" type="Button" parent="BG Area/Options/GridContainer"]
+[node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Party"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+
+[node name="Inventory" type="Button" parent="Header/Options Headers/GridContainer"]
+material = SubResource("ShaderMaterial_cudql")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_l1t7y")
+focus_neighbor_left = NodePath("../Party")
+focus_neighbor_right = NodePath("../Notepad")
+theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
-text = "T_MENU_COMMON_DELETE"
+text = "T_MENU_COMMON_INVENTORY"
 clip_text = true
 
-[node name="Spacer2" type="Control" parent="BG Area/Options/GridContainer"]
+[node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Inventory"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+
+[node name="Notepad" type="Button" parent="Header/Options Headers/GridContainer"]
+material = SubResource("ShaderMaterial_am32w")
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../Inventory")
+focus_neighbor_right = NodePath("../Options")
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 32
+text = "T_MENU_COMMON_NOTEPAD"
+clip_text = true
+
+[node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Notepad"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+
+[node name="Options" type="Button" parent="Header/Options Headers/GridContainer"]
+material = SubResource("ShaderMaterial_0oy30")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../Notepad")
+focus_neighbor_right = NodePath("../System")
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 32
+text = "T_MENU_COMMON_OPTIONS"
+clip_text = true
+
+[node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Options"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+
+[node name="System" type="Button" parent="Header/Options Headers/GridContainer"]
+material = SubResource("ShaderMaterial_j8u8k")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../Options")
+focus_neighbor_right = NodePath("../Party")
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 32
+text = "T_MENU_COMMON_SYSTEM"
+clip_text = true
+
+[node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/System"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("2_fajv7")
@@ -240,7 +331,3 @@ offset_left = -500.0
 offset_bottom = 1000.0
 grow_horizontal = 0
 texture = ExtResource("5_fprwb")
-
-[connection signal="pressed" from="BG Area/Options/GridContainer/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="BG Area/Options/GridContainer/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="BG Area/Options/GridContainer/Delete" to="." method="_on_delete_pressed"]

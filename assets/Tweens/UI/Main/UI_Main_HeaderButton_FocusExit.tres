@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=9 format=3 uid="uid://2maq8tdqt2px"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_rll1t"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_btm3e"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_wv426"]
+
+[sub_resource type="Resource" id="Resource_ct3lh"]
+script = ExtResource("3_wv426")
+target = ""
+property_name = "rotation_degrees"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_ychr2"]
+script = ExtResource("3_wv426")
+target = ""
+property_name = "scale"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_3ruan"]
+script = ExtResource("3_wv426")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0.580392, 0.580392, 0.580392, 1)
+
+[sub_resource type="Resource" id="Resource_8l5tq"]
+script = ExtResource("3_wv426")
+target = ""
+property_name = "shader_parameter/overlay_radius"
+material_property = true
+duration = 0.7
+delay = 0.0
+transition = 4
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = -0.75
+
+[sub_resource type="Resource" id="Resource_mh4b5"]
+script = ExtResource("2_btm3e")
+frames = Array[ExtResource("3_wv426")]([SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_3ruan"), SubResource("Resource_8l5tq")])
+
+[resource]
+script = ExtResource("1_rll1t")
+tween_name = "Focus Exited"
+sequence = Array[ExtResource("2_btm3e")]([SubResource("Resource_mh4b5")])
