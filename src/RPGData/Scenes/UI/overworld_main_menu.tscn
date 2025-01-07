@@ -1,12 +1,10 @@
 [gd_scene load_steps=34 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
-[ext_resource type="Shader" path="res://assets/Shaders/erosion_ui.gdshader" id="2_7lr2f"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
 [ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="2_x4i24"]
 [ext_resource type="Theme" uid="uid://ddu4xmidfcls5" path="res://assets/Themes/Theme_UI_MainMenu_Button.tres" id="4_q6orv"]
 [ext_resource type="Shader" path="res://assets/Shaders/ui_dirt.gdshader" id="4_xq5bg"]
-[ext_resource type="Texture2D" uid="uid://dcbk1bp22es5y" path="res://assets/Sprites/Overworld/THE CULPRIT.png" id="5_fprwb"]
 [ext_resource type="Texture2D" uid="uid://cdlgmr2btwog1" path="res://assets/Textures/dirt.png" id="5_xpgnr"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_i4er7"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="7_2gsnx"]
@@ -30,12 +28,20 @@ shader_parameter/alpha = 1.0
 shader_parameter/inner_radius = 0.65
 shader_parameter/outer_radius = 1.3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbffb"]
+shader = ExtResource("4_xq5bg")
+shader_parameter/overlay_texture_offset = null
+shader_parameter/overlay_texture_tiling = Vector2(1, 1)
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = -2.0
+shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dpxoc"]
 shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
 shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
-shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
 [sub_resource type="Resource" id="Resource_i8lkg"]
@@ -57,7 +63,7 @@ shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
 shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
-shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_am32w"]
@@ -65,7 +71,7 @@ shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
 shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
-shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0oy30"]
@@ -73,7 +79,7 @@ shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
 shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
-shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j8u8k"]
@@ -81,7 +87,7 @@ shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
 shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
-shader_parameter/overlay_radius = 1.0
+shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
 [sub_resource type="Resource" id="Resource_b0o5m"]
@@ -114,9 +120,24 @@ relative = false
 "Float Value" = 1.0
 "From Float" = 0.0
 
+[sub_resource type="Resource" id="Resource_i0m8o"]
+script = ExtResource("9_7mkwv")
+target = "Header/Options Headers/GridContainer"
+property_name = "modulate"
+material_property = false
+duration = 0.5
+delay = 0.2
+transition = 4
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+"From Color" = Color(1, 1, 1, 0.384314)
+
 [sub_resource type="Resource" id="Resource_ig1wf"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv"), SubResource("Resource_i0m8o")])
 
 [sub_resource type="Resource" id="Resource_d1135"]
 script = ExtResource("7_2gsnx")
@@ -160,9 +181,23 @@ relative = false
 "Float Value" = 0.0
 "From Float" = 1.0
 
+[sub_resource type="Resource" id="Resource_pecf3"]
+script = ExtResource("9_7mkwv")
+target = "Header/Options Headers/GridContainer"
+property_name = "modulate"
+material_property = false
+duration = 0.2
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
 [sub_resource type="Resource" id="Resource_psnsu"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5"), SubResource("Resource_pecf3")])
 
 [sub_resource type="Resource" id="Resource_bdl6l"]
 script = ExtResource("7_2gsnx")
@@ -175,18 +210,6 @@ tween_name = "Close"
 tween_resource = SubResource("Resource_bdl6l")
 play_on_start = false
 next_tween = ""
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ma1t"]
-shader = ExtResource("2_7lr2f")
-shader_parameter/noise_size = 1.0
-shader_parameter/noise_strength = 5.0
-shader_parameter/noise_magnitude = Vector2(1, 0.333)
-shader_parameter/use_time = true
-shader_parameter/aspect_ratio = Vector2(1, 1.333)
-shader_parameter/uv_amount = 0.0
-shader_parameter/taper_amount = 0.0
-shader_parameter/origin = Vector2(1.27, 1.36)
-shader_parameter/use_color = false
 
 [node name="OverworldMainMenu" type="Panel" node_paths=PackedStringArray("header_icons")]
 self_modulate = Color(1, 1, 1, 0)
@@ -227,6 +250,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="Header/Options Headers"]
+material = SubResource("ShaderMaterial_gbffb")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03
@@ -319,15 +343,3 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), Su
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_5ma1t")
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -500.0
-offset_bottom = 1000.0
-grow_horizontal = 0
-texture = ExtResource("5_fprwb")
