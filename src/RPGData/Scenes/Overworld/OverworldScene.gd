@@ -17,6 +17,8 @@ var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Ba
 func _ready() -> void:
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_end.connect(_on_battle_end);
+	UIManager.on_menu_opened.connect(_on_menu_opened);
+	UIManager.on_menu_closing.connect(_on_menu_closing);
 	
 	OverworldManager.player_controller = player_controller;
 	OverworldManager.free_camera = free_camera;
@@ -162,11 +164,28 @@ func _on_battle_end(result : BattleResult):
 	result.free();
 
 
+func _on_menu_opened(menu : MenuPanel):
+	if menu.menu_name == "overworld_menu_main":
+		var tween = get_tree().create_tween();
+		tween.tween_property(game_camera, "zoom", Vector2(1.2,1.2), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+	
+
+
+func _on_menu_closing(menu : MenuPanel):
+	if menu.menu_name == "overworld_menu_main":
+		var tween = get_tree().create_tween();
+		tween.tween_property(game_camera, "zoom", Vector2(1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+
+
 func _exit_tree():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_end.disconnect(_on_battle_end);
-		
+	
+	if UIManager != null:
+		UIManager.on_menu_opened.disconnect(_on_menu_opened);
+		UIManager.on_menu_closing.disconnect(_on_menu_closing);
+	
 	QuestManager.quest_completed.disconnect(quest_complete)
 	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
 	Dialogic.timeline_ended.disconnect(_on_dialogue_end);

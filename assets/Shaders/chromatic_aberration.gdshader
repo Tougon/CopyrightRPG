@@ -45,33 +45,33 @@ void fragment() {
     float att = clamp(dist / radius, 0., 1.);
 
     chaos_v *= 1. - pow(att, attenuation);
-	
+
 	float x = abs(UV.r-.5)*2.0;
 	float y = abs(UV.g-.5)*2.0;
 	float q = 1.0-(1.0-sqrt(x*x+y*y)/outer_radius)/(1.0-inner_radius);
-	
+
 	vec4 screen_tex = texture(SCREEN_TEXTURE, SCREEN_UV);
 
 	float r = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_r).r;
 	float g = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_g).g;
 	float b = texture(SCREEN_TEXTURE, SCREEN_UV + chaos_v * amount_b).b;
-	
+
 	if (invert)
 	{
 		r = 1. - r;
 		g = 1. - g;
 		b = 1. - b;
 	}
-	
+
 	float max_color = max(r, max(g, b));
-	
+
 	r = mix(max_color * mix(1, modulate.r, modulate_amount), r, saturation);
 	g = mix(max_color * mix(1, modulate.g, modulate_amount), g, saturation);
 	b = mix(max_color * mix(1, modulate.b, modulate_amount), b, saturation);
-	
+
 	float v = clamp(1.0 - (q * alpha), 0, 1);
 	if (!vignette) v = 1.;
-	
+
     COLOR = mix(screen_tex, vec4(r * v, g * v, b * v, 1.), final_amount);
-	
+
 }

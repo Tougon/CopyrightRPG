@@ -6,6 +6,7 @@ var current_hover : Control;
 
 signal current_hover_changed(hover_item);
 signal on_menu_opened(panel : MenuPanel);
+signal on_menu_closing(panel : MenuPanel);
 signal on_menu_closed(panel : MenuPanel);
 signal on_all_menus_closed();
 

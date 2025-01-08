@@ -114,6 +114,7 @@ func set_active(state : bool):
 	
 	else :
 		set_focus(false);
+		UIManager.on_menu_closing.emit(self);
 		
 		if tween_player.has_tween("Close"):
 			tween_player.tween_ended.connect(on_tween_end_inactive);
