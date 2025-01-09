@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=42 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_5bptp"]
 [ext_resource type="Resource" uid="uid://2maq8tdqt2px" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusExit.tres" id="8_e10re"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_7mkwv"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu.gd" id="10_6dw36"]
+[ext_resource type="Resource" uid="uid://c3frdukk56jo" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Open.tres" id="11_gsdjh"]
+[ext_resource type="Resource" uid="uid://1e252p87q5vs" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Close.tres" id="12_u23bx"]
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="13_ynyhx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -89,6 +93,20 @@ shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="Resource" id="Resource_pblu3"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = ExtResource("11_gsdjh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_3byi8"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = ExtResource("12_u23bx")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_b0o5m"]
 script = ExtResource("9_7mkwv")
@@ -241,7 +259,7 @@ tween_resource = SubResource("Resource_bdl6l")
 play_on_start = false
 next_tween = ""
 
-[node name="OverworldMainMenu" type="Panel" node_paths=PackedStringArray("header_icons")]
+[node name="OverworldMainMenu" type="Panel" node_paths=PackedStringArray("header_icons", "submenus")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(960, 720)
 anchors_preset = 15
@@ -251,6 +269,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ywfua")
 header_icons = [NodePath("Header/Options Headers/GridContainer/Party/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Inventory/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Notepad/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Options/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/System/TweenPlayerUI")]
+submenus = [NodePath("Body/Submenu"), NodePath("Body/Submenu2"), NodePath("Body/Submenu3"), NodePath("Body/Submenu4"), NodePath("Body/Submenu5")]
 menu_name = "overworld_menu_main"
 
 [node name="Distortion" type="ColorRect" parent="."]
@@ -371,6 +390,206 @@ clip_text = true
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
 
+[node name="Body" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Submenu" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 528)
+script = ExtResource("10_6dw36")
+root_menu = NodePath("../..")
+menu_name = "overworld_menu_main_sub_1"
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
+
+[node name="ColorRect" type="ColorRect" parent="Body/Submenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Submenu"]
+script = ExtResource("2_fajv7")
+
+[node name="Submenu2" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 528)
+script = ExtResource("10_6dw36")
+root_menu = NodePath("../..")
+menu_name = "overworld_menu_main_sub_1"
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
+
+[node name="ColorRect" type="ColorRect" parent="Body/Submenu2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Submenu2"]
+script = ExtResource("2_fajv7")
+
+[node name="Submenu3" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 528)
+script = ExtResource("10_6dw36")
+root_menu = NodePath("../..")
+menu_name = "overworld_menu_main_sub_1"
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
+
+[node name="ColorRect" type="ColorRect" parent="Body/Submenu3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Submenu3"]
+script = ExtResource("2_fajv7")
+
+[node name="Submenu4" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 528)
+script = ExtResource("10_6dw36")
+root_menu = NodePath("../..")
+menu_name = "overworld_menu_main_sub_1"
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
+
+[node name="ColorRect" type="ColorRect" parent="Body/Submenu4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Submenu4"]
+script = ExtResource("2_fajv7")
+
+[node name="Submenu5" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 528)
+script = ExtResource("10_6dw36")
+root_menu = NodePath("../..")
+menu_name = "overworld_menu_main_sub_1"
+initial_selection = NodePath("Save")
+all_selections = [NodePath("Save"), NodePath("Load"), NodePath("Delete")]
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
+
+[node name="ColorRect" type="ColorRect" parent="Body/Submenu5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Submenu5"]
+script = ExtResource("2_fajv7")
+
+[node name="Save" type="Button" parent="Body/Submenu5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -139.0
+offset_right = 170.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Delete")
+focus_neighbor_bottom = NodePath("../Load")
+theme = ExtResource("13_ynyhx")
+text = "T_MENU_COMMON_SAVE"
+
+[node name="Load" type="Button" parent="Body/Submenu5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -79.0
+offset_right = 170.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Save")
+focus_neighbor_bottom = NodePath("../Delete")
+theme = ExtResource("13_ynyhx")
+text = "T_MENU_COMMON_LOAD"
+
+[node name="Delete" type="Button" parent="Body/Submenu5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -19.0
+offset_right = 170.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../Load")
+focus_neighbor_bottom = NodePath("../Save")
+theme = ExtResource("13_ynyhx")
+text = "T_MENU_COMMON_DELETE"
+
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
+
+[connection signal="pressed" from="Body/Submenu5/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Body/Submenu5/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Body/Submenu5/Delete" to="." method="_on_delete_pressed"]

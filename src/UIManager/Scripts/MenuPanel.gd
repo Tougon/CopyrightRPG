@@ -20,8 +20,9 @@ func _ready():
 	
 	tween_player = $TweenPlayerUI;
 	
-	for sequence in sequence_list:
-		tween_player.add_tween_runtime(sequence);
+	if tween_player != null :
+		for sequence in sequence_list:
+			tween_player.add_tween_runtime(sequence);
 	
 	set_active_forced(start_open);
 

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="TweenResource" load_steps=7 format=3 uid="uid://c3frdukk56jo"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_ao3bh"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_svfyi"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_gxhnh"]
+
+[sub_resource type="Resource" id="Resource_4xq2j"]
+script = ExtResource("3_gxhnh")
+target = ""
+property_name = "scale"
+material_property = false
+duration = 0.35
+delay = 0.0
+transition = 3
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+"From Vector2" = Vector2(1.2, 1.2)
+
+[sub_resource type="Resource" id="Resource_lhojj"]
+script = ExtResource("3_gxhnh")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.35
+delay = 0.0
+transition = 3
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+"From Color" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_h56tx"]
+script = ExtResource("2_svfyi")
+frames = Array[ExtResource("3_gxhnh")]([SubResource("Resource_4xq2j"), SubResource("Resource_lhojj")])
+
+[resource]
+script = ExtResource("1_ao3bh")
+tween_name = "Open"
+sequence = Array[ExtResource("2_svfyi")]([SubResource("Resource_h56tx")])

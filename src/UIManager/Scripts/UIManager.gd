@@ -80,7 +80,8 @@ func close_menu(menu : MenuPanel):
 	
 	if active_menus.size() > 0:
 		if !is_closing_all:
-			active_menus[active_menus.size() - 1].initial_selection.grab_focus();
+			if active_menus[active_menus.size() - 1].initial_selection != null:
+				active_menus[active_menus.size() - 1].initial_selection.grab_focus();
 			active_menus[active_menus.size() - 1].set_focus(true);
 	else:
 		on_all_menus_closed.emit();
