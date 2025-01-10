@@ -269,7 +269,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ywfua")
 header_icons = [NodePath("Header/Options Headers/GridContainer/Party/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Inventory/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Notepad/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Options/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/System/TweenPlayerUI")]
-submenus = [NodePath("Body/Submenu"), NodePath("Body/Submenu2"), NodePath("Body/Submenu3"), NodePath("Body/Submenu4"), NodePath("Body/Submenu5")]
+submenus = [NodePath("Body/Party"), NodePath("Body/Inventory"), NodePath("Body/Notepad"), NodePath("Body/Options"), NodePath("Body/System")]
 menu_name = "overworld_menu_main"
 
 [node name="Distortion" type="ColorRect" parent="."]
@@ -400,7 +400,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Submenu" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+[node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -414,7 +414,7 @@ root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
-[node name="ColorRect" type="ColorRect" parent="Body/Submenu"]
+[node name="ColorRect" type="ColorRect" parent="Body/Party"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -423,10 +423,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Submenu"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
 
-[node name="Submenu2" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+[node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -440,7 +440,7 @@ root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
-[node name="ColorRect" type="ColorRect" parent="Body/Submenu2"]
+[node name="ColorRect" type="ColorRect" parent="Body/Inventory"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -449,10 +449,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Submenu2"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory"]
 script = ExtResource("2_fajv7")
 
-[node name="Submenu3" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+[node name="Notepad" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -466,7 +466,7 @@ root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
-[node name="ColorRect" type="ColorRect" parent="Body/Submenu3"]
+[node name="ColorRect" type="ColorRect" parent="Body/Notepad"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -475,10 +475,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Submenu3"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Notepad"]
 script = ExtResource("2_fajv7")
 
-[node name="Submenu4" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+[node name="Options" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -492,7 +492,7 @@ root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
-[node name="ColorRect" type="ColorRect" parent="Body/Submenu4"]
+[node name="ColorRect" type="ColorRect" parent="Body/Options"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -501,10 +501,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Submenu4"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Options"]
 script = ExtResource("2_fajv7")
 
-[node name="Submenu5" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
+[node name="System" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -520,7 +520,7 @@ initial_selection = NodePath("Save")
 all_selections = [NodePath("Save"), NodePath("Load"), NodePath("Delete")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
-[node name="ColorRect" type="ColorRect" parent="Body/Submenu5"]
+[node name="ColorRect" type="ColorRect" parent="Body/System"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -529,10 +529,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 1, 0)
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Submenu5"]
+[node name="TweenPlayerUI" type="Node" parent="Body/System"]
 script = ExtResource("2_fajv7")
 
-[node name="Save" type="Button" parent="Body/Submenu5"]
+[node name="Save" type="Button" parent="Body/System"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -550,7 +550,7 @@ focus_neighbor_bottom = NodePath("../Load")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_SAVE"
 
-[node name="Load" type="Button" parent="Body/Submenu5"]
+[node name="Load" type="Button" parent="Body/System"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -568,7 +568,7 @@ focus_neighbor_bottom = NodePath("../Delete")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_LOAD"
 
-[node name="Delete" type="Button" parent="Body/Submenu5"]
+[node name="Delete" type="Button" parent="Body/System"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -590,6 +590,6 @@ text = "T_MENU_COMMON_DELETE"
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
-[connection signal="pressed" from="Body/Submenu5/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="Body/Submenu5/Load" to="." method="_on_load_pressed"]
-[connection signal="pressed" from="Body/Submenu5/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Body/System/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]

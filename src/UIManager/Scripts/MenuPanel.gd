@@ -58,6 +58,8 @@ func set_focus(state : bool):
 		on_focus();
 	
 	else :
+		on_unfocus();
+		
 		for selection in all_selections:
 			
 			if selection == UIManager.current_hover:
@@ -80,8 +82,6 @@ func set_focus(state : bool):
 		
 		if hide_on_unfocus:
 			self.hide();
-		
-		on_unfocus();
 
 
 func on_focus():

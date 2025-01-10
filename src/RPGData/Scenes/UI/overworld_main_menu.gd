@@ -44,7 +44,6 @@ func on_menu_active():
 	# Do not focus this menu
 	ui_manager.open_menu(self);
 	ui_manager.open_menu(submenus[_current_tab_index]);
-	
 
 
 func on_menu_inactive():
