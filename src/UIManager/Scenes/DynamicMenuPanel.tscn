@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8i7bnt40ydoa"]
+
+[ext_resource type="Script" path="res://src/UIManager/Scenes/DynamicMenuPanel.gd" id="1_iiuam"]
+[ext_resource type="PackedScene" uid="uid://be5mqb53supdl" path="res://src/RPGData/Scenes/UI/player_battle_item_button.tscn" id="2_j0k42"]
+
+[node name="DynamicMenuPanel" type="Panel" node_paths=PackedStringArray("container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iiuam")
+container = NodePath("ScrollContainer")
+menu_item = ExtResource("2_j0k42")
+item_size = Vector2(100, 100)
+item_spacing = Vector2(20, 20)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -240.0
+offset_right = 300.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+layout_mode = 2
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

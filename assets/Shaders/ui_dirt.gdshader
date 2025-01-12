@@ -28,13 +28,13 @@ void fragment()
 
 	// Sample the texture
 	vec4 tex = texture(overlay_texture, tiling);
-	
+
 	vec2 uv = UV;
 	uv.x -= 0.5;
 	uv.y -= 0.5;
-	
+
 	float len = length(uv);
-	
+
 	// Blend the overlay with the sprite
 	vec4 overlay = mix(col, tex, sin(overlay_texture_amount));
 	COLOR = mix(col, overlay, len - overlay_radius);

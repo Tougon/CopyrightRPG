@@ -1,7 +1,8 @@
 extends MenuPanel
+class_name OverworldSubmenu;
 
 @export var root_menu : MenuPanel;
-@export var last_selection : Control;
+var last_selection : Control;
 
 
 func on_menu_cancel():
@@ -36,4 +37,3 @@ func cache_menu_state():
 	
 	if selection != null:
 		last_selection = selection;
-		print(last_selection);

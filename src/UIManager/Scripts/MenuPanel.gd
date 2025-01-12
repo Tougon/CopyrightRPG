@@ -15,6 +15,7 @@ var focused : bool;
 var ui_manager;
 var tween_player : TweenPlayer;
 
+
 func _ready():
 	tree_exiting.connect(_on_panel_removed);
 	
@@ -52,7 +53,7 @@ func set_focus(state : bool):
 		
 		process_mode = Node.PROCESS_MODE_INHERIT;
 		
-		if tween_player.has_tween("Focus"):
+		if tween_player != null && tween_player.has_tween("Focus"):
 			tween_player.play_tween_name("Focus");
 		
 		on_focus();
@@ -77,7 +78,7 @@ func set_focus(state : bool):
 		
 		process_mode = Node.PROCESS_MODE_DISABLED;
 		
-		if tween_player.has_tween("Unfocus"):
+		if tween_player != null && tween_player.has_tween("Unfocus"):
 			tween_player.play_tween_name("Unfocus");
 		
 		if hide_on_unfocus:
@@ -105,7 +106,7 @@ func set_active(state : bool):
 	if state == true :
 		self.show();
 		
-		if tween_player.has_tween("Open"):
+		if tween_player != null && tween_player.has_tween("Open"):
 			tween_player.tween_ended.connect(on_tween_end_active);
 			tween_player.play_tween_name("Open");
 		else :
@@ -117,7 +118,7 @@ func set_active(state : bool):
 		set_focus(false);
 		UIManager.on_menu_closing.emit(self);
 		
-		if tween_player.has_tween("Close"):
+		if tween_player != null && tween_player.has_tween("Close"):
 			tween_player.tween_ended.connect(on_tween_end_inactive);
 			tween_player.play_tween_name("Close");
 		else :

@@ -21,5 +21,6 @@ func init_button(_item : Item, _action : Spell, _entity : EntityController):
 
 
 func _on_pressed():
+	if entity == null : return;
 	entity.current_item = item;
 	EventManager.on_action_selected.emit(action, false);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=44 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -13,7 +13,9 @@
 [ext_resource type="Resource" uid="uid://2maq8tdqt2px" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusExit.tres" id="8_e10re"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_7mkwv"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu.gd" id="10_6dw36"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu_party.gd" id="10_6ge4e"]
 [ext_resource type="Resource" uid="uid://c3frdukk56jo" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Open.tres" id="11_gsdjh"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu_inventory.gd" id="11_shyhs"]
 [ext_resource type="Resource" uid="uid://1e252p87q5vs" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Close.tres" id="12_u23bx"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="13_ynyhx"]
 
@@ -315,8 +317,7 @@ material = SubResource("ShaderMaterial_dpxoc")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../System")
-focus_neighbor_right = NodePath("../Inventory")
+focus_mode = 0
 theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
 text = "T_MENU_COMMON_PARTY"
@@ -331,8 +332,7 @@ material = SubResource("ShaderMaterial_cudql")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../Party")
-focus_neighbor_right = NodePath("../Notepad")
+focus_mode = 0
 theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
 text = "T_MENU_COMMON_INVENTORY"
@@ -347,8 +347,7 @@ material = SubResource("ShaderMaterial_am32w")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../Inventory")
-focus_neighbor_right = NodePath("../Options")
+focus_mode = 0
 theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
 text = "T_MENU_COMMON_NOTEPAD"
@@ -363,8 +362,7 @@ material = SubResource("ShaderMaterial_0oy30")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../Notepad")
-focus_neighbor_right = NodePath("../System")
+focus_mode = 0
 theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
 text = "T_MENU_COMMON_OPTIONS"
@@ -379,8 +377,7 @@ material = SubResource("ShaderMaterial_j8u8k")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-focus_neighbor_left = NodePath("../Options")
-focus_neighbor_right = NodePath("../Party")
+focus_mode = 0
 theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 32
 text = "T_MENU_COMMON_SYSTEM"
@@ -409,10 +406,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
-script = ExtResource("10_6dw36")
+script = ExtResource("10_6ge4e")
 root_menu = NodePath("../..")
-menu_name = "overworld_menu_main_sub_1"
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Party"]
 layout_mode = 1
@@ -427,6 +422,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -435,10 +431,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
-script = ExtResource("10_6dw36")
+script = ExtResource("11_shyhs")
 root_menu = NodePath("../..")
-menu_name = "overworld_menu_main_sub_1"
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Inventory"]
 layout_mode = 1
@@ -453,6 +447,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("2_fajv7")
 
 [node name="Notepad" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -479,6 +474,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("2_fajv7")
 
 [node name="Options" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -505,6 +501,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("2_fajv7")
 
 [node name="System" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
