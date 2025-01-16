@@ -8,7 +8,7 @@ extends Panel
 @export var horizontal : bool = false;
 
 # Test Variables
-var data : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+var _data : Array;
 # End Test Variables
 
 var _grid_size : Vector2i;
@@ -21,12 +21,9 @@ var _total_item_count : int;
 
 var _last_pos : Vector2;
 var _group_start_index : int;
-var _group_end_index : int;
 var _current_scroll_percent : float;
 
 func _ready() -> void:
-	#super._ready();
-	
 	if container != null:
 		_scroll_area = container.get_child(0);
 	
@@ -39,19 +36,16 @@ func _ready() -> void:
 	
 	# NOTE: only works for vertical scroll
 	_group_start_index = 1;
-	_group_end_index = _group_start_index + _grid_size.y;
 	
-	spawn_menu_items();
+	_spawn_menu_items();
+	
 	# Test Code, Delete This
-	set_max_items(52);
+	_set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
 	# End Test Code
 
 
 func _process(delta: float) -> void:
 	# NOTE: only works for vertical scroll
-	# TODO: Scrap this percentage based approach and instead do this:
-	# move the row up or down based on direction of motion if it's off screen
-	#print(str(_scroll_area.position) + "|" + str(_scroll_area.size.y) + "|" + str(container.size.y));
 	var percent = abs(_scroll_area.position.y) / (_scroll_area.size.y - container.size.y);
 	
 	var delta_pos = _scroll_area.position - _last_pos;
@@ -61,9 +55,11 @@ func _process(delta: float) -> void:
 	
 	_last_pos = _scroll_area.position;
 
-# Sets the maximum number of items to the given amount and recalculates bounds
-func set_max_items(item_count : int):
-	_total_item_count = item_count;
+
+# Sets the data array to the provided array and recalculates bounds
+func _set_data(data : Array):
+	_data = data;
+	_total_item_count = data.size();
 	
 	# I miss ternary operators so much...
 	_columns = 0;
@@ -71,50 +67,23 @@ func set_max_items(item_count : int):
 	
 	if horizontal:
 		_rows = min(_total_item_count, _grid_size.y);
-		_columns = ceil((item_count as float) / (_rows as float));
+		_columns = ceil((_total_item_count as float) / (_rows as float));
 	else:
 		_columns = min(_total_item_count, _grid_size.x);
-		_rows = ceil((item_count as float) / (_columns as float));
+		_rows = ceil((_total_item_count as float) / (_columns as float));
 	
 	var width = (item_size.x * _columns) + (item_spacing.x * (_columns - 1));
 	var height = (item_size.y * _rows) + (item_spacing.y * (_rows - 1));
 	
 	_scroll_area.custom_minimum_size = Vector2(width, height);
 	
-	var primary = 0;
-	var secondary = 0;
-	
-	var offset = _rows;
-	if horizontal : offset = _columns;
-	
-	# Virtual selection stuff, maybe ignore?
-	_virtual_selection_matrix.clear();
-	
-	for c in _columns:
-		_virtual_selection_matrix.append([]);
-	
-	for index in _rows * _columns :
-		if horizontal:
-			_virtual_selection_matrix[primary].append(index);
-			
-			if index >= item_count :
-				_virtual_selection_matrix[primary][secondary] = -1;
-		else:
-			_virtual_selection_matrix[secondary].append(index);
-			
-			if index >= item_count :
-				_virtual_selection_matrix[secondary][primary] = -1;
-		
-		primary += 1;
-		
-		if primary >= offset : 
-			primary = 0;
-			secondary += 1;
+	# NOTE: Likely only works vertically
+	for i in _item_groups.size():
+		_refresh_group(_item_groups[i], i);
 
 
 # Spawns the visible menu items
-func spawn_menu_items():
-	print("Init items");
+func _spawn_menu_items():
 	_item_groups.clear();
 	
 	var primary = _grid_size.x;
@@ -150,7 +119,6 @@ func spawn_menu_items():
 			item.position = position;
 			item.size = item_size;
 			
-			item.focus_entered.connect(_on_focus_changed);
 			_item_groups[_item_groups.size() - 1].append(item);
 
 
@@ -180,6 +148,8 @@ func reposition_y(direction : float):
 			_item_groups.remove_at(start_index);
 			
 			_group_start_index += 1;
+			
+			_refresh_group(group, _group_start_index + end_index - 1)
 	
 	# Moving up
 	else:
@@ -194,30 +164,12 @@ func reposition_y(direction : float):
 			_item_groups.remove_at(end_index + 1);
 			
 			_group_start_index -= 1;
+			
+			_refresh_group(group, _group_start_index - 1)
 
 
 func reposition_x(direction : float):
 	print("TODO");
-
-
-func _reposition_menu_items(new_start : int):
-	# TODO: Fail out if new start would push the list beyond the bounds
-	# NOTE: only works for vertical scroll
-	if new_start <= 0 : return;#|| new_start > _rows - _grid_size.y: return;
-	
-	_group_start_index = new_start;
-	_group_end_index = new_start + _grid_size.y;
-	
-	var y_offset = ((new_start - 1) * item_size.y) + ((new_start - 1) * item_spacing.y)
-	
-	# TODO: Reselect
-	# TODO: Show/hide
-	# TODO: Redraw
-	for group in _item_groups:
-		for item in group:
-			item.position.y = y_offset;
-		
-		y_offset += item_size.y + item_spacing.y;
 
 
 func _get_best_fit_amount_horizontal() -> int:
@@ -248,12 +200,24 @@ func _get_best_fit_amount_vertical() -> int:
 		return amount + 1;
 
 
-# The only time this menu should refresh is when focus changes
-# If we listen to when focus changes for each item, we'll get somewhere
-func _on_focus_changed():
-	var selection = get_viewport().gui_get_focus_owner();
-	#print(selection.name);
+func _refresh_group(group : Array, row_index : int):
+	# NOTE: Only works for vertical
+	var index = row_index * _grid_size.x;
 	
-
-
-#func _check_for_redraw():
+	for item in group:
+		if (item as Object).has_method("refresh_data"):
+			if index < _data.size():
+				item.visible = true;
+				item.refresh_data(_data[index]);
+			else:
+				item.visible = false;
+		
+		# TEMP CODE:
+		if index < _data.size():
+			item.visible = true;
+			item.text = _data[index];
+		else :
+			item.visible = false;
+		# END TEMP CODE:
+		
+		index += 1;
