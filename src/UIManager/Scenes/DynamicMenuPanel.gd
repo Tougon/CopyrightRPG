@@ -16,12 +16,13 @@ var _columns : int;
 var _rows : int;
 var _scroll_area : Control;
 var _item_groups : Array[Array];
-var _virtual_selection_matrix : Array[Array];
 var _total_item_count : int;
 
 var _last_pos : Vector2;
 var _group_start_index : int;
 var _current_scroll_percent : float;
+
+var _current_selected_index : int = -1;
 
 func _ready() -> void:
 	if container != null:
@@ -122,6 +123,9 @@ func _spawn_menu_items():
 			_item_groups[_item_groups.size() - 1].append(item);
 
 
+
+
+
 func reposition(direction : Vector2):
 	if direction.y != 0:
 		reposition_y(direction.y);
@@ -204,7 +208,8 @@ func _refresh_group(group : Array, row_index : int):
 	# NOTE: Only works for vertical
 	var index = row_index * _grid_size.x;
 	
-	for item in group:
+	for i in group.size():
+		var item = group[i];
 		if (item as Object).has_method("refresh_data"):
 			if index < _data.size():
 				item.visible = true;
@@ -219,5 +224,21 @@ func _refresh_group(group : Array, row_index : int):
 		else :
 			item.visible = false;
 		# END TEMP CODE:
+		
+		# Refresh navigation
+		# NOTE: Only works for horizontal
+		if index < _data.size() && i > 0:
+			(item as Control).focus_neighbor_left = (group[i - 1] as Control).get_path();
+			
+			if i == group.size() - 1 || index == _data.size() - 1:
+				if index == _data.size() - 1:
+					print("YES");
+				(item as Control).focus_neighbor_right = (group[0] as Control).get_path();
+				(group[0] as Control).focus_neighbor_left = (item as Control).get_path();
+			else:
+				(group[i - 1] as Control).focus_neighbor_right = (item as Control).get_path();
+		else :
+			(item as Control).focus_neighbor_left = "";
+			(item as Control).focus_neighbor_right = "";
 		
 		index += 1;
