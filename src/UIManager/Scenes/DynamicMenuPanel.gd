@@ -26,6 +26,7 @@ var _current_selected_index : int = -1;
 var _current_group_index : int = 0;
 var _current_item_index : int = 0;
 
+
 func _ready() -> void:
 	if container != null:
 		_scroll_area = container.get_child(0);
@@ -45,6 +46,8 @@ func _ready() -> void:
 	
 	# Test Code, Delete This
 	_set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
+	await get_tree().process_frame;
+	set_selected_index(25);
 	# End Test Code
 
 
@@ -55,9 +58,55 @@ func _process(delta: float) -> void:
 	var delta_pos = _scroll_area.position - _last_pos;
 	
 	if delta_pos.length() > 0:
-		reposition(Vector2(abs(delta_pos.x) / delta_pos.x, abs(delta_pos.y) / delta_pos.y));
+		_reposition(Vector2(abs(delta_pos.x) / delta_pos.x, abs(delta_pos.y) / delta_pos.y));
 	
 	_last_pos = _scroll_area.position;
+
+
+func set_selected_index(new_index : int):
+	# NOTE: Only works for vertical
+	_current_selected_index = new_index;
+	
+	var min_visible = (_group_start_index - 1) * _grid_size.x
+	var max_visible = ((_group_start_index + _grid_size.y - 1) * _grid_size.x) - 1;
+	
+	# Check if item is currently in the visible range
+	if _current_selected_index > min_visible && _current_selected_index <= max_visible :
+		var group_index = _item_index_to_group_index(new_index);
+		var item_index = new_index % _grid_size.x;
+		(_item_groups[group_index][item_index] as Control).grab_focus();
+	# Scroll so that the item is in the visible range
+	else:
+		# Determine direction of the scroll
+		var direction = Vector2(0, 1);
+		if _current_selected_index > max_visible :
+			direction = Vector2(0, -1);
+		
+		while !(_current_selected_index > min_visible && _current_selected_index <= max_visible) :
+			var orig_pos = _scroll_area.position;
+			_scroll_area.position += (direction * (item_size + item_spacing))
+			
+			var delta_pos = _scroll_area.position - orig_pos;
+			_reposition(Vector2(abs(delta_pos.x) / delta_pos.x, abs(delta_pos.y) / delta_pos.y));
+			
+			min_visible = (_group_start_index - 1) * _grid_size.x
+			max_visible = ((_group_start_index + _grid_size.y - 1) * _grid_size.x) - 1;
+		
+		var group_index = _item_index_to_group_index(new_index);
+		var item_index = new_index % _grid_size.x;
+		(_item_groups[group_index][item_index] as Control).grab_focus();
+		await get_tree().process_frame;
+		container.ensure_control_visible((_item_groups[group_index][item_index] as Control));
+
+
+func _item_index_to_group_index(index : int) -> int:
+	# NOTE: Only works for vertical
+	var group_index = _group_start_index - 1;
+	
+	while ((group_index + 1) * _grid_size.x) < index:
+		group_index += 1;
+	
+	return group_index;
 
 
 # Sets the data array to the provided array and recalculates bounds
@@ -126,6 +175,8 @@ func _spawn_menu_items():
 			item.focus_entered.connect(_on_focus_entered);
 			
 			_item_groups[_item_groups.size() - 1].append(item);
+	
+	_refresh_group_wrap_navigation();
 
 
 func _on_focus_entered():
@@ -141,16 +192,19 @@ func _on_focus_entered():
 	if horizontal: group_amt = _grid_size.y;
 	
 	_current_selected_index = (((_group_start_index - 1) + _current_group_index) * group_amt) + _current_item_index;
+	print(str(_current_selected_index))
 
 
-func reposition(direction : Vector2):
+func _reposition(direction : Vector2):
 	if direction.y != 0:
-		reposition_y(direction.y);
+		_reposition_y(direction.y);
 	else:
-		reposition_x(direction.x);
+		_reposition_x(direction.x);
+	
+	_refresh_group_wrap_navigation();
 
 
-func reposition_y(direction : float):
+func _reposition_y(direction : float):
 	var root_pos = _scroll_area.position;
 	var y_min = root_pos.y;
 	var start_index = 0;
@@ -189,7 +243,7 @@ func reposition_y(direction : float):
 			_refresh_group(group, _group_start_index - 1)
 
 
-func reposition_x(direction : float):
+func _reposition_x(direction : float):
 	print("TODO");
 
 
@@ -257,3 +311,19 @@ func _refresh_group(group : Array, row_index : int):
 			(item as Control).focus_neighbor_right = "";
 		
 		index += 1;
+
+
+func _refresh_group_wrap_navigation():
+	# NOTE: Only works for vertical
+	
+	for i in _item_groups[0].size():
+		var top_item = _item_groups[0][i] as Control;
+		var bottom_item = _item_groups[_item_groups.size() - 1][i] as Control;
+		
+		# Remove previous bottom and top wraps
+		if _item_groups.size() > 1:
+			(_item_groups[1][i] as Control).focus_neighbor_top = "";
+			(_item_groups[_item_groups.size() - 2][i] as Control).focus_neighbor_bottom = "";
+		
+		top_item.focus_neighbor_top = bottom_item.get_path();
+		bottom_item.focus_neighbor_bottom = top_item.get_path();
