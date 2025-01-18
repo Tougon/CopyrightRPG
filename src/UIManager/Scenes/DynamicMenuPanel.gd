@@ -23,6 +23,8 @@ var _group_start_index : int;
 var _current_scroll_percent : float;
 
 var _current_selected_index : int = -1;
+var _current_group_index : int = 0;
+var _current_item_index : int = 0;
 
 func _ready() -> void:
 	if container != null:
@@ -37,6 +39,7 @@ func _ready() -> void:
 	
 	# NOTE: only works for vertical scroll
 	_group_start_index = 1;
+	
 	
 	_spawn_menu_items();
 	
@@ -120,10 +123,24 @@ func _spawn_menu_items():
 			item.position = position;
 			item.size = item_size;
 			
+			item.focus_entered.connect(_on_focus_entered);
+			
 			_item_groups[_item_groups.size() - 1].append(item);
 
 
-
+func _on_focus_entered():
+	var focus = get_viewport().gui_get_focus_owner();
+	
+	for i in _item_groups.size():
+		var index = _item_groups[i].find(focus);
+		if index != -1:
+			_current_group_index = i;
+			_current_item_index = index;
+	
+	var group_amt = _grid_size.x;
+	if horizontal: group_amt = _grid_size.y;
+	
+	_current_selected_index = (((_group_start_index - 1) + _current_group_index) * group_amt) + _current_item_index;
 
 
 func reposition(direction : Vector2):
@@ -231,8 +248,6 @@ func _refresh_group(group : Array, row_index : int):
 			(item as Control).focus_neighbor_left = (group[i - 1] as Control).get_path();
 			
 			if i == group.size() - 1 || index == _data.size() - 1:
-				if index == _data.size() - 1:
-					print("YES");
 				(item as Control).focus_neighbor_right = (group[0] as Control).get_path();
 				(group[0] as Control).focus_neighbor_left = (item as Control).get_path();
 			else:
