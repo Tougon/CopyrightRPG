@@ -1,5 +1,6 @@
 # Should this even inherit from menu panel? I don't think it should, personally
 extends Panel
+class_name DynamicMenuPanel
 
 @export var container : ScrollContainer;
 @export var menu_item: PackedScene
@@ -8,9 +9,7 @@ extends Panel
 # Should export this later, too dangerous to use export now.
 var horizontal : bool = false;
 
-# Test Variables
 var _data : Array;
-# End Test Variables
 
 # Runtime variables for sizing and menu items
 var _grid_size : Vector2i;
@@ -31,6 +30,8 @@ var _current_item_index : int = 0;
 var _last_group_index : int = 0;
 var _last_item_index : int = 0;
 
+signal on_item_selected(index : int);
+
 
 func _ready() -> void:
 	if container != null:
@@ -48,10 +49,6 @@ func _ready() -> void:
 	
 	_spawn_menu_items();
 	
-	# Test Code, Delete This
-	_set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
-	#_set_data(["A","B","C","D","E","F","G","H","I","J","K","L"]);
-	# End Test Code
 	await get_tree().process_frame;
 	set_selected_index(0);
 
@@ -66,6 +63,10 @@ func _process(delta: float) -> void:
 		_reposition(Vector2(abs(delta_pos.x) / delta_pos.x, abs(delta_pos.y) / delta_pos.y));
 	
 	_last_pos = _scroll_area.position;
+
+
+func get_selected_index() -> int:
+	return _current_selected_index;
 
 
 func set_selected_index(new_index : int):
@@ -115,7 +116,7 @@ func _item_index_to_group_index(index : int) -> int:
 
 
 # Sets the data array to the provided array and recalculates bounds
-func _set_data(data : Array):
+func set_data(data : Array):
 	_data = data;
 	_total_item_count = data.size();
 	
@@ -203,6 +204,14 @@ func _on_focus_entered():
 	
 	# Check for wrap
 	_check_wrap();
+	
+	# Item selected callbacks
+	_on_item_selected();
+	
+
+
+func _on_item_selected():
+	on_item_selected.emit(_current_selected_index);
 
 
 func _check_wrap():
@@ -327,9 +336,6 @@ func _refresh_group(group : Array, row_index : int):
 			item.visible = true;
 			if (item as Object).has_method("refresh_data"):
 				item.refresh_data(_data[index]);
-			# Test Code, Delete This
-			item.text = _data[index];
-			# End Test Code
 		else :
 			item.visible = false;
 		

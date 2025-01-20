@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3q7hew02l55r"]
 
-[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/player_base_ui.tscn" id="1_gohqw"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_main_ui.gd" id="2_stk7e"]
+[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_ftnx2"]
 [ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="4_1vr4n"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="5_pm4r5"]

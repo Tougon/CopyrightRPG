@@ -1,0 +1,34 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bsn4ql4if7v4s"
+path="res://.godot/imported/space age.ttf-0f71acb2bcc2625b9cb2b40c5111de94.fontdata"
+
+[deps]
+
+source_file="res://assets/Fonts/Space Age/space age.ttf"
+dest_files=["res://.godot/imported/space age.ttf-0f71acb2bcc2625b9cb2b40c5111de94.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

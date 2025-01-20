@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cthe7pior4ql6"]
 
-[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/player_base_ui.tscn" id="1_tr78i"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_target_ui.gd" id="2_oib4x"]
-[ext_resource type="PackedScene" uid="uid://b322fahaaod4k" path="res://src/RPGData/Scenes/UI/player_battle_target_entry_ui.tscn" id="3_y6j45"]
-[ext_resource type="PackedScene" uid="uid://c474vq5ojc1tf" path="res://src/RPGData/Scenes/UI/player_battle_target_arrow_ui.tscn" id="4_u0smg"]
+[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_tr78i"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_ui.gd" id="2_oib4x"]
+[ext_resource type="PackedScene" uid="uid://b322fahaaod4k" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_entry_ui.tscn" id="3_y6j45"]
+[ext_resource type="PackedScene" uid="uid://c474vq5ojc1tf" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_arrow_ui.tscn" id="4_u0smg"]
 
 [node name="Target Menu" node_paths=PackedStringArray("entity_info") instance=ExtResource("1_tr78i")]
 script = ExtResource("2_oib4x")

@@ -1,6 +1,6 @@
-[gd_scene load_steps=44 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=48 format=3 uid="uid://drqpg4ss303dj"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu.gd" id="1_ywfua"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
 [ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="2_x4i24"]
 [ext_resource type="Theme" uid="uid://ddu4xmidfcls5" path="res://assets/Themes/Theme_UI_MainMenu_Button.tres" id="4_q6orv"]
@@ -12,11 +12,13 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_5bptp"]
 [ext_resource type="Resource" uid="uid://2maq8tdqt2px" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusExit.tres" id="8_e10re"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_7mkwv"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu.gd" id="10_6dw36"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu_party.gd" id="10_6ge4e"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu.gd" id="10_6dw36"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_party.gd" id="10_6ge4e"]
 [ext_resource type="Resource" uid="uid://c3frdukk56jo" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Open.tres" id="11_gsdjh"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_submenu_inventory.gd" id="11_shyhs"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_inventory.gd" id="11_shyhs"]
 [ext_resource type="Resource" uid="uid://1e252p87q5vs" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Close.tres" id="12_u23bx"]
+[ext_resource type="Script" path="res://src/UIManager/Scenes/DynamicMenuPanel.gd" id="12_wsuig"]
+[ext_resource type="PackedScene" uid="uid://cliv6mbb8mbic" path="res://src/RPGData/Scenes/UI/Main/main_menu_inventory_item_button.tscn" id="13_p080w"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="13_ynyhx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
@@ -95,6 +97,20 @@ shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="Resource" id="Resource_el8iu"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = ExtResource("11_gsdjh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_snbgm"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = ExtResource("12_u23bx")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_pblu3"]
 script = ExtResource("6_i4er7")
@@ -319,7 +335,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
 text = "T_MENU_COMMON_PARTY"
 clip_text = true
 
@@ -334,7 +350,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
 text = "T_MENU_COMMON_INVENTORY"
 clip_text = true
 
@@ -349,7 +365,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
 text = "T_MENU_COMMON_NOTEPAD"
 clip_text = true
 
@@ -364,7 +380,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
 text = "T_MENU_COMMON_OPTIONS"
 clip_text = true
 
@@ -379,7 +395,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 26
 text = "T_MENU_COMMON_SYSTEM"
 clip_text = true
 
@@ -398,6 +414,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -421,8 +438,7 @@ color = Color(1, 1, 1, 0)
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
 
-[node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
-visible = false
+[node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "root_menu")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -432,7 +448,9 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
 script = ExtResource("11_shyhs")
+menu_panel = NodePath("Dynamic Panel")
 root_menu = NodePath("../..")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_el8iu"), SubResource("Resource_snbgm")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Inventory"]
 layout_mode = 1
@@ -445,6 +463,35 @@ color = Color(1, 1, 1, 0)
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Inventory"]
 script = ExtResource("2_fajv7")
+
+[node name="Dynamic Panel" type="Panel" parent="Body/Inventory" node_paths=PackedStringArray("container")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -360.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_wsuig")
+container = NodePath("ScrollContainer")
+menu_item = ExtResource("13_p080w")
+item_size = Vector2(450, 75)
+item_spacing = Vector2(10, 5)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Dynamic Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="Control" type="Control" parent="Body/Inventory/Dynamic Panel/ScrollContainer"]
+layout_mode = 2
 
 [node name="Notepad" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
 visible = false

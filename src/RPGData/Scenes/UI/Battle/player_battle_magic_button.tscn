@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5tiyavs087su"]
 
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_5kehl"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_magic_button.gd" id="2_4etfd"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_button.gd" id="2_4etfd"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(295, 50)

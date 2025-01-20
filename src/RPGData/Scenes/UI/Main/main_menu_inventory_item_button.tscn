@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cliv6mbb8mbic"]
+
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_2vw68"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/main_menu_inventory_item_button.gd" id="2_q5n7p"]
+
+[node name="Button" type="Button"]
+offset_right = 450.0
+offset_bottom = 75.0
+theme = ExtResource("1_2vw68")
+text = "Item"
+script = ExtResource("2_q5n7p")

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/EncounterManager.gd" id="3_tr7o3"]
 [ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="5_j2ssa"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="5_utklg"]
-[ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/overworld_main_menu.tscn" id="5_wk541"]
+[ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.tscn" id="5_wk541"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="5_yfalh"]
 [ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="6_1u0pu"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="7_m4t6q"]

@@ -8,6 +8,7 @@ var quest_database : QuestDatabase = preload("res://assets/Quests/quest_database
 var item_database : ItemDatabase = preload("res://assets/Items/item_database.tres")
 
 signal on_data_loaded();
+signal on_inventory_changed();
 
 
 func _ready():
@@ -119,3 +120,10 @@ func change_item_amount(id : int, amount : int):
 		
 		if current_save.inventory[id] <= 0:
 			current_save.inventory.erase(id);
+	
+	# Refresh inventory callbacks
+	on_inventory_changed.emit();
+
+
+func get_inventory_as_array() -> Array:
+	return current_save.inventory.keys();

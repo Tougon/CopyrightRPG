@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bax2rjs6ennqq"]
 
-[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/player_base_ui.tscn" id="1_r012b"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/player_battle_item_ui.gd" id="2_v3riw"]
-[ext_resource type="PackedScene" uid="uid://be5mqb53supdl" path="res://src/RPGData/Scenes/UI/player_battle_item_button.tscn" id="3_tracl"]
-[ext_resource type="PackedScene" uid="uid://8bkb5h3xvbyj" path="res://src/RPGData/Scenes/UI/player_battle_magic_spacer.tscn" id="4_yrdu8"]
+[ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_r012b"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_ui.gd" id="2_v3riw"]
+[ext_resource type="PackedScene" uid="uid://be5mqb53supdl" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_button.tscn" id="3_tracl"]
+[ext_resource type="PackedScene" uid="uid://8bkb5h3xvbyj" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_spacer.tscn" id="4_yrdu8"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="5_je8j1"]
 [ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="6_esbiu"]
 

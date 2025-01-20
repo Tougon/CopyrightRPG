@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=7 format=3 uid="uid://ddu4xmidfcls5"]
 
-[ext_resource type="FontFile" uid="uid://ck50xt3qcbu7m" path="res://assets/Fonts/Madrid Grunge/Madrid Grunge.otf" id="1_4rp6o"]
+[ext_resource type="FontFile" uid="uid://cfxvuls7qckuq" path="res://assets/Fonts/Galaxy Monkey/galaxymonkey.ttf" id="1_dww68"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotum"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -21,7 +21,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
 Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("1_4rp6o")
+Button/fonts/font = ExtResource("1_dww68")
 Button/styles/disabled = SubResource("StyleBoxFlat_iotum")
 Button/styles/focus = SubResource("StyleBoxFlat_eqtdm")
 Button/styles/hover = SubResource("StyleBoxFlat_62md2")

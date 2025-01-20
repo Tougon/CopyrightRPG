@@ -1,7 +1,7 @@
 extends MenuPanel
 
-@export var info_scene: PackedScene = preload("res://src/RPGData/Scenes/UI/player_battle_target_entry_ui.tscn");
-@export var arrow_scene: PackedScene = preload("res://src/RPGData/Scenes/UI/player_battle_target_arrow_ui.tscn");
+@export var info_scene: PackedScene = preload("res://src/RPGData/Scenes/UI/Battle/player_battle_target_entry_ui.tscn");
+@export var arrow_scene: PackedScene = preload("res://src/RPGData/Scenes/UI/Battle/player_battle_target_arrow_ui.tscn");
 @export var pool_size : int = 10;
 @export var entity_info : EntityInfoUI;
 

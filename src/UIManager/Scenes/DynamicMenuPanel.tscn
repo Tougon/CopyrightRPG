@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8i7bnt40ydoa"]
+[gd_scene load_steps=2 format=3 uid="uid://c8i7bnt40ydoa"]
 
 [ext_resource type="Script" path="res://src/UIManager/Scenes/DynamicMenuPanel.gd" id="1_iiuam"]
-[ext_resource type="PackedScene" uid="uid://be5mqb53supdl" path="res://src/RPGData/Scenes/UI/player_battle_item_button.tscn" id="2_j0k42"]
 
 [node name="DynamicMenuPanel" type="Panel" node_paths=PackedStringArray("container")]
 anchors_preset = 15
@@ -11,7 +10,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iiuam")
 container = NodePath("ScrollContainer")
-menu_item = ExtResource("2_j0k42")
 item_size = Vector2(100, 100)
 item_spacing = Vector2(20, 20)
 
