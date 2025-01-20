@@ -5,12 +5,14 @@ extends Panel
 @export var menu_item: PackedScene
 @export var item_size : Vector2 = Vector2(75.0, 75.0);
 @export var item_spacing : Vector2 = Vector2(10.0, 10.0);
-@export var horizontal : bool = false;
+# Should export this later, too dangerous to use export now.
+var horizontal : bool = false;
 
 # Test Variables
 var _data : Array;
 # End Test Variables
 
+# Runtime variables for sizing and menu items
 var _grid_size : Vector2i;
 var _columns : int;
 var _rows : int;
@@ -18,13 +20,16 @@ var _scroll_area : Control;
 var _item_groups : Array[Array];
 var _total_item_count : int;
 
+# Runtime variables for selection and scrolling
 var _last_pos : Vector2;
 var _group_start_index : int;
-var _current_scroll_percent : float;
-
 var _current_selected_index : int = -1;
+var _previous_selected_index : int = -1;
 var _current_group_index : int = 0;
 var _current_item_index : int = 0;
+# Caching these but unclear if these will be used
+var _last_group_index : int = 0;
+var _last_item_index : int = 0;
 
 
 func _ready() -> void:
@@ -41,14 +46,14 @@ func _ready() -> void:
 	# NOTE: only works for vertical scroll
 	_group_start_index = 1;
 	
-	
 	_spawn_menu_items();
 	
 	# Test Code, Delete This
 	_set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]);
-	await get_tree().process_frame;
-	set_selected_index(25);
+	#_set_data(["A","B","C","D","E","F","G","H","I","J","K","L"]);
 	# End Test Code
+	await get_tree().process_frame;
+	set_selected_index(0);
 
 
 func _process(delta: float) -> void:
@@ -71,7 +76,7 @@ func set_selected_index(new_index : int):
 	var max_visible = ((_group_start_index + _grid_size.y - 1) * _grid_size.x) - 1;
 	
 	# Check if item is currently in the visible range
-	if _current_selected_index > min_visible && _current_selected_index <= max_visible :
+	if _current_selected_index >= min_visible && _current_selected_index <= max_visible :
 		var group_index = _item_index_to_group_index(new_index);
 		var item_index = new_index % _grid_size.x;
 		(_item_groups[group_index][item_index] as Control).grab_focus();
@@ -82,7 +87,7 @@ func set_selected_index(new_index : int):
 		if _current_selected_index > max_visible :
 			direction = Vector2(0, -1);
 		
-		while !(_current_selected_index > min_visible && _current_selected_index <= max_visible) :
+		while !(_current_selected_index >= min_visible && _current_selected_index <= max_visible) :
 			var orig_pos = _scroll_area.position;
 			_scroll_area.position += (direction * (item_size + item_spacing))
 			
@@ -101,9 +106,9 @@ func set_selected_index(new_index : int):
 
 func _item_index_to_group_index(index : int) -> int:
 	# NOTE: Only works for vertical
-	var group_index = _group_start_index - 1;
+	var group_index = 0;
 	
-	while ((group_index + 1) * _grid_size.x) < index:
+	while ((group_index + _group_start_index) * _grid_size.x) <= index:
 		group_index += 1;
 	
 	return group_index;
@@ -133,6 +138,8 @@ func _set_data(data : Array):
 	# NOTE: Likely only works vertically
 	for i in _item_groups.size():
 		_refresh_group(_item_groups[i], i);
+	
+	_refresh_group_wrap_navigation();
 
 
 # Spawns the visible menu items
@@ -173,13 +180,14 @@ func _spawn_menu_items():
 			item.size = item_size;
 			
 			item.focus_entered.connect(_on_focus_entered);
+			# TODO: Listen for when an item is click to fix the
+			# known issue with erroneous wrapping
 			
 			_item_groups[_item_groups.size() - 1].append(item);
-	
-	_refresh_group_wrap_navigation();
 
 
 func _on_focus_entered():
+	_previous_selected_index = _current_selected_index;
 	var focus = get_viewport().gui_get_focus_owner();
 	
 	for i in _item_groups.size():
@@ -192,7 +200,40 @@ func _on_focus_entered():
 	if horizontal: group_amt = _grid_size.y;
 	
 	_current_selected_index = (((_group_start_index - 1) + _current_group_index) * group_amt) + _current_item_index;
-	print(str(_current_selected_index))
+	
+	# Check for wrap
+	_check_wrap();
+
+
+func _check_wrap():
+	if (_data.size() <= _grid_size.x * _grid_size.y):
+		return;
+	# NOTE: Only works for vertical
+	# Check for group
+	var first_group_start_index = (_group_start_index - 1) * _grid_size.x;
+	var first_group_end_index = (_group_start_index) * _grid_size.x;
+	
+	var in_first_group = _current_selected_index >= first_group_start_index && _current_selected_index < first_group_end_index;
+	var out_first_group = _previous_selected_index < first_group_end_index;
+	var in_last_group = _current_selected_index >= (_grid_size.y * _grid_size.x) - _grid_size.x;
+	var out_last_group = _previous_selected_index >= floor(((_data.size() - 1) as float) / _grid_size.x) * _grid_size.x
+	
+	if out_first_group && in_last_group:
+		_wrap_to_end();
+	if in_first_group && out_last_group:
+		_wrap_to_start();
+
+
+func _wrap_to_start():
+	# NOTE: Only works for vertical
+	var _new_index = _previous_selected_index % _grid_size.x;
+	set_selected_index(_new_index);
+
+
+func _wrap_to_end():
+	# NOTE: Only works for vertical
+	var _new_index = floor(((_data.size() as float) / _grid_size.x)) * _grid_size.x + _previous_selected_index;
+	set_selected_index(clampi(_new_index, 0, _data.size() - 1));
 
 
 func _reposition(direction : Vector2):
@@ -281,20 +322,26 @@ func _refresh_group(group : Array, row_index : int):
 	
 	for i in group.size():
 		var item = group[i];
-		if (item as Object).has_method("refresh_data"):
-			if index < _data.size():
-				item.visible = true;
-				item.refresh_data(_data[index]);
-			else:
-				item.visible = false;
 		
-		# TEMP CODE:
 		if index < _data.size():
 			item.visible = true;
+			if (item as Object).has_method("refresh_data"):
+				item.refresh_data(_data[index]);
+			# Test Code, Delete This
 			item.text = _data[index];
+			# End Test Code
 		else :
 			item.visible = false;
-		# END TEMP CODE:
+		
+		# Release focus if this is not the selected index
+		if index != _current_selected_index && get_viewport().gui_get_focus_owner() == (item as Control):
+			(item as Control).release_focus();
+		# Grab focus if this is the selected index
+		# TODO: This fails when setting selection, fix later
+		#if index == _current_selected_index && get_viewport().gui_get_focus_owner() != (item as Control):
+		#	container.follow_focus = false;
+		#	(item as Control).grab_focus();
+		#	container.follow_focus = true;
 		
 		# Refresh navigation
 		# NOTE: Only works for horizontal
@@ -315,10 +362,18 @@ func _refresh_group(group : Array, row_index : int):
 
 func _refresh_group_wrap_navigation():
 	# NOTE: Only works for vertical
+	# Calculate last row index
+	_last_group_index = _grid_size.y - 1;
+	
+	if _total_item_count < _grid_size.x * _grid_size.y:
+		_last_group_index = floori(((_total_item_count - 1) as float) / _grid_size.x);
+	
+	# Get index of last valid item in the row:
+	_last_item_index = _get_num_active_elements(_last_group_index) - 1;
 	
 	for i in _item_groups[0].size():
 		var top_item = _item_groups[0][i] as Control;
-		var bottom_item = _item_groups[_item_groups.size() - 1][i] as Control;
+		var bottom_item = _item_groups[_last_group_index][min(i, _last_item_index)] as Control;
 		
 		# Remove previous bottom and top wraps
 		if _item_groups.size() > 1:
@@ -326,4 +381,14 @@ func _refresh_group_wrap_navigation():
 			(_item_groups[_item_groups.size() - 2][i] as Control).focus_neighbor_bottom = "";
 		
 		top_item.focus_neighbor_top = bottom_item.get_path();
-		bottom_item.focus_neighbor_bottom = top_item.get_path();
+		if i <= _last_item_index :
+			bottom_item.focus_neighbor_bottom = top_item.get_path();
+
+
+func _get_num_active_elements(group : int) -> int:
+	var result = 0;
+	
+	for item in _item_groups[group]:
+		if (item as Control).visible : result += 1;
+	
+	return result;
