@@ -814,6 +814,7 @@ script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
+[connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Body/System/Load" to="." method="_on_load_pressed"]

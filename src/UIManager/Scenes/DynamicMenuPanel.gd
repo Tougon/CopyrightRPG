@@ -212,7 +212,8 @@ func _on_focus_entered():
 
 
 func _on_item_selected():
-	on_item_selected.emit(_data[_current_selected_index]);
+	if _data.size() > 0 :
+		on_item_selected.emit(_data[_current_selected_index]);
 
 
 func _on_item_clicked():

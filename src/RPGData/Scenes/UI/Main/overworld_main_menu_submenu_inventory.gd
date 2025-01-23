@@ -51,6 +51,16 @@ func _on_use_clicked() -> void:
 	UIManager.open_menu_name("overworld_menu_main_item_target");
 
 
+func _on_drop_clicked() :
+	if _current_item == null : return;
+	
+	var item_id = DataManager.item_database.get_id(_current_item);
+	DataManager.change_item_amount(item_id, -1);
+	
+	if DataManager.get_item_amount(item_id) <= 0:
+		UIManager.close_menu_name("overworld_menu_main_item_use");
+
+
 # UI utility functions
 func on_focus():
 	super.on_focus();

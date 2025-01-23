@@ -30,6 +30,7 @@ func _ready():
 		member.id = i;
 		member.level = 30;
 		member.exp = 0;
+		member.hp_dmg = 1;
 		member.unlocked = i == 0;
 		party_data.append(member);
 	
@@ -123,6 +124,12 @@ func change_item_amount(id : int, amount : int):
 	
 	# Refresh inventory callbacks
 	on_inventory_changed.emit();
+
+
+func get_item_amount(id : int) -> int:
+	if current_save.inventory.has(id) : 
+		return current_save.inventory[id];
+	return 0;
 
 
 func get_inventory_as_array() -> Array:

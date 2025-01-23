@@ -24,7 +24,11 @@ func _on_player_selected(id : int):
 		DataManager.change_item_amount(item_id, -1);
 	
 	# TODO: Animation/SFX/Whatever
-	# TODO: Check if quantity of item has depleted and if so, lots of things happen
+	
+	# Should never be less than 0 but y'know~
+	if DataManager.get_item_amount(item_id) <= 0:
+		UIManager.close_menu_name("overworld_menu_main_item_target");
+		UIManager.close_menu_name("overworld_menu_main_item_use");
 
 
 func on_menu_active():
