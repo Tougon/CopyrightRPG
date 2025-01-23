@@ -13,6 +13,22 @@ enum ItemCheckType { AND, OR }
 @export var check_type : ItemCheckType;
 var success : bool = true;
 
+
+func check_can_use_item_overworld(index : int) -> bool:
+	success = true;
+	
+	for function in check_can_use:
+		if function == null : continue;
+		function.execute_overworld(index, self);
+		
+		if check_type == ItemCheckType.AND && success == false:
+			return false;
+		elif check_type == ItemCheckType.OR && success == true:
+			return true;
+	
+	return true;
+
+
 func check_can_use_item_battle(user : EntityController, target : EntityController) -> bool:
 	success = true;
 	

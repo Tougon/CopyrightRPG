@@ -28,6 +28,7 @@ func set_focus(state : bool):
 
 
 func on_focus():
+	super.on_focus();
 	if last_selection != null :
 		initial_selection = last_selection;
 

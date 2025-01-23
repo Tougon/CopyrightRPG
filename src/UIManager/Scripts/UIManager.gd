@@ -14,10 +14,17 @@ var is_closing_all = false;
 
 
 func _unhandled_input(event):
+	var current_focus_control = get_viewport().gui_get_focus_owner();
+	
 	if active_menus.size() > 0 :
 		var current = active_menus[active_menus.size()-1];
+		var bypass_focus = false;
 		
-		if current.focused:
+		if !current.focused && current.submenu && active_menus.size() > 1:
+			current = active_menus[active_menus.size()-2];
+			bypass_focus = true;
+		
+		if current.focused || bypass_focus:
 			if (event.is_action_pressed("ui_cancel")):
 				current.on_menu_cancel();
 				accept_event();
@@ -57,7 +64,7 @@ func open_menu(menu : MenuPanel):
 	
 	if menu.initial_selection != null:
 		menu.initial_selection.grab_focus();
-	else: 
+	elif menu.unfocus_on_open: 
 		suspend_selection();
 
 

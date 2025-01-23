@@ -5,6 +5,8 @@ class_name MenuPanel
 @export var menu_name: String;
 @export var start_open : bool = false;
 @export var hide_on_unfocus : bool = false;
+@export var unfocus_on_open : bool = true;
+@export var submenu : bool = false;
 @export_group("Selections")
 @export var initial_selection : Control;
 @export var all_selections : Array[Control];
@@ -12,6 +14,8 @@ class_name MenuPanel
 @export var sequence_list: Array[TweenResourceInstance];
 
 var focused : bool;
+var _is_tweening_open : bool;
+var _is_tweening_close : bool;
 var ui_manager;
 var tween_player : TweenPlayer;
 
@@ -51,7 +55,7 @@ func set_focus(state : bool):
 		for selection in all_selections:
 			selection.mouse_filter = Control.MOUSE_FILTER_STOP;
 		
-		process_mode = Node.PROCESS_MODE_INHERIT;
+		process_mode = Node.PROCESS_MODE_ALWAYS;
 		
 		if tween_player != null && tween_player.has_tween("Focus"):
 			tween_player.play_tween_name("Focus");
@@ -103,11 +107,20 @@ func get_all_children(in_node,arr:=[]):
 func set_active(state : bool):
 	ui_manager.suspend_selection();
 	
+	if _is_tweening_open :
+		_is_tweening_open = false;
+		tween_player.tween_ended.disconnect(on_tween_end_active);
+	
+	if _is_tweening_close :
+		_is_tweening_close = false;
+		tween_player.tween_ended.disconnect(on_tween_end_inactive);
+	
 	if state == true :
 		self.show();
 		
 		if tween_player != null && tween_player.has_tween("Open"):
 			tween_player.tween_ended.connect(on_tween_end_active);
+			_is_tweening_open = true;
 			tween_player.play_tween_name("Open");
 		else :
 			on_menu_active();
@@ -120,6 +133,7 @@ func set_active(state : bool):
 		
 		if tween_player != null && tween_player.has_tween("Close"):
 			tween_player.tween_ended.connect(on_tween_end_inactive);
+			_is_tweening_close = true;
 			tween_player.play_tween_name("Close");
 		else :
 			on_menu_inactive();
@@ -127,11 +141,13 @@ func set_active(state : bool):
 
 
 func on_tween_end_active(tween_name : String):
+	_is_tweening_open = false;
 	tween_player.tween_ended.disconnect(on_tween_end_active);
 	on_menu_active();
 
 
 func on_tween_end_inactive(tween_name : String):
+	_is_tweening_close = false;
 	tween_player.tween_ended.disconnect(on_tween_end_inactive);
 	on_menu_inactive();
 

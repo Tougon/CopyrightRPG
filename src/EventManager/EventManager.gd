@@ -21,6 +21,9 @@ signal overworld_cutscene_fade_completed(fade_in : bool);
 signal overworld_battle_fade_start(fade_in : bool);
 signal overworld_battle_fade_completed(fade_in : bool);
 
+# Overworld UI Events
+signal on_inventory_item_selected(item : Item);
+
 # Global Battle Events
 signal on_battle_begin(params : BattleParams);
 signal on_turn_begin();

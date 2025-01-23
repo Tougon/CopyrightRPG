@@ -30,7 +30,8 @@ var _current_item_index : int = 0;
 var _last_group_index : int = 0;
 var _last_item_index : int = 0;
 
-signal on_item_selected(index : int);
+signal on_item_selected(data);
+signal on_item_clicked(data);
 
 
 func _ready() -> void:
@@ -181,9 +182,10 @@ func _spawn_menu_items():
 			item.size = item_size;
 			
 			item.focus_entered.connect(_on_focus_entered);
-			# TODO: Listen for when an item is click to fix the
-			# known issue with erroneous wrapping
-			
+			# TODO: Listen for when an item is clicked to fix the
+			# known issue with erroneous wrapping(?)
+			if item is Button :
+				(item as Button).pressed.connect(_on_item_clicked);
 			_item_groups[_item_groups.size() - 1].append(item);
 
 
@@ -207,11 +209,14 @@ func _on_focus_entered():
 	
 	# Item selected callbacks
 	_on_item_selected();
-	
 
 
 func _on_item_selected():
-	on_item_selected.emit(_current_selected_index);
+	on_item_selected.emit(_data[_current_selected_index]);
+
+
+func _on_item_clicked():
+	on_item_clicked.emit(_data[_current_selected_index]);
 
 
 func _check_wrap():

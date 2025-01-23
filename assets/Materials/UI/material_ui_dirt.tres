@@ -7,5 +7,6 @@
 shader = ExtResource("1_nw8li")
 shader_parameter/overlay_texture_offset = null
 shader_parameter/overlay_texture_tiling = Vector2(1, 1)
-shader_parameter/overlay_texture_amount = 0.0
+shader_parameter/overlay_texture_amount = 1.0
+shader_parameter/overlay_radius = -0.55
 shader_parameter/overlay_texture = ExtResource("2_jy88g")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=53 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -20,6 +20,9 @@
 [ext_resource type="Script" path="res://src/UIManager/Scenes/DynamicMenuPanel.gd" id="12_wsuig"]
 [ext_resource type="PackedScene" uid="uid://cliv6mbb8mbic" path="res://src/RPGData/Scenes/UI/Main/main_menu_inventory_item_button.tscn" id="13_p080w"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="13_ynyhx"]
+[ext_resource type="Material" uid="uid://u0rtoqst1pow" path="res://assets/Materials/UI/material_ui_dirt.tres" id="16_egfar"]
+[ext_resource type="Script" path="res://src/UIManager/Scripts/MenuPanel.gd" id="17_n8c6y"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -97,6 +100,20 @@ shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="Resource" id="Resource_fpu2c"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = ExtResource("11_gsdjh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_kvmtm"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = ExtResource("12_u23bx")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_el8iu"]
 script = ExtResource("6_i4er7")
@@ -289,6 +306,7 @@ script = ExtResource("1_ywfua")
 header_icons = [NodePath("Header/Options Headers/GridContainer/Party/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Inventory/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Notepad/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/Options/TweenPlayerUI"), NodePath("Header/Options Headers/GridContainer/System/TweenPlayerUI")]
 submenus = [NodePath("Body/Party"), NodePath("Body/Inventory"), NodePath("Body/Notepad"), NodePath("Body/Options"), NodePath("Body/System")]
 menu_name = "overworld_menu_main"
+unfocus_on_open = false
 
 [node name="Distortion" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_a7w6f")
@@ -425,6 +443,8 @@ grow_vertical = 2
 pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6ge4e")
 root_menu = NodePath("../..")
+submenu = true
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_fpu2c"), SubResource("Resource_kvmtm")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Party"]
 layout_mode = 1
@@ -438,7 +458,7 @@ color = Color(1, 1, 1, 0)
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
 
-[node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "root_menu")]
+[node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -448,8 +468,11 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
 script = ExtResource("11_shyhs")
-menu_panel = NodePath("Dynamic Panel")
+menu_panel = NodePath("Item Selection Area/Dynamic Panel")
+no_items_display = NodePath("Item Selection Area/Label")
 root_menu = NodePath("../..")
+unfocus_on_open = false
+submenu = true
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_el8iu"), SubResource("Resource_snbgm")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Inventory"]
@@ -461,10 +484,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Inventory"]
-script = ExtResource("2_fajv7")
+[node name="Item Selection Area" type="Control" parent="Body/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Dynamic Panel" type="Panel" parent="Body/Inventory" node_paths=PackedStringArray("container")]
+[node name="Dynamic Panel" type="Panel" parent="Body/Inventory/Item Selection Area" node_paths=PackedStringArray("container")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -481,7 +509,7 @@ menu_item = ExtResource("13_p080w")
 item_size = Vector2(450, 75)
 item_spacing = Vector2(10, 5)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Dynamic Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Item Selection Area/Dynamic Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -490,8 +518,156 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="Control" type="Control" parent="Body/Inventory/Dynamic Panel/ScrollContainer"]
+[node name="Control" type="Control" parent="Body/Inventory/Item Selection Area/Dynamic Panel/ScrollContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Inventory/Item Selection Area"]
+material = ExtResource("16_egfar")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_top = 50.0
+offset_right = -182.5
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+pivot_offset = Vector2(427, 250)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 38
+text = "T_MENU_COMMON_INVENTORY_NO_ITEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Item Display Area" type="Control" parent="Body/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Item Use Panel" type="Panel" parent="Body/Inventory/Item Display Area" node_paths=PackedStringArray("initial_selection")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = 305.0
+offset_right = -5.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("17_n8c6y")
+menu_name = "overworld_menu_main_item_use"
+initial_selection = NodePath("VBoxContainer/Use")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/Inventory/Item Display Area/Item Use Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Use" type="Button" parent="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Drop")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Drop")
+theme = ExtResource("13_ynyhx")
+text = "T_MENU_COMMON_INVENTORY_USE"
+
+[node name="Drop" type="Button" parent="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Use")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Use")
+theme = ExtResource("13_ynyhx")
+text = "T_MENU_COMMON_INVENTORY_DROP"
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Item Display Area/Item Use Panel"]
+script = ExtResource("2_fajv7")
+
+[node name="Target Select Panel" type="Panel" parent="Body/Inventory/Item Display Area" node_paths=PackedStringArray("initial_selection", "all_selections")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -355.0
+offset_top = 305.0
+offset_right = -5.0
+offset_bottom = -79.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("19_nfjs4")
+menu_name = "overworld_menu_main_item_target"
+initial_selection = NodePath("HBoxContainer/P1")
+all_selections = [NodePath("HBoxContainer/P1"), NodePath("HBoxContainer/P2"), NodePath("HBoxContainer/P3"), NodePath("HBoxContainer/P4")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Inventory/Item Display Area/Target Select Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="P1" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P4")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P2")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("13_ynyhx")
+
+[node name="P2" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P1")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P3")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("13_ynyhx")
+
+[node name="P3" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P2")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P4")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("13_ynyhx")
+
+[node name="P4" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P3")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P1")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("13_ynyhx")
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Item Display Area/Target Select Panel"]
+script = ExtResource("2_fajv7")
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory"]
+script = ExtResource("2_fajv7")
 
 [node name="Notepad" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
 visible = false
@@ -506,6 +682,7 @@ pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6dw36")
 root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
+submenu = true
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Notepad"]
@@ -533,6 +710,7 @@ pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6dw36")
 root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
+submenu = true
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Options"]
@@ -560,6 +738,7 @@ pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6dw36")
 root_menu = NodePath("../..")
 menu_name = "overworld_menu_main_sub_1"
+submenu = true
 initial_selection = NodePath("Save")
 all_selections = [NodePath("Save"), NodePath("Load"), NodePath("Delete")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
@@ -634,6 +813,8 @@ text = "T_MENU_COMMON_DELETE"
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
+[connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
+[connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Body/System/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]
