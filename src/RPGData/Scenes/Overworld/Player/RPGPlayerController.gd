@@ -161,6 +161,8 @@ func _on_menu_opened(menu : MenuPanel):
 
 func _on_dialogue_begin():
 	_in_dialogue = true;
+	_physics_body_trans_last = global_transform;
+	_physics_body_trans_current = global_transform;
 
 
 func _on_dialogue_end():

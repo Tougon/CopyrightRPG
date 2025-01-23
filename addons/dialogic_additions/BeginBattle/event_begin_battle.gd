@@ -24,7 +24,9 @@ func _execute() -> void:
 	if data != null && data is Encounter:
 		EventManager.on_battle_queue.emit(data);
 		EventManager.on_battle_end.connect(_on_battle_end);
-	else : finish()
+	else : 
+		print("ERROR: Battle does not exist!");
+		finish()
 
 func _on_battle_end(result : BattleResult):
 	EventManager.on_battle_end.disconnect(_on_battle_end);

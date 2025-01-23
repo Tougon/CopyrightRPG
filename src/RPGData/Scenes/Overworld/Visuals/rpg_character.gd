@@ -124,11 +124,13 @@ func _on_dialogue_begin():
 	var scene_parent = _parent.get_parent();
 	
 	_reparenting = true;
-	_parent.remove_child(self);
-	scene_parent.add_child(self);
+	reparent(scene_parent, true);
+	reset_physics_interpolation();
+	#_parent.remove_child(self);
+	#scene_parent.add_child(self);
 	_reparenting = false;
 	
-	global_position = _parent.global_position;
+	#global_position = _parent.global_position;
 
 
 func _on_dialogue_end():
@@ -136,8 +138,10 @@ func _on_dialogue_end():
 	if !_parent.visible : return;
 	
 	_reparenting = true;
-	get_parent().remove_child(self);
-	_parent.add_child(self);
+	reparent(_parent);
+	reset_physics_interpolation();
+	#get_parent().remove_child(self);
+	#_parent.add_child(self);
 	_reparenting = false;
 	
 	_frame_speed_modifier = 1.0;

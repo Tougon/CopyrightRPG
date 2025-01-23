@@ -10,7 +10,7 @@ temp_character_1: How's it going?
 	temp_character_1: Glad to hear it!
 - Bad
 	temp_character_1: Will this help?
-	[begin_battle path="temp.tres" delay="0.3"]
+	[begin_battle path="res://assets/Encounters/temp.tres" delay="0.3"]
 	join temp_character_1 center [animation="Zoom Center In" wait="true"]
 	temp_character_1: That was a good battle!
 leave temp_character_1 [animation="Zoom Center Out" wait="true"]
