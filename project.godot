@@ -43,8 +43,8 @@ directories/dtl_directory={
 "temp_quest": "res://assets/Dialogue/Timelines/temp_quest.dtl",
 "temp_quest_win": "res://assets/Dialogue/Timelines/temp_quest_win.dtl"
 }
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://assets/Themes/Dialogic/dialogue_style.tres"]
+layout/default_style="res://assets/Themes/Dialogic/dialogue_style.tres"
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
@@ -66,6 +66,7 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 audio/max_channels=4.0
+variables={}
 
 [display]
 

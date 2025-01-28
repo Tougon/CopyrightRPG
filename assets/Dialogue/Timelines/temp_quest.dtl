@@ -1,5 +1,6 @@
-join temp_character_1 center [animation="Zoom Center In" wait="true"]
+join temp_character_1 center [animation="Zoom Center In"]
 temp_character_1: Hey, could you defeat 3 enemies for me?
 [begin_quest quest="Temp" resource="Defeat3Enemies"]
 [activate_object id="test_obj_1" active="true"]
 leave temp_character_1 [animation="Zoom Center Out" wait="true"]
+[wait time="0.5"]
