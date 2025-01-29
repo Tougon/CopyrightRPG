@@ -58,14 +58,15 @@ func quest_complete(quest):
 
 func _on_dialogue_begin():
 	if free_camera != null && game_camera != null :
-		free_camera.position = game_camera.position;
-		free_camera.priority = 2;
+		print("V");
+		#free_camera.set_priority(2);
+		#free_camera.position = game_camera.position;
 
 
 func _on_dialogue_end():
 	if free_camera != null :
-		free_camera.follow_target = null;
-		free_camera.priority = 0;
+		#free_camera.follow_target = null;
+		free_camera.set_priority(0);
 	
 	if _faded_out_cutscene :
 		player_controller._can_move = false;

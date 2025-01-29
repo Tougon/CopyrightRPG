@@ -15,5 +15,5 @@ temp_character_1: Guh, what the heck?
 [progress_quest quest="Tutorial"]
 [clear time="0.2"]
 [fade]
-[set_camera_target id="player"]
+[set_camera_target id="player" priority="0"]
 [wait time="0.5"]

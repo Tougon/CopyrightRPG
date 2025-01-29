@@ -240,7 +240,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_htbgc"]
 resource_name = "textbox_pop"
-length = 0.7
+length = 0.51
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

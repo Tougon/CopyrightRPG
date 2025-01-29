@@ -747,6 +747,7 @@ tile_set = SubResource("TileSet_whai2")
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
 
 [node name="UI" type="Node" parent="."]
@@ -907,6 +908,7 @@ process_physics_priority = 300
 script = ExtResource("26_goqi0")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
 position = Vector2(480, 360)
 script = ExtResource("24_tm1wa")
 priority = 1
@@ -921,10 +923,12 @@ draw_limits = true
 limit_target = NodePath("../TileMapWalls")
 
 [node name="Free PhantomCamera" type="Node2D" parent="."]
+top_level = true
 position = Vector2(480, 360)
 script = ExtResource("24_tm1wa")
 follow_mode = 5
 tween_resource = SubResource("Resource_6ugjw")
+tween_on_load = false
 follow_damping = true
 draw_limits = true
 limit_target = NodePath("../TileMapWalls")
