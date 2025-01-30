@@ -57,8 +57,8 @@ func quest_complete(quest):
 
 
 func _on_dialogue_begin():
-	if free_camera != null && game_camera != null :
-		print("V");
+	pass;
+	#if free_camera != null && game_camera != null :
 		#free_camera.set_priority(2);
 		#free_camera.position = game_camera.position;
 

@@ -14,6 +14,8 @@ func _execute() -> void:
 		if is_tween : obj.play_tween(animation_name);
 		else : obj.play_animation(animation_name);
 	
+	# TODO: Optional delay
+	
 	finish()
 
 

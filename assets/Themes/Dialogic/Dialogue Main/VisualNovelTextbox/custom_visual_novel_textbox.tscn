@@ -364,9 +364,11 @@ box_color_custom = Color(1, 1, 1, 1)
 box_size = Vector2(740, 166)
 box_margin_bottom = 50
 box_animation_in = 1
+name_label_use_character_color = false
+name_label_custom_color = Color(0.894922, 0.894922, 0.894922, 1)
 name_label_box_panel = "res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/vn_textbox_name_label_panel.tres"
 name_label_box_modulate = Color(0, 0, 0, 1)
-name_label_box_offset = Vector2(-30, -24)
+name_label_box_offset = Vector2(-10, -25)
 next_indicator_animation = 1
 autoadvance_progressbar = false
 
@@ -484,6 +486,7 @@ layout_mode = 1
 offset_top = -50.0
 offset_right = 9.0
 offset_bottom = -25.0
+scale = Vector2(1.00136e-05, 1)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_yg8ig")
 metadata/_edit_layout_mode = 1
@@ -498,7 +501,9 @@ theme_override_fonts/font = SubResource("FontVariation_v8y64")
 theme_override_font_sizes/font_size = 15
 text = "S"
 script = ExtResource("7_bi7sh")
+animate_visibility = true
 name_label_root = NodePath("..")
+use_character_color = false
 
 [node name="Border Root" type="Control" parent="Anchor"]
 modulate = Color(1, 1, 1, 0)
