@@ -7,6 +7,7 @@ signal on_sequence_queue_empty();
 
 # Audio Events
 signal play_bgm(id : String, fade_time : float, crossfade : bool);
+signal play_sfx(id : String);
 
 signal change_bgm_volume_preference(amount : float);
 signal change_sfx_volume_preference(amount : float);

@@ -22,13 +22,16 @@ func _ready() -> void:
 	_set_sfx_volume(DataManager.preferences.sfx_volume);
 	
 	for i in sfx_source_count :
-		print(i);
+		var sfx_source = AudioStreamPlayer.new();
+		sfx_source.name = "SFX_" + str(i+1);
+		$SFX.add_child(sfx_source);
 	
 	# Clearing this will clear the objects from memory.
 	_common_audio_bank = common_audio_group.load_group();
 	
 	# Event listening
 	EventManager.play_bgm.connect(play_bgm);
+	EventManager.play_sfx.connect(play_sfx);
 	EventManager.change_bgm_volume_preference.connect(_on_bgm_volume_preference_changed);
 	EventManager.change_sfx_volume_preference.connect(_on_sfx_volume_preference_changed);
 
@@ -49,6 +52,24 @@ func play_bgm(id : String, fade_time : float, crossfade : bool):
 		
 		var new_source = root.get_child(_current_bgm_source_index) as AudioStreamPlayer;
 		new_source.stream = bgm;
+		new_source.play();
+
+
+func play_sfx(id : String):
+	var root = $SFX;
+	
+	var sfx : AudioStream;
+	# TODO: aux soundbank fetching
+	if _common_audio_bank.has(id):
+		sfx = _common_audio_bank[id];
+	
+	if sfx != null:
+		var source_index = _get_unused_audio_source(root);
+		
+		if source_index < 0 : print("ERROR: Should never occur")
+		
+		var new_source = root.get_child(source_index) as AudioStreamPlayer;
+		new_source.stream = sfx;
 		new_source.play();
 
 

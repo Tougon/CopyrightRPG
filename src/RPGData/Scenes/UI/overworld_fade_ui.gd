@@ -20,6 +20,7 @@ func _fade_action_battle(fade_in : bool):
 		if fade_in:
 			fade_sequence.play_tween_name("Battle Fade In");
 		else:
+			EventManager.play_sfx.emit("no");
 			fade_sequence.play_tween_name("Battle Fade Out");
 		await fade_sequence.tween_ended;
 	
