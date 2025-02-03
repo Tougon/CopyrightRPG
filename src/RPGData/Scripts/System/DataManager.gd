@@ -1,6 +1,7 @@
 extends Node
 
 var current_save : SaveData;
+var preferences : Preferences;
 var party_data : Array[PartyMemberData]
 
 var entity_database : EntityDatabase = preload("res://assets/Entities/entity_database.tres")
@@ -13,6 +14,7 @@ signal on_inventory_changed();
 
 func _ready():
 	current_save = SaveData.new();
+	_load_preferences();
 	
 	party_data = [];
 	
@@ -97,6 +99,21 @@ func delete_data():
 	DirAccess.remove_absolute("user://savegame.save");
 
 
+func _load_preferences():
+	var pref_file = FileAccess.open("user://preferences.save", FileAccess.READ);
+	
+	if pref_file != null :
+		preferences = pref_file.get_var(true);
+		if preferences == null : preferences = Preferences.new();
+	else :
+		preferences = Preferences.new();
+
+
+func save_preferences():
+	var save_file = FileAccess.open("user://preferences.save", FileAccess.WRITE)
+	save_file.store_var(preferences, true);
+
+
 # Item Functions
 
 func get_battle_items() -> Dictionary:
@@ -134,3 +151,9 @@ func get_item_amount(id : int) -> int:
 
 func get_inventory_as_array() -> Array:
 	return current_save.inventory.keys();
+
+
+# Misc
+
+func _exit_tree() -> void:
+	save_preferences();

@@ -13,7 +13,7 @@ func initialize():
 			if ResourceLoader.exists(entry.item_path, "Item"):
 				entry.item = ResourceLoader.load(entry.item_path, "Item") as Item;
 			else:
-				print("WARNING: Entity path at index " + str(item_id) + " is invalid!");
+				print("WARNING: Item path at index " + str(item_id) + " is invalid!");
 
 
 func get_item(id : int) -> Item:

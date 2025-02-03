@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=54 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -23,6 +23,7 @@
 [ext_resource type="Material" uid="uid://u0rtoqst1pow" path="res://assets/Materials/UI/material_ui_dirt.tres" id="16_egfar"]
 [ext_resource type="Script" path="res://src/UIManager/Scripts/MenuPanel.gd" id="17_n8c6y"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_options.gd" id="21_n8v21"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -459,6 +460,7 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -697,8 +699,7 @@ color = Color(1, 1, 1, 0)
 [node name="TweenPlayerUI" type="Node" parent="Body/Notepad"]
 script = ExtResource("2_fajv7")
 
-[node name="Options" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
-visible = false
+[node name="Options" type="Panel" parent="Body" node_paths=PackedStringArray("bgm_slider", "sfx_slider", "root_menu", "initial_selection", "all_selections")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -707,11 +708,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
-script = ExtResource("10_6dw36")
+script = ExtResource("21_n8v21")
+bgm_slider = NodePath("BGM Volume Slider")
+sfx_slider = NodePath("SFX Volume Slider")
 root_menu = NodePath("../..")
-menu_name = "overworld_menu_main_sub_1"
 submenu = true
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
+initial_selection = NodePath("BGM Volume Slider")
+all_selections = [NodePath("BGM Volume Slider"), NodePath("SFX Volume Slider")]
 
 [node name="ColorRect" type="ColorRect" parent="Body/Options"]
 layout_mode = 1
@@ -724,6 +727,76 @@ color = Color(1, 1, 1, 0)
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Options"]
 script = ExtResource("2_fajv7")
+
+[node name="BGM Label" type="Label" parent="Body/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -129.0
+offset_right = -149.0
+offset_bottom = -106.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BGM Volume"
+
+[node name="BGM Volume Slider" type="HSlider" parent="Body/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -114.0
+offset_right = 250.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../SFX Volume Slider")
+focus_neighbor_bottom = NodePath("../SFX Volume Slider")
+max_value = 1.0
+step = 0.05
+tick_count = 20
+ticks_on_borders = true
+
+[node name="SFX Label" type="Label" parent="Body/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -35.0
+offset_right = -149.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX Volume"
+
+[node name="SFX Volume Slider" type="HSlider" parent="Body/Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -20.0
+offset_right = 250.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../BGM Volume Slider")
+focus_neighbor_bottom = NodePath("../BGM Volume Slider")
+max_value = 1.0
+step = 0.05
+tick_count = 20
+ticks_on_borders = true
 
 [node name="System" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
 visible = false
@@ -816,6 +889,8 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]
+[connection signal="value_changed" from="Body/Options/BGM Volume Slider" to="Body/Options" method="_on_bgm_volume_slider_value_changed"]
+[connection signal="value_changed" from="Body/Options/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Body/System/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]

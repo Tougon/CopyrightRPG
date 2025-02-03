@@ -1,15 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxadfl0p5b3o2"]
+[gd_scene load_steps=5 format=3 uid="uid://dxadfl0p5b3o2"]
 
-[ext_resource type="AudioStream" uid="uid://dsln6g5vd145k" path="res://assets/Audio/BGM/MF2.ogg" id="1_d6sxs"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioManager.gd" id="1_cia4y"]
+[ext_resource type="Resource" uid="uid://vbiqobl25sbv" path="res://assets/Audio/Audio Groups/common_group.tres" id="2_fkgqc"]
+[ext_resource type="Resource" uid="uid://v2gpdplk5e3f" path="res://assets/Audio/Audio Groups/bgm_group.tres" id="3_cxcfu"]
+
+[sub_resource type="Curve" id="Curve_youb2"]
+_data = [Vector2(0, 0.00338209), 0.0, 0.0, 0, 0, Vector2(0.05, 0.5), 1.30077, 1.30077, 0, 0, Vector2(1, 1), 0.170584, 0.7217, 0, 0]
+point_count = 3
 
 [node name="AudioManager" type="Node"]
+script = ExtResource("1_cia4y")
+volume_curve = SubResource("Curve_youb2")
+common_audio_group = ExtResource("2_fkgqc")
+bgm_group = ExtResource("3_cxcfu")
 
 [node name="SFX" type="Node" parent="."]
 
 [node name="BGM" type="Node" parent="."]
 
 [node name="BGM_1" type="AudioStreamPlayer" parent="BGM"]
-stream = ExtResource("1_d6sxs")
 bus = &"BGM"
 
 [node name="BGM_2" type="AudioStreamPlayer" parent="BGM"]

@@ -2,11 +2,14 @@ extends Node2D
 
 static var battle_scene : BattleScene = null;
 static var battle_scene_window : Window = null;
+@export_group("Gameplay Parameters")
 @export var battle_scene_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
 @export var player_controller : RPGPlayerController;
 @export var game_camera : PhantomCamera2D;
 @export var free_camera : PhantomCamera2D;
 @export var canvas_modulate : CanvasModulate;
+@export_group("Cosmetic Parameters")
+@export var bgm_id : String;
 
 var _faded_out_cutscene : bool = false;
 
@@ -24,6 +27,10 @@ func _ready() -> void:
 	OverworldManager.free_camera = free_camera;
 	
 	await get_tree().process_frame;
+	
+	# Not sure where BGM should be started
+	# TODO: Revaluate this?
+	play_bgm();
 	
 	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		if battle_scene_ref != null && battle_scene == null: 
@@ -176,6 +183,12 @@ func _on_menu_closing(menu : MenuPanel):
 	if menu.menu_name == "overworld_menu_main":
 		var tween = get_tree().create_tween();
 		tween.tween_property(game_camera, "zoom", Vector2(1.0,1.0), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
+
+
+# Audio Functions
+func play_bgm(fade_time : float = 0, crossfade : bool = false):
+	EventManager.play_bgm.emit(bgm_id, fade_time, crossfade);
+	pass;
 
 
 func _exit_tree():

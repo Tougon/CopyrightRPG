@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=5 format=3 uid="uid://vbiqobl25sbv"]
+
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_tpp0k"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_dnokl"]
+
+[sub_resource type="Resource" id="Resource_xjkh2"]
+script = ExtResource("1_tpp0k")
+item_id = "no"
+item_path = "res://assets/Audio/SFX/no.ogg"
+
+[sub_resource type="Resource" id="Resource_i5eyk"]
+script = ExtResource("1_tpp0k")
+item_id = "shout"
+item_path = "res://assets/Audio/SFX/shout.ogg"
+
+[resource]
+script = ExtResource("2_dnokl")
+entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_i5eyk")])

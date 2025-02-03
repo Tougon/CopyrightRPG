@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=5 format=3 uid="uid://v2gpdplk5e3f"]
+
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_d0iay"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_mfpne"]
+
+[sub_resource type="Resource" id="Resource_m8cui"]
+script = ExtResource("1_d0iay")
+item_id = "unfinished_sympathy"
+item_path = "res://assets/Audio/BGM/Unfinished Sympathy.ogg"
+
+[sub_resource type="Resource" id="Resource_pahdd"]
+script = ExtResource("1_d0iay")
+item_id = "mf2"
+item_path = "res://assets/Audio/BGM/MF2.ogg"
+
+[resource]
+script = ExtResource("2_mfpne")
+entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd")])

@@ -5,6 +5,12 @@ signal on_sequence_queue(sequence);
 signal on_sequence_queue_first(sequence);
 signal on_sequence_queue_empty();
 
+# Audio Events
+signal play_bgm(id : String, fade_time : float, crossfade : bool);
+
+signal change_bgm_volume_preference(amount : float);
+signal change_sfx_volume_preference(amount : float);
+
 # Dialogue Events
 signal on_dialogue_queue(dialogue : String);
 signal on_message_queue(message : String);
