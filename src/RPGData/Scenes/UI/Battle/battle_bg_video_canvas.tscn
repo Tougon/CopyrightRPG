@@ -12,10 +12,11 @@ shader_parameter/color_primary = null
 shader_parameter/color_secondary = Color(1, 1, 1, 1)
 shader_parameter/resolution = Vector2(266.667, 200)
 
-[node name="BG Video Canvas" type="CanvasLayer" node_paths=PackedStringArray("video_layer", "color_layer", "solid_layer", "static_layer")]
+[node name="BG Video Canvas" type="CanvasLayer" node_paths=PackedStringArray("video_layer", "attack_layer", "color_layer", "solid_layer", "static_layer")]
 layer = -10
 script = ExtResource("1_jecyy")
 video_layer = NodePath("Video Layer")
+attack_layer = NodePath("Attack Video Layer")
 color_layer = NodePath("Color Layer")
 solid_layer = NodePath("ColorRect")
 static_layer = NodePath("Static")
@@ -43,19 +44,11 @@ color = Color(0.296875, 0.296875, 0.296875, 1)
 material = ExtResource("4_aomcr")
 mouse_filter = 2
 
-[node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("5_3u2dt")
-mouse_filter = 2
-delay_start = true
-delay_time = 0.5
-
 [node name="Attack Video Layer" parent="." instance=ExtResource("3_8xmgu")]
-visible = false
 material = ExtResource("4_aomcr")
 mouse_filter = 2
 
-[node name="Attack Color Layer" parent="." instance=ExtResource("3_8xmgu")]
-visible = false
+[node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]
 material = ExtResource("5_3u2dt")
 mouse_filter = 2
 delay_start = true

@@ -4,6 +4,8 @@ class_name BGVideoCanvas
 enum LoadType { ENTITY, ATTACK }
 
 @export var video_layer : LoopingVideoPlayer;
+# NOTE: Later, try replacing this with a better video decoder.
+@export var attack_layer : LoopingVideoPlayer;
 @export var color_layer : LoopingVideoPlayer;
 @export var solid_layer : ColorRect;
 @export var static_layer : ColorRect;
@@ -100,36 +102,45 @@ func _set_player_bg(entity : EntityController):
 
 func _set_spell_bg(spell : Spell):
 	if spell == null && _current_spell != null: 
-		var offset_amount = video_layer.stream_position;
+		# Disabling the following code in case we can later restore this functionality
+		# == DISABLED CODE ==
+		#var offset_amount = video_layer.stream_position;
 		
-		video_layer.stop();
-		#color_layer.stop();
+		#video_layer.stop();
 		
-		video_layer.material = _material_main;
-		video_layer.stream = _video_main;
-		#color_layer.stream = _video_main;
+		#video_layer.material = _material_main;
+		#video_layer.stream = _video_main;
 		
-		video_layer.play_video_at(_runtime_main + offset_amount);
-		#color_layer.play_video_at(_runtime_main + offset_amount - color_layer.delay_time);
-		
+		#video_layer.play_video_at(_runtime_main + offset_amount);
+		# == END DISABLED CODE ==
+		attack_layer.stop();
+		attack_layer.visible = false;
+		attack_layer.stream = null;
 		_current_spell = null;
 	else :
 		if _attack_to_video_map.has(spell):
+			# Disabling the following code in case we can later restore this functionality
+			# == DISABLED CODE ==
 			# Cache video runtime
-			_runtime_main = video_layer.stream_position;
+			#_runtime_main = video_layer.stream_position;
 			
-			video_layer.stop();
-			#color_layer.stop();
+			#video_layer.stop();
 			
+			#var vid = _attack_to_video_map[spell];
+			#var mat = _attack_to_shader_map[spell];
+			
+			#video_layer.material = mat;
+			#video_layer.stream = vid;
+			
+			#video_layer.play_video_at(0);
+			# == END DISABLED CODE ==
 			var vid = _attack_to_video_map[spell];
 			var mat = _attack_to_shader_map[spell];
 			
-			video_layer.material = mat;
-			video_layer.stream = vid;
-			#color_layer.stream = vid;
-			
-			video_layer.play_video_at(0);
-			#color_layer.play_video_at(0);
+			attack_layer.visible = true;
+			attack_layer.stream = vid;
+			attack_layer.material = mat;
+			attack_layer.play_video_at(0);
 			
 			_current_spell = spell;
 
@@ -174,6 +185,7 @@ func _set_static(active : bool) :
 	solid_layer.visible = !active;
 	video_layer.visible = !active;
 	color_layer.visible = !active;
+	attack_layer.visible = false;
 
 
 func _on_destroy():

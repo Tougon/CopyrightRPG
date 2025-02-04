@@ -1,4 +1,0 @@
-[gd_resource type="FFmpegVideoStream" format=3 uid="uid://d0gjr1xu3hwju"]
-
-[resource]
-file = "res://video/test_mpeg.mp4"
