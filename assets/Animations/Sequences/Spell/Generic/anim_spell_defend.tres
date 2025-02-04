@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=48 format=3 uid="uid://c1yvqg3xp3v7d"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=53 format=3 uid="uid://c1yvqg3xp3v7d"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_f33oh"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="1_nhj8r"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="2_p6bkq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_wl3i4"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="5_qshry"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_sgabb"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="6_8mr73"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="6_vybql"]
@@ -191,6 +192,16 @@ frame = 21
 frame_order = 1
 action = SubResource("Resource_qo76p")
 
+[sub_resource type="Resource" id="Resource_phw1k"]
+script = ExtResource("5_qshry")
+reset_bg = false
+
+[sub_resource type="Resource" id="Resource_3lul5"]
+script = ExtResource("2_p6bkq")
+frame = 21
+frame_order = 5
+action = SubResource("Resource_phw1k")
+
 [sub_resource type="Resource" id="Resource_ila7s"]
 script = ExtResource("1_nhj8r")
 effect_scene_path = "res://assets/VFX/Generic/effect_spell_defend_1.tscn"
@@ -358,6 +369,16 @@ frame = 121
 frame_order = 0
 action = SubResource("Resource_dgpo8")
 
+[sub_resource type="Resource" id="Resource_dmg3d"]
+script = ExtResource("5_qshry")
+reset_bg = true
+
+[sub_resource type="Resource" id="Resource_y1laa"]
+script = ExtResource("2_p6bkq")
+frame = 159
+frame_order = 0
+action = SubResource("Resource_dmg3d")
+
 [sub_resource type="Resource" id="Resource_qi5ho"]
 script = ExtResource("6_8mr73")
 effect_id = 1
@@ -391,4 +412,4 @@ action = SubResource("Resource_kt3v1")
 script = ExtResource("1_f33oh")
 animation_name = "Defend"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("2_p6bkq")]([SubResource("Resource_7a851"), SubResource("Resource_jmici"), SubResource("Resource_i81vg"), SubResource("Resource_alid5"), SubResource("Resource_8qvtf"), SubResource("Resource_wqxur"), SubResource("Resource_b7ri5"), SubResource("Resource_x2r7v"), SubResource("Resource_64pf6"), SubResource("Resource_aiaqv"), SubResource("Resource_tkyak"), SubResource("Resource_70mw6"), SubResource("Resource_mxswi"), SubResource("Resource_qw88o"), SubResource("Resource_owc5u")])
+animation_sequence = Array[ExtResource("2_p6bkq")]([SubResource("Resource_7a851"), SubResource("Resource_jmici"), SubResource("Resource_i81vg"), SubResource("Resource_alid5"), SubResource("Resource_8qvtf"), SubResource("Resource_wqxur"), SubResource("Resource_3lul5"), SubResource("Resource_b7ri5"), SubResource("Resource_x2r7v"), SubResource("Resource_64pf6"), SubResource("Resource_aiaqv"), SubResource("Resource_tkyak"), SubResource("Resource_70mw6"), SubResource("Resource_y1laa"), SubResource("Resource_mxswi"), SubResource("Resource_qw88o"), SubResource("Resource_owc5u")])

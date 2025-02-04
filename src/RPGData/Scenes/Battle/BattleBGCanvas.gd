@@ -67,18 +67,26 @@ func _on_battle_begin(params : BattleParams):
 
 
 func _load_entity_spell_data(entity : EntityController):
+	if entity is PlayerController:
+		_load_spell_data(entity.attack_action);
+		_load_spell_data(entity.defend_action);
+	
 	for move in entity.move_list:
-		if move.spell_video != null && !_attack_to_video_map.has(move):
-			var video = load_video(move.spell_video);
-			
-			if video != null : 
-				_attack_to_video_map[move] = video;
+		_load_spell_data(move);
+
+
+func _load_spell_data(move : Spell):
+	if move.spell_video != null && !_attack_to_video_map.has(move):
+		var video = load_video(move.spell_video);
 		
-		if move.spell_video_material != null && !_attack_to_shader_map.has(move):
-			var mat = load_material(move.spell_video_material);
-			
-			if mat != null : 
-				_attack_to_shader_map[move] = mat;
+		if video != null : 
+			_attack_to_video_map[move] = video;
+	
+	if move.spell_video_material != null && !_attack_to_shader_map.has(move):
+		var mat = load_material(move.spell_video_material);
+		
+		if mat != null : 
+			_attack_to_shader_map[move] = mat;
 
 
 func _set_player_bg(entity : EntityController):
