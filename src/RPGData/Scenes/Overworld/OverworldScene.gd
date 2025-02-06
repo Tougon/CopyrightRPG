@@ -12,6 +12,9 @@ static var battle_scene_window : Window = null;
 @export var bgm_id : String;
 
 var _faded_out_cutscene : bool = false;
+var _bgm_time : float;
+var _battle_start_timestamp : float;
+var _battle_end_timestamp : float;
 
 # May as well be deprecated
 var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
@@ -86,6 +89,10 @@ func _on_dialogue_end():
 func _on_overworld_battle_queued(encounter : Encounter):
 	BattleManager.is_battle_active = true;
 	
+	_bgm_time = AudioManager.get_bgm_time();
+	_battle_start_timestamp = Time.get_unix_time_from_system();
+	EventManager.fade_bgm.emit(0, 0, true);
+	
 	# TODO: Different fade animations based on encounter params
 	EventManager.overworld_battle_fade_start.emit(false);
 	await EventManager.overworld_battle_fade_completed;
@@ -151,6 +158,10 @@ func _on_battle_end(result : BattleResult):
 				for enemy in result.enemies:
 					QuestManager.progress_quest(id, step, enemy, 1)
 	
+	_battle_end_timestamp = Time.get_unix_time_from_system();
+	var bgm_offset = _battle_end_timestamp - _battle_start_timestamp;
+	play_bgm(0.75, true, _bgm_time + bgm_offset);
+	
 	EventManager.overworld_battle_fade_start.emit(true);
 	
 	await get_tree().process_frame;
@@ -186,8 +197,8 @@ func _on_menu_closing(menu : MenuPanel):
 
 
 # Audio Functions
-func play_bgm(fade_time : float = 0, crossfade : bool = false):
-	EventManager.play_bgm.emit(bgm_id, fade_time, crossfade);
+func play_bgm(fade_time : float = 0, crossfade : bool = false, start_time : float = 0):
+	EventManager.play_bgm.emit(bgm_id, fade_time, crossfade, start_time, 1);
 	pass;
 
 

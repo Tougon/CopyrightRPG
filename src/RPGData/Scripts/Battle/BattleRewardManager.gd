@@ -7,6 +7,9 @@ func _ready():
 
 func _on_battle_complete(result : BattleResult):
 	if result != null && result.victory:
+		# Results Music
+		EventManager.play_bgm.emit("battle_win", 0.2, true, 0, 1);
+		
 		if result.exp > 0:
 			var exp : String;
 			
@@ -34,6 +37,9 @@ func _on_battle_complete(result : BattleResult):
 					player.override_level = level;
 					player.modified_exp_amt = award_exp;
 	else:
+		# Defeat Music
+		EventManager.play_bgm.emit("battle_lose", 0.2, true, 0, 1);
+		
 		EventManager.on_dialogue_queue.emit(tr("T_BATTLE_RESULT_DEFEAT"));
 	
 	await EventManager.on_sequence_queue_empty;
@@ -42,6 +48,7 @@ func _on_battle_complete(result : BattleResult):
 	EventManager.set_player_group_state.emit(false);
 	await get_tree().create_timer(0.1).timeout
 	
+	EventManager.fade_bgm.emit(0.0, 0.0, true);
 	EventManager.battle_fade_start.emit(false);
 	await EventManager.battle_fade_completed;
 	

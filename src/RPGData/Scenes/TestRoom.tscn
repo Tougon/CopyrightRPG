@@ -866,6 +866,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("32_14mn0")
 
 [node name="PointLight2D" type="PointLight2D" parent="Environment/Lighting/Sprite2D"]
+position = Vector2(0, -20)
 scale = Vector2(10, 10)
 color = Color(0.97, 0.94284, 0.6984, 1)
 energy = 1.5

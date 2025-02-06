@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://4k3478vr4ljh"]
+[gd_scene load_steps=8 format=3 uid="uid://4k3478vr4ljh"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="1_jecyy"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="2_k620y"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="3_8xmgu"]
-[ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="4_aomcr"]
+[ext_resource type="Material" uid="uid://nh1kckqt8stk" path="res://assets/Materials/VideoMaterials/defend_test_00.tres" id="4_67k2p"]
 [ext_resource type="Material" uid="uid://3nygt7s0yhyq" path="res://assets/Materials/VideoMaterials/entity_player_main_01.tres" id="5_3u2dt"]
+[ext_resource type="VideoStream" path="res://video/defend.ogv" id="5_gmqqf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44pux"]
 shader = ExtResource("2_k620y")
@@ -41,11 +42,12 @@ mouse_filter = 2
 color = Color(0.296875, 0.296875, 0.296875, 1)
 
 [node name="Video Layer" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("4_aomcr")
+material = ExtResource("4_67k2p")
 mouse_filter = 2
+stream = ExtResource("5_gmqqf")
 
 [node name="Attack Video Layer" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("4_aomcr")
+material = ExtResource("4_67k2p")
 mouse_filter = 2
 
 [node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]

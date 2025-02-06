@@ -201,6 +201,7 @@ entity_sprites = Array[String](["res://assets/Sprites/Entities/Slime/slime_n_neu
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, 130)
+entity_bgm_key = "MF2"
 entity_video = "res://video/test_bw.ogv"
 entity_video_material = "res://assets/Materials/VideoMaterials/entity_test_00.tres"
 entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_test_01.tres"

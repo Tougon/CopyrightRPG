@@ -31,28 +31,68 @@ func _ready() -> void:
 	
 	# Event listening
 	EventManager.play_bgm.connect(play_bgm);
+	EventManager.fade_bgm.connect(fade_bgm);
 	EventManager.play_sfx.connect(play_sfx);
 	EventManager.change_bgm_volume_preference.connect(_on_bgm_volume_preference_changed);
 	EventManager.change_sfx_volume_preference.connect(_on_sfx_volume_preference_changed);
 
 
-func play_bgm(id : String, fade_time : float, crossfade : bool):
+func play_bgm(id : String, fade_time : float, crossfade : bool, start_time : float, start_volume : float):
 	var root = $BGM;
 	
-	if _current_bgm_source_index >= 0:
-		print("TBD fading operations");
+	if _current_bgm_source_index >= 0 && root.get_child(_current_bgm_source_index).playing :
+		_fade_player(root.get_child(_current_bgm_source_index), 0, fade_time, -1, true);
+		if !crossfade : await get_tree().create_timer(fade_time).timeout;
 	
 	var bgm = bgm_group.load_id(id);
 	
 	if bgm != null:
-		print("TBD Fade in");
 		_current_bgm_source_index = _get_unused_audio_source(root);
 		
 		if _current_bgm_source_index < 0 : print("ERROR: Should never occur")
 		
 		var new_source = root.get_child(_current_bgm_source_index) as AudioStreamPlayer;
 		new_source.stream = bgm;
-		new_source.play();
+		
+		# Gross!
+		while(start_time >= bgm.get_length()) : start_time -= bgm.get_length();
+		
+		new_source.play(start_time);
+		
+		_fade_player(root.get_child(_current_bgm_source_index), start_volume, fade_time, 0);
+
+
+func fade_bgm(volume : float, fade_time : float, stop : bool):
+	var root = $BGM;
+	if _current_bgm_source_index >= 0:
+		_fade_player(root.get_child(_current_bgm_source_index), volume, fade_time, -1, stop)
+
+
+func _fade_player(source : AudioStreamPlayer, amount : float, fade_time : float, start_amount : float = -1, stop : bool = false):
+	var log_amount = volume_curve.sample(amount);
+	
+	var tween = get_tree().create_tween();
+	
+	var property = tween.tween_property(source, "volume_db", lerp(MIN_VOLUME_AMOUNT, MAX_VOLUME_AMOUNT, log_amount), fade_time);
+	
+	if start_amount != -1:
+		var start_log_amount = volume_curve.sample(start_amount);
+		property.from(lerp(MIN_VOLUME_AMOUNT, MAX_VOLUME_AMOUNT, start_log_amount));
+	
+	if stop :
+		tween.finished.connect(func kill_vol_tween(): 
+			source.stop();)
+
+
+func get_bgm_time() -> float:
+	var root = $BGM;
+	
+	for i in root.get_children().size():
+		var player = (root.get_child(i) as AudioStreamPlayer);
+		if player.playing:
+			return player.get_playback_position();
+	
+	return 0;
 
 
 func play_sfx(id : String):

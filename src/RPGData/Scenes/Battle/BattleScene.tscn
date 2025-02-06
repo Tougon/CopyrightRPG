@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=65 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -29,7 +29,6 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="19_et6o3"]
 [ext_resource type="PackedScene" uid="uid://bax2rjs6ennqq" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_ui.tscn" id="20_dvxdd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_fade_ui.gd" id="20_ija8q"]
-[ext_resource type="PackedScene" uid="uid://dxadfl0p5b3o2" path="res://src/AudioManager/AudioManager.tscn" id="21_53vg0"]
 [ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="22_0arau"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/damage_effect_canvas.gd" id="22_5fosr"]
 [ext_resource type="Resource" uid="uid://7ahtxfao7d4d" path="res://assets/Tweens/Transition/iris_out.tres" id="27_xi51v"]
@@ -432,8 +431,6 @@ script = ExtResource("19_et6o3")
 
 [node name="BattleRewardManager" type="Node" parent="Core"]
 script = ExtResource("29_6pl1e")
-
-[node name="AudioManager" parent="." instance=ExtResource("21_53vg0")]
 
 [node name="PhantomCamera2D" type="Node2D" parent="."]
 position = Vector2(480, 320)

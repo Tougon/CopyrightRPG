@@ -147,6 +147,7 @@ entity_sprites = Array[String](["res://assets/Sprites/Entities/slime.png"])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, 0)
+entity_bgm_key = ""
 entity_video = ""
 entity_video_material = ""
 entity_thought_pattern_material = ""

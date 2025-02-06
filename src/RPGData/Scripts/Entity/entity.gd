@@ -100,14 +100,15 @@ func get_reward_exp(level : int) -> int:
 	if reward_exp == null : return 50;
 	return reward_exp.get_current(level);
 
-@export_group("Visuals")
+@export_group("Aesthetics")
 @export_file("*.png") var entity_sprites: Array[String];
 @export var battle_intro_key: String;
 @export var battle_defeat_key: String;
 @export var dodge_anim : AnimationSequenceObject;
 @export var defeat_anim : AnimationSequenceObject;
 @export var head_offset : Vector2;
-@export_file("*.tres") var entity_video: String;
+@export var entity_bgm_key: String;
+@export_file("*.ogv") var entity_video: String;
 @export_file("*.tres") var entity_video_material: String;
 @export_file("*.tres") var entity_thought_pattern_material: String;
 

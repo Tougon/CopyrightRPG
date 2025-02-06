@@ -27,7 +27,7 @@ func load_id(id : String) -> AudioStream:
 	for i in entries.size() :
 		var entry = entries[i];
 		
-		if entry.item_id != id : continue;
+		if entry.item_id.to_lower() != id.to_lower() : continue;
 		
 		var audio = ResourceLoader.load(entry.item_path, "AudioStream")
 		if audio == null :

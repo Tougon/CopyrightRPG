@@ -30,7 +30,9 @@ func set_active(state : bool):
 		submenus[_current_tab_index].set_active(false);
 		for index in header_icons.size():
 			header_icons[index].play_tween_name("Focus Exited");
+		EventManager.fade_bgm.emit(1, 0.5, false);
 	else :
+		EventManager.fade_bgm.emit(0.45, 0.5, false);
 		await get_tree().create_timer(0.25).timeout;
 		submenus[_current_tab_index].set_active(true);
 		_play_header_tweens();

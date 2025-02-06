@@ -431,29 +431,9 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 
 func _end_phase():
 	# Execute turn end effect functions
-	for entity in entities:
-		entity.sealing = false;
-		
-		if !entity.is_defeated:
-			# NOTE: In the original game, this is where we checked for remain active.
-			# This will no longer be done to give more control over when this occurs.
-			#entity.execute_remain_active_check();
-			entity.execute_turn_end_effects();
 	
-	if sequencer.is_sequence_playing_or_queued() :
-		await EventManager.on_sequence_queue_empty;
-	EventManager.hide_entity_ui.emit();
-	
-	if (_all_players_defeated()) :
-		# TODO: Do we even need this?
-		EventManager.on_players_defeated.emit(); 
-		
-		var reward = BattleResult.new();
-		reward.victory = false;
-		
-		EventManager.on_battle_completed.emit(reward); 
-		return;
-	else :
+	# If at least one player is currently alive, check for a victory
+	if (!_all_players_defeated()) :
 		if (_all_enemies_defeated()) :
 			var reward = BattleResult.new();
 			reward.victory = true;
@@ -476,6 +456,32 @@ func _end_phase():
 			
 			EventManager.on_battle_completed.emit(reward); 
 			return;
+	
+	# If the battle is not over, apply effects
+	for entity in entities:
+		entity.sealing = false;
+		
+		if !entity.is_defeated:
+			# NOTE: In the original game, this is where we checked for remain active.
+			# This will no longer be done to give more control over when this occurs.
+			#entity.execute_remain_active_check();
+			entity.execute_turn_end_effects();
+	
+	if sequencer.is_sequence_playing_or_queued() :
+		await EventManager.on_sequence_queue_empty;
+	EventManager.hide_entity_ui.emit();
+	
+	# Check to see if the effects have caused a loss state
+	if (_all_players_defeated()) :
+		# TODO: Do we even need this?
+		EventManager.on_players_defeated.emit(); 
+		
+		var reward = BattleResult.new();
+		reward.victory = false;
+		
+		EventManager.on_battle_completed.emit(reward); 
+		return;
+	else :
 		_begin_turn();
 
 
@@ -520,6 +526,8 @@ func _on_player_register(entity : EntityController):
 
 
 func _on_enemy_register(entity : EntityController):
+	if enemies.size() == 0 : 
+		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
 	entities.append(entity);
 	enemies.append(entity);
 
