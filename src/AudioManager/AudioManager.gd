@@ -24,6 +24,7 @@ func _ready() -> void:
 	for i in sfx_source_count :
 		var sfx_source = AudioStreamPlayer.new();
 		sfx_source.name = "SFX_" + str(i+1);
+		sfx_source.bus = "SFX";
 		$SFX.add_child(sfx_source);
 	
 	# Clearing this will clear the objects from memory.

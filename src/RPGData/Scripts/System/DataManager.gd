@@ -33,7 +33,7 @@ func _ready():
 		member.level = 30;
 		member.exp = 0;
 		member.hp_dmg = 1;
-		member.unlocked = i == 0;
+		member.unlocked = true;#i == 0;
 		party_data.append(member);
 	
 	# TODO: Remove this. This is temp item stuff.

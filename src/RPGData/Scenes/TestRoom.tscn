@@ -748,7 +748,14 @@ tile_set = SubResource("TileSet_whai2")
 
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
+
+[node name="EncounterManager[DELETE LATER]" type="Node" parent="."]
+script = ExtResource("3_tr7o3")
+encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_s1unj")])
+minimum_encounter_chance = 1.0
+encounter_reroll_rate = 0.24
 
 [node name="UI" type="Node" parent="."]
 
