@@ -119,9 +119,8 @@ func _on_player_items_changed(items : Dictionary, delta : Item):
 # Misc Functions
 func on_damage(crit : bool):
 	super.on_damage(crit);
-	
-	if current_action != defend_action:
-		EventManager.on_player_take_damage.emit(false, crit);
+	# replace false with if alive
+	EventManager.on_player_take_damage.emit(false, crit, current_action == defend_action);
 
 
 func _get_sprite_start_position() -> Vector2:

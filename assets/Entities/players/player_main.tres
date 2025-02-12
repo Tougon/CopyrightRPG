@@ -1,19 +1,11 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=28 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_s5su1"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_aba5b"]
-[ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="2_j0hut"]
-[ext_resource type="Resource" uid="uid://dxrqonq18v24m" path="res://assets/Spells/damage/common/spell_damage_common_raging_wind.tres" id="3_f71h0"]
-[ext_resource type="Resource" uid="uid://dd7qdkx4ewdkn" path="res://assets/Spells/damage/player/spell_damage_player_lightning.tres" id="4_3rwqi"]
-[ext_resource type="Resource" uid="uid://d0u6gmpqwd7c" path="res://assets/Spells/status/player/spell_status_player_static.tres" id="6_opxk2"]
-[ext_resource type="Resource" uid="uid://2xqi7fhscyeu" path="res://assets/Spells/damage/player/spell_damage_player_explode.tres" id="7_0b7vn"]
-[ext_resource type="Resource" uid="uid://bm0i5srkohn42" path="res://assets/Spells/damage/player/spell_damage_player_quickzap.tres" id="7_roeor"]
+[ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/damage/player/spell_damage_player_secretchord.tres" id="4_k32us"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="8_6wkou"]
-[ext_resource type="Resource" uid="uid://dvt1064n6ntq2" path="res://assets/Spells/status/common/spell_status_common_exhaust.tres" id="8_ky6g5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_4wdni"]
-[ext_resource type="Resource" uid="uid://cuyfwsc6iqt2u" path="res://assets/Spells/status/player/spell_status_player_monologue.tres" id="9_5yohg"]
-[ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/damage/common/spell_damage_common_fire.tres" id="10_vqvko"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="14_hl2ui"]
 
 [sub_resource type="Curve" id="Curve_v435p"]
@@ -67,54 +59,14 @@ min = 1.0
 max = 1.6
 growth = SubResource("Curve_2qcc2")
 
-[sub_resource type="Resource" id="Resource_egsue"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("2_j0hut")
-level = 0
-
-[sub_resource type="Resource" id="Resource_fc1ry"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("3_f71h0")
-level = 0
-
-[sub_resource type="Resource" id="Resource_j1wii"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("7_roeor")
-level = 0
-
-[sub_resource type="Resource" id="Resource_vp2t4"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("6_opxk2")
-level = 0
-
-[sub_resource type="Resource" id="Resource_doaht"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("4_3rwqi")
-level = 0
-
-[sub_resource type="Resource" id="Resource_v2soj"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("7_0b7vn")
-level = 0
-
-[sub_resource type="Resource" id="Resource_nwtfb"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("8_ky6g5")
-level = 0
-
-[sub_resource type="Resource" id="Resource_xqugk"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("9_5yohg")
-level = 0
-
 [sub_resource type="Resource" id="Resource_ott5o"]
 script = ExtResource("1_2apw3")
-spell = ExtResource("10_vqvko")
+spell = ExtResource("4_k32us")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("8_6wkou")
-list = Array[ExtResource("1_2apw3")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_j1wii"), SubResource("Resource_vp2t4"), SubResource("Resource_doaht"), SubResource("Resource_v2soj"), SubResource("Resource_nwtfb"), SubResource("Resource_xqugk"), SubResource("Resource_ott5o")])
+list = Array[ExtResource("1_2apw3")]([SubResource("Resource_ott5o")])
 
 [sub_resource type="Curve" id="Curve_5kava"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -160,7 +112,7 @@ growth = SubResource("Curve_qrpy0")
 script = ExtResource("9_4wdni")
 name_key = "T_ENTITY_PLAYER"
 description_key = "T_DESCRIPTION_SLIME"
-gender = 0
+gender = 2
 type = 1
 generic = false
 hp = SubResource("Resource_nn5p8")
@@ -172,6 +124,7 @@ sp_def = SubResource("Resource_l78rs")
 spd = SubResource("Resource_ueyej")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_dlenl")
 level_exp = SubResource("Resource_w2t4l")

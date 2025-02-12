@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://dbbotcnm6e42b"]
+
+[ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/Status/Common/anim_spell_status_common_atoost.tres" id="1_35bs6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_e0esw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_b018f"]
+[ext_resource type="Resource" uid="uid://b4ltmigvtxfgw" path="res://assets/Effects/player/effect_player_buff_motivate.tres" id="4_jwf5u"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_7m8a5"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="6_tttol"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_8axma"]
+[ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="8_hhhrn"]
+[ext_resource type="Resource" uid="uid://dfgo451y616jh" path="res://assets/Flags/attack.tres" id="9_mfbxp"]
+[ext_resource type="Resource" uid="uid://nnr5j51mnb2i" path="res://assets/Flags/dark.tres" id="10_yspen"]
+
+[sub_resource type="Resource" id="Resource_qqvlw"]
+script = ExtResource("3_b018f")
+chance = 1.0
+effect = ExtResource("4_jwf5u")
+
+[sub_resource type="Resource" id="Resource_6ajyo"]
+script = ExtResource("2_e0esw")
+chance = 1.0
+effect_set = Array[ExtResource("3_b018f")]([SubResource("Resource_qqvlw")])
+
+[resource]
+script = ExtResource("6_tttol")
+spell_name_key = "T_SPELL_STATUS_PLAYER_PASS"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_PLAYER_PASS"
+spell_type = 3
+spell_target = 5
+spell_cost = 15
+spell_priority = 0
+spell_flags = Array[ExtResource("7_8axma")]([ExtResource("8_hhhrn"), ExtResource("9_mfbxp"), ExtResource("10_yspen")])
+animation_sequence = ExtResource("1_35bs6")
+spell_video = ""
+spell_video_material = ""
+effects_on_hit = Array[ExtResource("2_e0esw")]([SubResource("Resource_6ajyo")])
+effects_on_success = Array[ExtResource("2_e0esw")]([])
+properties = Array[ExtResource("5_7m8a5")]([])

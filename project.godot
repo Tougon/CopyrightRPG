@@ -92,6 +92,7 @@ folder_colors={
 "res://assets/Items/": "yellow",
 "res://assets/Spells/": "green",
 "res://assets/VFX/": "blue",
+"res://src/RPGData/Scenes/Dev/": "teal",
 "res://src/RPGData/Scripts/Entity/": "red",
 "res://src/RPGData/Scripts/Items/": "yellow",
 "res://temp/": "gray"

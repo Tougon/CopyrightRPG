@@ -110,6 +110,7 @@ func entity_init(params : BattleParams):
 		
 		param.entity_crit_chance_modifier = current_entity.base_crit_chance_modifier;
 		param.entity_crit_resist_modifier = current_entity.base_crit_resist_modifier;
+		param.entity_accuracy_modifier = current_entity.base_accuracy_modifier;
 		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
 		param.entity_luck = current_entity.get_lck(level);
 		
@@ -501,7 +502,7 @@ func get_speed_modifier() -> float:
 
 
 func get_accuracy() -> float:
-	return 1;
+	return param.entity_accuracy_modifier;
 
 
 func get_evasion() -> float:

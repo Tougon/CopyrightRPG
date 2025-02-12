@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=73 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -106,6 +106,68 @@ sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_rvo4q")])
 script = ExtResource("6_6cut8")
 tween_name = "Damage"
 tween_resource = SubResource("Resource_nwx81")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_qve6t"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/chaos"
+material_property = true
+duration = 0.25
+delay = 0.0
+transition = 5
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 6.0
+
+[sub_resource type="Resource" id="Resource_rbnu2"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_qve6t")])
+
+[sub_resource type="Resource" id="Resource_hqy65"]
+script = ExtResource("40_0nnbl")
+tween_name = "Blocked"
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_rbnu2")])
+
+[sub_resource type="Resource" id="Resource_v3bgp"]
+script = ExtResource("6_6cut8")
+tween_name = "Blocked"
+tween_resource = SubResource("Resource_hqy65")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_s25wb"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/chaos"
+material_property = true
+duration = 0.25
+delay = 0.2
+transition = 5
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 14.0
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_c1qtb"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_s25wb")])
+
+[sub_resource type="Resource" id="Resource_8v605"]
+script = ExtResource("40_0nnbl")
+tween_name = "Defeated"
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_c1qtb")])
+
+[sub_resource type="Resource" id="Resource_onyi7"]
+script = ExtResource("6_6cut8")
+tween_name = "Defeated"
+tween_resource = SubResource("Resource_8v605")
 play_on_start = false
 next_tween = ""
 
@@ -293,10 +355,10 @@ position = Vector2(340, 314)
 [node name="3" type="Node" parent="Entities/Enemy Positions"]
 
 [node name="Root3" type="Node2D" parent="Entities/Enemy Positions/3"]
-position = Vector2(230, 294)
+position = Vector2(230, 244)
 
 [node name="Root2" type="Node2D" parent="Entities/Enemy Positions/3"]
-position = Vector2(720, 294)
+position = Vector2(720, 244)
 
 [node name="Root1" type="Node2D" parent="Entities/Enemy Positions/3"]
 position = Vector2(480, 314)
@@ -304,10 +366,10 @@ position = Vector2(480, 314)
 [node name="4" type="Node" parent="Entities/Enemy Positions"]
 
 [node name="Root4" type="Node2D" parent="Entities/Enemy Positions/4"]
-position = Vector2(720, 294)
+position = Vector2(720, 244)
 
 [node name="Root3" type="Node2D" parent="Entities/Enemy Positions/4"]
-position = Vector2(230, 294)
+position = Vector2(230, 244)
 
 [node name="Root2" type="Node2D" parent="Entities/Enemy Positions/4"]
 position = Vector2(600, 314)
@@ -324,10 +386,10 @@ position = Vector2(180, 314)
 position = Vector2(770, 314)
 
 [node name="Root3" type="Node2D" parent="Entities/Enemy Positions/5"]
-position = Vector2(300, 294)
+position = Vector2(300, 244)
 
 [node name="Root2" type="Node2D" parent="Entities/Enemy Positions/5"]
-position = Vector2(650, 294)
+position = Vector2(650, 244)
 
 [node name="Root1" type="Node2D" parent="Entities/Enemy Positions/5"]
 position = Vector2(480, 314)
@@ -368,7 +430,7 @@ grow_vertical = 2
 
 [node name="TweenPlayerUI" type="Node" parent="UI/Damage Effect Canvas/Chromatic Abberation"]
 script = ExtResource("5_35o0w")
-sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_we0kq")])
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_we0kq"), SubResource("Resource_v3bgp"), SubResource("Resource_onyi7")])
 
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence", "camera_fade_sequence")]
 layer = 10

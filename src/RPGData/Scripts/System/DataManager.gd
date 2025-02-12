@@ -30,9 +30,8 @@ func _ready():
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		var member = PartyMemberData.new();
 		member.id = i;
-		member.level = 30;
+		member.level = 1;
 		member.exp = 0;
-		member.hp_dmg = 1;
 		member.unlocked = true;#i == 0;
 		party_data.append(member);
 	

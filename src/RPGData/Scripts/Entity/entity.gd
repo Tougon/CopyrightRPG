@@ -63,6 +63,13 @@ func get_spd(level : int) -> int:
 		else:
 			base_crit_resist_modifier = new_crit_modifier;
 
+@export var base_accuracy_modifier : float = 1 : 
+	set(new_accuracy_modifier):
+		if new_accuracy_modifier < 0:
+			base_accuracy_modifier = 0;
+		else:
+			base_accuracy_modifier = new_accuracy_modifier;
+
 @export var base_dodge_modifier : float = 1 : 
 	set(new_dodge_modifier):
 		if new_dodge_modifier < 0:

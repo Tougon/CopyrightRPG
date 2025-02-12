@@ -1,15 +1,11 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=36 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=28 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_3quqn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_cso64"]
-[ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="2_nxhdp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_uapsv"]
-[ext_resource type="Resource" uid="uid://dxrqonq18v24m" path="res://assets/Spells/damage/common/spell_damage_common_raging_wind.tres" id="3_hf7jm"]
-[ext_resource type="Resource" uid="uid://bm0i5srkohn42" path="res://assets/Spells/damage/player/spell_damage_player_quickzap.tres" id="4_t6x3f"]
-[ext_resource type="Resource" uid="uid://d0u6gmpqwd7c" path="res://assets/Spells/status/player/spell_status_player_static.tres" id="5_k41ro"]
-[ext_resource type="Resource" uid="uid://dd7qdkx4ewdkn" path="res://assets/Spells/damage/player/spell_damage_player_lightning.tres" id="6_jocpb"]
+[ext_resource type="Resource" uid="uid://d22f2bgpkerm4" path="res://assets/Spells/damage/player/spell_damage_player_classified.tres" id="4_jxinl"]
+[ext_resource type="Resource" uid="uid://dttsu67w5y8lh" path="res://assets/Spells/damage/player/spell_damage_player_topsecret.tres" id="5_jj087"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_0r171"]
-[ext_resource type="Resource" uid="uid://c3go87srhogl5" path="res://assets/Spells/status/common/spell_status_common_heal.tres" id="7_32lxi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="8_178lu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="11_qtr3x"]
 
@@ -55,37 +51,17 @@ growth = SubResource("Curve_bfk5e")
 
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("1_cso64")
-spell = ExtResource("2_nxhdp")
+spell = ExtResource("4_jxinl")
 level = 0
 
 [sub_resource type="Resource" id="Resource_fc1ry"]
 script = ExtResource("1_cso64")
-spell = ExtResource("3_hf7jm")
-level = 0
-
-[sub_resource type="Resource" id="Resource_j1wii"]
-script = ExtResource("1_cso64")
-spell = ExtResource("4_t6x3f")
-level = 0
-
-[sub_resource type="Resource" id="Resource_vp2t4"]
-script = ExtResource("1_cso64")
-spell = ExtResource("5_k41ro")
-level = 0
-
-[sub_resource type="Resource" id="Resource_doaht"]
-script = ExtResource("1_cso64")
-spell = ExtResource("6_jocpb")
-level = 0
-
-[sub_resource type="Resource" id="Resource_b3mxk"]
-script = ExtResource("1_cso64")
-spell = ExtResource("7_32lxi")
+spell = ExtResource("5_jj087")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_0r171")
-list = Array[ExtResource("1_cso64")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_j1wii"), SubResource("Resource_vp2t4"), SubResource("Resource_doaht"), SubResource("Resource_b3mxk")])
+list = Array[ExtResource("1_cso64")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry")])
 
 [sub_resource type="Curve" id="Curve_cg64e"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -131,7 +107,7 @@ growth = SubResource("Curve_ddd2l")
 script = ExtResource("8_178lu")
 name_key = "T_ENTITY_PLAYER_MAGE"
 description_key = "T_DESCRIPTION_SLIME"
-gender = 0
+gender = 1
 type = 1
 generic = false
 hp = SubResource("Resource_0tkgf")
@@ -143,6 +119,7 @@ sp_def = SubResource("Resource_ayqxh")
 spd = SubResource("Resource_fyc1p")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_ghury")
 weakness = Array[ExtResource("11_qtr3x")]([])

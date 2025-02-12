@@ -1,0 +1,288 @@
+[gd_scene load_steps=48 format=3 uid="uid://7qsl1jry533n"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Dev/anim_test.gd" id="1_85p7n"]
+[ext_resource type="Resource" uid="uid://chh6ccgxl4vog" path="res://assets/Spells/damage/player/spell_damage_player_hattrick.tres" id="2_0lfd4"]
+[ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_vcsph"]
+[ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="2_yx61c"]
+[ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="3_3d4mq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_we8ih"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_gxvfb"]
+[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/seal/effect_seal_buff_speed.tres" id="6_wh3x0"]
+[ext_resource type="Resource" uid="uid://dyc1rwxffmh78" path="res://assets/Entities/players/player_main.tres" id="7_6u0l0"]
+[ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="11_manst"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="13_qfbxa"]
+[ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="15_fekhj"]
+[ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="20_cc0d2"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/damage_effect_canvas.gd" id="21_nq8l2"]
+[ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="22_bcdne"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="23_0rhbo"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="24_6mlmo"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="25_bln83"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="26_plyvr"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="27_s7l12"]
+[ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="37_jibqe"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="38_pewhh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Battle/BattleRewardManager.gd" id="39_affxc"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="40_yryn0"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="41_jgqqw"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="42_ukv38"]
+
+[sub_resource type="Resource" id="Resource_pjtk0"]
+script = ExtResource("4_we8ih")
+seal_effects = Array[ExtResource("5_gxvfb")]([ExtResource("6_wh3x0")])
+
+[sub_resource type="Resource" id="Resource_ssevn"]
+script = ExtResource("4_we8ih")
+seal_effects = Array[ExtResource("5_gxvfb")]([ExtResource("13_qfbxa"), ExtResource("11_manst"), ExtResource("6_wh3x0")])
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjsv2"]
+shader = ExtResource("22_bcdne")
+shader_parameter/chaos = 0.0
+shader_parameter/radius = 1.4
+shader_parameter/attenuation = 2.5
+shader_parameter/saturation = 1.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/modulate_amount = 0.0
+shader_parameter/invert = false
+shader_parameter/final_amount = 1.0
+shader_parameter/vignette = false
+shader_parameter/alpha = 1.0
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="Resource" id="Resource_b4ay6"]
+script = ExtResource("27_s7l12")
+target = ""
+property_name = "shader_parameter/chaos"
+material_property = true
+duration = 0.25
+delay = 0.0
+transition = 5
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 14.0
+
+[sub_resource type="Resource" id="Resource_rvo4q"]
+script = ExtResource("26_plyvr")
+frames = Array[ExtResource("27_s7l12")]([SubResource("Resource_b4ay6")])
+
+[sub_resource type="Resource" id="Resource_nwx81"]
+script = ExtResource("25_bln83")
+tween_name = "Damage"
+sequence = Array[ExtResource("26_plyvr")]([SubResource("Resource_rvo4q")])
+
+[sub_resource type="Resource" id="Resource_we0kq"]
+script = ExtResource("24_6mlmo")
+tween_name = "Damage"
+tween_resource = SubResource("Resource_nwx81")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_qve6t"]
+script = ExtResource("27_s7l12")
+target = ""
+property_name = "shader_parameter/chaos"
+material_property = true
+duration = 0.25
+delay = 0.0
+transition = 5
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 6.0
+
+[sub_resource type="Resource" id="Resource_rbnu2"]
+script = ExtResource("26_plyvr")
+frames = Array[ExtResource("27_s7l12")]([SubResource("Resource_qve6t")])
+
+[sub_resource type="Resource" id="Resource_hqy65"]
+script = ExtResource("25_bln83")
+tween_name = "Blocked"
+sequence = Array[ExtResource("26_plyvr")]([SubResource("Resource_rbnu2")])
+
+[sub_resource type="Resource" id="Resource_v3bgp"]
+script = ExtResource("24_6mlmo")
+tween_name = "Blocked"
+tween_resource = SubResource("Resource_hqy65")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_s25wb"]
+script = ExtResource("27_s7l12")
+target = ""
+property_name = "shader_parameter/chaos"
+material_property = true
+duration = 0.25
+delay = 0.2
+transition = 5
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 14.0
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_c1qtb"]
+script = ExtResource("26_plyvr")
+frames = Array[ExtResource("27_s7l12")]([SubResource("Resource_s25wb")])
+
+[sub_resource type="Resource" id="Resource_8v605"]
+script = ExtResource("25_bln83")
+tween_name = "Defeated"
+sequence = Array[ExtResource("26_plyvr")]([SubResource("Resource_c1qtb")])
+
+[sub_resource type="Resource" id="Resource_onyi7"]
+script = ExtResource("24_6mlmo")
+tween_name = "Defeated"
+tween_resource = SubResource("Resource_8v605")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_krv0w"]
+script = ExtResource("41_jgqqw")
+duration = 0.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_4jgiu"]
+script = ExtResource("26_plyvr")
+frames = Array[ExtResource("27_s7l12")]([])
+
+[sub_resource type="Resource" id="Resource_2236n"]
+script = ExtResource("27_s7l12")
+target = ""
+property_name = "zoom"
+material_property = false
+duration = 1.0
+delay = 0.0
+transition = 3
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+"From Vector2" = Vector2(1.3, 1.3)
+
+[sub_resource type="Resource" id="Resource_susux"]
+script = ExtResource("26_plyvr")
+frames = Array[ExtResource("27_s7l12")]([SubResource("Resource_2236n")])
+
+[sub_resource type="Resource" id="Resource_2evgq"]
+script = ExtResource("25_bln83")
+tween_name = "Zoom In"
+sequence = Array[ExtResource("26_plyvr")]([SubResource("Resource_4jgiu"), SubResource("Resource_susux")])
+
+[sub_resource type="Resource" id="Resource_hglxi"]
+script = ExtResource("24_6mlmo")
+tween_name = "Transition Zoom In"
+tween_resource = SubResource("Resource_2evgq")
+play_on_start = false
+next_tween = ""
+
+[node name="Animation Test" type="Node2D" node_paths=PackedStringArray("entity_controllers")]
+position = Vector2(0, 40)
+script = ExtResource("1_85p7n")
+animation = ExtResource("2_0lfd4")
+dummy_player = ExtResource("7_6u0l0")
+dummy_enemy = ExtResource("2_yx61c")
+entity_controllers = [NodePath("Entities/Players/P1"), NodePath("Entities/Enemies/E1"), NodePath("Entities/Enemies/E2"), NodePath("Entities/Enemies/E3"), NodePath("Entities/Enemies/E4"), NodePath("Entities/Enemies/E5")]
+
+[node name="Background" type="Node" parent="."]
+
+[node name="BG Video Canvas" parent="Background" instance=ExtResource("2_vcsph")]
+
+[node name="Entities" type="Node" parent="."]
+
+[node name="Players" type="Node" parent="Entities"]
+
+[node name="P1" parent="Entities/Players" instance=ExtResource("3_3d4mq")]
+position = Vector2(473, 660)
+seal_effect = SubResource("Resource_pjtk0")
+current_entity = ExtResource("7_6u0l0")
+
+[node name="Enemies" type="Node" parent="Entities"]
+
+[node name="E1" parent="Entities/Enemies" instance=ExtResource("15_fekhj")]
+position = Vector2(473, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E2" parent="Entities/Enemies" instance=ExtResource("15_fekhj")]
+position = Vector2(663, 190)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E3" parent="Entities/Enemies" instance=ExtResource("15_fekhj")]
+position = Vector2(285, 190)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E4" parent="Entities/Enemies" instance=ExtResource("15_fekhj")]
+position = Vector2(839, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E5" parent="Entities/Enemies" instance=ExtResource("15_fekhj")]
+position = Vector2(118, 314)
+seal_effect = SubResource("Resource_ssevn")
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Dialogue Canvas" parent="UI" instance=ExtResource("20_cc0d2")]
+offset = Vector2(0, 20)
+transform = Transform2D(1, 0, 0, 1, 0, 20)
+max_rows = 10
+character_pause = 0.04
+word_pause = 0.07
+expire_rows = false
+row_display_time = 1.5
+dialogue_end_time = 0.15
+
+[node name="Damage Effect Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("tween_player")]
+script = ExtResource("21_nq8l2")
+tween_player = NodePath("Chromatic Abberation/TweenPlayerUI")
+
+[node name="Chromatic Abberation" type="ColorRect" parent="UI/Damage Effect Canvas"]
+material = SubResource("ShaderMaterial_qjsv2")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TweenPlayerUI" type="Node" parent="UI/Damage Effect Canvas/Chromatic Abberation"]
+script = ExtResource("23_0rhbo")
+sequence_list = Array[ExtResource("24_6mlmo")]([SubResource("Resource_we0kq"), SubResource("Resource_v3bgp"), SubResource("Resource_onyi7")])
+
+[node name="Core" type="Node" parent="."]
+
+[node name="Sequencer" parent="Core" instance=ExtResource("37_jibqe")]
+
+[node name="SealManager" type="Node" parent="Core"]
+script = ExtResource("38_pewhh")
+
+[node name="BattleRewardManager" type="Node" parent="Core"]
+script = ExtResource("39_affxc")
+
+[node name="PhantomCamera2D" type="Node2D" parent="."]
+position = Vector2(480, 320)
+script = ExtResource("40_yryn0")
+priority = 10
+tween_resource = SubResource("Resource_krv0w")
+tween_on_load = false
+draw_limits = true
+
+[node name="TweenPlayer" type="Node" parent="PhantomCamera2D"]
+script = ExtResource("42_ukv38")
+sequence_list = Array[ExtResource("24_6mlmo")]([SubResource("Resource_hglxi")])
