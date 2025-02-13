@@ -34,6 +34,7 @@ func _ready() -> void:
 		elif controller is EnemyController :
 			enemies.append(controller);
 	
+	await get_tree().create_timer(1.0).timeout
 	play_animation();
 
 
@@ -42,21 +43,35 @@ func play_animation():
 	player.enemies = enemies;
 	
 	var spell_cast = player.current_action.cast(player, player.enemies);
-	# Rig the damage roll to do nothing
+	
+	# Rig the damage roll to do 1 damage (this is so we can debug UI timing)
 	for cast in spell_cast:
-		for i in cast.damage.size():
-			cast.damage[i] = 0;
+		cast.success = true;
 		
-		cast.total_damage = 0;
+		for i in cast.damage.size():
+			cast.damage[i] = 1;
+		
+		cast.total_damage = 1 * cast.damage.size();
 		
 		for i in cast.hits.size():
-			cast.hits[i] = true;
+			cast.hits[i] = false;
 		
+		cast.critical = false;
+		for i in cast.critical_hits.size():
+			cast.critical_hits[i] = false;
+	
 	player.action_result = spell_cast;
 	
 	var animation_seq = AnimationSequence.new(get_tree(), animation.animation_sequence, player, enemies, spell_cast);
 	EventManager.on_sequence_queue.emit(animation_seq);
 	
 	await EventManager.on_sequence_queue_empty;
+	
+	# Restore MP and HP to prevent silly fail states
+	#player.modify_mp(999);
+	
+	for enemy in enemies:
+		enemy.apply_damage(-9999, false, false, true, 0, 0, 0, 0.35, false);
+	
 	await get_tree().create_timer(1.0).timeout
 	play_animation();

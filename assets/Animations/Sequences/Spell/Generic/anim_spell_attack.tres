@@ -72,7 +72,7 @@ ease = 1
 relative = true
 "Use From" = false
 "Value Type" = 3
-"Vector2 Value" = Vector2(25, -125)
+"Vector2 Value" = Vector2(8, -20)
 
 [sub_resource type="Resource" id="Resource_x7akk"]
 script = ExtResource("1_bx7of")
@@ -98,7 +98,7 @@ effect_scene_path = "res://assets/VFX/Generic/EffectGeneric.tscn"
 relative = 1
 effect_index = 0
 effect_position = Vector2(5, 0)
-effect_layer = 0
+effect_layer = 2
 effect_rotation = 0.0
 effect_scale = Vector2(2, 2)
 child = false
@@ -182,7 +182,7 @@ ease = 1
 relative = true
 "Use From" = false
 "Value Type" = 3
-"Vector2 Value" = Vector2(-25, 125)
+"Vector2 Value" = Vector2(-8, 20)
 
 [sub_resource type="Resource" id="Resource_8miv5"]
 script = ExtResource("1_bx7of")

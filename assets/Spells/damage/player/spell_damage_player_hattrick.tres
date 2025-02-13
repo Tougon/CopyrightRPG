@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://chh6ccgxl4vog"]
 
-[ext_resource type="Resource" uid="uid://f33mxcf8k8fx" path="res://assets/Animations/Sequences/Spell/Generic/anim_spell_attack.tres" id="1_dkkix"]
+[ext_resource type="Resource" uid="uid://bd338xrr6pdkk" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_hattrick.tres" id="1_npcbg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_6nwsp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_2m12f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_r0orw"]
@@ -45,7 +45,7 @@ spell_target = 0
 spell_cost = 14
 spell_priority = 0
 spell_flags = Array[ExtResource("5_bvgdh")]([ExtResource("6_yfd40")])
-animation_sequence = ExtResource("1_dkkix")
+animation_sequence = ExtResource("1_npcbg")
 spell_video = ""
 spell_video_material = ""
 effects_on_hit = Array[ExtResource("2_6nwsp")]([])

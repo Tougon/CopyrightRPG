@@ -156,6 +156,12 @@ func sequence_loop():
 	active = false;
 
 
+func kill():
+	running = false;
+	sequence_end();
+	active = false;
+
+
 func sequence_end():
 	while effects.size() > 0:
 		effects[0].queue_free();

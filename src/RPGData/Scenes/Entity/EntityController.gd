@@ -65,6 +65,8 @@ var action_result : Array[SpellCast];
 var effects : Array[EffectInstance];
 var properties : Array[EffectInstance];
 
+var dodge_anim_sequence : AnimationSequence;
+
 
 # Initialization
 func _ready():
@@ -339,6 +341,9 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 	if damage_delay > 0:
 		await get_tree().create_timer(damage_delay).timeout;
 	
+	if dodge_anim_sequence != null :
+		dodge_anim_sequence.kill();
+	
 	var shake = SHAKE_DURATION;
 	if shake_duration > 0:
 		shake = shake_duration
@@ -353,15 +358,15 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 				var dodge_anim = default_dodge_anim;
 				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
 				
-				var animation_seq = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
-				animation_seq.sequence_start();
+				dodge_anim_sequence = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
+				dodge_anim_sequence.sequence_start();
 		else :
 			if dodge_anyway && !hit:
 				var dodge_anim = default_dodge_anim;
 				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
 				
-				var animation_seq = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
-				animation_seq.sequence_start();
+				dodge_anim_sequence = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
+				dodge_anim_sequence.sequence_start();
 	else :
 		last_hit = val;
 		current_hp = clamp(current_hp - val, 0, max_hp);

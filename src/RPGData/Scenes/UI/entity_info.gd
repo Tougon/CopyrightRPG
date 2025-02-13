@@ -52,4 +52,3 @@ func _set_entity_info(entity : EntityController):
 	if player_name != null : player_name.text = entity.param.entity_name;
 	hp_bar.set_values_immediate(entity.current_hp, 0, entity.max_hp);
 	mp_bar.set_values_immediate(entity.current_mp, 0, entity.max_mp);
-

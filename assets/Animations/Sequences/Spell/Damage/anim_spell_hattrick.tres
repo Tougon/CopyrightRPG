@@ -1,0 +1,151 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=26 format=3 uid="uid://bd338xrr6pdkk"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_vhm6e"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="2_c654q"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="3_wybav"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="5_bga0n"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="6_4tag4"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="14_0f2lw"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="15_xw7qy"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="16_nbpqh"]
+
+[sub_resource type="Resource" id="Resource_60cch"]
+script = ExtResource("3_wybav")
+reset_bg = false
+
+[sub_resource type="Resource" id="Resource_fhloc"]
+script = ExtResource("1_vhm6e")
+frame = 2
+frame_order = 3
+action = SubResource("Resource_60cch")
+
+[sub_resource type="Resource" id="Resource_bu1ul"]
+script = ExtResource("6_4tag4")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.3
+delay = 0.0
+transition = 1
+ease = 1
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(25, 75)
+
+[sub_resource type="Resource" id="Resource_x7akk"]
+script = ExtResource("5_bga0n")
+use_directionality = true
+target = 0
+effect_index = 0
+tween = SubResource("Resource_bu1ul")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_fbclg"]
+script = ExtResource("1_vhm6e")
+frame = 5
+frame_order = 0
+action = SubResource("Resource_x7akk")
+
+[sub_resource type="Resource" id="Resource_cnp6x"]
+script = ExtResource("2_c654q")
+num_loops = -1
+loop_targets = false
+
+[sub_resource type="Resource" id="Resource_ukcpa"]
+script = ExtResource("1_vhm6e")
+frame = 28
+frame_order = 0
+action = SubResource("Resource_cnp6x")
+
+[sub_resource type="Resource" id="Resource_kpnqb"]
+script = ExtResource("6_4tag4")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 1
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(-25, -125)
+
+[sub_resource type="Resource" id="Resource_tkc1j"]
+script = ExtResource("5_bga0n")
+use_directionality = true
+target = 0
+effect_index = 0
+tween = SubResource("Resource_kpnqb")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_g6tga"]
+script = ExtResource("1_vhm6e")
+frame = 28
+frame_order = 5
+action = SubResource("Resource_tkc1j")
+
+[sub_resource type="Resource" id="Resource_2u4os"]
+script = ExtResource("14_0f2lw")
+
+[sub_resource type="Resource" id="Resource_jqqxj"]
+script = ExtResource("1_vhm6e")
+frame = 40
+frame_order = 0
+action = SubResource("Resource_2u4os")
+
+[sub_resource type="Resource" id="Resource_wj11y"]
+script = ExtResource("6_4tag4")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_0xa15"]
+script = ExtResource("5_bga0n")
+use_directionality = false
+target = 0
+effect_index = 0
+tween = SubResource("Resource_wj11y")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_wiexn"]
+script = ExtResource("1_vhm6e")
+frame = 44
+frame_order = 0
+action = SubResource("Resource_0xa15")
+
+[sub_resource type="Resource" id="Resource_xrdoe"]
+script = ExtResource("15_xw7qy")
+
+[sub_resource type="Resource" id="Resource_14sak"]
+script = ExtResource("1_vhm6e")
+frame = 100
+frame_order = 0
+action = SubResource("Resource_xrdoe")
+
+[resource]
+script = ExtResource("16_nbpqh")
+animation_name = "Hat Trick"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_vhm6e")]([SubResource("Resource_fhloc"), SubResource("Resource_fbclg"), SubResource("Resource_ukcpa"), SubResource("Resource_g6tga"), SubResource("Resource_jqqxj"), SubResource("Resource_wiexn"), SubResource("Resource_14sak")])
