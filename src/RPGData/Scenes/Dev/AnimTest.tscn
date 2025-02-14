@@ -1,7 +1,7 @@
 [gd_scene load_steps=48 format=3 uid="uid://7qsl1jry533n"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Dev/anim_test.gd" id="1_85p7n"]
-[ext_resource type="Resource" uid="uid://cl12kvbw661qa" path="res://assets/Spells/damage/player/spell_damage_player_doubleplay.tres" id="2_5wu4j"]
+[ext_resource type="Resource" uid="uid://dbbotcnm6e42b" path="res://assets/Spells/status/player/spell_status_player_pass.tres" id="2_3d0sc"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_vcsph"]
 [ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="2_yx61c"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="3_3d4mq"]
@@ -187,10 +187,11 @@ next_tween = ""
 [node name="Animation Test" type="Node2D" node_paths=PackedStringArray("entity_controllers")]
 position = Vector2(0, 40)
 script = ExtResource("1_85p7n")
-animation = ExtResource("2_5wu4j")
+animation = ExtResource("2_3d0sc")
 dummy_player = ExtResource("7_6u0l0")
 dummy_enemy = ExtResource("2_yx61c")
-entity_controllers = [NodePath("Entities/Players/P1"), NodePath("Entities/Enemies/E1"), NodePath("Entities/Enemies/E2"), NodePath("Entities/Enemies/E3"), NodePath("Entities/Enemies/E4"), NodePath("Entities/Enemies/E5")]
+entity_controllers = [NodePath("Entities/Players/P1"), NodePath("Entities/Enemies/E1"), NodePath("Entities/Enemies/E2"), NodePath("Entities/Enemies/E3"), NodePath("Entities/Enemies/E4"), NodePath("Entities/Enemies/E5"), NodePath("Entities/Players/P2")]
+target_ally = true
 
 [node name="Background" type="Node" parent="."]
 
@@ -202,11 +203,13 @@ entity_controllers = [NodePath("Entities/Players/P1"), NodePath("Entities/Enemie
 
 [node name="P1" parent="Entities/Players" instance=ExtResource("3_3d4mq")]
 position = Vector2(473, 660)
-player_id = null
 seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("7_6u0l0")
-use_override_direction = null
-override_direction = null
+
+[node name="P2" parent="Entities/Players" instance=ExtResource("3_3d4mq")]
+position = Vector2(219, 662)
+seal_effect = SubResource("Resource_pjtk0")
+current_entity = ExtResource("7_6u0l0")
 
 [node name="Enemies" type="Node" parent="Entities"]
 

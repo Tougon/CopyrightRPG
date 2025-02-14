@@ -3,6 +3,8 @@ class_name EffectSetChance
 
 ## Value that indicates the chance of this effect set activating
 @export_range(0, 1) var chance : float = 0;
+## Determines if the chance for this effect should be influenced by luck
+@export var use_luck : bool = false;
 @export var effect_set : Array[EffectChance];
 
 

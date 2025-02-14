@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=25 format=3 uid="uid://chvn3lxc0ompe"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=45 format=3 uid="uid://chvn3lxc0ompe"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_xt2ua"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="3_ddmhd"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="4_de3s5"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_nrg3v"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="6_wctaq"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="7_kj8wm"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="7_l7lv2"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="8_3iqcu"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="8_ve1ff"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="9_o3s4v"]
 
 [sub_resource type="Resource" id="Resource_bu1ul"]
 script = ExtResource("4_nrg3v")
@@ -138,7 +142,7 @@ script = ExtResource("4_nrg3v")
 target = "Sprite2D"
 property_name = "position"
 material_property = false
-duration = 0.3
+duration = 0.18
 delay = 0.0
 transition = 0
 ease = 1
@@ -170,12 +174,114 @@ script = ExtResource("7_kj8wm")
 
 [sub_resource type="Resource" id="Resource_14sak"]
 script = ExtResource("1_xt2ua")
-frame = 100
+frame = 76
 frame_order = 0
 action = SubResource("Resource_xrdoe")
+
+[sub_resource type="Resource" id="Resource_d0nm6"]
+script = ExtResource("6_wctaq")
+
+[sub_resource type="Resource" id="Resource_bu460"]
+script = ExtResource("1_xt2ua")
+frame = 16
+frame_order = 5
+action = SubResource("Resource_d0nm6")
+
+[sub_resource type="Resource" id="Resource_r5a8k"]
+script = ExtResource("7_l7lv2")
+target = 1
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_t1ah8"]
+script = ExtResource("1_xt2ua")
+frame = 16
+frame_order = 6
+action = SubResource("Resource_r5a8k")
+
+[sub_resource type="Resource" id="Resource_2ej7d"]
+script = ExtResource("8_3iqcu")
+
+[sub_resource type="Resource" id="Resource_v0y6u"]
+script = ExtResource("1_xt2ua")
+frame = 16
+frame_order = 7
+action = SubResource("Resource_2ej7d")
+
+[sub_resource type="Resource" id="Resource_42t5m"]
+script = ExtResource("6_wctaq")
+
+[sub_resource type="Resource" id="Resource_ptdr7"]
+script = ExtResource("1_xt2ua")
+frame = 30
+frame_order = 5
+action = SubResource("Resource_42t5m")
+
+[sub_resource type="Resource" id="Resource_dx5hq"]
+script = ExtResource("7_l7lv2")
+target = 1
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_ymraf"]
+script = ExtResource("1_xt2ua")
+frame = 30
+frame_order = 6
+action = SubResource("Resource_dx5hq")
+
+[sub_resource type="Resource" id="Resource_t8nlp"]
+script = ExtResource("8_3iqcu")
+
+[sub_resource type="Resource" id="Resource_jlu4c"]
+script = ExtResource("1_xt2ua")
+frame = 30
+frame_order = 7
+action = SubResource("Resource_t8nlp")
+
+[sub_resource type="Resource" id="Resource_i4fl6"]
+script = ExtResource("9_o3s4v")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_hattrick_0.tscn"
+relative = 1
+effect_index = 0
+effect_position = Vector2(150, -75)
+effect_layer = 2
+effect_rotation = 0.0
+effect_scale = Vector2(0.6, 0.6)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = false
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_qu8ai"]
+script = ExtResource("1_xt2ua")
+frame = 16
+frame_order = 10
+action = SubResource("Resource_i4fl6")
+
+[sub_resource type="Resource" id="Resource_2tvan"]
+script = ExtResource("9_o3s4v")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_hattrick_0.tscn"
+relative = 1
+effect_index = 0
+effect_position = Vector2(-150, -75)
+effect_layer = 2
+effect_rotation = 0.0
+effect_scale = Vector2(0.6, 0.6)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = false
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ardti"]
+script = ExtResource("1_xt2ua")
+frame = 30
+frame_order = 10
+action = SubResource("Resource_2tvan")
 
 [resource]
 script = ExtResource("8_ve1ff")
 animation_name = "Double Play"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_xt2ua")]([SubResource("Resource_fbclg"), SubResource("Resource_g6tga"), SubResource("Resource_5cmmn"), SubResource("Resource_lm0te"), SubResource("Resource_e7wlk"), SubResource("Resource_wiexn"), SubResource("Resource_14sak")])
+animation_sequence = Array[ExtResource("1_xt2ua")]([SubResource("Resource_fbclg"), SubResource("Resource_g6tga"), SubResource("Resource_5cmmn"), SubResource("Resource_lm0te"), SubResource("Resource_e7wlk"), SubResource("Resource_wiexn"), SubResource("Resource_14sak"), SubResource("Resource_bu460"), SubResource("Resource_t1ah8"), SubResource("Resource_v0y6u"), SubResource("Resource_ptdr7"), SubResource("Resource_ymraf"), SubResource("Resource_jlu4c"), SubResource("Resource_qu8ai"), SubResource("Resource_ardti")])

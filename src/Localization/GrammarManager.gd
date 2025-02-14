@@ -23,13 +23,19 @@ func get_plural_string(names : Array[EntityController]) -> String:
 			
 			for i in names.size():
 				var name = names[i].param.entity_name;
-				result += get_direct_article(name);
+				
+				if names[i].param.entity_generic :
+					result += get_direct_article(name) + name;
+				else :
+					result += name;
 				
 				# Add a comma
 				if(names.size() > 2 && i < names.size() - 2):
 					result += ", ";
 				elif (names.size() > 1 && i == names.size() - 2):
 					result += "&";
+			
+			return result;
 	return "";
 
 

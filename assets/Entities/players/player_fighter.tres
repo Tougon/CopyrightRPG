@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_2jyuj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_28e57"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_h837w"]
-[ext_resource type="Resource" uid="uid://chh6ccgxl4vog" path="res://assets/Spells/damage/player/spell_damage_player_hattrick.tres" id="4_c27lb"]
+[ext_resource type="Resource" uid="uid://cl12kvbw661qa" path="res://assets/Spells/damage/player/spell_damage_player_doubleplay.tres" id="4_2qeas"]
 [ext_resource type="Resource" uid="uid://dbbotcnm6e42b" path="res://assets/Spells/status/player/spell_status_player_pass.tres" id="5_b254b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_cnx6x"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="8_1fkju"]
@@ -51,7 +51,7 @@ growth = SubResource("Curve_08sas")
 
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("1_28e57")
-spell = ExtResource("4_c27lb")
+spell = ExtResource("4_2qeas")
 level = 0
 
 [sub_resource type="Resource" id="Resource_doaht"]

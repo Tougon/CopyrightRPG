@@ -9,8 +9,9 @@ var mat = ShaderMaterial;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Instance the sprite's material
-	mat = sprite.material.duplicate() as ShaderMaterial;
-	sprite.material = mat;
+	if sprite != null : 
+		mat = sprite.material.duplicate() as ShaderMaterial;
+		sprite.material = mat;
 
 
 func _reset_shader_parameters():

@@ -80,6 +80,7 @@ effect = SubResource("Resource_boko1")
 [sub_resource type="Resource" id="Resource_aqxlw"]
 script = ExtResource("3_s18sb")
 chance = 1.0
+use_luck = false
 effect_set = Array[ExtResource("2_kad87")]([SubResource("Resource_mwms7")])
 
 [resource]

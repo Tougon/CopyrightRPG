@@ -16,5 +16,5 @@ func execute(sequence : AnimationSequence):
 	if entity == null : return;
 	
 	if ui_type == UIType.HP:
-		if entity.last_hit:
+		if entity.last_hit != 0:
 			entity.update_hp_ui();

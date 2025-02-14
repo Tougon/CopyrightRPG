@@ -68,10 +68,9 @@ func set_hits(hit : Array[bool]):
 				var proc = randf();
 				
 				var luck = 1;
-				# Originally included to prevent negative luck but...
-				# we kind of want that, no?
-				#if user.param.entity_luck > 1:
-				luck = user.param.entity_luck;
+				
+				if spell.effects_on_hit[n].use_luck :
+					luck = user.param.entity_luck;
 				
 				if proc <= (spell.effects_on_hit[n].chance * luck) && eff != null:
 					var exists = check_for_effect(eff)
