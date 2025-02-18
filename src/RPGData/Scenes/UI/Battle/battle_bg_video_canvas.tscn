@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://4k3478vr4ljh"]
+[gd_scene load_steps=9 format=3 uid="uid://4k3478vr4ljh"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="1_jecyy"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="2_k620y"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="3_8xmgu"]
 [ext_resource type="Material" uid="uid://nh1kckqt8stk" path="res://assets/Materials/VideoMaterials/defend_test_00.tres" id="4_67k2p"]
+[ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_bg8ve"]
 [ext_resource type="Material" uid="uid://bpj6jtsinkopm" path="res://assets/Materials/VideoMaterials/entity_player_fighter_01.tres" id="5_sf6ko"]
+[ext_resource type="VideoStream" path="res://video/attack.ogv" id="6_s5ki2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44pux"]
 shader = ExtResource("2_k620y")
@@ -21,6 +23,7 @@ color_layer = NodePath("Color Layer")
 solid_layer = NodePath("ColorRect")
 static_layer = NodePath("Static")
 start_static = false
+test_attack_layer = true
 
 [node name="Static" type="ColorRect" parent="."]
 visible = false
@@ -45,8 +48,9 @@ material = ExtResource("4_67k2p")
 mouse_filter = 2
 
 [node name="Attack Video Layer" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("4_67k2p")
+material = ExtResource("5_bg8ve")
 mouse_filter = 2
+stream = ExtResource("6_s5ki2")
 
 [node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]
 material = ExtResource("5_sf6ko")

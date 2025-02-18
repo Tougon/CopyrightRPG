@@ -564,7 +564,7 @@ odds = 0.9
 [sub_resource type="Resource" id="Resource_s1unj"]
 script = ExtResource("5_utklg")
 enemy_ids = Array[int]([4, 4, 4, 4, 4])
-odds = 0.1
+odds = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("6_1u0pu")

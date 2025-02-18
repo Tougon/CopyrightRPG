@@ -28,9 +28,20 @@ uniform int pixel_size : hint_range(4, 1080) = 96;
 uniform sampler2D transition_palette;
 uniform float transition = 1.0;
 
+uniform float time_offset = 0.0;
+uniform float time_scale = 1.0;
+uniform bool use_manual_time = false;
+uniform float manual_time;
+
 void fragment()
 {
 	vec2 uv = UV;
+	float time = (TIME * time_scale) + time_offset;
+	
+	if (use_manual_time)
+	{
+		time = (manual_time * time_scale) + time_offset;
+	}
 
 	if (enable_pixelate)
 	{
@@ -47,11 +58,11 @@ void fragment()
 		uv = uv / pixel;
 	}
 
-	float diff_x = amplitude * sin((frequency * UV.y) + (speed * TIME));
-	float diff_y = amplitude_vertical * sin((frequency_vertical * UV.y)  + (speed_vertical * TIME));
-	vec2 scroll = scroll_direction * TIME * scrolling_speed;
+	float diff_x = amplitude * sin((frequency * UV.y) + (speed * time));
+	float diff_y = amplitude_vertical * sin((frequency_vertical * UV.y)  + (speed_vertical * time));
+	vec2 scroll = scroll_direction * time * scrolling_speed;
 	vec4 tex = texture(TEXTURE, vec2(uv.x + diff_x, uv.y + diff_y) + scroll);
-	float palette_swap = mod(tex.r - TIME * palette_speed, 1.0);
+	float palette_swap = mod(tex.r - (time * palette_speed), 1.0);
 
 	if (enable_palette_cycling)
 	{

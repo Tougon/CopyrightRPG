@@ -1,0 +1,124 @@
+[gd_scene load_steps=14 format=3 uid="uid://hlss3wlilr1y"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="1_ix4f6"]
+[ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="2_hdky0"]
+[ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="3_bu33a"]
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="4_35qke"]
+[ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_787xs"]
+[ext_resource type="VideoStream" path="res://video/attack.ogv" id="6_nocx7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_44pux"]
+shader = ExtResource("2_hdky0")
+shader_parameter/color_primary = null
+shader_parameter/color_secondary = Color(1, 1, 1, 1)
+shader_parameter/resolution = Vector2(266.667, 200)
+
+[sub_resource type="Gradient" id="Gradient_sr4ea"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
+colors = PackedColorArray(0.729412, 0.635294, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.729412, 0.635294, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.729412, 0.635294, 1, 0.8)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
+gradient = SubResource("Gradient_sr4ea")
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_en1qo"]
+shader = ExtResource("4_35qke")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 0.05
+shader_parameter/speed = 0.5
+shader_parameter/amplitude_vertical = 0.05
+shader_parameter/frequency_vertical = 12.0
+shader_parameter/speed_vertical = 3.0
+shader_parameter/scroll_direction = Vector2(0, -0.1)
+shader_parameter/scrolling_speed = 0.5
+shader_parameter/enable_palette_cycling = false
+shader_parameter/enable_scan_lines = false
+shader_parameter/scan_line_mod = 2
+shader_parameter/palette_speed = 0.2
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_size = 96
+shader_parameter/transition = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/use_manual_time = false
+shader_parameter/manual_time = null
+shader_parameter/palette = SubResource("GradientTexture2D_suad4")
+
+[sub_resource type="Gradient" id="Gradient_flo7b"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.670708, 0, 0.042751, 0.8, 0.75, 0.516, 0.21, 0.8, 0.670588, 0, 0.0431373, 0.8)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tcfbd"]
+gradient = SubResource("Gradient_flo7b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3dqtp"]
+shader = ExtResource("4_35qke")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 2.0
+shader_parameter/speed = 1.0
+shader_parameter/amplitude_vertical = 0.1
+shader_parameter/frequency_vertical = 1.4
+shader_parameter/speed_vertical = 1.0
+shader_parameter/scroll_direction = Vector2(0, -1)
+shader_parameter/scrolling_speed = 0.1
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/scan_line_mod = 4
+shader_parameter/palette_speed = 0.2
+shader_parameter/enable_pixelate = false
+shader_parameter/pixel_size = 96
+shader_parameter/transition = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/use_manual_time = false
+shader_parameter/manual_time = null
+shader_parameter/palette = SubResource("GradientTexture2D_tcfbd")
+
+[node name="BG Video Canvas Rework" type="CanvasLayer" node_paths=PackedStringArray("video_layer", "attack_layer", "color_layer", "solid_layer", "static_layer")]
+layer = -10
+script = ExtResource("1_ix4f6")
+video_layer = NodePath("Video Layer")
+attack_layer = NodePath("Attack Video Layer")
+color_layer = NodePath("Color Layer")
+solid_layer = NodePath("ColorRect")
+static_layer = NodePath("Static")
+start_static = false
+test_attack_layer = true
+
+[node name="Static" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_44pux")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.296875, 0.296875, 0.296875, 1)
+
+[node name="Video Layer" parent="." instance=ExtResource("3_bu33a")]
+material = SubResource("ShaderMaterial_en1qo")
+mouse_filter = 2
+
+[node name="Attack Video Layer" parent="." instance=ExtResource("3_bu33a")]
+material = ExtResource("5_787xs")
+mouse_filter = 2
+stream = ExtResource("6_nocx7")
+
+[node name="Color Layer" parent="." instance=ExtResource("3_bu33a")]
+visible = false
+material = SubResource("ShaderMaterial_3dqtp")
+mouse_filter = 2
+delay_start = true
+delay_time = 0.5

@@ -10,6 +10,7 @@ enum LoadType { ENTITY, ATTACK }
 @export var solid_layer : ColorRect;
 @export var static_layer : ColorRect;
 @export var start_static : bool = true;
+@export var test_attack_layer : bool = false;
 
 # Cached video and material instances
 var _video_main : VideoStream;
@@ -22,6 +23,9 @@ var _attack_to_shader_map : Dictionary = {};
 
 var _current_spell : Spell;
 var _runtime_main : float;
+
+var _is_attacking = false;
+var _attack_time = 0;
 
 # TODO: Async loading Probably
 
@@ -37,6 +41,18 @@ func _ready() -> void:
 	else : 
 		video_layer.play_video();
 		color_layer.play_video();
+		
+		if test_attack_layer:
+			attack_layer.visible = true;
+			attack_layer.material.set_shader_parameter("use_manual_time", true);
+			attack_layer.play_video();
+			_is_attacking = true;
+
+
+func _process(delta: float):
+	if _is_attacking :
+		_attack_time += delta;
+		attack_layer.material.set_shader_parameter("manual_time", _attack_time)
 
 
 func _on_battle_begin(params : BattleParams):
@@ -125,6 +141,9 @@ func _set_spell_bg(spell : Spell):
 		attack_layer.visible = false;
 		attack_layer.stream = null;
 		_current_spell = null;
+		
+		color_layer.visible = true;
+		_is_attacking = false;
 	else :
 		if _attack_to_video_map.has(spell):
 			# Disabling the following code in case we can later restore this functionality
@@ -147,10 +166,18 @@ func _set_spell_bg(spell : Spell):
 			
 			attack_layer.visible = true;
 			attack_layer.stream = vid;
+			# TODO: Lots of surgery. I'm not kidding.
 			attack_layer.material = mat;
+			attack_layer.material.set_shader_parameter("transition_palette", color_layer.material.get_shader_parameter("transition_palette"));
+			attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
+			attack_layer.material.set_shader_parameter("use_manual_time", true);
 			attack_layer.play_video_at(0);
 			
+			color_layer.visible = false;
+			
 			_current_spell = spell;
+			_is_attacking = true;
+			_attack_time = 0;
 
 
 func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, load_type : LoadType, aux : Resource):

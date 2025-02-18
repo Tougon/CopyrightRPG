@@ -2,13 +2,13 @@
 
 [ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_fo3t6"]
 
-[sub_resource type="Gradient" id="Gradient_sr4ea"]
+[sub_resource type="Gradient" id="Gradient_ymf5e"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
-colors = PackedColorArray(0.729412, 0.635294, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.729412, 0.635294, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.729412, 0.635294, 1, 0.8)
+colors = PackedColorArray(0.568416, 0.315484, 0.999976, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.568627, 0.313726, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.568627, 0.313726, 1, 0.8)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_suad4"]
-gradient = SubResource("Gradient_sr4ea")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_od5b8"]
+gradient = SubResource("Gradient_ymf5e")
 metadata/_snap_enabled = true
 
 [resource]
@@ -28,4 +28,5 @@ shader_parameter/scan_line_mod = 4
 shader_parameter/palette_speed = 0.2
 shader_parameter/enable_pixelate = false
 shader_parameter/pixel_size = 96
-shader_parameter/palette = SubResource("GradientTexture2D_suad4")
+shader_parameter/transition = 1.0
+shader_parameter/palette = SubResource("GradientTexture2D_od5b8")
