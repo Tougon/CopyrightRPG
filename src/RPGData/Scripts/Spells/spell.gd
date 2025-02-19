@@ -24,8 +24,8 @@ enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, 
 
 @export_subgroup("Spell Animation")
 @export var animation_sequence : AnimationSequenceObject;
-@export_file("*.tres") var spell_video: String;
-@export_file("*.tres") var spell_video_material: String;
+@export_file("*.ogv") var spell_videos: Array[String];
+@export_file("*.tres") var spell_video_materials: Array[String];
 
 # Runtime Values
 var fail_message : String = "";

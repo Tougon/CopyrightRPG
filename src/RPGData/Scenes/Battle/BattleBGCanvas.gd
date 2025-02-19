@@ -92,17 +92,25 @@ func _load_entity_spell_data(entity : EntityController):
 
 
 func _load_spell_data(move : Spell):
-	if move.spell_video != null && !_attack_to_video_map.has(move):
-		var video = load_video(move.spell_video);
+	if move.spell_videos != null && !_attack_to_video_map.has(move):
 		
-		if video != null : 
-			_attack_to_video_map[move] = video;
+		_attack_to_video_map[move] = [];
+		
+		for video_path in move.spell_videos :
+			var video = load_video(video_path);
+			
+			if video != null : 
+				_attack_to_video_map[move].append(video);
 	
-	if move.spell_video_material != null && !_attack_to_shader_map.has(move):
-		var mat = load_material(move.spell_video_material);
+	if move.spell_video_materials != null && !_attack_to_shader_map.has(move):
 		
-		if mat != null : 
-			_attack_to_shader_map[move] = mat;
+		_attack_to_shader_map[move] = [];
+		
+		for material_path in move.spell_video_materials :
+			var mat = load_material(material_path);
+		
+			if mat != null : 
+				_attack_to_shader_map[move].append(mat);
 
 
 func _set_player_bg(entity : EntityController):
@@ -124,7 +132,7 @@ func _set_player_bg(entity : EntityController):
 			property.from(0);
 
 
-func _set_spell_bg(spell : Spell):
+func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool):
 	if spell == null && _current_spell != null: 
 		# Disabling the following code in case we can later restore this functionality
 		# == DISABLED CODE ==
@@ -161,17 +169,19 @@ func _set_spell_bg(spell : Spell):
 			
 			#video_layer.play_video_at(0);
 			# == END DISABLED CODE ==
-			var vid = _attack_to_video_map[spell];
-			var mat = _attack_to_shader_map[spell];
+			var vid = _attack_to_video_map[spell][clamp(index, 0, _attack_to_video_map[spell].size() - 1)];
+			var mat = _attack_to_shader_map[spell][clamp(index, 0, _attack_to_shader_map[spell].size() - 1)];
 			
 			attack_layer.visible = true;
-			attack_layer.stream = vid;
-			# TODO: Lots of surgery. I'm not kidding.
-			attack_layer.material = mat;
-			attack_layer.material.set_shader_parameter("transition_palette", color_layer.material.get_shader_parameter("transition_palette"));
-			attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
-			attack_layer.material.set_shader_parameter("use_manual_time", true);
-			attack_layer.play_video_at(0);
+			if change_video : attack_layer.stream = vid;
+			
+			if change_material : 
+				attack_layer.material = mat;
+				attack_layer.material.set_shader_parameter("transition_palette", color_layer.material.get_shader_parameter("transition_palette"));
+				attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
+				attack_layer.material.set_shader_parameter("use_manual_time", true);
+			
+			if change_video : attack_layer.play_video_at(0);
 			
 			color_layer.visible = false;
 			
