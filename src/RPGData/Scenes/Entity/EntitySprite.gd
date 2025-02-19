@@ -40,7 +40,7 @@ func get_sprite():
 
 
 func get_sprite_top_offset():
-	
+	# This function is absolutely terrible for performance and should not be used.
 	if sprite == null: return Vector2(0,0);
 	
 	var min = Vector2(-sprite.texture.get_width() / 2, -sprite.texture.get_height() / 2);

@@ -738,6 +738,13 @@ static func compare_effect_priority (a : EffectInstance, b : EffectInstance) -> 
 
 
 # UI helper/polish functions
+func get_sprite_top_offset() -> Vector2:
+	if current_entity != null :
+		return current_entity.head_offset;
+	
+	return Vector2.ZERO;
+
+
 func _on_sprite_clicked():
 	EventManager.click_target.emit(self);
 
