@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=32 format=3 uid="uid://d1l6fqklh58v5"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=39 format=3 uid="uid://d1l6fqklh58v5"]
 
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="2_jvjoc"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_t2a03"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_ssbr4"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_4jmod"]
@@ -10,6 +11,18 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="10_5fi2u"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_7fq5r"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_ujdrb"]
+
+[sub_resource type="Resource" id="Resource_wnmty"]
+script = ExtResource("2_jvjoc")
+reset_bg = false
+index = 0
+mode = 0
+
+[sub_resource type="Resource" id="Resource_o26oi"]
+script = ExtResource("3_ssbr4")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_wnmty")
 
 [sub_resource type="Resource" id="Resource_rhl5j"]
 script = ExtResource("2_t2a03")
@@ -32,6 +45,18 @@ script = ExtResource("3_ssbr4")
 frame = 5
 frame_order = 0
 action = SubResource("Resource_rhl5j")
+
+[sub_resource type="Resource" id="Resource_cmxgv"]
+script = ExtResource("2_jvjoc")
+reset_bg = false
+index = 1
+mode = 0
+
+[sub_resource type="Resource" id="Resource_coo4k"]
+script = ExtResource("3_ssbr4")
+frame = 39
+frame_order = 0
+action = SubResource("Resource_cmxgv")
 
 [sub_resource type="Resource" id="Resource_5t3o6"]
 script = ExtResource("6_4jmod")
@@ -182,8 +207,20 @@ frame = 80
 frame_order = 0
 action = SubResource("Resource_coivm")
 
+[sub_resource type="Resource" id="Resource_x1q0r"]
+script = ExtResource("2_jvjoc")
+reset_bg = true
+index = 0
+mode = 0
+
+[sub_resource type="Resource" id="Resource_6hvrh"]
+script = ExtResource("3_ssbr4")
+frame = 89
+frame_order = 0
+action = SubResource("Resource_x1q0r")
+
 [resource]
 script = ExtResource("11_ujdrb")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_ufi1u"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo")])
+animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_ufi1u"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo"), SubResource("Resource_6hvrh")])

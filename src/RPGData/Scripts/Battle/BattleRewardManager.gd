@@ -53,6 +53,7 @@ func _on_battle_complete(result : BattleResult):
 	await EventManager.battle_fade_completed;
 	
 	# Scene removal code.
+	EventManager.unload_aux_audio.emit();
 	EventManager.on_battle_end.emit(result);
 
 

@@ -523,6 +523,8 @@ func _get_closest_unused_root_to_entity(enemy : EntityController, root : Node, u
 func _on_player_register(entity : EntityController):
 	entities.append(entity);
 	players.append(entity);
+	
+	_load_entity_audio(entity);
 
 
 func _on_enemy_register(entity : EntityController):
@@ -530,6 +532,17 @@ func _on_enemy_register(entity : EntityController):
 		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
 	entities.append(entity);
 	enemies.append(entity);
+	
+	_load_entity_audio(entity);
+
+
+func _load_entity_audio(entity : EntityController):
+	if entity is PlayerController:
+		EventManager.load_aux_audio.emit(entity.attack_action.spell_sfx);
+		EventManager.load_aux_audio.emit(entity.defend_action.spell_sfx);
+	
+	for move in entity.move_list:
+		EventManager.load_aux_audio.emit(move.spell_sfx);
 
 
 func _on_attack_select():

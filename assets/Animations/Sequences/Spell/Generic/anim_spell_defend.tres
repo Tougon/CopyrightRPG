@@ -195,6 +195,8 @@ action = SubResource("Resource_qo76p")
 [sub_resource type="Resource" id="Resource_phw1k"]
 script = ExtResource("5_qshry")
 reset_bg = false
+index = 0
+mode = 0
 
 [sub_resource type="Resource" id="Resource_3lul5"]
 script = ExtResource("2_p6bkq")
@@ -372,6 +374,8 @@ action = SubResource("Resource_dgpo8")
 [sub_resource type="Resource" id="Resource_dmg3d"]
 script = ExtResource("5_qshry")
 reset_bg = true
+index = 0
+mode = 0
 
 [sub_resource type="Resource" id="Resource_y1laa"]
 script = ExtResource("2_p6bkq")

@@ -1,10 +1,21 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=6 format=3 uid="uid://dbd0m0jyiphjx"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=10 format=3 uid="uid://dbd0m0jyiphjx"]
 
 [ext_resource type="Resource" uid="uid://f33mxcf8k8fx" path="res://assets/Animations/Sequences/Spell/Generic/anim_spell_attack.tres" id="1_et0sp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="1_wntlk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_1jomi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_gsb1j"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_jog3g"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="6_pe664"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="7_4fii2"]
+
+[sub_resource type="Resource" id="Resource_i86lk"]
+script = ExtResource("6_pe664")
+item_id = "shout"
+item_path = "res://assets/Audio/SFX/shout.ogg"
+
+[sub_resource type="Resource" id="Resource_ntrf5"]
+script = ExtResource("7_4fii2")
+entries = Array[ExtResource("6_pe664")]([SubResource("Resource_i86lk")])
 
 [resource]
 script = ExtResource("1_wntlk")
@@ -17,7 +28,7 @@ ignore_attack_modifiers = false
 ignore_defense_modifiers = false
 ignore_attack_stage = false
 ignore_defense_stage = false
-fixed_damage = true
+fixed_damage = false
 fixed_damage_amt = 1
 percent_damage = false
 percent_damage_amt = 0.5
@@ -42,6 +53,7 @@ spell_flags = Array[ExtResource("5_jog3g")]([])
 animation_sequence = ExtResource("1_et0sp")
 spell_videos = Array[String](["res://video/attack.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/attack_test_00.tres"])
+spell_sfx = SubResource("Resource_ntrf5")
 effects_on_hit = Array[ExtResource("2_1jomi")]([])
 effects_on_success = Array[ExtResource("2_1jomi")]([])
 properties = Array[ExtResource("3_gsb1j")]([])

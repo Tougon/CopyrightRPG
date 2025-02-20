@@ -13,6 +13,7 @@ var _runtime_bgm_volume : float;
 var _runtime_sfx_volume : float;
 
 var _common_audio_bank : Dictionary;
+var _aux_audio_bank : Dictionary;
 var _current_bgm_source_index : int = -1;
 
 
@@ -36,8 +37,31 @@ func _ready() -> void:
 	EventManager.play_sfx.connect(play_sfx);
 	EventManager.change_bgm_volume_preference.connect(_on_bgm_volume_preference_changed);
 	EventManager.change_sfx_volume_preference.connect(_on_sfx_volume_preference_changed);
+	
+	EventManager.load_aux_audio.connect(_load_aux_audio);
+	EventManager.unload_aux_audio.connect(_unload_aux_audio);
 
 
+# Audio loading
+func _load_aux_audio(group : AudioGroup):
+	if group == null : return;
+	
+	var audio_bank = group.load_group();
+	
+	for item in audio_bank.keys():
+		if _aux_audio_bank.has(item) :
+			if _aux_audio_bank[item] != audio_bank[item]:
+				print("ERROR: Duplicate key " + str(item) + ". Loading of value in " + group.name + " skipped.")
+			continue;
+		
+		_aux_audio_bank[item] = audio_bank[item];
+
+
+func _unload_aux_audio():
+	_aux_audio_bank.clear();
+
+
+# Audio playback
 func play_bgm(id : String, fade_time : float, crossfade : bool, start_time : float, start_volume : float):
 	var root = $BGM;
 	
@@ -100,9 +124,11 @@ func play_sfx(id : String):
 	var root = $SFX;
 	
 	var sfx : AudioStream;
-	# TODO: aux soundbank fetching
+	
 	if _common_audio_bank.has(id):
 		sfx = _common_audio_bank[id];
+	elif _aux_audio_bank.has(id):
+		sfx = _aux_audio_bank[id];
 	
 	if sfx != null:
 		var source_index = _get_unused_audio_source(root);
@@ -149,3 +175,14 @@ func _on_bgm_volume_preference_changed(amount : float):
 func _on_sfx_volume_preference_changed(amount : float):
 	DataManager.preferences.sfx_volume = amount;
 	_set_sfx_volume(amount);
+
+
+func _on_destroy():
+	if EventManager != null:
+		EventManager.play_bgm.disconnect(play_bgm);
+		EventManager.fade_bgm.disconnect(fade_bgm);
+		EventManager.play_sfx.disconnect(play_sfx);
+		EventManager.change_bgm_volume_preference.disconnect(_on_bgm_volume_preference_changed);
+		EventManager.change_sfx_volume_preference.disconnect(_on_sfx_volume_preference_changed);
+		
+		EventManager.load_aux_audio.disconnect(_load_aux_audio);
