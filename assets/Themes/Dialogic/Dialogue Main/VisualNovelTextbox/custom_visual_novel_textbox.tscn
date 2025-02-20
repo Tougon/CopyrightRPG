@@ -447,6 +447,7 @@ textbox_root = NodePath("..")
 
 [node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="Anchor/AnimationParent/Sizer/DialogTextPanel/DialogicNode_DialogText"]
 unique_name_in_owner = true
+bus = &"SFX"
 script = ExtResource("4_ma5mw")
 play_every_character = 0
 
