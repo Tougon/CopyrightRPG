@@ -284,6 +284,8 @@ func _action_phase():
 			var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
 			EventManager.on_sequence_queue.emit(animation_seq);
 		
+		await EventManager.on_sequence_queue_empty;
+		
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
@@ -366,6 +368,8 @@ func _action_phase():
 
 
 func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):
+	if spell.target.is_defeated || spell.target.current_hp - spell.get_damage_applied() <= 0: return;
+	
 	var damage_spell = entity.current_action is DamageSpell;
 	
 	if spell.get_damage_applied() > 0 :
@@ -382,7 +386,6 @@ func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[Spell
 		for hit in spell.hits:
 			if hit :
 				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
-				return;
 
 
 func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):
