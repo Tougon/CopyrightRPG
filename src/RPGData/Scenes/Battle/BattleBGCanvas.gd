@@ -92,7 +92,7 @@ func _load_entity_spell_data(entity : EntityController):
 
 
 func _load_spell_data(move : Spell):
-	if move.spell_videos != null && !_attack_to_video_map.has(move):
+	if move.spell_videos != null && !_attack_to_video_map.has(move) && move.spell_videos.size() > 0:
 		
 		_attack_to_video_map[move] = [];
 		
@@ -102,7 +102,7 @@ func _load_spell_data(move : Spell):
 			if video != null : 
 				_attack_to_video_map[move].append(video);
 	
-	if move.spell_video_materials != null && !_attack_to_shader_map.has(move):
+	if move.spell_video_materials != null && !_attack_to_shader_map.has(move) && move.spell_video_materials.size() > 0:
 		
 		_attack_to_shader_map[move] = [];
 		

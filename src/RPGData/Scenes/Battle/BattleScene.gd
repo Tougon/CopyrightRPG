@@ -291,7 +291,7 @@ func _action_phase():
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
-		await EventManager.on_sequence_queue_empty;
+		if post_anim_dialogue.size() > 0 : await EventManager.on_sequence_queue_empty;
 		
 		if entity.sealing:
 			if seal_manager.can_seal_spell(entity.current_action):
