@@ -44,6 +44,7 @@ play_on_start = false
 next_tween = ""
 
 [node name="EntityBase" instance=ExtResource("1_u887t")]
+y_sort_enabled = true
 script = ExtResource("2_cc50b")
 current_entity = ExtResource("3_d0a8t")
 use_override_direction = false
@@ -52,6 +53,7 @@ default_dodge_anim = ExtResource("4_gkqeo")
 default_defeat_anim = ExtResource("4_wvte6")
 
 [node name="Sprite2D" parent="." index="0"]
+y_sort_enabled = true
 script = ExtResource("4_l5njq")
 
 [node name="TweenPlayer" parent="." index="1"]

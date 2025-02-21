@@ -6,6 +6,7 @@
 [node name="EntityBase" instance=ExtResource("1_hfutr")]
 script = ExtResource("2_4tbuf")
 seal_effect = null
+enemy_index = 0
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.75, 0.75)

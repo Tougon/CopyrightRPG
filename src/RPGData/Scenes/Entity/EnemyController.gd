@@ -2,17 +2,18 @@ extends EntityController
 class_name EnemyController
 
 @export var seal_effect : SealEffectGroup;
+@export var enemy_index : int;
 
 # Called when the node enters the scene tree for the first time.
 func entity_init(params : BattleParams):
 	if params != null:
 		# If enemy is out of bounds or null, do not use this enemy
-		if get_index() >= params.enemies.size() || params.enemies[get_index()] == null: 
+		if enemy_index >= params.enemies.size() || params.enemies[enemy_index] == null: 
 			visible = false;
 			return;
 		else : 
 			visible = true;
-			current_entity = params.enemies[get_index()];
+			current_entity = params.enemies[enemy_index];
 	
 	if current_entity != null:
 		var level_relative = current_entity.level_curve.sample(randf());

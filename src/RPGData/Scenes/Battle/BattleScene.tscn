@@ -284,23 +284,27 @@ test_attack_layer = false
 [node name="Players" type="Node" parent="Entities"]
 
 [node name="P1" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+y_sort_enabled = false
 position = Vector2(160, 660)
 seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("7_5gsqw")
 
 [node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+y_sort_enabled = false
 position = Vector2(380, 660)
 player_id = 1
 seal_effect = SubResource("Resource_b3uow")
 current_entity = ExtResource("10_66vq4")
 
 [node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+y_sort_enabled = false
 position = Vector2(600, 660)
 player_id = 2
 seal_effect = SubResource("Resource_j4r6v")
 current_entity = ExtResource("12_qpkyi")
 
 [node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+y_sort_enabled = false
 position = Vector2(800, 660)
 player_id = 3
 seal_effect = SubResource("Resource_vh4sl")
@@ -308,33 +312,40 @@ current_entity = ExtResource("8_hn632")
 
 [node name="Enemies" type="Node" parent="Entities"]
 
-[node name="E1" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+[node name="Sorting" type="Node2D" parent="Entities/Enemies"]
+y_sort_enabled = true
+
+[node name="E1" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
-[node name="E2" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+[node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
+enemy_index = 1
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
-[node name="E3" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+[node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
+enemy_index = 2
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
-[node name="E4" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+[node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
+enemy_index = 3
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
-[node name="E5" parent="Entities/Enemies" instance=ExtResource("5_c337l")]
+[node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
+enemy_index = 4
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
