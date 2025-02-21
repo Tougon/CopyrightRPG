@@ -13,6 +13,8 @@ var entities : Array[EntityController];
 var players : Array[EntityController];
 var enemies : Array[EntityController];
 
+var enemy_type_count : Dictionary;
+
 var turn_number : int;
 var current_player_index : int;
 
@@ -533,6 +535,20 @@ func _on_player_register(entity : EntityController):
 func _on_enemy_register(entity : EntityController):
 	if enemies.size() == 0 : 
 		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
+	
+	if enemy_type_count.has(entity.current_entity):
+		# Rename first entity of the same type
+		if enemy_type_count[entity.current_entity] == 1:
+			for enemy in enemies:
+				if enemy.current_entity == entity.current_entity:
+					# TODO: ABC's instead of 123's
+					enemy.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
+		
+		enemy_type_count[entity.current_entity] += 1;
+		entity.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
+	else :
+		enemy_type_count[entity.current_entity] = 1;
+	
 	entities.append(entity);
 	enemies.append(entity);
 	
