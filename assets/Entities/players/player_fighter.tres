@@ -15,7 +15,7 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_wqjr8"]
 script = ExtResource("1_2jyuj")
-min = 27
+min = 33
 max = 285
 growth = SubResource("Curve_w1g6v")
 
@@ -125,11 +125,11 @@ luck = SubResource("Resource_laxa8")
 weakness = Array[ExtResource("10_5fkqx")]([])
 resistance = Array[ExtResource("10_5fkqx")]([])
 min_level = 50
-max_level = 50
+max_level = 99
 entity_sprites = Array[String](["res://assets/Sprites/Entities/PlayerMain/player_main_neutral.png"])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
-head_offset = Vector2(0, 0)
+head_offset = Vector2(0, -100)
 entity_bgm_key = ""
 entity_video = ""
 entity_video_material = ""

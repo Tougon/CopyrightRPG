@@ -177,6 +177,9 @@ func entity_init(params : BattleParams):
 		
 		is_ready = false;
 		is_defeated = false;
+		
+		# Remove any possible extant effects
+		effects.clear();
 
 
 func load_sprite(path : String):

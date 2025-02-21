@@ -16,13 +16,13 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="16_rv22r"]
 
 [sub_resource type="Curve" id="Curve_fslmg"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_u32xe"]
 script = ExtResource("9_n0rge")
 min = 20
-max = 20
+max = 24
 growth = SubResource("Curve_fslmg")
 
 [sub_resource type="Resource" id="Resource_n61wj"]
@@ -71,24 +71,24 @@ first_turn_behavior = SubResource("Resource_lakch")
 turn_behavior = Array[ExtResource("4_l7lga")]([SubResource("Resource_k0d1d")])
 
 [sub_resource type="Curve" id="Curve_p1ga6"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_i3d6x"]
 script = ExtResource("9_n0rge")
-min = 20
-max = 20
+min = 18
+max = 22
 growth = SubResource("Curve_p1ga6")
 
-[sub_resource type="Curve" id="Curve_xe662"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+[sub_resource type="Curve" id="Curve_7i6bh"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("9_n0rge")
 min = 35
-max = 35
-growth = SubResource("Curve_xe662")
+max = 42
+growth = SubResource("Curve_7i6bh")
 
 [sub_resource type="Curve" id="Curve_k6ron"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -124,13 +124,13 @@ script = ExtResource("1_44x03")
 list = Array[ExtResource("1_fc75y")]([SubResource("Resource_k72ke"), SubResource("Resource_l1vsj"), SubResource("Resource_7of43")])
 
 [sub_resource type="Curve" id="Curve_v7tns"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_4qt68"]
 script = ExtResource("9_n0rge")
 min = 30
-max = 30
+max = 35
 growth = SubResource("Curve_v7tns")
 
 [sub_resource type="Curve" id="Curve_hnfm3"]
@@ -144,33 +144,33 @@ max = 150
 growth = SubResource("Curve_hnfm3")
 
 [sub_resource type="Curve" id="Curve_5etj0"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_f8es4"]
 script = ExtResource("9_n0rge")
 min = 20
-max = 20
+max = 24
 growth = SubResource("Curve_5etj0")
 
 [sub_resource type="Curve" id="Curve_up3ke"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_iu8tl"]
 script = ExtResource("9_n0rge")
-min = 20
-max = 20
+min = 18
+max = 22
 growth = SubResource("Curve_up3ke")
 
 [sub_resource type="Curve" id="Curve_sdigb"]
-_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_70cwv"]
 script = ExtResource("9_n0rge")
 min = 5
-max = 5
+max = 7
 growth = SubResource("Curve_sdigb")
 
 [resource]
@@ -195,7 +195,7 @@ luck = SubResource("Resource_m1s8s")
 weakness = Array[ExtResource("16_rv22r")]([])
 resistance = Array[ExtResource("16_rv22r")]([])
 min_level = 1
-max_level = 1
+max_level = 3
 level_curve = SubResource("Curve_k6ron")
 reward_exp = SubResource("Resource_x0kwu")
 entity_sprites = Array[String](["res://assets/Sprites/Entities/Slime/slime_n_neutral.png", "res://assets/Sprites/Entities/Slime/slime_n_damage.png", "res://assets/Sprites/Entities/Slime/slime_n_attack.png"])

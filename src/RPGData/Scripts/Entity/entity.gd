@@ -17,37 +17,37 @@ enum Type { GENERIC, PLAYER, BOSS }
 @export var hp : EntityStat;
 func get_hp(level : int) -> int:
 	if hp == null : return 50;
-	return hp.get_current(level);
+	return hp.get_current(level, max_level);
 
 @export var mp : EntityStat;
 func get_mp(level : int) -> int:
 	if mp == null : return 50;
-	return mp.get_current(level);
+	return mp.get_current(level, max_level);
 
 @export var atk : EntityStat;
 func get_atk(level : int) -> int:
 	if atk == null : return 50;
-	return atk.get_current(level);
+	return atk.get_current(level, max_level);
 
 @export var def : EntityStat;
 func get_def(level : int) -> int:
 	if def == null : return 50;
-	return def.get_current(level);
+	return def.get_current(level, max_level);
 
 @export var sp_atk : EntityStat;
 func get_sp_atk(level : int) -> int:
 	if sp_atk == null : return 50;
-	return sp_atk.get_current(level);
+	return sp_atk.get_current(level, max_level);
 
 @export var sp_def : EntityStat;
 func get_sp_def(level : int) -> int:
 	if sp_def == null : return 50;
-	return sp_def.get_current(level);
+	return sp_def.get_current(level, max_level);
 
 @export var spd : EntityStat;
 func get_spd(level : int) -> int:
 	if spd == null : return 50;
-	return spd.get_current(level);
+	return spd.get_current(level, max_level);
 
 @export var base_crit_chance_modifier : float = 1 : 
 	set(new_crit_modifier):
@@ -85,7 +85,7 @@ func get_lck(level : int) -> float:
 @export var level_exp : EntityStat;
 func get_level_exp(level : int) -> int:
 	if level_exp == null : return 50;
-	return level_exp.get_current(level);
+	return level_exp.get_current(level, max_level);
 
 # TODO: Weakness was unimplemented in the old version.
 @export_group("Modifiers")
@@ -105,7 +105,7 @@ func get_level_exp(level : int) -> int:
 @export var reward_exp : EntityStat;
 func get_reward_exp(level : int) -> int:
 	if reward_exp == null : return 50;
-	return reward_exp.get_current(level);
+	return reward_exp.get_current(level, max_level);
 
 @export_group("Aesthetics")
 @export_file("*.png") var entity_sprites: Array[String];
