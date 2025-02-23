@@ -219,7 +219,6 @@ current_entity = ExtResource("7_6u0l0")
 y_sort_enabled = false
 position = Vector2(473, 314)
 seal_effect = SubResource("Resource_ssevn")
-enemy_index = 0
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
@@ -227,7 +226,6 @@ override_direction = Vector2(1, -1)
 y_sort_enabled = false
 position = Vector2(663, 190)
 seal_effect = SubResource("Resource_ssevn")
-enemy_index = 0
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
@@ -235,7 +233,6 @@ override_direction = Vector2(1, -1)
 y_sort_enabled = false
 position = Vector2(285, 190)
 seal_effect = SubResource("Resource_ssevn")
-enemy_index = 0
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
@@ -243,7 +240,6 @@ override_direction = Vector2(1, -1)
 y_sort_enabled = false
 position = Vector2(839, 314)
 seal_effect = SubResource("Resource_ssevn")
-enemy_index = 0
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
@@ -251,7 +247,6 @@ override_direction = Vector2(1, -1)
 y_sort_enabled = false
 position = Vector2(118, 314)
 seal_effect = SubResource("Resource_ssevn")
-enemy_index = 0
 use_override_direction = true
 override_direction = Vector2(1, -1)
 

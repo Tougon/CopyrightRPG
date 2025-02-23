@@ -166,14 +166,6 @@ func _decision_phase():
 
 
 func _action_phase():
-	# Execute turn start effects
-	for entity in entities:
-		entity.prev_action = entity.current_action;
-		if !entity.is_defeated:
-			entity.execute_turn_start_effects();
-			
-	await get_tree().process_frame;
-	
 	var turn_order : Array[EntityController];
 	
 	for entity in entities:
@@ -181,6 +173,28 @@ func _action_phase():
 			turn_order.append(entity);
 	
 	turn_order.sort_custom(_compare_speed);
+	
+	# Process all turn start events and seals
+	for entity in turn_order :
+		entity.prev_action = entity.current_action;
+		if !entity.is_defeated:
+			entity.execute_turn_start_effects();
+		
+		if sequencer.is_sequence_playing_or_queued() :
+			await EventManager.on_sequence_queue_empty;
+		
+		if entity.sealing && BattleManager.seal_before_attacking:
+			if seal_manager.can_seal_spell(entity.current_action):
+				# Create the seal
+				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
+				
+				var seal_msg = _format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
+				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
+				EventManager.on_dialogue_queue.emit(seal_msg);
+				await EventManager.on_sequence_queue_empty;
+			# TODO: Dialogue if seal failed
+	
+	await get_tree().process_frame;
 	
 	for entity in turn_order:
 		EventManager.on_entity_move.emit(entity);
@@ -293,7 +307,7 @@ func _action_phase():
 		
 		if post_anim_dialogue.size() > 0 : await EventManager.on_sequence_queue_empty;
 		
-		if entity.sealing:
+		if entity.sealing && !BattleManager.seal_before_attacking:
 			if seal_manager.can_seal_spell(entity.current_action):
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))

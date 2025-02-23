@@ -10,6 +10,7 @@ const ENEMY_REPOSITION_TIME : float = 0.35;
 # TODO: change to const
 var async_damage_text : bool = false;
 var async_crit_text : bool = true;
+var seal_before_attacking : bool = true;
 
 # Determines level cap
 # TODO: change to const
