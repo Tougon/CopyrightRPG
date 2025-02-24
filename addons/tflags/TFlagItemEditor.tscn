@@ -7,6 +7,8 @@
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 298.0
+offset_bottom = 30.0
 script = ExtResource("1_wro1l")
 
 [node name="BG" type="Button" parent="."]
@@ -20,6 +22,7 @@ grow_vertical = 2
 expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +42,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Flag Name"
 vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
 
 [node name="Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2

@@ -27,8 +27,23 @@ func _refresh_view():
 	
 	_check_path_for_flags("res://");
 	
+	# Sort flags by flag name
+	flags_list.sort_custom(_compare_name);
 	for flag in flags_list:
 		_create_list_item(flag);
+
+
+func _compare_name(a : TFlag, b : TFlag):
+	var a_name = a.flag_name_key;
+	var b_name = b.flag_name_key;
+	
+	if a_name.is_empty() || a_name.length() == 0:
+		a_name = a.resource_path.get_file();
+	
+	if b_name.is_empty() || b_name.length() == 0:
+		b_name = b.resource_path.get_file();
+	
+	return a_name < b_name;
 
 
 func set_editor(editor : EditorInterface):
@@ -105,10 +120,6 @@ func _check_path_for_flags(path : String):
 			
 			if f.ends_with(".tres"):
 				_add_flag(path + f);
-			
-			#if temp:
-				#_check_is_flag(temp.get_as_text());
-				#temp.close();
 	else:
 		print("ERROR: " + path + " does not exist");
 

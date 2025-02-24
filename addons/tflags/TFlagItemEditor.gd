@@ -10,7 +10,11 @@ func display_flag(flag : TFlag, path : String, editor : EditorInterface):
 	current_flag = flag;
 	self.path = path;
 	self.editor = editor;
-	$HBoxContainer/Label.text = current_flag.flag_name_key;
+	
+	if current_flag.flag_name_key == null || current_flag.flag_name_key.is_empty() || current_flag.flag_name_key.length() == 0:
+		$HBoxContainer/Label.text = str(path.get_file());
+	else :
+		$HBoxContainer/Label.text = current_flag.flag_name_key;
 
 func remove():
 	get_parent().remove_child(self);
@@ -29,4 +33,6 @@ func _on_select_button_pressed():
 func _on_delete_button_pressed():
 	if editor != null:
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(path));
-		editor.get_resource_filesystem().filesystem_changed.emit();
+		var system = editor.get_resource_filesystem();
+		system.filesystem_changed.emit();
+		system.scan();
