@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpltw6fi2k6bi"]
 
-[ext_resource type="Script" path="res://addons/tflags/FlagEditor.gd" id="1_bnics"]
+[ext_resource type="Script" path="res://addons/SpellEditor/SpellEditor.gd" id="1_esy67"]
 
-[node name="FlagEditor" type="Control"]
+[node name="SpellEditor" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bnics")
+script = ExtResource("1_esy67")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -27,20 +27,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Flag Path" type="TextEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
+[node name="Damage Spell" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
-text = "assets/Flags"
-placeholder_text = "Relative output path"
-
-[node name="Flag Name" type="TextEdit" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
-layout_mode = 2
-placeholder_text = "Enter flag key"
+text = "Damage Spell"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Create Flag"
+text = "Create Spell"
 
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_create_button_pressed"]

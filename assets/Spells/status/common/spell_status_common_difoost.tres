@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://ckm3lov2yqbuu"]
+[gd_resource type="Resource" script_class="Spell" load_steps=15 format=3 uid="uid://ckm3lov2yqbuu"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="1_iiv5x"]
 [ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/Status/Common/anim_spell_status_common_atoost.tres" id="1_uag5v"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_3ddfm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_o2jhw"]
 [ext_resource type="Resource" uid="uid://di2g8jg8l55nu" path="res://assets/Effects/common/effect_common_buff_defense_pt2.tres" id="5_pdwqj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="6_0asv7"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="7_f20hd"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="8_hqrir"]
 [ext_resource type="Resource" uid="uid://c2e22hmhxcle3" path="res://assets/Flags/defense.tres" id="8_pvwjd"]
 
 [sub_resource type="Resource" id="Resource_e3lva"]
@@ -17,6 +19,7 @@ effect = ExtResource("2_ah2tm")
 [sub_resource type="Resource" id="Resource_q1odl"]
 script = ExtResource("4_o2jhw")
 chance = 1.0
+use_luck = false
 effect_set = Array[ExtResource("3_3ddfm")]([SubResource("Resource_e3lva")])
 
 [sub_resource type="Resource" id="Resource_k4b8y"]
@@ -27,6 +30,7 @@ effect = ExtResource("5_pdwqj")
 [sub_resource type="Resource" id="Resource_3e5vc"]
 script = ExtResource("4_o2jhw")
 chance = 1.0
+use_luck = false
 effect_set = Array[ExtResource("3_3ddfm")]([SubResource("Resource_k4b8y")])
 
 [resource]
@@ -38,8 +42,10 @@ spell_type = 3
 spell_target = 4
 spell_cost = 15
 spell_priority = 0
-spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("7_f20hd"), ExtResource("8_pvwjd")])
+spell_flags = Array[ExtResource("8_hqrir")]([ExtResource("7_f20hd"), ExtResource("8_pvwjd")])
 animation_sequence = ExtResource("1_uag5v")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("4_o2jhw")]([SubResource("Resource_q1odl"), SubResource("Resource_3e5vc")])
 effects_on_success = Array[ExtResource("4_o2jhw")]([])
-properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])
+properties = Array[ExtResource("6_0asv7")]([])

@@ -1,20 +1,20 @@
 @tool
 extends Control
-class_name TFlagItemEditor;
+class_name SpellItemEditor;
 
-var current_flag : TFlag;
+var current_spell : Spell;
 var path : String;
 var editor : EditorInterface;
 
-func display_flag(flag : TFlag, path : String, editor : EditorInterface):
-	current_flag = flag;
+func display_spell(spell : Spell, path : String, editor : EditorInterface):
+	current_spell = spell;
 	self.path = path;
 	self.editor = editor;
 	
-	if current_flag.flag_name_key == null || current_flag.flag_name_key.is_empty() || current_flag.flag_name_key.length() == 0:
+	if current_spell.spell_name_key == null || current_spell.spell_name_key.is_empty() || current_spell.spell_name_key.length() == 0:
 		$HBoxContainer/Label.text = str(path.get_file());
 	else :
-		$HBoxContainer/Label.text = current_flag.flag_name_key;
+		$HBoxContainer/Label.text = TranslationServer.get_translation_object("en").get_message(current_spell.spell_name_key);
 
 
 func remove():
@@ -29,7 +29,7 @@ func set_even():
 func _on_select_button_pressed():
 	if editor != null:
 		editor.select_file(path);
-		editor.get_inspector().resource_selected.emit(current_flag, path)
+		editor.get_inspector().resource_selected.emit(current_spell, path)
 
 
 func _on_delete_button_pressed():

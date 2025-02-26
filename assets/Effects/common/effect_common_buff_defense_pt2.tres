@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=17 format=3 uid="uid://di2g8jg8l55nu"]
+[gd_resource type="Resource" script_class="Effect" load_steps=18 format=3 uid="uid://di2g8jg8l55nu"]
 
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_jr74h"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_lg664"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_53423"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_d162e"]
@@ -61,15 +62,15 @@ priority = 3
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_jsj2g")])
+check_success = Array[ExtResource("1_jr74h")]([SubResource("Resource_jsj2g")])
 check_remain_active_type = 0
-check_remain_active = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_halij")])
-on_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_aje20")])
-on_failed_to_activate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_apply = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_blxbe")])
-on_move_selected = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_nimd6")])
-on_move_completed = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_dyxoj")])
-on_deactivate = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_gccvs")])
-on_turn_start = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_turn_end = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([])
-on_stack = Array[Resource("res://src/RPGData/Scripts/Effects/effect_function.gd")]([SubResource("Resource_h7u5n")])
+check_remain_active = Array[ExtResource("1_jr74h")]([SubResource("Resource_halij")])
+on_activate = Array[ExtResource("1_jr74h")]([SubResource("Resource_aje20")])
+on_failed_to_activate = Array[ExtResource("1_jr74h")]([])
+on_apply = Array[ExtResource("1_jr74h")]([SubResource("Resource_blxbe")])
+on_move_selected = Array[ExtResource("1_jr74h")]([SubResource("Resource_nimd6")])
+on_move_completed = Array[ExtResource("1_jr74h")]([SubResource("Resource_dyxoj")])
+on_deactivate = Array[ExtResource("1_jr74h")]([SubResource("Resource_gccvs")])
+on_turn_start = Array[ExtResource("1_jr74h")]([])
+on_turn_end = Array[ExtResource("1_jr74h")]([])
+on_stack = Array[ExtResource("1_jr74h")]([SubResource("Resource_h7u5n")])

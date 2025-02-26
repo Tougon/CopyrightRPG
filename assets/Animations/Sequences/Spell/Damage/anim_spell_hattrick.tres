@@ -12,6 +12,8 @@
 [sub_resource type="Resource" id="Resource_60cch"]
 script = ExtResource("3_wybav")
 reset_bg = false
+index = 0
+mode = 0
 
 [sub_resource type="Resource" id="Resource_fhloc"]
 script = ExtResource("1_vhm6e")

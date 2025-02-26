@@ -19,6 +19,7 @@ effect = ExtResource("2_7aulm")
 [sub_resource type="Resource" id="Resource_yifa3"]
 script = ExtResource("4_jnf5g")
 chance = 1.0
+use_luck = false
 effect_set = Array[ExtResource("3_2sbqv")]([SubResource("Resource_1wpro")])
 
 [resource]
@@ -55,8 +56,8 @@ spell_cost = 18
 spell_priority = 0
 spell_flags = Array[ExtResource("7_ldidp")]([ExtResource("3_wwgpf"), ExtResource("4_k7ee5"), ExtResource("5_3k0y4")])
 animation_sequence = ExtResource("1_cccf0")
-spell_video = ""
-spell_video_material = ""
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("4_jnf5g")]([SubResource("Resource_yifa3")])
 effects_on_success = Array[ExtResource("4_jnf5g")]([])
 properties = Array[ExtResource("5_an8td")]([])

@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=10 format=3 uid="uid://cf0sbyy40032e"]
+[gd_resource type="Resource" script_class="Spell" load_steps=12 format=3 uid="uid://cf0sbyy40032e"]
 
 [ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/Status/Common/anim_spell_status_common_atoost.tres" id="1_o40m7"]
 [ext_resource type="Resource" uid="uid://boqwbtdtrpo3g" path="res://assets/Effects/common/effect_common_buff_spattack.tres" id="2_65sli"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_572mj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_27ycj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_exaps"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="5_org0a"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="6_7wkrr"]
 [ext_resource type="Resource" uid="uid://b8u43886g26bp" path="res://assets/Flags/magic.tres" id="7_f12q0"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_sp01t"]
 
 [sub_resource type="Resource" id="Resource_yjdi2"]
 script = ExtResource("3_572mj")
@@ -16,6 +18,7 @@ effect = ExtResource("2_65sli")
 [sub_resource type="Resource" id="Resource_dcubv"]
 script = ExtResource("4_27ycj")
 chance = 1.0
+use_luck = false
 effect_set = Array[ExtResource("3_572mj")]([SubResource("Resource_yjdi2")])
 
 [resource]
@@ -27,8 +30,10 @@ spell_type = 3
 spell_target = 4
 spell_cost = 15
 spell_priority = 0
-spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("6_7wkrr"), ExtResource("7_f12q0")])
+spell_flags = Array[ExtResource("7_sp01t")]([ExtResource("6_7wkrr"), ExtResource("7_f12q0")])
 animation_sequence = ExtResource("1_o40m7")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("4_27ycj")]([SubResource("Resource_dcubv")])
 effects_on_success = Array[ExtResource("4_27ycj")]([])
-properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])
+properties = Array[ExtResource("5_exaps")]([])
