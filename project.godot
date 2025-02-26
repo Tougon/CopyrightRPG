@@ -83,7 +83,7 @@ project/assembly_name="Copyright RPG"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/EntityEditor/plugin.cfg", "res://addons/SpellEditor/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/quest_manager/plugin.cfg", "res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
+enabled=PackedStringArray("res://addons/EffectEditor/plugin.cfg", "res://addons/EntityEditor/plugin.cfg", "res://addons/SpellEditor/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/quest_manager/plugin.cfg", "res://addons/tflags/plugin.cfg", "res://addons/totween/plugin.cfg", "res://addons/toui/plugin.cfg")
 
 [file_customization]
 
