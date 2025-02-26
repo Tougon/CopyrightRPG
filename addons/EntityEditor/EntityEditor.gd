@@ -1,48 +1,48 @@
 @tool
 extends Control
-class_name SpellEditor;
+class_name EntityEditor;
 
-@export var list_item_scene: PackedScene = preload("res://addons/SpellEditor/SpellItemEditor.tscn");
+@export var list_item_scene: PackedScene = preload("res://addons/EntityEditor/EntityItemEditor.tscn");
 
-var spell_list : Array[Spell];
-var spell_to_path = {};
-var spell_to_list_item = {};
+var entity_list : Array[Entity];
+var entity_to_path = {};
+var entity_to_list_item = {};
 var editor : EditorInterface;
 
 func _ready():
-	print("Initializing spells...")
+	print("Initializing entities...")
 	_refresh_view();
 
 
 func _refresh_view():
-	for spell in spell_list:
-		if spell_to_list_item.has(spell):
-			spell_to_list_item[spell].remove();
+	for entity in entity_list:
+		if entity_to_list_item.has(entity):
+			entity_to_list_item[entity].remove();
 	
-	spell_list.clear();
-	spell_to_list_item.clear();
+	entity_list.clear();
+	entity_to_list_item.clear();
 	
-	_check_path_for_spells("res://assets/Spells/");
+	_check_path_for_spells("res://assets/Entities/");
 	
 	# Sort spells by spell name
-	spell_list.sort_custom(_compare_name);
-	for spell in spell_list:
-		_create_list_item(spell);
+	entity_list.sort_custom(_compare_name);
+	for entity in entity_list:
+		_create_list_item(entity);
 
 
-func _compare_name(a : Spell, b : Spell):
+func _compare_name(a : Entity, b : Entity):
 	var a_name = "";
 	var b_name = "";
 	
-	if a.spell_name_key.is_empty() || a.spell_name_key.length() == 0:
+	if a.name_key.is_empty() || a.name_key.length() == 0:
 		a_name = a.resource_path.get_file();
 	else :
-		a_name = str(TranslationServer.get_translation_object("en").get_message(a.spell_name_key));
+		a_name = str(TranslationServer.get_translation_object("en").get_message(a.name_key));
 	
-	if b.spell_name_key.is_empty() || b.spell_name_key.length() == 0:
+	if b.name_key.is_empty() || b.name_key.length() == 0:
 		b_name = b.resource_path.get_file();
 	else :
-		b_name = str(TranslationServer.get_translation_object("en").get_message(b.spell_name_key));
+		b_name = str(TranslationServer.get_translation_object("en").get_message(b.name_key));
 	
 	return a_name < b_name;
 
@@ -64,7 +64,7 @@ func _create_spell():
 	var dialog = FileDialog.new();
 	dialog.set_file_mode(FileDialog.FILE_MODE_SAVE_FILE);
 	dialog.set_access(FileDialog.ACCESS_RESOURCES);
-	dialog.current_dir = "res://assets/Spells/";
+	dialog.current_dir = "res://assets/Entities/";
 	dialog.file_selected.connect(_on_dir_selected);
 	add_child(dialog)
 	dialog.popup_centered_ratio();
@@ -76,39 +76,34 @@ func _on_dir_selected(path : String):
 	if !path.ends_with(".tres"):
 		path += ".tres"
 	
-	var spell : Spell;
+	var entity : Entity = Entity.new();
 	
-	if $"VBoxContainer/Damage Spell".toggle_mode :
-		spell = DamageSpell.new();
-	else :
-		spell = Spell.new();
+	ResourceSaver.save(entity, path);
+	entity_list.append(entity);
+	entity_to_path[entity] = path;
 	
-	ResourceSaver.save(spell, path);
-	spell_list.append(spell);
-	spell_to_path[spell] = path;
-	
-	_create_list_item(spell);
+	_create_list_item(entity);
 	
 	var system = editor.get_resource_filesystem();
 	system.filesystem_changed.emit();
 	system.scan();
 
 
-func _create_list_item(spell : Spell):
-	var item = list_item_scene.instantiate() as SpellItemEditor;
+func _create_list_item(entity : Entity):
+	var item = list_item_scene.instantiate() as EntityItemEditor;
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(item);
 	
 	if item:
-		item.display_spell(spell, spell_to_path[spell], editor);
-		spell_to_list_item[spell] = item;
+		item.display_entity(entity, entity_to_path[entity], editor);
+		entity_to_list_item[entity] = item;
 		
 		if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() % 2 == 0:
 			item.set_even();
 
 
-func _spell_exists(name : String) -> bool:
-	for spell in spell_list:
-		if spell.resource_path.get_file().replace(".tres", "").to_lower() == name.to_lower():
+func _entity_exists(name : String) -> bool:
+	for entity in entity_list:
+		if entity.resource_path.get_file().replace(".tres", "").to_lower() == name.to_lower():
 			return true;
 	return false;
 
@@ -126,12 +121,12 @@ func _check_path_for_spells(path : String):
 		
 		for f in files:
 			if f.ends_with(".tres"):
-				_add_spell(path + f);
+				_add_entity(path + f);
 	else:
 		print("ERROR: " + path + " does not exist");
 
 
-func _add_spell(file_name : String):
+func _add_entity(file_name : String):
 	var s := FileAccess.open(file_name, FileAccess.READ)
 	var text := s.get_as_text()
 
@@ -153,11 +148,11 @@ func _add_spell(file_name : String):
 					
 					# Check to see if the value is valid
 					# NOTE: May need more in depth checks to fetch all spells
-					if value == "Spell" || value == "DamageSpell":
+					if value == "Entity" :
 						# Load the resource at the given path
 						var loaded = ResourceLoader.load(file_name);
 						
-						if loaded is Spell:
-							spell_list.append(loaded as Spell);
-							spell_to_path[(loaded as Spell)] = file_name;
+						if loaded is Entity:
+							entity_list.append(loaded as Entity);
+							entity_to_path[(loaded as Entity)] = file_name;
 							return;

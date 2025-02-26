@@ -25,7 +25,7 @@ func _refresh_view():
 	flags_list.clear();
 	flag_to_list_item.clear();
 	
-	_check_path_for_flags("res://");
+	_check_path_for_flags("res://assets/Flags/");
 	
 	# Sort flags by flag name
 	flags_list.sort_custom(_compare_name);
