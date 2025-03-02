@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://dbbotcnm6e42b"]
+[gd_resource type="Resource" script_class="Spell" load_steps=12 format=3 uid="uid://dbbotcnm6e42b"]
 
 [ext_resource type="Resource" uid="uid://bu3xmlm37tvn5" path="res://assets/Animations/Sequences/Spell/Status/Player/anim_spell_pass.tres" id="1_6wh0u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_e0esw"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_8axma"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="8_hhhrn"]
 [ext_resource type="Resource" uid="uid://dfgo451y616jh" path="res://assets/Flags/attack.tres" id="9_mfbxp"]
-[ext_resource type="Resource" uid="uid://nnr5j51mnb2i" path="res://assets/Flags/dark.tres" id="10_yspen"]
 
 [sub_resource type="Resource" id="Resource_qqvlw"]
 script = ExtResource("3_b018f")
@@ -31,7 +30,7 @@ spell_type = 3
 spell_target = 5
 spell_cost = 15
 spell_priority = 0
-spell_flags = Array[ExtResource("7_8axma")]([ExtResource("8_hhhrn"), ExtResource("9_mfbxp"), ExtResource("10_yspen")])
+spell_flags = Array[ExtResource("7_8axma")]([ExtResource("8_hhhrn"), ExtResource("9_mfbxp")])
 animation_sequence = ExtResource("1_6wh0u")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

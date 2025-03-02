@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://diqrt17n126xr"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_g1led"]
+
+[resource]
+script = ExtResource("1_g1led")
+flag_name_key = "spread"

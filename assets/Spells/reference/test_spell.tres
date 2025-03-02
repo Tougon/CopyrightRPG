@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("2_slu7k")
-spell_name_key = "T_SPELL_GENERIC_ATTACK"
+spell_name_key = ""
 spell_description_key = ""
 spell_cast_message_key = "T_CAST_GENERIC_ATTACK"
 spell_type = 1
