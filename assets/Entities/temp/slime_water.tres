@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=46 format=3 uid="uid://dkd7wictubhlf"]
+[gd_resource type="Resource" script_class="Entity" load_steps=47 format=3 uid="uid://c4ufjo1tca3tb"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_bp41a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_t1v7y"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="3_dp4tw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_mrk5g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="5_5gkqs"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="6_puao8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="6_kgkeh"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="7_nwytc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="8_g0i0t"]
-[ext_resource type="Resource" uid="uid://d2ytypgrn8nvw" path="res://assets/Spells/reference/test_spell.tres" id="9_02jiu"]
+[ext_resource type="Resource" uid="uid://hwg78sfnr4t3" path="res://assets/Spells/damage/common/spell_damage_common_ice.tres" id="10_b1a0s"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="10_emyy4"]
-[ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="11_qevxb"]
+[ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/flavor/spell_flavor_slime_idle_00.tres" id="11_sqpy4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="12_gqykn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="13_y2ev8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="14_yniap"]
@@ -25,14 +25,18 @@ min = 20
 max = 24
 growth = SubResource("Curve_fslmg")
 
-[sub_resource type="Resource" id="Resource_n61wj"]
-script = ExtResource("3_dp4tw")
+[sub_resource type="Resource" id="Resource_dmwxv"]
+script = ExtResource("6_kgkeh")
+check_type = 0
+move_id = 1
+mp_amount = 0
+mp_percent = 0.0
 check_target = 0
 negate = false
 
 [sub_resource type="Resource" id="Resource_3gnws"]
 script = ExtResource("2_t1v7y")
-behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_n61wj")])
+behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_dmwxv")])
 check_type = 0
 action_id = Array[int]([1])
 seal_id = Array[bool]([])
@@ -41,24 +45,32 @@ seal_id = Array[bool]([])
 script = ExtResource("4_mrk5g")
 behavior_checks = Array[ExtResource("2_t1v7y")]([SubResource("Resource_3gnws")])
 
-[sub_resource type="Resource" id="Resource_k3ayc"]
-script = ExtResource("6_puao8")
-hp_percent = 0.5
+[sub_resource type="Resource" id="Resource_2jwy2"]
+script = ExtResource("6_kgkeh")
+check_type = 0
+move_id = 1
+mp_amount = 0
+mp_percent = 0.0
 check_target = 0
 negate = false
 
 [sub_resource type="Resource" id="Resource_5q53p"]
 script = ExtResource("2_t1v7y")
-behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_k3ayc")])
+behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_2jwy2")])
 check_type = 0
-action_id = Array[int]([1])
+action_id = Array[int]([1, 2])
 seal_id = Array[bool]([])
+
+[sub_resource type="Resource" id="Resource_mt3gb"]
+script = ExtResource("3_dp4tw")
+check_target = 0
+negate = false
 
 [sub_resource type="Resource" id="Resource_nvu22"]
 script = ExtResource("2_t1v7y")
-behavior_check = Array[ExtResource("3_dp4tw")]([])
+behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_mt3gb")])
 check_type = 0
-action_id = Array[int]([1])
+action_id = Array[int]([0, 2])
 seal_id = Array[bool]([])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
@@ -106,17 +118,17 @@ growth = SubResource("Curve_3ihce")
 
 [sub_resource type="Resource" id="Resource_k72ke"]
 script = ExtResource("8_g0i0t")
-spell = ExtResource("9_02jiu")
+spell = ExtResource("10_emyy4")
 level = 0
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("8_g0i0t")
-spell = ExtResource("10_emyy4")
+spell = ExtResource("10_b1a0s")
 level = 0
 
 [sub_resource type="Resource" id="Resource_7of43"]
 script = ExtResource("8_g0i0t")
-spell = ExtResource("11_qevxb")
+spell = ExtResource("11_sqpy4")
 level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]
@@ -198,7 +210,7 @@ min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_k6ron")
 reward_exp = SubResource("Resource_x0kwu")
-entity_sprites = Array[String](["res://assets/Sprites/Entities/Slime/slime_n_neutral.png", "res://assets/Sprites/Entities/Slime/slime_n_damage.png", "res://assets/Sprites/Entities/Slime/slime_n_attack.png"])
+entity_sprites = Array[String](["res://assets/Sprites/Entities/Slime Water/slime_water_n_neutral.png", "res://assets/Sprites/Entities/Slime Water/slime_water_n_damage.png", "res://assets/Sprites/Entities/Slime Water/slime_water_n_attack.png"])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, -50)
