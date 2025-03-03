@@ -78,7 +78,7 @@ func _on_dir_selected(path : String):
 	
 	var spell : Spell;
 	
-	if $"VBoxContainer/Damage Spell".toggle_mode :
+	if $"VBoxContainer/Damage Spell".button_pressed :
 		spell = DamageSpell.new();
 	else :
 		spell = Spell.new();
