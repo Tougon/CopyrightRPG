@@ -354,7 +354,8 @@ func _action_phase():
 			# Originally included to prevent negative luck but...
 			# we kind of want that, no?
 			#if entity.param.entity_luck > 1:
-			luck = entity.param.entity_luck;
+			if effect.use_luck :
+				luck = entity.param.entity_luck;
 			
 			if e != null && proc <= effect.chance * luck:
 				var inst = e.create_effect_instance(entity, entity, null);
