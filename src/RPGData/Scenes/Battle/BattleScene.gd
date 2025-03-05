@@ -110,6 +110,7 @@ func _begin_turn():
 	for player in players:
 		player.allies.append_array(allies);
 		player.enemies.append_array(targets);
+		if player.is_defeated : player.is_ready = true;
 	
 	for enemy in enemies:
 		enemy.allies.append_array(targets);
@@ -134,9 +135,10 @@ func _decision_phase():
 	#await get_tree().create_timer(1.5).timeout
 	
 	while current_player_index < players.size():
+		
 		await get_tree().process_frame;
 		
-		if players[current_player_index].is_ready:
+		if players[current_player_index].is_ready :
 			if players[current_player_index].current_item != null:
 				players[current_player_index].subtract_item(players[current_player_index].current_item);
 			current_player_index += 1;
@@ -617,8 +619,8 @@ func _on_item_select():
 
 
 func _on_player_menu_cancel():
-	if current_player_index > 0:
-		current_player_index -= 1;
+	if !_is_lowest_valid_player():
+		current_player_index = _get_lowest_valid_player_index();
 		players[current_player_index].is_ready = false;
 		players[current_player_index].sealing = false;
 		
@@ -629,6 +631,22 @@ func _on_player_menu_cancel():
 		EventManager.set_active_player.emit(players[current_player_index]);
 		EventManager.set_player_bg.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
+
+
+func _is_lowest_valid_player() -> bool:
+	if current_player_index == 0 : return true;
+	
+	for i in range(current_player_index, 0, -1):
+		if !players[i - 1].is_defeated : return false;
+	
+	return true;
+
+
+func _get_lowest_valid_player_index() -> int:
+	for i in range(current_player_index, 0, -1):
+		if !players[i - 1].is_defeated : return i - 1;
+	
+	return -1;
 
 
 func _on_enemy_defeated(entity : EntityController):

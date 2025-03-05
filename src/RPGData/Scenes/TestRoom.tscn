@@ -568,7 +568,7 @@ odds = 0.0
 
 [sub_resource type="Resource" id="Resource_tkqyn"]
 script = ExtResource("5_utklg")
-enemy_ids = Array[int]([5, 5, 5, 5])
+enemy_ids = Array[int]([5, 5])
 odds = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
@@ -758,7 +758,6 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 
 [node name="EncounterManager[DELETE LATER]" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
-enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_s1unj"), SubResource("Resource_tkqyn")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
