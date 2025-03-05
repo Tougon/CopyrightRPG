@@ -39,7 +39,7 @@ script = ExtResource("2_takll")
 behavior_check = Array[ExtResource("3_ggjtr")]([SubResource("Resource_6wsr6")])
 check_type = 0
 action_id = Array[int]([1])
-seal_id = Array[bool]([])
+seal_chance = Array[float]([0.3])
 
 [sub_resource type="Resource" id="Resource_lakch"]
 script = ExtResource("4_i5k20")
@@ -59,7 +59,7 @@ script = ExtResource("2_takll")
 behavior_check = Array[ExtResource("3_ggjtr")]([SubResource("Resource_w3lv8")])
 check_type = 0
 action_id = Array[int]([1, 2])
-seal_id = Array[bool]([])
+seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_rpuci"]
 script = ExtResource("6_e23vw")
@@ -75,7 +75,7 @@ script = ExtResource("2_takll")
 behavior_check = Array[ExtResource("3_ggjtr")]([SubResource("Resource_rpuci")])
 check_type = 0
 action_id = Array[int]([0, 2])
-seal_id = Array[bool]([])
+seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("4_i5k20")

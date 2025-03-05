@@ -9,8 +9,8 @@ enum CheckType {AND, OR}
 @export var check_type : CheckType;
 ## The randomized pool of actions to choose if the check is valid
 @export var action_id : Array[int];
-## Determine if this action should be sealed
-@export var seal_id : Array[bool];
+## Odds that determine if this action should be sealed
+@export var seal_chance : Array[float];
 
 
 func determine_action(user : EntityController, allies : Array[EntityController], targets : Array[EntityController]) -> BehaviorCheckResult:
@@ -32,8 +32,10 @@ func determine_action(user : EntityController, allies : Array[EntityController],
 		result.action_success = true;
 		result.action_id = action_id[index];
 		
-		if index < seal_id.size() && seal_id[index] && index < user.move_list.size():
-			var action = user.move_list[index];
+		var rand = randf();
+		
+		if index < seal_chance.size() && rand <= seal_chance[index] && action_id[index] < user.move_list.size():
+			var action = user.move_list[action_id[index]];
 			
 			for ally in allies:
 				if ally.sealing && ally.current_action == action:

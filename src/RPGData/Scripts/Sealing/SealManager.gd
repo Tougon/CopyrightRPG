@@ -27,10 +27,28 @@ func _on_entity_defeated(entity : EntityController):
 		var seal = seal_instances[i];
 		
 		if seal.seal_entity == entity:
-			# Should we send a message saying the seal has been lifted?
-			# Perhaps only if player?
+			# Send a message saying the seal has been lifted
+			_send_seal_inactive_message(seal, entity);
+			
 			seal_instances.remove_at(i);
 			i -= 1;
+
+
+func _send_seal_inactive_message(seal : SealInstance, entity : EntityController):
+	var seal_msg = tr("T_BATTLE_ACTION_SEAL_INACTIVE");
+	
+	if seal.seal_entity.current_entity.generic && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] <= 1:
+		seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = seal.seal_entity.param.entity_name });
+	else:
+		seal_msg = seal_msg.format({ article_def = "", entity = seal.seal_entity.param.entity_name });
+	
+	if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity] && BattleScene.Instance.enemy_type_count[entity.current_entity] <= 1:
+		seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = entity.param.entity_name });
+	else: 
+		seal_msg = seal_msg.format({ t_article_def = "", t_entity = entity.param.entity_name });
+	
+	seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
+	EventManager.on_dialogue_queue.emit(seal_msg);
 
 
 func can_seal_spell(spell : Spell) -> bool:
@@ -95,7 +113,8 @@ func _on_entity_move(entity : EntityController) :
 			if seal_instances[i].seal_turn_count <= 0:
 				seal_instances.remove_at(i);
 				i -= 1;
-				# TODO: send message that seal has expired Somehow
+				
+				_send_seal_inactive_message(seal_instances[i], entity);
 
 
 func _on_destroy():
