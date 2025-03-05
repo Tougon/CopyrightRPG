@@ -36,15 +36,15 @@ func _process(_delta: float) -> void:
 	# We don't want to modify position while in dialogue for obvious reasons
 	if _in_dialogue : return;
 	
-	_player_visual.global_position = _physics_body_trans_last.interpolate_with(
-		_physics_body_trans_current,
-		Engine.get_physics_interpolation_fraction()
-	).origin
-	
+	#_player_visual.global_position = _physics_body_trans_last.interpolate_with(
+	#	_physics_body_trans_current,
+	#	Engine.get_physics_interpolation_fraction()
+	#).origin
+
 
 func _physics_process(_delta):
-	_physics_body_trans_last = _physics_body_trans_current
-	_physics_body_trans_current = global_transform
+	#_physics_body_trans_last = _physics_body_trans_current
+	#_physics_body_trans_current = global_transform
 	
 	if !_can_move || _in_dialogue || !_will_process : return;
 	
