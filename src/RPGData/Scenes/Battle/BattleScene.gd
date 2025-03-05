@@ -90,7 +90,7 @@ func _begin_turn():
 	if sequencer.is_sequence_playing_or_queued() :
 		await EventManager.on_sequence_queue_empty;
 	
-	current_player_index = 0;
+	current_player_index = _get_lowest_valid_player_index();
 	turn_number += 1;
 	
 	var allies : Array[EntityController];
@@ -141,7 +141,7 @@ func _decision_phase():
 		if players[current_player_index].is_ready :
 			if players[current_player_index].current_item != null:
 				players[current_player_index].subtract_item(players[current_player_index].current_item);
-			current_player_index += 1;
+			current_player_index = _get_next_valid_player_index(current_player_index + 1);
 			
 			if current_player_index < players.size() - 1:
 				UIManager.close_menu_name("player_battle_target")
@@ -620,7 +620,7 @@ func _on_item_select():
 
 func _on_player_menu_cancel():
 	if !_is_lowest_valid_player():
-		current_player_index = _get_lowest_valid_player_index();
+		current_player_index = _get_prev_valid_player_index(current_player_index);
 		players[current_player_index].is_ready = false;
 		players[current_player_index].sealing = false;
 		
@@ -631,22 +631,6 @@ func _on_player_menu_cancel():
 		EventManager.set_active_player.emit(players[current_player_index]);
 		EventManager.set_player_bg.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
-
-
-func _is_lowest_valid_player() -> bool:
-	if current_player_index == 0 : return true;
-	
-	for i in range(current_player_index, 0, -1):
-		if !players[i - 1].is_defeated : return false;
-	
-	return true;
-
-
-func _get_lowest_valid_player_index() -> int:
-	for i in range(current_player_index, 0, -1):
-		if !players[i - 1].is_defeated : return i - 1;
-	
-	return -1;
 
 
 func _on_enemy_defeated(entity : EntityController):
@@ -726,6 +710,36 @@ func _all_enemies_defeated() -> bool:
 
 func _compare_speed(a : EntityController, b : EntityController):
 	return EntityController.compare_speed(a, b);
+
+
+func _is_lowest_valid_player() -> bool:
+	if current_player_index == 0 : return true;
+	
+	for i in range(current_player_index, 0, -1):
+		if !players[i - 1].is_defeated : return false;
+	
+	return true;
+
+
+func _get_next_valid_player_index(val : int) -> int:
+	for i in range(val, players.size()):
+		if !players[i].is_defeated && !players[i].is_ready : return i;
+	
+	return players.size();
+
+
+func _get_prev_valid_player_index(val : int) -> int:
+	for i in range(val, 0, -1):
+		if !players[i - 1].is_defeated : return i - 1;
+	
+	return -1;
+
+
+func _get_lowest_valid_player_index() -> int:
+	for i in players.size():
+		if !players[i].is_defeated : return i;
+	
+	return -1;
 
 
 func _on_player_item_consumed(item : Item):
