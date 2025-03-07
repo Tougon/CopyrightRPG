@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3q7hew02l55r"]
+[gd_scene load_steps=11 format=3 uid="uid://d3q7hew02l55r"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_ftnx2"]
 [ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="4_1vr4n"]
+[ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="5_121r2"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="5_pm4r5"]
 
 [sub_resource type="Resource" id="Resource_j1ry4"]
@@ -12,6 +13,27 @@ tween_name = "Focus"
 tween_resource = ExtResource("4_1vr4n")
 play_on_start = false
 next_tween = ""
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0oy5k"]
+shader = ExtResource("5_121r2")
+shader_parameter/color_primary = Color(0.258824, 0.564706, 0.733333, 1)
+shader_parameter/color_secondary = Color(0.16625, 0.409488, 0.541305, 1)
+shader_parameter/resolution = Vector2(400, 80.4)
+shader_parameter/amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8afpf"]
+shader = ExtResource("5_121r2")
+shader_parameter/color_primary = Color(0.2, 0.427451, 0.545098, 1)
+shader_parameter/color_secondary = Color(0.16274, 0.361658, 0.46422, 1)
+shader_parameter/resolution = Vector2(400, 25)
+shader_parameter/amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymo7e"]
+shader = ExtResource("5_121r2")
+shader_parameter/color_primary = Color(1, 1, 1, 0.0705882)
+shader_parameter/color_secondary = Color(0, 0, 0, 0)
+shader_parameter/resolution = Vector2(400, 80.4)
+shader_parameter/amount = 1.0
 
 [node name="Player Main Menu" node_paths=PackedStringArray("initial_selection", "all_selections") instance=ExtResource("1_gohqw")]
 script = ExtResource("2_stk7e")
@@ -22,7 +44,12 @@ all_selections = [NodePath("BG Area/Player Options/ScrollContainer/GridContainer
 sequence_list = Array[ExtResource("3_ftnx2")]([SubResource("Resource_j1ry4")])
 
 [node name="BG Area" parent="." index="0"]
+material = SubResource("ShaderMaterial_0oy5k")
 offset_top = -190.0
+
+[node name="Character Info" parent="BG Area" index="0"]
+material = SubResource("ShaderMaterial_8afpf")
+delay_updates = true
 
 [node name="Player Options" type="Control" parent="BG Area" index="1"]
 layout_mode = 1
@@ -137,6 +164,18 @@ theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
 text = "T_BATTLE_MAIN_UI_DEFEND"
 clip_text = true
+
+[node name="Noise" type="ColorRect" parent="." index="2"]
+material = SubResource("ShaderMaterial_ymo7e")
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
 
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Attack" to="." method="_on_attack_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Magic" to="." method="_on_magic_button_pressed"]

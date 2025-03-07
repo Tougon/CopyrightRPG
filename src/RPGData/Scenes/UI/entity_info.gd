@@ -6,6 +6,7 @@ enum DisplayType { Full, Restricted }
 
 @export var info_type : InfoType;
 @export var display_type : DisplayType;
+@export var delay_updates : bool = false;
 
 @onready var tween_player : TweenPlayer = $TweenPlayerUI;
 @onready var hp_bar : UnderlayBar = $"Container/HP Bar";
@@ -38,6 +39,9 @@ func set_specific_entity_info(entity : EntityController, all : bool = false):
 
 
 func _set_entity_info(entity : EntityController):
+	if delay_updates : 
+		await get_tree().process_frame;
+	
 	# Disconnect the previously selected entity
 	if current_entity != null:
 		current_entity = null;

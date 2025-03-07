@@ -13,6 +13,7 @@ shader = ExtResource("2_k620y")
 shader_parameter/color_primary = null
 shader_parameter/color_secondary = Color(1, 1, 1, 1)
 shader_parameter/resolution = Vector2(266.667, 200)
+shader_parameter/amount = 1.0
 
 [node name="BG Video Canvas" type="CanvasLayer" node_paths=PackedStringArray("video_layer", "attack_layer", "color_layer", "solid_layer", "static_layer")]
 layer = -10
