@@ -123,6 +123,10 @@ func on_damage(crit : bool):
 	EventManager.on_player_take_damage.emit(false, crit, current_action == defend_action);
 
 
+func _on_defeat_complete():
+	super._on_defeat_complete();
+	EventManager.on_player_defeated.emit(self as EntityController);
+
 func _get_sprite_start_position() -> Vector2:
 	var center = get_viewport().get_visible_rect().size / 2.0;
 	var direction = (center - position).normalized();

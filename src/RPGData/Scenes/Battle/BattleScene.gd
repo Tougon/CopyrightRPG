@@ -33,6 +33,7 @@ func _ready():
 	EventManager.on_defend_select.connect(_on_defend_select);
 	EventManager.on_item_select.connect(_on_item_select);
 	EventManager.player_menu_cancel.connect(_on_player_menu_cancel);
+	EventManager.on_player_defeated.connect(_on_player_defeated);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
 	EventManager.on_player_item_consumed.connect(_on_player_item_consumed);
 	
@@ -201,7 +202,7 @@ func _action_phase():
 	for entity in turn_order:
 		EventManager.on_entity_move.emit(entity);
 		
-		if entity.is_defeated:
+		if entity.is_defeated || _all_players_defeated():
 			continue;
 		
 		EventManager.set_player_bg.emit(entity);
@@ -309,7 +310,7 @@ func _action_phase():
 		
 		if post_anim_dialogue.size() > 0 : await EventManager.on_sequence_queue_empty;
 		
-		if entity.sealing && !BattleManager.seal_before_attacking:
+		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
 			if seal_manager.can_seal_spell(entity.current_action):
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
@@ -340,6 +341,7 @@ func _action_phase():
 			await get_tree().process_frame;
 		
 		for spell in spell_cast:
+			if _all_players_defeated() : continue;
 			var effects = spell.effects;
 			
 			for effect in effects:
@@ -349,6 +351,7 @@ func _action_phase():
 					effect.on_failed_to_activate();
 		
 		for effect in entity.current_action.effects_on_success:
+			if _all_players_defeated() : continue;
 			var e = effect.get_effect();
 			var proc = randf();
 			
@@ -375,7 +378,8 @@ func _action_phase():
 		EventManager.hide_entity_ui.emit();
 		
 		# Check if action is sealed
-		seal_manager.check_for_seal(entity, players.has(entity));
+		if !_all_players_defeated():
+			seal_manager.check_for_seal(entity, players.has(entity));
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		
@@ -633,6 +637,12 @@ func _on_player_menu_cancel():
 		UIManager.open_menu_name("player_battle_main");
 
 
+func _on_player_defeated(entity : EntityController):
+	var defeat_key = "T_BATTLE_DEFEAT_PLAYER";
+	var defeat_msg = _format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
+	EventManager.on_dialogue_queue.emit(defeat_msg);
+	
+
 func _on_enemy_defeated(entity : EntityController):
 	var defeated = DefeatedEntity.new();
 	defeated.entity = entity.current_entity;
@@ -760,6 +770,7 @@ func _on_destroy():
 		EventManager.on_defend_select.disconnect(_on_defend_select);
 		EventManager.on_item_select.disconnect(_on_item_select);
 		EventManager.player_menu_cancel.disconnect(_on_player_menu_cancel);
+		EventManager.on_player_defeated.disconnect(_on_player_defeated);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
 		EventManager.on_player_item_consumed.disconnect(_on_player_item_consumed);
 	
