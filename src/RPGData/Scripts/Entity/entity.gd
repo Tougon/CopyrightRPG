@@ -117,7 +117,9 @@ func get_reward_exp(level : int) -> int:
 @export var entity_bgm_key: String;
 @export_file("*.ogv") var entity_video: String;
 @export_file("*.tres") var entity_video_material: String;
+@export var entity_video_repeat_mode : CanvasItem.TextureRepeat = CanvasItem.TextureRepeat.TEXTURE_REPEAT_MIRROR;
 @export_file("*.tres") var entity_thought_pattern_material: String;
+@export var entity_thought_repeat_mode : CanvasItem.TextureRepeat = CanvasItem.TextureRepeat.TEXTURE_REPEAT_MIRROR;
 
 # TODO: More real tools
 @export_group("Moveset and Behavior")

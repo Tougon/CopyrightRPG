@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("2_17jkg")
-enemy_ids = Array[int]([4, 4])
+enemy_ids = Array[int]([9])
 odds = 1.0

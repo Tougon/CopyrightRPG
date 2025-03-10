@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityDatabase" load_steps=12 format=3 uid="uid://bsiklh4dlic0l"]
+[gd_resource type="Resource" script_class="EntityDatabase" load_steps=13 format=3 uid="uid://bsiklh4dlic0l"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityDatabaseEntry.gd" id="1_veja8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityDatabase.gd" id="2_3dvry"]
@@ -48,6 +48,11 @@ script = ExtResource("1_veja8")
 entity_path = "res://assets/Entities/temp/slime_wind.tres"
 playable = false
 
+[sub_resource type="Resource" id="Resource_jfvws"]
+script = ExtResource("1_veja8")
+entity_path = "res://assets/Entities/temp/slime_boss.tres"
+playable = false
+
 [resource]
 script = ExtResource("2_3dvry")
-entries = Array[ExtResource("1_veja8")]([SubResource("Resource_g1vrn"), SubResource("Resource_i0wjx"), SubResource("Resource_iu4hh"), SubResource("Resource_6tw8m"), SubResource("Resource_7bvvg"), SubResource("Resource_gcqfk"), SubResource("Resource_nlt1c"), SubResource("Resource_xnbuy"), SubResource("Resource_bt2nu")])
+entries = Array[ExtResource("1_veja8")]([SubResource("Resource_g1vrn"), SubResource("Resource_i0wjx"), SubResource("Resource_iu4hh"), SubResource("Resource_6tw8m"), SubResource("Resource_7bvvg"), SubResource("Resource_gcqfk"), SubResource("Resource_nlt1c"), SubResource("Resource_xnbuy"), SubResource("Resource_bt2nu"), SubResource("Resource_jfvws")])

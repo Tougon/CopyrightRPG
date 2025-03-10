@@ -1,13 +1,14 @@
 Hey.
-[fade]
-[set_camera_target id="test_obj_1"]
-[fade in="true" pre="0.2"]
-[play_object_animation id="test_obj_1" anim_name="slide"]
 join temp_character_1 center [animation="Zoom Center In" wait="true"]
 temp_character_1: How's it going?
 [set_camera_target id="player"]
 - Good
 	temp_character_1: Glad to hear it!
+	[fade]
+	[set_camera_target id="test_obj_1"]
+	[fade in="true" pre="0.2"]
+	[play_object_animation id="test_obj_1" anim_name="slide"]
+	[wait time="2.0"]
 - Bad
 	temp_character_1: Will this help?
 	[begin_battle path="res://assets/Encounters/temp.tres" delay="0.3"]

@@ -118,6 +118,7 @@ func _set_player_bg(entity : EntityController):
 		var previous = color_layer.material.get_shader_parameter("palette");
 		color_layer.material = _entity_to_color_mat_map[entity.current_entity].duplicate() as ShaderMaterial;
 		color_layer.material.set_shader_parameter("transition_palette", previous);
+		color_layer.texture_repeat = entity.current_entity.entity_thought_repeat_mode;
 		
 		var tween = get_tree().create_tween();
 		tween.set_parallel(true);
@@ -202,8 +203,10 @@ func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, 
 		
 		video_layer.stream = _video_main;
 		video_layer.material = mat1;
+		video_layer.texture_repeat = (aux as Entity).entity_video_repeat_mode;
 		color_layer.stream = _video_main;
 		color_layer.material = mat2;
+		color_layer.texture_repeat = (aux as Entity).entity_thought_repeat_mode;
 		
 		_set_static(false);
 		
