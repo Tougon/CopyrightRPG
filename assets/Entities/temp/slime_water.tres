@@ -49,6 +49,7 @@ behavior_checks = Array[ExtResource("2_t1v7y")]([SubResource("Resource_3gnws")])
 [sub_resource type="Resource" id="Resource_bccg0"]
 script = ExtResource("7_m7ph8")
 hp_percent = 0.9
+randomize_target = true
 check_target = 1
 negate = true
 
