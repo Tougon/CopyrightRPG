@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=47 format=3 uid="uid://c4ufjo1tca3tb"]
+[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://c4ufjo1tca3tb"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_bp41a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_t1v7y"]
@@ -6,10 +6,11 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_mrk5g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="5_5gkqs"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="6_kgkeh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="7_m7ph8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="7_nwytc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="8_g0i0t"]
-[ext_resource type="Resource" uid="uid://hwg78sfnr4t3" path="res://assets/Spells/damage/common/spell_damage_common_ice.tres" id="10_b1a0s"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="10_emyy4"]
+[ext_resource type="Resource" uid="uid://c3go87srhogl5" path="res://assets/Spells/status/common/spell_status_common_heal.tres" id="11_bj62a"]
 [ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/flavor/spell_flavor_slime_idle_00.tres" id="11_sqpy4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="12_gqykn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="13_y2ev8"]
@@ -38,44 +39,41 @@ negate = false
 script = ExtResource("2_t1v7y")
 behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_dmwxv")])
 check_type = 0
-action_id = Array[int]([1])
+action_id = Array[int]([0])
 seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_lakch"]
 script = ExtResource("4_mrk5g")
 behavior_checks = Array[ExtResource("2_t1v7y")]([SubResource("Resource_3gnws")])
 
-[sub_resource type="Resource" id="Resource_2jwy2"]
-script = ExtResource("6_kgkeh")
-check_type = 0
-move_id = 1
-mp_amount = 0
-mp_percent = 0.0
-check_target = 0
-negate = false
+[sub_resource type="Resource" id="Resource_bccg0"]
+script = ExtResource("7_m7ph8")
+hp_percent = 0.9
+check_target = 1
+negate = true
 
-[sub_resource type="Resource" id="Resource_5q53p"]
+[sub_resource type="Resource" id="Resource_pfysl"]
 script = ExtResource("2_t1v7y")
-behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_2jwy2")])
+behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_bccg0")])
 check_type = 0
-action_id = Array[int]([1, 2])
-seal_chance = Array[float]([])
+action_id = Array[int]([1])
+seal_chance = Array[float]([1.0])
 
-[sub_resource type="Resource" id="Resource_mt3gb"]
+[sub_resource type="Resource" id="Resource_2vo8d"]
 script = ExtResource("3_dp4tw")
 check_target = 0
 negate = false
 
-[sub_resource type="Resource" id="Resource_nvu22"]
+[sub_resource type="Resource" id="Resource_p640b"]
 script = ExtResource("2_t1v7y")
-behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_mt3gb")])
+behavior_check = Array[ExtResource("3_dp4tw")]([SubResource("Resource_2vo8d")])
 check_type = 0
 action_id = Array[int]([0, 2])
 seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("4_mrk5g")
-behavior_checks = Array[ExtResource("2_t1v7y")]([SubResource("Resource_5q53p"), SubResource("Resource_nvu22")])
+behavior_checks = Array[ExtResource("2_t1v7y")]([SubResource("Resource_pfysl"), SubResource("Resource_p640b")])
 
 [sub_resource type="Resource" id="Resource_hf446"]
 script = ExtResource("5_5gkqs")
@@ -123,7 +121,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("8_g0i0t")
-spell = ExtResource("10_b1a0s")
+spell = ExtResource("11_bj62a")
 level = 0
 
 [sub_resource type="Resource" id="Resource_7of43"]
