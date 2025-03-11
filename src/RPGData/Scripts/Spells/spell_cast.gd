@@ -87,7 +87,7 @@ func add_hit_result(result : String):
 
 # General Spell Checks and Accessors
 func has_spell_done_anything() -> bool:
-	return !(total_damage == 0 && !get_effect_proc() && (hits == null || (hits != null && (hits.size() == 0 || !hits[0] || base_damage_cast))));
+	return !(total_damage == 0 && !get_effect_proc() && (hits == null || (hits != null && (hits.size() == 0 || base_damage_cast))));
 
 
 func get_effect_proc() -> bool:
