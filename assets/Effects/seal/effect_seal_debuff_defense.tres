@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=12 format=3 uid="uid://cq8yipq74havs"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_5q2lu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_quprm"]
+[ext_resource type="Resource" uid="uid://og0qk6g8xxb4" path="res://assets/Animations/Sequences/Global/anim_global_stat_lower.tres" id="3_u4lld"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_wr05e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_7snff"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_2rgp8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_qw663"]
+
+[sub_resource type="Resource" id="Resource_jsj2g"]
+script = ExtResource("2_quprm")
+target = 1
+stat = 1
+check_mode = 1
+stage = 0
+max = false
+min = true
+
+[sub_resource type="Resource" id="Resource_684vj"]
+script = ExtResource("4_wr05e")
+dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_ACTIVATE"
+target = 1
+animation = ExtResource("3_u4lld")
+
+[sub_resource type="Resource" id="Resource_blxbe"]
+script = ExtResource("5_7snff")
+target = 1
+stat = 1
+amount = -1
+
+[sub_resource type="Resource" id="Resource_tgpjx"]
+script = ExtResource("6_2rgp8")
+dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_FAIL"
+
+[resource]
+script = ExtResource("7_qw663")
+stackable = true
+effect_name = "Defense Debuff"
+generic = true
+priority = 3
+turn_limit = 0
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_5q2lu")]([SubResource("Resource_jsj2g")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_5q2lu")]([])
+on_activate = Array[ExtResource("1_5q2lu")]([SubResource("Resource_684vj"), SubResource("Resource_blxbe")])
+on_failed_to_activate = Array[ExtResource("1_5q2lu")]([SubResource("Resource_tgpjx")])
+on_apply = Array[ExtResource("1_5q2lu")]([])
+on_move_selected = Array[ExtResource("1_5q2lu")]([])
+on_move_completed = Array[ExtResource("1_5q2lu")]([])
+on_deactivate = Array[ExtResource("1_5q2lu")]([])
+on_turn_start = Array[ExtResource("1_5q2lu")]([])
+on_turn_end = Array[ExtResource("1_5q2lu")]([])
+on_stack = Array[ExtResource("1_5q2lu")]([])

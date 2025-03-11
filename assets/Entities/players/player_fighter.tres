@@ -133,5 +133,7 @@ head_offset = Vector2(0, -100)
 entity_bgm_key = ""
 entity_video = ""
 entity_video_material = ""
+entity_video_repeat_mode = 3
 entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_player_fighter_01.tres"
+entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_xqh42")

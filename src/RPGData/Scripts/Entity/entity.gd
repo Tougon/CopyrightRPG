@@ -125,3 +125,4 @@ func get_reward_exp(level : int) -> int:
 @export_group("Moveset and Behavior")
 @export var move_list : MoveList;
 @export var behavior : EntityBehaviorObject;
+@export var seal_effect : SealEffectGroup;
