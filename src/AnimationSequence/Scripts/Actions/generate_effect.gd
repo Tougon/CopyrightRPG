@@ -31,7 +31,7 @@ func execute(sequence : AnimationSequence):
 		effect_scene = ResourceLoader.load_threaded_get(effect_scene_path) as PackedScene;
 	
 	if effect_scene == null:
-		print("Load Fail.")
+		print("ERROR: Failed to load effect at " + effect_scene_path)
 		return;
 	
 	var effect = effect_scene.instantiate() as EntityBase;

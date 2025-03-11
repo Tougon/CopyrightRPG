@@ -128,7 +128,7 @@ action = SubResource("Resource_qumjk")
 
 [sub_resource type="Resource" id="Resource_4k83e"]
 script = ExtResource("7_ovl3g")
-effect_scene_path = ""
+effect_scene_path = "res://assets/VFX/Spells/Status/effect_status_zap.tscn"
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)

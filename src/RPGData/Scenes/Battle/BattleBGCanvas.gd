@@ -118,6 +118,7 @@ func _set_player_bg(entity : EntityController):
 		var previous = color_layer.material.get_shader_parameter("palette");
 		color_layer.material = _entity_to_color_mat_map[entity.current_entity].duplicate() as ShaderMaterial;
 		color_layer.material.set_shader_parameter("transition_palette", previous);
+		color_layer.material.set_shader_parameter("use_manual_time", false);
 		color_layer.texture_repeat = entity.current_entity.entity_thought_repeat_mode;
 		
 		var tween = get_tree().create_tween();

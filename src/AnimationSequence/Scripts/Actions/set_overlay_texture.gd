@@ -19,7 +19,7 @@ func execute(sequence : AnimationSequence):
 		texture = ResourceLoader.load_threaded_get(texture_path) as Texture2D;
 	
 	if texture == null:
-		print("Load Fail.")
+		print("ERROR: Failed to load texture at " + texture_path)
 		return;
 	
 	var entity : EntityController;
