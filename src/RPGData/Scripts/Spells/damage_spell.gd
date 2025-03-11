@@ -73,7 +73,7 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	
 	var result = (randf() * 100) <= hit;
 	
-	if !result && cast.hit_results.size() > 0 :
+	if !result && cast.hit_results.size() == 0 :
 		var hit_result = "";
 		var entity_name = "";
 		var generic = false;
@@ -146,7 +146,8 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			crit.append(false);
 			result.append(0);
 			continue;
-		else : cast.clear_hit_result();
+		else : 
+			cast.clear_hit_result();
 		
 		hit.append(true);
 		

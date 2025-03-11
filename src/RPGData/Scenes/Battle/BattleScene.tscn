@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=71 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -13,9 +13,7 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Resource" uid="uid://dyc1rwxffmh78" path="res://assets/Entities/players/player_main.tres" id="7_5gsqw"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="7_iqjjj"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
-[ext_resource type="Resource" uid="uid://c0uavcv162qr0" path="res://assets/Effects/seal/effect_seal_buff_sp_defense.tres" id="8_7fbn6"]
 [ext_resource type="Resource" uid="uid://bnwh1ljsi2ph" path="res://assets/Entities/players/player_fighter.tres" id="8_hn632"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
@@ -45,15 +43,15 @@
 
 [sub_resource type="Resource" id="Resource_pjtk0"]
 script = ExtResource("6_1yw0j")
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("15_dvv4b")])
+seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
 
 [sub_resource type="Resource" id="Resource_b3uow"]
 script = ExtResource("6_1yw0j")
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("7_iqjjj"), ExtResource("8_7fbn6")])
+seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
 
 [sub_resource type="Resource" id="Resource_j4r6v"]
 script = ExtResource("6_1yw0j")
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("13_vk0ot")])
+seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
 
 [sub_resource type="Resource" id="Resource_vh4sl"]
 script = ExtResource("6_1yw0j")
