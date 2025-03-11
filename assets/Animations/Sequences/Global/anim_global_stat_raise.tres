@@ -30,7 +30,7 @@ ease = 0
 relative = false
 "Use From" = false
 "Value Type" = 3
-"Vector2 Value" = Vector2(0, -1.1)
+"Vector2 Value" = Vector2(0, 0.75)
 
 [sub_resource type="Resource" id="Resource_bx424"]
 script = ExtResource("4_kaptb")
