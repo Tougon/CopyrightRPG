@@ -85,6 +85,11 @@ func add_hit_result(result : String):
 	hit_results.append(result);
 
 
+func clear_hit_result():
+	for i in hit_results.size():
+		hit_results[i] = "";
+
+
 # General Spell Checks and Accessors
 func has_spell_done_anything() -> bool:
 	return !(total_damage == 0 && !get_effect_proc() && (hits == null || (hits != null && (hits.size() == 0 || base_damage_cast))));
