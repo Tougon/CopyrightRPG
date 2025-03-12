@@ -58,8 +58,16 @@ func can_seal_spell(spell : Spell) -> bool:
 func create_seal_instance(entity : EntityController, spell : Spell, effect : SealEffectGroup, player_side : bool):
 	if effect == null : return;
 	
-	var seal_inst = SealInstance.new(entity, spell, effect, SEAL_TURN_COUNT, player_side);
+	var turn_count : int = SEAL_TURN_COUNT;
+	
+	# We need to add an extra turn because otherwise the turn it's active counts
+	# This effectively means 3 turns is 2.
+	if BattleManager.seal_before_attacking : turn_count += 1;
+	
+	var seal_inst = SealInstance.new(entity, spell, effect, turn_count, player_side);
 	seal_instances.append(seal_inst);
+	
+	EventManager.set_player_bg.emit(entity);
 
 
 func check_for_seal(entity : EntityController, player_side : bool) -> bool:
@@ -106,15 +114,18 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 
 
 func _on_entity_move(entity : EntityController) :
-	for i in seal_instances.size():
+	var i : int = 0;
+	while i < seal_instances.size():
 		if seal_instances[i].seal_entity == entity:
 			seal_instances[i].seal_turn_count -= 1;
 			
 			if seal_instances[i].seal_turn_count <= 0:
+				_send_seal_inactive_message(seal_instances[i], entity);
 				seal_instances.remove_at(i);
 				i -= 1;
-				
-				_send_seal_inactive_message(seal_instances[i], entity);
+				print(i);
+		
+		i += 1;
 
 
 func _on_destroy():
