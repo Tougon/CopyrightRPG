@@ -28,6 +28,7 @@ func get_current(level : int, max_level : int) -> int:
 	max_level -= 1;
 	
 	if max_level > BattleManager.level_cap: max_level = BattleManager.level_cap;
+	if max_level == 0 : max_level = 1;
 	if level > BattleManager.level_cap: level = BattleManager.level_cap;
 	if level < 0 : level = 0;
 	
