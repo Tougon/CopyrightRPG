@@ -32,7 +32,7 @@ func _on_battle_complete(result : BattleResult):
 						award_exp -= (next_level_amt - current_exp);
 						current_exp = 0;
 						next_level_amt = player.override_entity.get_level_exp(level);
-						EventManager.on_dialogue_queue.emit("LEVEL UP! " + str(level));
+						EventManager.on_dialogue_queue.emit(player.override_entity.name_key + " LEVEL UP! " + str(level));
 					
 					player.override_level = level;
 					player.modified_exp_amt = award_exp;
