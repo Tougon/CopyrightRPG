@@ -3,7 +3,7 @@ extends MenuPanel
 @export var header_icons : Array[TweenPlayer];
 @export var submenus : Array[MenuPanel];
 
-var _current_tab_index : int = 1;
+var _current_tab_index : int = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=62 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -25,7 +25,10 @@
 [ext_resource type="Texture2D" uid="uid://cwsuduqkm0bn0" path="res://assets/Sprites/UI/Status/temp_portrait_full.png" id="15_ounpc"]
 [ext_resource type="Material" uid="uid://u0rtoqst1pow" path="res://assets/Materials/UI/material_ui_dirt.tres" id="16_egfar"]
 [ext_resource type="Texture2D" uid="uid://dy6mes2gcsjfy" path="res://assets/Sprites/UI/Status/portrait_bg_small.png" id="16_r460u"]
+[ext_resource type="Texture2D" uid="uid://c7ecmkkq5mfsl" path="res://assets/Sprites/UI/Status/ui_box_filled.png" id="17_2okqg"]
 [ext_resource type="Script" path="res://src/UIManager/Scripts/MenuPanel.gd" id="17_n8c6y"]
+[ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="18_44m7u"]
+[ext_resource type="PackedScene" uid="uid://cfktvvjn8vypu" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_stat_display.tscn" id="19_dtlof"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_options.gd" id="21_n8v21"]
 
@@ -106,14 +109,14 @@ shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
-[sub_resource type="Resource" id="Resource_fpu2c"]
+[sub_resource type="Resource" id="Resource_mlp1p"]
 script = ExtResource("6_i4er7")
 tween_name = "Open"
 tween_resource = ExtResource("11_gsdjh")
 play_on_start = false
 next_tween = ""
 
-[sub_resource type="Resource" id="Resource_kvmtm"]
+[sub_resource type="Resource" id="Resource_jg1pe"]
 script = ExtResource("6_i4er7")
 tween_name = "Close"
 tween_resource = ExtResource("12_u23bx")
@@ -461,7 +464,7 @@ pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6ge4e")
 root_menu = NodePath("../..")
 submenu = true
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_fpu2c"), SubResource("Resource_kvmtm")])
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_mlp1p"), SubResource("Resource_jg1pe")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Party"]
 layout_mode = 1
@@ -479,19 +482,22 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -500.0
+offset_top = 10.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Entity Portrait Area" type="Control" parent="Body/Party/Entity Stats Area"]
+[node name="Entity Portrait Group" type="Control" parent="Body/Party/Entity Stats Area"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 50.0
-offset_right = -50.0
-offset_bottom = 400.0
+offset_left = 100.0
+offset_top = 10.0
+offset_right = -100.0
+offset_bottom = 310.0
 grow_horizontal = 2
 
-[node name="Portrait" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Portrait Area"]
+[node name="Portrait" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Portrait Group"]
 material = SubResource("ShaderMaterial_viaxc")
 layout_mode = 1
 anchors_preset = 15
@@ -502,7 +508,7 @@ grow_vertical = 2
 texture = ExtResource("15_ounpc")
 expand_mode = 1
 
-[node name="BG" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Portrait Area"]
+[node name="BG" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Portrait Group"]
 modulate = Color(1, 0.670588, 0, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -512,6 +518,157 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("16_r460u")
 expand_mode = 1
+
+[node name="Name" type="NinePatchRect" parent="Body/Party/Entity Stats Area/Entity Portrait Group"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -63.0
+offset_right = -25.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("17_2okqg")
+patch_margin_left = 48
+patch_margin_top = 26
+patch_margin_right = 48
+patch_margin_bottom = 26
+
+[node name="Label" type="Label" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Name"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.4)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 28
+text = "PLAYER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Entity Stats Group" type="VBoxContainer" parent="Body/Party/Entity Stats Area"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 340.0
+offset_right = -100.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HP" type="ProgressBar" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"HPBar"
+max_value = 1.0
+step = 0.0
+value = 0.7
+show_percentage = false
+
+[node name="Label" type="Label" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+text = "0123456789"
+vertical_alignment = 1
+
+[node name="MP" type="ProgressBar" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"MPBar"
+max_value = 1.0
+step = 0.0
+value = 0.5
+show_percentage = false
+
+[node name="Label" type="Label" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+text = "0123456789"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Stats" type="Control" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="ATK" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+layout_mode = 2
+label_key = "T_STAT_ATK_SHORT"
+
+[node name="MAG" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+layout_mode = 2
+label_key = "T_STAT_MAG_SHORT"
+
+[node name="DEF" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+layout_mode = 2
+label_key = "T_STAT_DEF_SHORT"
+
+[node name="RES" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+layout_mode = 2
+label_key = "T_STAT_RES_SHORT"
+
+[node name="SPD" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+layout_mode = 2
+label_key = "T_STAT_SPD_SHORT"
+
+[node name="LCK" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+layout_mode = 2
+label_key = "T_STAT_LCK_SHORT"
+
+[node name="Control" type="Control" parent="Body/Party"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 500.0
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Party/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 50.0
+offset_bottom = 300.0
+grow_horizontal = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")

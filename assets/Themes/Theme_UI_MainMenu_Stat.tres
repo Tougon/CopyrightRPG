@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b7qvhtwu2xk0f"]
+
+[ext_resource type="FontFile" uid="uid://dkeg0g64p62sd" path="res://assets/Fonts/Nechao Sharp/Nechao Sharp.ttf" id="1_bbmpb"]
+[ext_resource type="FontFile" uid="uid://dg4utd2bbbvb4" path="res://assets/Fonts/Square/Square.ttf" id="2_44hiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdeh2"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_riw4p"]
+bg_color = Color(0, 0.788235, 0.368627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa2yb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tprqn"]
+bg_color = Color(6.54578e-06, 0.664572, 0.821088, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oafyo"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b567t"]
+bg_color = Color(0, 0.789026, 0.368384, 1)
+
+[resource]
+HPBar/base_type = &"ProgressBar"
+HPBar/styles/background = SubResource("StyleBoxFlat_wdeh2")
+HPBar/styles/fill = SubResource("StyleBoxFlat_riw4p")
+Label/fonts/font = ExtResource("1_bbmpb")
+MPBar/base_type = &"ProgressBar"
+MPBar/styles/background = SubResource("StyleBoxFlat_wa2yb")
+MPBar/styles/fill = SubResource("StyleBoxFlat_tprqn")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_oafyo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_b567t")
+StatLabels/base_type = &"Label"
+StatLabels/font_sizes/font_size = 17
+StatLabels/fonts/font = ExtResource("2_44hiu")

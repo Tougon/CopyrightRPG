@@ -30,7 +30,7 @@ ease = 1
 relative = false
 "Use From" = false
 "Value Type" = 1
-"Float Value" = 8.0
+"Float Value" = 0.0
 
 [sub_resource type="Resource" id="Resource_ychr2"]
 script = ExtResource("3_s5lh2")
