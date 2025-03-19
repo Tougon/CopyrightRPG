@@ -22,6 +22,7 @@ vec4 color_shift(in vec2 uv, in sampler2D image, vec2 shift_vector) {
 
 
 void fragment() {
+	float final_alpha = COLOR.a;
     vec2 offset = vec2(TIME * speed / 100.0);
     vec2 tiling = tilingAndOffset(UV, hologramTextureTiling, offset);
     
@@ -39,9 +40,10 @@ void fragment() {
     hologram.rgb = emission.rgb + (1.0 - emission.rgb) * albedo.rgb * albedo.a;
     hologram.a = emission.a + (1.0 - emission.a) * alpha;
     hologram.a = hologram.a + (1.0 - hologram.a) * albedo.a;
-	float final_alpha = COLOR.a;
+	
 	COLOR = color_shift(UV, TEXTURE, vec2(1.0, 0.0)*smooth_line_grade/stablization*distortion_factor);
-    //COLOR = texture(TEXTURE, UV);
+	float shifted_alpha = COLOR.a;
+	//COLOR = texture(TEXTURE, UV);
     COLOR.rgb = COLOR.rgb + (1.0 - COLOR.rgb) * hologram.rgb;
-    COLOR.a = min(final_alpha, hologram.a);
+    COLOR.a = final_alpha * hologram.a * shifted_alpha;
 }
