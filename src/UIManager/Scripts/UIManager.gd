@@ -12,6 +12,18 @@ signal on_all_menus_closed();
 
 var is_closing_all = false;
 
+var current_selection : Control;
+var previous_selection : Control;
+
+
+func _ready():
+	get_viewport().gui_focus_changed.connect(_on_gui_focus_changed);
+
+
+func _on_gui_focus_changed(node: Node):
+	previous_selection = current_selection;
+	current_selection = node;
+
 
 func _unhandled_input(event):
 	var current_focus_control = get_viewport().gui_get_focus_owner();
@@ -35,6 +47,14 @@ func _unhandled_input(event):
 			
 			if (event.is_action_pressed("ui_aux_2")):
 				current.on_ui_aux_2();
+				accept_event();
+			
+			if (event.is_action_pressed("ui_trigger_l")):
+				current.on_ui_trigger_l();
+				accept_event();
+			
+			if (event.is_action_pressed("ui_trigger_r")):
+				current.on_ui_trigger_r();
 				accept_event();
 
 

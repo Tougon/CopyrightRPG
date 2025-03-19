@@ -4,7 +4,7 @@ extends Node
 const INSTANCE_BATTLE_WINDOW : bool = false;
 
 # Determines the length of the tweens for enemy repositioning
-const ENEMY_REPOSITION_TIME : float = 0.35;
+const ENEMY_REPOSITION_TIME : float = 0.30;
 
 # Determines if text should print asynchonously
 # TODO: change to const

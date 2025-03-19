@@ -452,7 +452,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu")]
+[node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -464,6 +464,8 @@ pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6ge4e")
 root_menu = NodePath("../..")
 submenu = true
+initial_selection = NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button")
+all_selections = [NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button2"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button2"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button4"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button5"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button6"), NodePath("Entity Equipment Area/Previous"), NodePath("Entity Equipment Area/Next")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_mlp1p"), SubResource("Resource_jg1pe")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Party"]
@@ -560,11 +562,49 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 100.0
-offset_top = 340.0
+offset_top = 320.0
 offset_right = -100.0
-offset_bottom = -20.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Level" type="Control" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Party/Entity Stats Area/Entity Stats Group/Level"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Spacer" type="Control" parent="Body/Party/Entity Stats Area/Entity Stats Group/Level/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Party/Entity Stats Area/Entity Stats Group/Level/HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_vertical = 5
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatLabels"
+text = "lvl"
+vertical_alignment = 2
+text_overrun_behavior = 2
+
+[node name="Value" type="Label" parent="Body/Party/Entity Stats Area/Entity Stats Group/Level/HBoxContainer"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_vertical = 5
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+theme_override_font_sizes/font_size = 32
+text = "99"
+vertical_alignment = 2
+text_overrun_behavior = 2
 
 [node name="HP" type="ProgressBar" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
 custom_minimum_size = Vector2(0, 20)
@@ -655,20 +695,163 @@ label_key = "T_STAT_SPD_SHORT"
 layout_mode = 2
 label_key = "T_STAT_LCK_SHORT"
 
-[node name="Control" type="Control" parent="Body/Party"]
+[node name="Entity Equipment Area" type="Control" parent="Body/Party"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 500.0
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/Party/Control"]
+[node name="VBox" type="VBoxContainer" parent="Body/Party/Entity Equipment Area"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_left = 20.0
 offset_top = 50.0
-offset_bottom = 300.0
+offset_right = 20.0
+offset_bottom = 550.0
 grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="Equipment" type="Control" parent="Body/Party/Entity Equipment Area/VBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+scale = Vector2(1, 1.4)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 28
+text = "T_EQUIPMENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Party/Entity Equipment Area/VBox/Equipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 70.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_left = NodePath("../../../../Previous")
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button2" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button3" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_right = NodePath("../../../../Next")
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Moveset" type="Control" parent="Body/Party/Entity Equipment Area/VBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+scale = Vector2(1, 1.4)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 28
+text = "T_MOVESET"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Grid" type="GridContainer" parent="Body/Party/Entity Equipment Area/VBox/Moveset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 60.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Button" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_left = NodePath("../../../../Previous")
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button2" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button3" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_right = NodePath("../../../../Next")
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button4" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_left = NodePath("../../../../Previous")
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button5" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Button6" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+custom_minimum_size = Vector2(140, 100)
+layout_mode = 2
+size_flags_vertical = 0
+focus_neighbor_right = NodePath("../../../../Next")
+text = "Temp Button Name"
+text_overrun_behavior = 3
+
+[node name="Previous" type="Control" parent="Body/Party/Entity Equipment Area"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+mouse_filter = 2
+
+[node name="Next" type="Control" parent="Body/Party/Entity Equipment Area"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+focus_mode = 2
+mouse_filter = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
@@ -1101,6 +1284,9 @@ text = "T_MENU_COMMON_DELETE"
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
+[connection signal="focus_entered" from="Body/Party" to="Body/Party" method="_on_focus_entered_next"]
+[connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Previous" to="Body/Party" method="_on_focus_entered_previous"]
+[connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]

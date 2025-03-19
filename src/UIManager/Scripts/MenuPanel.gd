@@ -174,6 +174,14 @@ func on_ui_aux_2():
 	pass;
 
 
+func on_ui_trigger_l():
+	pass;
+
+
+func on_ui_trigger_r():
+	pass;
+
+
 func _on_panel_removed():
 	if ui_manager != null:
 		ui_manager.remove_menu(self);

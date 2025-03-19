@@ -33,11 +33,11 @@ func _set_entity_info(index : int):
 	var res = entity.get_sp_def(player.level);
 	var spd = entity.get_spd(player.level);
 	var lck = entity.get_lck(player.level);
-	print("Actual Luck: " + str(lck))
 	
 	# TODO: Animate portrait and name
 	#$"Entity Stats Area/Entity Portrait Group/Portrait"
 	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(entity.name_key);
+	$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(player.level);
 	
 	$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(hp - player.hp_dmg) + "/" + str(hp);
 	$"Entity Stats Area/Entity Stats Group/HP".value = ((hp as float) - (player.hp_dmg as float)) / (hp as float)
@@ -49,13 +49,31 @@ func _set_entity_info(index : int):
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/MAG".set_stat_value(mag);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/RES".set_stat_value(res);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/SPD".set_stat_value(spd);
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/LCK".set_stat_value(lck);
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/LCK".set_stat_value((lck * GameplayConstants.LUCK_SCALE));
 
 
 # UI utility functions
 func on_focus():
 	super.on_focus();
 	await get_tree().process_frame;
+
+
+func _on_focus_entered_next():
+	_set_entity_info(_current_player_index + 1);
+	UIManager.previous_selection.grab_focus();
+
+
+func _on_focus_entered_previous():
+	_set_entity_info(_current_player_index - 1);
+	UIManager.previous_selection.grab_focus();
+
+
+func on_ui_trigger_l():
+	_set_entity_info(_current_player_index - 1);
+
+
+func on_ui_trigger_r():
+	_set_entity_info(_current_player_index + 1);
 
 
 func cache_menu_state():
