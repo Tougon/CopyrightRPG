@@ -282,27 +282,31 @@ start_static = true
 
 [node name="P1" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 y_sort_enabled = false
-position = Vector2(160, 660)
+position = Vector2(160, 630)
+scale = Vector2(0.95, 0.95)
 seal_effect = SubResource("Resource_pjtk0")
 current_entity = ExtResource("7_5gsqw")
 
 [node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 y_sort_enabled = false
-position = Vector2(380, 660)
+position = Vector2(380, 630)
+scale = Vector2(0.95, 0.95)
 player_id = 1
 seal_effect = SubResource("Resource_b3uow")
 current_entity = ExtResource("10_66vq4")
 
 [node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 y_sort_enabled = false
-position = Vector2(600, 660)
+position = Vector2(600, 630)
+scale = Vector2(0.95, 0.95)
 player_id = 2
 seal_effect = SubResource("Resource_j4r6v")
 current_entity = ExtResource("12_qpkyi")
 
 [node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 y_sort_enabled = false
-position = Vector2(800, 660)
+position = Vector2(800, 630)
+scale = Vector2(0.95, 0.95)
 player_id = 3
 seal_effect = SubResource("Resource_vh4sl")
 current_entity = ExtResource("8_hn632")

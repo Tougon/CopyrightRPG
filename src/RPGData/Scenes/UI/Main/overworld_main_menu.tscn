@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=69 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cliv6mbb8mbic" path="res://src/RPGData/Scenes/UI/Main/main_menu_inventory_item_button.tscn" id="13_p080w"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="13_ynyhx"]
 [ext_resource type="Texture2D" uid="uid://b425guj8gg1u5" path="res://assets/Sprites/UI/Status/hologram_lines.png" id="14_tlsu4"]
-[ext_resource type="Texture2D" uid="uid://cwsuduqkm0bn0" path="res://assets/Sprites/UI/Status/temp_portrait_full.png" id="15_ounpc"]
+[ext_resource type="Texture2D" uid="uid://cwsuduqkm0bn0" path="res://assets/Sprites/UI/Status/temp_portrait_a_full.png" id="15_ounpc"]
 [ext_resource type="Material" uid="uid://u0rtoqst1pow" path="res://assets/Materials/UI/material_ui_dirt.tres" id="16_egfar"]
 [ext_resource type="Texture2D" uid="uid://dy6mes2gcsjfy" path="res://assets/Sprites/UI/Status/portrait_bg_small.png" id="16_r460u"]
 [ext_resource type="Texture2D" uid="uid://c7ecmkkq5mfsl" path="res://assets/Sprites/UI/Status/ui_box_filled.png" id="17_2okqg"]
@@ -131,10 +131,86 @@ shader_parameter/linesColor = Color(0, 0.396078, 0.670588, 1)
 shader_parameter/linesColorIntensity = 0.5
 shader_parameter/hologramTextureTiling = Vector2(1, 4)
 shader_parameter/distortion = 2.285
-shader_parameter/stablization = 15.0
+shader_parameter/stablization = 8.0
 shader_parameter/distortion_speed = 0.96
 shader_parameter/distortion_factor = 0.05
 shader_parameter/hologramTexture = ExtResource("14_tlsu4")
+
+[sub_resource type="Resource" id="Resource_1748h"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "shader_parameter/distortion"
+material_property = true
+duration = 0.2
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 2.285
+"From Float" = 0.025
+
+[sub_resource type="Resource" id="Resource_tbgwc"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "shader_parameter/stablization"
+material_property = true
+duration = 0.2
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 8.0
+"From Float" = 0.01
+
+[sub_resource type="Resource" id="Resource_muqe6"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "shader_parameter/distortion_speed"
+material_property = true
+duration = 0.2
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.96
+"From Float" = 14.0
+
+[sub_resource type="Resource" id="Resource_uswcw"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "shader_parameter/distortion_factor"
+material_property = true
+duration = 0.2
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.05
+"From Float" = 1.0
+
+[sub_resource type="Resource" id="Resource_pesto"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_1748h"), SubResource("Resource_tbgwc"), SubResource("Resource_muqe6"), SubResource("Resource_uswcw")])
+
+[sub_resource type="Resource" id="Resource_7qvt7"]
+script = ExtResource("7_2gsnx")
+tween_name = "Zap"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_pesto")])
+
+[sub_resource type="Resource" id="Resource_0nbvw"]
+script = ExtResource("6_i4er7")
+tween_name = "Portrait Zap"
+tween_resource = SubResource("Resource_7qvt7")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_el8iu"]
 script = ExtResource("6_i4er7")
@@ -509,6 +585,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("15_ounpc")
 expand_mode = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Portrait"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_0nbvw")])
 
 [node name="BG" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Portrait Group"]
 modulate = Color(1, 0.670588, 0, 1)

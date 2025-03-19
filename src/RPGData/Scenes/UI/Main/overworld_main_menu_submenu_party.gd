@@ -35,7 +35,10 @@ func _set_entity_info(index : int):
 	var lck = entity.get_lck(player.level);
 	
 	# TODO: Animate portrait and name
-	#$"Entity Stats Area/Entity Portrait Group/Portrait"
+	$"Entity Stats Area/Entity Portrait Group/Portrait/TweenPlayerUI".play_tween_name("Portrait Zap");
+	
+	if entity.entity_sprites.size() > 3:
+		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(entity.entity_sprites[3], "Texture2D") as Texture2D;
 	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(entity.name_key);
 	$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(player.level);
 	
