@@ -148,12 +148,12 @@ func set_data(data : Array):
 func _spawn_menu_items():
 	_item_groups.clear();
 	
-	var primary = _grid_size.x;
-	var secondary = _grid_size.y;
+	var primary = _grid_size.y;
+	var secondary = _grid_size.x;
 	
 	if horizontal:
-		primary = _grid_size.y;
-		secondary = _grid_size.x;
+		primary = _grid_size.x;
+		secondary = _grid_size.y;
 	
 	for p in primary:
 		_item_groups.append([]);

@@ -938,7 +938,6 @@ mouse_filter = 2
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -987,7 +986,7 @@ script = ExtResource("12_wsuig")
 container = NodePath("ScrollContainer")
 menu_item = ExtResource("13_p080w")
 item_size = Vector2(450, 75)
-item_spacing = Vector2(10, 5)
+item_spacing = Vector2(50, 5)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Item Selection Area/Dynamic Panel"]
 layout_mode = 1
