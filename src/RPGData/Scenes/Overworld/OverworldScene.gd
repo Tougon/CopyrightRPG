@@ -110,7 +110,16 @@ func _on_overworld_battle_queued(encounter : Encounter):
 			player.override_level = DataManager.party_data[i].level;
 			player.hp_offset = DataManager.party_data[i].hp_dmg;
 			player.mp_offset = DataManager.party_data[i].mp_dmg;
+			
+			var moveset : Array[Spell];
+			
+			for move in DataManager.party_data[i].move_list:
+				if move is String:
+					var as_int = int(move);
+					moveset.append(player.override_entity.move_list.list[as_int].spell);
+			
 			params.players.append(player);
+		
 		else : params.players.append(null);
 	
 	# Initialize enemy data

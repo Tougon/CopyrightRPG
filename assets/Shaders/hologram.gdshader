@@ -25,22 +25,22 @@ void fragment() {
 	float final_alpha = COLOR.a;
     vec2 offset = vec2(TIME * speed / 100.0);
     vec2 tiling = tilingAndOffset(UV, hologramTextureTiling, offset);
-    
+
     vec4 noise = texture(hologramTexture, tiling);
-    
+
     float fresnel = 0.71;
     vec4 colorLines = linesColor * vec4(vec3(linesColorIntensity), 1.0);
     vec4 emission = colorLines * fresnel * noise;
-	
+
 	float smooth_line_grade = abs(sin((UV.y - TIME*distortion_speed) * (distortion * 100.0)));
-    
+
     vec4 albedo = baseColor;
     float alpha = dot(noise.rgb, vec3(1.0));
     vec4 hologram;
     hologram.rgb = emission.rgb + (1.0 - emission.rgb) * albedo.rgb * albedo.a;
     hologram.a = emission.a + (1.0 - emission.a) * alpha;
     hologram.a = hologram.a + (1.0 - hologram.a) * albedo.a;
-	
+
 	COLOR = color_shift(UV, TEXTURE, vec2(1.0, 0.0)*smooth_line_grade/stablization*distortion_factor);
 	float shifted_alpha = COLOR.a;
 	//COLOR = texture(TEXTURE, UV);

@@ -64,9 +64,13 @@ func entity_init(params : BattleParams):
 	current_entity = params.players[player_id].override_entity;
 	super.entity_init(params)
 	
-	# TODO: Apply additional modifiers and moveset
+	# TODO: Apply additional stat modifiers
 	current_hp -= hp_mod;
 	current_mp -= mp_mod;
+	
+	# Override move list with player's set
+	if params.players[player_id].override_move_list != null && params.players[player_id].override_move_list.size() > 0:
+		move_list = params.players[player_id].override_move_list;
 	
 	await get_tree().process_frame;
 	EventManager.register_player.emit(self);

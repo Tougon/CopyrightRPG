@@ -37,7 +37,7 @@ void fragment()
 {
 	vec2 uv = UV;
 	float time = (TIME * time_scale) + time_offset;
-	
+
 	if (use_manual_time)
 	{
 		time = (manual_time * time_scale) + time_offset;

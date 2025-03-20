@@ -28,11 +28,15 @@ func _ready():
 	
 	# TODO: Better initialization for player
 	for i in GameplayConstants.MAX_PARTY_SIZE:
+		var entity = DataManager.entity_database.get_entity(i, true)
+		var move_list = entity.get_base_move_list();
+		
 		var member = PartyMemberData.new();
 		member.id = i;
 		member.level = 1;
 		member.exp = 0;
 		member.unlocked = true;#i == 0;
+		member.move_list = move_list;
 		party_data.append(member);
 	
 	# TODO: Remove this. This is temp item stuff.

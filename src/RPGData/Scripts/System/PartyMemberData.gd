@@ -9,6 +9,7 @@ var hp_dmg : int;
 var mp_dmg : int;
 
 # TODO: Add data for equipment and moveset.
+var move_list : Array;
 
 
 func _get_property_list() -> Array:
@@ -44,6 +45,11 @@ func _get_property_list() -> Array:
 		"type": TYPE_INT,
 		"usage": PROPERTY_USAGE_STORAGE
 	})
+	ret.append({
+		"name": "Movelist",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
 	
 	return ret;
 
@@ -63,6 +69,8 @@ func _get(property):
 			return hp_dmg;
 		"MP":
 			return mp_dmg;
+		"Movelist":
+			return move_list;
 
 
 func _set(property, val) -> bool:
@@ -81,6 +89,8 @@ func _set(property, val) -> bool:
 			hp_dmg = val;
 		"MP":
 			mp_dmg = val;
+		"Movelist":
+			move_list = val;
 	
 	notify_property_list_changed();
 	return retval;

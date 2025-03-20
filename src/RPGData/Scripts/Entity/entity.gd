@@ -126,3 +126,15 @@ func get_reward_exp(level : int) -> int:
 @export var move_list : MoveList;
 @export var behavior : EntityBehaviorObject;
 @export var seal_effect : SealEffectGroup;
+
+
+func get_base_move_list() -> Array:
+	var result : Array = [];
+	
+	for i in move_list.list.size():
+		var item = move_list.list[i];
+		
+		if item.level == 1 || item.level == 0:
+			result.append(str(i));
+	
+	return result;

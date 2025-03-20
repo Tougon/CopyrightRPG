@@ -53,7 +53,27 @@ func _set_entity_info(index : int):
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/RES".set_stat_value(res);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/SPD".set_stat_value(spd);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/LCK".set_stat_value((lck * GameplayConstants.LUCK_SCALE));
-
+	
+	# Moveset
+	var moveset_grid = $"Entity Equipment Area/VBox/Moveset/Grid";
+	
+	for i in moveset_grid.get_child_count():
+		var move : Spell;
+		var button = moveset_grid.get_child(i);
+		
+		if i < player.move_list.size():
+			var move_id = player.move_list[i];
+			
+			# Check if the move is part of the player's base moveset
+			if move_id is String:
+				var as_int = int(move_id);
+				move = entity.move_list.list[as_int].spell;
+			# Otherwise, pull the info from the item database
+		
+		if move != null:
+			button.text = tr(move.spell_name_key);
+		else : 
+			button.text = "+";
 
 # UI utility functions
 func on_focus():
