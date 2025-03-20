@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MoveItem" load_steps=4 format=3 uid="uid://borv6nrbc6jlj"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_en65d"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/move_item.gd" id="2_7ofgw"]
+[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="2_aa685"]
+
+[resource]
+script = ExtResource("2_7ofgw")
+move = ExtResource("2_aa685")
+item_name_key = "T_ITEM_NAME_TEMPB"
+item_description_key = ""
+item_flags = Array[ExtResource("1_en65d")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

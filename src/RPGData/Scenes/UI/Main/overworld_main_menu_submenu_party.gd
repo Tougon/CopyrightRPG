@@ -68,7 +68,11 @@ func _set_entity_info(index : int):
 			if move_id is String:
 				var as_int = int(move_id);
 				move = entity.move_list.list[as_int].spell;
-			# Otherwise, pull the info from the item database
+			else : 
+				var item = DataManager.item_database.get_item(move_id);
+				
+				if item != null && item is MoveItem:
+					move = (item as MoveItem).move;
 		
 		if move != null:
 			button.text = tr(move.spell_name_key);

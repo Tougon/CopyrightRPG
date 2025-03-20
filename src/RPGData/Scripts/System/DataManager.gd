@@ -41,6 +41,7 @@ func _ready():
 	
 	# TODO: Remove this. This is temp item stuff.
 	current_save.inventory[0] = 2;
+	current_save.inventory[1] = 3;
 	
 	await get_tree().process_frame;
 

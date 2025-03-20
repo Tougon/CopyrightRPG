@@ -117,7 +117,12 @@ func _on_overworld_battle_queued(encounter : Encounter):
 				if move is String:
 					var as_int = int(move);
 					moveset.append(player.override_entity.move_list.list[as_int].spell);
+				else:
+					var item = DataManager.item_database.get_item(move);
+					if item != null && item is MoveItem:
+						moveset.append((item as MoveItem).move);
 			
+			player.override_move_list = moveset;
 			params.players.append(player);
 		
 		else : params.players.append(null);
