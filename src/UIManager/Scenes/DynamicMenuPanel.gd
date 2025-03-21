@@ -386,10 +386,15 @@ func _refresh_group_wrap_navigation():
 	for i in _item_groups[0].size():
 		var top_item = _item_groups[0][i] as Control;
 		var bottom_item = _item_groups[_last_group_index][min(i, _last_item_index)] as Control;
+		print(bottom_item);
 		
 		# Remove previous bottom and top wraps
 		if _item_groups.size() > 1:
+			(_item_groups[0][i] as Control).focus_neighbor_top = "";
+			(_item_groups[0][i] as Control).focus_neighbor_bottom = "";
 			(_item_groups[1][i] as Control).focus_neighbor_top = "";
+			(_item_groups[1][i] as Control).focus_neighbor_bottom = "";
+			(_item_groups[_item_groups.size() - 2][i] as Control).focus_neighbor_top = "";
 			(_item_groups[_item_groups.size() - 2][i] as Control).focus_neighbor_bottom = "";
 		
 		top_item.focus_neighbor_top = bottom_item.get_path();
