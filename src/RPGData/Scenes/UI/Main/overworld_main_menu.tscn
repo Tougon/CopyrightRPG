@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=75 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -31,6 +31,10 @@
 [ext_resource type="PackedScene" uid="uid://cfktvvjn8vypu" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_stat_display.tscn" id="19_dtlof"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_options.gd" id="21_n8v21"]
+[ext_resource type="Script" path="res://src/VideoPlayer/video_player.gd" id="23_k7wig"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_move_select_menu.gd" id="23_kuxur"]
+[ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="24_m7wo8"]
+[ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -211,6 +215,17 @@ tween_name = "Portrait Zap"
 tween_resource = SubResource("Resource_7qvt7")
 play_on_start = false
 next_tween = ""
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ikbu"]
+shader = ExtResource("24_m7wo8")
+shader_parameter/color_primary = null
+shader_parameter/color_secondary = Color(1, 1, 1, 1)
+shader_parameter/resolution = Vector2(266.667, 200)
+shader_parameter/amount = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ei2n"]
+line_spacing = -5.0
+font_size = 12
 
 [sub_resource type="Resource" id="Resource_el8iu"]
 script = ExtResource("6_i4er7")
@@ -528,8 +543,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
-visible = false
+[node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("next_player_node", "prev_player_node", "moveset_grid", "root_menu", "initial_selection", "all_selections")]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -539,10 +553,13 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
 script = ExtResource("10_6ge4e")
+next_player_node = NodePath("Entity Equipment Area/Next")
+prev_player_node = NodePath("Entity Equipment Area/Previous")
+moveset_grid = NodePath("Entity Equipment Area/VBox/Moveset/Grid")
 root_menu = NodePath("../..")
 submenu = true
 initial_selection = NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button")
-all_selections = [NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button2"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button2"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button4"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button5"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Button6"), NodePath("Entity Equipment Area/Previous"), NodePath("Entity Equipment Area/Next")]
+all_selections = [NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button2"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 1"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 2"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 4"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 5"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 6"), NodePath("Entity Equipment Area/Previous"), NodePath("Entity Equipment Area/Next")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_mlp1p"), SubResource("Resource_jg1pe")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Party"]
@@ -792,7 +809,7 @@ offset_top = 50.0
 offset_right = 20.0
 offset_bottom = 550.0
 grow_horizontal = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 40
 
 [node name="Equipment" type="Control" parent="Body/Party/Entity Equipment Area/VBox"]
 custom_minimum_size = Vector2(0, 180)
@@ -874,50 +891,50 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 3
 
-[node name="Button" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+[node name="Move 1" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_left = NodePath("../../../../Previous")
-text = "Temp Button Name"
+text = "Move 1"
 text_overrun_behavior = 3
 
-[node name="Button2" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+[node name="Move 2" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Temp Button Name"
+text = "Move 2"
 text_overrun_behavior = 3
 
-[node name="Button3" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+[node name="Move 3" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_right = NodePath("../../../../Next")
-text = "Temp Button Name"
+text = "Move 3"
 text_overrun_behavior = 3
 
-[node name="Button4" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+[node name="Move 4" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_left = NodePath("../../../../Previous")
-text = "Temp Button Name"
+text = "Move 4"
 text_overrun_behavior = 3
 
-[node name="Button5" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+[node name="Move 5" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Temp Button Name"
+text = "Move 5"
 text_overrun_behavior = 3
 
-[node name="Button6" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+[node name="Move 6" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_right = NodePath("../../../../Next")
-text = "Temp Button Name"
+text = "Move 6"
 text_overrun_behavior = 3
 
 [node name="Previous" type="Control" parent="Body/Party/Entity Equipment Area"]
@@ -934,10 +951,138 @@ offset_bottom = 40.0
 focus_mode = 2
 mouse_filter = 2
 
+[node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -298.0
+offset_right = 484.0
+offset_bottom = -93.0
+grow_vertical = 0
+script = ExtResource("23_kuxur")
+menu_panel = NodePath("BG/Dynamic Panel")
+menu_name = "overworld_menu_main_move_select"
+
+[node name="BG" type="ColorRect" parent="Body/Party/Entity Move Select Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.196826, 0.089291, 0.178352, 0.901961)
+
+[node name="Move Visuals" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_right = 78.0
+offset_bottom = 104.0
+grow_horizontal = 2
+script = ExtResource("23_k7wig")
+
+[node name="Static" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
+material = SubResource("ShaderMaterial_8ikbu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Move Name"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "The user blasts the target with power that distorts even time. The user can't move on the next turn. "
+label_settings = SubResource("LabelSettings_3ei2n")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Cost" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "999 MP"
+vertical_alignment = 1
+
+[node name="Dynamic Panel" type="Panel" parent="Body/Party/Entity Move Select Area/BG" node_paths=PackedStringArray("container")]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 205.0
+offset_bottom = -5.0
+grow_vertical = 2
+script = ExtResource("12_wsuig")
+container = NodePath("ScrollContainer")
+menu_item = ExtResource("27_0wilh")
+item_size = Vector2(195, 50)
+item_spacing = Vector2(10, 5)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Body/Party/Entity Move Select Area/BG/Dynamic Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="Control" type="Control" parent="Body/Party/Entity Move Select Area/BG/Dynamic Panel/ScrollContainer"]
+layout_mode = 2
+
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1364,7 +1509,12 @@ text = "T_MENU_COMMON_DELETE"
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
-[connection signal="focus_entered" from="Body/Party" to="Body/Party" method="_on_focus_entered_next"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1" to="Body/Party" method="_on_move_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2" to="Body/Party" method="_on_move_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3" to="Body/Party" method="_on_move_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 4" to="Body/Party" method="_on_move_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 5" to="Body/Party" method="_on_move_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6" to="Body/Party" method="_on_move_selected"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Previous" to="Body/Party" method="_on_focus_entered_previous"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]

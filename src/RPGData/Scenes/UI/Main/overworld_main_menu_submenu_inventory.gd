@@ -26,7 +26,7 @@ func _refresh_inventory_ui():
 	var inventory = DataManager.get_inventory_as_array();
 	
 	menu_panel.set_data(inventory);
-	no_items_display.visible = inventory.size() == 0
+	no_items_display.visible = inventory.size() == 0;
 
 
 func _on_item_selected(data):

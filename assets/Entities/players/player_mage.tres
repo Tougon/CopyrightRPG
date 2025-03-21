@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=28 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=32 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_3quqn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_cso64"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_uapsv"]
 [ext_resource type="Resource" uid="uid://d22f2bgpkerm4" path="res://assets/Spells/damage/player/spell_damage_player_classified.tres" id="4_jxinl"]
 [ext_resource type="Resource" uid="uid://dttsu67w5y8lh" path="res://assets/Spells/damage/player/spell_damage_player_topsecret.tres" id="5_jj087"]
+[ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="6_ghl7l"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_0r171"]
+[ext_resource type="Resource" uid="uid://hwg78sfnr4t3" path="res://assets/Spells/damage/common/spell_damage_common_ice.tres" id="7_sv7wa"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="8_178lu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="11_qtr3x"]
 
@@ -59,9 +61,19 @@ script = ExtResource("1_cso64")
 spell = ExtResource("5_jj087")
 level = 0
 
+[sub_resource type="Resource" id="Resource_r310e"]
+script = ExtResource("1_cso64")
+spell = ExtResource("6_ghl7l")
+level = 0
+
+[sub_resource type="Resource" id="Resource_6f7rq"]
+script = ExtResource("1_cso64")
+spell = ExtResource("7_sv7wa")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_0r171")
-list = Array[ExtResource("1_cso64")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry")])
+list = Array[ExtResource("1_cso64")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_r310e"), SubResource("Resource_6f7rq")])
 
 [sub_resource type="Curve" id="Curve_cg64e"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

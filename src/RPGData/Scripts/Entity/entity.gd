@@ -128,13 +128,13 @@ func get_reward_exp(level : int) -> int:
 @export var seal_effect : SealEffectGroup;
 
 
-func get_base_move_list() -> Array:
+func get_base_move_list(level : int = 1) -> Array:
 	var result : Array = [];
 	
 	for i in move_list.list.size():
 		var item = move_list.list[i];
 		
-		if item.level == 1 || item.level == 0:
+		if (item.level <= level) && result.size() < GameplayConstants.MAX_PLAYER_MOVE_LIST_SIZE:
 			result.append(str(i));
 	
 	return result;

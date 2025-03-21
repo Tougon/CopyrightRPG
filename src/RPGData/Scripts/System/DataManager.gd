@@ -31,6 +31,9 @@ func _ready():
 		var entity = DataManager.entity_database.get_entity(i, true)
 		var move_list = entity.get_base_move_list();
 		
+		while move_list.size() < GameplayConstants.MAX_PLAYER_MOVE_LIST_SIZE:
+			move_list.append(-1);
+		
 		var member = PartyMemberData.new();
 		member.id = i;
 		member.level = 1;
@@ -128,6 +131,18 @@ func get_battle_items() -> Dictionary:
 		
 		if item != null && item is ConsumableItem && item.use_battle :
 			result[id] = current_save.inventory[id];
+	
+	return result;
+
+
+func get_move_items() -> Dictionary:
+	var result : Dictionary;
+	
+	for id in current_save.inventory.keys():
+		var item = item_database.get_item(id);
+		
+		if item != null && item is MoveItem :
+			result[id] = item;
 	
 	return result;
 
