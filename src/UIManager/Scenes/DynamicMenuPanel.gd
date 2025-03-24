@@ -366,8 +366,10 @@ func _refresh_group(group : Array, row_index : int):
 			else:
 				(group[i - 1] as Control).focus_neighbor_right = (item as Control).get_path();
 		else :
-			(item as Control).focus_neighbor_left = "";
-			(item as Control).focus_neighbor_right = "";
+			# This originally removed the navigation.
+			# Setting it to itself resolves issues where single lists can go out of bounds
+			(item as Control).focus_neighbor_left = (item as Control).get_path();
+			(item as Control).focus_neighbor_right = (item as Control).get_path();
 		
 		index += 1;
 
