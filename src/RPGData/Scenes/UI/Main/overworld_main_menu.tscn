@@ -1051,6 +1051,24 @@ theme_override_font_sizes/font_size = 14
 text = "999 MP"
 vertical_alignment = 1
 
+[node name="Close" type="Button" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -55.0
+offset_right = -10.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+text = "Close"
+
 [node name="Dynamic Panel" type="Panel" parent="Body/Party/Entity Move Select Area/BG" node_paths=PackedStringArray("container")]
 layout_mode = 1
 anchors_preset = 9
@@ -1077,6 +1095,28 @@ follow_focus = true
 
 [node name="Control" type="Control" parent="Body/Party/Entity Move Select Area/BG/Dynamic Panel/ScrollContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Party/Entity Move Select Area/BG"]
+material = ExtResource("16_egfar")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -10.5
+offset_right = 124.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+pivot_offset = Vector2(427, 250)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 24
+text = "T_MENU_COMMON_PARTY_NO_MOVES"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
@@ -1517,6 +1557,7 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6" to="Body/Party" method="_on_move_selected"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Previous" to="Body/Party" method="_on_focus_entered_previous"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
+[connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]

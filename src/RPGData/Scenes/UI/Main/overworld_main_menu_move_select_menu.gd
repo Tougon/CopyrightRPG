@@ -29,7 +29,11 @@ func _on_player_move_selected(move_index : int, player_data : PartyMemberData, e
 func on_focus():
 	super.on_focus();
 	await get_tree().process_frame;
-	menu_panel.set_selected_index(0);
+	
+	if menu_panel.get_data_size() > 0 :
+		menu_panel.set_selected_index(0);
+	else :
+		$"BG/Move Visuals/Close".grab_focus();
 
 
 func _refresh_move_ui():
@@ -71,7 +75,17 @@ func _refresh_move_ui():
 		valid_moves.append(null);
 	
 	menu_panel.set_data(valid_moves);
-
+	
+	if valid_moves.size() == 0:
+		$"BG/Move Visuals/Vid/Name".text = tr("T_MENU_COMMON_PARTY_NO_MOVES_DESC");
+		$"BG/Move Visuals/Description".text = "";
+		$"BG/Move Visuals/Cost".text = "";
+		$BG/Label.visible = true;
+		$"BG/Move Visuals/Close".visible = true;
+		$"BG/Move Visuals/Close".grab_focus();
+	else :
+		$BG/Label.visible = false;
+		$"BG/Move Visuals/Close".visible = false;
 
 func _get_num_moves_set() -> int:
 	var result = 0;
@@ -123,7 +137,10 @@ func _on_item_clicked(data):
 	var is_item = _spell_to_item_id.has(data);
 	
 	if data == null : result_id = -1;
-	elif is_item : result_id = _spell_to_item_id[data];
+	elif is_item : 
+		result_id = _spell_to_item_id[data];
+		# Remove item from list
+		DataManager.change_item_amount(result_id, -1);
 	else : result_id = _get_local_move_id(data);
 	
 	var new_move_list : Array;
@@ -133,6 +150,9 @@ func _on_item_clicked(data):
 			if result_id != -1:
 				if is_item : new_move_list.append(result_id);
 				else : new_move_list.append(str(result_id));
+			
+			if _current_player_data.move_list[i] is int && _current_player_data.move_list[i] != -1:
+				DataManager.change_item_amount(_current_player_data.move_list[i], 1);
 		else :
 			if int(_current_player_data.move_list[i]) != -1 :
 				new_move_list.append(_current_player_data.move_list[i]);
@@ -145,6 +165,10 @@ func _on_item_clicked(data):
 	# Invoke update for player move list
 	EventManager.refresh_player_move_list.emit(new_move_list);
 	
+	set_active(false);
+
+
+func _on_close_pressed() -> void:
 	set_active(false);
 
 

@@ -175,10 +175,24 @@ func _get_last_valid_moveset_button() -> Control:
 
 func on_ui_trigger_l():
 	_set_entity_info(_current_player_index - 1);
+	
+	if UIManager.current_selection.get_parent() == moveset_grid : 
+		var last_valid = _get_last_valid_moveset_button();
+		var last_valid_index = last_valid.get_index();
+		
+		if last_valid_index < UIManager.current_selection.get_index():
+			last_valid.grab_focus();
 
 
 func on_ui_trigger_r():
 	_set_entity_info(_current_player_index + 1);
+	
+	if UIManager.current_selection.get_parent() == moveset_grid : 
+		var last_valid = _get_last_valid_moveset_button();
+		var last_valid_index = last_valid.get_index();
+		
+		if last_valid_index < UIManager.current_selection.get_index():
+			last_valid.grab_focus();
 
 
 func cache_menu_state():

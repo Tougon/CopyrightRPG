@@ -388,7 +388,7 @@ func _refresh_group_wrap_navigation():
 	for i in _item_groups[0].size():
 		var top_item = _item_groups[0][i] as Control;
 		var bottom_item = _item_groups[_last_group_index][min(i, _last_item_index)] as Control;
-		print(bottom_item);
+		#print(bottom_item);
 		
 		# Remove previous bottom and top wraps
 		if _item_groups.size() > 1:
@@ -411,3 +411,7 @@ func _get_num_active_elements(group : int) -> int:
 		if (item as Control).visible : result += 1;
 	
 	return result;
+
+
+func get_data_size() -> int:
+	return _data.size();
