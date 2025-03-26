@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=7 format=3 uid="uid://ihfxygkla2b5"]
+
+[ext_resource type="Resource" uid="uid://bs6g8nyjbm8sq" path="res://assets/Animations/Sequences/test_anim.tres" id="1_eim7r"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_kuuyl"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_q4eju"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="3_aqxwk"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_6g78c"]
+[ext_resource type="Resource" uid="uid://b8rhhshmwvhvo" path="res://assets/Flags/earth.tres" id="6_yoyy2"]
+
+[resource]
+script = ExtResource("3_aqxwk")
+spell_power = 25.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+check_accuracy = true
+spell_accuracy = 80.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+can_critical = true
+critical_chance = 16
+spell_name_key = "T_SPELL_STATUS_COMMON_NONE"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_SUPERSLIME_SPREAD"
+spell_type = 0
+spell_target = 3
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("4_6g78c")]([ExtResource("6_yoyy2")])
+animation_sequence = ExtResource("1_eim7r")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_kuuyl")]([])
+effects_on_success = Array[ExtResource("1_kuuyl")]([])
+properties = Array[ExtResource("2_q4eju")]([])

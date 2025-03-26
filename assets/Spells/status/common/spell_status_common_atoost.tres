@@ -6,9 +6,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_3ddfm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_o2jhw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_xjji6"]
-[ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="6_gajxk"]
 [ext_resource type="Resource" uid="uid://dfgo451y616jh" path="res://assets/Flags/attack.tres" id="7_2110n"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_dquus"]
+[ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="9_4kiqm"]
 
 [sub_resource type="Resource" id="Resource_qqvlw"]
 script = ExtResource("3_3ddfm")
@@ -30,7 +30,7 @@ spell_type = 3
 spell_target = 4
 spell_cost = 15
 spell_priority = 0
-spell_flags = Array[ExtResource("7_dquus")]([ExtResource("6_gajxk"), ExtResource("7_2110n")])
+spell_flags = Array[ExtResource("7_dquus")]([ExtResource("7_2110n"), ExtResource("9_4kiqm")])
 animation_sequence = ExtResource("1_uag5v")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])
