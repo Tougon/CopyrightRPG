@@ -19,6 +19,7 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 	
 	if seal_count == 0 : return !negate;
 	
+	
 	var rand_chance = randf();
 	var caution = 1;
 	

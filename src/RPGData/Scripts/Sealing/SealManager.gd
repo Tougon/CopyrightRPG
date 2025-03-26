@@ -118,7 +118,7 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 	var seal_count = 0;
 	
 	for seal in seal_instances:
-		if seal.player_side == player_side : continue;
+		if seal.player_side != player_side : continue;
 		
 		# NOTE: This will double effects up and do a violation per flag.
 		for flag in spell.spell_flags:
