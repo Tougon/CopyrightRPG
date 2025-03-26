@@ -15,6 +15,11 @@ func execute(sequence : AnimationSequence):
 	# Load the texture
 	var result = ResourceLoader.load_threaded_get_status(texture_path);
 	
+	# TODO: Move this elsewhere possibly
+	while(result == ResourceLoader.THREAD_LOAD_IN_PROGRESS && sequence != null && sequence.tree != null):
+		await sequence.tree.process_frame;
+		result = ResourceLoader.load_threaded_get_status(texture_path);
+	
 	if result == ResourceLoader.THREAD_LOAD_LOADED:
 		texture = ResourceLoader.load_threaded_get(texture_path) as Texture2D;
 	
