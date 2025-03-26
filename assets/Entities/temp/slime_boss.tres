@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=76 format=3 uid="uid://dxdbu7u0q6ct6"]
+[gd_resource type="Resource" script_class="Entity" load_steps=78 format=3 uid="uid://dxdbu7u0q6ct6"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_tgypq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_pjyw5"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://ihfxygkla2b5" path="res://assets/Spells/damage/enemy/spell_damage_enemy_superslime_spread.tres" id="14_n1xfv"]
 [ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/seal/effect_seal_debuff_defense.tres" id="15_01wsr"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="15_f0ax6"]
+[ext_resource type="Resource" uid="uid://conbeqpmr4jye" path="res://assets/Spells/damage/enemy/spell_damage_enemy_superslime_bigdamage.tres" id="16_gsbgh"]
 
 [sub_resource type="Curve" id="Curve_c5l6p"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -163,7 +164,7 @@ negate = false
 script = ExtResource("2_pjyw5")
 behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_h3qxp")])
 check_type = 0
-action_id = Array[int]([2])
+action_id = Array[int]([2, 5, 5])
 seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_lk8uk"]
@@ -194,7 +195,7 @@ script = ExtResource("2_pjyw5")
 behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_kf1m3"), SubResource("Resource_5lpck")])
 check_type = 0
 action_id = Array[int]([4])
-seal_chance = Array[float]([0.0])
+seal_chance = Array[float]([1.0])
 
 [sub_resource type="Resource" id="Resource_sq7d6"]
 script = ExtResource("3_pdjjt")
@@ -205,7 +206,7 @@ negate = false
 script = ExtResource("2_pjyw5")
 behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_sq7d6")])
 check_type = 0
-action_id = Array[int]([2])
+action_id = Array[int]([2, 5, 5])
 seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_o1y2h"]
@@ -233,8 +234,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("1_tgypq")
-min = 2000
-max = 2000
+min = 1150
+max = 1150
 growth = SubResource("Curve_x6q21")
 
 [sub_resource type="Curve" id="Curve_8jkfr"]
@@ -276,9 +277,14 @@ script = ExtResource("8_bj7nf")
 spell = ExtResource("15_f0ax6")
 level = 0
 
+[sub_resource type="Resource" id="Resource_t2srj"]
+script = ExtResource("8_bj7nf")
+spell = ExtResource("16_gsbgh")
+level = 0
+
 [sub_resource type="Resource" id="Resource_lg1m0"]
 script = ExtResource("12_rj7c4")
-list = Array[ExtResource("8_bj7nf")]([SubResource("Resource_6i8li"), SubResource("Resource_f87ij"), SubResource("Resource_vyehk"), SubResource("Resource_kyd6f"), SubResource("Resource_u5iyt")])
+list = Array[ExtResource("8_bj7nf")]([SubResource("Resource_6i8li"), SubResource("Resource_f87ij"), SubResource("Resource_vyehk"), SubResource("Resource_kyd6f"), SubResource("Resource_u5iyt"), SubResource("Resource_t2srj")])
 
 [sub_resource type="Curve" id="Curve_v7tns"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]

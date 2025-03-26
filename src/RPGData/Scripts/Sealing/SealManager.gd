@@ -23,15 +23,19 @@ func _on_battle_begin(params : BattleParams):
 
 
 func _on_entity_defeated(entity : EntityController):
-	for i in seal_instances.size():
-		var seal = seal_instances[i];
+	var index = 0;
+	
+	while index < seal_instances.size() && seal_instances.size() > 0:
+		var seal = seal_instances[index];
 		
 		if seal.seal_entity == entity:
 			# Send a message saying the seal has been lifted
+			# TODO: Do not do if the battle is over
 			_send_seal_inactive_message(seal, entity);
 			
-			seal_instances.remove_at(i);
-			i -= 1;
+			seal_instances.remove_at(index);
+		else :
+			index += 1;
 
 
 func _send_seal_inactive_message(seal : SealInstance, entity : EntityController):

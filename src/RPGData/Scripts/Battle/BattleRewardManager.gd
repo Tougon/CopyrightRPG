@@ -10,6 +10,8 @@ func _on_battle_complete(result : BattleResult):
 		# Results Music
 		EventManager.play_bgm.emit("battle_win", 0.2, true, 0, 1);
 		
+		if GameplayConstants.DEMO_MODE : result.exp = 0;
+		
 		if result.exp > 0:
 			var exp : String;
 			
