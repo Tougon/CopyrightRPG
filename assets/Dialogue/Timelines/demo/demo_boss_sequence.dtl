@@ -1,0 +1,4 @@
+join demo_boss center
+demo_boss: Prepare yourself...
+demo_boss: I will crush you with the power of [b]Earth[/b]!
+[begin_battle path="res://assets/Encounters/temp.tres"]

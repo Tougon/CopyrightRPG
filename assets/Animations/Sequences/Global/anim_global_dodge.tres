@@ -18,7 +18,7 @@ ease = 1
 relative = true
 "Use From" = false
 "Value Type" = 3
-"Vector2 Value" = Vector2(100, 0)
+"Vector2 Value" = Vector2(65, 0)
 
 [sub_resource type="Resource" id="Resource_bfaje"]
 script = ExtResource("1_p2n2r")
@@ -50,7 +50,7 @@ ease = 1
 relative = true
 "Use From" = false
 "Value Type" = 3
-"Vector2 Value" = Vector2(-100, 0)
+"Vector2 Value" = Vector2(-65, 0)
 
 [sub_resource type="Resource" id="Resource_rtrud"]
 script = ExtResource("1_p2n2r")

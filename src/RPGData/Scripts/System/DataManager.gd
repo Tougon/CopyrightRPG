@@ -36,7 +36,7 @@ func _ready():
 		
 		var member = PartyMemberData.new();
 		member.id = i;
-		member.level = 1;
+		member.level = 5;
 		member.exp = 0;
 		member.unlocked = true;#i == 0;
 		member.move_list = move_list;

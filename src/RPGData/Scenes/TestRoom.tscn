@@ -568,7 +568,7 @@ odds = 0.0
 
 [sub_resource type="Resource" id="Resource_tkqyn"]
 script = ExtResource("5_utklg")
-enemy_ids = Array[int]([7])
+enemy_ids = Array[int]([9])
 odds = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
@@ -758,6 +758,7 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 
 [node name="EncounterManager[DELETE LATER]" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_tkqyn")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
@@ -809,26 +810,37 @@ y_sort_enabled = true
 [node name="Sorted Items" type="Node2D" parent="Environment"]
 y_sort_enabled = true
 
-[node name="Interactable" parent="Environment/Sorted Items" instance=ExtResource("8_scqk0")]
+[node name="Test Group" type="Node2D" parent="Environment/Sorted Items"]
+visible = false
+
+[node name="Interactable" parent="Environment/Sorted Items/Test Group" instance=ExtResource("8_scqk0")]
+visible = false
 position = Vector2(194, 446)
 default_active_state = false
 additional_active_state = Array[ExtResource("20_ybg78")]([SubResource("Resource_8ofoh")])
 
-[node name="Interactable3" parent="Environment/Sorted Items" instance=ExtResource("8_scqk0")]
+[node name="Interactable3" parent="Environment/Sorted Items/Test Group" instance=ExtResource("8_scqk0")]
+visible = false
 position = Vector2(217, 294)
 default_active_state = false
 
-[node name="Interactable2" parent="Environment/Sorted Items" instance=ExtResource("20_nrspv")]
+[node name="Interactable2" parent="Environment/Sorted Items/Test Group" instance=ExtResource("20_nrspv")]
+visible = false
 position = Vector2(715, 311)
 default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
 object_id = "temp_quest_giver"
 
-[node name="Interactable4" parent="Environment/Sorted Items" instance=ExtResource("20_nrspv")]
+[node name="Interactable4" parent="Environment/Sorted Items/Test Group" instance=ExtResource("20_nrspv")]
+visible = false
 position = Vector2(282, 75)
 default_dialogue = "temp_cutscene"
 additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma2")])
 object_id = "temp_cutscene_giver"
+
+[node name="Boss" parent="Environment/Sorted Items" instance=ExtResource("8_scqk0")]
+position = Vector2(608, -122)
+default_dialogue = "demo_boss_sequence"
 
 [node name="Sprite2D" type="Sprite2D" parent="Environment/Sorted Items"]
 visible = false
@@ -856,7 +868,7 @@ script = ExtResource("27_aqp1h")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_jh7gi")])
 
 [node name="Player Controller" parent="Environment/Sorted Items" groups=["Player"] instance=ExtResource("2_pvxte")]
-position = Vector2(460, 360)
+position = Vector2(607, 128)
 run_multiplier = 1.75
 
 [node name="RPGOverworldFollower" parent="Environment/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("33_ytqpp")]
@@ -908,7 +920,7 @@ sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_sc2vl")])
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(480, 296)
+position = Vector2(607, 128)
 process_callback = 0
 limit_left = 0
 limit_top = -352
@@ -923,7 +935,7 @@ script = ExtResource("26_goqi0")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(480, 296)
+position = Vector2(607, 128)
 script = ExtResource("24_tm1wa")
 priority = 1
 follow_mode = 5

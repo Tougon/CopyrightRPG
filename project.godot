@@ -37,9 +37,11 @@ DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 [dialogic]
 
 directories/dch_directory={
+"demo_boss": "res://assets/Dialogue/Characters/demo_boss.dch",
 "temp_character_1": "res://assets/Dialogue/Characters/temp_character_1.dch"
 }
 directories/dtl_directory={
+"demo_boss_sequence": "res://assets/Dialogue/Timelines/demo/demo_boss_sequence.dtl",
 "temp": "res://assets/Dialogue/Timelines/temp.dtl",
 "temp_cutscene": "res://assets/Dialogue/Timelines/temp_cutscene.dtl",
 "temp_quest": "res://assets/Dialogue/Timelines/temp_quest.dtl",

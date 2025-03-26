@@ -18,6 +18,7 @@ func _init(in_tree : SceneTree, in_dialogue : DialogueSequence, in_animation : A
 
 
 func sequence_start():
+	await tree.process_frame;
 	BattleManager.dialogue_canvas.on_dialogue_complete.connect(_on_dialogue_end);
 	animation.sequence_ended.connect(_on_animation_end);
 	

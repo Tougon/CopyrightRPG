@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="6_sj5ws"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="7_8joe6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="8_bj7nf"]
-[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="9_2cd87"]
+[ext_resource type="Resource" uid="uid://bwt332wwte1sk" path="res://assets/Spells/status/common/spell_status_common_sand_off.tres" id="9_qlcb5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="12_rj7c4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="13_7pvqc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="13_ah4qq"]
@@ -22,8 +22,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_u32xe"]
 script = ExtResource("1_tgypq")
-min = 38
-max = 38
+min = 34
+max = 34
 growth = SubResource("Curve_c5l6p")
 
 [sub_resource type="Resource" id="Resource_6wsr6"]
@@ -103,7 +103,7 @@ growth = SubResource("Curve_3ihce")
 
 [sub_resource type="Resource" id="Resource_6i8li"]
 script = ExtResource("8_bj7nf")
-spell = ExtResource("9_2cd87")
+spell = ExtResource("9_qlcb5")
 level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]
@@ -140,8 +140,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_f8es4"]
 script = ExtResource("1_tgypq")
-min = 38
-max = 38
+min = 34
+max = 34
 growth = SubResource("Curve_5etj0")
 
 [sub_resource type="Curve" id="Curve_up3ke"]

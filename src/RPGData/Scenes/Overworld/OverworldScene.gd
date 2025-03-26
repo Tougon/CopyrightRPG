@@ -148,29 +148,32 @@ func _on_battle_end(result : BattleResult):
 	canvas_modulate.visible = true;
 	
 	# Process result
-	for i in result.players.size():
-		var player = result.players[i];
-		DataManager.party_data[player.id].hp_dmg = player.hp_offset;
-		DataManager.party_data[player.id].mp_dmg = player.mp_offset;
+	# NOTE: For demo mode, we strip out any progression and item functions
+	# This is for replayability.
+	if !GameplayConstants.DEMO_MODE :
+		for i in result.players.size():
+			var player = result.players[i];
+			DataManager.party_data[player.id].hp_dmg = player.hp_offset;
+			DataManager.party_data[player.id].mp_dmg = player.mp_offset;
+			
+			if player.should_award_exp :
+				DataManager.party_data[player.id].level = player.override_level;
+				DataManager.party_data[player.id].exp = player.modified_exp_amt;
 		
-		if player.should_award_exp :
-			DataManager.party_data[player.id].level = player.override_level;
-			DataManager.party_data[player.id].exp = player.modified_exp_amt;
-	
-	for id in result.player_items.keys() :
-		DataManager.change_item_amount(id, result.player_items[id]);
-	
-	for id in QuestManager.player_quests:
-		var metadata = QuestManager.get_meta_data(QuestManager.player_quests[id].quest_name);
+		for id in result.player_items.keys() :
+			DataManager.change_item_amount(id, result.player_items[id]);
 		
-		for data in metadata:
-			# Check the quest metadata to see if it should progress based on battle result
-			if data == "battle_auto":
-				var step = QuestManager.player_quests[id].next_id
-				QuestManager.progress_quest(id, step, "enemy", result.enemies.size())
-				
-				for enemy in result.enemies:
-					QuestManager.progress_quest(id, step, enemy, 1)
+		for id in QuestManager.player_quests:
+			var metadata = QuestManager.get_meta_data(QuestManager.player_quests[id].quest_name);
+			
+			for data in metadata:
+				# Check the quest metadata to see if it should progress based on battle result
+				if data == "battle_auto":
+					var step = QuestManager.player_quests[id].next_id
+					QuestManager.progress_quest(id, step, "enemy", result.enemies.size())
+					
+					for enemy in result.enemies:
+						QuestManager.progress_quest(id, step, enemy, 1)
 	
 	_battle_end_timestamp = Time.get_unix_time_from_system();
 	var bgm_offset = _battle_end_timestamp - _battle_start_timestamp;
