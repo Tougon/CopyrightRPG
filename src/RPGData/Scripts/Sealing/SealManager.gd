@@ -138,7 +138,6 @@ func _on_entity_move(entity : EntityController) :
 				_send_seal_inactive_message(seal_instances[i], entity);
 				seal_instances.remove_at(i);
 				i -= 1;
-				print(i);
 		
 		i += 1;
 
