@@ -75,17 +75,19 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 	
 	# Realistically should never be null but w/e, safety check
 	if action == null : return false;
-	var sealed = false;
+	var has_sealed = false;
 	
 	for seal in seal_instances:
 		if seal.player_side == player_side : continue;
 		
 		# NOTE: This will double effects up and do a violation per flag.
-		# Maybe we don't want this?
 		for flag in action.spell_flags:
+			var sealed = false;
+			
 			if seal.seal_source.spell_flags.has(flag):
 				
 				if !sealed : 
+					has_sealed = true;
 					sealed = true;
 					var seal_msg = tr("T_BATTLE_ACTION_SEAL_ACTIVATE");
 					
@@ -102,15 +104,14 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 					seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
 					EventManager.on_dialogue_queue.emit(seal_msg);
 				
-				
-				for eff in seal.seal_effect.seal_effects:
-					var eff_instance = eff.create_effect_instance(seal.seal_entity, entity, null);
-					# May be vestigal with how seals work now
-					eff_instance.spell_override = seal.seal_source;
-					eff_instance.check_success();
-					if eff_instance.cast_success : eff_instance.on_activate();
+					for eff in seal.seal_effect.seal_effects:
+						var eff_instance = eff.create_effect_instance(seal.seal_entity, entity, null);
+						# May be vestigal with how seals work now
+						eff_instance.spell_override = seal.seal_source;
+						eff_instance.check_success();
+						if eff_instance.cast_success : eff_instance.on_activate();
 	
-	return sealed;
+	return has_sealed;
 
 
 func _on_entity_move(entity : EntityController) :
