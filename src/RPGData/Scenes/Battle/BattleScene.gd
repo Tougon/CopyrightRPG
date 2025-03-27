@@ -321,6 +321,8 @@ func _action_phase():
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed
 		
+		EventManager.on_entity_turn_end.emit(entity);
+		
 		# Reposition enemies if any have been defeated
 		var amt = get_num_active_enemies();
 		if num_active != amt:

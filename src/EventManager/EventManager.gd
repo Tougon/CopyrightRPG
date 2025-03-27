@@ -65,6 +65,7 @@ signal on_player_item_consumed(item : Item);
 signal on_player_items_changed(items : Dictionary, delta : Item);
 
 signal on_entity_move(entity : EntityController);
+signal on_entity_turn_end(entity : EntityController);
 
 signal on_entity_defeated(entity : EntityController);
 signal on_enemy_defeated(entity : EntityController);

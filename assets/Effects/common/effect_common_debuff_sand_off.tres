@@ -60,6 +60,10 @@ amount = 1
 script = ExtResource("8_508ou")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_FAIL"
 
+[sub_resource type="Resource" id="Resource_7rgwd"]
+script = ExtResource("9_mcc53")
+target = 1
+
 [sub_resource type="Resource" id="Resource_nimd6"]
 script = ExtResource("10_dn87o")
 
@@ -70,17 +74,13 @@ script = ExtResource("11_2yeoh")
 script = ExtResource("8_508ou")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_STACK"
 
-[sub_resource type="Resource" id="Resource_o3k15"]
-script = ExtResource("9_mcc53")
-target = 1
-
 [resource]
 script = ExtResource("12_prx1x")
 stackable = true
 effect_name = "Sand Off Debuff"
 generic = true
 priority = 3
-turn_limit = 2
+turn_limit = 3
 effect_type = 0
 check_success_type = 0
 check_success = Array[ExtResource("1_hc104")]([SubResource("Resource_jsj2g")])
@@ -90,8 +90,8 @@ on_activate = Array[ExtResource("1_hc104")]([SubResource("Resource_aje20")])
 on_failed_to_activate = Array[ExtResource("1_hc104")]([SubResource("Resource_tgpjx")])
 on_apply = Array[ExtResource("1_hc104")]([SubResource("Resource_tpmi0"), SubResource("Resource_blxbe")])
 on_move_selected = Array[ExtResource("1_hc104")]([SubResource("Resource_nimd6")])
-on_move_completed = Array[ExtResource("1_hc104")]([])
+on_move_completed = Array[ExtResource("1_hc104")]([SubResource("Resource_7rgwd")])
 on_deactivate = Array[ExtResource("1_hc104")]([SubResource("Resource_a5ard"), SubResource("Resource_gccvs")])
 on_turn_start = Array[ExtResource("1_hc104")]([])
-on_turn_end = Array[ExtResource("1_hc104")]([SubResource("Resource_o3k15")])
+on_turn_end = Array[ExtResource("1_hc104")]([])
 on_stack = Array[ExtResource("1_hc104")]([SubResource("Resource_h7u5n"), SubResource("Resource_nfvmw")])

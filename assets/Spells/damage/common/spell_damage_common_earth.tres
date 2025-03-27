@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("2_6xoj1")
-spell_power = 65.0
+spell_power = 60.0
 spell_attack_type = 0
 vary_defense_type = false
 spell_defense_type = 0

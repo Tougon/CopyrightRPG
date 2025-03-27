@@ -11,7 +11,7 @@ var sealed_spells : Array[Spell];
 func _ready():
 	EventManager.on_battle_begin.connect(_on_battle_begin);
 	EventManager.on_entity_defeated.connect(_on_entity_defeated);
-	EventManager.on_entity_move.connect(_on_entity_move);
+	EventManager.on_entity_turn_end.connect(_on_entity_turn_end);
 	
 	if BattleManager.seal_manager == null:
 		BattleManager.seal_manager = self;
@@ -70,6 +70,9 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	
 	var seal_inst = SealInstance.new(entity, spell, effect, turn_count, player_side);
 	seal_instances.append(seal_inst);
+	
+	# Add spell to the sealed list
+	sealed_spells.append(spell);
 	
 	EventManager.set_player_bg.emit(entity);
 
@@ -132,7 +135,7 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 	return seal_count;
 
 
-func _on_entity_move(entity : EntityController) :
+func _on_entity_turn_end(entity : EntityController) :
 	var i : int = 0;
 	while i < seal_instances.size():
 		if seal_instances[i].seal_entity == entity:
@@ -150,7 +153,7 @@ func _on_destroy():
 	if EventManager != null:
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
 		EventManager.on_entity_defeated.disconnect(_on_entity_defeated);
-		EventManager.on_entity_move.disconnect(_on_entity_move);
+		EventManager.on_entity_turn_end.disconnect(_on_entity_turn_end);
 	
 	if BattleManager != null && BattleManager.seal_manager == self:
 		BattleManager.seal_manager = null;
