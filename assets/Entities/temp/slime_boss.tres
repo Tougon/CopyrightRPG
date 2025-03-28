@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=78 format=3 uid="uid://dxdbu7u0q6ct6"]
+[gd_resource type="Resource" script_class="Entity" load_steps=84 format=3 uid="uid://dxdbu7u0q6ct6"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_tgypq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_pjyw5"]
@@ -6,10 +6,12 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="4_b4yxj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="5_oe4ag"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="6_sj5ws"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="7_3twps"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="7_8joe6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckDefenseLowest.gd" id="7_vqdwn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="8_bj7nf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="8_dt1d7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSealTarget.gd" id="9_k7y0f"]
 [ext_resource type="Resource" uid="uid://bwt332wwte1sk" path="res://assets/Spells/status/common/spell_status_common_sand_off.tres" id="9_qlcb5"]
 [ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/damage/common/spell_damage_common_earth.tres" id="10_0bh03"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="11_hq45y"]
@@ -52,6 +54,14 @@ seal_chance = Array[float]([1.0])
 [sub_resource type="Resource" id="Resource_lakch"]
 script = ExtResource("5_oe4ag")
 behavior_checks = Array[ExtResource("2_pjyw5")]([SubResource("Resource_3gnws")])
+active_condition = Array[ExtResource("3_pdjjt")]([])
+
+[sub_resource type="Resource" id="Resource_kuc7l"]
+script = ExtResource("7_3twps")
+hp_percent = 0.4
+randomize_target = false
+check_target = 0
+negate = false
 
 [sub_resource type="Resource" id="Resource_i7dae"]
 script = ExtResource("4_b4yxj")
@@ -84,6 +94,7 @@ seal_chance = Array[float]([])
 [sub_resource type="Resource" id="Resource_eih7w"]
 script = ExtResource("5_oe4ag")
 behavior_checks = Array[ExtResource("2_pjyw5")]([SubResource("Resource_i08rd"), SubResource("Resource_qdsuf")])
+active_condition = Array[ExtResource("3_pdjjt")]([SubResource("Resource_kuc7l")])
 
 [sub_resource type="Resource" id="Resource_kat14"]
 script = ExtResource("4_b4yxj")
@@ -123,6 +134,7 @@ seal_chance = Array[float]([])
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("5_oe4ag")
 behavior_checks = Array[ExtResource("2_pjyw5")]([SubResource("Resource_5q53p"), SubResource("Resource_ybfxx")])
+active_condition = Array[ExtResource("3_pdjjt")]([])
 
 [sub_resource type="Curve" id="Curve_sdqt1"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.4, 0.0, 0, 0]
@@ -134,7 +146,7 @@ move_id = 3
 check_player_side = true
 chance_if_sealed = 0.5
 weigh_seal_count = true
-caution_threshold = 4
+caution_threshold = 6
 weight = SubResource("Curve_sdqt1")
 check_target = 0
 negate = false
@@ -155,6 +167,18 @@ check_type = 0
 action_id = Array[int]([3])
 seal_chance = Array[float]([1.0])
 
+[sub_resource type="Resource" id="Resource_7qwyb"]
+script = ExtResource("9_k7y0f")
+check_target = 2
+negate = false
+
+[sub_resource type="Resource" id="Resource_5ihdn"]
+script = ExtResource("2_pjyw5")
+behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_7qwyb")])
+check_type = 0
+action_id = Array[int]([2, 5, 5])
+seal_chance = Array[float]([])
+
 [sub_resource type="Resource" id="Resource_h3qxp"]
 script = ExtResource("3_pdjjt")
 check_target = 0
@@ -164,12 +188,13 @@ negate = false
 script = ExtResource("2_pjyw5")
 behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_h3qxp")])
 check_type = 0
-action_id = Array[int]([2, 5, 5])
+action_id = Array[int]([2, 5])
 seal_chance = Array[float]([])
 
 [sub_resource type="Resource" id="Resource_lk8uk"]
 script = ExtResource("5_oe4ag")
-behavior_checks = Array[ExtResource("2_pjyw5")]([SubResource("Resource_cdnst"), SubResource("Resource_seb2k")])
+behavior_checks = Array[ExtResource("2_pjyw5")]([SubResource("Resource_cdnst"), SubResource("Resource_5ihdn"), SubResource("Resource_seb2k")])
+active_condition = Array[ExtResource("3_pdjjt")]([])
 
 [sub_resource type="Resource" id="Resource_kf1m3"]
 script = ExtResource("4_b4yxj")
@@ -180,13 +205,18 @@ mp_percent = 0.0
 check_target = 0
 negate = false
 
+[sub_resource type="Curve" id="Curve_veu3s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.4, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_5lpck"]
 script = ExtResource("8_dt1d7")
-move_id = 0
+move_id = 4
 check_player_side = true
 chance_if_sealed = 0.7
-weigh_seal_count = false
-caution_threshold = 0
+weigh_seal_count = true
+caution_threshold = 6
+weight = SubResource("Curve_veu3s")
 check_target = 0
 negate = false
 
@@ -212,6 +242,7 @@ seal_chance = Array[float]([])
 [sub_resource type="Resource" id="Resource_o1y2h"]
 script = ExtResource("5_oe4ag")
 behavior_checks = Array[ExtResource("2_pjyw5")]([SubResource("Resource_ei5yc"), SubResource("Resource_rvcuf")])
+active_condition = Array[ExtResource("3_pdjjt")]([])
 
 [sub_resource type="Resource" id="Resource_hf446"]
 script = ExtResource("6_sj5ws")
@@ -326,8 +357,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_iu8tl"]
 script = ExtResource("1_tgypq")
-min = 22
-max = 22
+min = 19
+max = 19
 growth = SubResource("Curve_up3ke")
 
 [sub_resource type="Curve" id="Curve_sdigb"]

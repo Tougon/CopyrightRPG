@@ -321,8 +321,6 @@ func _action_phase():
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed
 		
-		EventManager.on_entity_turn_end.emit(entity);
-		
 		# Reposition enemies if any have been defeated
 		var amt = get_num_active_enemies();
 		if num_active != amt:
@@ -384,6 +382,8 @@ func _action_phase():
 			seal_manager.check_for_seal(entity, players.has(entity));
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
+		
+		EventManager.on_entity_turn_end.emit(entity);
 		
 		for spell in spell_cast :
 			spell.free();

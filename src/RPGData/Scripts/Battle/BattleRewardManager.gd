@@ -44,7 +44,8 @@ func _on_battle_complete(result : BattleResult):
 		
 		EventManager.on_dialogue_queue.emit(tr("T_BATTLE_RESULT_DEFEAT"));
 	
-	await EventManager.on_sequence_queue_empty;
+	if BattleScene.Instance.sequencer.is_sequence_playing_or_queued():
+		await EventManager.on_sequence_queue_empty;
 	
 	# Fade Out
 	EventManager.set_player_group_state.emit(false);

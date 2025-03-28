@@ -230,8 +230,14 @@ func select_action():
 		if turn_number == 1 && current_behavior.first_turn_behavior != null:
 			behavior = current_behavior.first_turn_behavior;
 		else:
-			var turn_index = (turn_number - 1) % current_behavior.turn_behavior.size();
-			behavior = current_behavior.turn_behavior[turn_index];
+			var valid_behavior = false;
+			while !valid_behavior :
+				var turn_index = (turn_number - 1) % current_behavior.turn_behavior.size();
+				behavior = current_behavior.turn_behavior[turn_index];
+				
+				if behavior.is_behavior_active(self, allies, enemies):
+					valid_behavior = true;
+				else : turn_number += 1;
 		
 		if behavior != null:
 			var result = behavior.get_result(self, allies, enemies);
