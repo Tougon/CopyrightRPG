@@ -9,7 +9,7 @@
 
 [resource]
 script = ExtResource("3_aqxwk")
-spell_power = 25.0
+spell_power = 32.0
 spell_attack_type = 0
 vary_defense_type = false
 spell_defense_type = 0
@@ -27,7 +27,7 @@ vary_hit_count = false
 min_number_of_hits = 1
 max_number_of_hits = 1
 check_accuracy = true
-spell_accuracy = 70.0
+spell_accuracy = 72.5
 check_accuracy_per_hit = false
 spell_accuracy_per_hit = 100.0
 can_critical = false

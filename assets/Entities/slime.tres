@@ -38,6 +38,7 @@ seal_chance = Array[float]([])
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("4_l7lga")
 behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_5q53p")])
+active_condition = Array[ExtResource("1_mkamh")]([])
 
 [sub_resource type="Resource" id="Resource_hf446"]
 script = ExtResource("1_lpo00")

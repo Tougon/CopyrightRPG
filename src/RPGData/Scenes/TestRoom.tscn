@@ -802,7 +802,7 @@ script = ExtResource("7_m4t6q")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa"), SubResource("Resource_sdbl4"), SubResource("Resource_eblq6")])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI"]
-color = Color(0.55, 0.55, 0.55, 1)
+color = Color(0.332738, 0.519136, 0.749071, 1)
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -891,14 +891,14 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("32_14mn0")
 
 [node name="PointLight2D" type="PointLight2D" parent="Environment/Lighting/Sprite2D"]
-position = Vector2(0, -20)
+position = Vector2(-960, 110)
 scale = Vector2(10, 10)
-color = Color(0.97, 0.94284, 0.6984, 1)
-energy = 1.5
+color = Color(0.621524, 0.621524, 0.621524, 1)
+energy = 1.85
 shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("32_ufq1w")
-texture_scale = 2.5
+texture_scale = 1.75
 
 [node name="Cutscene Helpers" type="Node2D" parent="Environment"]
 

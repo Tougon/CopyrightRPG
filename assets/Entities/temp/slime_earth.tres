@@ -40,6 +40,7 @@ seal_chance = Array[float]([0.5])
 [sub_resource type="Resource" id="Resource_lakch"]
 script = ExtResource("4_uyhbo")
 behavior_checks = Array[ExtResource("2_o0i0b")]([SubResource("Resource_3gnws")])
+active_condition = Array[ExtResource("3_0ar7s")]([])
 
 [sub_resource type="Resource" id="Resource_ls6ck"]
 script = ExtResource("6_fqgs6")
@@ -72,6 +73,7 @@ seal_chance = Array[float]([])
 [sub_resource type="Resource" id="Resource_s7unq"]
 script = ExtResource("4_uyhbo")
 behavior_checks = Array[ExtResource("2_o0i0b")]([SubResource("Resource_1vwmt"), SubResource("Resource_jqg4x")])
+active_condition = Array[ExtResource("3_0ar7s")]([])
 
 [sub_resource type="Resource" id="Resource_hf446"]
 script = ExtResource("5_6k5mj")

@@ -50,6 +50,7 @@ func begin_battle(params : BattleParams):
 	players = [];
 	enemies = [];
 	defeated_enemies = [];
+	enemy_type_count.clear();
 	player_item_delta.clear();
 	
 	EventManager.on_battle_begin.emit(params);

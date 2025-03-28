@@ -29,7 +29,6 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 		# If caution reaches 0, then the move will never be used
 		if caution <= 0 : return !negate;
 	
-	print(str(rand_chance) + " " + str(chance_if_sealed) + " " + str(caution))
 	var seal_check = rand_chance < (chance_if_sealed * caution);
 	
 	if negate : return !seal_check;
