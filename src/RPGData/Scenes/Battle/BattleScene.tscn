@@ -306,7 +306,7 @@ current_entity = ExtResource("12_qpkyi")
 
 [node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 y_sort_enabled = false
-position = Vector2(800, 630)
+position = Vector2(820, 630)
 scale = Vector2(0.95, 0.95)
 player_id = 3
 seal_effect = SubResource("Resource_vh4sl")

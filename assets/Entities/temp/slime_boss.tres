@@ -280,8 +280,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("1_tgypq")
-min = 1700
-max = 1700
+min = 1650
+max = 1650
 growth = SubResource("Curve_x6q21")
 
 [sub_resource type="Curve" id="Curve_8jkfr"]
