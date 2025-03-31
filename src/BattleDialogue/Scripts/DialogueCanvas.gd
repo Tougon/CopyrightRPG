@@ -180,7 +180,8 @@ func _print_by_word(text : String):
 	
 	for n in splits.size():
 		# Get the word at the current index
-		var word = splits[n];
+		var post_bb : Array;
+		var word = _parse_bbcode(splits[n], post_bb);
 		
 		# Check if the width will exceed the line
 		var text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
@@ -231,6 +232,9 @@ func _print_by_word(text : String):
 		if n < splits.size() - 1 && !finish_print && pause_time > 0:
 			interval_timer.start(pause_time);
 			await interval_timer.timeout;
+		
+		for bb in post_bb:
+			text_label.pop();
 	
 	if expire_rows :
 		_row_display_delay(current_line);
@@ -243,6 +247,38 @@ func _print_by_word(text : String):
 	on_dialogue_complete.emit();
 	is_printing = false;
 	finish_print = false;
+
+
+func _parse_bbcode(string : String, post_bb : Array) -> String:
+	while string.contains("[") && string.contains("]"):
+		
+		# Get first instances of break characters
+		var start_index = string.find("[");
+		var end_index = string.find("]");
+		
+		# Invalid code, fail out
+		if end_index < start_index : return string;
+		
+		var bbcode = string.substr(start_index, end_index + 1).replace(" ", "").to_lower();
+		var start = "";
+		var end = "";
+		
+		if start_index > 0 :
+			start = string.substr(0, start_index);
+		if end_index < string.length() - 1 :
+			end = string.substr(end_index + 1, string.length() - (end_index + 1));
+		
+		# BBCode type
+		if bbcode.contains("/"):
+			if bbcode.contains("color"):
+				post_bb.append("color");
+			else : post_bb.append("");
+		elif bbcode.contains("color"):
+			text_label.push_color(Color(bbcode.substr(7, bbcode.length() - 8)))
+		
+		string = start + end;
+	
+	return string;
 
 
 func _get_current_text() -> String:
