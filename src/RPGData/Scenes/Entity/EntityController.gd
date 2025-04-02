@@ -16,6 +16,7 @@ var item_list : Dictionary;
 var param : EntityParams;
 var current_action : Spell;
 var prev_action : Spell;
+var prev_target : Array[EntityController];
 var current_item : Item;
 var sealing : bool;
 var current_target : Array[EntityController];
@@ -189,6 +190,8 @@ func load_sprite(path : String):
 
 
 func _on_battle_begin(params : BattleParams):
+	prev_action = null;
+	current_target.clear();
 	entity_init(params);
 
 

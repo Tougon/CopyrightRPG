@@ -57,6 +57,8 @@ func _initialize_target_menu(entity : EntityController):
 	target_to_info.clear();
 	var spell_target = entity.current_action.spell_target;
 	var targets = entity.get_possible_targets();
+	# TODO: Perhaps only do this if the selected spell is the same?
+	var selection_remind = false;
 	
 	if spell_target == Spell.SpellTarget.RandomEnemyPerHit :
 		entity.current_target = targets;
@@ -123,10 +125,18 @@ func _initialize_target_menu(entity : EntityController):
 			
 			info.initialize([target], [target_arrow_pool[i]], entity, false);
 			target_to_info[target] = info;
+			
+			# Set the initial selection if the last selection is valid
+			if entity.prev_target.size() == 1 && entity.prev_target[0].param.entity_name == target.param.entity_name:
+				initial_selection = info;
+				selection_remind = true;
 		
 		for i in range(targets.size(), pool_size):
 			target_info_pool[i].visible = false;
 			target_arrow_pool[i].visible = false;
+	
+	if !selection_remind : 
+		initial_selection = all_selections[0];
 
 
 func _on_target_highlighted(entity : EntityController, all : bool):

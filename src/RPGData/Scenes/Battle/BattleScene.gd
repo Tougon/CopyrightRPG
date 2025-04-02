@@ -181,6 +181,8 @@ func _action_phase():
 	# Process all turn start events and seals
 	for entity in turn_order :
 		entity.prev_action = entity.current_action;
+		entity.prev_target = entity.current_target;
+		
 		if !entity.is_defeated:
 			entity.execute_turn_start_effects();
 		
