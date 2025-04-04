@@ -248,6 +248,7 @@ func select_action():
 			if result.action_success:
 				current_action = move_list[clamp(result.action_id, 0, move_list.size())];
 				sealing = result.action_sealing;
+				_set_seal_id(result.action_seal_id);
 				
 				if check_target_match(current_action, result):
 					set_target(result.trigger_entity);
@@ -257,6 +258,10 @@ func select_action():
 				select_random_action();
 	else:
 		select_random_action();
+
+
+func _set_seal_id(id : int):
+	pass;
 
 
 func check_target_match(spell : Spell, result : BehaviorCheckResult) -> bool:

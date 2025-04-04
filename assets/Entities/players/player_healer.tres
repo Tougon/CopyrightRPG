@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=26 format=3 uid="uid://8i7hybweexe0"]
+[gd_resource type="Resource" script_class="Entity" load_steps=27 format=3 uid="uid://8i7hybweexe0"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_blvyb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_no42s"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="6_3pc13"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_q7nfq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="8_th2jv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="8_ywh5r"]
 
 [sub_resource type="Curve" id="Curve_juo7r"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -131,3 +132,4 @@ entity_video_repeat_mode = 3
 entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_player_healer_01.tres"
 entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_xqh42")
+seal_effect_list = Array[ExtResource("8_ywh5r")]([])

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=87 format=3 uid="uid://dxdbu7u0q6ct6"]
+[gd_resource type="Resource" script_class="Entity" load_steps=89 format=3 uid="uid://dxdbu7u0q6ct6"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_tgypq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_pjyw5"]
@@ -25,6 +25,7 @@
 [ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/seal/effect_seal_debuff_defense.tres" id="15_01wsr"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="15_f0ax6"]
 [ext_resource type="Resource" uid="uid://conbeqpmr4jye" path="res://assets/Spells/damage/enemy/spell_damage_enemy_superslime_bigdamage.tres" id="16_gsbgh"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="26_2jlnj"]
 
 [sub_resource type="Curve" id="Curve_c5l6p"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -51,6 +52,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_6wsr6")])
 check_type = 0
 action_id = Array[int]([0])
 seal_chance = Array[float]([1.0])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_lakch"]
 script = ExtResource("5_oe4ag")
@@ -79,6 +81,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_i7dae")])
 check_type = 0
 action_id = Array[int]([0])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_ili3j"]
 script = ExtResource("3_pdjjt")
@@ -91,6 +94,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_ili3j")])
 check_type = 0
 action_id = Array[int]([2])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_eih7w"]
 script = ExtResource("5_oe4ag")
@@ -119,6 +123,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_kat14"), S
 check_type = 0
 action_id = Array[int]([1])
 seal_chance = Array[float]([1.0])
+seal_id = Array[int]([1])
 
 [sub_resource type="Resource" id="Resource_3esi3"]
 script = ExtResource("3_pdjjt")
@@ -131,6 +136,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_3esi3")])
 check_type = 0
 action_id = Array[int]([2])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("5_oe4ag")
@@ -174,6 +180,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_ittop"), S
 check_type = 0
 action_id = Array[int]([3])
 seal_chance = Array[float]([1.0])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_7qwyb"]
 script = ExtResource("9_k7y0f")
@@ -186,6 +193,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_7qwyb")])
 check_type = 0
 action_id = Array[int]([5, 5, 5])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_h3qxp"]
 script = ExtResource("3_pdjjt")
@@ -198,6 +206,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_h3qxp")])
 check_type = 0
 action_id = Array[int]([2, 5])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_lk8uk"]
 script = ExtResource("5_oe4ag")
@@ -241,6 +250,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_kf1m3"), S
 check_type = 0
 action_id = Array[int]([4])
 seal_chance = Array[float]([1.0])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_sq7d6"]
 script = ExtResource("3_pdjjt")
@@ -253,6 +263,7 @@ behavior_check = Array[ExtResource("3_pdjjt")]([SubResource("Resource_sq7d6")])
 check_type = 0
 action_id = Array[int]([2, 5, 5])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_o1y2h"]
 script = ExtResource("5_oe4ag")
@@ -352,11 +363,17 @@ min = 20
 max = 150
 growth = SubResource("Curve_hnfm3")
 
-[sub_resource type="Resource" id="Resource_63xet"]
+[sub_resource type="Resource" id="Resource_2drsq"]
 script = ExtResource("13_7pvqc")
 override_turn_count = false
 turn_count = 1
 seal_effects = Array[ExtResource("14_lwdgs")]([ExtResource("15_01wsr")])
+
+[sub_resource type="Resource" id="Resource_rsun2"]
+script = ExtResource("13_7pvqc")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("14_lwdgs")]([ExtResource("26_2jlnj")])
 
 [sub_resource type="Curve" id="Curve_5etj0"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -425,4 +442,4 @@ entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_
 entity_thought_repeat_mode = 2
 move_list = SubResource("Resource_lg1m0")
 behavior = SubResource("Resource_hf446")
-seal_effect = SubResource("Resource_63xet")
+seal_effect_list = Array[ExtResource("13_7pvqc")]([SubResource("Resource_2drsq"), SubResource("Resource_rsun2")])

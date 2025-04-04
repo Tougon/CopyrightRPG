@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=39 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=40 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/flavor/spell_flavor_slime_idle_00.tres" id="9_vrc5r"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="10_5xb1c"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="11_ul1t6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="13_a88bw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="16_rv22r"]
 
 [sub_resource type="Curve" id="Curve_fslmg"]
@@ -34,6 +35,7 @@ behavior_check = Array[ExtResource("1_mkamh")]([SubResource("Resource_qxeax")])
 check_type = 0
 action_id = Array[int]([1, 0])
 seal_chance = Array[float]([])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("4_l7lga")
@@ -179,3 +181,4 @@ entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_
 entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_lg1m0")
 behavior = SubResource("Resource_hf446")
+seal_effect_list = Array[ExtResource("13_a88bw")]([])

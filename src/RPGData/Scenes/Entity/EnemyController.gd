@@ -1,7 +1,8 @@
 extends EntityController
 class_name EnemyController
 
-@export var seal_effect : SealEffectGroup;
+var seal_effect : SealEffectGroup;
+var seal_effect_list : Array[SealEffectGroup];
 @export var enemy_index : int;
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +20,7 @@ func entity_init(params : BattleParams):
 		var level_relative = current_entity.level_curve.sample(randf());
 		level = lerp(current_entity.min_level, current_entity.max_level, level_relative);
 		
-		seal_effect = current_entity.seal_effect;
+		seal_effect_list = current_entity.seal_effect_list;
 	
 	super.entity_init(params)
 	await get_tree().process_frame;
@@ -29,6 +30,13 @@ func entity_init(params : BattleParams):
 func set_enemy_position(pos : Vector2, time : float = 0.0):
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "position", pos, time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+
+func _set_seal_id(id : int):
+	if id >= 0 && id < seal_effect_list.size():
+		seal_effect = seal_effect_list[id];
+	else :
+		seal_effect = seal_effect_list.pick_random();
 
 
 func _on_defeat_complete():

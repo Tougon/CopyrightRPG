@@ -11,6 +11,8 @@ enum CheckType {AND, OR}
 @export var action_id : Array[int];
 ## Odds that determine if this action should be sealed
 @export var seal_chance : Array[float];
+## The randomized pool of seals to choose if the check is valid
+@export var seal_id : Array[int];
 
 
 func determine_action(user : EntityController, allies : Array[EntityController], targets : Array[EntityController]) -> BehaviorCheckResult:
@@ -43,5 +45,9 @@ func determine_action(user : EntityController, allies : Array[EntityController],
 					return result;
 			
 			result.action_sealing = BattleManager.seal_manager.can_seal_spell(action);
+			result.action_seal_id = 0;
+			
+			if result.action_sealing && seal_id.size() > 0: 
+				result.action_seal_id = seal_id.pick_random();
 	
 	return result;

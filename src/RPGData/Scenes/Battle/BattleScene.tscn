@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=70 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -24,7 +24,6 @@
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="12_fxbwv"]
 [ext_resource type="Resource" uid="uid://cuq4qm0mplqgp" path="res://assets/Entities/players/player_mage.tres" id="12_qpkyi"]
 [ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="13_vk0ot"]
-[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/seal/effect_seal_buff_speed.tres" id="15_dvv4b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="19_et6o3"]
 [ext_resource type="PackedScene" uid="uid://bax2rjs6ennqq" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_ui.tscn" id="20_dvxdd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_fade_ui.gd" id="20_ija8q"]
@@ -65,12 +64,6 @@ script = ExtResource("6_1yw0j")
 override_turn_count = false
 turn_count = 1
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("11_ydv2w")])
-
-[sub_resource type="Resource" id="Resource_ssevn"]
-script = ExtResource("6_1yw0j")
-override_turn_count = true
-turn_count = 1
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv"), ExtResource("13_vk0ot"), ExtResource("15_dvv4b")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjsv2"]
 shader = ExtResource("22_0arau")
@@ -329,34 +322,29 @@ y_sort_enabled = true
 
 [node name="E1" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
-seal_effect = SubResource("Resource_ssevn")
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
 [node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
-seal_effect = SubResource("Resource_ssevn")
 enemy_index = 1
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
 [node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
-seal_effect = SubResource("Resource_ssevn")
 enemy_index = 2
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
 [node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
-seal_effect = SubResource("Resource_ssevn")
 enemy_index = 3
 use_override_direction = true
 override_direction = Vector2(1, -1)
 
 [node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
-seal_effect = SubResource("Resource_ssevn")
 enemy_index = 4
 use_override_direction = true
 override_direction = Vector2(1, -1)
