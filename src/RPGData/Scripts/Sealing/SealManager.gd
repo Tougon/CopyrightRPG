@@ -67,6 +67,7 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	# We need to add an extra turn because otherwise the turn it's active counts
 	# This effectively means 3 turns is 2.
 	if BattleManager.seal_before_attacking : turn_count += 1;
+	if effect.override_turn_count : turn_count = effect.override_turn_count;
 	
 	var seal_inst = SealInstance.new(entity, spell, effect, turn_count, player_side);
 	seal_instances.append(seal_inst);

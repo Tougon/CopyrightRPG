@@ -354,6 +354,8 @@ growth = SubResource("Curve_hnfm3")
 
 [sub_resource type="Resource" id="Resource_63xet"]
 script = ExtResource("13_7pvqc")
+override_turn_count = false
+turn_count = 1
 seal_effects = Array[ExtResource("14_lwdgs")]([ExtResource("15_01wsr")])
 
 [sub_resource type="Curve" id="Curve_5etj0"]

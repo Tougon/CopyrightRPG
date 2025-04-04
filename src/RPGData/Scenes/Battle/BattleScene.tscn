@@ -44,22 +44,32 @@
 
 [sub_resource type="Resource" id="Resource_pjtk0"]
 script = ExtResource("6_1yw0j")
+override_turn_count = false
+turn_count = 1
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
 
 [sub_resource type="Resource" id="Resource_b3uow"]
 script = ExtResource("6_1yw0j")
+override_turn_count = false
+turn_count = 1
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("13_vk0ot")])
 
 [sub_resource type="Resource" id="Resource_j4r6v"]
 script = ExtResource("6_1yw0j")
+override_turn_count = false
+turn_count = 1
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
 
 [sub_resource type="Resource" id="Resource_vh4sl"]
 script = ExtResource("6_1yw0j")
+override_turn_count = false
+turn_count = 1
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("11_ydv2w")])
 
 [sub_resource type="Resource" id="Resource_ssevn"]
 script = ExtResource("6_1yw0j")
+override_turn_count = true
+turn_count = 1
 seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv"), ExtResource("13_vk0ot"), ExtResource("15_dvv4b")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjsv2"]
