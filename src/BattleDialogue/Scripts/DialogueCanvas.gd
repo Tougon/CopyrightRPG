@@ -11,6 +11,7 @@ enum PrintType { CHARACTER, WORD, SYLLABLE }
 
 @export_group("References")
 @export var text_label : RichTextLabel;
+@export var helper_label : RichTextLabel;
 @export_group("Appearance")
 @export var max_rows : int = 2;
 @export var character_pause : float = 0.1;
@@ -40,10 +41,14 @@ var horizontal_padding : int;
 var vertical_padding : int;
 var line_separation : int;
 
+var _active_bbcode : Array[String];
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	current_rows = 0;
 	text_label.clear();
+	helper_label.clear();
 	on_dialogue_print.emit();
 	
 	self.add_child(interval_timer);
@@ -60,6 +65,9 @@ func _ready():
 	
 	text_label.autowrap_mode = TextServer.AUTOWRAP_OFF;
 	text_label.append_text(bbcode);
+	
+	helper_label.autowrap_mode = TextServer.AUTOWRAP_OFF;
+	helper_label.visible = false;
 	
 	if text_label.theme:
 		horizontal_padding = text_label.get_theme_constant("text_highlight_h_padding", "RichTextLabel");
@@ -90,8 +98,13 @@ func _on_message_queue(dialogue : String):
 
 func clear_dialogue():
 	current_rows = 0;
+	
 	text_label.clear();
 	text_label.append_text(bbcode);
+	
+	helper_label.clear();
+	helper_label.append_text(bbcode);
+	
 	on_dialogue_print.emit();
 
 
@@ -102,6 +115,9 @@ func print_dialogue(text : String, await_key : bool = false):
 	on_dialogue_print.emit();
 	self.await_key = await_key;
 	current_rows += 1;
+	
+	helper_label.clear();
+	helper_label.append_text(bbcode);
 	
 	if text_label.get_parsed_text().length() > 1:
 		text_label.add_text("\n");
@@ -215,16 +231,24 @@ func _print_by_word(text : String):
 				_remove_extra_rows();
 			current_line = "";
 			text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
+			
+			helper_label.clear();
+			helper_label.append_text(bbcode);
+			for bbcode in _active_bbcode:
+				_apply_bbcode(helper_label, bbcode);
 		else:
 			if n > 0:
 				text_label.add_text(" ");
+				helper_label.add_text(" ");
 				added_space = true;
 		
 		text_label.add_text(word);
+		helper_label.add_text(word);
 		current_line += (word + " ");
 		
 		var row_index = current_rows - 1;
-		var offset = Vector2(text_pos.x + horizontal_padding, (text_pos.y * row_index) + (line_separation * row_index));
+		var line_length = helper_label.get_content_width();
+		var offset = Vector2(line_length + horizontal_padding, (text_pos.y * row_index) + (line_separation * row_index));
 		offset.x += (text_label.get_parent().position.x);
 		offset.y -= vertical_padding;
 		on_set_dialogue_end_pos.emit(offset);
@@ -235,6 +259,8 @@ func _print_by_word(text : String):
 		
 		for bb in post_bb:
 			text_label.pop();
+			helper_label.pop();
+			_active_bbcode.remove_at(_active_bbcode.size() - 1);
 	
 	if expire_rows :
 		_row_display_delay(current_line);
@@ -272,13 +298,24 @@ func _parse_bbcode(string : String, post_bb : Array) -> String:
 		if bbcode.contains("/"):
 			if bbcode.contains("color"):
 				post_bb.append("color");
+			elif bbcode.contains("b"):
+				post_bb.append("b");
 			else : post_bb.append("");
-		elif bbcode.contains("color"):
-			text_label.push_color(Color(bbcode.substr(7, bbcode.length() - 8)))
+		else:
+			_apply_bbcode(text_label, bbcode);
+			_apply_bbcode(helper_label, bbcode);
+			_active_bbcode.append(bbcode);
 		
 		string = start + end;
 	
 	return string;
+
+
+func _apply_bbcode(label : RichTextLabel, bbcode : String):
+	if bbcode.contains("color"):
+		label.push_color(Color(bbcode.substr(7, bbcode.length() - 8)))
+	elif bbcode.contains("b"):
+		label.push_bold();
 
 
 func _get_current_text() -> String:
