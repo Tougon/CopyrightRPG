@@ -91,20 +91,8 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 			entity_name = user.param.entity_name;
 			generic = user.param.entity_generic;
 		
-		if generic : 
-			hit_result = hit_result.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = entity_name});
-		else :
-			hit_result = hit_result.format({article_indef = "", article_def = "", entity = entity_name});
-		
-		entity_name = target.param.entity_name;
-		generic = target.param.entity_generic;
-		
-		if generic : 
-			hit_result = hit_result.format({t_article_indef = GrammarManager.get_indirect_article(entity_name), t_article_def = GrammarManager.get_direct_article(entity_name), t_entity = entity_name});
-		else :
-			hit_result = hit_result.format({t_article_indef = "", t_article_def = "", t_entity = entity_name});
-		
-		cast.add_hit_result(hit_result);
+		var formatted_result = BattleScene.Instance.format_dialogue(hit_result, entity_name, user.current_entity, target.param.entity_name, target.current_entity);
+		cast.add_hit_result(formatted_result);
 	else : cast.add_hit_result("");
 	
 	return result;

@@ -194,7 +194,7 @@ func _action_phase():
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
 				
-				var seal_msg = _format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
+				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
 				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
 				EventManager.on_dialogue_queue.emit(seal_msg);
 				await EventManager.on_sequence_queue_empty;
@@ -264,14 +264,14 @@ func _action_phase():
 					spell.success = false;
 					play_animation = false;
 					
-					var item_fail_msg = _format_dialogue(tr("T_BATTLE_ACTION_ITEM_FAIL_NONE"), entity.param.entity_name, entity.current_entity);
+					var item_fail_msg = format_dialogue(tr("T_BATTLE_ACTION_ITEM_FAIL_NONE"), entity.param.entity_name, entity.current_entity);
 					post_anim_dialogue.append(item_fail_msg);
 				# If item cannot be used, don't use it
 				elif !entity.can_use_item(item):
 					spell.success = false;
 					play_animation = false;
 					
-					var item_fail_msg = _format_dialogue(tr("T_BATTLE_ACTION_FAIL"), entity.param.entity_name, entity.current_entity);
+					var item_fail_msg = format_dialogue(tr("T_BATTLE_ACTION_FAIL"), entity.param.entity_name, entity.current_entity);
 					post_anim_dialogue.append(item_fail_msg);
 			
 			if spell.success : 
@@ -291,7 +291,7 @@ func _action_phase():
 				else :
 					_get_spell_hit_messages(entity, spell_cast, spell, post_anim_dialogue);
 		
-		var cast_msg = _format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
+		var cast_msg = format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
 		
 		# Format the cast message for targets
 		if spell_cast.size() > 0:
@@ -318,7 +318,7 @@ func _action_phase():
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
 				
-				var seal_msg = _format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
+				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
 				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
 				EventManager.on_dialogue_queue.emit(seal_msg);
 				await EventManager.on_sequence_queue_empty;
@@ -403,17 +403,17 @@ func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[Spell
 	if spell.get_damage_applied() > 0 :
 		if spell.critical && !BattleManager.async_crit_text: 
 			if spell_cast.size() > 1 :
-				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+				output.append(format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
 			else : 
-				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), spell.target.param.entity_name, spell.target.current_entity));
+				output.append(format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), spell.target.param.entity_name, spell.target.current_entity));
 		
-		var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
+		var damage_msg = format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
 		damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
 		output.append(damage_msg);
 	elif spell.get_damage_applied() == 0 && spell.effects.size() == 0:
 		for hit in spell.hits:
 			if hit :
-				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+				output.append(format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
 
 
 func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):
@@ -446,16 +446,16 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 		if entity_damage[entity] == 0 : 
 			if entity_miss[entity] : continue;
 			else : 
-				output.append(_format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), entity.param.entity_name, entity.current_entity));
+				output.append(format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), entity.param.entity_name, entity.current_entity));
 				continue;
 		
 		if entity_crit[entity] && !BattleManager.async_crit_text: 
 			if spell_cast.size() > 1 :
-				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), entity.param.entity_name, entity.current_entity));
+				output.append(format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_SINGLE"), entity.param.entity_name, entity.current_entity));
 			else : 
-				output.append(_format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), entity.param.entity_name, entity.current_entity));
+				output.append(format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), entity.param.entity_name, entity.current_entity));
 		
-		var damage_msg = _format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), entity.param.entity_name, entity.current_entity);
+		var damage_msg = format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), entity.param.entity_name, entity.current_entity);
 		damage_msg = damage_msg.format({damage = str(entity_damage[entity])});
 		output.append(damage_msg);
 
@@ -644,7 +644,7 @@ func _on_player_menu_cancel():
 
 func _on_player_defeated(entity : EntityController):
 	var defeat_key = "T_BATTLE_DEFEAT_PLAYER";
-	var defeat_msg = _format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
+	var defeat_msg = format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
 	EventManager.on_dialogue_queue.emit(defeat_msg);
 	
 
@@ -662,20 +662,33 @@ func _on_enemy_defeated(entity : EntityController):
 	if entity.current_entity.battle_defeat_key != null :
 		defeat_key = entity.current_entity.battle_defeat_key;
 	
-	var defeat_msg = _format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
+	var defeat_msg = format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
 	EventManager.on_dialogue_queue.emit(defeat_msg);
 
 
 # Helper function for dialogue formatting
-func _format_dialogue(dialogue : String, name : String, entity : Entity) -> String:
+func format_dialogue(dialogue : String, name : String, entity : Entity, target_name : String = "", target : Entity = null) -> String:
 	var entity_name = name;
 	# Testing color formatting
 	name = "[color=FFFF00]" + name + "[/color]";
 	
-	if entity.generic && enemy_type_count[entity] <= 1: 
-		return dialogue.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = name, pronoun1 = GrammarManager.get_pronoun(entity.gender, 1), pronoun2 = GrammarManager.get_pronoun(entity.gender, 2), pronoun3 = GrammarManager.get_pronoun(entity.gender, 3), pronoun4 = GrammarManager.get_pronoun(entity.gender, 4)});
+	var result : String = "";
+	
+	if entity.generic && (enemy_type_count.has(entity) && enemy_type_count[entity] <= 1): 
+		result = dialogue.format({article_indef = GrammarManager.get_indirect_article(entity_name), article_def = GrammarManager.get_direct_article(entity_name), entity = name, pronoun1 = GrammarManager.get_pronoun(entity.gender, 1), pronoun2 = GrammarManager.get_pronoun(entity.gender, 2), pronoun3 = GrammarManager.get_pronoun(entity.gender, 3), pronoun4 = GrammarManager.get_pronoun(entity.gender, 4)});
 	else:
-		return dialogue.format({article_indef = "", article_def = "", entity = name, pronoun1 = GrammarManager.get_pronoun(entity.gender, 1), pronoun2 = GrammarManager.get_pronoun(entity.gender, 2), pronoun3 = GrammarManager.get_pronoun(entity.gender, 3), pronoun4 = GrammarManager.get_pronoun(entity.gender, 4)});
+		result = dialogue.format({article_indef = "", article_def = "", entity = name, pronoun1 = GrammarManager.get_pronoun(entity.gender, 1), pronoun2 = GrammarManager.get_pronoun(entity.gender, 2), pronoun3 = GrammarManager.get_pronoun(entity.gender, 3), pronoun4 = GrammarManager.get_pronoun(entity.gender, 4)});
+	
+	if target != null :
+		entity_name = target_name;
+		target_name = "[color=FFFF00]" + target_name + "[/color]";
+		
+		if target.generic && (enemy_type_count.has(target) && enemy_type_count[target] <= 1): 
+			result = result.format({t_article_indef = GrammarManager.get_indirect_article(entity_name), t_article_def = GrammarManager.get_direct_article(entity_name), t_entity = name, t_pronoun1 = GrammarManager.get_pronoun(target.gender, 1), t_pronoun2 = GrammarManager.get_pronoun(target.gender, 2), t_pronoun3 = GrammarManager.get_pronoun(target.gender, 3), t_pronoun4 = GrammarManager.get_pronoun(target.gender, 4)});
+		else:
+			result = result.format({t_article_indef = "", t_article_def = "", target_name = name, t_pronoun1 = GrammarManager.get_pronoun(target.gender, 1), t_pronoun2 = GrammarManager.get_pronoun(target.gender, 2), t_pronoun3 = GrammarManager.get_pronoun(target.gender, 3), t_pronoun4 = GrammarManager.get_pronoun(target.gender, 4)});
+	
+	return result;
 
 
 # Helper functions for intro dialogue
@@ -696,7 +709,7 @@ func _get_intro_dialogue() -> String:
 	else:
 		key += "_SINGLE";
 	
-	return _format_dialogue(tr(key), name, entity);
+	return format_dialogue(tr(key), name, entity);
 
 
 func _all_enemies_same() -> bool:
