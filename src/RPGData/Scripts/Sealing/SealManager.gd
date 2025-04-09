@@ -100,14 +100,14 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 					var seal_msg = tr("T_BATTLE_ACTION_SEAL_ACTIVATE");
 					
 					if seal.seal_entity.current_entity.generic && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] <= 1:
-						seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = seal.seal_entity.param.entity_name });
+						seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
 					else:
-						seal_msg = seal_msg.format({ article_def = "", entity = seal.seal_entity.param.entity_name });
+						seal_msg = seal_msg.format({ article_def = "", entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
 					
 					if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity.generic] <= 1:
-						seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = entity.param.entity_name });
+						seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
 					else: 
-						seal_msg = seal_msg.format({ t_article_def = "", t_entity = entity.param.entity_name });
+						seal_msg = seal_msg.format({ t_article_def = "", t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
 					
 					seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
 					EventManager.on_dialogue_queue.emit(seal_msg);

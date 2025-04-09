@@ -17,7 +17,7 @@ func execute(instance : EffectInstance):
 	var target_pronouns = [];
 	
 	if instance.user != null :
-		user_name = instance.user.param.entity_name;
+		user_name = "[color=FFFF00]" + instance.user.param.entity_name + "[/color]";
 		
 		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 1));
 		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 2));
@@ -29,7 +29,7 @@ func execute(instance : EffectInstance):
 			user_article_indef = GrammarManager.get_indirect_article(user_name);
 	
 	if instance.target != null :
-		target_name = instance.target.param.entity_name;
+		target_name = "[color=FFFF00]" + instance.target.param.entity_name + "[/color]";
 		
 		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 1));
 		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 2));

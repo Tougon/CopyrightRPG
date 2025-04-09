@@ -79,7 +79,7 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 		var generic = false;
 		var rand = randf();
 		
-		if evasion > accuracy  || rand < 0.5:
+		if evasion > accuracy || rand < 0.5:
 			hit_result = tr("T_BATTLE_ACTION_DODGE");
 			entity_name = target.param.entity_name;
 			generic = target.param.entity_generic;

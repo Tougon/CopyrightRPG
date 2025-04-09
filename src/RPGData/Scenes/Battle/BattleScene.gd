@@ -292,7 +292,7 @@ func _action_phase():
 					_get_spell_hit_messages(entity, spell_cast, spell, post_anim_dialogue);
 		
 		var cast_msg = format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
-		
+		print(cast_msg);
 		# Format the cast message for targets
 		if spell_cast.size() > 0:
 			cast_msg = cast_msg.format({target = GrammarManager.get_plural_string(entity.current_target)})
@@ -684,9 +684,9 @@ func format_dialogue(dialogue : String, name : String, entity : Entity, target_n
 		target_name = "[color=FFFF00]" + target_name + "[/color]";
 		
 		if target.generic && (enemy_type_count.has(target) && enemy_type_count[target] <= 1): 
-			result = result.format({t_article_indef = GrammarManager.get_indirect_article(entity_name), t_article_def = GrammarManager.get_direct_article(entity_name), t_entity = name, t_pronoun1 = GrammarManager.get_pronoun(target.gender, 1), t_pronoun2 = GrammarManager.get_pronoun(target.gender, 2), t_pronoun3 = GrammarManager.get_pronoun(target.gender, 3), t_pronoun4 = GrammarManager.get_pronoun(target.gender, 4)});
+			result = result.format({t_article_indef = GrammarManager.get_indirect_article(entity_name), t_article_def = GrammarManager.get_direct_article(entity_name), t_entity = target_name, t_pronoun1 = GrammarManager.get_pronoun(target.gender, 1), t_pronoun2 = GrammarManager.get_pronoun(target.gender, 2), t_pronoun3 = GrammarManager.get_pronoun(target.gender, 3), t_pronoun4 = GrammarManager.get_pronoun(target.gender, 4)});
 		else:
-			result = result.format({t_article_indef = "", t_article_def = "", target_name = name, t_pronoun1 = GrammarManager.get_pronoun(target.gender, 1), t_pronoun2 = GrammarManager.get_pronoun(target.gender, 2), t_pronoun3 = GrammarManager.get_pronoun(target.gender, 3), t_pronoun4 = GrammarManager.get_pronoun(target.gender, 4)});
+			result = result.format({t_article_indef = "", t_article_def = "", t_entity = target_name, t_pronoun1 = GrammarManager.get_pronoun(target.gender, 1), t_pronoun2 = GrammarManager.get_pronoun(target.gender, 2), t_pronoun3 = GrammarManager.get_pronoun(target.gender, 3), t_pronoun4 = GrammarManager.get_pronoun(target.gender, 4)});
 	
 	return result;
 
