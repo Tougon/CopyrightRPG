@@ -197,17 +197,23 @@ func _print_by_word(text : String):
 	for n in splits.size():
 		# Get the word at the current index
 		var post_bb : Array;
+		var punctuation = "";
+		
+		if splits[n].ends_with(".") || splits[n].ends_with(",") || splits[n].ends_with("!") || splits[n].ends_with("?"):
+			punctuation = splits[n].substr(splits[n].length() - 1, 1);
+			splits[n] = splits[n].substr(0, splits[n].length() - 1);
+		
 		var word = _parse_bbcode(splits[n], post_bb);
 		
 		# Check if the width will exceed the line
-		var text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
+		var text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word + punctuation).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
 		
 		var pause_time = word_pause;
 		
 		match print_delay_type:
 			
 			PrintType.WORD:
-				pause_time = character_pause * word.length();
+				pause_time = character_pause * (word + punctuation).length();
 		
 		var added_space = false;
 		
@@ -230,7 +236,7 @@ func _print_by_word(text : String):
 			if current_rows > max_rows:
 				_remove_extra_rows();
 			current_line = "";
-			text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
+			text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word + punctuation).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
 			
 			helper_label.clear();
 			helper_label.append_text(bbcode);
@@ -244,7 +250,18 @@ func _print_by_word(text : String):
 		
 		text_label.add_text(word);
 		helper_label.add_text(word);
-		current_line += (word + " ");
+		current_line += (word);
+		
+		for bb in post_bb:
+			text_label.pop();
+			helper_label.pop();
+			_active_bbcode.remove_at(_active_bbcode.size() - 1);
+		
+		# Done so instances where punctuation doesn't change color
+		# May revert
+		text_label.add_text(punctuation);
+		helper_label.add_text(punctuation);
+		current_line += (punctuation + " ");
 		
 		var row_index = current_rows - 1;
 		var line_length = helper_label.get_content_width();
@@ -256,11 +273,6 @@ func _print_by_word(text : String):
 		if n < splits.size() - 1 && !finish_print && pause_time > 0:
 			interval_timer.start(pause_time);
 			await interval_timer.timeout;
-		
-		for bb in post_bb:
-			text_label.pop();
-			helper_label.pop();
-			_active_bbcode.remove_at(_active_bbcode.size() - 1);
 	
 	if expire_rows :
 		_row_display_delay(current_line);
