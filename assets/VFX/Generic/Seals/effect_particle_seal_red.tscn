@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccapvm3bs1fan"]
+
+[ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_xoyig"]
+
+[sub_resource type="Gradient" id="Gradient_ta0i3"]
+offsets = PackedFloat32Array(0, 0.299451, 0.587912, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0, 0, 1, 0.627451, 0, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xg7e5"]
+gradient = SubResource("Gradient_ta0i3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qcgc"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 64.0
+emission_ring_inner_radius = 64.0
+angular_velocity_min = 720.0
+angular_velocity_max = 720.0
+radial_velocity_min = -150.0
+radial_velocity_max = -150.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -350.0
+radial_accel_max = -350.0
+scale_min = 0.5
+scale_max = 0.5
+color_ramp = SubResource("GradientTexture1D_xg7e5")
+
+[node name="seal" instance=ExtResource("1_xoyig")]
+
+[node name="GPUParticles2D" parent="." index="0"]
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_5qcgc")
+lifetime = 0.5
+explosiveness = 0.75

@@ -1,6 +1,8 @@
 extends Node
 class_name SealManager
 
+@export var seal_vfx : Array[SealVFX];
+
 const SEAL_TURN_COUNT : int = 4;
 const MAX_SEALS_PER_SIDE : int = 4;
 
@@ -76,6 +78,7 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	sealed_spells.append(spell);
 	
 	EventManager.set_player_bg.emit(entity);
+	_play_seal_effects(seal_inst, entity);
 
 
 func check_for_seal(entity : EntityController, player_side : bool) -> bool:
@@ -118,6 +121,9 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 						eff_instance.spell_override = seal.seal_source;
 						eff_instance.check_success();
 						if eff_instance.cast_success : eff_instance.on_activate();
+					
+					# TODO: Show only the overlapping flags
+					_play_seal_effects(seal, entity);
 	
 	return has_sealed;
 
@@ -128,12 +134,31 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 	for seal in seal_instances:
 		if seal.player_side != player_side : continue;
 		
-		# NOTE: This will double effects up and do a violation per flag.
 		for flag in spell.spell_flags:
 			if seal.seal_source.spell_flags.has(flag):
 				seal_count += 1;
 	
 	return seal_count;
+
+
+func _play_seal_effects(seal : SealInstance, target : EntityController) :
+	var vfx : Array[Node];
+	
+	for flag in seal_vfx:
+		if seal.seal_source.spell_flags.has(flag.flag):
+			var vfx_instance = flag.vfx.instantiate() as EntityBase;
+			target.get_tree().root.add_child(vfx_instance);
+			
+			vfx_instance.global_position = target.global_position;
+			vfx_instance.reset_physics_interpolation();
+			
+			vfx.append(vfx_instance);
+			await get_tree().create_timer(0.2).timeout;
+	
+	await get_tree().create_timer(1).timeout;
+	
+	#for vfx_instance in vfx:
+	#	vfx_instance.queue_free();
 
 
 func _on_entity_turn_end(entity : EntityController) :

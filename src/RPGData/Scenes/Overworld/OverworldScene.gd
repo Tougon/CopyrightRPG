@@ -204,7 +204,6 @@ func _on_menu_opened(menu : MenuPanel):
 	if menu.menu_name == "overworld_menu_main":
 		var tween = get_tree().create_tween();
 		tween.tween_property(game_camera, "zoom", Vector2(1.2,1.2), 0.5).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT)
-	
 
 
 func _on_menu_closing(menu : MenuPanel):

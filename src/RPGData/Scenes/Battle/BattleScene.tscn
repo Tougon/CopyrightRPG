@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=89 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -36,10 +36,23 @@
 [ext_resource type="Resource" uid="uid://ctvsirdlykue5" path="res://assets/Tweens/Transition/distort_out.tres" id="32_fepss"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="33_fk14b"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="34_hseuq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_vfx.gd" id="37_d6s3e"]
+[ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="38_sx3np"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="39_a3c23"]
+[ext_resource type="PackedScene" uid="uid://n8pfd82khfr2" path="res://assets/VFX/Generic/Seals/effect_particle_seal_white.tscn" id="39_phtwn"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="40_0nnbl"]
+[ext_resource type="Resource" uid="uid://nnr5j51mnb2i" path="res://assets/Flags/dark.tres" id="40_y28am"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="41_ktutj"]
+[ext_resource type="PackedScene" uid="uid://c78n7apl3s76t" path="res://assets/VFX/Generic/Seals/effect_particle_seal_purple.tscn" id="41_roo10"]
+[ext_resource type="Resource" uid="uid://b8rhhshmwvhvo" path="res://assets/Flags/earth.tres" id="42_02xsr"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="42_mqdqo"]
+[ext_resource type="PackedScene" uid="uid://bm6asya0twwbv" path="res://assets/VFX/Generic/Seals/effect_particle_seal_green.tscn" id="43_ocmnn"]
+[ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="44_cht1j"]
+[ext_resource type="PackedScene" uid="uid://ccapvm3bs1fan" path="res://assets/VFX/Generic/Seals/effect_particle_seal_red.tscn" id="45_yfjyn"]
+[ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="46_7tlbi"]
+[ext_resource type="PackedScene" uid="uid://di8qosr8vtymb" path="res://assets/VFX/Generic/Seals/effect_particle_seal_yellow.tscn" id="47_4vmaq"]
+[ext_resource type="Resource" uid="uid://uf35l0vgi8mj" path="res://assets/Flags/water.tres" id="48_pxdj3"]
+[ext_resource type="PackedScene" uid="uid://dvhagctlq66n1" path="res://assets/VFX/Generic/Seals/effect_particle_seal_blue.tscn" id="49_5i3qx"]
 
 [sub_resource type="Resource" id="Resource_pjtk0"]
 script = ExtResource("6_1yw0j")
@@ -225,6 +238,36 @@ tween_name = "Fade Out"
 tween_resource = ExtResource("32_fepss")
 play_on_start = false
 next_tween = ""
+
+[sub_resource type="Resource" id="Resource_che7u"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("38_sx3np")
+vfx = ExtResource("39_phtwn")
+
+[sub_resource type="Resource" id="Resource_o4qmr"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("40_y28am")
+vfx = ExtResource("41_roo10")
+
+[sub_resource type="Resource" id="Resource_wx4r8"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("42_02xsr")
+vfx = ExtResource("43_ocmnn")
+
+[sub_resource type="Resource" id="Resource_ucos2"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("44_cht1j")
+vfx = ExtResource("45_yfjyn")
+
+[sub_resource type="Resource" id="Resource_3tgv6"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("46_7tlbi")
+vfx = ExtResource("47_4vmaq")
+
+[sub_resource type="Resource" id="Resource_bhtgu"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("48_pxdj3")
+vfx = ExtResource("49_5i3qx")
 
 [sub_resource type="Resource" id="Resource_krv0w"]
 script = ExtResource("34_hseuq")
@@ -502,6 +545,7 @@ sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_42b2y"), Su
 
 [node name="SealManager" type="Node" parent="Core"]
 script = ExtResource("19_et6o3")
+seal_vfx = Array[ExtResource("37_d6s3e")]([SubResource("Resource_che7u"), SubResource("Resource_o4qmr"), SubResource("Resource_wx4r8"), SubResource("Resource_ucos2"), SubResource("Resource_3tgv6"), SubResource("Resource_bhtgu")])
 
 [node name="BattleRewardManager" type="Node" parent="Core"]
 script = ExtResource("29_6pl1e")

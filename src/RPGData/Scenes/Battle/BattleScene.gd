@@ -292,7 +292,6 @@ func _action_phase():
 					_get_spell_hit_messages(entity, spell_cast, spell, post_anim_dialogue);
 		
 		var cast_msg = format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
-		print(cast_msg);
 		# Format the cast message for targets
 		if spell_cast.size() > 0:
 			cast_msg = cast_msg.format({target = GrammarManager.get_plural_string(entity.current_target)})
