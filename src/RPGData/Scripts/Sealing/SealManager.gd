@@ -122,8 +122,7 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 						eff_instance.check_success();
 						if eff_instance.cast_success : eff_instance.on_activate();
 					
-					# TODO: Show only the overlapping flags
-					_play_seal_effects(seal, entity);
+					_play_seal_effects(seal, entity, flag);
 	
 	return has_sealed;
 
@@ -141,24 +140,28 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 	return seal_count;
 
 
-func _play_seal_effects(seal : SealInstance, target : EntityController) :
+func _play_seal_effects(seal : SealInstance, target : EntityController, show_only : TFlag = null) :
 	var vfx : Array[Node];
 	
 	for flag in seal_vfx:
-		if seal.seal_source.spell_flags.has(flag.flag):
-			var vfx_instance = flag.vfx.instantiate() as EntityBase;
-			target.get_tree().root.add_child(vfx_instance);
-			
-			vfx_instance.global_position = target.global_position;
-			vfx_instance.reset_physics_interpolation();
-			
-			vfx.append(vfx_instance);
-			await get_tree().create_timer(0.2).timeout;
+		if seal.seal_source.spell_flags.has(flag.flag) && (show_only == null || (show_only != null && flag.flag == show_only)):
+			vfx.append(_play_seal_effect(flag, target));
+			await get_tree().create_timer(0.3).timeout;
 	
 	await get_tree().create_timer(1).timeout;
 	
-	#for vfx_instance in vfx:
-	#	vfx_instance.queue_free();
+	for vfx_instance in vfx:
+		vfx_instance.queue_free();
+
+
+func _play_seal_effect(flag : SealVFX, target : EntityController) -> Node :
+	var vfx_instance = flag.vfx.instantiate() as EntityBase;
+	target.get_tree().root.add_child(vfx_instance);
+	
+	vfx_instance.global_position = target.global_position;
+	vfx_instance.reset_physics_interpolation();
+	
+	return vfx_instance;
 
 
 func _on_entity_turn_end(entity : EntityController) :
