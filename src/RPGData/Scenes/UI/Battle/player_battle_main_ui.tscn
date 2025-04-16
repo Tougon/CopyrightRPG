@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3q7hew02l55r"]
+[gd_scene load_steps=12 format=3 uid="uid://d3q7hew02l55r"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="4_1vr4n"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="5_121r2"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="5_pm4r5"]
+[ext_resource type="PackedScene" uid="uid://d4eqa4tmptcf" path="res://src/RPGData/Scenes/UI/Battle/player_stat_stage_display.tscn" id="7_d0eur"]
 
 [sub_resource type="Resource" id="Resource_j1ry4"]
 script = ExtResource("3_ftnx2")
@@ -35,8 +36,15 @@ shader_parameter/color_secondary = Color(0, 0, 0, 0)
 shader_parameter/resolution = Vector2(400, 80.4)
 shader_parameter/amount = 1.0
 
-[node name="Player Main Menu" node_paths=PackedStringArray("initial_selection", "all_selections") instance=ExtResource("1_gohqw")]
+[node name="Player Main Menu" node_paths=PackedStringArray("atk_display", "def_display", "mag_display", "res_display", "spd_display", "acc_display", "eva_display", "initial_selection", "all_selections") instance=ExtResource("1_gohqw")]
 script = ExtResource("2_stk7e")
+atk_display = NodePath("Status Area/Stats/Attack/HBoxContainer/Stat Display")
+def_display = NodePath("Status Area/Stats/Defense/HBoxContainer/Stat Display")
+mag_display = NodePath("Status Area/Stats/Magic/HBoxContainer/Stat Display")
+res_display = NodePath("Status Area/Stats/Resistance/HBoxContainer/Stat Display")
+spd_display = NodePath("Status Area/Stats/Speed/HBoxContainer/Stat Display")
+acc_display = NodePath("Status Area/Stats/Accuracy/HBoxContainer/Stat Display")
+eva_display = NodePath("Status Area/Stats/Evasion/HBoxContainer/Stat Display")
 menu_name = "player_battle_main"
 hide_on_unfocus = true
 initial_selection = NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Attack")
@@ -165,7 +173,203 @@ theme_override_font_sizes/font_size = 32
 text = "T_BATTLE_MAIN_UI_DEFEND"
 clip_text = true
 
-[node name="Noise" type="ColorRect" parent="." index="2"]
+[node name="Status Area" type="ColorRect" parent="." index="1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 180.0
+offset_top = 50.0
+offset_right = -180.0
+offset_bottom = -240.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.427451, 0.545098, 1)
+
+[node name="Stats" type="VBoxContainer" parent="Status Area" index="0"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 500.0
+offset_bottom = -15.0
+grow_vertical = 2
+
+[node name="Attack" type="Control" parent="Status Area/Stats" index="0"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Attack" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Attack/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_ATK"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Attack/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Defense" type="Control" parent="Status Area/Stats" index="1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Defense" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Defense/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_DEF"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Defense/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Magic" type="Control" parent="Status Area/Stats" index="2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Magic" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Magic/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_MAG"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Magic/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Resistance" type="Control" parent="Status Area/Stats" index="3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Resistance" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Resistance/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_RES"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Resistance/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Speed" type="Control" parent="Status Area/Stats" index="4"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Speed" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Speed/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_SPD"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Speed/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Accuracy" type="Control" parent="Status Area/Stats" index="5"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Accuracy" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Accuracy/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_ACC"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Accuracy/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Evasion" type="Control" parent="Status Area/Stats" index="6"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Status Area/Stats/Evasion" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="RichTextLabel" parent="Status Area/Stats/Evasion/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "T_STAT_EVA"
+fit_content = true
+
+[node name="Stat Display" parent="Status Area/Stats/Evasion/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Noise" type="ColorRect" parent="Status Area" index="1"]
+material = SubResource("ShaderMaterial_ymo7e")
+custom_minimum_size = Vector2(0, 190)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Noise" type="ColorRect" parent="." index="3"]
 material = SubResource("ShaderMaterial_ymo7e")
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 1
