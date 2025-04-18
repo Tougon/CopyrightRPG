@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3q7hew02l55r"]
+[gd_scene load_steps=13 format=3 uid="uid://d3q7hew02l55r"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
@@ -28,6 +28,13 @@ shader_parameter/color_primary = Color(0.2, 0.427451, 0.545098, 1)
 shader_parameter/color_secondary = Color(0.16274, 0.361658, 0.46422, 1)
 shader_parameter/resolution = Vector2(400, 25)
 shader_parameter/amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0fyv"]
+shader = ExtResource("5_121r2")
+shader_parameter/color_primary = Color(1, 1, 1, 0.0705882)
+shader_parameter/color_secondary = Color(0, 0, 0, 0)
+shader_parameter/resolution = Vector2(400, 200)
+shader_parameter/amount = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ymo7e"]
 shader = ExtResource("5_121r2")
@@ -174,7 +181,6 @@ text = "T_BATTLE_MAIN_UI_DEFEND"
 clip_text = true
 
 [node name="Status Area" type="ColorRect" parent="." index="1"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,6 +225,8 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Attack/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Defense" type="Control" parent="Status Area/Stats" index="1"]
 custom_minimum_size = Vector2(0, 50)
@@ -242,6 +250,8 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Defense/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Magic" type="Control" parent="Status Area/Stats" index="2"]
 custom_minimum_size = Vector2(0, 50)
@@ -265,6 +275,8 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Magic/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Resistance" type="Control" parent="Status Area/Stats" index="3"]
 custom_minimum_size = Vector2(0, 50)
@@ -288,6 +300,8 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Resistance/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Speed" type="Control" parent="Status Area/Stats" index="4"]
 custom_minimum_size = Vector2(0, 50)
@@ -311,6 +325,8 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Speed/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Accuracy" type="Control" parent="Status Area/Stats" index="5"]
 custom_minimum_size = Vector2(0, 50)
@@ -334,6 +350,8 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Accuracy/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Evasion" type="Control" parent="Status Area/Stats" index="6"]
 custom_minimum_size = Vector2(0, 50)
@@ -357,9 +375,11 @@ fit_content = true
 [node name="Stat Display" parent="Status Area/Stats/Evasion/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
+icon_size = 15.0
+separation = 4.0
 
 [node name="Noise" type="ColorRect" parent="Status Area" index="1"]
-material = SubResource("ShaderMaterial_ymo7e")
+material = SubResource("ShaderMaterial_u0fyv")
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 1
 anchors_preset = 15

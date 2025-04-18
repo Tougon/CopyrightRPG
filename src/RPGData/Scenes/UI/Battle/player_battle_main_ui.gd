@@ -13,6 +13,7 @@ var current_entity : EntityController;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"Status Area".visible = false;
 	super._ready();
 
 
@@ -82,9 +83,8 @@ func _on_item_button_pressed():
 func on_menu_cancel():
 	EventManager.player_menu_cancel.emit();
 
-func on_menu_inactive():
+func on_unfocus():
 	$"Status Area".visible = false;
-	super.on_menu_inactive();
 
 func on_ui_aux_1():
 	$"Status Area".visible = !$"Status Area".visible;

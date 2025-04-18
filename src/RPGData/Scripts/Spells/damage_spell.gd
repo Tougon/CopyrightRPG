@@ -223,6 +223,13 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 			for f in def_mods_post:
 				damage /= f;
 		
+		# One time attack boost if flags overlap affinity
+		for flag in user.current_entity.affinity:
+			if spell_flags.has(flag):
+				print("AFFINITY")
+				damage *= 1.5;
+				break;
+		
 		print("Full Damage: " + str(damage))
 		damage *= randf_range(0.85, 1.0);
 		

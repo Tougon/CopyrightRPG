@@ -6,6 +6,8 @@ const INSTANCE_BATTLE_WINDOW : bool = false;
 # Determines the length of the tweens for enemy repositioning
 const ENEMY_REPOSITION_TIME : float = 0.30;
 
+const TYPE_AFFINITY_BONUS : float = 1.5;
+
 # Determines if text should print asynchonously
 # TODO: change to const
 var async_damage_text : bool = false;

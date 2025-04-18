@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=29 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=31 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_fc8ux"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_s5su1"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_aba5b"]
+[ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_88kha"]
 [ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/damage/player/spell_damage_player_secretchord.tres" id="4_k32us"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="8_6wkou"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="8_al3e4"]
@@ -129,6 +131,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_dlenl")
 level_exp = SubResource("Resource_w2t4l")
+affinity = Array[ExtResource("1_fc8ux")]([ExtResource("3_88kha")])
 weakness = Array[ExtResource("14_hl2ui")]([])
 resistance = Array[ExtResource("14_hl2ui")]([])
 min_level = 50
