@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=8 format=3 uid="uid://b72yktro6kayp"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_dk48p"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_3u13w"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_vk0vj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_hd465"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="3_prxi7"]
+
+[sub_resource type="Resource" id="Resource_730q6"]
+script = ExtResource("3_prxi7")
+target = 0
+stat = 0
+amount = 1
+
+[sub_resource type="Resource" id="Resource_d4nsq"]
+script = ExtResource("1_dk48p")
+stackable = false
+effect_name = "test item boost"
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("2_3u13w")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("2_3u13w")]([])
+on_activate = Array[ExtResource("2_3u13w")]([SubResource("Resource_730q6")])
+on_failed_to_activate = Array[ExtResource("2_3u13w")]([])
+on_apply = Array[ExtResource("2_3u13w")]([])
+on_move_selected = Array[ExtResource("2_3u13w")]([])
+on_move_completed = Array[ExtResource("2_3u13w")]([])
+on_deactivate = Array[ExtResource("2_3u13w")]([])
+on_turn_start = Array[ExtResource("2_3u13w")]([])
+on_turn_end = Array[ExtResource("2_3u13w")]([])
+on_stack = Array[ExtResource("2_3u13w")]([])
+
+[resource]
+script = ExtResource("3_hd465")
+equipment_type = 0
+hp_mod = 10
+mp_mod = 10
+atk_mod = 5
+def_mod = 0
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.0
+equipment_effects = Array[ExtResource("1_dk48p")]([SubResource("Resource_d4nsq")])
+item_name_key = ""
+item_description_key = ""
+item_flags = Array[ExtResource("2_vk0vj")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

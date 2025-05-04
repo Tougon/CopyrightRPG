@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDatabase" load_steps=5 format=3 uid="uid://dicsdl1lvm1rp"]
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=6 format=3 uid="uid://dicsdl1lvm1rp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database_entry.gd" id="1_pxlfu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database.gd" id="2_ruhu0"]
@@ -11,6 +11,10 @@ item_path = "res://assets/Items/test item a.tres"
 script = ExtResource("1_pxlfu")
 item_path = "res://assets/Items/test item b.tres"
 
+[sub_resource type="Resource" id="Resource_6d5lo"]
+script = ExtResource("1_pxlfu")
+item_path = "res://assets/Items/test item c.tres"
+
 [resource]
 script = ExtResource("2_ruhu0")
-entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_t1kap"), SubResource("Resource_46j0w")])
+entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_t1kap"), SubResource("Resource_46j0w"), SubResource("Resource_6d5lo")])

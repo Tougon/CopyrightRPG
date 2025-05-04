@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=29 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=30 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_3quqn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_cso64"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_megr7"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_uapsv"]
 [ext_resource type="Resource" uid="uid://d22f2bgpkerm4" path="res://assets/Spells/damage/player/spell_damage_player_classified.tres" id="4_jxinl"]
 [ext_resource type="Resource" uid="uid://dttsu67w5y8lh" path="res://assets/Spells/damage/player/spell_damage_player_topsecret.tres" id="5_jj087"]
@@ -123,6 +124,7 @@ base_crit_resist_modifier = 1.0
 base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_ghury")
+affinity = Array[ExtResource("1_megr7")]([])
 weakness = Array[ExtResource("11_qtr3x")]([])
 resistance = Array[ExtResource("11_qtr3x")]([])
 min_level = 50

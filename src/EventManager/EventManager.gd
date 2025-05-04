@@ -32,6 +32,7 @@ signal overworld_battle_fade_start(fade_in : bool);
 signal overworld_battle_fade_completed(fade_in : bool);
 
 # Overworld UI Events
+signal on_player_equipment_selected(equipment_equipment_type : EquipmentItem.EquipmentType, player_data : PartyMemberData, entity : Entity)
 signal on_player_move_selected(move_index : int, player_data : PartyMemberData, entity : Entity)
 signal on_inventory_item_selected(item : Item);
 signal refresh_player_move_list(move_list : Array);

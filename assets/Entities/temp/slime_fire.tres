@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://cuniv2y42pgsd"]
+[gd_resource type="Resource" script_class="Entity" load_steps=49 format=3 uid="uid://cuniv2y42pgsd"]
 
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_c6ej8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_y4sq3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_bcybg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="3_hwm33"]
@@ -206,6 +207,7 @@ base_crit_resist_modifier = 1.0
 base_accuracy_modifier = 0.8
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_m1s8s")
+affinity = Array[ExtResource("1_c6ej8")]([])
 weakness = Array[ExtResource("13_13pel")]([])
 resistance = Array[ExtResource("13_13pel")]([])
 min_level = 1

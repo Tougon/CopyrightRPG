@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=76 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_move_select_menu.gd" id="23_kuxur"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="24_m7wo8"]
 [ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_equipment_select.gd" id="29_hwmba"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -558,8 +559,8 @@ prev_player_node = NodePath("Entity Equipment Area/Previous")
 moveset_grid = NodePath("Entity Equipment Area/VBox/Moveset/Grid")
 root_menu = NodePath("../..")
 submenu = true
-initial_selection = NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button")
-all_selections = [NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button2"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Button3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 1"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 2"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 4"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 5"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 6"), NodePath("Entity Equipment Area/Previous"), NodePath("Entity Equipment Area/Next")]
+initial_selection = NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon")
+all_selections = [NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor"), NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 1"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 2"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 3"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 4"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 5"), NodePath("Entity Equipment Area/VBox/Moveset/Grid/Move 6"), NodePath("Entity Equipment Area/Previous"), NodePath("Entity Equipment Area/Next")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_mlp1p"), SubResource("Resource_jg1pe")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Party"]
@@ -839,27 +840,27 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+[node name="Weapon" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_left = NodePath("../../../../Previous")
-text = "Temp Button Name"
+text = "Weapon"
 text_overrun_behavior = 3
 
-[node name="Button2" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+[node name="Armor" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
-text = "Temp Button Name"
+text = "Armor"
 text_overrun_behavior = 3
 
-[node name="Button3" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+[node name="Accessory" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
 focus_neighbor_right = NodePath("../../../../Next")
-text = "Temp Button Name"
+text = "Accessory"
 text_overrun_behavior = 3
 
 [node name="Moveset" type="Control" parent="Body/Party/Entity Equipment Area/VBox"]
@@ -988,7 +989,7 @@ offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+[node name="Underlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -997,6 +998,19 @@ offset_left = -78.0
 offset_right = 78.0
 offset_bottom = 104.0
 grow_horizontal = 2
+color = Color(0.617455, 0.617455, 0.617455, 1)
+
+[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_right = 78.0
+offset_bottom = 104.0
+grow_horizontal = 2
+expand = true
 script = ExtResource("23_k7wig")
 
 [node name="Static" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
@@ -1119,8 +1133,7 @@ text = "T_MENU_COMMON_PARTY_NO_MOVES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Entity Equipment Select Area2" type="Panel" parent="Body/Party"]
-visible = false
+[node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1130,8 +1143,11 @@ offset_top = -298.0
 offset_right = 484.0
 offset_bottom = -93.0
 grow_vertical = 0
+script = ExtResource("29_hwmba")
+menu_panel = NodePath("BG/Dynamic Panel")
+menu_name = "overworld_menu_main_equipment_select"
 
-[node name="BG" type="ColorRect" parent="Body/Party/Entity Equipment Select Area2"]
+[node name="BG" type="ColorRect" parent="Body/Party/Entity Equipment Select Area"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1140,7 +1156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.196826, 0.089291, 0.178352, 0.901961)
 
-[node name="Move Visuals" type="Control" parent="Body/Party/Entity Equipment Select Area2/BG"]
+[node name="Item Visuals" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -1153,7 +1169,7 @@ offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Equipment" type="TextureRect" parent="Body/Party/Entity Equipment Select Area2/BG/Move Visuals"]
+[node name="Equipment" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1163,7 +1179,7 @@ offset_right = 78.0
 offset_bottom = 104.0
 grow_horizontal = 2
 
-[node name="Static" type="ColorRect" parent="Body/Party/Entity Equipment Select Area2/BG/Move Visuals/Equipment"]
+[node name="Static" type="ColorRect" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
 material = SubResource("ShaderMaterial_8ikbu")
 layout_mode = 1
 anchors_preset = 15
@@ -1172,7 +1188,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="Label" parent="Body/Party/Entity Equipment Select Area2/BG/Move Visuals/Equipment"]
+[node name="Name" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
 anchors_preset = 12
@@ -1186,7 +1202,7 @@ grow_vertical = 0
 text = "Item Name"
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="Body/Party/Entity Equipment Select Area2/BG/Move Visuals"]
+[node name="Description" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
 anchors_preset = 12
@@ -1202,7 +1218,7 @@ label_settings = SubResource("LabelSettings_3ei2n")
 autowrap_mode = 2
 text_overrun_behavior = 3
 
-[node name="Close" type="Button" parent="Body/Party/Entity Equipment Select Area2/BG/Move Visuals"]
+[node name="Close" type="Button" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1220,7 +1236,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 text = "Close"
 
-[node name="Dynamic Panel" type="Panel" parent="Body/Party/Entity Equipment Select Area2/BG" node_paths=PackedStringArray("container")]
+[node name="Dynamic Panel" type="Panel" parent="Body/Party/Entity Equipment Select Area/BG" node_paths=PackedStringArray("container")]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -1235,7 +1251,7 @@ menu_item = ExtResource("27_0wilh")
 item_size = Vector2(195, 50)
 item_spacing = Vector2(10, 5)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Body/Party/Entity Equipment Select Area2/BG/Dynamic Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Body/Party/Entity Equipment Select Area/BG/Dynamic Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1244,10 +1260,10 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="Control" type="Control" parent="Body/Party/Entity Equipment Select Area2/BG/Dynamic Panel/ScrollContainer"]
+[node name="Control" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Dynamic Panel/ScrollContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Body/Party/Entity Equipment Select Area2/BG"]
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Select Area/BG"]
 material = ExtResource("16_egfar")
 layout_mode = 1
 anchors_preset = 8
@@ -1265,7 +1281,7 @@ rotation = 0.0872665
 pivot_offset = Vector2(427, 250)
 theme = ExtResource("4_q6orv")
 theme_override_font_sizes/font_size = 24
-text = "T_MENU_COMMON_PARTY_NO_ITMES"
+text = "T_MENU_COMMON_PARTY_NO_EQUIPMENT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1700,6 +1716,9 @@ text = "T_MENU_COMMON_DELETE"
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), SubResource("Resource_vgeiw")])
 
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon" to="Body/Party" method="_on_weapon_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor" to="Body/Party" method="_on_armor_selected"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory" to="Body/Party" method="_on_accessory_selected"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1" to="Body/Party" method="_on_move_selected"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2" to="Body/Party" method="_on_move_selected"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3" to="Body/Party" method="_on_move_selected"]
@@ -1709,7 +1728,7 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Previous" to="Body/Party" method="_on_focus_entered_previous"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
 [connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
-[connection signal="pressed" from="Body/Party/Entity Equipment Select Area2/BG/Move Visuals/Close" to="Body/Party/Entity Equipment Select Area2" method="_on_close_pressed"]
+[connection signal="pressed" from="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Close" to="Body/Party/Entity Equipment Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]

@@ -5,6 +5,7 @@ extends MenuPanel
 var _target_index : int;
 var _current_player_data : PartyMemberData;
 var _current_player_entity : Entity;
+var _current_player_material : Material;
 var _spell_to_item_id : Dictionary;
 
 # TODO: Move order customization
@@ -21,6 +22,7 @@ func _on_player_move_selected(move_index : int, player_data : PartyMemberData, e
 	_target_index = move_index;
 	_current_player_data = player_data;
 	_current_player_entity = entity;
+	_current_player_material = load_material(_current_player_entity.entity_thought_pattern_material);
 	
 	_refresh_move_ui();
 
@@ -33,6 +35,12 @@ func on_focus():
 	if menu_panel.get_data_size() > 0 :
 		menu_panel.set_selected_index(0);
 	else :
+		$"BG/Move Visuals/Vid/Name".text = tr("T_MENU_COMMON_PARTY_NO_MOVES_DESC");
+		$"BG/Move Visuals/Description".text = "";
+		$"BG/Move Visuals/Cost".text = "";
+		$BG/Label.visible = true;
+		$"BG/Move Visuals/Vid/Static".visible = true;
+		$"BG/Move Visuals/Close".visible = true;
 		$"BG/Move Visuals/Close".grab_focus();
 
 
@@ -71,7 +79,8 @@ func _refresh_move_ui():
 			valid_moves.append(move.move);
 	
 	# 4. None (null) if the player has more than one move set
-	if _get_num_moves_set() > 1 :
+	# Do not use this if the current slot has no move
+	if _get_num_moves_set() > 1 && current_selection != null :
 		valid_moves.append(null);
 	
 	menu_panel.set_data(valid_moves);
@@ -81,11 +90,13 @@ func _refresh_move_ui():
 		$"BG/Move Visuals/Description".text = "";
 		$"BG/Move Visuals/Cost".text = "";
 		$BG/Label.visible = true;
+		$"BG/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Visuals/Close".visible = true;
 		$"BG/Move Visuals/Close".grab_focus();
 	else :
 		$BG/Label.visible = false;
 		$"BG/Move Visuals/Close".visible = false;
+
 
 func _get_num_moves_set() -> int:
 	var result = 0;
@@ -125,11 +136,45 @@ func _on_item_selected(data):
 		$"BG/Move Visuals/Vid/Name".text = tr(data.spell_name_key);
 		$"BG/Move Visuals/Description".text = tr(data.spell_description_key);
 		$"BG/Move Visuals/Cost".text = tr("T_MP_COST").format({cost = data.spell_cost});
+		if data.spell_videos.size() > 0 :
+			_load_spell_data(data as Spell)
+		else :
+			$"BG/Move Visuals/Vid/Static".visible = true;
 	
 	else :
 		$"BG/Move Visuals/Vid/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Visuals/Cost".text = "-";
+		$"BG/Move Visuals/Vid/Static".visible = true;
+
+
+func _load_spell_data(move : Spell):
+	$"BG/Move Visuals/Vid".material = _current_player_material;
+	
+	if move.spell_videos != null && move.spell_videos.size() > 0:
+		
+		var video = load_video(move.spell_videos[0]);
+		
+		if video != null : 
+			$"BG/Move Visuals/Vid".stream = video;
+			$"BG/Move Visuals/Vid".play_video_at(0);
+			$"BG/Move Visuals/Vid/Static".visible = false;
+		else :
+			$"BG/Move Visuals/Vid/Static".visible = true;
+
+
+func load_video(path : String) -> VideoStream:
+	if ResourceLoader.exists(path, "VideoStream"):
+		var video = ResourceLoader.load(path, "VideoStream") as VideoStream;
+		return video;
+	return null;
+
+
+func load_material(path : String) -> Material:
+	if ResourceLoader.exists(path, "Material"):
+		var mat = ResourceLoader.load(path, "Material") as Material;
+		return mat;
+	return null;
 
 
 func _on_item_clicked(data):

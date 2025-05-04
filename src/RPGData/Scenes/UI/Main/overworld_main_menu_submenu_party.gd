@@ -102,6 +102,31 @@ func _refresh_move_list():
 				if (i + 1) % 3 == 0 || i == last_valid_index + 1 : button.focus_neighbor_right = button.get_path_to(next_player_node);
 
 
+# Equipment Selection
+func _on_weapon_selected():
+	cache_menu_state();
+	
+	EventManager.on_player_equipment_selected.emit(EquipmentItem.EquipmentType.Weapon, _current_player_data, _current_player_entity);
+	UIManager.open_menu_name("overworld_menu_main_equipment_select");
+	pass;
+
+
+func _on_armor_selected():
+	cache_menu_state();
+	
+	EventManager.on_player_equipment_selected.emit(EquipmentItem.EquipmentType.Armor, _current_player_data, _current_player_entity);
+	UIManager.open_menu_name("overworld_menu_main_equipment_select");
+	pass;
+
+
+func _on_accessory_selected():
+	cache_menu_state();
+	
+	EventManager.on_player_equipment_selected.emit(EquipmentItem.EquipmentType.Accessory, _current_player_data, _current_player_entity);
+	UIManager.open_menu_name("overworld_menu_main_equipment_select");
+	pass;
+
+
 # Move Selection
 func _on_move_selected():
 	var move_index = UIManager.current_selection.get_index();

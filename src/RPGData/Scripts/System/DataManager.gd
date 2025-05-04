@@ -16,6 +16,13 @@ func _ready():
 	current_save = SaveData.new();
 	_load_preferences();
 	
+	# TODO: Don't do this automatically
+	create_data();
+	
+	await get_tree().process_frame;
+
+
+func create_data():
 	party_data = [];
 	
 	if entity_database == null : print("Entity Database does not exist.");
@@ -26,7 +33,7 @@ func _ready():
 	entity_database.initialize();
 	item_database.initialize();
 	
-	# TODO: Better initialization for player
+	# TODO: Better initialization for player?
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		var entity = DataManager.entity_database.get_entity(i, true)
 		var move_list = entity.get_base_move_list();
@@ -44,9 +51,8 @@ func _ready():
 	
 	# TODO: Remove this. This is temp item stuff.
 	current_save.inventory[0] = 2;
-	#current_save.inventory[1] = 3;
-	
-	await get_tree().process_frame;
+	current_save.inventory[1] = 3;
+	current_save.inventory[2] = 3;
 
 
 func load_data():
@@ -143,6 +149,20 @@ func get_move_items() -> Dictionary:
 		
 		if item != null && item is MoveItem :
 			result[id] = item;
+	
+	return result;
+
+
+func get_equipment_items(use_type : bool = false, equipment_equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon) -> Dictionary:
+	var result : Dictionary;
+	
+	for id in current_save.inventory.keys():
+		var item = item_database.get_item(id);
+		
+		if item != null && item is EquipmentItem:
+			
+			if !use_type || (use_type && equipment_equipment_type == (item as EquipmentItem).equipment_type) :
+				result[id] = item;
 	
 	return result;
 
