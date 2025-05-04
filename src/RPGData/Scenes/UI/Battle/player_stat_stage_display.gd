@@ -15,7 +15,6 @@ func _ready() -> void:
 	var x_pos = 0.0;
 	var y_pos = 0.0;
 	if center_v : y_pos = (size.y / 2.0) - (icon_size);
-	print(y_pos)
 	
 	for i in (EntityController.STAT_STAGE_LIMIT * 2) + 1:
 		var stat_icon = TextureRect.new();

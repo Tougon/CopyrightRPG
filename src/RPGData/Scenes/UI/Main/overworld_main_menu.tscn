@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=77 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -36,6 +36,7 @@
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="24_m7wo8"]
 [ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_equipment_select.gd" id="29_hwmba"]
+[ext_resource type="PackedScene" uid="uid://bhbi06eb7yvyu" path="res://src/RPGData/Scenes/UI/Main/main_menu_equipment_select_button.tscn" id="30_tjpn3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -1135,14 +1136,10 @@ vertical_alignment = 1
 
 [node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = -298.0
-offset_right = 484.0
-offset_bottom = -93.0
-grow_vertical = 0
+offset_left = 55.0
+offset_top = 111.0
+offset_right = 483.0
+offset_bottom = 316.0
 script = ExtResource("29_hwmba")
 menu_panel = NodePath("BG/Dynamic Panel")
 menu_name = "overworld_menu_main_equipment_select"
@@ -1247,7 +1244,7 @@ offset_bottom = -5.0
 grow_vertical = 2
 script = ExtResource("12_wsuig")
 container = NodePath("ScrollContainer")
-menu_item = ExtResource("27_0wilh")
+menu_item = ExtResource("30_tjpn3")
 item_size = Vector2(195, 50)
 item_spacing = Vector2(10, 5)
 

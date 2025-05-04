@@ -4,9 +4,13 @@ class_name PlayerController
 enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 
 @export var player_id : int;
-@export var attack_action : Spell;
-@export var defend_action : Spell;
-@export var seal_effect : SealEffectGroup;
+@export var default_attack_action : Spell;
+@export var default_defend_action : Spell;
+@export var default_seal_effect : SealEffectGroup;
+
+var attack_action : Spell;
+var defend_action : Spell;
+var seal_effect : SealEffectGroup;
 var prev_action_type : ActionType;
 
 var default_color : Color;
@@ -49,6 +53,10 @@ func entity_init(params : BattleParams):
 	var hp_mod = 0;
 	var mp_mod = 0;
 	
+	attack_action = default_attack_action;
+	defend_action = default_defend_action;
+	seal_effect = default_seal_effect;
+	
 	if params != null:
 		# If player is null, they are locked. Do not use this entity.
 		if params.players[player_id] == null : 
@@ -64,9 +72,13 @@ func entity_init(params : BattleParams):
 	current_entity = params.players[player_id].override_entity;
 	super.entity_init(params)
 	
-	# TODO: Apply additional stat modifiers
+	var weapon = DataManager.item_database.get_item(params.players[player_id].override_weapon_id);
+	if weapon != null && weapon is EquipmentItem && (weapon as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Weapon :
+		_apply_equipment(weapon);
+		
 	current_hp -= hp_mod;
 	current_mp -= mp_mod;
+	
 	
 	# Override move list with player's set
 	if params.players[player_id].override_move_list != null && params.players[player_id].override_move_list.size() > 0:
@@ -77,6 +89,23 @@ func entity_init(params : BattleParams):
 	
 	await get_tree().create_timer(1.0).timeout
 	#TweenExtensions.shake_position_2d($Sprite2D, 0.28, 35, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
+
+
+func _apply_equipment(equipment : EquipmentItem):
+	max_hp += equipment.hp_mod;
+	max_mp += equipment.mp_mod;
+	param.entity_atk += equipment.atk_mod;
+	param.entity_def += equipment.def_mod;
+	param.entity_sp_atk += equipment.mag_mod;
+	param.entity_sp_def += equipment.res_mod;
+	param.entity_spd += equipment.spd_mod;
+	param.entity_luck += equipment.lck_mod;
+	
+	# TODO: Perhaps don't do this?
+	current_hp += equipment.hp_mod;
+	current_mp += equipment.mp_mod;
+	
+	# TODO: apply effects/gimmicks
 
 
 func execute_turn_start_effects():

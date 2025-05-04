@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=91 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -6,24 +6,26 @@
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
+[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="4_wv7ke"]
+[ext_resource type="Resource" uid="uid://dciwv5n41ixne" path="res://assets/Spells/generic/spell_generic_defend.tres" id="5_7dvw6"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="6_1yw0j"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="6_2fssi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="6_2gp2x"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Resource" uid="uid://dyc1rwxffmh78" path="res://assets/Entities/players/player_main.tres" id="7_5gsqw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_46juf"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
 [ext_resource type="Resource" uid="uid://bnwh1ljsi2ph" path="res://assets/Entities/players/player_fighter.tres" id="8_hn632"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="8_it4wa"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
 [ext_resource type="Resource" uid="uid://8i7hybweexe0" path="res://assets/Entities/players/player_healer.tres" id="10_66vq4"]
+[ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="10_nqt30"]
 [ext_resource type="PackedScene" uid="uid://bj25wtcmfmgoc" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_ui.tscn" id="11_og6hd"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="11_ydv2w"]
-[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="12_fxbwv"]
 [ext_resource type="Resource" uid="uid://cuq4qm0mplqgp" path="res://assets/Entities/players/player_mage.tres" id="12_qpkyi"]
-[ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/seal/effect_seal_buff_sp_attack.tres" id="13_vk0ot"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="13_ppeub"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="19_et6o3"]
 [ext_resource type="PackedScene" uid="uid://bax2rjs6ennqq" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_ui.tscn" id="20_dvxdd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_fade_ui.gd" id="20_ija8q"]
@@ -54,29 +56,29 @@
 [ext_resource type="Resource" uid="uid://uf35l0vgi8mj" path="res://assets/Flags/water.tres" id="48_pxdj3"]
 [ext_resource type="PackedScene" uid="uid://dvhagctlq66n1" path="res://assets/VFX/Generic/Seals/effect_particle_seal_blue.tscn" id="49_5i3qx"]
 
-[sub_resource type="Resource" id="Resource_pjtk0"]
-script = ExtResource("6_1yw0j")
+[sub_resource type="Resource" id="Resource_4qtjs"]
+script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("8_it4wa")])
 
-[sub_resource type="Resource" id="Resource_b3uow"]
-script = ExtResource("6_1yw0j")
+[sub_resource type="Resource" id="Resource_f6t8p"]
+script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("13_vk0ot")])
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("10_nqt30")])
 
-[sub_resource type="Resource" id="Resource_j4r6v"]
-script = ExtResource("6_1yw0j")
+[sub_resource type="Resource" id="Resource_epnwn"]
+script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("12_fxbwv")])
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("8_it4wa")])
 
-[sub_resource type="Resource" id="Resource_vh4sl"]
-script = ExtResource("6_1yw0j")
+[sub_resource type="Resource" id="Resource_06evc"]
+script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("6_2fssi")]([ExtResource("11_ydv2w")])
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("13_ppeub")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qjsv2"]
 shader = ExtResource("22_0arau")
@@ -331,7 +333,9 @@ start_static = true
 y_sort_enabled = false
 position = Vector2(160, 630)
 scale = Vector2(0.95, 0.95)
-seal_effect = SubResource("Resource_pjtk0")
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_4qtjs")
 current_entity = ExtResource("7_5gsqw")
 
 [node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
@@ -339,7 +343,9 @@ y_sort_enabled = false
 position = Vector2(380, 630)
 scale = Vector2(0.95, 0.95)
 player_id = 1
-seal_effect = SubResource("Resource_b3uow")
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_f6t8p")
 current_entity = ExtResource("10_66vq4")
 
 [node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
@@ -347,7 +353,9 @@ y_sort_enabled = false
 position = Vector2(600, 630)
 scale = Vector2(0.95, 0.95)
 player_id = 2
-seal_effect = SubResource("Resource_j4r6v")
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_epnwn")
 current_entity = ExtResource("12_qpkyi")
 
 [node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
@@ -355,7 +363,9 @@ y_sort_enabled = false
 position = Vector2(820, 630)
 scale = Vector2(0.95, 0.95)
 player_id = 3
-seal_effect = SubResource("Resource_vh4sl")
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_06evc")
 current_entity = ExtResource("8_hn632")
 
 [node name="Enemies" type="Node" parent="Entities"]

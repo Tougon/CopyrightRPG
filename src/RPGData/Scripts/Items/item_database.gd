@@ -20,7 +20,10 @@ func get_item(id : int) -> Item:
 	if id >= 0 && id < entries.size():
 		return entries[id].item;
 	
-	print("No item with ID " + str(id) + " exists.")
+	# -1 is treated as a catch all for an invalid ID throughout the code
+	# No item will ever exist at this index, so we can ignore it.
+	if id >= 0:
+		print("No item with ID " + str(id) + " exists.")
 	return null;
 
 

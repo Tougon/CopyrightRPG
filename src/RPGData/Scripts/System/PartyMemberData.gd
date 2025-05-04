@@ -8,7 +8,9 @@ var unlocked : bool;
 var hp_dmg : int;
 var mp_dmg : int;
 
-# TODO: Add data for equipment and moveset.
+var weapon_id : int = -1;
+var armor_id : int = -1;
+var accessory_id : int = -1;
 var move_list : Array;
 
 

@@ -13,6 +13,7 @@ func _ready():
 	super._ready();
 	
 	EventManager.refresh_player_move_list.connect(_on_refresh_player_move_list);
+	EventManager.refresh_player_equipment.connect(_on_refresh_player_equipment);
 	_set_entity_info(0);
 
 
@@ -142,6 +143,14 @@ func _on_refresh_player_move_list(move_list : Array):
 	_refresh_move_list();
 
 
+func _on_refresh_player_equipment(equipment_type : EquipmentItem.EquipmentType, item_id : int):
+	match equipment_type:
+		EquipmentItem.EquipmentType.Weapon:
+			DataManager.party_data[_current_player_index].weapon_id = item_id;
+	
+	# TODO: Refresh visuals
+
+
 # UI utility functions
 func set_active(state : bool):
 	if !state : cache_menu_state();
@@ -230,3 +239,4 @@ func cache_menu_state():
 func _exit_tree() :
 	if EventManager != null:
 		EventManager.refresh_player_move_list.disconnect(_on_refresh_player_move_list);
+		EventManager.refresh_player_equipment.disconnect(_on_refresh_player_equipment);

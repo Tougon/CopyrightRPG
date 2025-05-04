@@ -111,6 +111,10 @@ func _on_overworld_battle_queued(encounter : Encounter):
 			player.hp_offset = DataManager.party_data[i].hp_dmg;
 			player.mp_offset = DataManager.party_data[i].mp_dmg;
 			
+			player.override_weapon_id = DataManager.party_data[i].weapon_id;
+			player.override_armor_id = DataManager.party_data[i].armor_id;
+			player.override_accessory_id = DataManager.party_data[i].accessory_id;
+			
 			var moveset : Array[Spell];
 			
 			for move in DataManager.party_data[i].move_list:

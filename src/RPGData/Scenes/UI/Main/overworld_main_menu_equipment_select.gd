@@ -12,7 +12,7 @@ func _ready() -> void:
 	EventManager.on_player_equipment_selected.connect(_on_player_equipment_selected);
 	
 	menu_panel.on_item_selected.connect(_on_item_selected);
-	#menu_panel.on_item_clicked.connect(_on_item_clicked);
+	menu_panel.on_item_clicked.connect(_on_item_clicked);
 
 
 func _on_player_equipment_selected(equipment_type : EquipmentItem.EquipmentType, player_data : PartyMemberData, entity : Entity):
@@ -72,8 +72,8 @@ func _refresh_equipment_ui():
 
 func _on_item_selected(data):
 	if data != null  && data is EquipmentItem:
-		$"BG/Item Visuals/Equipment/Name".text = tr("TODO Name");
-		$"BG/Item Visuals/Description".text = tr("TODO Description");
+		$"BG/Item Visuals/Equipment/Name".text = tr(data.item_name_key);
+		$"BG/Item Visuals/Description".text = tr(data.item_description_key);
 		
 		print("TODO: Load sprites")
 	
@@ -83,5 +83,31 @@ func _on_item_selected(data):
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 
 
+func _on_item_clicked(data):
+	var result_id : int;
+	
+	if data == null : result_id = -1;
+	else : 
+		result_id = DataManager.item_database.get_id(data);
+		# Remove item from list
+		DataManager.change_item_amount(result_id, -1);
+	
+	# Add previous back to inventory
+	match _current_equipment_type:
+		EquipmentItem.EquipmentType.Weapon:
+			if _current_player_data.weapon_id != -1:
+				DataManager.change_item_amount(_current_player_data.weapon_id, 1);
+	
+	# Invoke update for player equipment
+	EventManager.refresh_player_equipment.emit(_current_equipment_type, result_id);
+	
+	set_active(false);
+
+
 func _on_close_pressed() -> void:
 	set_active(false);
+
+
+func _exit_tree() :
+	if EventManager != null :
+		EventManager.on_player_equipment_selected.disconnect(_on_player_equipment_selected);
