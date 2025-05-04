@@ -4,7 +4,7 @@ class_name EntitySprite
 @onready var sprite : Sprite2D = $Sprite2D;
 @onready var animator : AnimationPlayer = $AnimationPlayer;
 @onready var tween : TweenPlayer = $TweenPlayer;
-var mat = ShaderMaterial;
+var mat : ShaderMaterial;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
