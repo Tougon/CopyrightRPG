@@ -35,6 +35,15 @@ func _on_battle_complete(result : BattleResult):
 						current_exp = 0;
 						next_level_amt = player.override_entity.get_level_exp(level);
 						EventManager.on_dialogue_queue.emit(player.override_entity.name_key + " LEVEL UP! " + str(level));
+						
+						# Increase HP and MP based on new level
+						var prev_hp = player.override_entity.get_hp(level - 1);
+						var next_hp = player.override_entity.get_hp(level);
+						var prev_mp = player.override_entity.get_mp(level - 1);
+						var next_mp = player.override_entity.get_mp(level);
+						
+						player.hp_offset += (next_hp - prev_hp);
+						player.mp_offset += (next_mp - prev_mp);
 					
 					player.override_level = level;
 					player.modified_exp_amt = award_exp;
