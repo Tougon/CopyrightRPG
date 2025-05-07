@@ -19,6 +19,8 @@ func execute_overworld(index : int, item : Item = null):
 	if negate : amt *= -1;
 	
 	DataManager.party_data[index].hp_value = clamp(before + amt, 0, max_hp);
+	
+	EventManager.refresh_player_info.emit();
 
 
 func execute_battle(user : EntityController, target : EntityController, item : Item = null):

@@ -12,6 +12,7 @@ var _current_player_entity : Entity;
 func _ready():
 	super._ready();
 	
+	EventManager.refresh_player_info.connect(_on_refresh_entity_info);
 	EventManager.refresh_player_move_list.connect(_on_refresh_player_move_list);
 	EventManager.refresh_player_equipment.connect(_on_refresh_player_equipment);
 	_set_entity_info(0);
@@ -137,6 +138,10 @@ func _on_move_selected():
 	UIManager.open_menu_name("overworld_menu_main_move_select");
 
 
+func _on_refresh_entity_info():
+	_set_entity_info(_current_player_index);
+
+
 func _on_refresh_player_move_list(move_list : Array):
 	_current_player_data.move_list = move_list;
 	DataManager.party_data[_current_player_index].move_list = move_list;
@@ -238,5 +243,6 @@ func cache_menu_state():
 
 func _exit_tree() :
 	if EventManager != null:
+		EventManager.refresh_player_info.disconnect(_on_refresh_entity_info);
 		EventManager.refresh_player_move_list.disconnect(_on_refresh_player_move_list);
 		EventManager.refresh_player_equipment.disconnect(_on_refresh_player_equipment);
