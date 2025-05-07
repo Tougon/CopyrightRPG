@@ -44,10 +44,10 @@ func _set_entity_info(index : int):
 	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(_current_player_entity.name_key);
 	$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(_current_player_data.level);
 	
-	$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(hp - _current_player_data.hp_dmg) + "/" + str(hp);
-	$"Entity Stats Area/Entity Stats Group/HP".value = ((hp as float) - (_current_player_data.hp_dmg as float)) / (hp as float)
-	$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(mp - _current_player_data.mp_dmg) + "/" + str(mp);
-	$"Entity Stats Area/Entity Stats Group/MP".value = ((mp as float) - (_current_player_data.mp_dmg as float)) / (mp as float)
+	$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp);
+	$"Entity Stats Area/Entity Stats Group/HP".value = ((_current_player_data.hp_value as float)) / (hp as float)
+	$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp);
+	$"Entity Stats Area/Entity Stats Group/MP".value = ((_current_player_data.mp_value as float)) / (mp as float)
 	
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/ATK".set_stat_value(atk);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/DEF".set_stat_value(def);

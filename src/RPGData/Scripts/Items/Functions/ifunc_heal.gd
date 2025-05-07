@@ -13,12 +13,12 @@ func execute_overworld(index : int, item : Item = null):
 	var max_hp = entity.get_hp(DataManager.party_data[index].level);
 	
 	var amt = heal_amt;
-	var before = DataManager.party_data[index].hp_dmg;
+	var before = DataManager.party_data[index].hp_value;
 	
 	if percent_heal : amt = roundi(float(max_hp) * percent_heal_amt);
-	if !negate : amt *= -1;
+	if negate : amt *= -1;
 	
-	DataManager.party_data[index].hp_dmg = clamp(before + amt, 0, max_hp);
+	DataManager.party_data[index].hp_value = clamp(before + amt, 0, max_hp);
 
 
 func execute_battle(user : EntityController, target : EntityController, item : Item = null):

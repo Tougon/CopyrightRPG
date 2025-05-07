@@ -5,8 +5,8 @@ var id : int;
 var level : int;
 var exp : int;
 var unlocked : bool;
-var hp_dmg : int;
-var mp_dmg : int;
+var hp_value : int;
+var mp_value : int;
 
 var weapon_id : int = -1;
 var armor_id : int = -1;
@@ -68,9 +68,9 @@ func _get(property):
 		"Unlocked":
 			return unlocked;
 		"HP":
-			return hp_dmg;
+			return hp_value;
 		"MP":
-			return mp_dmg;
+			return mp_value;
 		"Movelist":
 			return move_list;
 
@@ -88,9 +88,9 @@ func _set(property, val) -> bool:
 		"Unlocked":
 			unlocked = val;
 		"HP":
-			hp_dmg = val;
+			hp_value = val;
 		"MP":
-			mp_dmg = val;
+			mp_value = val;
 		"Movelist":
 			move_list = val;
 	

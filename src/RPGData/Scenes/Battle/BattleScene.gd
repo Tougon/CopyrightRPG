@@ -477,8 +477,8 @@ func _end_phase():
 				result_player.override_entity = player.current_entity;
 				result_player.override_level = player.level;
 				result_player.id = (player as PlayerController).player_id;
-				result_player.hp_offset = player.max_hp - player.current_hp;
-				result_player.mp_offset = player.max_mp - player.current_mp
+				result_player.hp_offset = player.current_hp;
+				result_player.mp_offset = player.current_mp
 				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
 				reward.players.append(result_player);
 			

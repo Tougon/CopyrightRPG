@@ -47,6 +47,8 @@ func create_data():
 		member.exp = 0;
 		member.unlocked = true;#i == 0;
 		member.move_list = move_list;
+		member.hp_value = entity.get_hp(member.level);
+		member.mp_value = entity.get_mp(member.level);
 		party_data.append(member);
 	
 	# TODO: Remove this. This is temp item stuff.

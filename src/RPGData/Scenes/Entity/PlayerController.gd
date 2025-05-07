@@ -76,8 +76,8 @@ func entity_init(params : BattleParams):
 	if weapon != null && weapon is EquipmentItem && (weapon as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Weapon :
 		_apply_equipment(weapon);
 		
-	current_hp -= hp_mod;
-	current_mp -= mp_mod;
+	current_hp = hp_mod;
+	current_mp = mp_mod;
 	
 	
 	# Override move list with player's set
