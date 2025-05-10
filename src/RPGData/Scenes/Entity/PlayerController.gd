@@ -75,7 +75,15 @@ func entity_init(params : BattleParams):
 	var weapon = DataManager.item_database.get_item(params.players[player_id].override_weapon_id);
 	if weapon != null && weapon is EquipmentItem && (weapon as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Weapon :
 		_apply_equipment(weapon);
-		
+	
+	var armor = DataManager.item_database.get_item(params.players[player_id].override_armor_id);
+	if armor != null && armor is EquipmentItem && (armor as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Armor :
+		_apply_equipment(armor);
+	
+	var accessory = DataManager.item_database.get_item(params.players[player_id].override_accessory_id);
+	if accessory != null && accessory is EquipmentItem && (accessory as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Accessory :
+		_apply_equipment(accessory);
+	
 	current_hp = hp_mod;
 	current_mp = mp_mod;
 	
@@ -101,11 +109,18 @@ func _apply_equipment(equipment : EquipmentItem):
 	param.entity_spd += equipment.spd_mod;
 	param.entity_luck += equipment.lck_mod;
 	
-	# TODO: Perhaps don't do this?
-	current_hp += equipment.hp_mod;
-	current_mp += equipment.mp_mod;
+	# Originally this offset HP but this was due to how HP used to be stored.
+	# Don't do this.
+	#current_hp += equipment.hp_mod;
+	#current_mp += equipment.mp_mod;
 	
-	# TODO: apply effects/gimmicks
+	# Apply effects
+	for effect in equipment.equipment_effects:
+		var inst = effect.create_effect_instance(self, self, null);
+		inst.check_success();
+		
+		if inst.cast_success: 
+			inst.on_activate();
 
 
 func execute_turn_start_effects():

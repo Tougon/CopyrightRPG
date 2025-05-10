@@ -1135,6 +1135,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+visible = false
 layout_mode = 1
 offset_left = 55.0
 offset_top = 111.0

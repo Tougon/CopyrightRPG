@@ -89,14 +89,23 @@ func _on_item_clicked(data):
 	if data == null : result_id = -1;
 	else : 
 		result_id = DataManager.item_database.get_id(data);
-		# Remove item from list
-		DataManager.change_item_amount(result_id, -1);
 	
-	# Add previous back to inventory
+	# Add previous back to inventory and remove new selection
 	match _current_equipment_type:
 		EquipmentItem.EquipmentType.Weapon:
-			if _current_player_data.weapon_id != -1:
+			if result_id != _current_player_data.weapon_id:
 				DataManager.change_item_amount(_current_player_data.weapon_id, 1);
+				DataManager.change_item_amount(result_id, -1);
+		
+		EquipmentItem.EquipmentType.Armor:
+			if result_id != _current_player_data.armor_id:
+				DataManager.change_item_amount(_current_player_data.armor_id, 1);
+				DataManager.change_item_amount(result_id, -1);
+		
+		EquipmentItem.EquipmentType.Accessory:
+			if result_id != _current_player_data.accessory_id:
+				DataManager.change_item_amount(_current_player_data.accessory_id, 1);
+				DataManager.change_item_amount(result_id, -1);
 	
 	# Invoke update for player equipment
 	EventManager.refresh_player_equipment.emit(_current_equipment_type, result_id);

@@ -152,6 +152,12 @@ func _on_refresh_player_equipment(equipment_type : EquipmentItem.EquipmentType, 
 	match equipment_type:
 		EquipmentItem.EquipmentType.Weapon:
 			DataManager.party_data[_current_player_index].weapon_id = item_id;
+		
+		EquipmentItem.EquipmentType.Armor:
+			DataManager.party_data[_current_player_index].armor_id = item_id;
+		
+		EquipmentItem.EquipmentType.Accessory:
+			DataManager.party_data[_current_player_index].accessory_id = item_id;
 	
 	# TODO: Refresh visuals
 

@@ -55,6 +55,8 @@ func create_data():
 	current_save.inventory[0] = 2;
 	current_save.inventory[1] = 3;
 	current_save.inventory[2] = 3;
+	current_save.inventory[3] = 3;
+	current_save.inventory[4] = 3;
 
 
 func load_data():
@@ -170,6 +172,8 @@ func get_equipment_items(use_type : bool = false, equipment_equipment_type : Equ
 
 
 func change_item_amount(id : int, amount : int):
+	if id < 0 : return;
+	
 	if amount > 0:
 		if !current_save.inventory.has(id):
 			current_save.inventory[id] = amount;

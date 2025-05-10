@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://dk6aqrw8ucgk8"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_yx0kt"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_hfivu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_uawoy"]
+
+[resource]
+script = ExtResource("3_uawoy")
+equipment_type = 1
+hp_mod = 0
+mp_mod = 0
+atk_mod = 0
+def_mod = 0
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.0
+equipment_effects = Array[ExtResource("1_yx0kt")]([])
+item_name_key = "T_ITEM_NAME_TEMPD"
+item_description_key = ""
+item_flags = Array[ExtResource("2_hfivu")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0
