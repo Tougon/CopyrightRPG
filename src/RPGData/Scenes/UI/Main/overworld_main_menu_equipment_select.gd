@@ -47,13 +47,24 @@ func _refresh_equipment_ui():
 	var inventory = DataManager.get_equipment_items(true, _current_equipment_type);
 	
 	for item_id  in inventory.keys():
-		var item = inventory[item_id];
-		valid_items.append(item);
-	
-	# Do we need this? Like current behavior has no weapon but...
-	# 2. None (null) if the player has more than one move set
-	#if _get_num_moves_set() > 1 :
-	#	valid_moves.append(null);
+		var is_valid = true;
+		
+		match _current_equipment_type:
+			EquipmentItem.EquipmentType.Weapon:
+				if item_id == _current_player_data.weapon_id:
+					is_valid = false;
+			
+			EquipmentItem.EquipmentType.Armor:
+				if item_id == _current_player_data.armor_id:
+					is_valid = false;
+			
+			EquipmentItem.EquipmentType.Accessory:
+				if item_id == _current_player_data.accessory_id:
+					is_valid = false;
+		
+		if is_valid :
+			var item = inventory[item_id];
+			valid_items.append(item);
 	
 	menu_panel.set_data(valid_items);
 	
