@@ -25,6 +25,8 @@ func _ready():
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_dequeue.connect(_on_overworld_battle_dequeued);
 	
+	EventManager.set_player_can_move.connect(_set_can_move);
+	
 	UIManager.on_menu_opened.connect(_on_menu_opened);
 	UIManager.on_all_menus_closed.connect(_on_all_menus_closed);
 	
@@ -152,6 +154,11 @@ func _on_overworld_battle_dequeued():
 	#set_process(true);
 
 
+func _set_can_move(can_move : bool):
+	_will_process = can_move;
+	_player_visual.set_process(can_move);
+
+
 func _on_menu_opened(menu : MenuPanel):
 	velocity = Vector2.ZERO;
 	_will_process = false;
@@ -185,6 +192,8 @@ func _exit_tree():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);
+		
+		EventManager.set_player_can_move.disconnect(_set_can_move);
 	
 	if UIManager != null:
 		UIManager.on_menu_opened.disconnect(_on_menu_opened);

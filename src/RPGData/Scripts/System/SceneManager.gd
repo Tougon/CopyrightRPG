@@ -9,10 +9,7 @@ var current_scene;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_init_current_scene();
-	
-	await get_tree().create_timer(10).timeout
-	print("Begin Test Load")
-	_load_scene("res://src/RPGData/Scenes/TestRoom_2.tscn");
+	EventManager.load_scene.connect(_load_scene);
 
 
 # Initializes the current scene variable
@@ -23,7 +20,6 @@ func _init_current_scene():
 
 # Loads the scene at the given path.
 func _load_scene(path : String):
-	# TODO: path validation (make sure scene is a path)
 	# Load the resource if it exists
 	if ResourceLoader.exists(path) :
 		# Create loader
@@ -34,6 +30,7 @@ func _load_scene(path : String):
 		
 		# TODO: Disable input
 		# Fade out current scene
+		EventManager.set_player_can_move.emit(false);
 		EventManager.fade_bgm.emit(0, 1, true);
 		EventManager.overworld_transition_fade_start.emit(false);
 		await EventManager.overworld_transition_fade_completed;
@@ -61,9 +58,13 @@ func _load_scene(path : String):
 			# Instantiate the new scene and transition in
 			var scene_inst = new_scene.instantiate();
 			get_tree().root.add_child(scene_inst);
+			
+			EventManager.set_player_can_move.emit(false);
 			EventManager.overworld_transition_fade_start.emit(true);
 			EventManager.fade_bgm.emit(1, 0, false);
 			# TODO: Restore input
+			await EventManager.overworld_transition_fade_completed;
+			EventManager.set_player_can_move.emit(true);
 			
 			# Update the current scene reference
 			current_scene = scene_inst;
@@ -75,3 +76,8 @@ func _load_scene(path : String):
 	# Otherwise throw error
 	else :
 		printerr("ERROR: " + path + " does not exist!");
+
+
+func _exit_tree() :
+	if EventManager != null :
+		EventManager.load_scene.disconnect(_load_scene);

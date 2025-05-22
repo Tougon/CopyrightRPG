@@ -13,6 +13,7 @@ size = Vector2(512, 128)
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
+collision_layer = 5
 script = ExtResource("1_1wsnh")
 speed = 300.0
 

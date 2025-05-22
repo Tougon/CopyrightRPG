@@ -1,5 +1,8 @@
 extends Node
 
+# Loading Events
+signal load_scene(path : String);
+
 # Sequencing Events
 signal on_sequence_queue(sequence);
 signal on_sequence_queue_first(sequence);
@@ -23,6 +26,8 @@ signal on_message_queue(message : String);
 signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float);
 signal on_battle_queue(encounter : Encounter);
 signal on_battle_dequeue();
+
+signal set_player_can_move(can_move : bool);
 
 signal overworld_cutscene_fade_instant(fade_in : bool);
 signal overworld_cutscene_fade_start(fade_in : bool);

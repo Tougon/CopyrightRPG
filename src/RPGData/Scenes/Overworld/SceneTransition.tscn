@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2fue3n12jlip"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/SceneTransition.gd" id="1_7nhf0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jq028"]
+size = Vector2(200, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uplfw"]
+size = Vector2(50, 50)
+
+[node name="SceneTransition" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_7nhf0")
+override_shape = SubResource("RectangleShape2D_jq028")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uplfw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

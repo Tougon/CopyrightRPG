@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=71 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="32_14mn0"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="32_ufq1w"]
 [ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="33_ytqpp"]
+[ext_resource type="PackedScene" uid="uid://2fue3n12jlip" path="res://src/RPGData/Scenes/Overworld/SceneTransition.tscn" id="38_e2obr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
 texture = ExtResource("2_xiq0s")
@@ -915,6 +916,12 @@ tween_player = NodePath("TweenPlayer")
 [node name="TweenPlayer" type="Node" parent="Environment/Cutscene Helpers/Test/Camera Group 1/Camera Pos"]
 script = ExtResource("27_aqp1h")
 sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_sc2vl")])
+
+[node name="Transitions" type="Node" parent="Environment"]
+
+[node name="SceneTransition" parent="Environment/Transitions" instance=ExtResource("38_e2obr")]
+position = Vector2(607, -178)
+scene_path = "res://src/RPGData/Scenes/TestRoom_2.tscn"
 
 [node name="----------" type="Node" parent="."]
 
