@@ -24,12 +24,15 @@ signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : 
 signal on_battle_queue(encounter : Encounter);
 signal on_battle_dequeue();
 
-signal overworld_cutscene_fade_initialize(fade_in : bool);
+signal overworld_cutscene_fade_instant(fade_in : bool);
 signal overworld_cutscene_fade_start(fade_in : bool);
 signal overworld_cutscene_fade_completed(fade_in : bool);
 
 signal overworld_battle_fade_start(fade_in : bool);
 signal overworld_battle_fade_completed(fade_in : bool);
+
+signal overworld_transition_fade_start(fade_in : bool);
+signal overworld_transition_fade_completed(fade_in : bool);
 
 # Overworld UI Events
 signal on_player_equipment_selected(equipment_type : EquipmentItem.EquipmentType, player_data : PartyMemberData, entity : Entity)

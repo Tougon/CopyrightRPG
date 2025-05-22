@@ -18,6 +18,7 @@ func _ready():
 	EventManager.on_overworld_player_moved.connect(_on_overworld_player_moved);
 	EventManager.on_battle_queue.connect(_reset_encounter_variables);
 	EventManager.on_battle_end.connect(_on_battle_end);
+	EventManager.overworld_transition_fade_start.connect(_on_overworld_transition);
 	
 	_reset_encounter_variables(null);
 
@@ -73,8 +74,17 @@ func _reset_encounter_variables(encounter : Encounter):
 	encounter_chance = randf();
 
 
+func _on_overworld_transition(fade_in : bool):
+	process_encounters = false;
+	
+	if fade_in:
+		await EventManager.overworld_transition_fade_completed;
+		process_encounters = true;
+
+
 func _exit_tree():
 	if EventManager != null:
 		EventManager.on_overworld_player_moved.disconnect(_on_overworld_player_moved);
 		EventManager.on_battle_queue.disconnect(_reset_encounter_variables);
 		EventManager.on_battle_end.disconnect(_on_battle_end);
+		EventManager.overworld_transition_fade_start.disconnect(_on_overworld_transition);

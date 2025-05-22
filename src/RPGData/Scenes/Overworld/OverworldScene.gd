@@ -51,14 +51,14 @@ func _ready() -> void:
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
 	EventManager.overworld_cutscene_fade_start.connect(_fade_action_cutscene);
-	EventManager.overworld_cutscene_fade_initialize.connect(_fade_action_cutscene_initialize);
+	EventManager.overworld_cutscene_fade_instant.connect(_fade_action_cutscene_instant);
 
 
 func _fade_action_cutscene(fade_in : bool):
 	_faded_out_cutscene = !fade_in;
 
 
-func _fade_action_cutscene_initialize(fade_in : bool):
+func _fade_action_cutscene_instant(fade_in : bool):
 	_faded_out_cutscene = !fade_in;
 
 
@@ -226,6 +226,9 @@ func _exit_tree():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_end.disconnect(_on_battle_end);
+		
+		EventManager.overworld_cutscene_fade_start.disconnect(_fade_action_cutscene);
+		EventManager.overworld_cutscene_fade_instant.disconnect(_fade_action_cutscene_instant);
 	
 	if UIManager != null:
 		UIManager.on_menu_opened.disconnect(_on_menu_opened);

@@ -12,7 +12,7 @@ func _execute() -> void:
 	await dialogic.get_tree().create_timer(pre_delay).timeout
 	
 	if instant : 
-		EventManager.overworld_cutscene_fade_initialize.emit(fade_in);
+		EventManager.overworld_cutscene_fade_instant.emit(fade_in);
 		await EventManager.overworld_cutscene_fade_completed;
 	else :
 		EventManager.overworld_cutscene_fade_start.emit(fade_in);

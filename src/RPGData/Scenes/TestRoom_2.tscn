@@ -735,7 +735,7 @@ duration = 0.1
 transition = 0
 ease = 2
 
-[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera", "canvas_modulate")]
+[node name="TestRoom_2" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera", "canvas_modulate")]
 script = ExtResource("1_jute5")
 player_controller = NodePath("Environment/Sorted Items/Player Controller")
 game_camera = NodePath("Game PhantomCamera")
