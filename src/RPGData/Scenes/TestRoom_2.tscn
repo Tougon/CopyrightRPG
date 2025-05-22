@@ -1,0 +1,969 @@
+[gd_scene load_steps=70 format=4 uid="uid://3kb8v413hde1"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_jute5"]
+[ext_resource type="Texture2D" uid="uid://cilblfu0x6vq7" path="res://assets/Sprites/Tilemaps/temp_mallfloor_reduced.png" id="2_x1w2o"]
+[ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="3_vieb0"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/EncounterManager.gd" id="4_4b6rk"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="5_4x2qa"]
+[ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.tscn" id="6_d54be"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="7_eu757"]
+[ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="8_mi72x"]
+[ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="9_5ybua"]
+[ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="10_bkker"]
+[ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="11_wmh35"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="12_r8gkn"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="13_c7g4q"]
+[ext_resource type="Resource" uid="uid://c3njfcjmrqtit" path="res://assets/Tweens/Transition/erode_in.tres" id="14_pvsjy"]
+[ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="15_h0air"]
+[ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="16_8oo5x"]
+[ext_resource type="Resource" uid="uid://bnvdca7lgydy3" path="res://assets/Tweens/Transition/fade_in.tres" id="17_oy8m8"]
+[ext_resource type="Resource" uid="uid://b7evdmbcxg6wl" path="res://assets/Tweens/Transition/fade_out.tres" id="18_ravm2"]
+[ext_resource type="Resource" uid="uid://c2018oj6gvq61" path="res://assets/Tweens/Transition/fade_in_instant.tres" id="19_u5blh"]
+[ext_resource type="Resource" uid="uid://b5imgyuuysj7p" path="res://assets/Tweens/Transition/fade_out_instant.tres" id="20_s7wgh"]
+[ext_resource type="PackedScene" uid="uid://vevt3q612r55" path="res://src/RPGData/Scenes/Overworld/Interaction/TangibleInteractable.tscn" id="21_71brs"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/ActiveCheckGroup.gd" id="22_dteqd"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="23_wtsiy"]
+[ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="24_5x6g0"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="25_wrgox"]
+[ext_resource type="Texture2D" uid="uid://dl5diybtryreg" path="res://assets/Sprites/Overworld/player_main/2514.png" id="26_3poni"]
+[ext_resource type="Texture2D" uid="uid://bfhb6f4v6d7w4" path="res://assets/Sprites/Overworld/player_main/shaded_test.png" id="27_3alpn"]
+[ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="28_2bjo6"]
+[ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_udpxh"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="30_vp32d"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="31_n85w0"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="32_ka15m"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="33_t18sq"]
+[ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.tscn" id="34_qry8l"]
+[ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="35_oj02q"]
+[ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="36_iupx2"]
+[ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="37_3xwjs"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="38_ko405"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="39_ad0jr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="40_6wr3o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
+texture = ExtResource("2_x1w2o")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ca3if"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_kix4h")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_haj4c"]
+texture = ExtResource("3_vieb0")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+22:0/0 = 0
+23:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+26:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+26:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+21:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+26:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+8:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2, -3.75, -2.125, -3.875, 8, -8, 8)
+9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -2.125, -8, -2)
+10:3/0 = 0
+10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, 4, 8, 3.75, -2, -8, -2.125)
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+24:3/0 = 0
+25:3/0 = 0
+26:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+8:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -3.875, -8, -3.875, 8, -8, 8)
+9:4/0 = 0
+10:4/0 = 0
+10:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(4, -8, 8, -8, 8, 8, 4, 8)
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+26:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+8:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -4, -8, -4.125, 2, 8, 2.125, 8, 8, -8, 8)
+9:5/0 = 0
+9:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.875, 8, 2, 8, 8, -8, 8)
+10:5/0 = 0
+10:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(3.75, 1.875, 3.75, -8, 8, -8, 8, 8, -8, 8, -8, 1.75)
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+26:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+26:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+16:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+19:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+24:7/0 = 0
+25:7/0 = 0
+26:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+25:8/0 = 0
+26:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+26:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+22:10/0 = 0
+23:10/0 = 0
+24:10/0 = 0
+25:10/0 = 0
+26:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+20:11/0 = 0
+21:11/0 = 0
+22:11/0 = 0
+23:11/0 = 0
+24:11/0 = 0
+25:11/0 = 0
+26:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+8:12/0 = 0
+9:12/0 = 0
+10:12/0 = 0
+11:12/0 = 0
+12:12/0 = 0
+13:12/0 = 0
+14:12/0 = 0
+15:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+20:12/0 = 0
+21:12/0 = 0
+22:12/0 = 0
+23:12/0 = 0
+24:12/0 = 0
+25:12/0 = 0
+26:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+8:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+21:13/0 = 0
+22:13/0 = 0
+23:13/0 = 0
+24:13/0 = 0
+25:13/0 = 0
+26:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+7:14/0 = 0
+8:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+21:14/0 = 0
+22:14/0 = 0
+23:14/0 = 0
+24:14/0 = 0
+25:14/0 = 0
+26:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+7:15/0 = 0
+8:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+19:15/0 = 0
+20:15/0 = 0
+21:15/0 = 0
+22:15/0 = 0
+23:15/0 = 0
+24:15/0 = 0
+25:15/0 = 0
+26:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+19:16/0 = 0
+20:16/0 = 0
+21:16/0 = 0
+22:16/0 = 0
+23:16/0 = 0
+24:16/0 = 0
+25:16/0 = 0
+26:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+9:17/0 = 0
+10:17/0 = 0
+11:17/0 = 0
+12:17/0 = 0
+13:17/0 = 0
+14:17/0 = 0
+15:17/0 = 0
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+21:17/0 = 0
+22:17/0 = 0
+23:17/0 = 0
+24:17/0 = 0
+25:17/0 = 0
+26:17/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_whai2"]
+physics_layer_0/collision_layer = 1
+sources/2 = SubResource("TileSetAtlasSource_haj4c")
+
+[sub_resource type="Resource" id="Resource_1tfly"]
+script = ExtResource("5_4x2qa")
+enemy_ids = Array[int]([4])
+odds = 0.9
+
+[sub_resource type="Resource" id="Resource_s1unj"]
+script = ExtResource("5_4x2qa")
+enemy_ids = Array[int]([4, 4, 4, 4])
+odds = 0.0
+
+[sub_resource type="Resource" id="Resource_tkqyn"]
+script = ExtResource("5_4x2qa")
+enemy_ids = Array[int]([8, 8, 8, 8])
+odds = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
+shader = ExtResource("9_5ybua")
+shader_parameter/blur_amount = 4.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = null
+shader_parameter/focus_radius = 0.25
+shader_parameter/focus_edge = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8r6xq"]
+shader = ExtResource("11_wmh35")
+shader_parameter/noise_size = 1.0
+shader_parameter/noise_strength = 0.5
+shader_parameter/noise_magnitude = Vector2(1, 0.333)
+shader_parameter/noise_floor = 0.01
+shader_parameter/use_time = true
+shader_parameter/aspect_ratio = Vector2(1, 1.333)
+shader_parameter/uv_amount = 0.0
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/origin = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_1vddh"]
+script = ExtResource("13_c7g4q")
+tween_name = "Battle Fade In"
+tween_resource = ExtResource("14_pvsjy")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_8srpl"]
+script = ExtResource("13_c7g4q")
+tween_name = "Battle Fade Out"
+tween_resource = ExtResource("15_h0air")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_kd3c1"]
+script = ExtResource("13_c7g4q")
+tween_name = "Battle Fade Complete"
+tween_resource = ExtResource("16_8oo5x")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_ynn0l"]
+script = ExtResource("13_c7g4q")
+tween_name = "Cutscene Fade In"
+tween_resource = ExtResource("17_oy8m8")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_qagoa"]
+script = ExtResource("13_c7g4q")
+tween_name = "Cutscene Fade Out"
+tween_resource = ExtResource("18_ravm2")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_sdbl4"]
+script = ExtResource("13_c7g4q")
+tween_name = "Cutscene Fade In Instant"
+tween_resource = ExtResource("19_u5blh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_eblq6"]
+script = ExtResource("13_c7g4q")
+tween_name = "Cutscene Fade Out Instant"
+tween_resource = ExtResource("20_s7wgh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_cemoq"]
+script = ExtResource("23_wtsiy")
+quest_name = "Defeat3Enemies"
+check_type = 0
+use_step = false
+step_name = ""
+negate = false
+
+[sub_resource type="Resource" id="Resource_8ofoh"]
+script = ExtResource("22_dteqd")
+active_state = true
+check_type = 0
+active_conditions = Array[ExtResource("23_wtsiy")]([SubResource("Resource_cemoq")])
+
+[sub_resource type="Resource" id="Resource_5eyfh"]
+script = ExtResource("23_wtsiy")
+quest_name = "Defeat3Enemies"
+check_type = 1
+use_step = false
+step_name = ""
+negate = false
+
+[sub_resource type="Resource" id="Resource_vuma2"]
+script = ExtResource("25_wrgox")
+interact_dialogue = "temp_quest_win"
+check_type = 0
+active_conditions = Array[ExtResource("23_wtsiy")]([SubResource("Resource_5eyfh")])
+
+[sub_resource type="Resource" id="Resource_ol2e6"]
+script = ExtResource("33_t18sq")
+target = ""
+property_name = "position"
+material_property = false
+duration = 2.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(-800, 0)
+
+[sub_resource type="Resource" id="Resource_c4mci"]
+script = ExtResource("32_ka15m")
+frames = Array[ExtResource("33_t18sq")]([SubResource("Resource_ol2e6")])
+
+[sub_resource type="Resource" id="Resource_nhfo7"]
+script = ExtResource("31_n85w0")
+tween_name = "slide"
+sequence = Array[ExtResource("32_ka15m")]([SubResource("Resource_c4mci")])
+
+[sub_resource type="Resource" id="Resource_jh7gi"]
+script = ExtResource("13_c7g4q")
+tween_name = "slide"
+tween_resource = SubResource("Resource_nhfo7")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_4wyvb"]
+script = ExtResource("33_t18sq")
+target = ""
+property_name = "position"
+material_property = false
+duration = 5.0
+delay = 0.0
+transition = 1
+ease = 2
+relative = true
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, 400)
+"From Vector2" = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_32bia"]
+script = ExtResource("32_ka15m")
+frames = Array[ExtResource("33_t18sq")]([SubResource("Resource_4wyvb")])
+
+[sub_resource type="Resource" id="Resource_lew6v"]
+script = ExtResource("31_n85w0")
+tween_name = "Move 1"
+sequence = Array[ExtResource("32_ka15m")]([SubResource("Resource_32bia")])
+
+[sub_resource type="Resource" id="Resource_sc2vl"]
+script = ExtResource("13_c7g4q")
+tween_name = "Move 1"
+tween_resource = SubResource("Resource_lew6v")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_6ugjw"]
+script = ExtResource("40_6wr3o")
+duration = 0.1
+transition = 0
+ease = 2
+
+[node name="TestRoom" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera", "canvas_modulate")]
+script = ExtResource("1_jute5")
+player_controller = NodePath("Environment/Sorted Items/Player Controller")
+game_camera = NodePath("Game PhantomCamera")
+free_camera = NodePath("Free PhantomCamera")
+canvas_modulate = NodePath("UI/CanvasModulate")
+bgm_id = "mf2"
+
+[node name="TileMapFloor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAQACAAAAAAAAAAEAAQACAAAAAAAAAAIAAQACAAAAAAAAAAMAAQACAAAAAAAAAAQAAQACAAAAAAAAAAUAAQACAAAAAAABAAAAAQABAAEAAAABAAEAAQABAAEAAAABAAIAAQABAAEAAAABAAMAAQABAAEAAAABAAQAAQABAAEAAAABAAUAAQABAAEAAAACAAAAAQABAAEAAAACAAEAAQABAAAAAAACAAIAAQAAAAAAAAACAAMAAQABAAAAAAACAAQAAQABAAEAAAACAAUAAQABAAAAAAADAAAAAQABAAEAAAADAAEAAQAAAAAAAAADAAIAAQABAAAAAAADAAMAAQAAAAAAAAADAAQAAQABAAEAAAADAAUAAQAAAAAAAAAEAAAAAQABAAEAAAAEAAEAAQABAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQABAAAAAAAEAAQAAQABAAEAAAAEAAUAAQABAAAAAAAFAAAAAQABAAEAAAAFAAEAAQABAAEAAAAFAAIAAQABAAEAAAAFAAMAAQABAAEAAAAFAAQAAQABAAEAAAAFAAUAAQABAAEAAAAGAAAAAQABAAEAAAAGAAEAAQABAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQABAAAAAAAGAAQAAQABAAEAAAAGAAUAAQABAAAAAAAHAAAAAQABAAEAAAAHAAEAAQAAAAAAAAAHAAIAAQABAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQABAAEAAAAHAAUAAQAAAAAAAAAIAAAAAQABAAEAAAAIAAEAAQABAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQABAAAAAAAIAAQAAQABAAEAAAAIAAUAAQABAAAAAAAJAAAAAQABAAEAAAAJAAEAAQABAAEAAAAJAAIAAQABAAEAAAAJAAMAAQABAAEAAAAJAAQAAQABAAEAAAAJAAUAAQABAAEAAAACAP//AQABAAAAAAAEAP//AQABAAAAAAADAP//AQAAAAAAAAACAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAABAP//AQABAAEAAAABAP7/AQABAAEAAAAFAP//AQABAAEAAAAFAP7/AQABAAEAAAAJAP//AQABAAEAAAAJAP7/AQABAAEAAAAAAP//AQACAAAAAAAAAP7/AQACAAAAAAAAAP3/AQACAAAAAAABAP3/AQABAAEAAAACAP3/AQABAAAAAAADAP3/AQAAAAAAAAAEAP3/AQABAAAAAAAFAP3/AQABAAEAAAAJAP3/AQABAAEAAAAAAPr/AQACAAAAAAAAAPv/AQACAAAAAAAAAPz/AQACAAAAAAAAAAYAAQACAAAAAAAAAAcAAQACAAAAAAAAAAgAAQACAAAAAAAAAAkAAQACAAAAAAAAAAoAAQACAAAAAAAAAAsAAQACAAAAAAABAPr/AQACAAAAAAABAPv/AQACAAAAAAABAPz/AQABAAEAAAABAAYAAQABAAEAAAABAAcAAQABAAEAAAABAAgAAQABAAEAAAABAAkAAQACAAAAAAABAAoAAQACAAAAAAABAAsAAQACAAAAAAACAPr/AQACAAAAAAACAPv/AQACAAAAAAACAPz/AQABAAEAAAACAAYAAQAAAAAAAAACAAcAAQABAAAAAAACAAgAAQABAAEAAAACAAkAAQACAAAAAAACAAoAAQACAAAAAAACAAsAAQACAAAAAAADAPr/AQACAAAAAAADAPv/AQACAAAAAAADAPz/AQABAAEAAAADAP7/AQABAAAAAAADAAYAAQABAAAAAAADAAcAAQAAAAAAAAADAAgAAQABAAEAAAADAAkAAQACAAAAAAADAAoAAQACAAAAAAADAAsAAQACAAAAAAAEAPr/AQACAAAAAAAEAPv/AQACAAAAAAAEAPz/AQABAAEAAAAEAAYAAQAAAAAAAAAEAAcAAQABAAAAAAAEAAgAAQABAAEAAAAEAAkAAQACAAAAAAAEAAoAAQACAAAAAAAEAAsAAQACAAAAAAAFAPr/AQACAAAAAAAFAPv/AQACAAAAAAAFAPz/AQABAAEAAAAFAAYAAQABAAEAAAAFAAcAAQABAAEAAAAFAAgAAQABAAEAAAAFAAkAAQACAAAAAAAFAAoAAQACAAAAAAAFAAsAAQACAAAAAAAGAPr/AQACAAAAAAAGAPv/AQACAAAAAAAGAPz/AQABAAEAAAAGAAYAAQAAAAAAAAAGAAcAAQABAAAAAAAGAAgAAQABAAEAAAAGAAkAAQACAAAAAAAGAAoAAQACAAAAAAAGAAsAAQACAAAAAAAHAPr/AQACAAAAAAAHAPv/AQACAAAAAAAHAPz/AQABAAEAAAAHAAYAAQABAAAAAAAHAAcAAQAAAAAAAAAHAAgAAQABAAEAAAAHAAkAAQACAAAAAAAHAAoAAQACAAAAAAAHAAsAAQACAAAAAAAIAPr/AQACAAAAAAAIAPv/AQACAAAAAAAIAPz/AQABAAEAAAAIAAYAAQAAAAAAAAAIAAcAAQABAAAAAAAIAAgAAQABAAEAAAAIAAkAAQACAAAAAAAIAAoAAQACAAAAAAAIAAsAAQACAAAAAAAJAPr/AQACAAAAAAAJAPv/AQACAAAAAAAJAPz/AQABAAEAAAAJAAYAAQABAAEAAAAJAAcAAQABAAEAAAAJAAgAAQABAAEAAAAJAAkAAQACAAAAAAAJAAoAAQACAAAAAAAJAAsAAQACAAAAAAAKAPr/AQACAAAAAAAKAPv/AQACAAAAAAAKAPz/AQABAAEAAAAKAP3/AQABAAAAAAAKAP7/AQAAAAAAAAAKAP//AQABAAAAAAAKAAAAAQABAAEAAAAKAAEAAQABAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQABAAAAAAAKAAQAAQABAAEAAAAKAAUAAQABAAAAAAAKAAYAAQAAAAAAAAAKAAcAAQABAAAAAAAKAAgAAQABAAEAAAAKAAkAAQACAAAAAAAKAAoAAQACAAAAAAAKAAsAAQACAAAAAAALAPr/AQACAAAAAAALAPv/AQACAAAAAAALAPz/AQABAAEAAAALAP3/AQAAAAAAAAALAP7/AQABAAAAAAALAP//AQAAAAAAAAALAAAAAQABAAEAAAALAAEAAQAAAAAAAAALAAIAAQABAAAAAAALAAMAAQAAAAAAAAALAAQAAQABAAEAAAALAAUAAQAAAAAAAAALAAYAAQABAAAAAAALAAcAAQAAAAAAAAALAAgAAQABAAEAAAALAAkAAQACAAAAAAALAAoAAQACAAAAAAALAAsAAQACAAAAAAAMAPr/AQACAAAAAAAMAPv/AQACAAAAAAAMAPz/AQABAAEAAAAMAP3/AQABAAAAAAAMAP7/AQAAAAAAAAAMAP//AQABAAAAAAAMAAAAAQABAAEAAAAMAAEAAQABAAAAAAAMAAIAAQAAAAAAAAAMAAMAAQABAAAAAAAMAAQAAQABAAEAAAAMAAUAAQABAAAAAAAMAAYAAQAAAAAAAAAMAAcAAQABAAAAAAAMAAgAAQABAAEAAAAMAAkAAQACAAAAAAAMAAoAAQACAAAAAAAMAAsAAQACAAAAAAANAPr/AQACAAAAAAANAPv/AQACAAAAAAANAPz/AQABAAEAAAANAP3/AQABAAEAAAANAP7/AQABAAEAAAANAP//AQABAAEAAAANAAAAAQABAAEAAAANAAEAAQABAAEAAAANAAIAAQABAAEAAAANAAMAAQABAAEAAAANAAQAAQABAAEAAAANAAUAAQABAAEAAAANAAYAAQABAAEAAAANAAcAAQABAAEAAAANAAgAAQABAAEAAAANAAkAAQACAAAAAAANAAoAAQACAAAAAAANAAsAAQACAAAAAAAOAPr/AQACAAAAAAAOAPv/AQACAAAAAAAOAPz/AQABAAEAAAAOAP3/AQABAAAAAAAOAP7/AQAAAAAAAAAOAP//AQABAAAAAAAOAAAAAQABAAEAAAAOAAEAAQABAAAAAAAOAAIAAQAAAAAAAAAOAAMAAQABAAAAAAAOAAQAAQABAAEAAAAOAAUAAQABAAAAAAAOAAYAAQAAAAAAAAAOAAcAAQABAAAAAAAOAAgAAQABAAEAAAAOAAkAAQACAAAAAAAOAAoAAQACAAAAAAAOAAsAAQACAAAAAAAPAPr/AQACAAAAAAAPAPv/AQACAAAAAAAPAPz/AQABAAEAAAAPAP3/AQAAAAAAAAAPAP7/AQABAAAAAAAPAP//AQAAAAAAAAAPAAAAAQABAAEAAAAPAAEAAQAAAAAAAAAPAAIAAQABAAAAAAAPAAMAAQAAAAAAAAAPAAQAAQABAAEAAAAPAAUAAQAAAAAAAAAPAAYAAQABAAAAAAAPAAcAAQAAAAAAAAAPAAgAAQABAAEAAAAPAAkAAQACAAAAAAAPAAoAAQACAAAAAAAPAAsAAQACAAAAAAAQAPr/AQACAAAAAAAQAPv/AQACAAAAAAAQAPz/AQABAAEAAAAQAP3/AQABAAAAAAAQAP7/AQAAAAAAAAAQAP//AQABAAAAAAAQAAAAAQABAAEAAAAQAAEAAQABAAAAAAAQAAIAAQAAAAAAAAAQAAMAAQABAAAAAAAQAAQAAQABAAEAAAAQAAUAAQABAAAAAAAQAAYAAQAAAAAAAAAQAAcAAQABAAAAAAAQAAgAAQABAAEAAAAQAAkAAQACAAAAAAAQAAoAAQACAAAAAAAQAAsAAQACAAAAAAARAPr/AQACAAAAAAARAPv/AQACAAAAAAARAPz/AQABAAEAAAARAP3/AQABAAEAAAARAP7/AQABAAEAAAARAP//AQABAAEAAAARAAAAAQABAAEAAAARAAEAAQABAAEAAAARAAIAAQABAAEAAAARAAMAAQABAAEAAAARAAQAAQABAAEAAAARAAUAAQABAAEAAAARAAYAAQABAAEAAAARAAcAAQABAAEAAAARAAgAAQABAAEAAAARAAkAAQACAAAAAAARAAoAAQACAAAAAAARAAsAAQACAAAAAAASAPr/AQACAAAAAAASAPv/AQACAAAAAAASAPz/AQACAAAAAAASAP3/AQACAAAAAAASAP7/AQACAAAAAAASAP//AQACAAAAAAASAAAAAQACAAAAAAASAAEAAQACAAAAAAASAAIAAQACAAAAAAASAAMAAQACAAAAAAASAAQAAQACAAAAAAASAAUAAQACAAAAAAASAAYAAQACAAAAAAASAAcAAQACAAAAAAASAAgAAQACAAAAAAASAAkAAQACAAAAAAASAAoAAQACAAAAAAASAAsAAQACAAAAAAATAPr/AQACAAAAAAATAPv/AQACAAAAAAATAPz/AQACAAAAAAATAP3/AQACAAAAAAATAP7/AQACAAAAAAATAP//AQACAAAAAAATAAAAAQACAAAAAAATAAEAAQACAAAAAAATAAIAAQACAAAAAAATAAMAAQACAAAAAAATAAQAAQACAAAAAAATAAUAAQACAAAAAAATAAYAAQACAAAAAAATAAcAAQACAAAAAAATAAgAAQACAAAAAAATAAkAAQACAAAAAAATAAoAAQACAAAAAAATAAsAAQACAAAAAAAUAPr/AQACAAAAAAAUAPv/AQACAAAAAAAUAPz/AQACAAAAAAAUAP3/AQACAAAAAAAUAP7/AQACAAAAAAAUAP//AQACAAAAAAAUAAAAAQACAAAAAAAUAAEAAQACAAAAAAAUAAIAAQACAAAAAAAUAAMAAQACAAAAAAAUAAQAAQACAAAAAAAUAAUAAQACAAAAAAAUAAYAAQACAAAAAAAUAAcAAQACAAAAAAAUAAgAAQACAAAAAAAUAAkAAQACAAAAAAAUAAoAAQACAAAAAAAUAAsAAQACAAAAAAAGAP3/AQABAAAAAAAGAP7/AQAAAAAAAAAGAP//AQABAAAAAAAHAP3/AQAAAAAAAAAHAP7/AQABAAAAAAAHAP//AQAAAAAAAAAIAP3/AQABAAAAAAAIAP7/AQAAAAAAAAAIAP//AQABAAAAAAA=")
+tile_set = SubResource("TileSet_ca3if")
+
+[node name="TileMapWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("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AABLACYAAgAKAAQAAABLACcAAgAKAAQAAABLAOv/AgAKAAQAAABLAOz/AgAKAAQAAABLAO3/AgAKAAQAAABLAO7/AgAKAAQAAABLAO//AgAKAAQAAABLAPD/AgAKAAQAAABLAPH/AgAKAAQAAABLAPL/AgAKAAQAAABLAPP/AgAKAAQAAABLAPT/AgAKAAQAAABLAPX/AgAKAAQAAABLAPb/AgAKAAQAAABLAPf/AgAKAAQAAABLAPj/AgAKAAQAAABLAPn/AgAKAAQAAABLAPr/AgAKAAQAAABLAPv/AgAKAAQAAABLAPz/AgAKAAQAAABLAP3/AgAKAAQAAABLAP7/AgAKAAQAAABLAP//AgAKAAQAAABLAAAAAgAKAAQAAABLAAEAAgAKAAQAAABLAAIAAgAKAAQAAABLAAMAAgAKAAQAAABLAAQAAgAKAAQAAABLAAUAAgAKAAQAAABLAAYAAgAKAAQAAABLAAcAAgAKAAQAAABLAAgAAgAKAAQAAABLAAkAAgAKAAQAAABLAAoAAgAKAAQAAABLAAsAAgAKAAQAAABLAAwAAgAKAAQAAABLAA0AAgAKAAQAAABLAA4AAgAKAAQAAABLAA8AAgAKAAQAAABLABAAAgAKAAQAAABLABEAAgAKAAQAAABLABIAAgAKAAQAAABLABMAAgAKAAQAAABLABQAAgAKAAQAAABLABUAAgAKAAQAAABLABYAAgAKAAQAAABLABcAAgAKAAQAAABLABgAAgAKAAQAAABLABkAAgAKAAQAAAA=")
+tile_set = SubResource("TileSet_whai2")
+
+[node name="EncounterManager" type="Node" parent="."]
+script = ExtResource("4_4b6rk")
+enabled = false
+encounters = Array[ExtResource("5_4x2qa")]([SubResource("Resource_1tfly"), SubResource("Resource_s1unj")])
+
+[node name="EncounterManager[DELETE LATER]" type="Node" parent="."]
+script = ExtResource("4_4b6rk")
+encounters = Array[ExtResource("5_4x2qa")]([SubResource("Resource_tkqyn")])
+grace_period = 0.0
+minimum_encounter_chance = 1.0
+encounter_reroll_rate = 0.24
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Player UI" type="CanvasLayer" parent="UI"]
+
+[node name="OverworldMainMenu" parent="UI/Player UI" instance=ExtResource("6_d54be")]
+visible = false
+
+[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
+layer = 5
+visible = false
+script = ExtResource("7_eu757")
+fade_sequence = NodePath("TweenPlayerUI")
+
+[node name="Blur" parent="UI/BG Fade Canvas" instance=ExtResource("8_mi72x")]
+visible = false
+material = SubResource("ShaderMaterial_dyxed")
+
+[node name="Grain Noise" parent="UI/BG Fade Canvas" instance=ExtResource("10_bkker")]
+visible = false
+material = SubResource("ShaderMaterial_8r6xq")
+
+[node name="Erode" parent="UI/BG Fade Canvas" instance=ExtResource("10_bkker")]
+material = SubResource("ShaderMaterial_8r6xq")
+
+[node name="Fade" type="ColorRect" parent="UI/BG Fade Canvas"]
+z_index = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas"]
+script = ExtResource("12_r8gkn")
+sequence_list = Array[ExtResource("13_c7g4q")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa"), SubResource("Resource_sdbl4"), SubResource("Resource_eblq6")])
+
+[node name="CanvasModulate" type="CanvasModulate" parent="UI"]
+color = Color(0.332738, 0.519136, 0.749071, 1)
+
+[node name="Environment" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sorted Items" type="Node2D" parent="Environment"]
+y_sort_enabled = true
+
+[node name="Test Group" type="Node2D" parent="Environment/Sorted Items"]
+visible = false
+
+[node name="Interactable" parent="Environment/Sorted Items/Test Group" instance=ExtResource("21_71brs")]
+visible = false
+position = Vector2(194, 446)
+default_active_state = false
+additional_active_state = Array[ExtResource("22_dteqd")]([SubResource("Resource_8ofoh")])
+
+[node name="Interactable3" parent="Environment/Sorted Items/Test Group" instance=ExtResource("21_71brs")]
+visible = false
+position = Vector2(217, 294)
+default_active_state = false
+
+[node name="Interactable2" parent="Environment/Sorted Items/Test Group" instance=ExtResource("24_5x6g0")]
+visible = false
+position = Vector2(715, 311)
+default_dialogue = "temp_quest"
+additional_dialogue = Array[ExtResource("25_wrgox")]([SubResource("Resource_vuma2")])
+object_id = "temp_quest_giver"
+
+[node name="Interactable4" parent="Environment/Sorted Items/Test Group" instance=ExtResource("24_5x6g0")]
+visible = false
+position = Vector2(282, 75)
+default_dialogue = "temp_cutscene"
+additional_dialogue = Array[ExtResource("25_wrgox")]([SubResource("Resource_vuma2")])
+object_id = "temp_cutscene_giver"
+
+[node name="Boss" parent="Environment/Sorted Items" instance=ExtResource("21_71brs")]
+position = Vector2(608, -122)
+default_dialogue = "demo_boss_sequence"
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Sorted Items"]
+visible = false
+position = Vector2(606, 376)
+scale = Vector2(5, 5)
+texture = ExtResource("26_3poni")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Environment/Sorted Items"]
+visible = false
+position = Vector2(1001, -117)
+texture = ExtResource("27_3alpn")
+
+[node name="CutsceneObject Test" type="Node2D" parent="Environment/Sorted Items" node_paths=PackedStringArray("tween_player")]
+visible = false
+position = Vector2(1085, 392)
+script = ExtResource("28_2bjo6")
+object_id = "test_obj_1"
+tween_player = NodePath("TweenPlayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Sorted Items/CutsceneObject Test"]
+texture = ExtResource("29_udpxh")
+
+[node name="TweenPlayer" type="Node" parent="Environment/Sorted Items/CutsceneObject Test"]
+script = ExtResource("30_vp32d")
+sequence_list = Array[ExtResource("13_c7g4q")]([SubResource("Resource_jh7gi")])
+
+[node name="Player Controller" parent="Environment/Sorted Items" groups=["Player"] instance=ExtResource("34_qry8l")]
+position = Vector2(607, 128)
+run_multiplier = 1.75
+
+[node name="RPGOverworldFollower" parent="Environment/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("35_oj02q")]
+visible = false
+position = Vector2(461, 300)
+target = NodePath("../Player Controller")
+
+[node name="RPGOverworldFollower2" parent="Environment/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("35_oj02q")]
+visible = false
+position = Vector2(461, 300)
+target = NodePath("../RPGOverworldFollower")
+
+[node name="Lighting" type="Node2D" parent="Environment"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/Lighting"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(706, -185)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("36_iupx2")
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lighting/Sprite2D"]
+position = Vector2(-960, 110)
+scale = Vector2(10, 10)
+color = Color(0.621524, 0.621524, 0.621524, 1)
+energy = 1.85
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("37_3xwjs")
+texture_scale = 1.75
+
+[node name="PointLight2D2" type="PointLight2D" parent="Environment/Lighting/Sprite2D"]
+position = Vector2(-980, 6070)
+scale = Vector2(10, 10)
+color = Color(0.621524, 0.621524, 0.621524, 1)
+energy = 1.85
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("37_3xwjs")
+texture_scale = 1.75
+
+[node name="Cutscene Helpers" type="Node2D" parent="Environment"]
+
+[node name="Test" type="Node2D" parent="Environment/Cutscene Helpers"]
+
+[node name="Camera Group 1" type="Node2D" parent="Environment/Cutscene Helpers/Test"]
+position = Vector2(705, 0)
+
+[node name="Camera Pos" type="Node2D" parent="Environment/Cutscene Helpers/Test/Camera Group 1" node_paths=PackedStringArray("tween_player")]
+script = ExtResource("28_2bjo6")
+object_id = "Test Camera Pos 1"
+tween_player = NodePath("TweenPlayer")
+
+[node name="TweenPlayer" type="Node" parent="Environment/Cutscene Helpers/Test/Camera Group 1/Camera Pos"]
+script = ExtResource("30_vp32d")
+sequence_list = Array[ExtResource("13_c7g4q")]([SubResource("Resource_sc2vl")])
+
+[node name="----------" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2(607, 128)
+process_callback = 0
+limit_left = 0
+limit_top = -352
+limit_right = 1216
+limit_bottom = 656
+position_smoothing_speed = 500.0
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("38_ko405")
+
+[node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(607, 128)
+script = ExtResource("39_ad0jr")
+priority = 1
+follow_mode = 5
+follow_target = NodePath("../Environment/Sorted Items/Player Controller")
+tween_resource = SubResource("Resource_6ugjw")
+tween_on_load = false
+follow_damping = true
+dead_zone_width = 0.06
+dead_zone_height = 0.06
+draw_limits = true
+limit_target = NodePath("../TileMapWalls")
+
+[node name="Free PhantomCamera" type="Node2D" parent="."]
+top_level = true
+position = Vector2(480, 296)
+script = ExtResource("39_ad0jr")
+follow_mode = 5
+tween_resource = SubResource("Resource_6ugjw")
+tween_on_load = false
+follow_damping = true
+draw_limits = true
+limit_target = NodePath("../TileMapWalls")

@@ -9,6 +9,7 @@ class_name CutsceneObject
 
 func _ready() -> void:
 	CutsceneObjectManager.add_object(self);
+	self.tree_exiting.connect(remove_object)
 
 
 func set_object_active(active : bool):
@@ -25,5 +26,9 @@ func play_animation(anim_name : String):
 		animation_player.play(anim_name);
 
 
-func _exit_tree() -> void:
+func remove_object() -> void:
 	CutsceneObjectManager.remove_object(self);
+
+
+func _exit_tree() -> void:
+	pass;
