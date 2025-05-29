@@ -134,7 +134,7 @@ func _set_player_bg(entity : EntityController):
 			property.from(0);
 
 
-func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool):
+func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float):
 	if spell == null && _current_spell != null: 
 		# Disabling the following code in case we can later restore this functionality
 		# == DISABLED CODE ==
@@ -153,6 +153,20 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 		_current_spell = null;
 		
 		color_layer.visible = true;
+		color_layer.material.set_shader_parameter("transition_palette", attack_layer.material.get_shader_parameter("palette"));
+		
+		var tween = get_tree().create_tween();
+		tween.set_parallel(true);
+		
+		var property = tween.tween_property(color_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, 0.2);
+		
+		if property == null : 
+			return;
+		else:
+			property.set_trans(Tween.TRANS_QUART)
+			property.set_ease(Tween.EASE_OUT)
+			property.from(0);
+		
 		_is_attacking = false;
 	else :
 		if _attack_to_video_map.has(spell):
@@ -172,15 +186,34 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 			#video_layer.play_video_at(0);
 			# == END DISABLED CODE ==
 			var vid = _attack_to_video_map[spell][clamp(index, 0, _attack_to_video_map[spell].size() - 1)];
-			var mat = _attack_to_shader_map[spell][clamp(index, 0, _attack_to_shader_map[spell].size() - 1)];
+			var mat = _attack_to_shader_map[spell][clamp(index, 0, _attack_to_shader_map[spell].size() - 1)].duplicate();
 			
 			attack_layer.visible = true;
 			if change_video : attack_layer.stream = vid;
 			
 			if change_material : 
+				var previous = attack_layer.material.get_shader_parameter("palette");
 				attack_layer.material = mat;
-				attack_layer.material.set_shader_parameter("transition_palette", color_layer.material.get_shader_parameter("transition_palette"));
-				attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
+				attack_layer.material.set_shader_parameter("transition", 0.0);
+				
+				if use_entity_palette :
+					attack_layer.material.set_shader_parameter("transition_palette", attack_layer.material.get_shader_parameter("palette"));
+					attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
+				else:
+					attack_layer.material.set_shader_parameter("transition_palette", previous);
+				
+				var tween = get_tree().create_tween();
+				tween.set_parallel(true);
+		
+				var property = tween.tween_property(attack_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, palette_transition_duration);
+				
+				if property == null : 
+					return;
+				else:
+					property.set_trans(Tween.TRANS_QUART)
+					property.set_ease(Tween.EASE_OUT)
+					property.from(0.0);
+				
 				attack_layer.material.set_shader_parameter("use_manual_time", true);
 			
 			if change_video : attack_layer.play_video_at(0);

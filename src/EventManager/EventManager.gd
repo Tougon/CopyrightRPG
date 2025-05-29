@@ -58,7 +58,7 @@ signal register_enemy(entity : EntityController);
 signal set_player_ready();
 signal set_active_player(entity : EntityController);
 signal set_player_bg(entity : EntityController);
-signal set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool);
+signal set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float);
 signal player_menu_cancel();
 
 signal on_attack_select();
