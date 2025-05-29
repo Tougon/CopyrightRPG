@@ -2,13 +2,13 @@
 
 [ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_j5mlk"]
 
-[sub_resource type="Gradient" id="Gradient_flo7b"]
+[sub_resource type="Gradient" id="Gradient_htjhd"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.670708, 0, 0.042751, 0.8, 0.75, 0.516, 0.21, 0.8, 0.670588, 0, 0.0431373, 0.8)
+colors = PackedColorArray(1, 1, 1, 0, 0.758977, 0.0579573, 9.62615e-08, 0.8, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tcfbd"]
-gradient = SubResource("Gradient_flo7b")
+gradient = SubResource("Gradient_htjhd")
 
 [resource]
 shader = ExtResource("1_j5mlk")

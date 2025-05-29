@@ -325,6 +325,9 @@ enemy_positions = NodePath("Entities/Enemy Positions")
 [node name="BG Video Canvas" parent="Background" instance=ExtResource("2_qgvky")]
 start_static = true
 
+[node name="Attack Video Layer" parent="Background/BG Video Canvas" index="3"]
+modulate = Color(1, 1, 1, 0)
+
 [node name="Entities" type="Node" parent="."]
 
 [node name="Players" type="Node" parent="Entities"]
@@ -459,6 +462,27 @@ position = Vector2(650, 244)
 [node name="Root1" type="Node2D" parent="Entities/Enemy Positions/5"]
 position = Vector2(480, 314)
 
+[node name="Test BG" type="Node" parent="."]
+
+[node name="BG Video Canvas" parent="Test BG" instance=ExtResource("2_qgvky")]
+layer = 1
+start_static = true
+
+[node name="Static" parent="Test BG/BG Video Canvas" index="0"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ColorRect" parent="Test BG/BG Video Canvas" index="1"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="Video Layer" parent="Test BG/BG Video Canvas" index="2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="Color Layer" parent="Test BG/BG Video Canvas" index="4"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
 [node name="UI" type="Node" parent="."]
 
 [node name="Player UI" type="CanvasLayer" parent="UI"]
@@ -571,3 +595,6 @@ draw_limits = true
 [node name="TweenPlayer" type="Node" parent="PhantomCamera2D"]
 script = ExtResource("39_a3c23")
 sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_hglxi")])
+
+[editable path="Background/BG Video Canvas"]
+[editable path="Test BG/BG Video Canvas"]

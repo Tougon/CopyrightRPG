@@ -115,16 +115,16 @@ func _load_spell_data(move : Spell):
 
 func _set_player_bg(entity : EntityController):
 	if _entity_to_color_mat_map.has(entity.current_entity):
-		var previous = color_layer.material.get_shader_parameter("palette");
-		color_layer.material = _entity_to_color_mat_map[entity.current_entity].duplicate() as ShaderMaterial;
-		color_layer.material.set_shader_parameter("transition_palette", previous);
-		color_layer.material.set_shader_parameter("use_manual_time", false);
-		color_layer.texture_repeat = entity.current_entity.entity_thought_repeat_mode;
+		#var previous = color_layer.material.get_shader_parameter("palette");
+		attack_layer.material = _entity_to_color_mat_map[entity.current_entity].duplicate() as ShaderMaterial;
+		#color_layer.material.set_shader_parameter("transition_palette", previous);
+		#color_layer.material.set_shader_parameter("use_manual_time", false);
+		#color_layer.texture_repeat = entity.current_entity.entity_thought_repeat_mode;
 		
 		var tween = get_tree().create_tween();
 		tween.set_parallel(true);
 		
-		var property = tween.tween_property(color_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, 1.0);
+		var property = null;#tween.tween_property(color_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, 1.0);
 		
 		if property == null : 
 			return;
@@ -178,14 +178,15 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 			if change_video : attack_layer.stream = vid;
 			
 			if change_material : 
+				var previous = attack_layer.material.get_shader_parameter("palette");
 				attack_layer.material = mat;
-				attack_layer.material.set_shader_parameter("transition_palette", color_layer.material.get_shader_parameter("transition_palette"));
-				attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
+				attack_layer.material.set_shader_parameter("transition_palette", previous);
+				attack_layer.material.set_shader_parameter("palette", previous);
 				attack_layer.material.set_shader_parameter("use_manual_time", true);
 			
 			if change_video : attack_layer.play_video_at(0);
 			
-			color_layer.visible = false;
+			#color_layer.visible = false;
 			
 			_current_spell = spell;
 			_is_attacking = true;

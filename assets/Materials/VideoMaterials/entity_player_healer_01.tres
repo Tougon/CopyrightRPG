@@ -5,7 +5,7 @@
 [sub_resource type="Gradient" id="Gradient_flo7b"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.210965, 0.390442, 0.355823, 0.8, 0.5681, 0.456, 0.57, 0.8, 0.211765, 0.392157, 0.356863, 0.8)
+colors = PackedColorArray(1, 1, 1, 0, 0.547962, 0.735257, 1, 0.8, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tcfbd"]
 gradient = SubResource("Gradient_flo7b")
@@ -28,4 +28,8 @@ shader_parameter/palette_speed = 0.2
 shader_parameter/enable_pixelate = false
 shader_parameter/pixel_size = 96
 shader_parameter/transition = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/use_manual_time = false
+shader_parameter/manual_time = null
 shader_parameter/palette = SubResource("GradientTexture2D_tcfbd")
