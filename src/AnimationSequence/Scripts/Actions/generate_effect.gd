@@ -57,8 +57,9 @@ func execute(sequence : AnimationSequence):
 		
 		if child :
 			entity.add_child(effect);
-		
+	
 	effect.z_index = effect_layer;
+	effect.z_as_relative = false;
 	
 	if !child : 
 		sequence.root.add_child(effect);

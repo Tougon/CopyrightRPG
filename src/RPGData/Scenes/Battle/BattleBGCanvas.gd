@@ -9,6 +9,8 @@ enum LoadType { ENTITY, ATTACK }
 @export var color_layer : LoopingVideoPlayer;
 @export var solid_layer : ColorRect;
 @export var static_layer : ColorRect;
+@export var effect_layer_list : Array[LoopingVideoPlayer];
+@export var effect_layer_default_mat : Material;
 @export var start_static : bool = true;
 @export var test_attack_layer : bool = false;
 
@@ -34,6 +36,7 @@ func _ready() -> void:
 	EventManager.on_battle_begin.connect(_on_battle_begin);
 	EventManager.set_player_bg.connect(_set_player_bg);
 	EventManager.set_spell_bg.connect(_set_spell_bg);
+	EventManager.set_effect_bg.connect(_set_effect_bg);
 	EventManager.register_player.connect(_load_entity_spell_data);
 	EventManager.register_enemy.connect(_load_entity_spell_data);
 	
@@ -132,6 +135,12 @@ func _set_player_bg(entity : EntityController):
 			property.set_trans(Tween.TRANS_QUART)
 			property.set_ease(Tween.EASE_OUT)
 			property.from(0);
+	
+	if effect_layer_list.size() > 0 && effect_layer_list[0] != null :
+		if entity is EnemyController : 
+			effect_layer_list[0].get_parent().z_index = 0;
+		else :
+			effect_layer_list[0].get_parent().z_index = -1;
 
 
 func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float):
@@ -168,6 +177,12 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 			property.from(0);
 		
 		_is_attacking = false;
+		
+		for effect_layer in effect_layer_list:
+			effect_layer.stop();
+			effect_layer.visible = false;
+			effect_layer.stream = null;
+			effect_layer.material = effect_layer_default_mat.duplicate();
 	else :
 		if _attack_to_video_map.has(spell):
 			# Disabling the following code in case we can later restore this functionality
@@ -225,6 +240,62 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 			_attack_time = 0;
 
 
+func _set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float, set_transparent : bool):
+	if spell == null && _current_spell != null: 
+		if layer >= effect_layer_list.size():
+			pass;
+		
+		var player = effect_layer_list[layer];
+		
+		player.stop();
+		player.visible = false;
+		player.stream = null;
+	else :
+		print("Effect Stuff BG")
+		if layer >= effect_layer_list.size():
+			pass;
+		
+		var player = effect_layer_list[layer];
+		
+		if _attack_to_video_map.has(spell):
+			var vid = _attack_to_video_map[spell][clamp(index, 0, _attack_to_video_map[spell].size() - 1)];
+			var mat = _attack_to_shader_map[spell][clamp(index, 0, _attack_to_shader_map[spell].size() - 1)].duplicate();
+			
+			player.visible = true;
+			if change_video : player.stream = vid;
+			
+			if change_material : 
+				var previous = player.material.get_shader_parameter("palette");
+				player.material = mat;
+				player.material.set_shader_parameter("transition", 0.0);
+				
+				if use_entity_palette :
+					player.material.set_shader_parameter("transition_palette", player.material.get_shader_parameter("palette"));
+					player.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
+				else:
+					player.material.set_shader_parameter("transition_palette", previous);
+				
+				if set_transparent : 
+					player.material.set_shader_parameter("palette", effect_layer_default_mat.get_shader_parameter("palette"));
+				
+				var tween = get_tree().create_tween();
+				tween.set_parallel(true);
+		
+				var property = tween.tween_property(player.material as ShaderMaterial, "shader_parameter/transition", 1.0, palette_transition_duration);
+				
+				if property == null : 
+					return;
+				else:
+					property.set_trans(Tween.TRANS_QUART)
+					property.set_ease(Tween.EASE_OUT)
+					property.from(0.0);
+				
+				# TODO: We will need manual time here to have any sort of visual consistency
+				player.material.set_shader_parameter("use_manual_time", true);
+			
+			if change_video : player.play_video_at(0);
+
+
 func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, load_type : LoadType, aux : Resource):
 	var vid = load_video(vid_path);
 	var mat1 = load_material(mat1_path);
@@ -268,6 +339,10 @@ func _set_static(active : bool) :
 	video_layer.visible = !active;
 	color_layer.visible = !active;
 	attack_layer.visible = false;
+	
+	for effect_layer in effect_layer_list :
+		effect_layer.visible = false;
+		effect_layer.material = effect_layer_default_mat.duplicate();
 
 
 func _on_destroy():
@@ -275,5 +350,6 @@ func _on_destroy():
 		EventManager.on_battle_begin.disconnect(_on_battle_begin);
 		EventManager.set_player_bg.disconnect(_set_player_bg);
 		EventManager.set_spell_bg.disconnect(_set_spell_bg);
+		EventManager.set_effect_bg.disconnect(_set_effect_bg);
 		EventManager.register_player.disconnect(_load_entity_spell_data);
 		EventManager.register_enemy.disconnect(_load_entity_spell_data);

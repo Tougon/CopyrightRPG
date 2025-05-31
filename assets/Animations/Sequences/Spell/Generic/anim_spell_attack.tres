@@ -32,6 +32,8 @@ script = ExtResource("9_2d2tc")
 reset_bg = false
 index = 0
 mode = 0
+use_palette = false
+palette_fade_time = 1.0
 
 [sub_resource type="Resource" id="Resource_fhloc"]
 script = ExtResource("2_st50u")
@@ -184,6 +186,8 @@ script = ExtResource("9_2d2tc")
 reset_bg = true
 index = 0
 mode = 0
+use_palette = false
+palette_fade_time = 1.0
 
 [sub_resource type="Resource" id="Resource_3jdo4"]
 script = ExtResource("2_st50u")

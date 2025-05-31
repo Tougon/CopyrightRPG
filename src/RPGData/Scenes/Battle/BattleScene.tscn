@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=94 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -6,12 +6,15 @@
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
+[ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="4_my5m2"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="4_wv7ke"]
 [ext_resource type="Resource" uid="uid://dciwv5n41ixne" path="res://assets/Spells/generic/spell_generic_defend.tres" id="5_7dvw6"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
+[ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_wet3g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="6_2gp2x"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
+[ext_resource type="VideoStream" path="res://video/attack.ogv" id="6_hl4uy"]
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Resource" uid="uid://dyc1rwxffmh78" path="res://assets/Entities/players/player_main.tres" id="7_5gsqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_46juf"]
@@ -322,85 +325,11 @@ enemy_positions = NodePath("Entities/Enemy Positions")
 
 [node name="Background" type="Node" parent="."]
 
-[node name="BG Video Canvas" parent="Background" instance=ExtResource("2_qgvky")]
+[node name="BG Video Canvas" parent="Background" node_paths=PackedStringArray("effect_layer_list") instance=ExtResource("2_qgvky")]
+effect_layer_list = [NodePath("../../Entities/Video Effects Layer/Root/Effect Layer 1"), NodePath("../../Entities/Video Effects Layer/Root/Effect Layer 2")]
 start_static = true
 
 [node name="Entities" type="Node" parent="."]
-
-[node name="Players" type="Node" parent="Entities"]
-
-[node name="P1" parent="Entities/Players" instance=ExtResource("4_al1wb")]
-y_sort_enabled = false
-position = Vector2(160, 630)
-scale = Vector2(0.95, 0.95)
-default_attack_action = ExtResource("4_wv7ke")
-default_defend_action = ExtResource("5_7dvw6")
-default_seal_effect = SubResource("Resource_4qtjs")
-current_entity = ExtResource("7_5gsqw")
-
-[node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
-y_sort_enabled = false
-position = Vector2(380, 630)
-scale = Vector2(0.95, 0.95)
-player_id = 1
-default_attack_action = ExtResource("4_wv7ke")
-default_defend_action = ExtResource("5_7dvw6")
-default_seal_effect = SubResource("Resource_f6t8p")
-current_entity = ExtResource("10_66vq4")
-
-[node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
-y_sort_enabled = false
-position = Vector2(600, 630)
-scale = Vector2(0.95, 0.95)
-player_id = 2
-default_attack_action = ExtResource("4_wv7ke")
-default_defend_action = ExtResource("5_7dvw6")
-default_seal_effect = SubResource("Resource_epnwn")
-current_entity = ExtResource("12_qpkyi")
-
-[node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
-y_sort_enabled = false
-position = Vector2(820, 630)
-scale = Vector2(0.95, 0.95)
-player_id = 3
-default_attack_action = ExtResource("4_wv7ke")
-default_defend_action = ExtResource("5_7dvw6")
-default_seal_effect = SubResource("Resource_06evc")
-current_entity = ExtResource("8_hn632")
-
-[node name="Enemies" type="Node" parent="Entities"]
-
-[node name="Sorting" type="Node2D" parent="Entities/Enemies"]
-y_sort_enabled = true
-
-[node name="E1" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
-position = Vector2(473, 314)
-use_override_direction = true
-override_direction = Vector2(1, -1)
-
-[node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
-position = Vector2(473, 314)
-enemy_index = 1
-use_override_direction = true
-override_direction = Vector2(1, -1)
-
-[node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
-position = Vector2(473, 314)
-enemy_index = 2
-use_override_direction = true
-override_direction = Vector2(1, -1)
-
-[node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
-position = Vector2(473, 314)
-enemy_index = 3
-use_override_direction = true
-override_direction = Vector2(1, -1)
-
-[node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
-position = Vector2(473, 314)
-enemy_index = 4
-use_override_direction = true
-override_direction = Vector2(1, -1)
 
 [node name="Enemy Positions" type="Node" parent="Entities"]
 
@@ -458,6 +387,108 @@ position = Vector2(650, 244)
 
 [node name="Root1" type="Node2D" parent="Entities/Enemy Positions/5"]
 position = Vector2(480, 314)
+
+[node name="Enemies" type="Node" parent="Entities"]
+
+[node name="Sorting" type="Node2D" parent="Entities/Enemies"]
+z_index = -2
+y_sort_enabled = true
+
+[node name="E1" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+enemy_index = 1
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+enemy_index = 2
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+enemy_index = 3
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
+position = Vector2(473, 314)
+enemy_index = 4
+use_override_direction = true
+override_direction = Vector2(1, -1)
+
+[node name="Video Effects Layer" type="Node" parent="Entities"]
+
+[node name="Root" type="Control" parent="Entities/Video Effects Layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Effect Layer 1" parent="Entities/Video Effects Layer/Root" instance=ExtResource("4_my5m2")]
+material = ExtResource("5_wet3g")
+layout_mode = 1
+mouse_filter = 2
+stream = ExtResource("6_hl4uy")
+
+[node name="Effect Layer 2" parent="Entities/Video Effects Layer/Root" instance=ExtResource("4_my5m2")]
+material = ExtResource("5_wet3g")
+layout_mode = 1
+mouse_filter = 2
+stream = ExtResource("6_hl4uy")
+
+[node name="Players" type="Node" parent="Entities"]
+
+[node name="P1" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+z_index = -1
+y_sort_enabled = false
+position = Vector2(160, 630)
+scale = Vector2(0.95, 0.95)
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_4qtjs")
+current_entity = ExtResource("7_5gsqw")
+
+[node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+z_index = -1
+y_sort_enabled = false
+position = Vector2(380, 630)
+scale = Vector2(0.95, 0.95)
+player_id = 1
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_f6t8p")
+current_entity = ExtResource("10_66vq4")
+
+[node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+z_index = -1
+y_sort_enabled = false
+position = Vector2(600, 630)
+scale = Vector2(0.95, 0.95)
+player_id = 2
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_epnwn")
+current_entity = ExtResource("12_qpkyi")
+
+[node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
+z_index = -1
+y_sort_enabled = false
+position = Vector2(820, 630)
+scale = Vector2(0.95, 0.95)
+player_id = 3
+default_attack_action = ExtResource("4_wv7ke")
+default_defend_action = ExtResource("5_7dvw6")
+default_seal_effect = SubResource("Resource_06evc")
+current_entity = ExtResource("8_hn632")
 
 [node name="UI" type="Node" parent="."]
 

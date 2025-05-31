@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=41 format=3 uid="uid://d1l6fqklh58v5"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=46 format=3 uid="uid://d1l6fqklh58v5"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="2_jvjoc"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_t2a03"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="9_yxrg3"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="10_5fi2u"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_7fq5r"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/add_background_effect.gd" id="11_bpqsg"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_ujdrb"]
 
 [sub_resource type="Resource" id="Resource_wnmty"]
@@ -44,7 +45,7 @@ effect_variance = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ufi1u"]
 script = ExtResource("3_ssbr4")
-frame = 5
+frame = 505
 frame_order = 0
 action = SubResource("Resource_rhl5j")
 
@@ -239,8 +240,40 @@ frame = 90
 frame_order = 0
 action = SubResource("Resource_jim8f")
 
+[sub_resource type="Resource" id="Resource_f86cc"]
+script = ExtResource("11_bpqsg")
+reset_bg = false
+effect_layer = 0
+index = 2
+mode = 0
+use_palette = true
+palette_fade_time = 1.5
+fade_to_transparent = false
+
+[sub_resource type="Resource" id="Resource_gqhkw"]
+script = ExtResource("3_ssbr4")
+frame = 5
+frame_order = 0
+action = SubResource("Resource_f86cc")
+
+[sub_resource type="Resource" id="Resource_ts88u"]
+script = ExtResource("11_bpqsg")
+reset_bg = false
+effect_layer = 0
+index = 2
+mode = 2
+use_palette = true
+palette_fade_time = 0.1
+fade_to_transparent = true
+
+[sub_resource type="Resource" id="Resource_7qvff"]
+script = ExtResource("3_ssbr4")
+frame = 45
+frame_order = 0
+action = SubResource("Resource_ts88u")
+
 [resource]
 script = ExtResource("11_ujdrb")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_ufi1u"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo"), SubResource("Resource_riasb"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i")])
+animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_ufi1u"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo"), SubResource("Resource_riasb"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff")])

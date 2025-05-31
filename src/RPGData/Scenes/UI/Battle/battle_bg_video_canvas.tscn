@@ -1,13 +1,44 @@
-[gd_scene load_steps=10 format=3 uid="uid://4k3478vr4ljh"]
+[gd_scene load_steps=14 format=3 uid="uid://4k3478vr4ljh"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="1_jecyy"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="2_k620y"]
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="2_y56xo"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="3_8xmgu"]
 [ext_resource type="Material" uid="uid://bbjbjqi6dxca1" path="res://assets/Materials/VideoMaterials/entity_boss_test_00.tres" id="4_yuca8"]
 [ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_bg8ve"]
 [ext_resource type="VideoStream" path="res://video/boss.ogv" id="5_w7ge3"]
 [ext_resource type="VideoStream" path="res://video/attack.ogv" id="6_s5ki2"]
 [ext_resource type="Material" uid="uid://blpd02i0msjxn" path="res://assets/Materials/VideoMaterials/entity_boss_test_01.tres" id="8_erka7"]
+
+[sub_resource type="Gradient" id="Gradient_4qnt8"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ol8p"]
+gradient = SubResource("Gradient_4qnt8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpwxw"]
+shader = ExtResource("2_y56xo")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.0
+shader_parameter/frequency = 0.0
+shader_parameter/speed = 0.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = false
+shader_parameter/enable_scan_lines = false
+shader_parameter/scan_line_mod = 2
+shader_parameter/palette_speed = 0.1
+shader_parameter/enable_pixelate = false
+shader_parameter/pixel_size = 96
+shader_parameter/transition = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/use_manual_time = false
+shader_parameter/manual_time = null
+shader_parameter/palette = SubResource("GradientTexture1D_7ol8p")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44pux"]
 shader = ExtResource("2_k620y")
@@ -24,6 +55,7 @@ attack_layer = NodePath("Attack Video Layer")
 color_layer = NodePath("Color Layer")
 solid_layer = NodePath("ColorRect")
 static_layer = NodePath("Static")
+effect_layer_default_mat = SubResource("ShaderMaterial_tpwxw")
 start_static = false
 
 [node name="Static" type="ColorRect" parent="."]
