@@ -53,7 +53,7 @@ action = SubResource("Resource_rhl5j")
 script = ExtResource("2_jvjoc")
 reset_bg = false
 index = 1
-mode = 0
+mode = 2
 use_palette = true
 palette_fade_time = 0.1
 
@@ -97,15 +97,6 @@ script = ExtResource("3_ssbr4")
 frame = 42
 frame_order = 2
 action = SubResource("Resource_neec4")
-
-[sub_resource type="Resource" id="Resource_t5frq"]
-script = ExtResource("9_rhgw3")
-
-[sub_resource type="Resource" id="Resource_nbfkv"]
-script = ExtResource("3_ssbr4")
-frame = 81
-frame_order = 4
-action = SubResource("Resource_t5frq")
 
 [sub_resource type="Resource" id="Resource_w600q"]
 script = ExtResource("10_5fi2u")
@@ -203,10 +194,19 @@ frame = 80
 frame_order = 0
 action = SubResource("Resource_coivm")
 
+[sub_resource type="Resource" id="Resource_t5frq"]
+script = ExtResource("9_rhgw3")
+
+[sub_resource type="Resource" id="Resource_nbfkv"]
+script = ExtResource("3_ssbr4")
+frame = 81
+frame_order = 4
+action = SubResource("Resource_t5frq")
+
 [sub_resource type="Resource" id="Resource_g6j0t"]
 script = ExtResource("2_jvjoc")
 reset_bg = false
-index = 1
+index = 0
 mode = 2
 use_palette = false
 palette_fade_time = 0.4
@@ -252,7 +252,7 @@ fade_to_transparent = false
 
 [sub_resource type="Resource" id="Resource_gqhkw"]
 script = ExtResource("3_ssbr4")
-frame = 5
+frame = 405
 frame_order = 0
 action = SubResource("Resource_f86cc")
 
@@ -268,7 +268,7 @@ fade_to_transparent = true
 
 [sub_resource type="Resource" id="Resource_7qvff"]
 script = ExtResource("3_ssbr4")
-frame = 45
+frame = 445
 frame_order = 0
 action = SubResource("Resource_ts88u")
 
@@ -276,4 +276,4 @@ action = SubResource("Resource_ts88u")
 script = ExtResource("11_ujdrb")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_ufi1u"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_nbfkv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo"), SubResource("Resource_riasb"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff")])
+animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_ufi1u"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo"), SubResource("Resource_nbfkv"), SubResource("Resource_riasb"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff")])
