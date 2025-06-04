@@ -22,3 +22,4 @@ func execute(sequence : AnimationSequence):
 	
 	sequence.target[sequence.target_index].apply_damage(dmg, crit, vibrate, hit, damage_time, damage_delay, shake_duration, shake_decay, force_dodge);
 	sequence.spell_cast[index].increment_hit();
+	sequence.applied_damage_this_frame = true;

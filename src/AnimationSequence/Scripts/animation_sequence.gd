@@ -6,6 +6,8 @@ var initialized : bool;
 var running : bool;
 var looping : bool;
 var on_success : bool;
+var check_miss : bool;
+var applied_damage_this_frame : bool;
 
 var target_index : int;
 var current_frame : int;
@@ -133,6 +135,7 @@ func sequence_loop():
 			
 			for i in num_frames:
 				current_frame += 1;
+				applied_damage_this_frame = false;
 				
 				# NOTE: Frame Order is not acknowledged.
 				# With Godot's workflow, this isn't a huge concern, but is notable.
@@ -193,8 +196,16 @@ func sequence_end():
 
 
 func call_sequence_function(action : AnimationSequenceAction):
+	var index = target_index;
+	if spell_data && spell_data.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
+		index = 0;
 	
-	if on_success && !action.ignore_on_success() && !spell_cast[target_index].has_spell_done_anything():
+	var cast_inst = spell_cast[target_index];
+	var hit_index = 0;
+	if cast_inst != null : hit_index = spell_cast[target_index].current_hit; 
+	if applied_damage_this_frame : hit_index -= 1;
+	
+	if ((on_success && !spell_cast[target_index].has_spell_done_anything()) || (check_miss && !spell_cast[target_index].get_hit_success(hit_index))) && !action.ignore_on_success() :
 		return;
 	
 	action.execute(self);

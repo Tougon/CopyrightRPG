@@ -27,28 +27,6 @@ frame = 1
 frame_order = 0
 action = SubResource("Resource_wnmty")
 
-[sub_resource type="Resource" id="Resource_rhl5j"]
-script = ExtResource("2_t2a03")
-effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_lightning.tscn"
-relative = 1
-effect_index = 0
-effect_position = Vector2(0, -85)
-effect_layer = 2
-effect_rotation = 0.0
-effect_scale = Vector2(0.8, 0.8)
-child = false
-pos_match_sequence_dir = false
-rot_match_sequence_dir = false
-scl_match_sequence_dir_x = true
-scl_match_sequence_dir_y = false
-effect_variance = Vector2(0, 0)
-
-[sub_resource type="Resource" id="Resource_ufi1u"]
-script = ExtResource("3_ssbr4")
-frame = 505
-frame_order = 0
-action = SubResource("Resource_rhl5j")
-
 [sub_resource type="Resource" id="Resource_cmxgv"]
 script = ExtResource("2_jvjoc")
 reset_bg = false
@@ -65,12 +43,12 @@ action = SubResource("Resource_cmxgv")
 
 [sub_resource type="Resource" id="Resource_5t3o6"]
 script = ExtResource("6_4jmod")
-vibrate = true
+vibrate = null
 damage_time = 1.0
-damage_delay = 0.0
+damage_delay = null
 shake_duration = 0.5
 shake_decay = 0.7
-force_dodge = true
+force_dodge = null
 
 [sub_resource type="Resource" id="Resource_ik65d"]
 script = ExtResource("3_ssbr4")
@@ -80,6 +58,7 @@ action = SubResource("Resource_5t3o6")
 
 [sub_resource type="Resource" id="Resource_hkvxv"]
 script = ExtResource("7_h2bv7")
+check_hit_instead = true
 
 [sub_resource type="Resource" id="Resource_87u8w"]
 script = ExtResource("3_ssbr4")
@@ -127,7 +106,7 @@ relative_amount = 1.0
 [sub_resource type="Resource" id="Resource_tksyp"]
 script = ExtResource("3_ssbr4")
 frame = 42
-frame_order = 0
+frame_order = 3
 action = SubResource("Resource_2f2le")
 
 [sub_resource type="Resource" id="Resource_cspn6"]
@@ -159,8 +138,32 @@ relative_amount = 1.0
 [sub_resource type="Resource" id="Resource_ktfgl"]
 script = ExtResource("3_ssbr4")
 frame = 42
-frame_order = 0
+frame_order = 4
 action = SubResource("Resource_bjs7u")
+
+[sub_resource type="Resource" id="Resource_y7pjy"]
+script = ExtResource("9_rhgw3")
+check_hit_instead = true
+
+[sub_resource type="Resource" id="Resource_afaee"]
+script = ExtResource("3_ssbr4")
+frame = 42
+frame_order = 5
+action = SubResource("Resource_y7pjy")
+
+[sub_resource type="Resource" id="Resource_g6j0t"]
+script = ExtResource("2_jvjoc")
+reset_bg = false
+index = 0
+mode = 2
+use_palette = false
+palette_fade_time = 0.4
+
+[sub_resource type="Resource" id="Resource_riasb"]
+script = ExtResource("3_ssbr4")
+frame = 60
+frame_order = 0
+action = SubResource("Resource_g6j0t")
 
 [sub_resource type="Resource" id="Resource_leate"]
 script = ExtResource("10_5fi2u")
@@ -191,31 +194,8 @@ relative_amount = 1.0
 [sub_resource type="Resource" id="Resource_bnsfo"]
 script = ExtResource("3_ssbr4")
 frame = 80
-frame_order = 0
+frame_order = 2
 action = SubResource("Resource_coivm")
-
-[sub_resource type="Resource" id="Resource_t5frq"]
-script = ExtResource("9_rhgw3")
-
-[sub_resource type="Resource" id="Resource_nbfkv"]
-script = ExtResource("3_ssbr4")
-frame = 81
-frame_order = 4
-action = SubResource("Resource_t5frq")
-
-[sub_resource type="Resource" id="Resource_g6j0t"]
-script = ExtResource("2_jvjoc")
-reset_bg = false
-index = 0
-mode = 2
-use_palette = false
-palette_fade_time = 0.4
-
-[sub_resource type="Resource" id="Resource_riasb"]
-script = ExtResource("3_ssbr4")
-frame = 60
-frame_order = 0
-action = SubResource("Resource_g6j0t")
 
 [sub_resource type="Resource" id="Resource_x1q0r"]
 script = ExtResource("2_jvjoc")
@@ -272,8 +252,30 @@ frame = 445
 frame_order = 0
 action = SubResource("Resource_ts88u")
 
+[sub_resource type="Resource" id="Resource_rhl5j"]
+script = ExtResource("2_t2a03")
+effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_lightning.tscn"
+relative = 1
+effect_index = 0
+effect_position = Vector2(0, -85)
+effect_layer = 2
+effect_rotation = 0.0
+effect_scale = Vector2(0.8, 0.8)
+child = false
+pos_match_sequence_dir = false
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = true
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ufi1u"]
+script = ExtResource("3_ssbr4")
+frame = 505
+frame_order = 0
+action = SubResource("Resource_rhl5j")
+
 [resource]
 script = ExtResource("11_ujdrb")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_ufi1u"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_bnsfo"), SubResource("Resource_nbfkv"), SubResource("Resource_riasb"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff")])
+animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_afaee"), SubResource("Resource_riasb"), SubResource("Resource_bnsfo"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff"), SubResource("Resource_ufi1u")])
