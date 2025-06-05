@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=46 format=3 uid="uid://d1l6fqklh58v5"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=48 format=3 uid="uid://d1l6fqklh58v5"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="2_jvjoc"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_t2a03"]
@@ -161,7 +161,7 @@ palette_fade_time = 0.4
 
 [sub_resource type="Resource" id="Resource_riasb"]
 script = ExtResource("3_ssbr4")
-frame = 60
+frame = 72
 frame_order = 0
 action = SubResource("Resource_g6j0t")
 
@@ -274,8 +274,22 @@ frame = 505
 frame_order = 0
 action = SubResource("Resource_rhl5j")
 
+[sub_resource type="Resource" id="Resource_uh34t"]
+script = ExtResource("2_jvjoc")
+reset_bg = false
+index = 1
+mode = 1
+use_palette = false
+palette_fade_time = 1.0
+
+[sub_resource type="Resource" id="Resource_5fd8f"]
+script = ExtResource("3_ssbr4")
+frame = 39
+frame_order = 1
+action = SubResource("Resource_uh34t")
+
 [resource]
 script = ExtResource("11_ujdrb")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_afaee"), SubResource("Resource_riasb"), SubResource("Resource_bnsfo"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff"), SubResource("Resource_ufi1u")])
+animation_sequence = Array[ExtResource("3_ssbr4")]([SubResource("Resource_o26oi"), SubResource("Resource_coo4k"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_tksyp"), SubResource("Resource_ktfgl"), SubResource("Resource_afaee"), SubResource("Resource_riasb"), SubResource("Resource_bnsfo"), SubResource("Resource_6hvrh"), SubResource("Resource_o1j1i"), SubResource("Resource_gqhkw"), SubResource("Resource_7qvff"), SubResource("Resource_ufi1u"), SubResource("Resource_5fd8f")])

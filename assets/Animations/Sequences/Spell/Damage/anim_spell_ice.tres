@@ -190,6 +190,7 @@ action = SubResource("Resource_6cp3h")
 
 [sub_resource type="Resource" id="Resource_cpw3g"]
 script = ExtResource("7_ms8jg")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_r2emo"]
 script = ExtResource("3_db3sq")
@@ -210,6 +211,7 @@ action = SubResource("Resource_fkb3d")
 
 [sub_resource type="Resource" id="Resource_5op62"]
 script = ExtResource("9_0qkbt")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_yov2k"]
 script = ExtResource("3_db3sq")

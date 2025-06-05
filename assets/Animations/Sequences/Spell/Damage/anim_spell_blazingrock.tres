@@ -84,6 +84,7 @@ action = SubResource("Resource_5t3o6")
 
 [sub_resource type="Resource" id="Resource_hkvxv"]
 script = ExtResource("7_vm7av")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_87u8w"]
 script = ExtResource("3_oy0gp")
@@ -118,6 +119,7 @@ action = SubResource("Resource_bk2gt")
 
 [sub_resource type="Resource" id="Resource_t5frq"]
 script = ExtResource("9_ev8gp")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_nbfkv"]
 script = ExtResource("3_oy0gp")

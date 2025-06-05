@@ -45,6 +45,7 @@ action = SubResource("Resource_35glr")
 
 [sub_resource type="Resource" id="Resource_ke1g5"]
 script = ExtResource("4_wvo26")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_7lss8"]
 script = ExtResource("3_da3fk")
@@ -159,6 +160,7 @@ action = SubResource("Resource_0pdyn")
 
 [sub_resource type="Resource" id="Resource_8k77p"]
 script = ExtResource("9_wtae2")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_oa3xe"]
 script = ExtResource("3_da3fk")
@@ -168,6 +170,7 @@ action = SubResource("Resource_8k77p")
 
 [sub_resource type="Resource" id="Resource_3h156"]
 script = ExtResource("4_wvo26")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_j11o4"]
 script = ExtResource("3_da3fk")
@@ -177,6 +180,7 @@ action = SubResource("Resource_3h156")
 
 [sub_resource type="Resource" id="Resource_8pwyo"]
 script = ExtResource("9_wtae2")
+check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_07ipn"]
 script = ExtResource("3_da3fk")
