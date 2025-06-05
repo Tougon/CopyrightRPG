@@ -759,6 +759,7 @@ encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_1tfly"), SubRe
 
 [node name="EncounterManager[DELETE LATER]" type="Node" parent="."]
 script = ExtResource("3_tr7o3")
+enabled = false
 encounters = Array[ExtResource("5_utklg")]([SubResource("Resource_tkqyn")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0

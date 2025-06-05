@@ -33,7 +33,7 @@ reset_bg = false
 index = 1
 mode = 2
 use_palette = true
-palette_fade_time = 0.1
+palette_fade_time = 1.5
 
 [sub_resource type="Resource" id="Resource_coo4k"]
 script = ExtResource("3_ssbr4")
@@ -157,7 +157,7 @@ reset_bg = false
 index = 0
 mode = 2
 use_palette = false
-palette_fade_time = 0.4
+palette_fade_time = 1.0
 
 [sub_resource type="Resource" id="Resource_riasb"]
 script = ExtResource("3_ssbr4")
@@ -216,7 +216,7 @@ script = ExtResource("10_7fq5r")
 
 [sub_resource type="Resource" id="Resource_o1j1i"]
 script = ExtResource("3_ssbr4")
-frame = 90
+frame = 110
 frame_order = 0
 action = SubResource("Resource_jim8f")
 

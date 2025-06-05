@@ -167,7 +167,7 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 		var tween = get_tree().create_tween();
 		tween.set_parallel(true);
 		
-		var property = tween.tween_property(color_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, 0.2);
+		var property = tween.tween_property(color_layer.material as ShaderMaterial, "shader_parameter/transition", 1.0, palette_transition_duration);
 		
 		if property == null : 
 			return;
@@ -251,7 +251,6 @@ func _set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool
 		player.visible = false;
 		player.stream = null;
 	else :
-		print("Effect Stuff BG")
 		if layer >= effect_layer_list.size():
 			pass;
 		
@@ -270,7 +269,7 @@ func _set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool
 				player.material.set_shader_parameter("transition", 0.0);
 				
 				if use_entity_palette :
-					player.material.set_shader_parameter("transition_palette", player.material.get_shader_parameter("palette"));
+					player.material.set_shader_parameter("transition_palette", previous);
 					player.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
 				else:
 					player.material.set_shader_parameter("transition_palette", previous);

@@ -8,6 +8,14 @@ var _current_player_entity : Entity;
 var _current_player_material : Material;
 var _spell_to_item_id : Dictionary;
 
+var _materials : Array[Material];
+var _videos : Array[VideoStream];
+var _current_animation : AnimationSequenceObject;
+var _current_frame : int = 1;
+
+var _use_manual_time : bool = false;
+var _manual_time : float = 0.0;
+
 # TODO: Move order customization
 func _ready():
 	super._ready();
@@ -42,6 +50,11 @@ func on_focus():
 		$"BG/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Visuals/Close".visible = true;
 		$"BG/Move Visuals/Close".grab_focus();
+
+
+func on_menu_inactive():
+	super.on_menu_inactive();
+	_current_animation = null;
 
 
 func _refresh_move_ui():
@@ -149,11 +162,22 @@ func _on_item_selected(data):
 
 
 func _load_spell_data(move : Spell):
+	# TODO: Make spell animate
+	_current_frame = 1;
+	_current_animation = move.animation_sequence;
+	
 	$"BG/Move Visuals/Vid".material = _current_player_material;
+	$"BG/Move Visuals/Vid/Static".visible = true;
 	
 	if move.spell_videos != null && move.spell_videos.size() > 0:
+		_videos.clear();
 		
-		var video = load_video(move.spell_videos[0]);
+		for i in move.spell_videos.size():
+			_videos.append(load_video(move.spell_videos[i]));
+		print(_videos.size());
+		
+		# TODO: Delete
+		var video = null;
 		
 		if video != null : 
 			$"BG/Move Visuals/Vid".stream = video;
@@ -161,6 +185,83 @@ func _load_spell_data(move : Spell):
 			$"BG/Move Visuals/Vid/Static".visible = false;
 		else :
 			$"BG/Move Visuals/Vid/Static".visible = true;
+	
+	if move.spell_video_materials != null && move.spell_video_materials.size() > 0:
+		_materials.clear();
+		
+		for i in move.spell_video_materials.size():
+			_materials.append(load_material(move.spell_video_materials[i]));
+		print(_materials.size());
+	
+	_animation_loop();
+
+
+func _animation_loop():
+	_use_manual_time = false;
+	$"BG/Move Visuals/Vid/Static".visible = false;
+	
+	while _current_animation != null:
+		for action in _current_animation.animation_sequence:
+			if action.frame == _current_frame:
+				if action.action is ASAChangeBackground:
+					_process_bg_action(action.action);
+				elif action.action is ASATerminateAnimation:
+					_current_frame = 0;
+		
+		await get_tree().process_frame;
+		
+		_current_frame += 1;
+		
+		if _use_manual_time :
+			_manual_time += get_process_delta_time();
+			$"BG/Move Visuals/Vid".material.set_shader_parameter("manual_time", _manual_time)
+
+
+func _process_bg_action(action : ASAChangeBackground):
+	if action == null : return;
+	
+	if !action.reset_bg : 
+		match action.mode:
+			ASAChangeBackground.BGChangeMode.BOTH :
+				_change_video(action.index);
+				_change_material(action.index, !action.use_palette, action.palette_fade_time);
+			ASAChangeBackground.BGChangeMode.VIDEO_ONLY :
+				_change_video(action.index);
+			ASAChangeBackground.BGChangeMode.MATERIAL_ONLY :
+				_change_material(action.index, !action.use_palette, action.palette_fade_time);
+
+
+func _change_video(index : int):
+	if index >= 0 && index < _videos.size():
+		$"BG/Move Visuals/Vid".stream = _videos[index];
+		$"BG/Move Visuals/Vid".play_video_at(0);
+
+
+func _change_material(index : int, use_entity_palette : bool, palette_transition_duration : float):
+	if index >= 0 && index < _materials.size():
+		var vplayer = $"BG/Move Visuals/Vid";
+		var previous = vplayer.material.get_shader_parameter("palette");
+		vplayer.material = _materials[index];
+		vplayer.material.set_shader_parameter("transition", 0.0);
+		
+		if use_entity_palette :
+			vplayer.material.set_shader_parameter("transition_palette", previous);
+			vplayer.material.set_shader_parameter("palette", _current_player_material.get_shader_parameter("palette"));
+		else:
+			vplayer.material.set_shader_parameter("transition_palette", previous);
+		
+		var tween = get_tree().create_tween();
+		tween.set_parallel(true);
+		var property = tween.tween_property(vplayer.material as ShaderMaterial, "shader_parameter/transition", 1.0, palette_transition_duration);
+		
+		if property != null : 
+			property.set_trans(Tween.TRANS_QUART)
+			property.set_ease(Tween.EASE_OUT)
+			property.from(0.0);
+		
+		vplayer.material.set_shader_parameter("use_manual_time", true);
+		_use_manual_time = true;
+		_manual_time = 0.0;
 
 
 func load_video(path : String) -> VideoStream:
