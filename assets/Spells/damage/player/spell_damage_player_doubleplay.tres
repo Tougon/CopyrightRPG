@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://cl12kvbw661qa"]
 
-[ext_resource type="Resource" uid="uid://chvn3lxc0ompe" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_doubleplay.tres" id="1_kev8c"]
+[ext_resource type="Resource" uid="uid://chvn3lxc0ompe" path="res://assets/Animations/Sequences/Spell/anim_spell_doubleplay.tres" id="1_kev8c"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_02q64"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_gelsr"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_46rh8"]

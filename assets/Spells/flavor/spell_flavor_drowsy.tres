@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://4ch7ihyb6wyn"]
 
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Status/anim_status_stunned.tres" id="1_ct770"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Global/anim_global_stunned.tres" id="1_ct770"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="2_1o1ae"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_k5gwj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_fu6b1"]

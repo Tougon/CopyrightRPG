@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=15 format=3 uid="uid://ckm3lov2yqbuu"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="1_iiv5x"]
-[ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/Status/Common/anim_spell_status_common_atoost.tres" id="1_uag5v"]
+[ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/anim_spell_status_common_atoost.tres" id="1_uag5v"]
 [ext_resource type="Resource" uid="uid://m1yoeo2nsd0e" path="res://assets/Effects/common/effect_common_buff_defense.tres" id="2_ah2tm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_3ddfm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_o2jhw"]

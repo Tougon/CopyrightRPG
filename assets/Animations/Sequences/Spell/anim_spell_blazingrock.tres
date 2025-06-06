@@ -1,20 +1,20 @@
 [gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=30 format=3 uid="uid://doisqgkbm1wym"]
 
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_uce07"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_oy0gp"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="4_rtrjx"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="5_b55u3"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_4ncfy"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="7_vm7av"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_y1xv2"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/cast_sub_spell.gd" id="9_0qm61"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="9_ev8gp"]
-[ext_resource type="Resource" uid="uid://6kinr54u5ofy" path="res://assets/Spells/damage/common/spell_damage_common_blazingrock_b.tres" id="10_o71gs"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_qnaw1"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="11_nnogh"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_dv1v5"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_uc8vc"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="3_edjyh"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_tdb1m"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="5_fc7iu"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="6_mtrxa"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="7_ty32a"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/cast_sub_spell.gd" id="8_3yq27"]
+[ext_resource type="Resource" uid="uid://6kinr54u5ofy" path="res://assets/Spells/damage/common/spell_damage_common_blazingrock_b.tres" id="9_iuw0x"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="10_lrvho"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="11_fdd8s"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="12_7qw6f"]
 
 [sub_resource type="Resource" id="Resource_rhl5j"]
-script = ExtResource("2_uce07")
+script = ExtResource("2_uc8vc")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_earth.tscn"
 relative = 1
 effect_index = 0
@@ -30,13 +30,13 @@ scl_match_sequence_dir_y = false
 effect_variance = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_ufi1u"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 1
 frame_order = 0
 action = SubResource("Resource_rhl5j")
 
 [sub_resource type="Resource" id="Resource_u3eqk"]
-script = ExtResource("5_b55u3")
+script = ExtResource("4_tdb1m")
 target = "Sprite2D"
 property_name = "position"
 material_property = false
@@ -50,7 +50,7 @@ relative = true
 "Vector2 Value" = Vector2(0, -90)
 
 [sub_resource type="Resource" id="Resource_oory5"]
-script = ExtResource("4_rtrjx")
+script = ExtResource("3_edjyh")
 use_directionality = false
 target = 2
 effect_index = 0
@@ -62,13 +62,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_xkyrv"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 30
 frame_order = 0
 action = SubResource("Resource_oory5")
 
 [sub_resource type="Resource" id="Resource_5t3o6"]
-script = ExtResource("6_4ncfy")
+script = ExtResource("5_fc7iu")
 vibrate = true
 damage_time = 1.1
 damage_delay = 0.0
@@ -77,67 +77,67 @@ shake_decay = 0.35
 force_dodge = true
 
 [sub_resource type="Resource" id="Resource_ik65d"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 90
 frame_order = 0
 action = SubResource("Resource_5t3o6")
 
 [sub_resource type="Resource" id="Resource_hkvxv"]
-script = ExtResource("7_vm7av")
+script = ExtResource("6_mtrxa")
 check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_87u8w"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 90
 frame_order = 1
 action = SubResource("Resource_hkvxv")
 
 [sub_resource type="Resource" id="Resource_neec4"]
-script = ExtResource("8_y1xv2")
+script = ExtResource("7_ty32a")
 target = 1
 ui_type = 0
 
 [sub_resource type="Resource" id="Resource_gllrv"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 90
 frame_order = 2
 action = SubResource("Resource_neec4")
 
 [sub_resource type="Resource" id="Resource_bk2gt"]
-script = ExtResource("9_0qm61")
-spell = ExtResource("10_o71gs")
+script = ExtResource("8_3yq27")
+spell = ExtResource("9_iuw0x")
 vibrate = true
 damage_time = 0.6
 damage_delay = 0.14
 show_ui = true
 
 [sub_resource type="Resource" id="Resource_bh5j5"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 91
 frame_order = 3
 action = SubResource("Resource_bk2gt")
 
 [sub_resource type="Resource" id="Resource_t5frq"]
-script = ExtResource("9_ev8gp")
+script = ExtResource("10_lrvho")
 check_hit_instead = false
 
 [sub_resource type="Resource" id="Resource_nbfkv"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 100
 frame_order = 10
 action = SubResource("Resource_t5frq")
 
 [sub_resource type="Resource" id="Resource_jim8f"]
-script = ExtResource("10_qnaw1")
+script = ExtResource("11_fdd8s")
 
 [sub_resource type="Resource" id="Resource_o1j1i"]
-script = ExtResource("3_oy0gp")
+script = ExtResource("1_dv1v5")
 frame = 140
 frame_order = 0
 action = SubResource("Resource_jim8f")
 
 [resource]
-script = ExtResource("11_nnogh")
+script = ExtResource("12_7qw6f")
 animation_name = "Earth"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("3_oy0gp")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_bh5j5"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i")])
+animation_sequence = Array[ExtResource("1_dv1v5")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_87u8w"), SubResource("Resource_gllrv"), SubResource("Resource_bh5j5"), SubResource("Resource_nbfkv"), SubResource("Resource_o1j1i")])

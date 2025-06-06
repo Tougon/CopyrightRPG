@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=12 format=3 uid="uid://cuyfwsc6iqt2u"]
 
-[ext_resource type="Resource" uid="uid://60hj70maoc1o" path="res://assets/Animations/Sequences/Spell/Damage/anim_spell_fire.tres" id="1_vmlas"]
+[ext_resource type="Resource" uid="uid://60hj70maoc1o" path="res://assets/Animations/Sequences/Spell/anim_spell_fire.tres" id="1_vmlas"]
 [ext_resource type="Resource" uid="uid://gpm3ab27cqfb" path="res://assets/Effects/common/effect_common_status_drowsy.tres" id="2_ixrrd"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_2sv6j"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_3r7bq"]

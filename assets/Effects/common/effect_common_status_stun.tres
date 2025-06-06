@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_tree2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_21i4q"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="2_kh1v3"]
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Status/anim_status_stunned.tres" id="3_16xl2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="3_vn5w6"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Global/anim_global_stunned.tres" id="4_8aft2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="4_ghbnw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="4_myiwe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_no6r3"]
@@ -29,7 +29,7 @@ deactivate = true
 script = ExtResource("4_no6r3")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_STUN_ACTIVATE"
 target = 1
-animation = ExtResource("3_16xl2")
+animation = ExtResource("4_8aft2")
 
 [sub_resource type="Resource" id="Resource_fdc8l"]
 script = ExtResource("3_vn5w6")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_hmsku"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_uha6e"]
-[ext_resource type="Resource" uid="uid://b0k07wbgbdkf5" path="res://assets/Animations/Sequences/Spell/Item/anim_spell_item_heal.tres" id="1_x0mkw"]
+[ext_resource type="Resource" uid="uid://b0k07wbgbdkf5" path="res://assets/Animations/Sequences/Spell/anim_spell_item_heal.tres" id="1_x0mkw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_5rade"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/consumable_item.gd" id="2_366gw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_function.gd" id="2_bdopr"]

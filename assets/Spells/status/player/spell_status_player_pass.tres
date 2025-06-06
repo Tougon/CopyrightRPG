@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=12 format=3 uid="uid://dbbotcnm6e42b"]
 
-[ext_resource type="Resource" uid="uid://bu3xmlm37tvn5" path="res://assets/Animations/Sequences/Spell/Status/Player/anim_spell_pass.tres" id="1_6wh0u"]
+[ext_resource type="Resource" uid="uid://bu3xmlm37tvn5" path="res://assets/Animations/Sequences/Spell/anim_spell_pass.tres" id="1_6wh0u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_e0esw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_b018f"]
 [ext_resource type="Resource" uid="uid://b4ltmigvtxfgw" path="res://assets/Effects/player/effect_player_buff_pass.tres" id="4_3so24"]

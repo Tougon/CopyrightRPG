@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="RPGCharacterAnimation" load_steps=14 format=3 uid="uid://6o5j8h7xjldb"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="1_r5rbm"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="2_qkp2o"]
+[ext_resource type="Texture2D" uid="uid://lrtvsaa3to61" path="res://assets/Sprites/Overworld/player_main/player_main_01.png" id="3_sp5d5"]
+[ext_resource type="Texture2D" uid="uid://dqji3oyj5084s" path="res://assets/Sprites/Overworld/player_main/player_main_02.png" id="4_nnuj0"]
+[ext_resource type="Texture2D" uid="uid://ba10mnyui4wcs" path="res://assets/Sprites/Overworld/player_main/player_main_00.png" id="5_4wojb"]
+[ext_resource type="Texture2D" uid="uid://kiyan0y36m2v" path="res://assets/Sprites/Overworld/player_main/player_main_03.png" id="6_percf"]
+[ext_resource type="Texture2D" uid="uid://begxfe4ctaihc" path="res://assets/Sprites/Overworld/player_main/player_main_04.png" id="7_10dx3"]
+
+[sub_resource type="Resource" id="Resource_mg5aq"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("3_sp5d5")
+frame_time = 0.08
+
+[sub_resource type="Resource" id="Resource_xsxpr"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("4_nnuj0")
+frame_time = 0.08
+
+[sub_resource type="Resource" id="Resource_ijn4b"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("5_4wojb")
+frame_time = 0.08
+
+[sub_resource type="Resource" id="Resource_6vnw6"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("6_percf")
+frame_time = 0.08
+
+[sub_resource type="Resource" id="Resource_r523f"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("7_10dx3")
+frame_time = 0.08
+
+[sub_resource type="Resource" id="Resource_f1vob"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("5_4wojb")
+frame_time = 0.08
+
+[resource]
+script = ExtResource("1_r5rbm")
+sequence = Array[ExtResource("2_qkp2o")]([SubResource("Resource_mg5aq"), SubResource("Resource_xsxpr"), SubResource("Resource_ijn4b"), SubResource("Resource_6vnw6"), SubResource("Resource_r523f"), SubResource("Resource_f1vob")])

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_data.gd" id="2_jv2ym"]
-[ext_resource type="Resource" uid="uid://dy3daxkowpbo5" path="res://assets/Animations/Overworld/Characters/Main/PlayerMainIdle_S.tres" id="2_nc0iq"]
+[ext_resource type="Resource" uid="uid://dy3daxkowpbo5" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_S.tres" id="2_nc0iq"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_group.gd" id="4_0t1r4"]
-[ext_resource type="Resource" uid="uid://6o5j8h7xjldb" path="res://assets/Animations/Overworld/Characters/Main/PlayerMainWalk_S.tres" id="5_bwosw"]
+[ext_resource type="Resource" uid="uid://6o5j8h7xjldb" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Walk_S.tres" id="5_bwosw"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="6_kd104"]
 
 [sub_resource type="Resource" id="Resource_yglfv"]

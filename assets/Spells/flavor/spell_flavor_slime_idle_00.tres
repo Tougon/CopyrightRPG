@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://b3ygwa43ry22k"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_2rttl"]
-[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/Generic/anim_spell_nothing.tres" id="1_j4efe"]
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_j4efe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_eh3su"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="3_w6tnu"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_ut4fv"]
