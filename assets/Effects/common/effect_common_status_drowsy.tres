@@ -1,75 +1,75 @@
 [gd_resource type="Resource" script_class="Effect" load_steps=26 format=3 uid="uid://gpm3ab27cqfb"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_kvmgj"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_ljt7r"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_6jpwj"]
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Global/anim_global_stunned.tres" id="3_b7h0n"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_qlfen"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="5_ylmrc"]
-[ext_resource type="Resource" uid="uid://4ch7ihyb6wyn" path="res://assets/Spells/flavor/spell_flavor_drowsy.tres" id="6_fmqs1"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="7_5uhrr"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_random.gd" id="7_ftjss"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="8_vr5xt"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="9_l7vho"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="10_hsu2g"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="10_jq4qj"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="11_mxse7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_prk7j"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_kv8w4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_t31i2"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_f3wk4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_0o76d"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_iq8ch"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="7_gno3b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_random.gd" id="8_o6v6x"]
+[ext_resource type="Resource" uid="uid://4ch7ihyb6wyn" path="res://assets/Spells/flavor/spell_flavor_drowsy.tres" id="9_8wewc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="10_gtd74"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="11_3ptum"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="12_uyxfw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="13_75ilp"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="14_57e6d"]
 
 [sub_resource type="Resource" id="Resource_mfdjw"]
-script = ExtResource("1_ljt7r")
+script = ExtResource("2_kv8w4")
 check_mode = 2
 use_limit = true
 turns = 1
 
 [sub_resource type="Resource" id="Resource_7qcvy"]
-script = ExtResource("2_6jpwj")
+script = ExtResource("3_t31i2")
 target = 1
 apply = true
 deactivate = true
 
 [sub_resource type="Resource" id="Resource_lkm5g"]
-script = ExtResource("4_qlfen")
+script = ExtResource("5_0o76d")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_DROWSY_ACTIVATE"
 target = 1
-animation = ExtResource("3_b7h0n")
+animation = ExtResource("4_f3wk4")
 
 [sub_resource type="Resource" id="Resource_fdc8l"]
-script = ExtResource("5_ylmrc")
+script = ExtResource("6_iq8ch")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_DROWSY_DEACTIVATE"
 
 [sub_resource type="Resource" id="Resource_x4tt0"]
-script = ExtResource("8_vr5xt")
+script = ExtResource("7_gno3b")
 
 [sub_resource type="Resource" id="Resource_6ipe4"]
-script = ExtResource("7_ftjss")
+script = ExtResource("8_o6v6x")
 chance = 0.5
 
 [sub_resource type="Resource" id="Resource_jgwau"]
-script = ExtResource("7_5uhrr")
+script = ExtResource("10_gtd74")
 target = 1
-action = ExtResource("6_fmqs1")
+action = ExtResource("9_8wewc")
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_347a1"]
-script = ExtResource("10_jq4qj")
+script = ExtResource("11_3ptum")
 check_success_type = 0
-check_success = Array[ExtResource("1_kvmgj")]([SubResource("Resource_6ipe4")])
-on_success = Array[ExtResource("1_kvmgj")]([SubResource("Resource_jgwau")])
-on_fail = Array[ExtResource("1_kvmgj")]([])
+check_success = Array[ExtResource("1_prk7j")]([SubResource("Resource_6ipe4")])
+on_success = Array[ExtResource("1_prk7j")]([SubResource("Resource_jgwau")])
+on_fail = Array[ExtResource("1_prk7j")]([])
 
 [sub_resource type="Resource" id="Resource_c16dt"]
-script = ExtResource("9_l7vho")
+script = ExtResource("12_uyxfw")
 
 [sub_resource type="Resource" id="Resource_1g15b"]
-script = ExtResource("5_ylmrc")
+script = ExtResource("6_iq8ch")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_DROWSY_STACK"
 
 [sub_resource type="Resource" id="Resource_1le7l"]
-script = ExtResource("10_hsu2g")
+script = ExtResource("13_75ilp")
 target = 1
 
 [resource]
-script = ExtResource("11_mxse7")
+script = ExtResource("14_57e6d")
 stackable = true
 effect_name = "Stun"
 generic = false
@@ -77,15 +77,15 @@ priority = 5
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("1_kvmgj")]([])
+check_success = Array[ExtResource("1_prk7j")]([])
 check_remain_active_type = 0
-check_remain_active = Array[ExtResource("1_kvmgj")]([SubResource("Resource_mfdjw")])
-on_activate = Array[ExtResource("1_kvmgj")]([SubResource("Resource_7qcvy")])
-on_failed_to_activate = Array[ExtResource("1_kvmgj")]([])
-on_apply = Array[ExtResource("1_kvmgj")]([SubResource("Resource_lkm5g")])
-on_move_selected = Array[ExtResource("1_kvmgj")]([SubResource("Resource_x4tt0"), SubResource("Resource_347a1")])
-on_move_completed = Array[ExtResource("1_kvmgj")]([])
-on_deactivate = Array[ExtResource("1_kvmgj")]([SubResource("Resource_fdc8l")])
-on_turn_start = Array[ExtResource("1_kvmgj")]([])
-on_turn_end = Array[ExtResource("1_kvmgj")]([SubResource("Resource_1le7l")])
-on_stack = Array[ExtResource("1_kvmgj")]([SubResource("Resource_c16dt"), SubResource("Resource_1g15b")])
+check_remain_active = Array[ExtResource("1_prk7j")]([SubResource("Resource_mfdjw")])
+on_activate = Array[ExtResource("1_prk7j")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_prk7j")]([])
+on_apply = Array[ExtResource("1_prk7j")]([SubResource("Resource_lkm5g")])
+on_move_selected = Array[ExtResource("1_prk7j")]([SubResource("Resource_x4tt0"), SubResource("Resource_347a1")])
+on_move_completed = Array[ExtResource("1_prk7j")]([])
+on_deactivate = Array[ExtResource("1_prk7j")]([SubResource("Resource_fdc8l")])
+on_turn_start = Array[ExtResource("1_prk7j")]([])
+on_turn_end = Array[ExtResource("1_prk7j")]([SubResource("Resource_1le7l")])
+on_stack = Array[ExtResource("1_prk7j")]([SubResource("Resource_c16dt"), SubResource("Resource_1g15b")])

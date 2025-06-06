@@ -5,22 +5,22 @@
 
 [sub_resource type="Resource" id="Resource_g1vrn"]
 script = ExtResource("1_veja8")
-entity_path = "res://assets/Entities/players/player_main.tres"
+entity_path = "res://assets/Entities/player/player_a.tres"
 playable = true
 
 [sub_resource type="Resource" id="Resource_i0wjx"]
 script = ExtResource("1_veja8")
-entity_path = "res://assets/Entities/players/player_mage.tres"
+entity_path = "res://assets/Entities/player/player_b.tres"
 playable = true
 
 [sub_resource type="Resource" id="Resource_iu4hh"]
 script = ExtResource("1_veja8")
-entity_path = "res://assets/Entities/players/player_fighter.tres"
+entity_path = "res://assets/Entities/player/player_c.tres"
 playable = true
 
 [sub_resource type="Resource" id="Resource_6tw8m"]
 script = ExtResource("1_veja8")
-entity_path = "res://assets/Entities/players/player_healer.tres"
+entity_path = "res://assets/Entities/player/player_d.tres"
 playable = true
 
 [sub_resource type="Resource" id="Resource_7bvvg"]

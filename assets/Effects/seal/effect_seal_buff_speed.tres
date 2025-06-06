@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_p3vrm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="1_vnedd"]
-[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Global/anim_global_stat_raise.tres" id="2_7xp5p"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="3_a72cc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="3_i0415"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="4_awjpe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="5_n8t30"]
@@ -21,7 +21,7 @@ min = false
 script = ExtResource("3_i0415")
 dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_ACTIVATE"
 target = 0
-animation = ExtResource("2_7xp5p")
+animation = ExtResource("3_a72cc")
 
 [sub_resource type="Resource" id="Resource_blxbe"]
 script = ExtResource("4_awjpe")

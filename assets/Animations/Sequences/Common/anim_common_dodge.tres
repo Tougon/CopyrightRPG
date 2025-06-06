@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=14 format=3 uid="uid://ccrswqdtjja0y"]
 
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_avfto"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="1_p2n2r"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_bjvup"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="3_lufta"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_faxgh"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_cpa7s"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="2_pited"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_v5jju"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_gjggn"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="5_pn72w"]
 
 [sub_resource type="Resource" id="Resource_1wfr5"]
-script = ExtResource("2_bjvup")
+script = ExtResource("3_v5jju")
 target = "Sprite2D"
 property_name = "position"
 material_property = false
@@ -21,7 +21,7 @@ relative = true
 "Vector2 Value" = Vector2(65, 0)
 
 [sub_resource type="Resource" id="Resource_bfaje"]
-script = ExtResource("1_p2n2r")
+script = ExtResource("2_pited")
 use_directionality = true
 target = 0
 effect_index = 0
@@ -33,13 +33,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_3v7k7"]
-script = ExtResource("3_lufta")
+script = ExtResource("1_cpa7s")
 frame = 1
 frame_order = 0
 action = SubResource("Resource_bfaje")
 
 [sub_resource type="Resource" id="Resource_4c4ms"]
-script = ExtResource("2_bjvup")
+script = ExtResource("3_v5jju")
 target = "Sprite2D"
 property_name = "position"
 material_property = false
@@ -53,7 +53,7 @@ relative = true
 "Vector2 Value" = Vector2(-65, 0)
 
 [sub_resource type="Resource" id="Resource_rtrud"]
-script = ExtResource("1_p2n2r")
+script = ExtResource("2_pited")
 use_directionality = true
 target = 0
 effect_index = 0
@@ -65,22 +65,22 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_h288w"]
-script = ExtResource("3_lufta")
+script = ExtResource("1_cpa7s")
 frame = 11
 frame_order = 0
 action = SubResource("Resource_rtrud")
 
 [sub_resource type="Resource" id="Resource_3pm8e"]
-script = ExtResource("4_faxgh")
+script = ExtResource("4_gjggn")
 
 [sub_resource type="Resource" id="Resource_dkot2"]
-script = ExtResource("3_lufta")
+script = ExtResource("1_cpa7s")
 frame = 21
 frame_order = 0
 action = SubResource("Resource_3pm8e")
 
 [resource]
-script = ExtResource("1_avfto")
+script = ExtResource("5_pn72w")
 animation_name = "Dodge"
 hide_ui_on_start = false
-animation_sequence = Array[ExtResource("3_lufta")]([SubResource("Resource_3v7k7"), SubResource("Resource_h288w"), SubResource("Resource_dkot2")])
+animation_sequence = Array[ExtResource("1_cpa7s")]([SubResource("Resource_3v7k7"), SubResource("Resource_h288w"), SubResource("Resource_dkot2")])

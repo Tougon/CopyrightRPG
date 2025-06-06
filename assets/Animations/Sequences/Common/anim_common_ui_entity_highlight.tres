@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="TweenResource" load_steps=8 format=3 uid="uid://ddrqbf1mpi21x"]
 
-[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_33ltb"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="2_le4b3"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="3_oojbl"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_808ot"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_blav8"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_ecr0b"]
 
 [sub_resource type="Resource" id="Resource_lg8cu"]
-script = ExtResource("2_le4b3")
+script = ExtResource("3_ecr0b")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_color_amount"
 material_property = true
@@ -20,11 +20,11 @@ relative = false
 "From Float" = 0.0
 
 [sub_resource type="Resource" id="Resource_6ohm0"]
-script = ExtResource("3_oojbl")
-frames = Array[ExtResource("2_le4b3")]([SubResource("Resource_lg8cu")])
+script = ExtResource("2_blav8")
+frames = Array[ExtResource("3_ecr0b")]([SubResource("Resource_lg8cu")])
 
 [sub_resource type="Resource" id="Resource_mfnmo"]
-script = ExtResource("2_le4b3")
+script = ExtResource("3_ecr0b")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_color_amount"
 material_property = true
@@ -39,10 +39,10 @@ relative = false
 "From Float" = 0.6
 
 [sub_resource type="Resource" id="Resource_lwx6l"]
-script = ExtResource("3_oojbl")
-frames = Array[ExtResource("2_le4b3")]([SubResource("Resource_mfnmo")])
+script = ExtResource("2_blav8")
+frames = Array[ExtResource("3_ecr0b")]([SubResource("Resource_mfnmo")])
 
 [resource]
-script = ExtResource("1_33ltb")
+script = ExtResource("1_808ot")
 tween_name = "Entity Highlight"
-sequence = Array[ExtResource("3_oojbl")]([SubResource("Resource_6ohm0"), SubResource("Resource_lwx6l")])
+sequence = Array[ExtResource("2_blav8")]([SubResource("Resource_6ohm0"), SubResource("Resource_lwx6l")])

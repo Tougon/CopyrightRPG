@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_5q2lu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_quprm"]
-[ext_resource type="Resource" uid="uid://og0qk6g8xxb4" path="res://assets/Animations/Sequences/Global/anim_global_stat_lower.tres" id="3_u4lld"]
+[ext_resource type="Resource" uid="uid://og0qk6g8xxb4" path="res://assets/Animations/Sequences/Common/anim_common_stat_lower.tres" id="3_ocp6j"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_wr05e"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_7snff"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_2rgp8"]
@@ -21,7 +21,7 @@ min = true
 script = ExtResource("4_wr05e")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_ACTIVATE"
 target = 1
-animation = ExtResource("3_u4lld")
+animation = ExtResource("3_ocp6j")
 
 [sub_resource type="Resource" id="Resource_blxbe"]
 script = ExtResource("5_7snff")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhor8crmohsq6"
-path="res://.godot/imported/player_athlete_neutral.png-6ae6866bf9b0b28c4964b44b92beb871.ctex"
+uid="uid://b068qnu6hp4bj"
+path="res://.godot/imported/player_tech_neutral.png-7314b09fc9afeb687946b2ad0d6505f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Entities/PlayerAthlete/player_athlete_neutral.png"
-dest_files=["res://.godot/imported/player_athlete_neutral.png-6ae6866bf9b0b28c4964b44b92beb871.ctex"]
+source_file="res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png"
+dest_files=["res://.godot/imported/player_tech_neutral.png-7314b09fc9afeb687946b2ad0d6505f7.ctex"]
 
 [params]
 

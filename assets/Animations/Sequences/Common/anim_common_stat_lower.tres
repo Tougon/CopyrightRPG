@@ -1,25 +1,25 @@
 [gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=23 format=3 uid="uid://og0qk6g8xxb4"]
 
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_kvk13"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_overlay_texture.gd" id="2_juope"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="3_jplll"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_7pn7w"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="5_feunv"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="6_1gnml"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_52l7r"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_overlay_texture.gd" id="2_jjafc"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="3_b4sy6"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_f4x2t"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="5_ol612"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="6_l12cu"]
 
 [sub_resource type="Resource" id="Resource_8kaat"]
-script = ExtResource("2_juope")
+script = ExtResource("2_jjafc")
 target = 0
 texture_path = "res://assets/Textures/overlay_lower.png"
 
 [sub_resource type="Resource" id="Resource_bb3p7"]
-script = ExtResource("1_kvk13")
+script = ExtResource("1_52l7r")
 frame = 1
 frame_order = 0
 action = SubResource("Resource_8kaat")
 
 [sub_resource type="Resource" id="Resource_42m8o"]
-script = ExtResource("4_7pn7w")
+script = ExtResource("4_f4x2t")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_texture_offset"
 material_property = true
@@ -33,7 +33,7 @@ relative = false
 "Vector2 Value" = Vector2(0, -0.75)
 
 [sub_resource type="Resource" id="Resource_bx424"]
-script = ExtResource("3_jplll")
+script = ExtResource("3_b4sy6")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -45,13 +45,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_l2pke"]
-script = ExtResource("1_kvk13")
+script = ExtResource("1_52l7r")
 frame = 2
 frame_order = 0
 action = SubResource("Resource_bx424")
 
 [sub_resource type="Resource" id="Resource_iugbd"]
-script = ExtResource("4_7pn7w")
+script = ExtResource("4_f4x2t")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_texture_amount"
 material_property = true
@@ -65,7 +65,7 @@ relative = false
 "Float Value" = 0.85
 
 [sub_resource type="Resource" id="Resource_yi51u"]
-script = ExtResource("3_jplll")
+script = ExtResource("3_b4sy6")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -77,13 +77,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_qan33"]
-script = ExtResource("1_kvk13")
+script = ExtResource("1_52l7r")
 frame = 2
 frame_order = 1
 action = SubResource("Resource_yi51u")
 
 [sub_resource type="Resource" id="Resource_x8fgw"]
-script = ExtResource("4_7pn7w")
+script = ExtResource("4_f4x2t")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_texture_amount"
 material_property = true
@@ -97,7 +97,7 @@ relative = false
 "Float Value" = 0.0
 
 [sub_resource type="Resource" id="Resource_mkopj"]
-script = ExtResource("3_jplll")
+script = ExtResource("3_b4sy6")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -109,13 +109,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_taqyx"]
-script = ExtResource("1_kvk13")
+script = ExtResource("1_52l7r")
 frame = 42
 frame_order = 0
 action = SubResource("Resource_mkopj")
 
 [sub_resource type="Resource" id="Resource_x12eb"]
-script = ExtResource("4_7pn7w")
+script = ExtResource("4_f4x2t")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_texture_offset"
 material_property = true
@@ -129,7 +129,7 @@ relative = false
 "Vector2 Value" = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_53nii"]
-script = ExtResource("3_jplll")
+script = ExtResource("3_b4sy6")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -141,22 +141,22 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_t8as0"]
-script = ExtResource("1_kvk13")
+script = ExtResource("1_52l7r")
 frame = 59
 frame_order = 0
 action = SubResource("Resource_53nii")
 
 [sub_resource type="Resource" id="Resource_gipj6"]
-script = ExtResource("5_feunv")
+script = ExtResource("5_ol612")
 
 [sub_resource type="Resource" id="Resource_6na2o"]
-script = ExtResource("1_kvk13")
+script = ExtResource("1_52l7r")
 frame = 60
 frame_order = 1
 action = SubResource("Resource_gipj6")
 
 [resource]
-script = ExtResource("6_1gnml")
+script = ExtResource("6_l12cu")
 animation_name = "Stat Raise"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_kvk13")]([SubResource("Resource_bb3p7"), SubResource("Resource_l2pke"), SubResource("Resource_qan33"), SubResource("Resource_taqyx"), SubResource("Resource_t8as0"), SubResource("Resource_6na2o")])
+animation_sequence = Array[ExtResource("1_52l7r")]([SubResource("Resource_bb3p7"), SubResource("Resource_l2pke"), SubResource("Resource_qan33"), SubResource("Resource_taqyx"), SubResource("Resource_t8as0"), SubResource("Resource_6na2o")])

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_thn2o"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="1_uebge"]
-[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Global/anim_global_stat_raise.tres" id="2_3il0k"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="3_a5cbh"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="3_nmwa3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="4_wg4j3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_py40r"]
@@ -21,7 +21,7 @@ min = false
 script = ExtResource("3_nmwa3")
 dialogue_key = "T_EFFECT_GENERIC_ATTACK_BOOST_ACTIVATE"
 target = 0
-animation = ExtResource("2_3il0k")
+animation = ExtResource("3_a5cbh")
 
 [sub_resource type="Resource" id="Resource_blxbe"]
 script = ExtResource("5_py40r")

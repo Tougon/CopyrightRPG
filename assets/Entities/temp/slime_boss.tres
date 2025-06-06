@@ -23,10 +23,10 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="14_7om7i"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="14_lwdgs"]
 [ext_resource type="Resource" uid="uid://ihfxygkla2b5" path="res://assets/Spells/damage/enemy/spell_damage_enemy_superslime_spread.tres" id="14_n1xfv"]
-[ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/seal/effect_seal_debuff_defense.tres" id="15_01wsr"]
+[ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/Seal/effect_seal_debuff_defense.tres" id="15_01wsr"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/status/common/spell_status_common_atoost.tres" id="15_f0ax6"]
 [ext_resource type="Resource" uid="uid://conbeqpmr4jye" path="res://assets/Spells/damage/enemy/spell_damage_enemy_superslime_bigdamage.tres" id="16_gsbgh"]
-[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/seal/effect_seal_buff_attack.tres" id="26_2jlnj"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="26_2jlnj"]
 
 [sub_resource type="Curve" id="Curve_c5l6p"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]

@@ -3,7 +3,7 @@
 [ext_resource type="Resource" uid="uid://bu3xmlm37tvn5" path="res://assets/Animations/Sequences/Spell/anim_spell_pass.tres" id="1_6wh0u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_e0esw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_b018f"]
-[ext_resource type="Resource" uid="uid://b4ltmigvtxfgw" path="res://assets/Effects/player/effect_player_buff_pass.tres" id="4_3so24"]
+[ext_resource type="Resource" uid="uid://b4ltmigvtxfgw" path="res://assets/Effects/Spell/effect_spell_buff_pass.tres" id="4_g5sjx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_7m8a5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="6_tttol"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_8axma"]
@@ -13,7 +13,7 @@
 [sub_resource type="Resource" id="Resource_qqvlw"]
 script = ExtResource("3_b018f")
 chance = 1.0
-effect = ExtResource("4_3so24")
+effect = ExtResource("4_g5sjx")
 
 [sub_resource type="Resource" id="Resource_6ajyo"]
 script = ExtResource("2_e0esw")

@@ -1,23 +1,23 @@
 [gd_resource type="Resource" script_class="Effect" load_steps=18 format=3 uid="uid://di2g8jg8l55nu"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_jr74h"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_lg664"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_53423"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_d162e"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="4_mvg1y"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="5_7sgjg"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="6_d8net"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="7_rc42v"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="8_qgy7d"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_ef2kk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_6ns54"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="3_rcgai"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="4_1lwcv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_urjbi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="6_8nw44"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="7_m5w0k"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="8_m7e0f"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="9_1ehm8"]
 
 [sub_resource type="Resource" id="Resource_halij"]
-script = ExtResource("1_lg664")
+script = ExtResource("2_6ns54")
 check_mode = 2
 use_limit = true
 turns = 3
 
 [sub_resource type="Resource" id="Resource_jsj2g"]
-script = ExtResource("2_53423")
+script = ExtResource("3_rcgai")
 target = 0
 stat = 3
 check_mode = 2
@@ -26,35 +26,35 @@ max = true
 min = false
 
 [sub_resource type="Resource" id="Resource_aje20"]
-script = ExtResource("3_d162e")
+script = ExtResource("4_1lwcv")
 target = 0
 apply = true
 deactivate = true
 
 [sub_resource type="Resource" id="Resource_blxbe"]
-script = ExtResource("4_mvg1y")
+script = ExtResource("5_urjbi")
 target = 0
 stat = 3
 amount = 1
 
 [sub_resource type="Resource" id="Resource_gccvs"]
-script = ExtResource("4_mvg1y")
+script = ExtResource("5_urjbi")
 target = 0
 stat = 3
 amount = -1
 
 [sub_resource type="Resource" id="Resource_dyxoj"]
-script = ExtResource("5_7sgjg")
+script = ExtResource("6_8nw44")
 target = 0
 
 [sub_resource type="Resource" id="Resource_nimd6"]
-script = ExtResource("6_d8net")
+script = ExtResource("7_m5w0k")
 
 [sub_resource type="Resource" id="Resource_h7u5n"]
-script = ExtResource("7_rc42v")
+script = ExtResource("8_m7e0f")
 
 [resource]
-script = ExtResource("8_qgy7d")
+script = ExtResource("9_1ehm8")
 stackable = true
 effect_name = "Special Defense Buff"
 generic = true
@@ -62,15 +62,15 @@ priority = 3
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("1_jr74h")]([SubResource("Resource_jsj2g")])
+check_success = Array[ExtResource("1_ef2kk")]([SubResource("Resource_jsj2g")])
 check_remain_active_type = 0
-check_remain_active = Array[ExtResource("1_jr74h")]([SubResource("Resource_halij")])
-on_activate = Array[ExtResource("1_jr74h")]([SubResource("Resource_aje20")])
-on_failed_to_activate = Array[ExtResource("1_jr74h")]([])
-on_apply = Array[ExtResource("1_jr74h")]([SubResource("Resource_blxbe")])
-on_move_selected = Array[ExtResource("1_jr74h")]([SubResource("Resource_nimd6")])
-on_move_completed = Array[ExtResource("1_jr74h")]([SubResource("Resource_dyxoj")])
-on_deactivate = Array[ExtResource("1_jr74h")]([SubResource("Resource_gccvs")])
-on_turn_start = Array[ExtResource("1_jr74h")]([])
-on_turn_end = Array[ExtResource("1_jr74h")]([])
-on_stack = Array[ExtResource("1_jr74h")]([SubResource("Resource_h7u5n")])
+check_remain_active = Array[ExtResource("1_ef2kk")]([SubResource("Resource_halij")])
+on_activate = Array[ExtResource("1_ef2kk")]([SubResource("Resource_aje20")])
+on_failed_to_activate = Array[ExtResource("1_ef2kk")]([])
+on_apply = Array[ExtResource("1_ef2kk")]([SubResource("Resource_blxbe")])
+on_move_selected = Array[ExtResource("1_ef2kk")]([SubResource("Resource_nimd6")])
+on_move_completed = Array[ExtResource("1_ef2kk")]([SubResource("Resource_dyxoj")])
+on_deactivate = Array[ExtResource("1_ef2kk")]([SubResource("Resource_gccvs")])
+on_turn_start = Array[ExtResource("1_ef2kk")]([])
+on_turn_end = Array[ExtResource("1_ef2kk")]([])
+on_stack = Array[ExtResource("1_ef2kk")]([SubResource("Resource_h7u5n")])

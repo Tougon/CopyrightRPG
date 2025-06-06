@@ -1,22 +1,22 @@
 [gd_resource type="Resource" script_class="Entity" load_steps=31 format=3 uid="uid://dyc1rwxffmh78"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_2apw3"]
-[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_fc8ux"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_s5su1"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="2_aba5b"]
-[ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_88kha"]
-[ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/damage/player/spell_damage_player_secretchord.tres" id="4_k32us"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="8_6wkou"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="8_al3e4"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_4wdni"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="14_hl2ui"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_3drj8"]
+[ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="2_5sjuy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="3_ro4m8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="4_lqr1n"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="5_fxx2f"]
+[ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/damage/player/spell_damage_player_secretchord.tres" id="6_aq1xm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_r454n"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="8_41vao"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_hytim"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_v2va6"]
 
 [sub_resource type="Curve" id="Curve_v435p"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_4w176"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 22
 max = 225
 growth = SubResource("Curve_v435p")
@@ -26,7 +26,7 @@ _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_5yws8"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 26
 max = 225
 growth = SubResource("Curve_yobbd")
@@ -36,7 +36,7 @@ _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_nn5p8"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 50
 max = 300
 growth = SubResource("Curve_uflwe")
@@ -46,7 +46,7 @@ _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_w2t4l"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 100
 max = 100000
 growth = SubResource("Curve_lr1dx")
@@ -57,26 +57,26 @@ point_count = 2
 metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_dlenl"]
-script = ExtResource("2_aba5b")
+script = ExtResource("4_lqr1n")
 min = 1.0
 max = 1.6
 growth = SubResource("Curve_2qcc2")
 
 [sub_resource type="Resource" id="Resource_ott5o"]
-script = ExtResource("1_2apw3")
-spell = ExtResource("4_k32us")
+script = ExtResource("5_fxx2f")
+spell = ExtResource("6_aq1xm")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xqh42"]
-script = ExtResource("8_6wkou")
-list = Array[ExtResource("1_2apw3")]([SubResource("Resource_ott5o")])
+script = ExtResource("7_r454n")
+list = Array[ExtResource("5_fxx2f")]([SubResource("Resource_ott5o")])
 
 [sub_resource type="Curve" id="Curve_5kava"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_dw1o7"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 45
 max = 270
 growth = SubResource("Curve_5kava")
@@ -86,7 +86,7 @@ _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_al7x6"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 28
 max = 245
 growth = SubResource("Curve_5aqne")
@@ -96,7 +96,7 @@ _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_l78rs"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 26
 max = 225
 growth = SubResource("Curve_qoifh")
@@ -106,13 +106,13 @@ _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Resource" id="Resource_ueyej"]
-script = ExtResource("1_s5su1")
+script = ExtResource("3_ro4m8")
 min = 31
 max = 270
 growth = SubResource("Curve_qrpy0")
 
 [resource]
-script = ExtResource("9_4wdni")
+script = ExtResource("9_hytim")
 name_key = "T_ENTITY_PLAYER"
 description_key = "T_DESCRIPTION_SLIME"
 gender = 2
@@ -131,12 +131,12 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_dlenl")
 level_exp = SubResource("Resource_w2t4l")
-affinity = Array[ExtResource("1_fc8ux")]([ExtResource("3_88kha")])
-weakness = Array[ExtResource("14_hl2ui")]([])
-resistance = Array[ExtResource("14_hl2ui")]([])
+affinity = Array[ExtResource("1_3drj8")]([ExtResource("2_5sjuy")])
+weakness = Array[ExtResource("8_41vao")]([])
+resistance = Array[ExtResource("8_41vao")]([])
 min_level = 50
 max_level = 99
-entity_sprites = Array[String](["res://assets/Sprites/Entities/PlayerMain/player_main_neutral.png", "res://assets/Sprites/Entities/PlayerMain/player_main_neutral.png", "res://assets/Sprites/Entities/PlayerMain/player_main_neutral.png", "res://assets/Sprites/UI/Status/temp_portrait_a_full.png"])
+entity_sprites = Array[String](["res://assets/Sprites/Entities/PlayerA/player_main_neutral.png", "res://assets/Sprites/Entities/PlayerA/player_main_neutral.png", "res://assets/Sprites/Entities/PlayerA/player_main_neutral.png", "res://assets/Sprites/UI/Status/temp_portrait_a_full.png"])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, -100)
@@ -147,4 +147,4 @@ entity_video_repeat_mode = 3
 entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_player_main_01.tres"
 entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_xqh42")
-seal_effect_list = Array[ExtResource("8_al3e4")]([])
+seal_effect_list = Array[ExtResource("10_v2va6")]([])

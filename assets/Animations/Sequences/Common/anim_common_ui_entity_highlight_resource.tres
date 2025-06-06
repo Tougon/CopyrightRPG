@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TweenResourceInstance" load_steps=3 format=3 uid="uid://b8butrjniwrbr"]
+
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="1_r1pn2"]
+[ext_resource type="Resource" uid="uid://ddrqbf1mpi21x" path="res://assets/Animations/Sequences/Common/anim_common_ui_entity_highlight.tres" id="2_o60jl"]
+
+[resource]
+script = ExtResource("1_r1pn2")
+tween_name = "Entity Highlight"
+tween_resource = ExtResource("2_o60jl")
+play_on_start = false
+next_tween = "Entity Highlight"

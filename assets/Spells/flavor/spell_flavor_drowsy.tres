@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://4ch7ihyb6wyn"]
 
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Global/anim_global_stunned.tres" id="1_ct770"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="1_st8s4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="2_1o1ae"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_k5gwj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_fu6b1"]
@@ -16,7 +16,7 @@ spell_target = 4
 spell_cost = 0
 spell_priority = 1
 spell_flags = Array[ExtResource("5_ga1ea")]([])
-animation_sequence = ExtResource("1_ct770")
+animation_sequence = ExtResource("1_st8s4")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("2_k5gwj")]([])

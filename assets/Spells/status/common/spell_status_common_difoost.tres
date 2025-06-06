@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="1_iiv5x"]
 [ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/anim_spell_status_common_atoost.tres" id="1_uag5v"]
-[ext_resource type="Resource" uid="uid://m1yoeo2nsd0e" path="res://assets/Effects/common/effect_common_buff_defense.tres" id="2_ah2tm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_3ddfm"]
+[ext_resource type="Resource" uid="uid://m1yoeo2nsd0e" path="res://assets/Effects/Common/effect_common_buff_defense.tres" id="4_c2ewk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_o2jhw"]
-[ext_resource type="Resource" uid="uid://di2g8jg8l55nu" path="res://assets/Effects/common/effect_common_buff_defense_pt2.tres" id="5_pdwqj"]
+[ext_resource type="Resource" uid="uid://di2g8jg8l55nu" path="res://assets/Effects/Common/effect_common_buff_defense_pt2.tres" id="5_k02aq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="6_0asv7"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="7_f20hd"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="8_hqrir"]
@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_e3lva"]
 script = ExtResource("3_3ddfm")
 chance = 1.0
-effect = ExtResource("2_ah2tm")
+effect = ExtResource("4_c2ewk")
 
 [sub_resource type="Resource" id="Resource_q1odl"]
 script = ExtResource("4_o2jhw")
@@ -25,7 +25,7 @@ effect_set = Array[ExtResource("3_3ddfm")]([SubResource("Resource_e3lva")])
 [sub_resource type="Resource" id="Resource_k4b8y"]
 script = ExtResource("3_3ddfm")
 chance = 1.0
-effect = ExtResource("5_pdwqj")
+effect = ExtResource("5_k02aq")
 
 [sub_resource type="Resource" id="Resource_3e5vc"]
 script = ExtResource("4_o2jhw")

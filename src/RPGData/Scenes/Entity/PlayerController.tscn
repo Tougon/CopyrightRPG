@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/PlayerController.gd" id="2_6enct"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="3_8bhdk"]
 [ext_resource type="Resource" uid="uid://dciwv5n41ixne" path="res://assets/Spells/generic/spell_generic_defend.tres" id="4_su36j"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/seal/effect_seal_buff_defense.tres" id="5_yqsgs"]
-[ext_resource type="Texture2D" uid="uid://bim7bg23jk7em" path="res://assets/Sprites/Entities/PlayerMain/player_main_neutral.png" id="6_hst7t"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="5_yqsgs"]
+[ext_resource type="Texture2D" uid="uid://bim7bg23jk7em" path="res://assets/Sprites/Entities/PlayerA/player_main_neutral.png" id="6_hst7t"]
 
 [node name="EntityBase" instance=ExtResource("1_it6kr")]
 script = ExtResource("2_6enct")

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_dkiya"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="1_nhbrk"]
-[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Global/anim_global_stat_raise.tres" id="2_8olma"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="3_7tbfp"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="3_lf3r6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="4_bycwj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_mqdhi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="6_7u8u2"]
@@ -21,7 +21,7 @@ min = false
 script = ExtResource("3_7tbfp")
 dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_ACTIVATE"
 target = 0
-animation = ExtResource("2_8olma")
+animation = ExtResource("3_lf3r6")
 
 [sub_resource type="Resource" id="Resource_blxbe"]
 script = ExtResource("5_mqdhi")

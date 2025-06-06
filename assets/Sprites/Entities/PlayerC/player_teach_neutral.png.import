@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bim7bg23jk7em"
-path="res://.godot/imported/player_main_neutral.png-9f36b1d7e62717469cc242f45ac6462c.ctex"
+uid="uid://bsm4s8owbh3ek"
+path="res://.godot/imported/player_teach_neutral.png-dd1d6cbd00ca6868a2701b0061254f81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Entities/PlayerMain/player_main_neutral.png"
-dest_files=["res://.godot/imported/player_main_neutral.png-9f36b1d7e62717469cc242f45ac6462c.ctex"]
+source_file="res://assets/Sprites/Entities/PlayerC/player_teach_neutral.png"
+dest_files=["res://.godot/imported/player_teach_neutral.png-dd1d6cbd00ca6868a2701b0061254f81.ctex"]
 
 [params]
 

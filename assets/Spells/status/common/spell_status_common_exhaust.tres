@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=12 format=3 uid="uid://dvt1064n6ntq2"]
 
 [ext_resource type="Resource" uid="uid://3n2f4lh32rmw" path="res://assets/Animations/Sequences/Spell/anim_status_static.tres" id="1_mwixi"]
-[ext_resource type="Resource" uid="uid://gpm3ab27cqfb" path="res://assets/Effects/common/effect_common_status_drowsy.tres" id="2_h61i0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_fj50o"]
+[ext_resource type="Resource" uid="uid://gpm3ab27cqfb" path="res://assets/Effects/Common/effect_common_status_drowsy.tres" id="4_3uwt2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_hjlqp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_7s7je"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_gf2e5"]
@@ -13,7 +13,7 @@
 [sub_resource type="Resource" id="Resource_1wpro"]
 script = ExtResource("3_fj50o")
 chance = 1.0
-effect = ExtResource("2_h61i0")
+effect = ExtResource("4_3uwt2")
 
 [sub_resource type="Resource" id="Resource_yifa3"]
 script = ExtResource("4_hjlqp")

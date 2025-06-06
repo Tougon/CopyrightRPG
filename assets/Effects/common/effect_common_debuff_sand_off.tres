@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="Effect" load_steps=25 format=3 uid="uid://dp11ebwskyh2k"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_hc104"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_xbaej"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="3_6ruly"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="4_4jymn"]
-[ext_resource type="Resource" uid="uid://og0qk6g8xxb4" path="res://assets/Animations/Sequences/Global/anim_global_stat_lower.tres" id="5_gjcdu"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="6_hhx8o"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="7_e0gf8"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="8_508ou"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="9_mcc53"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="10_dn87o"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="11_2yeoh"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="12_prx1x"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_cngrj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_56n4f"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="3_gmus5"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="4_ulvft"]
+[ext_resource type="Resource" uid="uid://og0qk6g8xxb4" path="res://assets/Animations/Sequences/Common/anim_common_stat_lower.tres" id="5_clsoi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="6_gk3p8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="7_68b61"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="8_4obdf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="9_atn0n"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="10_37dab"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="11_n68nx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="12_c1l1d"]
 
 [sub_resource type="Resource" id="Resource_halij"]
-script = ExtResource("2_xbaej")
+script = ExtResource("2_56n4f")
 check_mode = 2
 use_limit = true
 turns = 3
 
 [sub_resource type="Resource" id="Resource_jsj2g"]
-script = ExtResource("3_6ruly")
+script = ExtResource("3_gmus5")
 target = 1
 stat = 1
 check_mode = 1
@@ -29,53 +29,53 @@ max = false
 min = true
 
 [sub_resource type="Resource" id="Resource_aje20"]
-script = ExtResource("4_4jymn")
+script = ExtResource("4_ulvft")
 target = 1
 apply = true
 deactivate = true
 
 [sub_resource type="Resource" id="Resource_tpmi0"]
-script = ExtResource("6_hhx8o")
+script = ExtResource("6_gk3p8")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_ACTIVATE"
 target = 1
-animation = ExtResource("5_gjcdu")
+animation = ExtResource("5_clsoi")
 
 [sub_resource type="Resource" id="Resource_blxbe"]
-script = ExtResource("7_e0gf8")
+script = ExtResource("7_68b61")
 target = 1
 stat = 1
 amount = -1
 
 [sub_resource type="Resource" id="Resource_a5ard"]
-script = ExtResource("8_508ou")
+script = ExtResource("8_4obdf")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_DEACTIVATE"
 
 [sub_resource type="Resource" id="Resource_gccvs"]
-script = ExtResource("7_e0gf8")
+script = ExtResource("7_68b61")
 target = 1
 stat = 1
 amount = 1
 
 [sub_resource type="Resource" id="Resource_tgpjx"]
-script = ExtResource("8_508ou")
+script = ExtResource("8_4obdf")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_FAIL"
 
 [sub_resource type="Resource" id="Resource_7rgwd"]
-script = ExtResource("9_mcc53")
+script = ExtResource("9_atn0n")
 target = 1
 
 [sub_resource type="Resource" id="Resource_nimd6"]
-script = ExtResource("10_dn87o")
+script = ExtResource("10_37dab")
 
 [sub_resource type="Resource" id="Resource_h7u5n"]
-script = ExtResource("11_2yeoh")
+script = ExtResource("11_n68nx")
 
 [sub_resource type="Resource" id="Resource_nfvmw"]
-script = ExtResource("8_508ou")
+script = ExtResource("8_4obdf")
 dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_STACK"
 
 [resource]
-script = ExtResource("12_prx1x")
+script = ExtResource("12_c1l1d")
 stackable = true
 effect_name = "Sand Off Debuff"
 generic = true
@@ -83,15 +83,15 @@ priority = 3
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("1_hc104")]([SubResource("Resource_jsj2g")])
+check_success = Array[ExtResource("1_cngrj")]([SubResource("Resource_jsj2g")])
 check_remain_active_type = 0
-check_remain_active = Array[ExtResource("1_hc104")]([SubResource("Resource_halij")])
-on_activate = Array[ExtResource("1_hc104")]([SubResource("Resource_aje20")])
-on_failed_to_activate = Array[ExtResource("1_hc104")]([SubResource("Resource_tgpjx")])
-on_apply = Array[ExtResource("1_hc104")]([SubResource("Resource_tpmi0"), SubResource("Resource_blxbe")])
-on_move_selected = Array[ExtResource("1_hc104")]([SubResource("Resource_nimd6")])
-on_move_completed = Array[ExtResource("1_hc104")]([SubResource("Resource_7rgwd")])
-on_deactivate = Array[ExtResource("1_hc104")]([SubResource("Resource_a5ard"), SubResource("Resource_gccvs")])
-on_turn_start = Array[ExtResource("1_hc104")]([])
-on_turn_end = Array[ExtResource("1_hc104")]([])
-on_stack = Array[ExtResource("1_hc104")]([SubResource("Resource_h7u5n"), SubResource("Resource_nfvmw")])
+check_remain_active = Array[ExtResource("1_cngrj")]([SubResource("Resource_halij")])
+on_activate = Array[ExtResource("1_cngrj")]([SubResource("Resource_aje20")])
+on_failed_to_activate = Array[ExtResource("1_cngrj")]([SubResource("Resource_tgpjx")])
+on_apply = Array[ExtResource("1_cngrj")]([SubResource("Resource_tpmi0"), SubResource("Resource_blxbe")])
+on_move_selected = Array[ExtResource("1_cngrj")]([SubResource("Resource_nimd6")])
+on_move_completed = Array[ExtResource("1_cngrj")]([SubResource("Resource_7rgwd")])
+on_deactivate = Array[ExtResource("1_cngrj")]([SubResource("Resource_a5ard"), SubResource("Resource_gccvs")])
+on_turn_start = Array[ExtResource("1_cngrj")]([])
+on_turn_end = Array[ExtResource("1_cngrj")]([])
+on_stack = Array[ExtResource("1_cngrj")]([SubResource("Resource_h7u5n"), SubResource("Resource_nfvmw")])

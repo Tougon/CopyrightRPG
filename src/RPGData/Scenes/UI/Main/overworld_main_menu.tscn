@@ -627,16 +627,15 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 25.0
 offset_top = -63.0
-offset_right = -25.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("17_2okqg")
-patch_margin_left = 48
+region_rect = Rect2(0, 0, 256, 256)
+patch_margin_left = 55
 patch_margin_top = 26
-patch_margin_right = 48
+patch_margin_right = 55
 patch_margin_bottom = 26
 
 [node name="Label" type="Label" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Name"]

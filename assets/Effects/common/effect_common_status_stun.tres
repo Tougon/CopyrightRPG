@@ -1,62 +1,62 @@
 [gd_resource type="Resource" script_class="Effect" load_steps=22 format=3 uid="uid://dx4uieatfu3hr"]
 
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_6em7a"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_prcf1"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="1_tree2"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_21i4q"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="2_kh1v3"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="3_vn5w6"]
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Global/anim_global_stunned.tres" id="4_8aft2"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="4_ghbnw"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="4_myiwe"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_no6r3"]
-[ext_resource type="Resource" uid="uid://b2q6alnhkwh3m" path="res://assets/Spells/flavor/spell_flavor_stunned.tres" id="5_1gmdp"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="5_ukfdq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_86nt2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_e6bsf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_ryfip"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_wv2ub"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_7ft6m"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_038ny"]
+[ext_resource type="Resource" uid="uid://b2q6alnhkwh3m" path="res://assets/Spells/flavor/spell_flavor_stunned.tres" id="7_c5ysx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="8_abiu8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="9_1lkiu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="10_akm3l"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="11_pp8wh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="12_ytryr"]
 
 [sub_resource type="Resource" id="Resource_mfdjw"]
-script = ExtResource("1_tree2")
+script = ExtResource("2_e6bsf")
 check_mode = 2
 use_limit = true
 turns = 1
 
 [sub_resource type="Resource" id="Resource_7qcvy"]
-script = ExtResource("2_21i4q")
+script = ExtResource("3_ryfip")
 target = 1
 apply = true
 deactivate = true
 
 [sub_resource type="Resource" id="Resource_lkm5g"]
-script = ExtResource("4_no6r3")
+script = ExtResource("5_7ft6m")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_STUN_ACTIVATE"
 target = 1
-animation = ExtResource("4_8aft2")
+animation = ExtResource("4_wv2ub")
 
 [sub_resource type="Resource" id="Resource_fdc8l"]
-script = ExtResource("3_vn5w6")
+script = ExtResource("6_038ny")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_STUN_DEACTIVATE"
 
 [sub_resource type="Resource" id="Resource_svwto"]
-script = ExtResource("5_ukfdq")
+script = ExtResource("8_abiu8")
 target = 1
-action = ExtResource("5_1gmdp")
+action = ExtResource("7_c5ysx")
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_iihfa"]
-script = ExtResource("4_ghbnw")
+script = ExtResource("9_1lkiu")
 
 [sub_resource type="Resource" id="Resource_c16dt"]
-script = ExtResource("2_kh1v3")
+script = ExtResource("10_akm3l")
 
 [sub_resource type="Resource" id="Resource_1g15b"]
-script = ExtResource("3_vn5w6")
+script = ExtResource("6_038ny")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_STUN_STACK"
 
 [sub_resource type="Resource" id="Resource_1le7l"]
-script = ExtResource("4_myiwe")
+script = ExtResource("11_pp8wh")
 target = 1
 
 [resource]
-script = ExtResource("1_prcf1")
+script = ExtResource("12_ytryr")
 stackable = true
 effect_name = "Stun"
 generic = false
@@ -64,15 +64,15 @@ priority = 5
 turn_limit = 1
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("1_6em7a")]([])
+check_success = Array[ExtResource("1_86nt2")]([])
 check_remain_active_type = 0
-check_remain_active = Array[ExtResource("1_6em7a")]([SubResource("Resource_mfdjw")])
-on_activate = Array[ExtResource("1_6em7a")]([SubResource("Resource_7qcvy")])
-on_failed_to_activate = Array[ExtResource("1_6em7a")]([])
-on_apply = Array[ExtResource("1_6em7a")]([SubResource("Resource_lkm5g")])
-on_move_selected = Array[ExtResource("1_6em7a")]([SubResource("Resource_svwto"), SubResource("Resource_iihfa")])
-on_move_completed = Array[ExtResource("1_6em7a")]([])
-on_deactivate = Array[ExtResource("1_6em7a")]([SubResource("Resource_fdc8l")])
-on_turn_start = Array[ExtResource("1_6em7a")]([])
-on_turn_end = Array[ExtResource("1_6em7a")]([SubResource("Resource_1le7l")])
-on_stack = Array[ExtResource("1_6em7a")]([SubResource("Resource_c16dt"), SubResource("Resource_1g15b")])
+check_remain_active = Array[ExtResource("1_86nt2")]([SubResource("Resource_mfdjw")])
+on_activate = Array[ExtResource("1_86nt2")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_86nt2")]([])
+on_apply = Array[ExtResource("1_86nt2")]([SubResource("Resource_lkm5g")])
+on_move_selected = Array[ExtResource("1_86nt2")]([SubResource("Resource_svwto"), SubResource("Resource_iihfa")])
+on_move_completed = Array[ExtResource("1_86nt2")]([])
+on_deactivate = Array[ExtResource("1_86nt2")]([SubResource("Resource_fdc8l")])
+on_turn_start = Array[ExtResource("1_86nt2")]([])
+on_turn_end = Array[ExtResource("1_86nt2")]([SubResource("Resource_1le7l")])
+on_stack = Array[ExtResource("1_86nt2")]([SubResource("Resource_c16dt"), SubResource("Resource_1g15b")])
