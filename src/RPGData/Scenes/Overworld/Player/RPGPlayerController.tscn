@@ -15,13 +15,14 @@ size = Vector2(512, 128)
 physics_interpolation_mode = 1
 collision_layer = 5
 script = ExtResource("1_1wsnh")
-speed = 300.0
+speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 48)
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
+play_audio = true
 object_id = "main_character"
 
 [node name="Direction Root" type="Sprite2D" parent="."]

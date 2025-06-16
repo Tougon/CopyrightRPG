@@ -120,7 +120,7 @@ func get_bgm_time() -> float:
 	return 0;
 
 
-func play_sfx(id : String):
+func play_sfx(id : String, pitch_range : float = 0):
 	var root = $SFX;
 	
 	var sfx : AudioStream;
@@ -137,6 +137,7 @@ func play_sfx(id : String):
 		
 		var new_source = root.get_child(source_index) as AudioStreamPlayer;
 		new_source.stream = sfx;
+		new_source.pitch_scale = 1.0 + randf_range(-pitch_range, pitch_range);
 		new_source.play();
 
 

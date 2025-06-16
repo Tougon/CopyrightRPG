@@ -7,6 +7,7 @@ enum AnimationState { NONE, IDLE, WALK, RUN };
 
 @export_subgroup("Character")
 @export var character : RPGCharacterData;
+@export var play_audio : bool = false;
 
 var _current_anim : RPGCharacterAnimation;
 var _current_state : AnimationState;
@@ -60,6 +61,9 @@ func _update_sprite():
 			_playing_one_shot = false;
 	
 	sprite.texture = _current_anim.sequence[_current_frame].frame_sprite;
+	
+	if play_audio && !_current_anim.sequence[_current_frame].sfx_key.is_empty() :
+		AudioManager.play_sfx(_current_anim.sequence[_current_frame].sfx_key, 0.25);
 
 
 func set_direction(new_direction : Vector2):
@@ -103,6 +107,7 @@ func play_one_shot(anim_name : String):
 	_current_frame = 0;
 	_current_frame_time = 0;
 	_current_anim = anim_group.get_anim(_direction, _previous_direction);
+	set_state(AnimationState.NONE);
 	
 	_playing_one_shot = true;
 	

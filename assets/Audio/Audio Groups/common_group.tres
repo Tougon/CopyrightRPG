@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=4 format=3 uid="uid://vbiqobl25sbv"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=7 format=3 uid="uid://vbiqobl25sbv"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_tpp0k"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_dnokl"]
@@ -8,6 +8,21 @@ script = ExtResource("1_tpp0k")
 item_id = "no"
 item_path = "res://assets/Audio/SFX/no.ogg"
 
+[sub_resource type="Resource" id="Resource_5gagl"]
+script = ExtResource("1_tpp0k")
+item_id = "step_walk_common"
+item_path = "res://assets/Audio/SFX/step_walk.ogg"
+
+[sub_resource type="Resource" id="Resource_p1yjd"]
+script = ExtResource("1_tpp0k")
+item_id = "step_run_common"
+item_path = "res://assets/Audio/SFX/step_run.ogg"
+
+[sub_resource type="Resource" id="Resource_1kcvd"]
+script = ExtResource("1_tpp0k")
+item_id = "step_skid_common"
+item_path = "res://assets/Audio/SFX/step_skid.ogg"
+
 [resource]
 script = ExtResource("2_dnokl")
-entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2")])
+entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd")])

@@ -100,7 +100,7 @@ func move(direction : Vector2, delta : float):
 	if direction.length_squared() != 0:
 		direction_facing = direction;
 	
-	if Input.is_action_just_released("run") || (Input.is_action_pressed("run") && _prev_direction != direction && _prev_direction.length_squared() > 0):
+	if (Input.is_action_just_released("run") || (Input.is_action_pressed("run") && _prev_direction != direction)) && _prev_direction.length_squared() > 0:
 		var angle_dif = abs(rad_to_deg(_prev_direction.angle_to(direction)))
 		# We have to use 91 here due to bizarre rounding errors
 		if angle_dif == 0 || angle_dif > 91 : 
