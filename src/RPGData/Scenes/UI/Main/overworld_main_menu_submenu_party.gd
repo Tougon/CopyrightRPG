@@ -5,6 +5,9 @@ extends OverworldSubmenu
 @export var prev_player_node : Control;
 @export var moveset_grid : Control;
 
+@export_group("Aesthetics")
+@export var cursor : Control;
+
 var _current_player_index = 0;
 var _current_player_data : PartyMemberData;
 var _current_player_entity : Entity;
@@ -16,7 +19,13 @@ func _ready():
 	EventManager.refresh_player_move_list.connect(_on_refresh_player_move_list);
 	EventManager.refresh_player_equipment.connect(_on_refresh_player_equipment);
 	_set_entity_info(0);
+	
+	get_viewport().gui_focus_changed.connect(_on_gui_focus_changed);
 
+
+func _on_gui_focus_changed(node: Node):
+	if focused:
+		cursor.global_position = node.global_position;
 
 # Party menu functions
 func _set_entity_info(index : int):
