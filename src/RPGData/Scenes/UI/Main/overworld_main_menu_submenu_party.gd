@@ -7,6 +7,7 @@ extends OverworldSubmenu
 
 @export_group("Aesthetics")
 @export var cursor : Control;
+@export var equipment_empty_sprite : Texture;
 
 var _current_player_index = 0;
 var _current_player_data : PartyMemberData;
@@ -18,14 +19,16 @@ func _ready():
 	EventManager.refresh_player_info.connect(_on_refresh_entity_info);
 	EventManager.refresh_player_move_list.connect(_on_refresh_player_move_list);
 	EventManager.refresh_player_equipment.connect(_on_refresh_player_equipment);
+	EventManager.on_equipment_item_highlighted.connect(_on_equipment_item_highlighted);
 	_set_entity_info(0);
 	
 	get_viewport().gui_focus_changed.connect(_on_gui_focus_changed);
 
 
 func _on_gui_focus_changed(node: Node):
-	if focused:
+	if focused && all_selections.has(node):
 		cursor.global_position = node.global_position;
+
 
 # Party menu functions
 func _set_entity_info(index : int):
@@ -37,6 +40,20 @@ func _set_entity_info(index : int):
 	_current_player_data = DataManager.party_data[index];
 	_current_player_entity = DataManager.entity_database.get_entity(_current_player_data.id, true);
 	
+	# TODO: Animate name?
+	$"Entity Stats Area/Entity Portrait Group/Portrait/TweenPlayerUI".play_tween_name("Portrait Zap");
+	
+	if _current_player_entity.entity_sprites.size() > 3:
+		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(_current_player_entity.entity_sprites[3], "Texture2D") as Texture2D;
+	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(_current_player_entity.name_key);
+	$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(_current_player_data.level);
+	
+	_display_entity_stats();
+	_refresh_move_list();
+
+
+func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = null, equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon):
+	# Get current raw stat values
 	var hp = _current_player_entity.get_hp(_current_player_data.level);
 	var mp = _current_player_entity.get_mp(_current_player_data.level);
 	var atk = _current_player_entity.get_atk(_current_player_data.level);
@@ -46,27 +63,77 @@ func _set_entity_info(index : int):
 	var spd = _current_player_entity.get_spd(_current_player_data.level);
 	var lck = _current_player_entity.get_lck(_current_player_data.level);
 	
-	# TODO: Animate portrait and name
-	$"Entity Stats Area/Entity Portrait Group/Portrait/TweenPlayerUI".play_tween_name("Portrait Zap");
+	# Get current equipment
+	var comp_equipment : EquipmentItem;
+	var current_weapon = DataManager.item_database.get_item(_current_player_data.weapon_id);
+	var current_armor = DataManager.item_database.get_item(_current_player_data.armor_id);
+	var current_accessory = DataManager.item_database.get_item(_current_player_data.accessory_id);
+	var all_equipment = [current_weapon, current_armor, current_accessory];
 	
-	if _current_player_entity.entity_sprites.size() > 3:
-		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(_current_player_entity.entity_sprites[3], "Texture2D") as Texture2D;
-	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(_current_player_entity.name_key);
-	$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(_current_player_data.level);
+	# Modify stats by weapon modifiers
+	for e in all_equipment:
+		if e != null:
+			hp += (e as EquipmentItem).hp_mod;
+			mp += (e as EquipmentItem).mp_mod;
+			atk += (e as EquipmentItem).atk_mod;
+			def += (e as EquipmentItem).def_mod;
+			mag += (e as EquipmentItem).mag_mod;
+			res += (e as EquipmentItem).res_mod;
+			spd += (e as EquipmentItem).spd_mod;
+			lck += (e as EquipmentItem).lck_mod;
+			
+			if (e as EquipmentItem).equipment_type == equipment_type:
+				comp_equipment = e;
 	
-	$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp);
+	# Get comparison stats if applicable
+	var comp_hp = 0;
+	var comp_mp = 0;
+	var comp_atk = 0;
+	var comp_def = 0;
+	var comp_mag = 0;
+	var comp_res = 0;
+	var comp_spd = 0;
+	var comp_lck = 0.0;
+	
+	if compare : 
+		if equipment != null :
+			comp_hp = equipment.hp_mod;
+			comp_mp = equipment.mp_mod;
+			comp_atk = equipment.atk_mod;
+			comp_def = equipment.def_mod;
+			comp_mag = equipment.mag_mod;
+			comp_res = equipment.res_mod;
+			comp_spd = equipment.spd_mod;
+			comp_lck = (equipment.lck_mod * GameplayConstants.LUCK_SCALE);
+		else :
+			if comp_equipment != null : 
+				comp_hp = -comp_equipment.hp_mod;
+				comp_mp = -comp_equipment.mp_mod;
+				comp_atk = -comp_equipment.atk_mod;
+				comp_def = -comp_equipment.def_mod;
+				comp_mag = -comp_equipment.mag_mod;
+				comp_res = -comp_equipment.res_mod;
+				comp_spd = -comp_equipment.spd_mod;
+				comp_lck = -(comp_equipment.lck_mod * GameplayConstants.LUCK_SCALE);
+	
+	if comp_hp != 0 :
+		$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp) + " + " + str(comp_hp);
+	else:
+		$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp);
 	$"Entity Stats Area/Entity Stats Group/HP".value = ((_current_player_data.hp_value as float)) / (hp as float)
-	$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp);
+	
+	if comp_mp != 0 :
+		$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp) + " + " + str(comp_mp);
+	else :
+		$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp);
 	$"Entity Stats Area/Entity Stats Group/MP".value = ((_current_player_data.mp_value as float)) / (mp as float)
 	
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/ATK".set_stat_value(atk);
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/DEF".set_stat_value(def);
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/MAG".set_stat_value(mag);
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/RES".set_stat_value(res);
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/SPD".set_stat_value(spd);
-	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/LCK".set_stat_value((lck * GameplayConstants.LUCK_SCALE));
-	
-	_refresh_move_list();
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/ATK".set_stat_value(atk, comp_atk);
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/DEF".set_stat_value(def, comp_def);
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/MAG".set_stat_value(mag, comp_mag);
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/RES".set_stat_value(res, comp_res);
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/SPD".set_stat_value(spd, comp_spd);
+	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/LCK".set_stat_value((lck * GameplayConstants.LUCK_SCALE), comp_lck);
 
 
 func _refresh_move_list():
@@ -100,10 +167,12 @@ func _refresh_move_list():
 			if move != null:
 				button.disabled = false;
 				button.focus_mode = Control.FOCUS_ALL;
-				button.text = tr(move.spell_name_key);
+				button.get_node("Root/Label").text = tr(move.spell_name_key);
+				button.get_node("Root/Image").texture = null;
 			else : 
 				button.disabled = i > last_valid_index + 1;
-				button.text = "+";
+				button.get_node("Root/Label").text = "";
+				button.get_node("Root/Image").texture = equipment_empty_sprite;
 			
 			if button.disabled : button.focus_mode = Control.FOCUS_NONE;
 			
@@ -171,6 +240,11 @@ func _on_refresh_player_equipment(equipment_type : EquipmentItem.EquipmentType, 
 	# TODO: Refresh visuals
 
 
+func _on_equipment_item_highlighted(equipment : EquipmentItem, equipment_type : EquipmentItem.EquipmentType) :
+	if equipment != null:
+		_display_entity_stats(true, equipment, equipment_type);
+
+
 # UI utility functions
 func set_active(state : bool):
 	if !state : cache_menu_state();
@@ -182,6 +256,8 @@ func on_focus():
 	if last_selection != null :
 		initial_selection = last_selection;
 		initial_selection.grab_focus();
+	
+	_display_entity_stats();
 
 
 func _on_focus_entered_next():
@@ -261,3 +337,4 @@ func _exit_tree() :
 		EventManager.refresh_player_info.disconnect(_on_refresh_entity_info);
 		EventManager.refresh_player_move_list.disconnect(_on_refresh_player_move_list);
 		EventManager.refresh_player_equipment.disconnect(_on_refresh_player_equipment);
+		EventManager.on_equipment_item_highlighted.disconnect(_on_equipment_item_highlighted);

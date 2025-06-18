@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=96 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -18,10 +18,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_inventory.gd" id="11_shyhs"]
 [ext_resource type="Resource" uid="uid://1e252p87q5vs" path="res://assets/Tweens/UI/Main/UI_Main_Submenu_Close.tres" id="12_u23bx"]
 [ext_resource type="Script" path="res://src/UIManager/Scenes/DynamicMenuPanel.gd" id="12_wsuig"]
-[ext_resource type="Shader" path="res://assets/Shaders/hologram.gdshader" id="13_domn7"]
+[ext_resource type="Material" uid="uid://bcf4n3fjo782h" path="res://assets/Materials/UI/ui_hologram.tres" id="13_nmg0n"]
 [ext_resource type="PackedScene" uid="uid://cliv6mbb8mbic" path="res://src/RPGData/Scenes/UI/Main/main_menu_inventory_item_button.tscn" id="13_p080w"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="13_ynyhx"]
-[ext_resource type="Texture2D" uid="uid://b425guj8gg1u5" path="res://assets/Sprites/UI/Status/hologram_lines.png" id="14_tlsu4"]
 [ext_resource type="Texture2D" uid="uid://cwsuduqkm0bn0" path="res://assets/Sprites/UI/Status/temp_portrait_a_full.png" id="15_ounpc"]
 [ext_resource type="Material" uid="uid://u0rtoqst1pow" path="res://assets/Materials/UI/material_ui_dirt.tres" id="16_egfar"]
 [ext_resource type="Texture2D" uid="uid://dy6mes2gcsjfy" path="res://assets/Sprites/UI/Status/portrait_bg_small.png" id="16_r460u"]
@@ -34,7 +33,9 @@
 [ext_resource type="Theme" uid="uid://b550bkf3byjyy" path="res://assets/Themes/Theme_UI_MainMenu_PartyButton.tres" id="23_dsf2l"]
 [ext_resource type="Script" path="res://src/VideoPlayer/video_player.gd" id="23_k7wig"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_move_select_menu.gd" id="23_kuxur"]
+[ext_resource type="Texture2D" uid="uid://chlboh2av785i" path="res://assets/Sprites/UI/Status/ui_box_party.png" id="24_lgjjk"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="24_m7wo8"]
+[ext_resource type="Texture2D" uid="uid://owywes6aauk3" path="res://assets/Sprites/UI/Status/ui_equipment_new.png" id="24_ufy88"]
 [ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_equipment_select.gd" id="29_hwmba"]
 [ext_resource type="PackedScene" uid="uid://bhbi06eb7yvyu" path="res://src/RPGData/Scenes/UI/Main/main_menu_equipment_select_button.tscn" id="30_tjpn3"]
@@ -132,19 +133,6 @@ tween_resource = ExtResource("12_u23bx")
 play_on_start = false
 next_tween = ""
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_viaxc"]
-shader = ExtResource("13_domn7")
-shader_parameter/baseColor = Color(2.02149e-06, 0.373176, 0.529109, 1)
-shader_parameter/speed = 15.0
-shader_parameter/linesColor = Color(0, 0.396078, 0.670588, 1)
-shader_parameter/linesColorIntensity = 0.5
-shader_parameter/hologramTextureTiling = Vector2(1, 4)
-shader_parameter/distortion = 2.285
-shader_parameter/stablization = 8.0
-shader_parameter/distortion_speed = 0.96
-shader_parameter/distortion_factor = 0.05
-shader_parameter/hologramTexture = ExtResource("14_tlsu4")
-
 [sub_resource type="Resource" id="Resource_1748h"]
 script = ExtResource("9_7mkwv")
 target = ""
@@ -221,16 +209,93 @@ tween_resource = SubResource("Resource_7qvt7")
 play_on_start = false
 next_tween = ""
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ikbu"]
-shader = ExtResource("24_m7wo8")
-shader_parameter/color_primary = null
-shader_parameter/color_secondary = Color(1, 1, 1, 1)
-shader_parameter/resolution = Vector2(266.667, 200)
-shader_parameter/amount = 1.0
+[sub_resource type="Resource" id="Resource_bgnjf"]
+script = ExtResource("9_7mkwv")
+target = "Root"
+property_name = "scale"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_3ei2n"]
-line_spacing = -5.0
-font_size = 12
+[sub_resource type="Resource" id="Resource_ggaas"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_0qy52"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_bgnjf"), SubResource("Resource_ggaas")])
+
+[sub_resource type="Resource" id="Resource_qomml"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_0qy52")])
+
+[sub_resource type="Resource" id="Resource_rfdwg"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_qomml")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_kpvlf"]
+script = ExtResource("9_7mkwv")
+target = "Root"
+property_name = "scale"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0.89, 0.84)
+
+[sub_resource type="Resource" id="Resource_lkl3w"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0.713726, 0.713726, 0.713726, 1)
+
+[sub_resource type="Resource" id="Resource_2jlsw"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_kpvlf"), SubResource("Resource_lkl3w")])
+
+[sub_resource type="Resource" id="Resource_5y4gp"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Exited"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_2jlsw")])
+
+[sub_resource type="Resource" id="Resource_joyx4"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Exited"
+tween_resource = SubResource("Resource_5y4gp")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_3ubq5"]
 script = ExtResource("9_7mkwv")
@@ -279,6 +344,17 @@ tween_name = "pulse"
 tween_resource = SubResource("Resource_f68xc")
 play_on_start = true
 next_tween = "pulse"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ikbu"]
+shader = ExtResource("24_m7wo8")
+shader_parameter/color_primary = null
+shader_parameter/color_secondary = Color(1, 1, 1, 1)
+shader_parameter/resolution = Vector2(266.667, 200)
+shader_parameter/amount = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_3ei2n"]
+line_spacing = -5.0
+font_size = 12
 
 [sub_resource type="Resource" id="Resource_el8iu"]
 script = ExtResource("6_i4er7")
@@ -610,6 +686,7 @@ next_player_node = NodePath("Entity Equipment Area/Next")
 prev_player_node = NodePath("Entity Equipment Area/Previous")
 moveset_grid = NodePath("Entity Equipment Area/VBox/Moveset/Grid")
 cursor = NodePath("Cursor")
+equipment_empty_sprite = ExtResource("24_ufy88")
 root_menu = NodePath("../..")
 submenu = true
 initial_selection = NodePath("Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon")
@@ -648,7 +725,7 @@ offset_bottom = 310.0
 grow_horizontal = 2
 
 [node name="Portrait" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Portrait Group"]
-material = SubResource("ShaderMaterial_viaxc")
+material = ExtResource("13_nmg0n")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -823,26 +900,32 @@ grow_vertical = 2
 columns = 2
 
 [node name="ATK" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
 label_key = "T_STAT_ATK_SHORT"
 
 [node name="MAG" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
 label_key = "T_STAT_MAG_SHORT"
 
 [node name="DEF" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
 label_key = "T_STAT_DEF_SHORT"
 
 [node name="RES" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
 label_key = "T_STAT_RES_SHORT"
 
 [node name="SPD" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
 label_key = "T_STAT_SPD_SHORT"
 
 [node name="LCK" parent="Body/Party/Entity Stats Area/Entity Stats Group/Stats/GridContainer" instance=ExtResource("19_dtlof")]
+custom_minimum_size = Vector2(140, 25)
 layout_mode = 2
 label_key = "T_STAT_LCK_SHORT"
 
@@ -881,18 +964,51 @@ text = "T_EQUIPMENT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Headers" type="HBoxContainer" parent="Body/Party/Entity Equipment Area/VBox/Equipment"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 60.0
+offset_right = -35.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Armor"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accessory"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Body/Party/Entity Equipment Area/VBox/Equipment"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 70.0
-offset_bottom = -30.0
+offset_top = 85.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
 [node name="Weapon" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+modulate = Color(0.712129, 0.71213, 0.712129, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -901,7 +1017,59 @@ theme = ExtResource("23_dsf2l")
 text = "Weapon"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_ufy88")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Armor" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -909,7 +1077,59 @@ theme = ExtResource("23_dsf2l")
 text = "Armor"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_ufy88")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Accessory" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -917,6 +1137,56 @@ focus_neighbor_right = NodePath("../../../../Next")
 theme = ExtResource("23_dsf2l")
 text = "Accessory"
 text_overrun_behavior = 3
+
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_ufy88")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
 
 [node name="Moveset" type="Control" parent="Body/Party/Entity Equipment Area/VBox"]
 custom_minimum_size = Vector2(0, 300)
@@ -948,6 +1218,8 @@ grow_vertical = 2
 columns = 3
 
 [node name="Move 1" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -956,7 +1228,58 @@ theme = ExtResource("23_dsf2l")
 text = "Move 1"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Move 2" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -964,7 +1287,58 @@ theme = ExtResource("23_dsf2l")
 text = "Move 2"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Move 3" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -973,7 +1347,58 @@ theme = ExtResource("23_dsf2l")
 text = "Move 3"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Move 4" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -982,7 +1407,58 @@ theme = ExtResource("23_dsf2l")
 text = "Move 4"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 4/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 4/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 4"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Move 5" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -990,7 +1466,58 @@ theme = ExtResource("23_dsf2l")
 text = "Move 5"
 text_overrun_behavior = 3
 
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 5/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 5/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 5"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
+
 [node name="Move 6" type="Button" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid"]
+modulate = Color(0.713726, 0.713726, 0.713726, 1)
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 size_flags_vertical = 0
@@ -998,6 +1525,55 @@ focus_neighbor_right = NodePath("../../../../Next")
 theme = ExtResource("23_dsf2l")
 text = "Move 6"
 text_overrun_behavior = 3
+
+[node name="Root" type="NinePatchRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.89, 0.84)
+pivot_offset = Vector2(70, 50)
+texture = ExtResource("24_lgjjk")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6/Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6/Root"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 6.0
+offset_top = -11.5
+offset_right = -6.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_rfdwg"), SubResource("Resource_joyx4")])
 
 [node name="Previous" type="Control" parent="Body/Party/Entity Equipment Area"]
 anchors_preset = 0
@@ -1014,6 +1590,128 @@ offset_right = 40.0
 offset_bottom = 182.0
 focus_mode = 2
 mouse_filter = 2
+
+[node name="Cursor" type="Control" parent="Body/Party"]
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 135.0
+offset_right = 196.0
+offset_bottom = 235.0
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Cursor"]
+modulate = Color(1, 0, 0.286275, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Cursor"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
 visible = false
@@ -1347,128 +2045,6 @@ vertical_alignment = 1
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")
-
-[node name="Cursor" type="Control" parent="Body/Party"]
-anchors_preset = 0
-offset_left = 56.0
-offset_top = 110.0
-offset_right = 196.0
-offset_bottom = 210.0
-
-[node name="TopLeft" type="TextureRect" parent="Body/Party/Cursor"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-offset_right = 32.0
-offset_bottom = 32.0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-
-[node name="TopRight" type="TextureRect" parent="Body/Party/Cursor"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -32.0
-offset_bottom = 32.0
-grow_horizontal = 0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-flip_h = true
-
-[node name="BottomLeft" type="TextureRect" parent="Body/Party/Cursor"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -32.0
-offset_right = 32.0
-grow_vertical = 0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-flip_v = true
-
-[node name="BottomRight" type="TextureRect" parent="Body/Party/Cursor"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-flip_h = true
-flip_v = true
-
-[node name="Glow" type="Control" parent="Body/Party/Cursor"]
-modulate = Color(1, 0, 0.286275, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TopLeft2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
-layout_mode = 1
-offset_right = 64.0
-offset_bottom = 64.0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-
-[node name="TopRight2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_bottom = 64.0
-grow_horizontal = 0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-flip_h = true
-
-[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 64.0
-grow_vertical = 0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-flip_v = true
-
-[node name="BottomRight2" type="TextureRect" parent="Body/Party/Cursor/Glow"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-flip_h = true
-flip_v = true
-
-[node name="TweenPlayerUI" type="Node" parent="Body/Party/Cursor"]
-script = ExtResource("2_fajv7")
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
 visible = false

@@ -25,10 +25,14 @@ theme_type_variation = &"StatLabels"
 text = "atk:"
 text_overrun_behavior = 2
 
-[node name="Value" type="Label" parent="HBoxContainer"]
+[node name="Value" type="RichTextLabel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(0, 13)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 theme = ExtResource("1_2w34u")
 theme_type_variation = &"StatNumerals"
+bbcode_enabled = true
 text = "999"
-text_overrun_behavior = 2
+fit_content = true
+scroll_active = false

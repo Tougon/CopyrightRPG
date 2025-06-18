@@ -45,6 +45,7 @@ signal on_player_move_selected(move_index : int, player_data : PartyMemberData, 
 signal on_inventory_item_selected(item : Item);
 signal refresh_player_info();
 signal refresh_player_move_list(move_list : Array);
+signal on_equipment_item_highlighted(equipment : EquipmentItem, equipment_type : EquipmentItem.EquipmentType);
 signal refresh_player_equipment(equipment_type : EquipmentItem.EquipmentType, item_id : int);
 
 # Global Battle Events

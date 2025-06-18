@@ -40,12 +40,12 @@ func on_focus():
 
 
 func _refresh_equipment_ui():
-	# Determine a valid list of moves based on the rules:
+	# Determine a valid list of equipment
 	var valid_items : Array[EquipmentItem];
 	
-	# 1. All moves in the inventory that are of the current type
 	var inventory = DataManager.get_equipment_items(true, _current_equipment_type);
 	
+	# If the item is not currently selected, it is valid
 	for item_id  in inventory.keys():
 		var is_valid = true;
 		
@@ -86,7 +86,8 @@ func _on_item_selected(data):
 		$"BG/Item Visuals/Equipment/Name".text = tr(data.item_name_key);
 		$"BG/Item Visuals/Description".text = tr(data.item_description_key);
 		
-		print("TODO: Load sprites")
+		print("TODO: Load sprites for preview")
+		EventManager.on_equipment_item_highlighted.emit(data as EquipmentItem, _current_equipment_type);
 	
 	else :
 		$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");

@@ -4,6 +4,7 @@ class_name Item
 @export_subgroup("Item Naming")
 @export var item_name_key : String;
 @export var item_description_key : String;
+@export_file("*.png") var item_icon_path : String;
 
 @export_subgroup("Item Parameters")
 @export var item_category : TFlag;

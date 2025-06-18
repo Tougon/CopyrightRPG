@@ -18,6 +18,7 @@ lck_mod = 0.0
 equipment_effects = Array[ExtResource("1_18qco")]([])
 item_name_key = "T_ITEM_NAME_TEMPE"
 item_description_key = ""
+item_icon_path = "res://assets/Sprites/Entities/Slime Fire/slime_fire_n_attack.png"
 item_flags = Array[ExtResource("2_ch36j")]([])
 item_cost = 0
 item_sellable = false
