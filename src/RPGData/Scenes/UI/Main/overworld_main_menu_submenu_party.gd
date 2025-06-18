@@ -241,8 +241,7 @@ func _on_refresh_player_equipment(equipment_type : EquipmentItem.EquipmentType, 
 
 
 func _on_equipment_item_highlighted(equipment : EquipmentItem, equipment_type : EquipmentItem.EquipmentType) :
-	if equipment != null:
-		_display_entity_stats(true, equipment, equipment_type);
+	_display_entity_stats(true, equipment, equipment_type);
 
 
 # UI utility functions

@@ -5,6 +5,7 @@ extends MenuPanel
 var _current_equipment_type : EquipmentItem.EquipmentType;
 var _current_player_data : PartyMemberData;
 var _current_player_entity : Entity;
+var _current_equipment_id : int;
 
 func _ready() -> void:
 	super._ready();
@@ -19,6 +20,16 @@ func _on_player_equipment_selected(equipment_type : EquipmentItem.EquipmentType,
 	_current_equipment_type = equipment_type;
 	_current_player_data = player_data;
 	_current_player_entity = entity;
+	
+	match _current_equipment_type:
+		EquipmentItem.EquipmentType.Weapon:
+			_current_equipment_id = _current_player_data.weapon_id;
+		
+		EquipmentItem.EquipmentType.Armor:
+			_current_equipment_id = _current_player_data.armor_id;
+		
+		EquipmentItem.EquipmentType.Accessory:
+			_current_equipment_id = _current_player_data.accessory_id;
 	
 	_refresh_equipment_ui();
 
@@ -66,9 +77,7 @@ func _refresh_equipment_ui():
 			var item = inventory[item_id];
 			valid_items.append(item);
 	
-	menu_panel.set_data(valid_items);
-	
-	if valid_items.size() == 0:
+	if inventory.size() == 0 && _current_equipment_id == -1:
 		$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");
 		$"BG/Item Visuals/Description".text = "";
 		$BG/Label.visible = true;
@@ -76,8 +85,12 @@ func _refresh_equipment_ui():
 		$"BG/Item Visuals/Close".visible = true;
 		$"BG/Item Visuals/Close".grab_focus();
 	else :
+		if _current_equipment_id != -1:
+			valid_items.append(null);
 		$BG/Label.visible = false;
 		$"BG/Item Visuals/Close".visible = false;
+	
+	menu_panel.set_data(valid_items);
 
 
 
@@ -93,6 +106,7 @@ func _on_item_selected(data):
 		$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");
 		$"BG/Item Visuals/Description".text = tr("T_ITEM_DESCRIPTION_NONE");
 		$"BG/Item Visuals/Equipment/Static".visible = true;
+		EventManager.on_equipment_item_highlighted.emit(null, _current_equipment_type);
 
 
 func _on_item_clicked(data):
