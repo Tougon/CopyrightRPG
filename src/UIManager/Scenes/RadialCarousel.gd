@@ -7,6 +7,10 @@ class_name RadialCarousel;
 @export var carousel_size : Vector2 = Vector2(200, 200);
 @export var carousel_offset : Vector2 = Vector2(0, 0);
 @export var scroll_time : float = 0.1;
+@export var jump_slots : int = 5;
+
+var _process_input : bool = true;
+var _scroll_delay : float = 0.05;
 
 var _data : Array;
 var _index : int = 0;
@@ -38,6 +42,7 @@ func _ready() -> void:
 			item.size = item_size;
 			
 			item.owning_carousel = self;
+			item.set_intended_angle(angle);
 			item.set_angle(angle);
 			
 			var x_off_screen = item.position.x + item_size.x < 0 || item.position.x > size.x
@@ -50,8 +55,6 @@ func _ready() -> void:
 	
 	# TEST CODE:
 	set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"])
-	# NEXT STEP: SCROLLING THE LIST
-	# 5. Process Left/Right input to skip X ahead
 	self.grab_focus();
 
 
@@ -60,12 +63,21 @@ func set_data(data : Array) :
 	_redraw_items();
 
 
+func set_index(index : int) :
+	_index = index;
+	_redraw_items();
+
+
 func _redraw_items() :
+	if _data.size() < 1 :
+		self.visible = false;
+		return;
+	
 	var span = _carousel_items.size() / 2;
 	
-	if _data.size() < _visible_items.size():
-		print("This is where the fun begins")
-		return;
+	#if _data.size() < _visible_items.size():
+	#	print("This is where the fun begins")
+	#	return;
 	
 	var current_index = _index;
 	for i in range(0, span):
@@ -74,6 +86,8 @@ func _redraw_items() :
 		
 		_carousel_items[i].set_data(_data[current_index]);
 		current_index += 1;
+		
+		_carousel_items[i].set_highlight(i==0);
 	
 	current_index = _index - 1;
 	for i in range(span * 2, span, -1):
@@ -82,8 +96,14 @@ func _redraw_items() :
 		
 		_carousel_items[i - 1].set_data(_data[current_index]);
 		current_index -= 1;
+		
+		_carousel_items[i - 1].set_highlight(i-1==0);
 	
-	print(_data[_index]);
+	on_item_highlight(_data[_index]);
+
+
+func on_item_highlight(data):
+	pass;
 
 
 func get_position_from_angle(angle : float) -> Vector2:
@@ -94,6 +114,10 @@ func get_position_from_angle(angle : float) -> Vector2:
 
 
 func _scroll_ui(direction : int) :
+	if _data.size() <= 1 : return
+	
+	on_scroll_begin();
+	
 	_index -= direction;
 	if _index < 0 : _index = _data.size() - 1;
 	if _index >= _data.size() : _index = 0;
@@ -107,20 +131,59 @@ func _scroll_ui(direction : int) :
 	
 	var has_refreshed = false;
 	
+	# TODO: add method to kill all tweens if the tween is still in motion
 	for item in _carousel_items:
-		var angle = item.get_angle();
+		var angle = item.get_intended_angle();
+		var new_angle = angle + (item_spacing_degrees * direction);
+		var start_angle = item.get_angle();
+		
 		var tween = get_tree().create_tween();
-		tween.tween_method((item as RadialCarouselItem).set_angle, angle, angle + (item_spacing_degrees * direction), scroll_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
+		tween.tween_method((item as RadialCarouselItem).set_angle, start_angle, new_angle, scroll_time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
 		
 		if !has_refreshed:
 			has_refreshed = true;
 			tween.finished.connect(_redraw_items);
+		
+		item.set_intended_angle(new_angle)
+
+
+func on_scroll_begin():
+	pass;
 
 
 func _unhandled_input(event : InputEvent):
+	if !_process_input : return;
+	
 	if event.is_action_pressed("ui_up") || (event.is_action("ui_up") && event.is_echo()):
 		_scroll_ui(1);
 		accept_event();
+		
+		_process_input = false;
+		await get_tree().create_timer(_scroll_delay).timeout
+		_process_input = true;
+	
 	if event.is_action_pressed("ui_down") || (event.is_action("ui_down") && event.is_echo()):
 		_scroll_ui(-1);
 		accept_event();
+		
+		_process_input = false;
+		await get_tree().create_timer(_scroll_delay).timeout
+		_process_input = true;
+	
+	if event.is_action_pressed("ui_right") && !(event.is_action("ui_down") || event.is_action("ui_up")):
+		for i in jump_slots:
+			_scroll_ui(-1);
+			accept_event();
+	
+	if event.is_action_pressed("ui_left") && !(event.is_action("ui_down") || event.is_action("ui_up")):
+		for i in jump_slots:
+			_scroll_ui(1);
+			accept_event();
+	
+	if event.is_action_pressed("ui_accept"):
+		on_item_selected(_data[_index]);
+		accept_event();
+
+
+func on_item_selected(data):
+	pass;
