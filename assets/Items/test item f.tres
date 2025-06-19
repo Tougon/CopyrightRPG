@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=9 format=3 uid="uid://3o63w7rvwlph"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_p7esj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_l0nye"]
+[ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/damage/player/spell_damage_player_secretchord.tres" id="3_djho2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_attack.gd" id="4_nxhsr"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_5bg3x"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="6_se1hy"]
+
+[sub_resource type="Resource" id="Resource_w6n4s"]
+script = ExtResource("4_nxhsr")
+action = ExtResource("3_djho2")
+
+[sub_resource type="Resource" id="Resource_uting"]
+script = ExtResource("1_p7esj")
+stackable = false
+effect_name = ""
+generic = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("2_l0nye")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("2_l0nye")]([])
+on_activate = Array[ExtResource("2_l0nye")]([SubResource("Resource_w6n4s")])
+on_failed_to_activate = Array[ExtResource("2_l0nye")]([])
+on_apply = Array[ExtResource("2_l0nye")]([])
+on_move_selected = Array[ExtResource("2_l0nye")]([])
+on_move_completed = Array[ExtResource("2_l0nye")]([])
+on_deactivate = Array[ExtResource("2_l0nye")]([])
+on_turn_start = Array[ExtResource("2_l0nye")]([])
+on_turn_end = Array[ExtResource("2_l0nye")]([])
+on_stack = Array[ExtResource("2_l0nye")]([])
+
+[resource]
+script = ExtResource("6_se1hy")
+equipment_type = 0
+hp_mod = 10
+mp_mod = 10
+atk_mod = 5
+def_mod = -5
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.1
+equipment_effects = Array[ExtResource("1_p7esj")]([SubResource("Resource_uting")])
+item_name_key = "T_ITEM_NAME_TEMPF"
+item_description_key = ""
+item_icon_path = "res://assets/Sprites/Entities/Slime/slime_n_attack.png"
+item_flags = Array[ExtResource("5_5bg3x")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddvnqptv68ije"]
+
+[ext_resource type="Script" path="res://src/UIManager/Scenes/RadialCarousel.gd" id="1_phb3t"]
+[ext_resource type="PackedScene" uid="uid://2lkm8lxpoe01" path="res://src/UIManager/Scenes/RadialCarouselItem.tscn" id="2_ahqjy"]
+
+[node name="RadialCarousel" type="Control"]
+clip_children = 2
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_phb3t")
+carousel_item = ExtResource("2_ahqjy")
+item_spacing_degrees = 15.0
+carousel_size = Vector2(200, 375)
+carousel_offset = Vector2(50, 0)

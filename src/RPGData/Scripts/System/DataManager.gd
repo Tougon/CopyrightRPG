@@ -57,6 +57,8 @@ func create_data():
 	current_save.inventory[2] = 3;
 	current_save.inventory[3] = 3;
 	current_save.inventory[4] = 3;
+	current_save.inventory[5] = 3;
+	current_save.inventory[6] = 3;
 
 
 func load_data():

@@ -117,13 +117,19 @@ func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = n
 				comp_lck = -(comp_equipment.lck_mod * GameplayConstants.LUCK_SCALE);
 	
 	if comp_hp != 0 :
-		$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp) + " + " + str(comp_hp);
+		if comp_hp > 0:
+			$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp) + " [color=#3ce864]+ " + str(comp_hp);
+		else :
+			$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp) + " [color=#ed3b3e]- " + str(abs(comp_hp));
 	else:
 		$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp);
 	$"Entity Stats Area/Entity Stats Group/HP".value = ((_current_player_data.hp_value as float)) / (hp as float)
 	
 	if comp_mp != 0 :
-		$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp) + " + " + str(comp_mp);
+		if comp_mp > 0:
+			$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp) + " [color=#3ce864]+ " + str(comp_mp);
+		else :
+			$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp) + " [color=#ed3b3e]- " + str(abs(comp_mp));
 	else :
 		$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp);
 	$"Entity Stats Area/Entity Stats Group/MP".value = ((_current_player_data.mp_value as float)) / (mp as float)
@@ -163,6 +169,7 @@ func _refresh_move_list():
 		if button != null : 
 			button.focus_neighbor_left = "";
 			button.focus_neighbor_right = "";
+			button.modulate = Color(1,1,1,1);
 			
 			if move != null:
 				button.disabled = false;
@@ -174,7 +181,9 @@ func _refresh_move_list():
 				button.get_node("Root/Label").text = "";
 				button.get_node("Root/Image").texture = equipment_empty_sprite;
 			
-			if button.disabled : button.focus_mode = Control.FOCUS_NONE;
+			if button.disabled : 
+				button.focus_mode = Control.FOCUS_NONE;
+				button.modulate = Color(1,1,1,0.25);
 			
 			else : 
 				button.focus_mode = Control.FOCUS_ALL;
