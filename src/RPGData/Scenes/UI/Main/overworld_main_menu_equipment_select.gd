@@ -1,6 +1,6 @@
 extends MenuPanel
 
-@export var menu_panel : DynamicMenuPanel;
+@export var menu_panel : RadialCarousel;
 
 var _current_equipment_type : EquipmentItem.EquipmentType;
 var _current_player_data : PartyMemberData;
@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 	EventManager.on_player_equipment_selected.connect(_on_player_equipment_selected);
 	
-	menu_panel.on_item_selected.connect(_on_item_selected);
+	menu_panel.on_item_highlighted.connect(_on_item_selected);
 	menu_panel.on_item_clicked.connect(_on_item_clicked);
 
 
@@ -40,7 +40,8 @@ func on_focus():
 	await get_tree().process_frame;
 	
 	if menu_panel.get_data_size() > 0 :
-		menu_panel.set_selected_index(0);
+		menu_panel.set_index(0);
+		$BG/RadialCarousel.grab_focus();
 	else :
 		$"BG/Item Visuals/Equipment/Name".text = tr("T_MENU_COMMON_PARTY_NO_EQUIPMENT_DESC");
 		$"BG/Item Visuals/Description".text = "";

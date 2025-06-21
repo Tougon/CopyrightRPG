@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=98 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -39,9 +39,10 @@
 [ext_resource type="Texture2D" uid="uid://owywes6aauk3" path="res://assets/Sprites/UI/Status/ui_equipment_new.png" id="24_ufy88"]
 [ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_equipment_select.gd" id="29_hwmba"]
-[ext_resource type="PackedScene" uid="uid://bhbi06eb7yvyu" path="res://src/RPGData/Scenes/UI/Main/main_menu_equipment_select_button.tscn" id="30_tjpn3"]
 [ext_resource type="Texture2D" uid="uid://div4dy5u851y0" path="res://assets/Sprites/UI/Status/cursor_bracket.png" id="32_qohhh"]
 [ext_resource type="Texture2D" uid="uid://dw3cdll32x3n7" path="res://assets/Sprites/UI/Status/cursor_bracket_glow.png" id="33_co7pr"]
+[ext_resource type="Script" path="res://src/UIManager/Scenes/RadialCarousel.gd" id="35_d04fx"]
+[ext_resource type="PackedScene" uid="uid://cn6puc3qs25k8" path="res://src/RPGData/Scenes/UI/overworld_main_menu_equipment_carousel_item.tscn" id="36_caiq6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -1930,7 +1931,7 @@ offset_top = 111.0
 offset_right = 493.0
 offset_bottom = 326.0
 script = ExtResource("29_hwmba")
-menu_panel = NodePath("BG/Dynamic Panel")
+menu_panel = NodePath("BG/RadialCarousel")
 menu_name = "overworld_menu_main_equipment_select"
 
 [node name="BG" type="NinePatchRect" parent="Body/Party/Entity Equipment Select Area"]
@@ -1958,6 +1959,389 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="RadialCarousel" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
+clip_children = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 215.0
+offset_bottom = -4.0
+grow_vertical = 2
+script = ExtResource("35_d04fx")
+carousel_item = ExtResource("36_caiq6")
+item_size = Vector2(150, 35)
+item_spacing_degrees = 15.0
+carousel_size = Vector2(133.333, 250)
+carousel_offset = Vector2(-15, 0)
+
+[node name="Cursor" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 80.0
+offset_right = -240.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+modulate = Color(1, 0, 0.286275, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
+
+[node name="Cursor2" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 80.0
+offset_right = -232.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_right = -8.0
+offset_bottom = 24.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = -8.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+modulate = Color(1, 0, 0.286275, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_right = -16.0
+offset_bottom = 48.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = -16.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
+
+[node name="Item Visuals" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -220.0
+offset_top = 8.0
+offset_right = -18.0
+offset_bottom = -9.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Equipment" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_right = 78.0
+offset_bottom = 104.0
+grow_horizontal = 2
+
+[node name="Static" type="ColorRect" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
+material = SubResource("ShaderMaterial_8ikbu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "Possibly the coolest fit ever. Will raise all your stats and make you look cool."
+label_settings = SubResource("LabelSettings_3ei2n")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Close" type="Button" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -55.0
+offset_right = -10.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+text = "Close"
+
+[node name="Label" type="Label" parent="Body/Party/Entity Equipment Select Area/BG"]
+material = ExtResource("16_egfar")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.5
+offset_top = -10.5
+offset_right = 154.5
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+pivot_offset = Vector2(427, 250)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 24
+text = "T_MENU_COMMON_PARTY_NO_EQUIPMENT"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Border" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
 layout_mode = 1
@@ -2081,136 +2465,6 @@ flip_v = true
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Border"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
-
-[node name="Item Visuals" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
-visible = false
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -220.0
-offset_top = 8.0
-offset_right = -18.0
-offset_bottom = -9.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Equipment" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -78.0
-offset_right = 78.0
-offset_bottom = 104.0
-grow_horizontal = 2
-
-[node name="Static" type="ColorRect" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
-material = SubResource("ShaderMaterial_8ikbu")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Name" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
-custom_minimum_size = Vector2(156, 0)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 2.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Item Name"
-horizontal_alignment = 1
-
-[node name="Description" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
-custom_minimum_size = Vector2(156, 0)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -65.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 12
-text = "Possibly the coolest fit ever. Will raise all your stats and make you look cool."
-label_settings = SubResource("LabelSettings_3ei2n")
-autowrap_mode = 2
-text_overrun_behavior = 3
-
-[node name="Close" type="Button" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -55.0
-offset_right = -10.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-text = "Close"
-
-[node name="Dynamic Panel" type="Panel" parent="Body/Party/Entity Equipment Select Area/BG" node_paths=PackedStringArray("container")]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 8.0
-offset_right = 212.0
-offset_bottom = -9.0
-grow_vertical = 2
-script = ExtResource("12_wsuig")
-container = NodePath("ScrollContainer")
-menu_item = ExtResource("30_tjpn3")
-item_size = Vector2(195, 50)
-item_spacing = Vector2(10, 5)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Body/Party/Entity Equipment Select Area/BG/Dynamic Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-follow_focus = true
-
-[node name="Control" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Dynamic Panel/ScrollContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Body/Party/Entity Equipment Select Area/BG"]
-material = ExtResource("16_egfar")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -10.5
-offset_right = 124.0
-offset_bottom = 20.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0872665
-pivot_offset = Vector2(427, 250)
-theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 24
-text = "T_MENU_COMMON_PARTY_NO_EQUIPMENT"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party"]
 script = ExtResource("2_fajv7")

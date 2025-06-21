@@ -19,10 +19,9 @@ func set_intended_angle(angle : float) :
 func get_intended_angle() -> float:
 	return _intended_angle;
 
-# Eventually will pass
+
 func set_data(obj) :
-	if obj is String:
-		$Label.text = obj as String;
+	pass;
 
 
 # Input/Selection

@@ -1,0 +1,118 @@
+[gd_scene load_steps=16 format=3 uid="uid://cn6puc3qs25k8"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_main_menu_equipment_carousel_item.gd" id="1_3efch"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_gyvr4"]
+[ext_resource type="Texture2D" uid="uid://chlboh2av785i" path="res://assets/Sprites/UI/Status/ui_box_party.png" id="2_ufsan"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_h3qb8"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="4_hk12w"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="5_lijfc"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="6_gs454"]
+
+[sub_resource type="Resource" id="Resource_5efqs"]
+script = ExtResource("6_gs454")
+target = "ColorRect"
+property_name = "color"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 1
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="Resource" id="Resource_10nhw"]
+script = ExtResource("5_lijfc")
+frames = Array[ExtResource("6_gs454")]([SubResource("Resource_5efqs")])
+
+[sub_resource type="Resource" id="Resource_bgl3f"]
+script = ExtResource("4_hk12w")
+tween_name = "Highlight"
+sequence = Array[ExtResource("5_lijfc")]([SubResource("Resource_10nhw")])
+
+[sub_resource type="Resource" id="Resource_nv14w"]
+script = ExtResource("3_h3qb8")
+tween_name = "Highlight"
+tween_resource = SubResource("Resource_bgl3f")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_tmd6h"]
+script = ExtResource("6_gs454")
+target = "ColorRect"
+property_name = "color"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 1
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_ty1u3"]
+script = ExtResource("5_lijfc")
+frames = Array[ExtResource("6_gs454")]([SubResource("Resource_tmd6h")])
+
+[sub_resource type="Resource" id="Resource_2f7jh"]
+script = ExtResource("4_hk12w")
+tween_name = "Unhighlight"
+sequence = Array[ExtResource("5_lijfc")]([SubResource("Resource_ty1u3")])
+
+[sub_resource type="Resource" id="Resource_dm70d"]
+script = ExtResource("3_h3qb8")
+tween_name = "Unhighlight"
+tween_resource = SubResource("Resource_2f7jh")
+play_on_start = false
+next_tween = ""
+
+[node name="OverworldMainMenuEquipmentCarouselItem" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 50.0
+script = ExtResource("1_3efch")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ufsan")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="TweenPlayerUI" type="Node" parent="."]
+script = ExtResource("2_gyvr4")
+sequence_list = Array[ExtResource("3_h3qb8")]([SubResource("Resource_nv14w"), SubResource("Resource_dm70d")])

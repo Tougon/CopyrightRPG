@@ -18,6 +18,10 @@ var _carousel_items : Array;
 # Do we really need this?
 var _visible_items : Array;
 
+signal on_scroll();
+signal on_item_highlighted(data);
+signal on_item_clicked(data);
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,14 +57,17 @@ func _ready() -> void:
 			_carousel_items.append(item);
 			angle += item_spacing_degrees;
 	
-	# TEST CODE:
-	set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"])
-	self.grab_focus();
+	#set_data(["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"])
+	#self.grab_focus();
 
 
 func set_data(data : Array) :
 	_data = data;
 	_redraw_items();
+
+
+func get_data_size() -> int:
+	return _data.size();
 
 
 func set_index(index : int) :
@@ -103,6 +110,7 @@ func _redraw_items() :
 
 
 func on_item_highlight(data):
+	on_item_highlighted.emit(_data[_index])
 	pass;
 
 
@@ -143,16 +151,19 @@ func _scroll_ui(direction : int) :
 		if !has_refreshed:
 			has_refreshed = true;
 			tween.finished.connect(_redraw_items);
+			item.set_highlight(false);
+		else :
+			item.set_highlight(false);
 		
 		item.set_intended_angle(new_angle)
 
 
 func on_scroll_begin():
-	pass;
+	on_scroll.emit();
 
 
 func _unhandled_input(event : InputEvent):
-	if !_process_input : return;
+	if !_process_input || get_data_size() == 0: return;
 	
 	if event.is_action_pressed("ui_up") || (event.is_action("ui_up") && event.is_echo()):
 		_scroll_ui(1);
@@ -186,4 +197,5 @@ func _unhandled_input(event : InputEvent):
 
 
 func on_item_selected(data):
+	on_item_clicked.emit(data);
 	pass;
