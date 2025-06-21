@@ -105,16 +105,16 @@ func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = n
 			comp_res = equipment.res_mod;
 			comp_spd = equipment.spd_mod;
 			comp_lck = (equipment.lck_mod * GameplayConstants.LUCK_SCALE);
-		else :
-			if comp_equipment != null : 
-				comp_hp = -comp_equipment.hp_mod;
-				comp_mp = -comp_equipment.mp_mod;
-				comp_atk = -comp_equipment.atk_mod;
-				comp_def = -comp_equipment.def_mod;
-				comp_mag = -comp_equipment.mag_mod;
-				comp_res = -comp_equipment.res_mod;
-				comp_spd = -comp_equipment.spd_mod;
-				comp_lck = -(comp_equipment.lck_mod * GameplayConstants.LUCK_SCALE);
+		
+		if comp_equipment != null :
+			comp_hp -= comp_equipment.hp_mod;
+			comp_mp -= comp_equipment.mp_mod;
+			comp_atk -= comp_equipment.atk_mod;
+			comp_def -= comp_equipment.def_mod;
+			comp_mag -= comp_equipment.mag_mod;
+			comp_res -= comp_equipment.res_mod;
+			comp_spd -= comp_equipment.spd_mod;
+			comp_lck -= (comp_equipment.lck_mod * GameplayConstants.LUCK_SCALE);
 	
 	if comp_hp != 0 :
 		if comp_hp > 0:

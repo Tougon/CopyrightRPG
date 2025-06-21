@@ -11,7 +11,6 @@ func set_data(obj) :
 # Input/Selection
 func set_highlight(active : bool) :
 	if active :
-		print("Yeah: " + $Label.text);
 		$TweenPlayerUI.play_tween_name("Highlight");
 	else :
 		$TweenPlayerUI.play_tween_name("Unhighlight");

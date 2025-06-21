@@ -97,14 +97,13 @@ func _refresh_equipment_ui():
 
 func _on_item_selected(data):
 	if data != null  && data is EquipmentItem:
-		$"BG/Item Visuals/Equipment/Name".text = tr(data.item_name_key);
 		$"BG/Item Visuals/Description".text = tr(data.item_description_key);
 		
 		print("TODO: Load sprites for preview")
 		EventManager.on_equipment_item_highlighted.emit(data as EquipmentItem, _current_equipment_type);
 	
 	else :
-		$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");
+		#$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");
 		$"BG/Item Visuals/Description".text = tr("T_ITEM_DESCRIPTION_NONE");
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 		EventManager.on_equipment_item_highlighted.emit(null, _current_equipment_type);

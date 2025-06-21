@@ -1947,7 +1947,7 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
-[node name="Blocker[DELETE PERHAPS]" type="ColorRect" parent="Body/Party/Entity Equipment Select Area/BG"]
+[node name="Blocker" type="ColorRect" parent="Body/Party/Entity Equipment Select Area/BG"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1978,7 +1978,15 @@ item_spacing_degrees = 15.0
 carousel_size = Vector2(133.333, 250)
 carousel_offset = Vector2(-15, 0)
 
-[node name="Cursor" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
+[node name="Decorations" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cursor" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Decorations"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1990,7 +1998,7 @@ offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 offset_right = 32.0
@@ -1998,7 +2006,7 @@ offset_bottom = 32.0
 texture = ExtResource("32_qohhh")
 expand_mode = 1
 
-[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -2011,7 +2019,7 @@ texture = ExtResource("32_qohhh")
 expand_mode = 1
 flip_h = true
 
-[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 anchors_preset = 2
@@ -2024,7 +2032,7 @@ texture = ExtResource("32_qohhh")
 expand_mode = 1
 flip_v = true
 
-[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 anchors_preset = 3
@@ -2041,7 +2049,7 @@ expand_mode = 1
 flip_h = true
 flip_v = true
 
-[node name="Glow" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
+[node name="Glow" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -2054,14 +2062,14 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor/Glow"]
 layout_mode = 1
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("33_co7pr")
 expand_mode = 1
 
-[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor/Glow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2073,7 +2081,7 @@ texture = ExtResource("33_co7pr")
 expand_mode = 1
 flip_h = true
 
-[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor/Glow"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -2085,7 +2093,7 @@ texture = ExtResource("33_co7pr")
 expand_mode = 1
 flip_v = true
 
-[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor/Glow"]
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor/Glow"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -2101,143 +2109,7 @@ expand_mode = 1
 flip_h = true
 flip_v = true
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Cursor"]
-script = ExtResource("2_fajv7")
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
-
-[node name="Cursor2" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 36.0
-offset_top = 80.0
-offset_right = -232.0
-offset_bottom = -72.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-offset_right = 24.0
-offset_bottom = 24.0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-
-[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -32.0
-offset_right = -8.0
-offset_bottom = 24.0
-grow_horizontal = 0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-flip_h = true
-
-[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -32.0
-offset_right = 24.0
-offset_bottom = -8.0
-grow_vertical = 0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-flip_v = true
-
-[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
-modulate = Color(1, 0, 0.286275, 1)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-offset_right = -8.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("32_qohhh")
-expand_mode = 1
-flip_h = true
-flip_v = true
-
-[node name="Glow" type="Control" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
-modulate = Color(1, 0, 0.286275, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
-layout_mode = 1
-offset_right = 48.0
-offset_bottom = 48.0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-
-[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -64.0
-offset_right = -16.0
-offset_bottom = 48.0
-grow_horizontal = 0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-flip_h = true
-
-[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
-offset_right = 48.0
-offset_bottom = -16.0
-grow_vertical = 0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-flip_v = true
-
-[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2/Glow"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -64.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("33_co7pr")
-expand_mode = 1
-flip_h = true
-flip_v = true
-
-[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Cursor2"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Decorations/Cursor"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
@@ -2272,20 +2144,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Name" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Equipment"]
-custom_minimum_size = Vector2(156, 0)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 2.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Item Name"
-horizontal_alignment = 1
 
 [node name="Description" type="Label" parent="Body/Party/Entity Equipment Select Area/BG/Item Visuals"]
 custom_minimum_size = Vector2(156, 0)
