@@ -1,10 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bcf4n3fjo782h"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b3jaiekyx8xfo"]
 
-[ext_resource type="Shader" path="res://assets/Shaders/hologram_ui.gdshader" id="1_ul644"]
-[ext_resource type="Texture2D" uid="uid://b425guj8gg1u5" path="res://assets/Sprites/UI/Status/hologram_lines.png" id="2_5mpso"]
+[ext_resource type="Shader" path="res://assets/Shaders/hologram_ui.gdshader" id="1_4bh38"]
+[ext_resource type="Texture2D" uid="uid://b425guj8gg1u5" path="res://assets/Sprites/UI/Status/hologram_lines.png" id="2_aclc3"]
 
 [resource]
-shader = ExtResource("1_ul644")
+shader = ExtResource("1_4bh38")
 shader_parameter/baseColor = Color(2.02149e-06, 0.373176, 0.529109, 1)
 shader_parameter/speed = 15.0
 shader_parameter/linesColor = Color(0, 0.396078, 0.670588, 1)
@@ -14,4 +14,4 @@ shader_parameter/distortion = 2.285
 shader_parameter/stablization = 8.0
 shader_parameter/distortion_speed = 0.96
 shader_parameter/distortion_factor = 0.05
-shader_parameter/hologramTexture = ExtResource("2_5mpso")
+shader_parameter/hologramTexture = ExtResource("2_aclc3")

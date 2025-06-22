@@ -8,7 +8,7 @@
 script = ExtResource("2_7ofgw")
 move = ExtResource("2_aa685")
 item_name_key = "T_ITEM_NAME_TEMPB"
-item_description_key = ""
+item_description_key = "T_ITEM_DESCRIPTION_TEMP"
 item_icon_path = ""
 item_flags = Array[ExtResource("1_en65d")]([])
 item_cost = 0

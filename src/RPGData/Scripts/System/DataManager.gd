@@ -52,13 +52,13 @@ func create_data():
 		party_data.append(member);
 	
 	# TODO: Remove this. This is temp item stuff.
-	current_save.inventory[0] = 2;
-	current_save.inventory[1] = 3;
-	current_save.inventory[2] = 3;
-	current_save.inventory[3] = 3;
-	current_save.inventory[4] = 3;
-	current_save.inventory[5] = 3;
-	current_save.inventory[6] = 3;
+	#current_save.inventory[0] = 2;
+	#current_save.inventory[1] = 3;
+	#current_save.inventory[2] = 3;
+	#current_save.inventory[3] = 3;
+	#current_save.inventory[4] = 3;
+	#current_save.inventory[5] = 3;
+	#current_save.inventory[6] = 3;
 
 
 func load_data():

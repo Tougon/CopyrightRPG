@@ -162,7 +162,6 @@ func _on_item_selected(data):
 
 
 func _load_spell_data(move : Spell):
-	# TODO: Make spell animate
 	_current_frame = 1;
 	_current_animation = move.animation_sequence;
 	

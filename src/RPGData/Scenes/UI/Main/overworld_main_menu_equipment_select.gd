@@ -14,6 +14,7 @@ func _ready() -> void:
 	
 	menu_panel.on_item_highlighted.connect(_on_item_selected);
 	menu_panel.on_item_clicked.connect(_on_item_clicked);
+	menu_panel.on_scroll.connect(_on_scroll);
 
 
 func _on_player_equipment_selected(equipment_type : EquipmentItem.EquipmentType, player_data : PartyMemberData, entity : Entity):
@@ -43,9 +44,8 @@ func on_focus():
 		menu_panel.set_index(0);
 		$BG/RadialCarousel.grab_focus();
 	else :
-		$"BG/Item Visuals/Equipment/Name".text = tr("T_MENU_COMMON_PARTY_NO_EQUIPMENT_DESC");
 		$"BG/Item Visuals/Description".text = "";
-		$BG/Label.visible = true;
+		$BG/None.visible = true;
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 		$"BG/Item Visuals/Close".visible = true;
 		$"BG/Item Visuals/Close".grab_focus();
@@ -79,34 +79,53 @@ func _refresh_equipment_ui():
 			valid_items.append(item);
 	
 	if inventory.size() == 0 && _current_equipment_id == -1:
-		$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");
 		$"BG/Item Visuals/Description".text = "";
-		$BG/Label.visible = true;
+		$BG/None.visible = true;
+		
+		match _current_equipment_type:
+			EquipmentItem.EquipmentType.Weapon:
+				$BG/None.text = tr("T_MENU_COMMON_PARTY_NO_WEAPON");
+			
+			EquipmentItem.EquipmentType.Armor:
+				$BG/None.text = tr("T_MENU_COMMON_PARTY_NO_ARMOR");
+			
+			EquipmentItem.EquipmentType.Accessory:
+				$BG/None.text = tr("T_MENU_COMMON_PARTY_NO_ACCESSORIES");
+		
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 		$"BG/Item Visuals/Close".visible = true;
 		$"BG/Item Visuals/Close".grab_focus();
 	else :
 		if _current_equipment_id != -1:
 			valid_items.append(null);
-		$BG/Label.visible = false;
+		$BG/None.visible = false;
 		$"BG/Item Visuals/Close".visible = false;
 	
 	menu_panel.set_data(valid_items);
 
 
+func _on_scroll():
+	$"BG/Item Visuals/Equipment/TweenPlayerUI".play_tween_name("Zap");
+
 
 func _on_item_selected(data):
 	if data != null  && data is EquipmentItem:
 		$"BG/Item Visuals/Description".text = tr(data.item_description_key);
-		
-		print("TODO: Load sprites for preview")
+		$"BG/Item Visuals/Equipment".texture = load_image((data as EquipmentItem).item_icon_path);
+		$"BG/Item Visuals/Equipment/Static".visible = false;
 		EventManager.on_equipment_item_highlighted.emit(data as EquipmentItem, _current_equipment_type);
 	
 	else :
-		#$"BG/Item Visuals/Equipment/Name".text = tr("T_ITEM_NAME_NONE");
 		$"BG/Item Visuals/Description".text = tr("T_ITEM_DESCRIPTION_NONE");
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 		EventManager.on_equipment_item_highlighted.emit(null, _current_equipment_type);
+
+
+func load_image(path : String) -> Texture2D:
+	if ResourceLoader.exists(path, "Texture2D"):
+		var texture = ResourceLoader.load(path, "Texture2D") as Texture2D;
+		return texture;
+	return null;
 
 
 func _on_item_clicked(data):

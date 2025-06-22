@@ -41,7 +41,7 @@ func _set_entity_info(index : int):
 	_current_player_entity = DataManager.entity_database.get_entity(_current_player_data.id, true);
 	
 	# TODO: Animate name?
-	$"Entity Stats Area/Entity Portrait Group/Portrait/TweenPlayerUI".play_tween_name("Portrait Zap");
+	$"Entity Stats Area/Entity Portrait Group/Portrait/TweenPlayerUI".play_tween_name("Zap");
 	
 	if _current_player_entity.entity_sprites.size() > 3:
 		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(_current_player_entity.entity_sprites[3], "Texture2D") as Texture2D;
