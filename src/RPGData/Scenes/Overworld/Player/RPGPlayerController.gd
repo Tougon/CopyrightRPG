@@ -52,6 +52,7 @@ func _physics_process(_delta):
 	
 	# Handle pause input
 	if Input.is_action_just_pressed("pause"):
+		await get_tree().process_frame;
 		UIManager.open_menu_name("overworld_menu_main");
 		return;
 	
@@ -181,8 +182,7 @@ func _on_dialogue_end():
 
 func _on_all_menus_closed():
 	if BattleManager.is_battle_active == false:
-		await get_tree().process_frame;
-		await get_tree().process_frame;
+		await get_tree().create_timer(0.2).timeout;
 		_will_process = true
 		_player_visual.set_process(true);
 		#set_process(true);

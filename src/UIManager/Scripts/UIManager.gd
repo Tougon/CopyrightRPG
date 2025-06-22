@@ -32,9 +32,9 @@ func _unhandled_input(event):
 		var current = active_menus[active_menus.size()-1];
 		var bypass_focus = false;
 		
-		if !current.focused && current.submenu && active_menus.size() > 1:
-			current = active_menus[active_menus.size()-2];
-			bypass_focus = true;
+		#if !current.focused && current.submenu && active_menus.size() > 1:
+		#	current = active_menus[active_menus.size()-2];
+		#	bypass_focus = true;
 		
 		if current.focused || bypass_focus:
 			if (event.is_action_pressed("ui_cancel")):
@@ -92,6 +92,12 @@ func close_all_menus():
 	is_closing_all = true;
 	while active_menus.size() > 0:
 		active_menus[active_menus.size() - 1].set_active(false);
+		
+		var index = active_menus.find(active_menus[active_menus.size() - 1]);
+		
+		if index > -1:
+			active_menus.remove_at(index);
+		
 	on_all_menus_closed.emit();
 	is_closing_all = false;
 

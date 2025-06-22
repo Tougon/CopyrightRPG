@@ -24,28 +24,32 @@ func _on_delete_pressed():
 
 
 func set_active(state : bool):
-	super.set_active(state);
-	
 	if !state :
 		submenus[_current_tab_index].set_active(false);
 		for index in header_icons.size():
 			header_icons[index].play_tween_name("Focus Exited");
 		EventManager.fade_bgm.emit(1, 0.5, false);
+		
+		super.set_active(state);
 	else :
+		super.set_active(state);
+		
 		EventManager.fade_bgm.emit(0.45, 0.5, false);
 		await get_tree().create_timer(0.25).timeout;
-		submenus[_current_tab_index].set_active(true);
 		_play_header_tweens();
+		await get_tree().create_timer(0.15).timeout;
+		submenus[_current_tab_index].set_active(true);
 
 
 func set_active_forced(state : bool):
 	super.set_active_forced(state);
 
 
-func on_menu_active():
+# Removed to prevent obnoxious UI bugs.
+#func on_menu_active():
 	# Do not focus this menu
-	ui_manager.open_menu(self);
-	ui_manager.open_menu(submenus[_current_tab_index]);
+#	ui_manager.open_menu(self);
+	#ui_manager.open_menu(submenus[_current_tab_index]);
 
 
 func on_menu_inactive():
@@ -78,3 +82,7 @@ func on_ui_aux_2():
 	
 	submenus[_current_tab_index].set_active(true);
 	_play_header_tweens();
+
+
+func on_menu_cancel():
+	pass;

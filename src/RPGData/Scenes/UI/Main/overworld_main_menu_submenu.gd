@@ -6,8 +6,8 @@ var last_selection : Control;
 
 
 func on_menu_cancel():
-	super.on_menu_cancel();
-	root_menu.on_menu_cancel();
+	if !UIManager.is_closing_all :
+		UIManager.close_all_menus();
 
 
 func on_ui_aux_1():
