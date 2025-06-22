@@ -23,7 +23,8 @@ var tween_player : TweenPlayer;
 func _ready():
 	tree_exiting.connect(_on_panel_removed);
 	
-	tween_player = $TweenPlayerUI;
+	if has_node("TweenPlayerUI"):
+		tween_player = $TweenPlayerUI;
 	
 	if tween_player != null :
 		for sequence in sequence_list:

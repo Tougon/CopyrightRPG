@@ -10,8 +10,8 @@ func initialize():
 		var entry = entries[item_id];
 		
 		if entry.item_path != null :
-			if ResourceLoader.exists(entry.item_path, "Item"):
-				entry.item = ResourceLoader.load(entry.item_path, "Item") as Item;
+			if ResourceLoader.exists(entry.item_path):
+				entry.item = ResourceLoader.load(entry.item_path);
 			else:
 				print("WARNING: Item path at index " + str(item_id) + " is invalid!");
 
