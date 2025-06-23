@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=106 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -39,12 +39,14 @@
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="24_m7wo8"]
 [ext_resource type="Texture2D" uid="uid://owywes6aauk3" path="res://assets/Sprites/UI/Status/ui_equipment_new.png" id="24_ufy88"]
 [ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
+[ext_resource type="Material" uid="uid://sjh6twouw8fd" path="res://assets/Materials/UI/ui_item_button_hologram.tres" id="27_phivs"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_equipment_select.gd" id="29_hwmba"]
 [ext_resource type="Texture2D" uid="uid://div4dy5u851y0" path="res://assets/Sprites/UI/Status/cursor_bracket.png" id="32_qohhh"]
 [ext_resource type="Texture2D" uid="uid://dw3cdll32x3n7" path="res://assets/Sprites/UI/Status/cursor_bracket_glow.png" id="33_co7pr"]
 [ext_resource type="Script" path="res://src/UIManager/Scenes/RadialCarousel.gd" id="35_d04fx"]
 [ext_resource type="PackedScene" uid="uid://cn6puc3qs25k8" path="res://src/RPGData/Scenes/UI/overworld_main_menu_equipment_carousel_item.tscn" id="36_caiq6"]
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
+[ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -1034,18 +1036,24 @@ alignment = 1
 [node name="Label" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/Headers"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 text = "Weapon"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/Headers"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 text = "Armor"
 horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="Body/Party/Entity Equipment Area/VBox/Equipment/Headers"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 text = "Accessory"
 horizontal_alignment = 1
 
@@ -1088,6 +1096,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon/Root"]
+material = ExtResource("27_phivs")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1148,6 +1157,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor/Root"]
+material = ExtResource("27_phivs")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1209,6 +1219,7 @@ patch_margin_right = 4
 patch_margin_bottom = 4
 
 [node name="Image" type="TextureRect" parent="Body/Party/Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory/Root"]
+material = ExtResource("27_phivs")
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1949,6 +1960,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+visible = false
 layout_mode = 1
 offset_left = 45.0
 offset_top = 111.0
@@ -2157,9 +2169,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -54.0
-offset_top = 4.0
+offset_top = 8.0
 offset_right = 50.0
-offset_bottom = 108.0
+offset_bottom = 112.0
 grow_horizontal = 2
 expand_mode = 1
 stretch_mode = 5
@@ -2185,11 +2197,12 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 12.0
-offset_top = -83.0
+offset_top = -78.0
 offset_right = -14.0
-offset_bottom = -18.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("39_5w6ca")
 theme_override_font_sizes/font_size = 12
 text = "Possibly the coolest fit ever. Will raise all your stats and make you look cool."
 label_settings = SubResource("LabelSettings_3ei2n")
@@ -2212,6 +2225,8 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 theme_override_styles/focus = SubResource("StyleBoxFlat_ruruu")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lrvr4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cvvfq")
@@ -2226,9 +2241,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -46.0
-offset_top = 46.625
+offset_top = 52.625
 offset_right = 204.0
-offset_bottom = 77.625
+offset_bottom = 83.625
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.0872665

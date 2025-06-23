@@ -12,3 +12,9 @@ class_name Item
 @export var item_cost : int;
 @export var item_sellable : bool;
 @export var item_sell_amount : int;
+
+func load_image() -> Texture2D:
+	if ResourceLoader.exists(item_icon_path, "Texture2D"):
+		var texture = ResourceLoader.load(item_icon_path, "Texture2D") as Texture2D;
+		return texture;
+	return null;

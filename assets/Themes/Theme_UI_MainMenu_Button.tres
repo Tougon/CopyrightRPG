@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ddu4xmidfcls5"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://ddu4xmidfcls5"]
 
 [ext_resource type="FontFile" uid="uid://cfxvuls7qckuq" path="res://assets/Fonts/Galaxy Monkey/galaxymonkey.ttf" id="1_dww68"]
+[ext_resource type="FontFile" uid="uid://dt6ttvw4o5lkc" path="res://assets/Fonts/System/Genos-Bold.ttf" id="2_v8ypl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iotum"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -27,4 +28,10 @@ Button/styles/focus = SubResource("StyleBoxFlat_eqtdm")
 Button/styles/hover = SubResource("StyleBoxFlat_62md2")
 Button/styles/normal = SubResource("StyleBoxFlat_pjex0")
 Button/styles/pressed = SubResource("StyleBoxFlat_un87k")
+GroupHeader/base_type = &"Label"
+GroupHeader/font_sizes/font_size = 24
+GroupHeader/fonts/font = ExtResource("2_v8ypl")
 Label/fonts/font = ExtResource("1_dww68")
+PartyItemButton/base_type = &"Label"
+PartyItemButton/font_sizes/font_size = 20
+PartyItemButton/fonts/font = ExtResource("2_v8ypl")

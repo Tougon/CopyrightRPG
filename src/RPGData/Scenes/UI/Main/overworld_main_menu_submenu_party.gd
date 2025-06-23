@@ -50,6 +50,7 @@ func _set_entity_info(index : int):
 	
 	_display_entity_stats();
 	_refresh_move_list();
+	_refresh_equipment_list();
 
 
 func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = null, equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon):
@@ -191,6 +192,28 @@ func _refresh_move_list():
 				if (i + 1) % 3 == 0 || i == last_valid_index + 1 : button.focus_neighbor_right = button.get_path_to(next_player_node);
 
 
+func _refresh_equipment_list():
+	var weapon = DataManager.party_data[_current_player_index].weapon_id;
+	var armor = DataManager.party_data[_current_player_index].armor_id;
+	var acc = DataManager.party_data[_current_player_index].accessory_id;
+	
+	# TODO: Animate?
+	if weapon != -1 :
+		$"Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon/Root/Image".texture = DataManager.item_database.get_item(weapon).load_image();
+	else:
+		$"Entity Equipment Area/VBox/Equipment/HBoxContainer/Weapon/Root/Image".texture = equipment_empty_sprite;
+	
+	if armor != -1 :
+		$"Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor/Root/Image".texture = DataManager.item_database.get_item(armor).load_image();
+	else:
+		$"Entity Equipment Area/VBox/Equipment/HBoxContainer/Armor/Root/Image".texture = equipment_empty_sprite;
+	
+	if acc != -1 :
+		$"Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory/Root/Image".texture = DataManager.item_database.get_item(acc).load_image();
+	else:
+		$"Entity Equipment Area/VBox/Equipment/HBoxContainer/Accessory/Root/Image".texture = equipment_empty_sprite;
+		
+
 # Equipment Selection
 func _on_weapon_selected():
 	cache_menu_state();
@@ -246,7 +269,7 @@ func _on_refresh_player_equipment(equipment_type : EquipmentItem.EquipmentType, 
 		EquipmentItem.EquipmentType.Accessory:
 			DataManager.party_data[_current_player_index].accessory_id = item_id;
 	
-	# TODO: Refresh visuals
+	_refresh_equipment_list();
 
 
 func _on_equipment_item_highlighted(equipment : EquipmentItem, equipment_type : EquipmentItem.EquipmentType) :

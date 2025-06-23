@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgxm5m2kfekjr"]
+
+[ext_resource type="FontFile" uid="uid://cegcf1pncfy1j" path="res://assets/Fonts/System/Coda-Regular.ttf" id="1_cf1rx"]
+
+[resource]
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_cf1rx")
