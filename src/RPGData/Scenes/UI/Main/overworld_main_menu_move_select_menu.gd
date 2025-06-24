@@ -1,6 +1,6 @@
 extends MenuPanel
 
-@export var menu_panel : DynamicMenuPanel;
+@export var menu_panel : RadialCarousel;
 
 var _target_index : int;
 var _current_player_data : PartyMemberData;
@@ -22,7 +22,7 @@ func _ready():
 	
 	EventManager.on_player_move_selected.connect(_on_player_move_selected);
 	
-	menu_panel.on_item_selected.connect(_on_item_selected);
+	menu_panel.on_item_highlighted.connect(_on_item_selected);
 	menu_panel.on_item_clicked.connect(_on_item_clicked);
 
 
@@ -41,12 +41,11 @@ func on_focus():
 	await get_tree().process_frame;
 	
 	if menu_panel.get_data_size() > 0 :
-		menu_panel.set_selected_index(0);
+		menu_panel.set_index(0);
 	else :
-		$"BG/Move Visuals/Vid/Name".text = tr("T_MENU_COMMON_PARTY_NO_MOVES_DESC");
 		$"BG/Move Visuals/Description".text = "";
 		$"BG/Move Visuals/Cost".text = "";
-		$BG/Label.visible = true;
+		$BG/None.visible = true;
 		$"BG/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Visuals/Close".visible = true;
 		$"BG/Move Visuals/Close".grab_focus();
@@ -99,15 +98,14 @@ func _refresh_move_ui():
 	menu_panel.set_data(valid_moves);
 	
 	if valid_moves.size() == 0:
-		$"BG/Move Visuals/Vid/Name".text = tr("T_MENU_COMMON_PARTY_NO_MOVES_DESC");
 		$"BG/Move Visuals/Description".text = "";
 		$"BG/Move Visuals/Cost".text = "";
-		$BG/Label.visible = true;
+		$BG/None.visible = true;
 		$"BG/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Visuals/Close".visible = true;
 		$"BG/Move Visuals/Close".grab_focus();
 	else :
-		$BG/Label.visible = false;
+		$BG/None.visible = false;
 		$"BG/Move Visuals/Close".visible = false;
 
 
@@ -163,6 +161,8 @@ func _on_item_selected(data):
 
 func _load_spell_data(move : Spell):
 	_current_frame = 1;
+	_current_animation = null;
+	await get_tree().process_frame;
 	_current_animation = move.animation_sequence;
 	
 	$"BG/Move Visuals/Vid".material = _current_player_material;
@@ -173,7 +173,7 @@ func _load_spell_data(move : Spell):
 		
 		for i in move.spell_videos.size():
 			_videos.append(load_video(move.spell_videos[i]));
-		print(_videos.size());
+		#print(_videos.size());
 		
 		# TODO: Delete
 		var video = null;
@@ -190,7 +190,7 @@ func _load_spell_data(move : Spell):
 		
 		for i in move.spell_video_materials.size():
 			_materials.append(load_material(move.spell_video_materials[i]));
-		print(_materials.size());
+		#print(_materials.size());
 	
 	_animation_loop();
 
@@ -212,7 +212,8 @@ func _animation_loop():
 		_current_frame += 1;
 		
 		if _use_manual_time :
-			_manual_time += get_process_delta_time();
+			var delta = get_process_delta_time();
+			_manual_time += delta;
 			$"BG/Move Visuals/Vid".material.set_shader_parameter("manual_time", _manual_time)
 
 

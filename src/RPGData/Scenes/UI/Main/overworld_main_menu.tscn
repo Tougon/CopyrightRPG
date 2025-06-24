@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=109 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -38,13 +38,13 @@
 [ext_resource type="Texture2D" uid="uid://chlboh2av785i" path="res://assets/Sprites/UI/Status/ui_box_party.png" id="24_lgjjk"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="24_m7wo8"]
 [ext_resource type="Texture2D" uid="uid://owywes6aauk3" path="res://assets/Sprites/UI/Status/ui_equipment_new.png" id="24_ufy88"]
-[ext_resource type="PackedScene" uid="uid://ck34qxnyn6wnt" path="res://src/RPGData/Scenes/UI/Main/main_menu_move_select_button.tscn" id="27_0wilh"]
 [ext_resource type="Material" uid="uid://sjh6twouw8fd" path="res://assets/Materials/UI/ui_item_button_hologram.tres" id="27_phivs"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_equipment_select.gd" id="29_hwmba"]
 [ext_resource type="Texture2D" uid="uid://div4dy5u851y0" path="res://assets/Sprites/UI/Status/cursor_bracket.png" id="32_qohhh"]
 [ext_resource type="Texture2D" uid="uid://dw3cdll32x3n7" path="res://assets/Sprites/UI/Status/cursor_bracket_glow.png" id="33_co7pr"]
 [ext_resource type="Script" path="res://src/UIManager/Scenes/RadialCarousel.gd" id="35_d04fx"]
 [ext_resource type="PackedScene" uid="uid://cn6puc3qs25k8" path="res://src/RPGData/Scenes/UI/overworld_main_menu_equipment_carousel_item.tscn" id="36_caiq6"]
+[ext_resource type="PackedScene" uid="uid://l2sxt0pgfsn2" path="res://src/RPGData/Scenes/UI/overworld_main_menu_ability_carousel_item.tscn" id="38_0mnh2"]
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
 [ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
 
@@ -383,6 +383,15 @@ bg_color = Color(0.909804, 0, 0.258824, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvvfq"]
 bg_color = Color(0.937255, 0, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5r4v1"]
+bg_color = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a5er"]
+bg_color = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kp0n"]
+bg_color = Color(1, 0, 0.286275, 1)
 
 [sub_resource type="Resource" id="Resource_el8iu"]
 script = ExtResource("6_i4er7")
@@ -1336,7 +1345,10 @@ offset_right = -6.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 1"]
 script = ExtResource("2_fajv7")
@@ -1395,7 +1407,10 @@ offset_right = -6.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 2"]
 script = ExtResource("2_fajv7")
@@ -1455,7 +1470,10 @@ offset_right = -6.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 3"]
 script = ExtResource("2_fajv7")
@@ -1515,7 +1533,10 @@ offset_right = -6.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 4"]
 script = ExtResource("2_fajv7")
@@ -1574,7 +1595,10 @@ offset_right = -6.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 5"]
 script = ExtResource("2_fajv7")
@@ -1634,7 +1658,10 @@ offset_right = -6.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6"]
 script = ExtResource("2_fajv7")
@@ -1777,187 +1804,6 @@ flip_v = true
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Cursor"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
-
-[node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = -298.0
-offset_right = 484.0
-offset_bottom = -93.0
-grow_vertical = 0
-script = ExtResource("23_kuxur")
-menu_panel = NodePath("BG/Dynamic Panel")
-menu_name = "overworld_menu_main_move_select"
-
-[node name="BG" type="ColorRect" parent="Body/Party/Entity Move Select Area"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.196826, 0.089291, 0.178352, 0.901961)
-
-[node name="Move Visuals" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -211.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="Underlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -78.0
-offset_right = 78.0
-offset_bottom = 104.0
-grow_horizontal = 2
-color = Color(0.617455, 0.617455, 0.617455, 1)
-
-[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
-texture_repeat = 3
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -78.0
-offset_right = 78.0
-offset_bottom = 104.0
-grow_horizontal = 2
-expand = true
-script = ExtResource("23_k7wig")
-
-[node name="Static" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
-material = SubResource("ShaderMaterial_8ikbu")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Name" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
-custom_minimum_size = Vector2(156, 0)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 2.0
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Move Name"
-horizontal_alignment = 1
-
-[node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
-custom_minimum_size = Vector2(156, 0)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -65.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 12
-text = "The user blasts the target with power that distorts even time. The user can't move on the next turn. "
-label_settings = SubResource("LabelSettings_3ei2n")
-autowrap_mode = 2
-text_overrun_behavior = 3
-
-[node name="Cost" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
-custom_minimum_size = Vector2(156, 0)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 14
-text = "999 MP"
-vertical_alignment = 1
-
-[node name="Close" type="Button" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -55.0
-offset_right = -10.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath(".")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath(".")
-text = "Close"
-
-[node name="Dynamic Panel" type="Panel" parent="Body/Party/Entity Move Select Area/BG" node_paths=PackedStringArray("container")]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 205.0
-offset_bottom = -5.0
-grow_vertical = 2
-script = ExtResource("12_wsuig")
-container = NodePath("ScrollContainer")
-menu_item = ExtResource("27_0wilh")
-item_size = Vector2(195, 50)
-item_spacing = Vector2(10, 5)
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Body/Party/Entity Move Select Area/BG/Dynamic Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-follow_focus = true
-
-[node name="Control" type="Control" parent="Body/Party/Entity Move Select Area/BG/Dynamic Panel/ScrollContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Body/Party/Entity Move Select Area/BG"]
-material = ExtResource("16_egfar")
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -10.5
-offset_right = 124.0
-offset_bottom = 20.5
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0872665
-pivot_offset = Vector2(427, 250)
-theme = ExtResource("4_q6orv")
-theme_override_font_sizes/font_size = 24
-text = "T_MENU_COMMON_PARTY_NO_MOVES"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
 visible = false
@@ -2375,6 +2221,467 @@ flip_h = true
 flip_v = true
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Equipment Select Area/BG/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
+
+[node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 45.0
+offset_top = -303.0
+offset_right = 493.0
+offset_bottom = -98.0
+grow_vertical = 0
+script = ExtResource("23_kuxur")
+menu_panel = NodePath("BG/RadialCarousel")
+menu_name = "overworld_menu_main_move_select"
+
+[node name="BG" type="NinePatchRect" parent="Body/Party/Entity Move Select Area"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_lgjjk")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Blocker" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RadialCarousel" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+clip_children = 2
+clip_contents = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 215.0
+offset_bottom = -4.0
+grow_vertical = 2
+script = ExtResource("35_d04fx")
+carousel_item = ExtResource("38_0mnh2")
+item_size = Vector2(150, 35)
+item_spacing_degrees = 15.0
+carousel_size = Vector2(133.333, 250)
+carousel_offset = Vector2(-15, 0)
+
+[node name="Decorations" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cursor" type="Control" parent="Body/Party/Entity Move Select Area/BG/Decorations"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 75.0
+offset_right = -240.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+modulate = Color(1, 0, 0.286275, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
+
+[node name="Move Visuals" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Underlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 6.0
+offset_right = 78.0
+offset_bottom = 110.0
+grow_horizontal = 2
+color = Color(0.617455, 0.617455, 0.617455, 1)
+
+[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+texture_repeat = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 6.0
+offset_right = 78.0
+offset_bottom = 110.0
+grow_horizontal = 2
+expand = true
+script = ExtResource("23_k7wig")
+
+[node name="Static" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
+material = SubResource("ShaderMaterial_8ikbu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+theme_override_font_sizes/font_size = 20
+text = "Move Name"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -65.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("39_5w6ca")
+theme_override_font_sizes/font_size = 12
+text = "The user blasts the target with power that distorts even time. The user can't move on the next turn. "
+label_settings = SubResource("LabelSettings_3ei2n")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Cost" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+theme_override_font_sizes/font_size = 16
+text = "999 MP"
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -115.0
+offset_right = -246.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+theme_override_styles/focus = SubResource("StyleBoxFlat_5r4v1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8a5er")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7kp0n")
+text = "Close"
+
+[node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG"]
+material = ExtResource("16_egfar")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 57.625
+offset_right = 234.0
+offset_bottom = 88.625
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+pivot_offset = Vector2(427, 250)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 24
+text = "T_MENU_COMMON_PARTY_NO_MOVES"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Border"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
@@ -2820,8 +3127,8 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="pressed" from="Body/Party/Entity Equipment Area/VBox/Moveset/Grid/Move 6" to="Body/Party" method="_on_move_selected"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Previous" to="Body/Party" method="_on_focus_entered_previous"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
-[connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Close" to="Body/Party/Entity Equipment Select Area" method="_on_close_pressed"]
+[connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]

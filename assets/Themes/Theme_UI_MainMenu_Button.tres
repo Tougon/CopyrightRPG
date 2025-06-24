@@ -29,6 +29,7 @@ Button/styles/hover = SubResource("StyleBoxFlat_62md2")
 Button/styles/normal = SubResource("StyleBoxFlat_pjex0")
 Button/styles/pressed = SubResource("StyleBoxFlat_un87k")
 GroupHeader/base_type = &"Label"
+GroupHeader/constants/line_spacing = -6
 GroupHeader/font_sizes/font_size = 24
 GroupHeader/fonts/font = ExtResource("2_v8ypl")
 Label/fonts/font = ExtResource("1_dww68")
