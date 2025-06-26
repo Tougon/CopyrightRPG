@@ -6,6 +6,8 @@ class_name DynamicMenuPanel
 @export var menu_item: PackedScene
 @export var item_size : Vector2 = Vector2(75.0, 75.0);
 @export var item_spacing : Vector2 = Vector2(10.0, 10.0);
+@export var use_boundary_limt : bool = false;
+@export var boundary_limit : Vector2 = Vector2(0.0, 0.0);
 # Should export this later, too dangerous to use export now.
 var horizontal : bool = false;
 
@@ -307,7 +309,11 @@ func _get_best_fit_amount_horizontal() -> int:
 	var amount : int = 0;
 	var width : float = 0;
 	
-	while width < container.size.x:
+	var limit = container.size.x;
+	if use_boundary_limt :
+		limit = boundary_limit.x;
+	
+	while width < limit:
 		amount += 1;
 		width += (item_size.x + item_spacing.x);
 	
@@ -321,7 +327,11 @@ func _get_best_fit_amount_vertical() -> int:
 	var amount : int = 0;
 	var height : float = 0;
 	
-	while height < container.size.y:
+	var limit = container.size.y;
+	if use_boundary_limt :
+		limit = boundary_limit.y;
+	
+	while height < limit:
 		amount += 1;
 		height += (item_size.y + item_spacing.y);
 	
@@ -357,7 +367,7 @@ func _refresh_group(group : Array, row_index : int):
 		
 		# Refresh navigation
 		# NOTE: Only works for horizontal
-		if index < _data.size() && i > 0:
+		if index < _data.size() && group.size() > 1:
 			(item as Control).focus_neighbor_left = (group[i - 1] as Control).get_path();
 			
 			if i == group.size() - 1 || index == _data.size() - 1:

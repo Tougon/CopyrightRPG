@@ -11,11 +11,11 @@ func on_menu_cancel():
 
 
 func on_ui_aux_1():
-	root_menu.on_ui_aux_1();
+	root_menu.previous_tab();
 
 
 func on_ui_aux_2():
-	root_menu.on_ui_aux_2();
+	root_menu.next_tab();
 
 
 func set_active(state : bool):

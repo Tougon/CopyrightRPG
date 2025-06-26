@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=112 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -47,6 +47,8 @@
 [ext_resource type="PackedScene" uid="uid://l2sxt0pgfsn2" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_ability_carousel_item.tscn" id="38_0mnh2"]
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
 [ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
+[ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="44_prdk6"]
+[ext_resource type="Theme" uid="uid://b75asv135vvot" path="res://assets/Themes/Theme_UI_InventoryBox.tres" id="46_mlnh1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -407,6 +409,10 @@ tween_resource = ExtResource("12_u23bx")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="LabelSettings" id="LabelSettings_d3vky"]
+line_spacing = -5.0
+font_size = 24
+
 [sub_resource type="Resource" id="Resource_pblu3"]
 script = ExtResource("6_i4er7")
 tween_name = "Open"
@@ -710,6 +716,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("next_player_node", "prev_player_node", "moveset_grid", "cursor", "root_menu", "initial_selection", "all_selections")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1806,7 +1813,6 @@ script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
-visible = false
 layout_mode = 1
 offset_left = 45.0
 offset_top = 111.0
@@ -1840,7 +1846,7 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.8)
 
 [node name="RadialCarousel" type="Control" parent="Body/Party/Entity Equipment Select Area/BG"]
 clip_children = 2
@@ -2262,7 +2268,7 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0, 0, 0, 0.8)
 
 [node name="RadialCarousel" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
 clip_children = 2
@@ -2689,7 +2695,6 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -2699,8 +2704,8 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
 script = ExtResource("11_shyhs")
-menu_panel = NodePath("Item Selection Area/Dynamic Panel")
-no_items_display = NodePath("Item Selection Area/Label")
+menu_panel = NodePath("Inventory Area/BG/Blocker/Selection/Dynamic Panel")
+no_items_display = NodePath("Inventory Area/BG/Blocker/Selection/Label")
 root_menu = NodePath("../..")
 unfocus_on_open = false
 submenu = true
@@ -2715,7 +2720,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="Item Selection Area" type="Control" parent="Body/Inventory"]
+[node name="Inventory Area" type="Control" parent="Body/Inventory"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2723,45 +2728,90 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Dynamic Panel" type="Panel" parent="Body/Inventory/Item Selection Area" node_paths=PackedStringArray("container")]
+[node name="BG" type="NinePatchRect" parent="Body/Inventory/Inventory Area"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 100.0
-offset_top = 50.0
-offset_right = -360.0
-offset_bottom = -78.0
+offset_left = 50.0
+offset_top = 20.0
+offset_right = -50.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("24_lgjjk")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Blocker" type="ColorRect" parent="Body/Inventory/Inventory Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Selection" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dynamic Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Selection" node_paths=PackedStringArray("container")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_wsuig")
 container = NodePath("ScrollContainer")
 menu_item = ExtResource("13_p080w")
-item_size = Vector2(450, 75)
-item_spacing = Vector2(50, 5)
+item_size = Vector2(408, 45)
+item_spacing = Vector2(4, 4)
+use_boundary_limt = true
+boundary_limit = Vector2(800, 545)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Item Selection Area/Dynamic Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Selection/Dynamic Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("46_mlnh1")
 follow_focus = true
+vertical_scroll_mode = 2
 
-[node name="Control" type="Control" parent="Body/Inventory/Item Selection Area/Dynamic Panel/ScrollContainer"]
+[node name="Control" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Selection/Dynamic Panel/ScrollContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Body/Inventory/Item Selection Area"]
+[node name="Label" type="Label" parent="Body/Inventory/Inventory Area/BG/Blocker/Selection"]
 material = ExtResource("16_egfar")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -77.5
-offset_top = 50.0
-offset_right = -182.5
-offset_bottom = -78.0
+offset_left = -1.5
+offset_right = 1.5
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.0872665
@@ -2772,33 +2822,71 @@ text = "T_MENU_COMMON_INVENTORY_NO_ITEM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Item Display Area" type="Control" parent="Body/Inventory"]
+[node name="Display" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -167.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Item Preview" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display"]
+material = ExtResource("38_n3232")
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 6.0
+offset_right = 174.0
+offset_bottom = -6.0
+grow_vertical = 2
+texture = ExtResource("44_prdk6")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Preview"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_0nbvw")])
+
+[node name="Description" type="Label" parent="Body/Inventory/Inventory Area/BG/Blocker/Display"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = -40.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("39_5w6ca")
+theme_override_font_sizes/font_size = 24
+text = "Possibly the coolest fit ever. Will raise all your stats and make you look cool."
+label_settings = SubResource("LabelSettings_d3vky")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Item Use Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("initial_selection")]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Item Use Panel" type="Panel" parent="Body/Inventory/Item Display Area" node_paths=PackedStringArray("initial_selection")]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -355.0
-offset_top = 305.0
-offset_right = -5.0
-offset_bottom = -79.0
-grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("17_n8c6y")
 menu_name = "overworld_menu_main_item_use"
 initial_selection = NodePath("VBoxContainer/Use")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body/Inventory/Item Display Area/Item Use Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2807,7 +2895,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Use" type="Button" parent="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer"]
+[node name="Use" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_left = NodePath(".")
@@ -2817,7 +2905,7 @@ focus_neighbor_bottom = NodePath("../Drop")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_INVENTORY_USE"
 
-[node name="Drop" type="Button" parent="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer"]
+[node name="Drop" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_left = NodePath(".")
@@ -2827,38 +2915,33 @@ focus_neighbor_bottom = NodePath("../Use")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_INVENTORY_DROP"
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Item Display Area/Item Use Panel"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel"]
 script = ExtResource("2_fajv7")
 
-[node name="Target Select Panel" type="Panel" parent="Body/Inventory/Item Display Area" node_paths=PackedStringArray("initial_selection", "all_selections")]
+[node name="Target Select Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("initial_selection", "all_selections")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -355.0
-offset_top = 305.0
-offset_right = -5.0
-offset_bottom = -79.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_nfjs4")
 menu_name = "overworld_menu_main_item_target"
 initial_selection = NodePath("HBoxContainer/P1")
 all_selections = [NodePath("HBoxContainer/P1"), NodePath("HBoxContainer/P2"), NodePath("HBoxContainer/P3"), NodePath("HBoxContainer/P4")]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Body/Inventory/Item Display Area/Target Select Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="P1" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+[node name="P1" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P4")
@@ -2867,7 +2950,7 @@ focus_neighbor_right = NodePath("../P2")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
 
-[node name="P2" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+[node name="P2" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P1")
@@ -2876,7 +2959,7 @@ focus_neighbor_right = NodePath("../P3")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
 
-[node name="P3" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+[node name="P3" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P2")
@@ -2885,7 +2968,7 @@ focus_neighbor_right = NodePath("../P4")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
 
-[node name="P4" type="Button" parent="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer"]
+[node name="P4" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P3")
@@ -2894,8 +2977,131 @@ focus_neighbor_right = NodePath("../P1")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Item Display Area/Target Select Panel"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel"]
 script = ExtResource("2_fajv7")
+
+[node name="Border" type="Control" parent="Body/Inventory/Inventory Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Inventory/Inventory Area/BG/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Inventory"]
 script = ExtResource("2_fajv7")
@@ -3129,9 +3335,9 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Close" to="Body/Party/Entity Equipment Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
-[connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
-[connection signal="pressed" from="Body/Inventory/Item Display Area/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
-[connection signal="pressed" from="Body/Inventory/Item Display Area/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]
 [connection signal="value_changed" from="Body/Options/BGM Volume Slider" to="Body/Options" method="_on_bgm_volume_slider_value_changed"]
 [connection signal="value_changed" from="Body/Options/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]

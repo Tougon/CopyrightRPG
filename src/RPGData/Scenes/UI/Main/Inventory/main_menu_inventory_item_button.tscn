@@ -1,11 +1,255 @@
-[gd_scene load_steps=3 format=3 uid="uid://cliv6mbb8mbic"]
+[gd_scene load_steps=24 format=3 uid="uid://cliv6mbb8mbic"]
 
-[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_2vw68"]
+[ext_resource type="Theme" uid="uid://q7x5eitlt0ra" path="res://assets/Themes/Theme_UI_ButtonBasic.tres" id="1_3kjdm"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_button.gd" id="2_q5n7p"]
+[ext_resource type="Texture2D" uid="uid://div4dy5u851y0" path="res://assets/Sprites/UI/Status/cursor_bracket.png" id="3_6hbta"]
+[ext_resource type="Texture2D" uid="uid://dw3cdll32x3n7" path="res://assets/Sprites/UI/Status/cursor_bracket_glow.png" id="4_hhnbx"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_6hfnc"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_qti28"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="7_w42rs"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_s37o6"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_ifau0"]
+
+[sub_resource type="Resource" id="Resource_3ubq5"]
+script = ExtResource("9_ifau0")
+target = "Glow"
+property_name = "modulate"
+material_property = false
+duration = 1.2
+delay = 0.0
+transition = 7
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="Resource" id="Resource_hff3f"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_3ubq5")])
+
+[sub_resource type="Resource" id="Resource_rbgmc"]
+script = ExtResource("9_ifau0")
+target = "Glow"
+property_name = "modulate"
+material_property = false
+duration = 1.2
+delay = 0.0
+transition = 7
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 0, 0.286275, 0)
+
+[sub_resource type="Resource" id="Resource_71xvp"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_rbgmc")])
+
+[sub_resource type="Resource" id="Resource_f68xc"]
+script = ExtResource("7_w42rs")
+tween_name = "pulse"
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_hff3f"), SubResource("Resource_71xvp")])
+
+[sub_resource type="Resource" id="Resource_alla3"]
+script = ExtResource("6_qti28")
+tween_name = "pulse"
+tween_resource = SubResource("Resource_f68xc")
+play_on_start = true
+next_tween = "pulse"
+
+[sub_resource type="Resource" id="Resource_4k5re"]
+script = ExtResource("9_ifau0")
+target = "Border"
+property_name = "modulate"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ixh3d"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_4k5re")])
+
+[sub_resource type="Resource" id="Resource_6bdht"]
+script = ExtResource("7_w42rs")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_ixh3d")])
+
+[sub_resource type="Resource" id="Resource_ayo2d"]
+script = ExtResource("6_qti28")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_6bdht")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_txlnd"]
+script = ExtResource("9_ifau0")
+target = "Border"
+property_name = "modulate"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_tmpnh"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_txlnd")])
+
+[sub_resource type="Resource" id="Resource_b8fij"]
+script = ExtResource("7_w42rs")
+tween_name = "Focus Exited"
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_tmpnh")])
+
+[sub_resource type="Resource" id="Resource_16584"]
+script = ExtResource("6_qti28")
+tween_name = "Focus Exited"
+tween_resource = SubResource("Resource_b8fij")
+play_on_start = false
+next_tween = ""
 
 [node name="Button" type="Button"]
-offset_right = 450.0
-offset_bottom = 75.0
-theme = ExtResource("1_2vw68")
+offset_right = 400.0
+offset_bottom = 45.0
+theme = ExtResource("1_3kjdm")
+theme_override_font_sizes/font_size = 32
 text = "Item"
 script = ExtResource("2_q5n7p")
+
+[node name="Border" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("3_6hbta")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("3_6hbta")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("3_6hbta")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_6hbta")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("4_hhnbx")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("4_hhnbx")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("4_hhnbx")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_hhnbx")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Border"]
+script = ExtResource("5_6hfnc")
+sequence_list = Array[ExtResource("6_qti28")]([SubResource("Resource_alla3")])
+
+[node name="TweenPlayerUI" type="Node" parent="."]
+script = ExtResource("5_6hfnc")
+sequence_list = Array[ExtResource("6_qti28")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])

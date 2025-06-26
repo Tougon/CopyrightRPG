@@ -3,7 +3,7 @@ extends MenuPanel
 @export var header_icons : Array[TweenPlayer];
 @export var submenus : Array[MenuPanel];
 
-var _current_tab_index : int = 0;
+var _current_tab_index : int = 1;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,7 +64,7 @@ func _play_header_tweens():
 			header_icons[index].play_tween_name("Focus Exited");
 
 
-func on_ui_aux_1():
+func previous_tab():
 	submenus[_current_tab_index].set_active(false);
 	
 	_current_tab_index -= 1;
@@ -74,7 +74,7 @@ func on_ui_aux_1():
 	_play_header_tweens();
 
 
-func on_ui_aux_2():
+func next_tab():
 	submenus[_current_tab_index].set_active(false);
 	
 	_current_tab_index += 1;

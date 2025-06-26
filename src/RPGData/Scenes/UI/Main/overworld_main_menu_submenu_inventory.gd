@@ -20,6 +20,8 @@ func _ready():
 
 func set_active(state : bool):
 	super.set_active(state);
+	
+	if state : _on_item_selected(-1);
 
 # UI Display Functions
 func _refresh_inventory_ui():
@@ -30,8 +32,21 @@ func _refresh_inventory_ui():
 
 
 func _on_item_selected(data):
-	# TODO: Preview images, etc
-	pass;
+	var item = DataManager.item_database.get_item(data);
+	if item != null :
+		$"Inventory Area/BG/Blocker/Display/Description".text = tr(item.item_description_key);
+		$"Inventory Area/BG/Blocker/Display/Item Preview".texture = load_image(item.item_icon_path);
+		$"Inventory Area/BG/Blocker/Display/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+	else :
+		$"Inventory Area/BG/Blocker/Display/Description".text = "";
+		$"Inventory Area/BG/Blocker/Display/Item Preview".texture = null;
+
+
+func load_image(path : String) -> Texture2D:
+	if ResourceLoader.exists(path, "Texture2D"):
+		var texture = ResourceLoader.load(path, "Texture2D") as Texture2D;
+		return texture;
+	return null;
 
 
 func _on_item_clicked(data):
@@ -67,6 +82,10 @@ func on_focus():
 	await get_tree().process_frame;
 	menu_panel.set_selected_index(_last_selection_index);
 
+
+func on_unfocus():
+	super.on_unfocus();
+	cache_menu_state();
 
 func cache_menu_state():
 	_last_selection_index = menu_panel.get_selected_index();

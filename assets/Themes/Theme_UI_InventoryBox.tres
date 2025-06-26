@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b75asv135vvot"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ch2ms"]
+color = Color(1, 0, 0.286275, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_feh2r"]
+color = Color(0.494799, 0, 0.12282, 1)
+thickness = 4
+vertical = true
+
+[resource]
+VScrollBar/styles/grabber = SubResource("StyleBoxLine_ch2ms")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_feh2r")
