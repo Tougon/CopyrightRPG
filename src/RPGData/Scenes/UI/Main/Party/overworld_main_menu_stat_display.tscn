@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfktvvjn8vypu"]
 
 [ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="1_2w34u"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_stat_display.gd" id="1_ymxe2"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_stat_display.gd" id="1_ymxe2"]
 
 [node name="Stat Info" type="Control"]
 custom_minimum_size = Vector2(125, 25)
