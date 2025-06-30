@@ -46,7 +46,9 @@ func _on_item_selected(data):
 
 func _refresh_current_item():
 	if _current_item == null : return;
+	
 	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(_current_item.item_description_key);
+	$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = load_image(_current_item.item_icon_path);
 
 
 func load_image(path : String) -> Texture2D:
@@ -70,6 +72,7 @@ func _on_item_clicked(data):
 
 # Item usage functions
 func _on_use_clicked() -> void:
+	$"Inventory Area/BG/Blocker/Display/Item Use Panel".visible = false;
 	UIManager.open_menu_name("overworld_menu_main_item_target");
 
 
