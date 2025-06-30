@@ -1,10 +1,18 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://q7x5eitlt0ra"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://q7x5eitlt0ra"]
 
 [ext_resource type="FontFile" uid="uid://dt6ttvw4o5lkc" path="res://assets/Fonts/System/Genos-Bold.ttf" id="1_edm4a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h4wgx"]
+content_margin_left = 35.0
+content_margin_right = 35.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dfcqv"]
+content_margin_left = 35.0
+content_margin_right = 35.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1lo6"]
+content_margin_left = 35.0
+content_margin_right = 35.0
 
 [resource]
 Button/colors/font_pressed_color = Color(1, 0, 0.286275, 1)
@@ -12,3 +20,4 @@ Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_edm4a")
 Button/styles/focus = SubResource("StyleBoxEmpty_h4wgx")
 Button/styles/normal = SubResource("StyleBoxEmpty_dfcqv")
+Button/styles/pressed = SubResource("StyleBoxEmpty_g1lo6")

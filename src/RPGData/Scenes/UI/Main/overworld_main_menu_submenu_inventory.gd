@@ -15,6 +15,8 @@ func _ready():
 	menu_panel.on_item_selected.connect(_on_item_selected);
 	menu_panel.on_item_clicked.connect(_on_item_clicked);
 	
+	EventManager.refresh_current_inventory_item.connect(_refresh_current_item)
+	
 	_refresh_inventory_ui();
 
 
@@ -34,12 +36,17 @@ func _refresh_inventory_ui():
 func _on_item_selected(data):
 	var item = DataManager.item_database.get_item(data);
 	if item != null :
-		$"Inventory Area/BG/Blocker/Display/Description".text = tr(item.item_description_key);
-		$"Inventory Area/BG/Blocker/Display/Item Preview".texture = load_image(item.item_icon_path);
-		$"Inventory Area/BG/Blocker/Display/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(item.item_description_key);
+		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = load_image(item.item_icon_path);
+		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview/TweenPlayerUI".play_tween_name("Zap");
 	else :
-		$"Inventory Area/BG/Blocker/Display/Description".text = "";
-		$"Inventory Area/BG/Blocker/Display/Item Preview".texture = null;
+		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = "";
+		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = null;
+
+
+func _refresh_current_item():
+	if _current_item == null : return;
+	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(_current_item.item_description_key);
 
 
 func load_image(path : String) -> Texture2D:
@@ -67,10 +74,17 @@ func _on_use_clicked() -> void:
 
 
 func _on_drop_clicked() :
+	$"Inventory Area/BG/Blocker/Display/Item Use Panel".visible = false;
+	UIManager.open_menu_name("overworld_menu_main_item_drop");
+
+
+func _on_drop_confirmed() :
 	if _current_item == null : return;
 	
 	var item_id = DataManager.item_database.get_id(_current_item);
 	DataManager.change_item_amount(item_id, -1);
+	
+	UIManager.close_menu_name("overworld_menu_main_item_drop");
 	
 	if DataManager.get_item_amount(item_id) <= 0:
 		UIManager.close_menu_name("overworld_menu_main_item_use");
@@ -80,6 +94,10 @@ func _on_drop_clicked() :
 func on_focus():
 	super.on_focus();
 	await get_tree().process_frame;
+	
+	if _last_selection_index >= menu_panel.get_data_size():
+		_last_selection_index = menu_panel.get_data_size() - 1;
+	
 	menu_panel.set_selected_index(_last_selection_index);
 
 
@@ -94,3 +112,6 @@ func cache_menu_state():
 func _exit_tree() :
 	if DataManager != null :
 		DataManager.on_inventory_changed.disconnect(_refresh_inventory_ui);
+	
+	if EventManager != null :
+		EventManager.refresh_current_inventory_item.disconnect(_refresh_current_item)

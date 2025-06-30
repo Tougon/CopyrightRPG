@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=136 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -26,7 +26,6 @@
 [ext_resource type="Material" uid="uid://u0rtoqst1pow" path="res://assets/Materials/UI/material_ui_dirt.tres" id="16_egfar"]
 [ext_resource type="Texture2D" uid="uid://dy6mes2gcsjfy" path="res://assets/Sprites/UI/Status/portrait_bg_small.png" id="16_r460u"]
 [ext_resource type="Texture2D" uid="uid://c7ecmkkq5mfsl" path="res://assets/Sprites/UI/Status/ui_box_filled.png" id="17_2okqg"]
-[ext_resource type="Script" path="res://src/UIManager/Scripts/MenuPanel.gd" id="17_n8c6y"]
 [ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="18_44m7u"]
 [ext_resource type="PackedScene" uid="uid://cfktvvjn8vypu" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_stat_display.tscn" id="19_dtlof"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
@@ -48,7 +47,10 @@
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
 [ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
 [ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="44_prdk6"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_use_panel.gd" id="45_uyhcd"]
+[ext_resource type="Theme" uid="uid://q7x5eitlt0ra" path="res://assets/Themes/Theme_UI_ButtonBasic.tres" id="46_ff4o8"]
 [ext_resource type="Theme" uid="uid://b75asv135vvot" path="res://assets/Themes/Theme_UI_InventoryBox.tres" id="46_mlnh1"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_drop_panel.gd" id="47_txais"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -412,6 +414,174 @@ next_tween = ""
 [sub_resource type="LabelSettings" id="LabelSettings_d3vky"]
 line_spacing = -5.0
 font_size = 24
+
+[sub_resource type="Resource" id="Resource_a5tb3"]
+script = ExtResource("9_7mkwv")
+target = "Glow"
+property_name = "modulate"
+material_property = false
+duration = 1.2
+delay = 0.0
+transition = 7
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="Resource" id="Resource_a3oq7"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_a5tb3")])
+
+[sub_resource type="Resource" id="Resource_f3e1n"]
+script = ExtResource("9_7mkwv")
+target = "Glow"
+property_name = "modulate"
+material_property = false
+duration = 1.2
+delay = 0.0
+transition = 7
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 0, 0.286275, 0)
+
+[sub_resource type="Resource" id="Resource_kpqou"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_f3e1n")])
+
+[sub_resource type="Resource" id="Resource_3wib0"]
+script = ExtResource("7_2gsnx")
+tween_name = "pulse"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_a3oq7"), SubResource("Resource_kpqou")])
+
+[sub_resource type="Resource" id="Resource_g3ria"]
+script = ExtResource("6_i4er7")
+tween_name = "pulse"
+tween_resource = SubResource("Resource_3wib0")
+play_on_start = true
+next_tween = "pulse"
+
+[sub_resource type="Resource" id="Resource_4k5re"]
+script = ExtResource("9_7mkwv")
+target = "Border"
+property_name = "modulate"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_ixh3d"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_4k5re")])
+
+[sub_resource type="Resource" id="Resource_6bdht"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_ixh3d")])
+
+[sub_resource type="Resource" id="Resource_ayo2d"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_6bdht")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_txlnd"]
+script = ExtResource("9_7mkwv")
+target = "Border"
+property_name = "modulate"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_tmpnh"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_txlnd")])
+
+[sub_resource type="Resource" id="Resource_b8fij"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Exited"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_tmpnh")])
+
+[sub_resource type="Resource" id="Resource_16584"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Exited"
+tween_resource = SubResource("Resource_b8fij")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_ye405"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_r1r7o"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ye405")])
+
+[sub_resource type="Resource" id="Resource_l5wqo"]
+script = ExtResource("7_2gsnx")
+tween_name = "Open"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_r1r7o")])
+
+[sub_resource type="Resource" id="Resource_a072q"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = SubResource("Resource_l5wqo")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_skdyd"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0.501961)
+
+[sub_resource type="Resource" id="Resource_rv436"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_skdyd")])
+
+[sub_resource type="Resource" id="Resource_y6moi"]
+script = ExtResource("7_2gsnx")
+tween_name = "Close"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_rv436")])
+
+[sub_resource type="Resource" id="Resource_fnptx"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = SubResource("Resource_y6moi")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_pblu3"]
 script = ExtResource("6_i4er7")
@@ -1813,6 +1983,7 @@ script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Entity Equipment Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+visible = false
 layout_mode = 1
 offset_left = 45.0
 offset_top = 111.0
@@ -2231,6 +2402,7 @@ script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -2745,6 +2917,19 @@ patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
 
+[node name="Base" type="ColorRect" parent="Body/Inventory/Inventory Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 389.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Blocker" type="ColorRect" parent="Body/Inventory/Inventory Area/BG"]
 layout_mode = 1
 anchors_preset = 15
@@ -2756,7 +2941,7 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.8)
+color = Color(0, 0, 0, 0.501961)
 
 [node name="Selection" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker"]
 layout_mode = 1
@@ -2836,7 +3021,15 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Item Preview" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display"]
+[node name="Visuals" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Item Preview" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals"]
 material = ExtResource("38_n3232")
 layout_mode = 1
 anchors_preset = 9
@@ -2850,11 +3043,11 @@ texture = ExtResource("44_prdk6")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Preview"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Item Preview"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_0nbvw")])
 
-[node name="Description" type="Label" parent="Body/Inventory/Inventory Area/BG/Blocker/Display"]
+[node name="Description" type="Label" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals"]
 custom_minimum_size = Vector2(104, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -2873,58 +3066,778 @@ label_settings = SubResource("LabelSettings_d3vky")
 autowrap_mode = 2
 text_overrun_behavior = 3
 
-[node name="Item Use Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("initial_selection")]
-visible = false
+[node name="Item Use Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("menu_panel", "initial_selection", "all_selections")]
+modulate = Color(1, 1, 1, 0.501961)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = -40.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("17_n8c6y")
+script = ExtResource("45_uyhcd")
+menu_panel = NodePath("../../Selection/Dynamic Panel")
 menu_name = "overworld_menu_main_item_use"
-initial_selection = NodePath("VBoxContainer/Use")
+hide_when_inactive = false
+initial_selection = NodePath("Buttons/Use")
+all_selections = [NodePath("Buttons/Use"), NodePath("Buttons/Drop"), NodePath("Buttons/Cancel")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel"]
+[node name="Buttons" type="HBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+theme_override_constants/separation = 5
 
-[node name="Use" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer"]
+[node name="Use" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Drop")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Drop")
-theme = ExtResource("13_ynyhx")
+theme = ExtResource("46_ff4o8")
 text = "T_MENU_COMMON_INVENTORY_USE"
+text_overrun_behavior = 2
+clip_text = true
 
-[node name="Drop" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer"]
+[node name="Border" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="Drop" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Use")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Use")
-theme = ExtResource("13_ynyhx")
+theme = ExtResource("46_ff4o8")
 text = "T_MENU_COMMON_INVENTORY_DROP"
+text_overrun_behavior = 2
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="Cancel" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = ExtResource("46_ff4o8")
+text = "T_MENU_COMMON_INVENTORY_CANCEL"
+text_overrun_behavior = 2
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel"]
 script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_a072q"), SubResource("Resource_fnptx")])
 
-[node name="Target Select Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("initial_selection", "all_selections")]
-visible = false
+[node name="Item Drop Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("initial_selection", "all_selections")]
+modulate = Color(1, 1, 1, 0.501961)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = -40.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("47_txais")
+menu_name = "overworld_menu_main_item_drop"
+initial_selection = NodePath("Buttons/Yes")
+all_selections = [NodePath("Buttons/Yes"), NodePath("Buttons/No")]
+
+[node name="Buttons" type="HBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="Yes" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../No")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../No")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("46_ff4o8")
+text = "T_YES"
+text_overrun_behavior = 2
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="No" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_left = NodePath("../Yes")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../Yes")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("46_ff4o8")
+text = "T_NO"
+text_overrun_behavior = 2
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_a072q"), SubResource("Resource_fnptx")])
+
+[node name="Target Select Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("initial_selection", "all_selections")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = -40.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_nfjs4")
@@ -2939,43 +3852,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
 
 [node name="P1" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P4")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../P2")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
+text = "P1"
 
 [node name="P2" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P1")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../P3")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
+text = "P2"
 
 [node name="P3" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P2")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../P4")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
+text = "P3"
 
 [node name="P4" type="Button" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../P3")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath("../P1")
 focus_neighbor_bottom = NodePath(".")
 theme = ExtResource("13_ynyhx")
+text = "P4"
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel"]
 script = ExtResource("2_fajv7")
@@ -3335,8 +4251,11 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Close" to="Body/Party/Entity Equipment Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
-[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer/Use" to="Body/Inventory" method="_on_use_clicked"]
-[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/VBoxContainer/Drop" to="Body/Inventory" method="_on_drop_clicked"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use" to="Body/Inventory" method="_on_use_clicked"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop" to="Body/Inventory" method="_on_drop_clicked"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel" to="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel" method="_on_cancel_pressed"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes" to="Body/Inventory" method="_on_drop_confirmed"]
+[connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No" to="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel" method="_on_no_pressed"]
 [connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Target Select Panel/HBoxContainer/P1" to="Body/Inventory" method="_on_p_1_pressed"]
 [connection signal="value_changed" from="Body/Options/BGM Volume Slider" to="Body/Options" method="_on_bgm_volume_slider_value_changed"]
 [connection signal="value_changed" from="Body/Options/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]

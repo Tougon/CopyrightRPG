@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://cliv6mbb8mbic"]
+[gd_scene load_steps=37 format=3 uid="uid://cliv6mbb8mbic"]
 
 [ext_resource type="Theme" uid="uid://q7x5eitlt0ra" path="res://assets/Themes/Theme_UI_ButtonBasic.tres" id="1_3kjdm"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_button.gd" id="2_q5n7p"]
+[ext_resource type="FontFile" uid="uid://dt6ttvw4o5lkc" path="res://assets/Fonts/System/Genos-Bold.ttf" id="3_4t4qy"]
 [ext_resource type="Texture2D" uid="uid://div4dy5u851y0" path="res://assets/Sprites/UI/Status/cursor_bracket.png" id="3_6hbta"]
 [ext_resource type="Texture2D" uid="uid://dw3cdll32x3n7" path="res://assets/Sprites/UI/Status/cursor_bracket_glow.png" id="4_hhnbx"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_6hfnc"]
@@ -10,7 +11,11 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_s37o6"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_ifau0"]
 
-[sub_resource type="Resource" id="Resource_3ubq5"]
+[sub_resource type="LabelSettings" id="LabelSettings_nqgsf"]
+font = ExtResource("3_4t4qy")
+font_size = 32
+
+[sub_resource type="Resource" id="Resource_a5tb3"]
 script = ExtResource("9_ifau0")
 target = "Glow"
 property_name = "modulate"
@@ -24,11 +29,11 @@ relative = false
 "Value Type" = 5
 "Color Value" = Color(1, 0, 0.286275, 1)
 
-[sub_resource type="Resource" id="Resource_hff3f"]
+[sub_resource type="Resource" id="Resource_a3oq7"]
 script = ExtResource("8_s37o6")
-frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_3ubq5")])
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_a5tb3")])
 
-[sub_resource type="Resource" id="Resource_rbgmc"]
+[sub_resource type="Resource" id="Resource_f3e1n"]
 script = ExtResource("9_ifau0")
 target = "Glow"
 property_name = "modulate"
@@ -42,19 +47,19 @@ relative = false
 "Value Type" = 5
 "Color Value" = Color(1, 0, 0.286275, 0)
 
-[sub_resource type="Resource" id="Resource_71xvp"]
+[sub_resource type="Resource" id="Resource_kpqou"]
 script = ExtResource("8_s37o6")
-frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_rbgmc")])
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_f3e1n")])
 
-[sub_resource type="Resource" id="Resource_f68xc"]
+[sub_resource type="Resource" id="Resource_3wib0"]
 script = ExtResource("7_w42rs")
 tween_name = "pulse"
-sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_hff3f"), SubResource("Resource_71xvp")])
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_a3oq7"), SubResource("Resource_kpqou")])
 
-[sub_resource type="Resource" id="Resource_alla3"]
+[sub_resource type="Resource" id="Resource_g3ria"]
 script = ExtResource("6_qti28")
 tween_name = "pulse"
-tween_resource = SubResource("Resource_f68xc")
+tween_resource = SubResource("Resource_3wib0")
 play_on_start = true
 next_tween = "pulse"
 
@@ -76,10 +81,28 @@ relative = false
 script = ExtResource("8_s37o6")
 frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_4k5re")])
 
+[sub_resource type="Resource" id="Resource_yts4o"]
+script = ExtResource("9_ifau0")
+target = "Quantity"
+property_name = "modulate"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0.94902, 0.94902, 0.94902, 1)
+
+[sub_resource type="Resource" id="Resource_cu7u0"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_yts4o")])
+
 [sub_resource type="Resource" id="Resource_6bdht"]
 script = ExtResource("7_w42rs")
 tween_name = "Focus Entered"
-sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_ixh3d")])
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_ixh3d"), SubResource("Resource_cu7u0")])
 
 [sub_resource type="Resource" id="Resource_ayo2d"]
 script = ExtResource("6_qti28")
@@ -102,9 +125,23 @@ relative = false
 "Value Type" = 5
 "Color Value" = Color(1, 1, 1, 0)
 
+[sub_resource type="Resource" id="Resource_8v2uy"]
+script = ExtResource("9_ifau0")
+target = "Quantity"
+property_name = "modulate"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0.87451, 0.87451, 0.87451, 1)
+
 [sub_resource type="Resource" id="Resource_tmpnh"]
 script = ExtResource("8_s37o6")
-frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_txlnd")])
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_txlnd"), SubResource("Resource_8v2uy")])
 
 [sub_resource type="Resource" id="Resource_b8fij"]
 script = ExtResource("7_w42rs")
@@ -118,13 +155,88 @@ tween_resource = SubResource("Resource_b8fij")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="Resource" id="Resource_gqg3f"]
+script = ExtResource("9_ifau0")
+target = "Quantity"
+property_name = "modulate"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="Resource" id="Resource_01jjc"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_gqg3f")])
+
+[sub_resource type="Resource" id="Resource_0p31k"]
+script = ExtResource("7_w42rs")
+tween_name = "Button Down"
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_01jjc")])
+
+[sub_resource type="Resource" id="Resource_gw717"]
+script = ExtResource("6_qti28")
+tween_name = "Button Down"
+tween_resource = SubResource("Resource_0p31k")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_5pvrp"]
+script = ExtResource("9_ifau0")
+target = "Quantity"
+property_name = "modulate"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(0.87451, 0.87451, 0.87451, 1)
+
+[sub_resource type="Resource" id="Resource_36mdk"]
+script = ExtResource("8_s37o6")
+frames = Array[ExtResource("9_ifau0")]([SubResource("Resource_5pvrp")])
+
+[sub_resource type="Resource" id="Resource_pd2r6"]
+script = ExtResource("7_w42rs")
+tween_name = "Button Up"
+sequence = Array[ExtResource("8_s37o6")]([SubResource("Resource_36mdk")])
+
+[sub_resource type="Resource" id="Resource_f13o5"]
+script = ExtResource("6_qti28")
+tween_name = "Button Up"
+tween_resource = SubResource("Resource_pd2r6")
+play_on_start = false
+next_tween = ""
+
 [node name="Button" type="Button"]
 offset_right = 400.0
 offset_bottom = 45.0
 theme = ExtResource("1_3kjdm")
 theme_override_font_sizes/font_size = 32
 text = "Item"
+alignment = 0
 script = ExtResource("2_q5n7p")
+
+[node name="Quantity" type="Label" parent="."]
+modulate = Color(0.87451, 0.87451, 0.87451, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_right = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "x99"
+label_settings = SubResource("LabelSettings_nqgsf")
+vertical_alignment = 1
 
 [node name="Border" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -248,8 +360,8 @@ flip_v = true
 
 [node name="TweenPlayerUI" type="Node" parent="Border"]
 script = ExtResource("5_6hfnc")
-sequence_list = Array[ExtResource("6_qti28")]([SubResource("Resource_alla3")])
+sequence_list = Array[ExtResource("6_qti28")]([SubResource("Resource_g3ria")])
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("5_6hfnc")
-sequence_list = Array[ExtResource("6_qti28")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+sequence_list = Array[ExtResource("6_qti28")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584"), SubResource("Resource_gw717"), SubResource("Resource_f13o5")])

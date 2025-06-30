@@ -5,6 +5,7 @@ class_name MenuPanel
 @export var menu_name: String;
 @export var start_open : bool = false;
 @export var hide_on_unfocus : bool = false;
+@export var hide_when_inactive : bool = true;
 @export var unfocus_on_open : bool = true;
 @export var submenu : bool = false;
 @export_group("Selections")
@@ -160,7 +161,9 @@ func on_menu_active():
 
 func on_menu_inactive():
 	ui_manager.close_menu(self);
-	self.hide();
+	
+	if hide_when_inactive :
+		self.hide();
 
 
 func on_menu_cancel():
