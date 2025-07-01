@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=140 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -47,6 +47,7 @@
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
 [ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
 [ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="44_prdk6"]
+[ext_resource type="Script" path="res://src/UIComponents/Scenes/underlay_bar.gd" id="45_nu1oo"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_use_panel.gd" id="45_uyhcd"]
 [ext_resource type="Theme" uid="uid://q7x5eitlt0ra" path="res://assets/Themes/Theme_UI_ButtonBasic.tres" id="46_ff4o8"]
 [ext_resource type="Theme" uid="uid://b75asv135vvot" path="res://assets/Themes/Theme_UI_InventoryBox.tres" id="46_mlnh1"]
@@ -2980,6 +2981,7 @@ item_size = Vector2(408, 45)
 item_spacing = Vector2(4, 4)
 use_boundary_limt = true
 boundary_limit = Vector2(800, 545)
+keep_column_on_wrap = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Selection/Dynamic Panel"]
 layout_mode = 1
@@ -3071,6 +3073,190 @@ text = "Possibly the coolest fit ever. Will raise all your stats and make you lo
 label_settings = SubResource("LabelSettings_d3vky")
 autowrap_mode = 2
 text_overrun_behavior = 3
+
+[node name="Player Info" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 25.0
+offset_right = -40.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Description" type="Label" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("39_5w6ca")
+theme_override_font_sizes/font_size = 24
+text = "It won't have any effect."
+label_settings = SubResource("LabelSettings_d3vky")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Bars" type="GridContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 41.0
+offset_right = 10.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+columns = 2
+
+[node name="HP" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars"]
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+script = ExtResource("45_nu1oo")
+start_value = 0.5
+max_value = 1.0
+text_format = "T_HP_AMOUNT_FLAT"
+deplete_color = Color(1, 1, 1, 1)
+refill_color = Color(1, 1, 1, 1)
+animation_ease = 0
+bar_subtract_speed = 2.0
+uniform_text_size_max = false
+
+[node name="BarBackground" type="ColorRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/HP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+
+[node name="BarFill" type="ColorRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0, 0.788235, 0.368627, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/HP/BarBackground"]
+modulate = Color(0.25098, 0.25098, 0.25098, 0.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_hh6a0")
+expand_mode = 1
+
+[node name="TextRoot" type="VBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/HP/BarBackground/TextRoot"]
+layout_mode = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+bbcode_enabled = true
+text = "0123456789"
+fit_content = true
+scroll_active = false
+
+[node name="MP" type="Control" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars"]
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+script = ExtResource("45_nu1oo")
+start_value = 0.5
+max_value = 1.0
+text_format = "T_MP_AMOUNT_FLAT"
+deplete_color = Color(1, 1, 1, 1)
+refill_color = Color(1, 1, 1, 1)
+animation_ease = 0
+bar_subtract_speed = 2.0
+uniform_text_size_max = false
+
+[node name="BarBackground" type="ColorRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/MP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+
+[node name="BarFill" type="ColorRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0, 0.662745, 0.819608, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/MP/BarBackground"]
+modulate = Color(0.25098, 0.25098, 0.25098, 0.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_hh6a0")
+expand_mode = 1
+
+[node name="TextRoot" type="VBoxContainer" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display/Visuals/Player Info/Bars/MP/BarBackground/TextRoot"]
+layout_mode = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+bbcode_enabled = true
+text = "0123456789"
+fit_content = true
+scroll_active = false
 
 [node name="Item Use Panel" type="Panel" parent="Body/Inventory/Inventory Area/BG/Blocker/Display" node_paths=PackedStringArray("menu_panel", "initial_selection", "all_selections")]
 modulate = Color(1, 1, 1, 0.501961)

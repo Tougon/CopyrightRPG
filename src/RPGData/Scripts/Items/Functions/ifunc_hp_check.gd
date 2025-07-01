@@ -8,12 +8,24 @@ class_name IFuncHPCheck
 @export var use_amount : bool = false;
 @export_range(0, 9999) var hp_amount : int = 0;
 
-func execute_overworld(index : int, item : Item = null):
+func execute_overworld(index : int, item : Item = null, preview : bool = false, result : ItemResult = null):
 	if index < DataManager.party_data.size() && index >= 0:
 		var current_state = DataManager.party_data[index];
 		var entity_data = DataManager.entity_database.get_entity(current_state.id);
 		
-		var percent = (current_state.hp_value as float) / (entity_data.get_hp(current_state.level) as float);
+		var hp = entity_data.get_hp(current_state.level);
+		
+		# Check equipment
+		var current_weapon = DataManager.item_database.get_item(current_state.weapon_id);
+		var current_armor = DataManager.item_database.get_item(current_state.armor_id);
+		var current_accessory = DataManager.item_database.get_item(current_state.accessory_id);
+		var all_equipment = [current_weapon, current_armor, current_accessory];
+		
+		for e in all_equipment:
+			if e != null:
+				hp += (e as EquipmentItem).hp_mod;
+		
+		var percent = (current_state.hp_value as float) / (hp as float);
 		
 		match check_mode :
 			EffectFunction.CheckMode.EQUALS:

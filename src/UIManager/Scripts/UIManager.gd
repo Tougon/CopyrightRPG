@@ -11,6 +11,7 @@ signal on_menu_closed(panel : MenuPanel);
 signal on_all_menus_closed();
 
 var is_closing_all = false;
+var suspend_input = false;
 
 var current_selection : Control;
 var previous_selection : Control;
@@ -26,6 +27,8 @@ func _on_gui_focus_changed(node: Node):
 
 
 func _unhandled_input(event):
+	if suspend_input : return;
+	
 	var current_focus_control = get_viewport().gui_get_focus_owner();
 	
 	if active_menus.size() > 0 :
@@ -132,10 +135,12 @@ func close_menu_name(menu_name : String):
 		menus[menu_name].set_active(false);
 
 
-func suspend_selection():
+func suspend_selection(input : bool = false):
 	var current_focus_control = get_viewport().gui_get_focus_owner();
 	if current_focus_control:
 		current_focus_control.release_focus()
+	
+	suspend_input = input;
 
 
 func set_current_hover(hovered : Control):

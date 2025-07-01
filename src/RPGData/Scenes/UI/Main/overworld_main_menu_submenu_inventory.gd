@@ -3,6 +3,7 @@ extends OverworldSubmenu
 @export var menu_panel : DynamicMenuPanel;
 @export var no_items_display : Control;
 
+var _current_item_index : int = -1;
 var _last_selection_index : int = 0;
 var _current_item : Item;
 
@@ -38,7 +39,10 @@ func _on_item_selected(data):
 	if item != null :
 		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(item.item_description_key);
 		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = load_image(item.item_icon_path);
-		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+		
+		if _current_item_index != data:
+			$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+		_current_item_index = data;
 	else :
 		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = "";
 		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = null;
@@ -49,6 +53,10 @@ func _refresh_current_item():
 	
 	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(_current_item.item_description_key);
 	$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = load_image(_current_item.item_icon_path);
+	
+	if _current_item_index == -1:
+		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+	_current_item_index = _last_selection_index;
 
 
 func load_image(path : String) -> Texture2D:
@@ -73,7 +81,9 @@ func _on_item_clicked(data):
 # Item usage functions
 func _on_use_clicked() -> void:
 	$"Inventory Area/BG/Blocker/Display/Item Use Panel".visible = false;
+	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = "";
 	UIManager.open_menu_name("overworld_menu_main_item_target");
+	_current_item_index = -1;
 
 
 func _on_drop_clicked() :

@@ -8,6 +8,7 @@ class_name DynamicMenuPanel
 @export var item_spacing : Vector2 = Vector2(10.0, 10.0);
 @export var use_boundary_limt : bool = false;
 @export var boundary_limit : Vector2 = Vector2(0.0, 0.0);
+@export var keep_column_on_wrap : bool = false;
 # Should export this later, too dangerous to use export now.
 var horizontal : bool = false;
 
@@ -397,7 +398,17 @@ func _refresh_group_wrap_navigation():
 	
 	for i in _item_groups[0].size():
 		var top_item = _item_groups[0][i] as Control;
-		var bottom_item = _item_groups[_last_group_index][min(i, _last_item_index)] as Control;
+		
+		# Option select
+		var bottom_item : Control = null;
+		if keep_column_on_wrap : 
+			if i <= _last_item_index : 
+				bottom_item = _item_groups[_last_group_index][i] as Control;
+			else :
+				bottom_item = _item_groups[_last_group_index - 1][i] as Control;
+		else :
+			bottom_item = _item_groups[_last_group_index][min(i, _last_item_index)] as Control;
+		
 		#print(bottom_item);
 		
 		# Remove previous bottom and top wraps

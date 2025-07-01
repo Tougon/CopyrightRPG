@@ -13,6 +13,7 @@ var _current_player_index = 0;
 var _current_player_data : PartyMemberData;
 var _current_player_entity : Entity;
 
+
 func _ready():
 	super._ready();
 	

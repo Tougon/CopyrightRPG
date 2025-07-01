@@ -18,7 +18,10 @@ enum AnimationType { Smooth, Delayed };
 @export var deplete_color : Color;
 @export var refill_color : Color;
 @export var animation_type : AnimationType = AnimationType.Smooth;
+@export var animation_ease : Tween.TransitionType = Tween.TransitionType.TRANS_CUBIC;
 @export var bar_subtract_speed : float = 1;
+@export var uniform_text_size_current : bool = true;
+@export var uniform_text_size_max : bool = true;
 @export var trailing_zeroes : bool = false;
 
 var current_value : float = 0;
@@ -50,17 +53,19 @@ func _set_text(value : float):
 	var current_str = str(value);
 	var max_str = str(max_value);
 	
-	while current_str.length() < 3 :
-		if trailing_zeroes : 
-			current_str = "0" + current_str;
-		else:
-			current_str = " " + current_str;
+	if uniform_text_size_current:
+		while current_str.length() < 3 :
+			if trailing_zeroes : 
+				current_str = "0" + current_str;
+			else:
+				current_str = " " + current_str;
 	
-	while max_str.length() < 3 :
-		if trailing_zeroes : 
-			max_str = "0" + max_str;
-		else:
-			max_str = " " + max_str;
+	if uniform_text_size_max :
+		while max_str.length() < 3 :
+			if trailing_zeroes : 
+				max_str = "0" + max_str;
+			else:
+				max_str = " " + max_str;
 	
 	text.text = tr(text_format).format({current = current_str, max = max_str});
 
@@ -77,6 +82,24 @@ func set_value_immediate(val : float):
 	# Display output
 	if "text" in text :
 		_set_text(current_value);
+
+
+func set_underlay_value(val : float):
+	var is_refilling = val > current_value;
+	var old_percent = fill.scale.x;
+	var underlay_value = clamp(val, min_value, max_value);
+	var percent = ((underlay_value - min_value) / (max_value - min_value));
+	
+	# Set up underlay
+	if use_underlay : 
+		underlay.visible = true;
+		
+		if is_refilling : 
+			underlay.color = refill_color;
+			underlay.scale.x = percent;
+		else :
+			underlay.color = deplete_color;
+			underlay.scale.x = old_percent;
 
 
 func set_value(val : float):
@@ -116,7 +139,7 @@ func set_value(val : float):
 			
 			var property = fill_tween.tween_property(fill, "scale:x", percent, duration);
 			property.set_ease(Tween.EASE_OUT);
-			property.set_trans(Tween.TRANS_CUBIC);
+			property.set_trans(animation_ease);
 		AnimationType.Delayed:
 			_set_text(val);
 			
