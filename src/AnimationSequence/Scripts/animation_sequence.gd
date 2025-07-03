@@ -200,12 +200,15 @@ func call_sequence_function(action : AnimationSequenceAction):
 	if spell_data && spell_data.spell_target == Spell.SpellTarget.RandomEnemyPerHit :
 		index = 0;
 	
-	var cast_inst = spell_cast[target_index];
+	var cast_inst : SpellCast = null;
+	if target_index < spell_cast.size():
+		cast_inst = spell_cast[target_index];
+	
 	var hit_index = 0;
-	if cast_inst != null : hit_index = spell_cast[target_index].current_hit; 
+	if cast_inst != null : hit_index = cast_inst.current_hit; 
 	if applied_damage_this_frame : hit_index -= 1;
 	
-	if ((on_success && !spell_cast[target_index].has_spell_done_anything()) || (check_miss && !spell_cast[target_index].get_hit_success(hit_index))) && !action.ignore_on_success() :
+	if ((on_success && !cast_inst.has_spell_done_anything()) || (check_miss && !cast_inst.get_hit_success(hit_index))) && !action.ignore_on_success() :
 		return;
 	
 	action.execute(self);

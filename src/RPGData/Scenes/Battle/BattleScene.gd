@@ -502,7 +502,7 @@ func _end_phase():
 	EventManager.hide_entity_ui.emit();
 	
 	# Check to see if the effects have caused a loss state
-	if (_all_players_defeated()) :
+	if _all_players_defeated() :
 		# TODO: Do we even need this?
 		EventManager.on_players_defeated.emit(); 
 		
@@ -512,7 +512,9 @@ func _end_phase():
 		EventManager.on_battle_completed.emit(reward); 
 		return;
 	else :
-		_begin_turn();
+		if _all_enemies_defeated() : 
+			_end_phase();
+		else : _begin_turn();
 
 
 # Support functions

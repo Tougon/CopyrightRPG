@@ -63,7 +63,7 @@ func _fade_action_cutscene_instant(fade_in : bool):
 
 
 func quest_complete(quest):
-	print("REWARD MONEY: " + quest.quest_rewards.money)
+	print("REWARD MONEY: " + quest.quest_rewards.money);
 
 
 func _on_dialogue_begin():

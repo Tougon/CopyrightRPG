@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfhb6f4v6d7w4"
-path="res://.godot/imported/shaded_test.png-7821d6dd1910495a01fc2d744e88ea7b.ctex"
+uid="uid://bp6swawq4moni"
+path="res://.godot/imported/shaded_only.png-3b117898ff4df60f2ee103a70cd0984d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Overworld/player_main/shaded_test.png"
-dest_files=["res://.godot/imported/shaded_test.png-7821d6dd1910495a01fc2d744e88ea7b.ctex"]
+source_file="res://assets/Sprites/Overworld/player_main/shaded_only.png"
+dest_files=["res://.godot/imported/shaded_only.png-3b117898ff4df60f2ee103a70cd0984d.ctex"]
 
 [params]
 

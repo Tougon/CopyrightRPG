@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_5xr71"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_2sbqv"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_wwgpf"]
-[ext_resource type="Resource" uid="uid://dx4uieatfu3hr" path="res://assets/Effects/Common/effect_common_status_stun.tres" id="4_fsjd0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_jnf5g"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="4_k7ee5"]
+[ext_resource type="Resource" uid="uid://d4ccx6phxn3j3" path="res://assets/Effects/Common/effect_common_status_misery.tres" id="4_toab7"]
 [ext_resource type="Resource" uid="uid://cwtnk7xpl801x" path="res://assets/Flags/stun.tres" id="5_3k0y4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_an8td"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_ldidp"]
@@ -14,7 +14,7 @@
 [sub_resource type="Resource" id="Resource_1wpro"]
 script = ExtResource("3_2sbqv")
 chance = 1.0
-effect = ExtResource("4_fsjd0")
+effect = ExtResource("4_toab7")
 
 [sub_resource type="Resource" id="Resource_yifa3"]
 script = ExtResource("4_jnf5g")
@@ -41,7 +41,7 @@ negate = false
 vary_hit_count = false
 min_number_of_hits = 1
 max_number_of_hits = 1
-check_accuracy = true
+check_accuracy = false
 spell_accuracy = 30.0
 check_accuracy_per_hit = false
 spell_accuracy_per_hit = 100.0

@@ -26,6 +26,7 @@ func set_active(state : bool):
 	
 	if state : _on_item_selected(-1);
 
+
 # UI Display Functions
 func _refresh_inventory_ui():
 	var inventory = DataManager.get_inventory_as_array();
@@ -117,6 +118,7 @@ func on_focus():
 func on_unfocus():
 	super.on_unfocus();
 	cache_menu_state();
+
 
 func cache_menu_state():
 	_last_selection_index = menu_panel.get_selected_index();

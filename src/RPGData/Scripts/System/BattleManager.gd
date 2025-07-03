@@ -12,7 +12,7 @@ const TYPE_AFFINITY_BONUS : float = 1.5;
 # TODO: change to const
 var async_damage_text : bool = false;
 var async_crit_text : bool = true;
-var seal_before_attacking : bool = true;
+var seal_before_attacking : bool = false;
 
 # Determines level cap
 # TODO: change to const

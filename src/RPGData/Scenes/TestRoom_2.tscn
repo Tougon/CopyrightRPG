@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://3kb8v413hde1"]
+[gd_scene load_steps=69 format=4 uid="uid://3kb8v413hde1"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_jute5"]
 [ext_resource type="Texture2D" uid="uid://cilblfu0x6vq7" path="res://assets/Sprites/Tilemaps/temp_mallfloor_reduced.png" id="2_x1w2o"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="24_5x6g0"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="25_wrgox"]
 [ext_resource type="Texture2D" uid="uid://dl5diybtryreg" path="res://assets/Sprites/Overworld/player_main/2514.png" id="26_3poni"]
-[ext_resource type="Texture2D" uid="uid://bfhb6f4v6d7w4" path="res://assets/Sprites/Overworld/player_main/shaded_test.png" id="27_3alpn"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="28_2bjo6"]
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_udpxh"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="30_vp32d"]
@@ -846,11 +845,6 @@ visible = false
 position = Vector2(606, 376)
 scale = Vector2(5, 5)
 texture = ExtResource("26_3poni")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Environment/Sorted Items"]
-visible = false
-position = Vector2(1001, -117)
-texture = ExtResource("27_3alpn")
 
 [node name="CutsceneObject Test" type="Node2D" parent="Environment/Sorted Items" node_paths=PackedStringArray("tween_player")]
 visible = false

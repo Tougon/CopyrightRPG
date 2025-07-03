@@ -445,6 +445,8 @@ func on_defeat():
 	accuracy_stage = 0;
 	evasion_stage = 0;
 	
+	# TODO: If entity is the final entity alive on either side, do not display text
+	
 	for property in properties:
 		remove_effect(property, false);
 	

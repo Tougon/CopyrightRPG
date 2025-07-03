@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=13 format=3 uid="uid://d4ccx6phxn3j3"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_loh1o"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_n7xok"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_ruwq3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_pot2d"]
+[ext_resource type="Resource" uid="uid://2sicxh21654y" path="res://assets/Animations/Sequences/Common/anim_common_miserable.tres" id="6_43d8i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_nnbh6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="14_imft4"]
+
+[sub_resource type="Resource" id="Resource_7qcvy"]
+script = ExtResource("3_n7xok")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_lkm5g"]
+script = ExtResource("5_pot2d")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_ACTIVATE"
+target = 1
+animation = ExtResource("4_ruwq3")
+
+[sub_resource type="Resource" id="Resource_fdc8l"]
+script = ExtResource("6_nnbh6")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_1g15b"]
+script = ExtResource("6_nnbh6")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_STACK"
+
+[sub_resource type="Resource" id="Resource_sqnun"]
+script = ExtResource("5_pot2d")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_TICK"
+target = 1
+animation = ExtResource("6_43d8i")
+
+[resource]
+script = ExtResource("14_imft4")
+stackable = true
+effect_name = "Misery"
+generic = false
+priority = 5
+turn_limit = 0
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_loh1o")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_loh1o")]([])
+on_activate = Array[ExtResource("1_loh1o")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_loh1o")]([])
+on_apply = Array[ExtResource("1_loh1o")]([SubResource("Resource_lkm5g")])
+on_move_selected = Array[ExtResource("1_loh1o")]([])
+on_move_completed = Array[ExtResource("1_loh1o")]([])
+on_deactivate = Array[ExtResource("1_loh1o")]([SubResource("Resource_fdc8l")])
+on_turn_start = Array[ExtResource("1_loh1o")]([])
+on_turn_end = Array[ExtResource("1_loh1o")]([SubResource("Resource_sqnun")])
+on_stack = Array[ExtResource("1_loh1o")]([SubResource("Resource_1g15b")])

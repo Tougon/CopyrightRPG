@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://g75jsa28rkce"]
+[gd_scene load_steps=74 format=4 uid="uid://g75jsa28rkce"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -28,14 +28,17 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="22_g6foi"]
 [ext_resource type="Texture2D" uid="uid://dl5diybtryreg" path="res://assets/Sprites/Overworld/player_main/2514.png" id="24_otr7g"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="24_tm1wa"]
-[ext_resource type="Texture2D" uid="uid://bfhb6f4v6d7w4" path="res://assets/Sprites/Overworld/player_main/shaded_test.png" id="25_1ucg2"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="25_p4i8l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="26_goqi0"]
+[ext_resource type="Texture2D" uid="uid://bp6swawq4moni" path="res://assets/Sprites/Overworld/player_main/shaded_only.png" id="27_24ju5"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="27_aqp1h"]
+[ext_resource type="Texture2D" uid="uid://dbwv4wp5cxqpb" path="res://assets/Sprites/Overworld/player_main/sketch_only.png" id="28_4xtc6"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="28_6btiu"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="28_mltki"]
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_63qe4"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="29_l7h75"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="29_tluc3"]
+[ext_resource type="Texture2D" uid="uid://hkr2xkwh7de0" path="res://assets/Sprites/Overworld/player_main/none.png" id="30_gh24y"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="30_t6yj7"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="32_14mn0"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="32_ufq1w"]
@@ -840,6 +843,7 @@ additional_dialogue = Array[ExtResource("21_6y80r")]([SubResource("Resource_vuma
 object_id = "temp_cutscene_giver"
 
 [node name="Boss" parent="Environment/Sorted Items" instance=ExtResource("8_scqk0")]
+visible = false
 position = Vector2(608, -122)
 default_dialogue = "demo_boss_sequence"
 
@@ -850,9 +854,20 @@ scale = Vector2(5, 5)
 texture = ExtResource("24_otr7g")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Environment/Sorted Items"]
-visible = false
-position = Vector2(1001, -117)
-texture = ExtResource("25_1ucg2")
+position = Vector2(832, -122)
+texture = ExtResource("27_24ju5")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Environment/Sorted Items"]
+position = Vector2(679, -122)
+texture = ExtResource("28_4xtc6")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Environment/Sorted Items"]
+position = Vector2(522, -122)
+texture = ExtResource("29_tluc3")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Environment/Sorted Items"]
+position = Vector2(370, -122)
+texture = ExtResource("30_gh24y")
 
 [node name="CutsceneObject Test" type="Node2D" parent="Environment/Sorted Items" node_paths=PackedStringArray("tween_player")]
 visible = false
@@ -887,12 +902,45 @@ target = NodePath("../RPGOverworldFollower")
 [node name="Sprite2D" type="Sprite2D" parent="Environment/Lighting"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
-position = Vector2(706, -185)
+position = Vector2(608, -122)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("32_14mn0")
 
 [node name="PointLight2D" type="PointLight2D" parent="Environment/Lighting/Sprite2D"]
-position = Vector2(-960, 110)
+scale = Vector2(10, 10)
+color = Color(0.621524, 0.621524, 0.621524, 1)
+energy = 1.85
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("32_ufq1w")
+texture_scale = 1.75
+
+[node name="Sprite2D2" type="Sprite2D" parent="Environment/Lighting"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(1129, -122)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("32_14mn0")
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lighting/Sprite2D2"]
+scale = Vector2(10, 10)
+color = Color(0.621524, 0.621524, 0.621524, 1)
+energy = 1.85
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("32_ufq1w")
+texture_scale = 1.75
+
+[node name="Sprite2D3" type="Sprite2D" parent="Environment/Lighting"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(93.0001, -135)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("32_14mn0")
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Lighting/Sprite2D3"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -920,6 +968,7 @@ sequence_list = Array[ExtResource("11_hflvv")]([SubResource("Resource_sc2vl")])
 [node name="Transitions" type="Node" parent="Environment"]
 
 [node name="SceneTransition" parent="Environment/Transitions" instance=ExtResource("38_e2obr")]
+visible = false
 position = Vector2(607, -178)
 scene_path = "res://src/RPGData/Scenes/TestRoom_2.tscn"
 
