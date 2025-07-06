@@ -121,6 +121,11 @@ damage_delay = 0.0
 shake_duration = 0.0
 shake_decay = 0.35
 force_dodge = true
+effect_user = false
+manual_override = false
+use_fixed_damage = true
+damage_amount = 0
+percent_amount = 0.0
 
 [sub_resource type="Resource" id="Resource_q3dud"]
 script = ExtResource("2_st50u")

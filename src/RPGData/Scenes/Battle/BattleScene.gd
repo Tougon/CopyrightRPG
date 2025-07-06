@@ -312,17 +312,6 @@ func _action_phase():
 		
 		if post_anim_dialogue.size() > 0 : await EventManager.on_sequence_queue_empty;
 		
-		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
-			if seal_manager.can_seal_spell(entity.current_action):
-				# Create the seal
-				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
-				
-				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
-				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
-				EventManager.on_dialogue_queue.emit(seal_msg);
-				await EventManager.on_sequence_queue_empty;
-			# TODO: Dialogue if seal failed
-		
 		# Reposition enemies if any have been defeated
 		var amt = get_num_active_enemies();
 		if num_active != amt:
@@ -378,6 +367,17 @@ func _action_phase():
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
+		
+		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
+			if seal_manager.can_seal_spell(entity.current_action):
+				# Create the seal
+				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
+				
+				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
+				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
+				EventManager.on_dialogue_queue.emit(seal_msg);
+				await EventManager.on_sequence_queue_empty;
+			# TODO: Dialogue if seal failed
 		
 		# Check if action is sealed
 		if !_all_players_defeated():

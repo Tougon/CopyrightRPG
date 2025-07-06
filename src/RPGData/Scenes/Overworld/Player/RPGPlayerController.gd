@@ -5,7 +5,7 @@ class_name RPGPlayerController
 @export_range(1,10) var run_multiplier : float = 1.5;
 @export_range(0.1, 1) var skid_duration : float = 0.25;
 
-const COLLISION_DETECTION_RANGE : float  = 80.0;
+const COLLISION_DETECTION_RANGE : float  = 64.0;
 
 var direction_facing : Vector2 = Vector2(0, 1);
 
@@ -16,9 +16,13 @@ var _can_move : bool = true;
 var _in_dialogue : bool = false;
 
 @onready var player_fade_offset: Node2D = $FadeOffset
+@onready var _sight : Area2D = $Sight
 @onready var _player_visual: RPGCharacter = $RPGCharacter
 var _physics_body_trans_last: Transform2D
 var _physics_body_trans_current: Transform2D
+
+var collision_shape : RectangleShape2D;
+var interact_shape : RectangleShape2D;
 
 
 func _ready():
@@ -32,6 +36,17 @@ func _ready():
 	
 	Dialogic.timeline_started.connect(_on_dialogue_begin);
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
+	
+	await get_tree().process_frame;
+	
+	if $CollisionShape2D.shape is RectangleShape2D && $"Sight/CollisionShape2D".shape is RectangleShape2D:
+		collision_shape = $CollisionShape2D.shape as RectangleShape2D;
+		interact_shape = $"Sight/CollisionShape2D".shape as RectangleShape2D;
+		
+		interact_shape.size = collision_shape.size;
+		interact_shape.size.x = COLLISION_DETECTION_RANGE;
+	else : 
+		print("ERROR: Type mismatch with collision shapes!!")
 
 
 func _process(_delta: float) -> void:
@@ -60,17 +75,30 @@ func _physics_process(_delta):
 	var direction = _get_movement_vector();
 	move(direction, _delta);
 	
-	# Debug
-	# TODO: Fix so that diagonals work properly. 1,1 is correct here ONLY
-	$"Direction Root".position = (direction_facing) * COLLISION_DETECTION_RANGE;
+	# Sight adjustments
+	_sight.position = $CollisionShape2D.position;
+	
+	if collision_shape != null : 
+		_sight.position.x += (direction_facing.x) * (collision_shape.size.x * 0.5);
+		_sight.position.y += (direction_facing.y) * (collision_shape.size.y * 0.5);
+	if interact_shape != null : 
+		_sight.position.x += (direction_facing.x) * (interact_shape.size.x * 0.5);
+		_sight.position.y += (direction_facing.y) * (interact_shape.size.x * 0.5);
+	
 	if direction_facing.length() > 0.5 : 
-		$"Direction Root".rotation_degrees = rad_to_deg(direction_facing.angle()) - 90;
-	else : $"Direction Root".rotation_degrees = 0;
-	# End Debug
+		_sight.rotation_degrees = rad_to_deg(direction_facing.angle()) - 90;
+	else : _sight.rotation_degrees = 0;
+	_sight.rotation_degrees -= 90;
+	
+	
+	# Debug arrow
+	$"Direction Root".position = $CollisionShape2D.position + (direction_facing) * COLLISION_DETECTION_RANGE;
+	$"Direction Root".rotation_degrees = _sight.rotation_degrees + 90;
+	# End Debug arrow
 	
 	if Input.is_action_just_pressed("interact") && _can_move:
-		if $"Direction Root/Sight".closest_interactable != null :
-			$"Direction Root/Sight".closest_interactable.interact();
+		if _sight.closest_interactable != null :
+			_sight.closest_interactable.interact();
 
 
 func _get_movement_vector() -> Vector2:

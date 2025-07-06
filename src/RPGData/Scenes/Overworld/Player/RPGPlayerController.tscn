@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbqi3"]
-size = Vector2(96, 96)
+size = Vector2(79, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqi8"]
-size = Vector2(512, 128)
+size = Vector2(32, 96)
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
@@ -18,26 +18,26 @@ script = ExtResource("1_1wsnh")
 speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 48)
+position = Vector2(0, 84)
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
 play_audio = true
 object_id = "main_character"
 
-[node name="Direction Root" type="Sprite2D" parent="."]
-physics_interpolation_mode = 2
-visible = false
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("3_rngrh")
-
-[node name="Sight" type="Area2D" parent="Direction Root"]
+[node name="Sight" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("4_ex8ft")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Direction Root/Sight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
 shape = SubResource("RectangleShape2D_ysqi8")
+
+[node name="Direction Root" type="Sprite2D" parent="."]
+physics_interpolation_mode = 2
+z_index = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_rngrh")
 
 [node name="FadeOffset" type="Node2D" parent="."]
 position = Vector2(0, -39)
