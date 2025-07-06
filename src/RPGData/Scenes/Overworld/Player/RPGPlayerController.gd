@@ -4,6 +4,7 @@ class_name RPGPlayerController
 @export var speed : float = 250.0;
 @export_range(1,10) var run_multiplier : float = 1.5;
 @export_range(0.1, 1) var skid_duration : float = 0.25;
+@export_range(0, 2) var upward_sight_modifier : float = 1.0;
 
 const COLLISION_DETECTION_RANGE : float  = 64.0;
 
@@ -82,6 +83,9 @@ func _physics_process(_delta):
 		_sight.position.x += (direction_facing.x) * (collision_shape.size.x * 0.5);
 		_sight.position.y += (direction_facing.y) * (collision_shape.size.y * 0.5);
 	if interact_shape != null : 
+		if direction_facing.y == -1:
+			interact_shape.size.x = COLLISION_DETECTION_RANGE * upward_sight_modifier;
+		else : interact_shape.size.x = COLLISION_DETECTION_RANGE;
 		_sight.position.x += (direction_facing.x) * (interact_shape.size.x * 0.5);
 		_sight.position.y += (direction_facing.y) * (interact_shape.size.x * 0.5);
 	
@@ -90,10 +94,9 @@ func _physics_process(_delta):
 	else : _sight.rotation_degrees = 0;
 	_sight.rotation_degrees -= 90;
 	
-	
 	# Debug arrow
-	$"Direction Root".position = $CollisionShape2D.position + (direction_facing) * COLLISION_DETECTION_RANGE;
-	$"Direction Root".rotation_degrees = _sight.rotation_degrees + 90;
+	#$"Direction Root".position = _sight.position;
+	#$"Direction Root".rotation_degrees = _sight.rotation_degrees + 90;
 	# End Debug arrow
 	
 	if Input.is_action_just_pressed("interact") && _can_move:

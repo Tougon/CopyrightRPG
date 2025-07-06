@@ -16,6 +16,7 @@ physics_interpolation_mode = 1
 collision_layer = 5
 script = ExtResource("1_1wsnh")
 speed = 200.0
+upward_sight_modifier = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 84)
@@ -35,6 +36,7 @@ shape = SubResource("RectangleShape2D_ysqi8")
 
 [node name="Direction Root" type="Sprite2D" parent="."]
 physics_interpolation_mode = 2
+visible = false
 z_index = 2
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_rngrh")
