@@ -6,6 +6,7 @@ class_name BattleScene
 @export var seal_manager : SealManager
 @export var enemy_positions : Node;
 @export var begin_battle_on_ready : bool = true;
+@export var persistent_effects : Array[Effect];
 
 static var Instance : BattleScene;
 
@@ -481,6 +482,10 @@ func _end_phase():
 				result_player.mp_offset = player.current_mp
 				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
 				reward.players.append(result_player);
+				
+				for effect in persistent_effects :
+					if player.has_effect(effect.effect_name) :
+						result_player.status.append(effect.effect_name);
 			
 			reward.player_items = player_item_delta;
 			

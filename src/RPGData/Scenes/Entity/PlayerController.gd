@@ -52,6 +52,7 @@ func _on_player_group_state_changed(active : bool):
 func entity_init(params : BattleParams):
 	var hp_mod = 0;
 	var mp_mod = 0;
+	var status : Array[String] = [];
 	
 	attack_action = default_attack_action;
 	defend_action = default_defend_action;
@@ -66,6 +67,7 @@ func entity_init(params : BattleParams):
 		level = params.players[player_id].override_level;
 		hp_mod = params.players[player_id].hp_offset;
 		mp_mod = params.players[player_id].mp_offset;
+		status = params.players[player_id].status;
 	else:
 		level = 30;
 	
@@ -87,6 +89,17 @@ func entity_init(params : BattleParams):
 	current_hp = hp_mod;
 	current_mp = mp_mod;
 	
+	# Apply persistent status effects
+	Sequencer.block_sequence = true;
+	for key in status :
+		for effect in BattleScene.Instance.persistent_effects:
+			if effect.effect_name == key:
+				var inst = effect.create_effect_instance(self, self, null);
+				inst.check_success();
+				
+				if inst.cast_success :
+					inst.on_activate();
+	Sequencer.block_sequence = false;
 	
 	# Override move list with player's set
 	if params.players[player_id].override_move_list != null && params.players[player_id].override_move_list.size() > 0:

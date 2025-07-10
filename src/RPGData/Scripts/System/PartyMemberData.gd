@@ -7,6 +7,7 @@ var exp : int;
 var unlocked : bool;
 var hp_value : int;
 var mp_value : int;
+var status : Array[String];
 
 var weapon_id : int = -1;
 var armor_id : int = -1;
@@ -52,6 +53,11 @@ func _get_property_list() -> Array:
 		"type": TYPE_ARRAY,
 		"usage": PROPERTY_USAGE_STORAGE
 	})
+	ret.append({
+		"name": "Status",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
 	
 	return ret;
 
@@ -73,6 +79,8 @@ func _get(property):
 			return mp_value;
 		"Movelist":
 			return move_list;
+		"Status":
+			return status;
 
 
 func _set(property, val) -> bool:
@@ -93,6 +101,8 @@ func _set(property, val) -> bool:
 			mp_value = val;
 		"Movelist":
 			move_list = val;
+		"Status":
+			status = val;
 	
 	notify_property_list_changed();
 	return retval;

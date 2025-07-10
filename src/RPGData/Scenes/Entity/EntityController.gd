@@ -87,6 +87,8 @@ func _ready():
 
 
 func entity_init(params : BattleParams):
+	turn_number = 0;
+	
 	if current_entity != null:
 		
 		if param != null : param.free();
@@ -678,6 +680,13 @@ func _find_effect_by_name(name : String) -> EffectInstance:
 		if effect.get_effect_name() == name:
 			return effect;
 	return null;
+
+
+func has_effect(name : String) -> bool:
+	for effect in effects:
+		if effect.get_effect_name() == name:
+			return true;
+	return false;
 
 
 # Effect functions

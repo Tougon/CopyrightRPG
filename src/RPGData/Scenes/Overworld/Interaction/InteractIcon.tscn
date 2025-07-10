@@ -1,0 +1,81 @@
+[gd_scene load_steps=16 format=3 uid="uid://da24gil8hseor"]
+
+[ext_resource type="Texture2D" uid="uid://cy7bksfudnx0y" path="res://assets/Sprites/Overworld/common/interact_icon.png" id="1_6brfh"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/interact_icon.gd" id="1_a7yk2"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="2_r8dok"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="4_modpd"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="5_8wr8v"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="6_sox7k"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="7_p7028"]
+
+[sub_resource type="Resource" id="Resource_qy2p5"]
+script = ExtResource("7_p7028")
+target = ""
+property_name = "scale"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 10
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_yjylr"]
+script = ExtResource("6_sox7k")
+frames = Array[ExtResource("7_p7028")]([SubResource("Resource_qy2p5")])
+
+[sub_resource type="Resource" id="Resource_0i3ud"]
+script = ExtResource("5_8wr8v")
+tween_name = "Highlight"
+sequence = Array[ExtResource("6_sox7k")]([SubResource("Resource_yjylr")])
+
+[sub_resource type="Resource" id="Resource_dnabv"]
+script = ExtResource("4_modpd")
+tween_name = "Highlight"
+tween_resource = SubResource("Resource_0i3ud")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_cxm31"]
+script = ExtResource("7_p7028")
+target = ""
+property_name = "scale"
+material_property = false
+duration = 0.1
+delay = 0.0
+transition = 10
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_3tqag"]
+script = ExtResource("6_sox7k")
+frames = Array[ExtResource("7_p7028")]([SubResource("Resource_cxm31")])
+
+[sub_resource type="Resource" id="Resource_sxqq2"]
+script = ExtResource("5_8wr8v")
+tween_name = "Unhighlight"
+sequence = Array[ExtResource("6_sox7k")]([SubResource("Resource_3tqag")])
+
+[sub_resource type="Resource" id="Resource_yps5d"]
+script = ExtResource("4_modpd")
+tween_name = "Unhighlight"
+tween_resource = SubResource("Resource_sxqq2")
+play_on_start = false
+next_tween = ""
+
+[node name="Interact Icon" type="Node2D"]
+position = Vector2(284, 163)
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_a7yk2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6brfh")
+
+[node name="TweenPlayer" type="Node" parent="."]
+script = ExtResource("2_r8dok")
+sequence_list = Array[ExtResource("4_modpd")]([SubResource("Resource_dnabv"), SubResource("Resource_yps5d")])

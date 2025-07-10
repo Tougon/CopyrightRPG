@@ -38,6 +38,8 @@ func _ready():
 	Dialogic.timeline_started.connect(_on_dialogue_begin);
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
+	_sight.reference_node = $CollisionShape2D;
+	
 	await get_tree().process_frame;
 	
 	if $CollisionShape2D.shape is RectangleShape2D && $"Sight/CollisionShape2D".shape is RectangleShape2D:

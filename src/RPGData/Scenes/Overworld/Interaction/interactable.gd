@@ -6,6 +6,9 @@ class_name Interactable
 @export var default_dialogue : String = "temp";
 @export var additional_dialogue : Array[DialogueCheckGroup];
 
+@onready var collision_root : Node2D = $Collider/CollisionShape2D;
+@onready var highlight_icon : InteractIcon = $"Interact Icon";
+
 
 func _ready():
 	super._ready();
@@ -51,7 +54,9 @@ func _update_active_state():
 
 
 func highlight(state : bool):
-	pass;
+	if highlight_icon != null :
+		if state : highlight_icon.tween.play_tween_name("Highlight");
+		else : highlight_icon.tween.play_tween_name("Unhighlight");
 
 
 func interact():

@@ -2,6 +2,7 @@ extends Area2D
 
 var interactions : Array[Interactable];
 var closest_interactable : Interactable;
+var reference_node : Node2D;
 
 func _ready():
 	area_entered.connect(_on_area_entered)
@@ -42,11 +43,14 @@ func _calculate_closest_interactable():
 	var prev_closest = closest_interactable;
 	closest_interactable = null;
 	
+	var relative_pos = global_position;
+	if reference_node != null : relative_pos = reference_node.global_position;
+	
 	# For some reason, Godot does not support max for float
 	var distance = 1000000000;
 	
 	for obj in interactions:
-		var dist = obj.global_position.distance_to(global_position);
+		var dist = obj.collision_root.global_position.distance_to(relative_pos);
 		if  dist < distance:
 			closest_interactable = obj;
 			distance = dist;

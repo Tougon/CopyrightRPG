@@ -5,6 +5,8 @@ class_name Sequencer
 var current_sequence: Sequence;
 var sequence_queue: Array[Sequence];
 
+static var block_sequence : bool;
+
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
 	EventManager.on_sequence_queue.connect(_on_sequence_queue);
@@ -12,6 +14,7 @@ func _enter_tree():
 
 
 func _on_sequence_queue(sequence):
+	if block_sequence : return;
 	if sequence is Sequence:
 		if sequence_queue.size() > 0 || current_sequence != null:
 			sequence_queue.append(sequence);
@@ -20,6 +23,7 @@ func _on_sequence_queue(sequence):
 
 
 func _on_sequence_queue_first(sequence):
+	if block_sequence : return;
 	if sequence is Sequence:
 		if sequence_queue.size() > 0 || current_sequence != null:
 			sequence_queue.insert(0, sequence);

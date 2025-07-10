@@ -110,6 +110,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 			player.override_level = DataManager.party_data[i].level;
 			player.hp_offset = DataManager.party_data[i].hp_value;
 			player.mp_offset = DataManager.party_data[i].mp_value;
+			player.status = DataManager.party_data[i].status;
 			
 			player.override_weapon_id = DataManager.party_data[i].weapon_id;
 			player.override_armor_id = DataManager.party_data[i].armor_id;
@@ -159,6 +160,7 @@ func _on_battle_end(result : BattleResult):
 			var player = result.players[i];
 			DataManager.party_data[player.id].hp_value = player.hp_offset;
 			DataManager.party_data[player.id].mp_value = player.mp_offset;
+			DataManager.party_data[player.id].status = player.status;
 			
 			if player.should_award_exp :
 				DataManager.party_data[player.id].level = player.override_level;

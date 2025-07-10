@@ -10,8 +10,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="7_xxauo"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="8_dfgv4"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="10_bfdo5"]
-[ext_resource type="Resource" uid="uid://dns5pukyv54k3" path="res://assets/Spells/damage/common/spell_damage_common_air.tres" id="10_jg40d"]
 [ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/flavor/spell_flavor_slime_idle_00.tres" id="11_5odyh"]
+[ext_resource type="Resource" uid="uid://d0u6gmpqwd7c" path="res://assets/Spells/status/player/spell_status_player_static.tres" id="11_lr1f1"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="12_nu1mi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="13_u22h4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="14_1jegw"]
@@ -134,7 +134,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("8_dfgv4")
-spell = ExtResource("10_jg40d")
+spell = ExtResource("11_lr1f1")
 level = 0
 
 [sub_resource type="Resource" id="Resource_7of43"]
