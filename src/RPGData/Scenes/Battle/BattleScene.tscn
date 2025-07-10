@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=96 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://src/Shaders/texture_mask.gdshader" id="3_8sqf3"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_tos7b"]
 [ext_resource type="Resource" uid="uid://d4ccx6phxn3j3" path="res://assets/Effects/Common/effect_common_status_misery.tres" id="3_wcutx"]
+[ext_resource type="Resource" uid="uid://bb04u5kt232f" path="res://assets/Effects/Common/effect_common_status_doom.tres" id="4_1uuti"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="4_al1wb"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="4_my5m2"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="4_wv7ke"]
@@ -323,7 +324,7 @@ sequencer = NodePath("Core/Sequencer")
 dialogue_canvas = NodePath("UI/Dialogue Canvas")
 seal_manager = NodePath("Core/SealManager")
 enemy_positions = NodePath("Entities/Enemy Positions")
-persistent_effects = Array[ExtResource("7_46juf")]([ExtResource("3_wcutx")])
+persistent_effects = Array[ExtResource("7_46juf")]([ExtResource("3_wcutx"), ExtResource("4_1uuti")])
 
 [node name="Background" type="Node" parent="."]
 

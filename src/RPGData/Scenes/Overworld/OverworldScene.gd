@@ -161,6 +161,7 @@ func _on_battle_end(result : BattleResult):
 			DataManager.party_data[player.id].hp_value = player.hp_offset;
 			DataManager.party_data[player.id].mp_value = player.mp_offset;
 			DataManager.party_data[player.id].status = player.status;
+			print(str(i) + " " + str(DataManager.party_data[player.id].status));
 			
 			if player.should_award_exp :
 				DataManager.party_data[player.id].level = player.override_level;

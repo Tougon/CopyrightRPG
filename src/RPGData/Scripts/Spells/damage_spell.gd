@@ -144,7 +144,9 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		if fixed_damage && percent_damage :
 			crit.append(false);
 			var percent = percent_damage_amt * target.current_hp;
-			if negate : result.append(-roundi(percent));
+			if negate : 
+				if target.can_heal : result.append(-roundi(percent));
+				else : result.append(0);
 			else : result.append(roundi(percent));
 			continue;
 		# Deals damage using a percentage of the target's maximum HP
@@ -152,13 +154,17 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		elif percent_damage : 
 			crit.append(false);
 			var percent = percent_damage_amt * target.max_hp;
-			if negate : result.append(-roundi(percent));
+			if negate : 
+				if target.can_heal : result.append(-roundi(percent));
+				else : result.append(0);
 			else : result.append(roundi(percent));
 			continue;
 		# Deals direct damage using the fixed damage amount
 		elif fixed_damage : 
 			crit.append(false);
-			if negate : result.append(-fixed_damage_amt);
+			if negate : 
+				if target.can_heal : result.append(-fixed_damage_amt);
+				else : result.append(0);
 			else : result.append(fixed_damage_amt);
 			continue;
 		
@@ -235,7 +241,9 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		if critical : damage *= 1.5
 		
-		if negate : result.append(-roundi(damage));
+		if negate : 
+			if target.can_heal : result.append(-roundi(damage));
+			else : result.append(0);
 		else : result.append(roundi(damage));
 	
 	cast.set_damage(result);

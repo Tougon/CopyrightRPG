@@ -49,6 +49,7 @@ var flag_modifiers : Dictionary;
 
 var is_defeated : bool = false;
 var is_identified : bool = false;
+var can_heal : bool = true;
 
 var turn_number : int;
 
@@ -88,6 +89,7 @@ func _ready():
 
 func entity_init(params : BattleParams):
 	turn_number = 0;
+	can_heal = true;
 	
 	if current_entity != null:
 		

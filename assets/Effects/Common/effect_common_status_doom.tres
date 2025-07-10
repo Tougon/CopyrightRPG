@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=14 format=3 uid="uid://bb04u5kt232f"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_01nfq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_1qc01"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="3_84l0i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_pxrk3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_set_heal.gd" id="5_qrr0r"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="5_s6gtg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_w0u7b"]
+
+[sub_resource type="Resource" id="Resource_7qcvy"]
+script = ExtResource("2_1qc01")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_lkm5g"]
+script = ExtResource("4_pxrk3")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_DOOM_ACTIVATE"
+target = 1
+animation = ExtResource("3_84l0i")
+
+[sub_resource type="Resource" id="Resource_7jo6x"]
+script = ExtResource("5_qrr0r")
+target = 1
+can_heal = false
+
+[sub_resource type="Resource" id="Resource_fdc8l"]
+script = ExtResource("5_s6gtg")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_DOOM_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_ent5w"]
+script = ExtResource("5_qrr0r")
+target = 1
+can_heal = true
+
+[sub_resource type="Resource" id="Resource_1g15b"]
+script = ExtResource("5_s6gtg")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_DOOM_STACK"
+
+[resource]
+script = ExtResource("7_w0u7b")
+stackable = true
+effect_name = "Doom"
+generic = false
+priority = 5
+turn_limit = 0
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_01nfq")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_01nfq")]([])
+on_activate = Array[ExtResource("1_01nfq")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_01nfq")]([])
+on_apply = Array[ExtResource("1_01nfq")]([SubResource("Resource_lkm5g"), SubResource("Resource_7jo6x")])
+on_move_selected = Array[ExtResource("1_01nfq")]([])
+on_move_completed = Array[ExtResource("1_01nfq")]([])
+on_deactivate = Array[ExtResource("1_01nfq")]([SubResource("Resource_fdc8l"), SubResource("Resource_ent5w")])
+on_turn_start = Array[ExtResource("1_01nfq")]([])
+on_turn_end = Array[ExtResource("1_01nfq")]([])
+on_stack = Array[ExtResource("1_01nfq")]([SubResource("Resource_1g15b")])
