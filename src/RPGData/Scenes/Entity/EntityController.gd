@@ -624,29 +624,60 @@ func get_accuracy_modifiers():
 
 # Effect functions
 # NOTE: It is unclear to me how GDScript/Python handle removing items in a loop.
+# UPDATE: Not well! I've reworked the loops so that no effects have their function skipped.
 func execute_turn_start_effects():
-	for effect in effects :
+	var index = 0;
+	
+	while index < effects.size():
+		var effect = effects[index]
 		effect.on_turn_start();
+		
+		if effects.has(effect):
+			index += 1;
 
 
 func execute_remain_active_check():
-	for effect in effects :
+	var index = 0;
+	
+	while index < effects.size():
+		var effect = effects[index]
 		effect.check_remain_active();
+		
+		if effects.has(effect):
+			index += 1;
 
 
 func execute_move_selected_effects():
-	for effect in effects :
+	var index = 0;
+	
+	while index < effects.size():
+		var effect = effects[index]
 		effect.on_move_selected();
+		
+		if effects.has(effect):
+			index += 1;
 
 
 func execute_move_completed_effects():
-	for effect in effects :
+	var index = 0;
+	
+	while index < effects.size():
+		var effect = effects[index]
 		effect.on_move_completed();
+		
+		if effects.has(effect):
+			index += 1;
 
 
 func execute_turn_end_effects():
-	for effect in effects :
+	var index = 0;
+	
+	while index < effects.size():
+		var effect = effects[index]
 		effect.on_turn_end();
+		
+		if effects.has(effect):
+			index += 1;
 
 
 func apply_effect(instance : EffectInstance):

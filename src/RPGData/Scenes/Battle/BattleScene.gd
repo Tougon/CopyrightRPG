@@ -392,6 +392,7 @@ func _action_phase():
 			spell.free();
 		spell_cast.clear();
 	
+	await get_tree().process_frame;
 	_end_phase();
 
 
