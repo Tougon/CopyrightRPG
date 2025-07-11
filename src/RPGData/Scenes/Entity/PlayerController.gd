@@ -72,7 +72,7 @@ func entity_init(params : BattleParams):
 		level = 30;
 	
 	current_entity = params.players[player_id].override_entity;
-	super.entity_init(params)
+	super.entity_init(params);
 	
 	var weapon = DataManager.item_database.get_item(params.players[player_id].override_weapon_id);
 	if weapon != null && weapon is EquipmentItem && (weapon as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Weapon :

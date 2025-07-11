@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://yo1k76pgqcbp"]
+
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="1_kauc7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_s3ftf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_pyurf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_nyih4"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_lu8cu"]
+
+[resource]
+script = ExtResource("4_nyih4")
+spell_name_key = "T_SPELL_STATUS_FLAVOR_EXHAUSTED"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_FLAVOR_EXHAUSTED"
+spell_type = 6
+spell_target = 4
+spell_cost = 0
+spell_priority = 1
+spell_flags = Array[ExtResource("5_lu8cu")]([])
+animation_sequence = ExtResource("1_kauc7")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_s3ftf")]([])
+effects_on_success = Array[ExtResource("2_s3ftf")]([])
+properties = Array[ExtResource("3_pyurf")]([])

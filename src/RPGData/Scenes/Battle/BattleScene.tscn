@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=97 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dciwv5n41ixne" path="res://assets/Spells/generic/spell_generic_defend.tres" id="5_7dvw6"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="5_35o0w"]
 [ext_resource type="PackedScene" uid="uid://bwasyygv0uw3e" path="res://src/RPGData/Scenes/Entity/EnemyController.tscn" id="5_c337l"]
+[ext_resource type="Resource" uid="uid://buarybtnsxscb" path="res://assets/Effects/Common/effect_common_status_exhaust.tres" id="5_gkncl"]
 [ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_wet3g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="6_2gp2x"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_6cut8"]
@@ -324,7 +325,7 @@ sequencer = NodePath("Core/Sequencer")
 dialogue_canvas = NodePath("UI/Dialogue Canvas")
 seal_manager = NodePath("Core/SealManager")
 enemy_positions = NodePath("Entities/Enemy Positions")
-persistent_effects = Array[ExtResource("7_46juf")]([ExtResource("3_wcutx"), ExtResource("4_1uuti")])
+persistent_effects = Array[ExtResource("7_46juf")]([ExtResource("3_wcutx"), ExtResource("4_1uuti"), ExtResource("5_gkncl")])
 
 [node name="Background" type="Node" parent="."]
 

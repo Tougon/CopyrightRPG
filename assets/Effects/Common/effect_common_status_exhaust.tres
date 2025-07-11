@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=18 format=3 uid="uid://buarybtnsxscb"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_ef2af"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_h7vqb"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="3_ytcre"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_dx82p"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_mp_cost.gd" id="6_0fc8q"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="6_2co35"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_mvirf"]
+[ext_resource type="Resource" uid="uid://yo1k76pgqcbp" path="res://assets/Spells/flavor/spell_flavor_exhausted.tres" id="7_2rbby"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_o4x18"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="8_ftm8y"]
+
+[sub_resource type="Resource" id="Resource_7qcvy"]
+script = ExtResource("2_h7vqb")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_lkm5g"]
+script = ExtResource("4_dx82p")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_EXHAUST_ACTIVATE"
+target = 1
+animation = ExtResource("3_ytcre")
+
+[sub_resource type="Resource" id="Resource_fdc8l"]
+script = ExtResource("6_mvirf")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_EXHAUST_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_54koc"]
+script = ExtResource("6_0fc8q")
+target = 1
+check_mode = 1
+mp_amount = 0
+
+[sub_resource type="Resource" id="Resource_y2jvp"]
+script = ExtResource("8_ftm8y")
+target = 1
+action = ExtResource("7_2rbby")
+reset_sealing = true
+
+[sub_resource type="Resource" id="Resource_vqite"]
+script = ExtResource("6_2co35")
+check_success_type = 0
+check_success = Array[ExtResource("1_ef2af")]([SubResource("Resource_54koc")])
+on_success = Array[ExtResource("1_ef2af")]([SubResource("Resource_y2jvp")])
+on_fail = Array[ExtResource("1_ef2af")]([])
+
+[sub_resource type="Resource" id="Resource_1g15b"]
+script = ExtResource("6_mvirf")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_EXHAUST_STACK"
+
+[resource]
+script = ExtResource("7_o4x18")
+stackable = true
+effect_name = "Exhaust"
+generic = false
+priority = 5
+turn_limit = 0
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_ef2af")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_ef2af")]([])
+on_activate = Array[ExtResource("1_ef2af")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_ef2af")]([])
+on_apply = Array[ExtResource("1_ef2af")]([SubResource("Resource_lkm5g")])
+on_move_selected = Array[ExtResource("1_ef2af")]([SubResource("Resource_vqite")])
+on_move_completed = Array[ExtResource("1_ef2af")]([])
+on_deactivate = Array[ExtResource("1_ef2af")]([SubResource("Resource_fdc8l")])
+on_turn_start = Array[ExtResource("1_ef2af")]([])
+on_turn_end = Array[ExtResource("1_ef2af")]([])
+on_stack = Array[ExtResource("1_ef2af")]([SubResource("Resource_1g15b")])
