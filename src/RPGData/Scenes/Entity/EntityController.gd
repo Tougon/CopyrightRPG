@@ -94,34 +94,9 @@ func entity_init(params : BattleParams):
 	can_cast = true;
 	
 	if current_entity != null:
-		
 		if param != null : param.free();
 		
-		param = EntityParams.new();
-		
-		# Fetch text data from localization
-		param.entity_name = tr(current_entity.name_key);
-		param.entity_name_plural = tr(current_entity.name_key + "_PLURAL");
-		param.entity_description = tr(current_entity.description_key);
-		
-		# Set gender identification for articles and pronouns
-		param.entity_gender = current_entity.gender;
-		param.entity_generic = current_entity.generic;
-		
-		# Initialize stats from base stats
-		param.entity_hp = current_entity.get_hp(level);
-		param.entity_mp = current_entity.get_mp(level);
-		param.entity_atk = current_entity.get_atk(level);
-		param.entity_def = current_entity.get_def(level);
-		param.entity_sp_atk = current_entity.get_sp_atk(level);
-		param.entity_sp_def = current_entity.get_sp_def(level);
-		param.entity_spd = current_entity.get_spd(level);
-		
-		param.entity_crit_chance_modifier = current_entity.base_crit_chance_modifier;
-		param.entity_crit_resist_modifier = current_entity.base_crit_resist_modifier;
-		param.entity_accuracy_modifier = current_entity.base_accuracy_modifier;
-		param.entity_dodge_modifier = current_entity.base_dodge_modifier;
-		param.entity_luck = current_entity.get_lck(level);
+		param = current_entity.create_entity_params(level);
 		
 		print(param.entity_name + ", Lvl " + str(level) + ", HP: " + str(param.entity_hp) + ", MP: " + str(param.entity_mp) + ", Atk: " + str(param.entity_atk) + ", Def: " + str(param.entity_def) + ", SpAtk: " + str(param.entity_sp_atk) + ", SpDef: " + str(param.entity_sp_def) + ", Spd: " + str(param.entity_spd) + ", Lck: " + str(param.entity_luck));
 		

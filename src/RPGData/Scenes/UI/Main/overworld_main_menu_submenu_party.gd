@@ -56,14 +56,16 @@ func _set_entity_info(index : int):
 
 func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = null, equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon):
 	# Get current raw stat values
-	var hp = _current_player_entity.get_hp(_current_player_data.level);
-	var mp = _current_player_entity.get_mp(_current_player_data.level);
-	var atk = _current_player_entity.get_atk(_current_player_data.level);
-	var def = _current_player_entity.get_def(_current_player_data.level);
-	var mag = _current_player_entity.get_sp_atk(_current_player_data.level);
-	var res = _current_player_entity.get_sp_def(_current_player_data.level);
-	var spd = _current_player_entity.get_spd(_current_player_data.level);
-	var lck = _current_player_entity.get_lck(_current_player_data.level);
+	var param = _current_player_entity.create_entity_params(_current_player_data.level);
+	
+	var hp = param.entity_hp;
+	var mp = param.entity_mp;
+	var atk = param.entity_atk;
+	var def = param.entity_def;
+	var mag = param.entity_sp_atk;
+	var res = param.entity_sp_def;
+	var spd = param.entity_spd;
+	var lck = param.entity_luck;
 	
 	# Get current equipment
 	var comp_equipment : EquipmentItem;

@@ -129,6 +129,36 @@ func get_reward_exp(level : int) -> int:
 @export var seal_effect_list : Array[SealEffectGroup];
 
 
+func create_entity_params(level : int) -> EntityParams:
+	var param = EntityParams.new();
+	
+	# Fetch text data from localization
+	param.entity_name = tr(name_key);
+	param.entity_name_plural = tr(name_key + "_PLURAL");
+	param.entity_description = tr(description_key);
+	
+	# Set gender identification for articles and pronouns
+	param.entity_gender = gender;
+	param.entity_generic = generic;
+	
+	# Initialize stats from base stats
+	param.entity_hp = get_hp(level);
+	param.entity_mp = get_mp(level);
+	param.entity_atk = get_atk(level);
+	param.entity_def = get_def(level);
+	param.entity_sp_atk = get_sp_atk(level);
+	param.entity_sp_def = get_sp_def(level);
+	param.entity_spd = get_spd(level);
+	
+	param.entity_crit_chance_modifier = base_crit_chance_modifier;
+	param.entity_crit_resist_modifier = base_crit_resist_modifier;
+	param.entity_accuracy_modifier = base_accuracy_modifier;
+	param.entity_dodge_modifier = base_dodge_modifier;
+	param.entity_luck = get_lck(level);
+	
+	return param;
+
+
 func get_base_move_list(level : int = 1) -> Array:
 	var result : Array = [];
 	
