@@ -178,7 +178,8 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		else : crit_chance *= user.param.entity_crit_chance_modifier;
 		
 		# If target crit resist modifier is 0, target cannot be crit
-		crit_chance /= target.param.entity_crit_resist_modifier
+		if target.param.entity_crit_resist_modifier == 0 : crit_chance = 0;
+		else : crit_chance /= target.param.entity_crit_resist_modifier;
 		
 		var critical = false;
 		if critical_chance > 0 && can_critical:
