@@ -115,6 +115,9 @@ func entity_init(params : BattleParams):
 func _apply_equipment(equipment : EquipmentItem):
 	max_hp += equipment.hp_mod;
 	max_mp += equipment.mp_mod;
+	
+	param.entity_hp += equipment.hp_mod;
+	param.entity_mp += equipment.mp_mod;
 	param.entity_atk += equipment.atk_mod;
 	param.entity_def += equipment.def_mod;
 	param.entity_sp_atk += equipment.mag_mod;

@@ -139,80 +139,25 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		
 		hit.append(true);
 		
+		var damage = damage_roll(atk_type, def_type, user.level, user.param, user.get_attack_modifier(), user.get_sp_attack_modifier(), target.level, target.param, target.current_hp, target.get_defense_modifier(), target.get_sp_defense_modifier(), target.can_heal, crit);
+		
 		# Deals damage using a percentage of the target's current HP
 		# Will never defeat an enemy except in very exceptional situations
 		if fixed_damage && percent_damage :
 			crit.append(false);
-			var percent = percent_damage_amt * target.current_hp;
-			if negate : 
-				if target.can_heal : result.append(-roundi(percent));
-				else : result.append(0);
-			else : result.append(roundi(percent));
+			result.append(damage);
 			continue;
 		# Deals damage using a percentage of the target's maximum HP
 		# Use sparingly or for heals
 		elif percent_damage : 
 			crit.append(false);
-			var percent = percent_damage_amt * target.max_hp;
-			if negate : 
-				if target.can_heal : result.append(-roundi(percent));
-				else : result.append(0);
-			else : result.append(roundi(percent));
+			result.append(damage);
 			continue;
 		# Deals direct damage using the fixed damage amount
 		elif fixed_damage : 
 			crit.append(false);
-			if negate : 
-				if target.can_heal : result.append(-fixed_damage_amt);
-				else : result.append(0);
-			else : result.append(fixed_damage_amt);
+			result.append(damage);
 			continue;
-		
-		var crit_chance = 1;
-		# Originally included to prevent negative luck but...
-		# we kind of want that, no?
-		#if user.param.entity_luck > 1 :
-		crit_chance = user.param.entity_luck;
-		# If user crit chance modifier is 0, user cannot crit
-		if user.param.entity_crit_chance_modifier == 0 : crit_chance = 0;
-		else : crit_chance *= user.param.entity_crit_chance_modifier;
-		
-		# If target crit resist modifier is 0, target cannot be crit
-		if target.param.entity_crit_resist_modifier == 0 : crit_chance = 0;
-		else : crit_chance /= target.param.entity_crit_resist_modifier;
-		
-		var critical = false;
-		if critical_chance > 0 && can_critical:
-			var chance = randf();
-			critical = chance < ((1.0 / critical_chance) * crit_chance);
-		crit.append(critical);
-		
-		var atk_mod = user.get_attack_modifier();
-		if atk_type == SpellHitType.Special: atk_mod = user.get_sp_attack_modifier();
-		var def_mod = target.get_defense_modifier();
-		if def_type == SpellHitType.Special: def_mod = target.get_sp_defense_modifier();
-		
-		var atk = user.param.entity_atk;
-		if atk_type == SpellHitType.Special : atk = user.param.entity_sp_atk;
-		var def = target.param.entity_def;
-		if def_type == SpellHitType.Special : def = target.param.entity_sp_def;
-		
-		if ignore_attack_stage : atk_mod = 1;
-		if ignore_defense_stage : def_mod = 1;
-		
-		if critical && atk_mod < 1 : atk_mod = 1;
-		if critical && def_mod > 1 : def_mod = 1;
-		
-		# Revised damage formula that takes into account user's level
-		var damage = ((((user.level) as float) / 5.0) + 5.0) * spell_power;
-		if !ignore_target_defense :
-			damage *= (((float)(atk * atk_mod)) / ((float)(def * def_mod)));
-		else : 
-			var relative_def = ((BASE_STAT * 2 * (user.level)) / 100) + 5;
-			damage *= (((float)(atk * atk_mod)) / ((float)(relative_def * def_mod)));
-		
-		# Scale damage to a lower number range
-		damage /= 10.0;
 		
 		for flag in spell_flags:
 			if target.flag_modifiers.has(flag.flag_name_key):
@@ -240,6 +185,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		print("Full Damage: " + str(damage))
 		damage *= randf_range(0.85, 1.0);
 		
+		var critical = crit.back();
 		if critical : damage *= 1.5
 		
 		if negate : 
@@ -251,3 +197,79 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	cast.set_hits(hit);
 	cast.set_critical(crit);
 	cast.target_index_override = index;
+
+
+func damage_roll(atk_type : SpellHitType, def_type : SpellHitType, user_level : int, user_param : EntityParams, user_atk_mod : float, user_mag_mod : float, target_level : int, target_param : EntityParams, target_hp : int, target_def_mod : float, target_res_mod : float, target_can_heal : bool, crit : Array[bool]) -> float:
+	# Deals damage using a percentage of the target's current HP
+	# Will never defeat an enemy except in very exceptional situations
+	if fixed_damage && percent_damage :
+		crit.append(false);
+		var percent = percent_damage_amt * target_hp;
+		if negate : 
+			if target_can_heal : return -roundi(percent);
+			else : return 0;
+		else : return roundi(percent);
+	# Deals damage using a percentage of the target's maximum HP
+	# Use sparingly or for heals
+	elif percent_damage : 
+		crit.append(false);
+		var percent = percent_damage_amt * target_param.entity_hp;
+		if negate : 
+			if target_can_heal : return -roundi(percent);
+			else : return 0;
+		else : return roundi(percent);
+	# Deals direct damage using the fixed damage amount
+	elif fixed_damage : 
+		crit.append(false);
+		if negate : 
+			if target_can_heal : return -fixed_damage_amt;
+			else : return 0;
+		else : return fixed_damage_amt;
+	
+	var crit_chance = 1;
+	# Originally included to prevent negative luck but...
+	# we kind of want that, no?
+	#if user.param.entity_luck > 1 :
+	crit_chance = user_param.entity_luck;
+	# If user crit chance modifier is 0, user cannot crit
+	if user_param.entity_crit_chance_modifier == 0 : crit_chance = 0;
+	else : crit_chance *= user_param.entity_crit_chance_modifier;
+	
+	# If target crit resist modifier is 0, target cannot be crit
+	if target_param.entity_crit_resist_modifier == 0 : crit_chance = 0;
+	else : crit_chance /= target_param.entity_crit_resist_modifier;
+	
+	var critical = false;
+	if critical_chance > 0 && can_critical:
+		var chance = randf();
+		critical = chance < ((1.0 / critical_chance) * crit_chance);
+	crit.append(critical);
+	
+	var atk_mod = user_atk_mod;
+	if atk_type == SpellHitType.Special: atk_mod = user_mag_mod;
+	var def_mod = target_def_mod;
+	if def_type == SpellHitType.Special: def_mod = target_res_mod;
+	
+	var atk = user_param.entity_atk;
+	if atk_type == SpellHitType.Special : atk = user_param.entity_sp_atk;
+	var def = target_param.entity_def;
+	if def_type == SpellHitType.Special : def = target_param.entity_sp_def;
+	
+	if ignore_attack_stage : atk_mod = 1;
+	if ignore_defense_stage : def_mod = 1;
+	
+	if critical && atk_mod < 1 : atk_mod = 1;
+	if critical && def_mod > 1 : def_mod = 1;
+	
+	# Revised damage formula that takes into account user's level
+	var damage = ((((user_level) as float) / 5.0) + 5.0) * spell_power;
+	if !ignore_target_defense :
+		damage *= (((float)(atk * atk_mod)) / ((float)(def * def_mod)));
+	else : 
+		var relative_def = ((BASE_STAT * 2 * (user_level)) / 100) + 5;
+		damage *= (((float)(atk * atk_mod)) / ((float)(relative_def * def_mod)));
+	
+	# Scale damage to a lower number range
+	damage /= 10.0;
+	
+	return damage;
