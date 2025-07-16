@@ -1,12 +1,35 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://dwtc7y67rv1y0"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://dwtc7y67rv1y0"]
 
 [ext_resource type="Resource" uid="uid://dqv1pbxtgcxup" path="res://assets/Animations/Sequences/Spell/anim_spell_status_heal.tres" id="1_py6oa"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_8u2ar"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_skbe0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_tgpaa"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_b3bjn"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/sof_can_heal.gd" id="4_v41tx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/sof_check_hp.gd" id="5_5k8pv"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_6s623"]
 [ext_resource type="Resource" uid="uid://co6q0p0yc5sa7" path="res://assets/Flags/heal.tres" id="6_7545u"]
 [ext_resource type="Resource" uid="uid://uf35l0vgi8mj" path="res://assets/Flags/water.tres" id="7_sg7n4"]
+
+[sub_resource type="Resource" id="Resource_7fwg7"]
+script = ExtResource("4_v41tx")
+target = 1
+
+[sub_resource type="Resource" id="Resource_60jqv"]
+script = ExtResource("5_5k8pv")
+target = 1
+check_mode = 1
+percent_amount = 0.5
+use_amount = true
+hp_amount = 0
+
+[sub_resource type="Resource" id="Resource_fwbou"]
+script = ExtResource("5_5k8pv")
+target = 1
+check_mode = 2
+percent_amount = 1.0
+use_amount = false
+hp_amount = 0
 
 [resource]
 script = ExtResource("4_b3bjn")
@@ -47,3 +70,7 @@ spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("2_8u2ar")]([])
 effects_on_success = Array[ExtResource("2_8u2ar")]([])
 properties = Array[ExtResource("3_tgpaa")]([])
+can_use_overworld = true
+overworld_check = Array[ExtResource("3_skbe0")]([SubResource("Resource_7fwg7"), SubResource("Resource_60jqv"), SubResource("Resource_fwbou")])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_skbe0")]([])

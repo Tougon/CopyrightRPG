@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://c3go87srhogl5"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://c3go87srhogl5"]
 
 [ext_resource type="Resource" uid="uid://dqv1pbxtgcxup" path="res://assets/Animations/Sequences/Spell/anim_spell_status_heal.tres" id="1_fdv6p"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_34s56"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_qahms"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_c3css"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_ilyj2"]
 [ext_resource type="Resource" uid="uid://co6q0p0yc5sa7" path="res://assets/Flags/heal.tres" id="3_l6y3s"]
 [ext_resource type="Resource" uid="uid://uf35l0vgi8mj" path="res://assets/Flags/water.tres" id="4_kplge"]
@@ -47,3 +48,7 @@ spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("2_34s56")]([])
 effects_on_success = Array[ExtResource("2_34s56")]([])
 properties = Array[ExtResource("3_ilyj2")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_c3css")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_c3css")]([])

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=7 format=3 uid="uid://dxrqonq18v24m"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://dxrqonq18v24m"]
 
 [ext_resource type="Resource" uid="uid://bbtsfwsy6n5yi" path="res://assets/Animations/Sequences/Spell/anim_spell_ragingwind.tres" id="1_hmi3k"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_1xjn5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_6krri"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_6lflq"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_d31es"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_heyko"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_pvva3"]
 
 [resource]
@@ -46,3 +47,7 @@ spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("2_1xjn5")]([])
 effects_on_success = Array[ExtResource("2_1xjn5")]([])
 properties = Array[ExtResource("3_6lflq")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_heyko")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_heyko")]([])

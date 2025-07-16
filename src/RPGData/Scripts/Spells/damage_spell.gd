@@ -144,19 +144,16 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		# Deals damage using a percentage of the target's current HP
 		# Will never defeat an enemy except in very exceptional situations
 		if fixed_damage && percent_damage :
-			crit.append(false);
-			result.append(damage);
+			result.append(roundi(damage));
 			continue;
 		# Deals damage using a percentage of the target's maximum HP
 		# Use sparingly or for heals
 		elif percent_damage : 
-			crit.append(false);
-			result.append(damage);
+			result.append(roundi(damage));
 			continue;
 		# Deals direct damage using the fixed damage amount
 		elif fixed_damage : 
-			crit.append(false);
-			result.append(damage);
+			result.append(roundi(damage));
 			continue;
 		
 		for flag in spell_flags:
@@ -273,3 +270,49 @@ func damage_roll(atk_type : SpellHitType, def_type : SpellHitType, user_level : 
 	damage /= 10.0;
 	
 	return damage;
+
+
+func cast_overworld(user : int, target : int, preview : bool = false) -> int:
+	super.cast_overworld(user, target, preview);
+	
+	var user_data = DataManager.party_data[user];
+	var target_data = DataManager.party_data[target];
+	
+	var user_entity = DataManager.entity_database.get_entity(user_data.id);
+	var target_entity = DataManager.entity_database.get_entity(target_data.id);
+	
+	var user_param = user_entity.create_entity_params(user_data.level);
+	var target_param = target_entity.create_entity_params(target_data.level);
+	
+	# Check equipment
+	var user_weapon = DataManager.item_database.get_item(user_data.weapon_id);
+	var user_armor = DataManager.item_database.get_item(user_data.armor_id);
+	var user_accessory = DataManager.item_database.get_item(user_data.accessory_id);
+	var user_equipment = [user_weapon, user_armor, user_accessory];
+	
+	for e in user_equipment:
+		if e != null:
+			user_param.entity_hp += (e as EquipmentItem).hp_mod;
+			user_param.entity_mp += (e as EquipmentItem).mp_mod;
+			user_param.entity_atk += (e as EquipmentItem).atk_mod;
+			user_param.entity_def += (e as EquipmentItem).def_mod;
+			user_param.entity_sp_atk += (e as EquipmentItem).mag_mod;
+			user_param.entity_sp_def += (e as EquipmentItem).res_mod;
+			user_param.entity_spd += (e as EquipmentItem).spd_mod;
+	
+	var target_weapon = DataManager.item_database.get_item(target_data.weapon_id);
+	var target_armor = DataManager.item_database.get_item(target_data.armor_id);
+	var target_accessory = DataManager.item_database.get_item(target_data.accessory_id);
+	var target_equipment = [target_weapon, target_armor, target_accessory];
+	
+	for e in target_equipment:
+		if e != null:
+			target_param.entity_hp += (e as EquipmentItem).hp_mod;
+			target_param.entity_mp += (e as EquipmentItem).mp_mod;
+			target_param.entity_atk += (e as EquipmentItem).atk_mod;
+			target_param.entity_def += (e as EquipmentItem).def_mod;
+			target_param.entity_sp_atk += (e as EquipmentItem).mag_mod;
+			target_param.entity_sp_def += (e as EquipmentItem).res_mod;
+			target_param.entity_spd += (e as EquipmentItem).spd_mod;
+	
+	return roundi(damage_roll(spell_attack_type, spell_defense_type, user_data.level, user_param, 1.0, 1.0, target_data.level, target_param, target_data.hp_value, 1.0, 1.0, !target_data.status.has("Doom"), []));

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=12 format=3 uid="uid://b8mcaocvteo5"]
+[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://b8mcaocvteo5"]
 
 [ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/anim_spell_status_common_atoost.tres" id="1_21s3f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_47m4t"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_lvx1u"]
 [ext_resource type="Resource" uid="uid://cq78s1t2kuo47" path="res://assets/Effects/Common/effect_common_buff_speed.tres" id="4_q35q4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_d4iaw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="5_rccaq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="5_wo8tv"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="6_0av32"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_4n6eq"]
@@ -37,3 +38,7 @@ spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("4_lvx1u")]([SubResource("Resource_q1odl")])
 effects_on_success = Array[ExtResource("4_lvx1u")]([])
 properties = Array[ExtResource("5_d4iaw")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("5_rccaq")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("5_rccaq")]([])

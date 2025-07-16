@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=11 format=3 uid="uid://b2ejapgqyhh2p"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=12 format=3 uid="uid://b2ejapgqyhh2p"]
 
 [ext_resource type="Resource" uid="uid://d1l6fqklh58v5" path="res://assets/Animations/Sequences/Spell/anim_spell_lightning.tres" id="1_bmabu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_5tijt"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_lvmpa"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_2nau4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_cnrhw"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_gsbte"]
 [ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="4_x8c3d"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_1414i"]
@@ -50,3 +51,7 @@ spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("2_lvmpa")]([])
 effects_on_success = Array[ExtResource("2_lvmpa")]([])
 properties = Array[ExtResource("3_2nau4")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_cnrhw")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_cnrhw")]([])

@@ -178,3 +178,30 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	cast.set_hits([true]);
 	cast.set_critical([false]);
 	cast.base_damage_cast = true;
+
+
+func check_can_cast_overworld(user : int, target : int) -> bool:
+	var can_use = false;
+	
+	for check in overworld_check :
+		var result = check.execute(user, target, self);
+		
+		match overworld_check_type:
+			SpellCheckType.OR:
+				if result == true :
+					return true;
+			SpellCheckType.AND:
+				if result == false:
+					return false;
+				else : can_use = true;
+	
+	return can_use;
+
+
+func cast_overworld(user : int, target : int, preview : bool = false) -> int:
+	if !preview : 
+		for action in overworld_action:
+			if action != null:
+				action.execute(user, target, self);
+	
+	return 0;

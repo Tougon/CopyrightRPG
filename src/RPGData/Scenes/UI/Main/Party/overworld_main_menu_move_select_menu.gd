@@ -3,6 +3,7 @@ extends MenuPanel
 @export var menu_panel : RadialCarousel;
 
 var _target_index : int;
+var _current_spell : Spell;
 var _current_player_data : PartyMemberData;
 var _current_player_entity : Entity;
 var _current_player_material : Material;
@@ -15,6 +16,8 @@ var _current_frame : int = 1;
 
 var _use_manual_time : bool = false;
 var _manual_time : float = 0.0;
+
+var _can_use_spell : bool = false;
 
 # TODO: Move order customization
 func _ready():
@@ -143,6 +146,9 @@ func _is_move_set(move : Spell) -> bool:
 
 
 func _on_item_selected(data):
+	_current_spell = data;
+	_can_use_spell = false;
+	
 	if data != null  && data is Spell:
 		$"BG/Move Visuals/Vid/Name".text = tr(data.spell_name_key);
 		$"BG/Move Visuals/Description".text = tr(data.spell_description_key);
@@ -151,6 +157,8 @@ func _on_item_selected(data):
 			_load_spell_data(data as Spell)
 		else :
 			$"BG/Move Visuals/Vid/Static".visible = true;
+		
+		_can_use_spell = _current_spell.can_use_overworld && _current_player_data.mp_value >= _current_spell.spell_cost;
 	
 	else :
 		$"BG/Move Visuals/Vid/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
@@ -312,6 +320,24 @@ func _on_item_clicked(data):
 	EventManager.refresh_player_move_list.emit(new_move_list);
 	
 	set_active(false);
+
+
+func on_ui_aux_1():
+	if _can_use_spell:
+		if !_current_player_data.status.has("Exhaust"):
+			_use_spell(_target_index);
+		else :
+			print("User is exhausted")
+
+
+func _use_spell(target : int):
+	var user = DataManager.party_data.find(_current_player_data);
+	
+	if _current_spell.check_can_cast_overworld(user, target):
+		var cast = _current_spell.cast_overworld(user, target, false);
+		print(cast);
+	else : 
+		print("Error message");
 
 
 func _on_close_pressed() -> void:
