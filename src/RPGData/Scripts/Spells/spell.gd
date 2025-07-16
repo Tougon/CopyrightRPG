@@ -38,6 +38,14 @@ var cached_targets : Array[EntityController];
 @export var properties : Array[Effect]
 # Properties
 
+enum SpellCheckType { AND, OR }
+
+@export_subgroup("Overworld Effects")
+@export var can_use_overworld : bool;
+@export var overworld_check : Array[SpellOverworldFunction];
+@export var overworld_check_type : SpellCheckType;
+@export var overworld_action : Array[SpellOverworldFunction];
+
 
 # Returns an instance of this spell using the spell data to calculate everything
 func cast(user : EntityController, targets : Array[EntityController]):
