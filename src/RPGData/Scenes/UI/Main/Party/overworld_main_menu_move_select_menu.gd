@@ -46,12 +46,12 @@ func on_focus():
 	if menu_panel.get_data_size() > 0 :
 		menu_panel.set_index(0);
 	else :
-		$"BG/Move Visuals/Description".text = "";
-		$"BG/Move Visuals/Cost".text = "";
-		$BG/None.visible = true;
-		$"BG/Move Visuals/Vid/Static".visible = true;
-		$"BG/Move Visuals/Close".visible = true;
-		$"BG/Move Visuals/Close".grab_focus();
+		$"BG/Move Select Items/Move Visuals/Description".text = "";
+		$"BG/Move Select Items/Move Visuals/Cost".text = "";
+		$"BG/Move Select Items/None".visible = true;
+		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
+		$"BG/Move Select Items/Move Visuals/Close".visible = true;
+		$"BG/Move Select Items/Move Visuals/Close".grab_focus();
 
 
 func on_menu_inactive():
@@ -101,15 +101,15 @@ func _refresh_move_ui():
 	menu_panel.set_data(valid_moves);
 	
 	if valid_moves.size() == 0:
-		$"BG/Move Visuals/Description".text = "";
-		$"BG/Move Visuals/Cost".text = "";
-		$BG/None.visible = true;
-		$"BG/Move Visuals/Vid/Static".visible = true;
-		$"BG/Move Visuals/Close".visible = true;
-		$"BG/Move Visuals/Close".grab_focus();
+		$"BG/Move Select Items/Move Visuals/Description".text = "";
+		$"BG/Move Select Items/Move Visuals/Cost".text = "";
+		$"BG/Move Select Items/None".visible = true;
+		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
+		$"BG/Move Select Items/Move Visuals/Close".visible = true;
+		$"BG/Move Select Items/Move Visuals/Close".grab_focus();
 	else :
-		$BG/None.visible = false;
-		$"BG/Move Visuals/Close".visible = false;
+		$"BG/Move Select Items/None".visible = false;
+		$"BG/Move Select Items/Move Visuals/Close".visible = false;
 
 
 func _get_num_moves_set() -> int:
@@ -150,21 +150,23 @@ func _on_item_selected(data):
 	_can_use_spell = false;
 	
 	if data != null  && data is Spell:
-		$"BG/Move Visuals/Vid/Name".text = tr(data.spell_name_key);
-		$"BG/Move Visuals/Description".text = tr(data.spell_description_key);
-		$"BG/Move Visuals/Cost".text = tr("T_MP_COST").format({cost = data.spell_cost});
+		$"BG/Move Select Items/Move Visuals/Vid/Name".text = tr(data.spell_name_key);
+		$"BG/Move Select Items/Move Visuals/Description".text = tr(data.spell_description_key);
+		$"BG/Move Select Items/Move Visuals/Cost".text = tr("T_MP_COST").format({cost = data.spell_cost});
 		if data.spell_videos.size() > 0 :
 			_load_spell_data(data as Spell)
 		else :
-			$"BG/Move Visuals/Vid/Static".visible = true;
+			$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		
 		_can_use_spell = _current_spell.can_use_overworld && _current_player_data.mp_value >= _current_spell.spell_cost;
 	
 	else :
-		$"BG/Move Visuals/Vid/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
-		$"BG/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
-		$"BG/Move Visuals/Cost".text = "-";
-		$"BG/Move Visuals/Vid/Static".visible = true;
+		$"BG/Move Select Items/Move Visuals/Vid/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
+		$"BG/Move Select Items/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
+		$"BG/Move Select Items/Move Visuals/Cost".text = "-";
+		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
+	
+	$"BG/Move Select Items/Move Visuals/Use".visible = _can_use_spell;
 
 
 func _load_spell_data(move : Spell):
@@ -173,8 +175,8 @@ func _load_spell_data(move : Spell):
 	await get_tree().process_frame;
 	_current_animation = move.animation_sequence;
 	
-	$"BG/Move Visuals/Vid".material = _current_player_material;
-	$"BG/Move Visuals/Vid/Static".visible = true;
+	$"BG/Move Select Items/Move Visuals/Vid".material = _current_player_material;
+	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 	
 	if move.spell_videos != null && move.spell_videos.size() > 0:
 		_videos.clear();
@@ -187,11 +189,11 @@ func _load_spell_data(move : Spell):
 		var video = null;
 		
 		if video != null : 
-			$"BG/Move Visuals/Vid".stream = video;
-			$"BG/Move Visuals/Vid".play_video_at(0);
-			$"BG/Move Visuals/Vid/Static".visible = false;
+			$"BG/Move Select Items/Move Visuals/Vid".stream = video;
+			$"BG/Move Select Items/Move Visuals/Vid".play_video_at(0);
+			$"BG/Move Select Items/Move Visuals/Vid/Static".visible = false;
 		else :
-			$"BG/Move Visuals/Vid/Static".visible = true;
+			$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 	
 	if move.spell_video_materials != null && move.spell_video_materials.size() > 0:
 		_materials.clear();
@@ -205,7 +207,7 @@ func _load_spell_data(move : Spell):
 
 func _animation_loop():
 	_use_manual_time = false;
-	$"BG/Move Visuals/Vid/Static".visible = false;
+	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = false;
 	
 	while _current_animation != null:
 		for action in _current_animation.animation_sequence:
@@ -222,7 +224,7 @@ func _animation_loop():
 		if _use_manual_time :
 			var delta = get_process_delta_time();
 			_manual_time += delta;
-			$"BG/Move Visuals/Vid".material.set_shader_parameter("manual_time", _manual_time)
+			$"BG/Move Select Items/Move Visuals/Vid".material.set_shader_parameter("manual_time", _manual_time)
 
 
 func _process_bg_action(action : ASAChangeBackground):
@@ -241,13 +243,13 @@ func _process_bg_action(action : ASAChangeBackground):
 
 func _change_video(index : int):
 	if index >= 0 && index < _videos.size():
-		$"BG/Move Visuals/Vid".stream = _videos[index];
-		$"BG/Move Visuals/Vid".play_video_at(0);
+		$"BG/Move Select Items/Move Visuals/Vid".stream = _videos[index];
+		$"BG/Move Select Items/Move Visuals/Vid".play_video_at(0);
 
 
 func _change_material(index : int, use_entity_palette : bool, palette_transition_duration : float):
 	if index >= 0 && index < _materials.size():
-		var vplayer = $"BG/Move Visuals/Vid";
+		var vplayer = $"BG/Move Select Items/Move Visuals/Vid";
 		var previous = vplayer.material.get_shader_parameter("palette");
 		vplayer.material = _materials[index];
 		vplayer.material.set_shader_parameter("transition", 0.0);
@@ -325,19 +327,11 @@ func _on_item_clicked(data):
 func on_ui_aux_1():
 	if _can_use_spell:
 		if !_current_player_data.status.has("Exhaust"):
-			_use_spell(_target_index);
+			EventManager.on_player_spell_attempt_use.emit(DataManager.party_data.find(_current_player_data), _current_spell);
+			UIManager.open_menu_name("overworld_menu_main_player_move_target");
 		else :
 			print("User is exhausted")
-
-
-func _use_spell(target : int):
-	var user = DataManager.party_data.find(_current_player_data);
-	
-	if _current_spell.check_can_cast_overworld(user, target):
-		var cast = _current_spell.cast_overworld(user, target, false);
-		print(cast);
-	else : 
-		print("Error message");
+	return;
 
 
 func _on_close_pressed() -> void:

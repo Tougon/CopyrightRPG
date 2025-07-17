@@ -41,12 +41,15 @@ func _validate_max_value():
 		max_value = min_value;
 
 
-func set_values_immediate(current : float, min : float, max : float):
+func set_values_immediate(current : float, min : float, max : float, ignore_text : bool = false):
 	min_value = min;
 	max_value = max;
 	_validate_max_value();
 	
+	var current_text = text.text;
+	
 	set_value_immediate(current);
+	if ignore_text : text.text = current_text;
 
 
 func _set_text(value : float):
@@ -68,6 +71,10 @@ func _set_text(value : float):
 				max_str = " " + max_str;
 	
 	text.text = tr(text_format).format({current = current_str, max = max_str});
+
+
+func append_text(new_text : String):
+	text.text += new_text;
 
 
 func set_value_immediate(val : float):

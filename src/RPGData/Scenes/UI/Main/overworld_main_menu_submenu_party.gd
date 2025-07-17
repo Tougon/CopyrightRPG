@@ -120,23 +120,19 @@ func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = n
 			comp_spd -= comp_equipment.spd_mod;
 			comp_lck -= (comp_equipment.lck_mod * GameplayConstants.LUCK_SCALE);
 	
+	$"Entity Stats Area/Entity Stats Group/HP".set_values_immediate(_current_player_data.hp_value, 0, hp);
 	if comp_hp != 0 :
 		if comp_hp > 0:
-			$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp) + " [color=#3ce864]+ " + str(comp_hp);
+			$"Entity Stats Area/Entity Stats Group/HP".append_text(" [color=#3ce864]+ " + str(comp_hp));
 		else :
-			$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp) + " [color=#ed3b3e]- " + str(abs(comp_hp));
-	else:
-		$"Entity Stats Area/Entity Stats Group/HP/Label".text = tr("T_HP") + ": " + str(_current_player_data.hp_value) + "/" + str(hp);
-	$"Entity Stats Area/Entity Stats Group/HP".value = ((_current_player_data.hp_value as float)) / (hp as float)
+			$"Entity Stats Area/Entity Stats Group/HP".append_text(" [color=#ed3b3e]- " + str(abs(comp_hp)));
 	
+	$"Entity Stats Area/Entity Stats Group/MP".set_values_immediate(_current_player_data.mp_value, 0, mp);
 	if comp_mp != 0 :
 		if comp_mp > 0:
-			$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp) + " [color=#3ce864]+ " + str(comp_mp);
+			$"Entity Stats Area/Entity Stats Group/MP".append_text(" [color=#3ce864]+ " + str(comp_mp));
 		else :
-			$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp) + " [color=#ed3b3e]- " + str(abs(comp_mp));
-	else :
-		$"Entity Stats Area/Entity Stats Group/MP/Label".text = tr("T_MP") + ": " + str(_current_player_data.mp_value) + "/" + str(mp);
-	$"Entity Stats Area/Entity Stats Group/MP".value = ((_current_player_data.mp_value as float)) / (mp as float)
+			$"Entity Stats Area/Entity Stats Group/MP".append_text(" [color=#ed3b3e]- " + str(abs(comp_mp)));
 	
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/ATK".set_stat_value(atk, comp_atk);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/DEF".set_stat_value(def, comp_def);

@@ -315,4 +315,9 @@ func cast_overworld(user : int, target : int, preview : bool = false) -> int:
 			target_param.entity_sp_def += (e as EquipmentItem).res_mod;
 			target_param.entity_spd += (e as EquipmentItem).spd_mod;
 	
-	return roundi(damage_roll(spell_attack_type, spell_defense_type, user_data.level, user_param, 1.0, 1.0, target_data.level, target_param, target_data.hp_value, 1.0, 1.0, !target_data.status.has("Doom"), []));
+	var damage = (damage_roll(spell_attack_type, spell_defense_type, user_data.level, user_param, 1.0, 1.0, target_data.level, target_param, target_data.hp_value, 1.0, 1.0, !target_data.status.has("Doom"), []));
+	
+	if target_data.hp_value - damage >= target_param.entity_hp:
+		return -(target_param.entity_hp - target_data.hp_value);
+	
+	return damage;

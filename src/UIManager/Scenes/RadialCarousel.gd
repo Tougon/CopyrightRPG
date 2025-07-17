@@ -106,7 +106,8 @@ func _redraw_items() :
 		
 		_carousel_items[i - 1].set_highlight(i-1==0);
 	
-	on_item_highlight(_data[_index]);
+	if _index < _data.size() && _index >= 0:
+		on_item_highlight(_data[_index]);
 
 
 func on_item_highlight(data):

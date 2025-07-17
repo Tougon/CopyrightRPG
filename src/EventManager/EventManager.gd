@@ -42,6 +42,7 @@ signal overworld_transition_fade_completed(fade_in : bool);
 # Overworld UI Events
 signal on_player_equipment_selected(equipment_type : EquipmentItem.EquipmentType, player_data : PartyMemberData, entity : Entity)
 signal on_player_move_selected(move_index : int, player_data : PartyMemberData, entity : Entity)
+signal on_player_spell_attempt_use(user : int, spell : Spell);
 signal on_inventory_item_selected(item : Item);
 signal refresh_current_inventory_item();
 signal refresh_player_info();

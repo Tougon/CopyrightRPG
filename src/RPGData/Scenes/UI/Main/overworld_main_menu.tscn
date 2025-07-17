@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=143 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ecmkkq5mfsl" path="res://assets/Sprites/UI/Status/ui_box_filled.png" id="17_2okqg"]
 [ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="18_44m7u"]
 [ext_resource type="PackedScene" uid="uid://cfktvvjn8vypu" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_stat_display.tscn" id="19_dtlof"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_options.gd" id="21_n8v21"]
 [ext_resource type="Texture2D" uid="uid://5d76dhs1f6r" path="res://assets/Sprites/UI/Status/ui_transparent_gradient.png" id="22_hh6a0"]
 [ext_resource type="Theme" uid="uid://b550bkf3byjyy" path="res://assets/Themes/Theme_UI_MainMenu_PartyButton.tres" id="23_dsf2l"]
@@ -46,6 +46,8 @@
 [ext_resource type="PackedScene" uid="uid://l2sxt0pgfsn2" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_ability_carousel_item.tscn" id="38_0mnh2"]
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
 [ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
+[ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="40_n1ghd"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_player_move_target_menu.gd" id="40_pmy5f"]
 [ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="44_prdk6"]
 [ext_resource type="Script" path="res://src/UIComponents/Scenes/underlay_bar.gd" id="45_nu1oo"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_use_panel.gd" id="45_uyhcd"]
@@ -398,23 +400,11 @@ bg_color = Color(1, 0, 0.286275, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kp0n"]
 bg_color = Color(1, 0, 0.286275, 1)
 
-[sub_resource type="Resource" id="Resource_el8iu"]
-script = ExtResource("6_i4er7")
-tween_name = "Open"
-tween_resource = ExtResource("11_gsdjh")
-play_on_start = false
-next_tween = ""
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nj4a"]
 
-[sub_resource type="Resource" id="Resource_snbgm"]
-script = ExtResource("6_i4er7")
-tween_name = "Close"
-tween_resource = ExtResource("12_u23bx")
-play_on_start = false
-next_tween = ""
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gol1b"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_d3vky"]
-line_spacing = -5.0
-font_size = 24
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vquxn"]
 
 [sub_resource type="Resource" id="Resource_a5tb3"]
 script = ExtResource("9_7mkwv")
@@ -524,6 +514,28 @@ tween_resource = SubResource("Resource_b8fij")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="LabelSettings" id="LabelSettings_rtywo"]
+line_spacing = -5.0
+font_size = 18
+
+[sub_resource type="Resource" id="Resource_el8iu"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = ExtResource("11_gsdjh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_snbgm"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = ExtResource("12_u23bx")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3vky"]
+line_spacing = -5.0
+font_size = 24
+
 [sub_resource type="Resource" id="Resource_ye405"]
 script = ExtResource("9_7mkwv")
 target = ""
@@ -583,12 +595,6 @@ tween_name = "Close"
 tween_resource = SubResource("Resource_y6moi")
 play_on_start = false
 next_tween = ""
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nj4a"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gol1b"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vquxn"]
 
 [sub_resource type="Resource" id="Resource_pblu3"]
 script = ExtResource("6_i4er7")
@@ -893,7 +899,6 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("next_player_node", "prev_player_node", "moveset_grid", "cursor", "root_menu", "initial_selection", "all_selections")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -1055,17 +1060,48 @@ text = "99"
 vertical_alignment = 2
 text_overrun_behavior = 2
 
-[node name="HP" type="ProgressBar" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
-custom_minimum_size = Vector2(0, 20)
+[node name="HP" type="Control" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(250, 20)
 layout_mode = 2
-theme = ExtResource("18_44m7u")
-theme_type_variation = &"HPBar"
+script = ExtResource("45_nu1oo")
+start_value = 0.5
 max_value = 1.0
-step = 0.0
-value = 0.7
-show_percentage = false
+text_format = "T_HP_AMOUNT_FLAT"
+deplete_color = Color(1, 1, 1, 1)
+refill_color = Color(1, 1, 1, 1)
+animation_ease = 0
+bar_subtract_speed = 2.0
+uniform_text_size_max = false
 
-[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP"]
+[node name="BarBackground" type="ColorRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+
+[node name="BarFill" type="ColorRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0, 0.788235, 0.368627, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP/BarBackground"]
 modulate = Color(0.25098, 0.25098, 0.25098, 0.4)
 layout_mode = 1
 anchors_preset = 15
@@ -1076,7 +1112,7 @@ grow_vertical = 2
 texture = ExtResource("22_hh6a0")
 expand_mode = 1
 
-[node name="Label" type="RichTextLabel" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP"]
+[node name="TextRoot" type="VBoxContainer" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP/BarBackground"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1086,6 +1122,9 @@ offset_right = -5.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="Body/Party/Entity Stats Area/Entity Stats Group/HP/BarBackground/TextRoot"]
+layout_mode = 2
 theme = ExtResource("18_44m7u")
 theme_type_variation = &"StatNumerals"
 bbcode_enabled = true
@@ -1093,17 +1132,48 @@ text = "0123456789"
 fit_content = true
 scroll_active = false
 
-[node name="MP" type="ProgressBar" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
-custom_minimum_size = Vector2(0, 20)
+[node name="MP" type="Control" parent="Body/Party/Entity Stats Area/Entity Stats Group"]
+custom_minimum_size = Vector2(250, 20)
 layout_mode = 2
-theme = ExtResource("18_44m7u")
-theme_type_variation = &"MPBar"
+script = ExtResource("45_nu1oo")
+start_value = 0.5
 max_value = 1.0
-step = 0.0
-value = 0.5
-show_percentage = false
+text_format = "T_MP_AMOUNT_FLAT"
+deplete_color = Color(1, 1, 1, 1)
+refill_color = Color(1, 1, 1, 1)
+animation_ease = 0
+bar_subtract_speed = 2.0
+uniform_text_size_max = false
 
-[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP"]
+[node name="BarBackground" type="ColorRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+
+[node name="BarFill" type="ColorRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0, 0.662745, 0.819608, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP/BarBackground"]
 modulate = Color(0.25098, 0.25098, 0.25098, 0.4)
 layout_mode = 1
 anchors_preset = 15
@@ -1114,7 +1184,7 @@ grow_vertical = 2
 texture = ExtResource("22_hh6a0")
 expand_mode = 1
 
-[node name="Label" type="RichTextLabel" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP"]
+[node name="TextRoot" type="VBoxContainer" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP/BarBackground"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1124,6 +1194,9 @@ offset_right = -5.0
 offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="Body/Party/Entity Stats Area/Entity Stats Group/MP/BarBackground/TextRoot"]
+layout_mode = 2
 theme = ExtResource("18_44m7u")
 theme_type_variation = &"StatNumerals"
 bbcode_enabled = true
@@ -2409,7 +2482,6 @@ script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
-visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -2420,7 +2492,7 @@ offset_right = 493.0
 offset_bottom = -98.0
 grow_vertical = 0
 script = ExtResource("23_kuxur")
-menu_panel = NodePath("BG/RadialCarousel")
+menu_panel = NodePath("BG/Move Select Items/RadialCarousel")
 menu_name = "overworld_menu_main_move_select"
 
 [node name="BG" type="NinePatchRect" parent="Body/Party/Entity Move Select Area"]
@@ -2449,7 +2521,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.8)
 
-[node name="RadialCarousel" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+[node name="Move Select Items" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RadialCarousel" type="Control" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 clip_children = 2
 clip_contents = true
 layout_mode = 1
@@ -2467,7 +2547,7 @@ item_spacing_degrees = 15.0
 carousel_size = Vector2(133.333, 250)
 carousel_offset = Vector2(-15, 0)
 
-[node name="Decorations" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+[node name="Decorations" type="Control" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2475,7 +2555,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cursor" type="Control" parent="Body/Party/Entity Move Select Area/BG/Decorations"]
+[node name="Cursor" type="Control" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2487,7 +2567,7 @@ offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 offset_right = 32.0
@@ -2495,7 +2575,7 @@ offset_bottom = 32.0
 texture = ExtResource("32_qohhh")
 expand_mode = 1
 
-[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 anchors_preset = 1
@@ -2508,7 +2588,7 @@ texture = ExtResource("32_qohhh")
 expand_mode = 1
 flip_h = true
 
-[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 anchors_preset = 2
@@ -2521,7 +2601,7 @@ texture = ExtResource("32_qohhh")
 expand_mode = 1
 flip_v = true
 
-[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 1)
 layout_mode = 1
 anchors_preset = 3
@@ -2538,7 +2618,7 @@ expand_mode = 1
 flip_h = true
 flip_v = true
 
-[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor"]
 modulate = Color(1, 0, 0.286275, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -2551,14 +2631,14 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor/Glow"]
 layout_mode = 1
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("33_co7pr")
 expand_mode = 1
 
-[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor/Glow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -2570,7 +2650,7 @@ texture = ExtResource("33_co7pr")
 expand_mode = 1
 flip_h = true
 
-[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor/Glow"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -2582,7 +2662,7 @@ texture = ExtResource("33_co7pr")
 expand_mode = 1
 flip_v = true
 
-[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor/Glow"]
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor/Glow"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -2598,11 +2678,11 @@ expand_mode = 1
 flip_h = true
 flip_v = true
 
-[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Decorations/Cursor"]
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Decorations/Cursor"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
-[node name="Move Visuals" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+[node name="Move Visuals" type="Control" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -2615,7 +2695,7 @@ offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Underlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+[node name="Underlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2627,7 +2707,7 @@ offset_bottom = 110.0
 grow_horizontal = 2
 color = Color(0.617455, 0.617455, 0.617455, 1)
 
-[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+[node name="Vid" type="VideoStreamPlayer" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 texture_repeat = 3
 layout_mode = 1
 anchors_preset = 5
@@ -2641,7 +2721,7 @@ grow_horizontal = 2
 expand = true
 script = ExtResource("23_k7wig")
 
-[node name="Static" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
+[node name="Static" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid"]
 material = SubResource("ShaderMaterial_8ikbu")
 layout_mode = 1
 anchors_preset = 15
@@ -2650,7 +2730,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Name" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals/Vid"]
+[node name="Name" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
 anchors_preset = 12
@@ -2667,7 +2747,7 @@ theme_override_font_sizes/font_size = 20
 text = "Move Name"
 horizontal_alignment = 1
 
-[node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+[node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
 anchors_preset = 12
@@ -2684,7 +2764,7 @@ label_settings = SubResource("LabelSettings_3ei2n")
 autowrap_mode = 2
 text_overrun_behavior = 3
 
-[node name="Cost" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+[node name="Cost" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
 anchors_preset = 12
@@ -2701,7 +2781,7 @@ theme_override_font_sizes/font_size = 16
 text = "999 MP"
 vertical_alignment = 1
 
-[node name="Close" type="Button" parent="Body/Party/Entity Move Select Area/BG/Move Visuals"]
+[node name="Close" type="Button" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -2724,7 +2804,50 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_8a5er")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7kp0n")
 text = "Close"
 
-[node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG"]
+[node name="Use" type="Control" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = -23.0
+offset_right = -30.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+
+[node name="Cost" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Use"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_right = 78.0
+grow_vertical = 2
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+theme_override_font_sizes/font_size = 16
+text = "T_PARTY_USER_SPELL"
+vertical_alignment = 1
+clip_text = true
+
+[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Use"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 20.0
+grow_vertical = 2
+texture = ExtResource("40_n1ghd")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 material = ExtResource("16_egfar")
 layout_mode = 1
 anchors_preset = 8
@@ -2746,6 +2869,840 @@ text = "T_MENU_COMMON_PARTY_NO_MOVES"
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
+
+[node name="Player Select Items" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Target Select Panel" type="Panel" parent="Body/Party/Entity Move Select Area/BG/Player Select Items" node_paths=PackedStringArray("preview_image", "hp_bar_current", "mp_bar_current", "initial_selection", "all_selections")]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("40_pmy5f")
+preview_image = NodePath("Visuals/Player Preview")
+hp_bar_current = NodePath("../../../../Entity Stats Area/Entity Stats Group/HP")
+mp_bar_current = NodePath("../../../../Entity Stats Area/Entity Stats Group/MP")
+menu_name = "overworld_menu_main_player_move_target"
+initial_selection = NodePath("HBoxContainer/P1")
+all_selections = [NodePath("HBoxContainer/P1"), NodePath("HBoxContainer/P2"), NodePath("HBoxContainer/P3"), NodePath("HBoxContainer/P4")]
+
+[node name="Blocker" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.901961)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="P1" type="Button" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P4")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P2")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("46_ff4o8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3nj4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gol1b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vquxn")
+text = "P1"
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P1"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="P2" type="Button" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P1")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P3")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("46_ff4o8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3nj4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gol1b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vquxn")
+text = "P2"
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P2"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="P3" type="Button" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P2")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P4")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("46_ff4o8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3nj4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gol1b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vquxn")
+text = "P3"
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P3"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="P4" type="Button" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../P3")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath("../P1")
+focus_neighbor_bottom = NodePath(".")
+theme = ExtResource("46_ff4o8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3nj4a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gol1b")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vquxn")
+text = "P4"
+clip_text = true
+
+[node name="Border" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4/Border"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_g3ria")])
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/HBoxContainer/P4"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_ayo2d"), SubResource("Resource_16584")])
+
+[node name="Visuals" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player Preview" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals"]
+material = ExtResource("38_n3232")
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 140.0
+offset_bottom = -65.0
+grow_vertical = 2
+texture = ExtResource("44_prdk6")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Preview"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_0nbvw")])
+
+[node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals"]
+custom_minimum_size = Vector2(104, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = 25.0
+offset_right = -16.0
+offset_bottom = -107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("39_5w6ca")
+theme_override_font_sizes/font_size = 24
+text = "T_PARTY_DESCRIPTION_USE_SPELL"
+label_settings = SubResource("LabelSettings_rtywo")
+autowrap_mode = 2
+text_overrun_behavior = 3
+
+[node name="Player Info" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bars" type="GridContainer" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 167.0
+offset_top = 98.0
+offset_right = -10.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+
+[node name="HP" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars"]
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+script = ExtResource("45_nu1oo")
+start_value = 0.5
+max_value = 1.0
+text_format = "T_HP_AMOUNT_FLAT"
+deplete_color = Color(1, 1, 1, 1)
+refill_color = Color(1, 1, 1, 1)
+animation_ease = 0
+bar_subtract_speed = 2.0
+uniform_text_size_max = false
+
+[node name="BarBackground" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/HP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+
+[node name="BarFill" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0, 0.788235, 0.368627, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/HP/BarBackground"]
+modulate = Color(0.25098, 0.25098, 0.25098, 0.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_hh6a0")
+expand_mode = 1
+
+[node name="TextRoot" type="VBoxContainer" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/HP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/HP/BarBackground/TextRoot"]
+layout_mode = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+bbcode_enabled = true
+text = "0123456789"
+fit_content = true
+scroll_active = false
+
+[node name="MP" type="Control" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars"]
+visible = false
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+script = ExtResource("45_nu1oo")
+start_value = 0.5
+max_value = 1.0
+text_format = "T_MP_AMOUNT_FLAT"
+deplete_color = Color(1, 1, 1, 1)
+refill_color = Color(1, 1, 1, 1)
+animation_ease = 0
+bar_subtract_speed = 2.0
+uniform_text_size_max = false
+
+[node name="BarBackground" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/MP"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BarUnderlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+
+[node name="BarFill" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 1)
+color = Color(0, 0.662745, 0.819608, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/MP/BarBackground"]
+modulate = Color(0.25098, 0.25098, 0.25098, 0.4)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_hh6a0")
+expand_mode = 1
+
+[node name="TextRoot" type="VBoxContainer" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/MP/BarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="RichTextLabel" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel/Visuals/Player Info/Bars/MP/BarBackground/TextRoot"]
+layout_mode = 2
+theme = ExtResource("18_44m7u")
+theme_type_variation = &"StatNumerals"
+bbcode_enabled = true
+text = "0123456789"
+fit_content = true
+scroll_active = false
+
+[node name="TweenPlayerUI" type="Node" parent="Body/Party/Entity Move Select Area/BG/Player Select Items/Target Select Panel"]
+script = ExtResource("2_fajv7")
 
 [node name="Border" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
 layout_mode = 1
@@ -2874,6 +3831,7 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -4976,7 +5934,7 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Previous" to="Body/Party" method="_on_focus_entered_previous"]
 [connection signal="focus_entered" from="Body/Party/Entity Equipment Area/Next" to="Body/Party" method="_on_focus_entered_next"]
 [connection signal="pressed" from="Body/Party/Entity Equipment Select Area/BG/Item Visuals/Close" to="Body/Party/Entity Equipment Select Area" method="_on_close_pressed"]
-[connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
+[connection signal="pressed" from="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Close" to="Body/Party/Entity Move Select Area" method="_on_close_pressed"]
 [connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Use" to="Body/Inventory" method="_on_use_clicked"]
 [connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Drop" to="Body/Inventory" method="_on_drop_clicked"]
 [connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel/Buttons/Cancel" to="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Use Panel" method="_on_cancel_pressed"]

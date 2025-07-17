@@ -169,6 +169,7 @@ func _unhandled_input(event):
 		accept_event();
 		_awaiting_input = false;
 
+
 func _exit_tree() :
 	if EventManager != null : 
 		EventManager.on_inventory_item_selected.disconnect(_on_item_selected);
