@@ -1,0 +1,101 @@
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=17 format=3 uid="uid://dt2wvq5ve3cs0"]
+
+[ext_resource type="Resource" uid="uid://b0k07wbgbdkf5" path="res://assets/Animations/Sequences/Spell/anim_spell_item_heal.tres" id="1_7kyad"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_jf4gb"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_cdufy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_thf0b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_e1bk6"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="6_yvve7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_function.gd" id="7_yo38i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_hp_check.gd" id="8_qxfur"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_can_heal.gd" id="9_ma5g1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_heal.gd" id="10_kqooa"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/consumable_item.gd" id="11_vsabm"]
+
+[sub_resource type="Resource" id="Resource_cwj80"]
+script = ExtResource("5_e1bk6")
+spell_power = 0.0
+spell_attack_type = 1
+vary_defense_type = false
+spell_defense_type = 1
+ignore_target_defense = true
+ignore_attack_modifiers = true
+ignore_defense_modifiers = true
+ignore_attack_stage = true
+ignore_defense_stage = true
+fixed_damage = false
+fixed_damage_amt = 0
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+check_accuracy = false
+spell_accuracy = 100.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+can_critical = false
+critical_chance = 16
+spell_name_key = "T_ITEM_NAME_TEMPA"
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_ITEM_TEMPA"
+spell_type = 6
+spell_target = 5
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("6_yvve7")]([])
+animation_sequence = ExtResource("1_7kyad")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_jf4gb")]([])
+effects_on_success = Array[ExtResource("2_jf4gb")]([])
+properties = Array[ExtResource("4_thf0b")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_cdufy")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_cdufy")]([])
+
+[sub_resource type="Resource" id="Resource_r8hmh"]
+script = ExtResource("8_qxfur")
+target = 1
+check_mode = 2
+percent_amount = 1.0
+use_amount = false
+hp_amount = 0
+
+[sub_resource type="Resource" id="Resource_i260v"]
+script = ExtResource("8_qxfur")
+target = 1
+check_mode = 1
+percent_amount = 0.5
+use_amount = true
+hp_amount = 0
+
+[sub_resource type="Resource" id="Resource_w4uha"]
+script = ExtResource("9_ma5g1")
+target = 1
+
+[sub_resource type="Resource" id="Resource_bbeex"]
+script = ExtResource("10_kqooa")
+target = 0
+heal_amt = 100
+percent_heal = false
+percent_heal_amt = 0.5
+negate = false
+
+[resource]
+script = ExtResource("11_vsabm")
+on_use = Array[ExtResource("7_yo38i")]([SubResource("Resource_bbeex")])
+use_battle = true
+battle_effect = SubResource("Resource_cwj80")
+use_overworld = true
+check_can_use = Array[ExtResource("7_yo38i")]([SubResource("Resource_r8hmh"), SubResource("Resource_i260v"), SubResource("Resource_w4uha")])
+check_type = null
+item_name_key = "T_ITEM_NAME_TEMPA"
+item_description_key = "T_ITEM_DESCRIPTION_TEMP"
+item_icon_path = "res://assets/Sprites/Entities/Slime/slime_n_attack.png"
+item_flags = null
+item_cost = null
+item_sellable = null
+item_sell_amount = null

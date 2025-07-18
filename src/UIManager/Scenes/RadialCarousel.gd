@@ -80,6 +80,7 @@ func _redraw_items() :
 		self.visible = false;
 		return;
 	
+	self.visible = true;
 	var span = _carousel_items.size() / 2;
 	
 	#if _data.size() < _visible_items.size():

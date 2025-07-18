@@ -101,6 +101,7 @@ func _refresh_move_ui():
 	menu_panel.set_data(valid_moves);
 	
 	if valid_moves.size() == 0:
+		$"BG/Move Select Items/Move Visuals/Vid/Name".text = "";
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
 		$"BG/Move Select Items/None".visible = true;
@@ -329,9 +330,6 @@ func on_ui_aux_1():
 		if !_current_player_data.status.has("Exhaust"):
 			EventManager.on_player_spell_attempt_use.emit(DataManager.party_data.find(_current_player_data), _current_spell);
 			UIManager.open_menu_name("overworld_menu_main_player_move_target");
-		else :
-			print("User is exhausted")
-	return;
 
 
 func _on_close_pressed() -> void:

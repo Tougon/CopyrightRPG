@@ -1,9 +1,14 @@
+@tool
 extends Resource
 class_name ItemDatabase
 
 # Database representing a list of every item in the game
-@export var entries: Array[ItemDatabaseEntry];
-
+@export var entries: Array[ItemDatabaseEntry] :
+	set(value):
+		entries = value;
+		
+		if Engine.is_editor_hint():
+			_rebake_ids();
 
 func initialize():
 	for item_id in entries.size() :
@@ -17,8 +22,8 @@ func initialize():
 
 
 func get_item(id : int) -> Item:
-	if id >= 0 && id < entries.size():
-		return entries[id].item;
+	for entry in entries:
+		if entry.id == id : return entry.item;
 	
 	# -1 is treated as a catch all for an invalid ID throughout the code
 	# No item will ever exist at this index, so we can ignore it.
@@ -28,8 +33,35 @@ func get_item(id : int) -> Item:
 
 
 func get_id(item : Item) -> int:
-	for i in entries.size():
-		if entries[i].item == item : return i;
+	for entry in entries:
+		if entry.item == item : return entry.id;
 	
 	print("Item does not exist in the database.")
 	return -1;
+
+
+func _rebake_ids():
+	for entry in entries :
+		if entry != null : 
+			if entry.id == -1 : 
+				var id = _get_last_unused_id();
+				print("Rebaking ID, new ID is: " + str(id));
+				entry.allow_id_change = true;
+				entry.id = id;
+
+
+func _get_last_unused_id() -> int:
+	var id : int = 0;
+	
+	while (_does_id_exist(id)):
+		id += 1;
+	
+	return id;
+
+
+func _does_id_exist(id : int) -> bool:
+	for entry in entries :
+		if entry != null && entry.id == id :
+			return true;
+	
+	return false;

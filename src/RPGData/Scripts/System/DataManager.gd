@@ -59,6 +59,7 @@ func create_data():
 	current_save.inventory[4] = 3;
 	current_save.inventory[5] = 3;
 	current_save.inventory[6] = 3;
+	current_save.inventory[8] = 3;
 
 
 func load_data():
@@ -138,11 +139,10 @@ func save_preferences():
 func get_battle_items() -> Dictionary:
 	var result : Dictionary;
 	
-	for id in current_save.inventory.keys():
-		var item = item_database.get_item(id);
-		
-		if item != null && item is ConsumableItem && item.use_battle :
-			result[id] = current_save.inventory[id];
+	for entry in item_database.entries :
+		if current_save.inventory.has(entry.id) && current_save.inventory[entry.id] > 0:
+			if entry.item is ConsumableItem && entry.item.use_battle : 
+				result[entry.id] = current_save.inventory[entry.id];
 	
 	return result;
 
@@ -150,11 +150,10 @@ func get_battle_items() -> Dictionary:
 func get_move_items() -> Dictionary:
 	var result : Dictionary;
 	
-	for id in current_save.inventory.keys():
-		var item = item_database.get_item(id);
-		
-		if item != null && item is MoveItem :
-			result[id] = item;
+	for entry in item_database.entries :
+		if current_save.inventory.has(entry.id) && current_save.inventory[entry.id] > 0:
+			if entry.item is MoveItem : 
+				result[entry.id] = entry.item;
 	
 	return result;
 
@@ -162,13 +161,11 @@ func get_move_items() -> Dictionary:
 func get_equipment_items(use_type : bool = false, equipment_equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon) -> Dictionary:
 	var result : Dictionary;
 	
-	for id in current_save.inventory.keys():
-		var item = item_database.get_item(id);
-		
-		if item != null && item is EquipmentItem:
-			
-			if !use_type || (use_type && equipment_equipment_type == (item as EquipmentItem).equipment_type) :
-				result[id] = item;
+	for entry in item_database.entries :
+		if current_save.inventory.has(entry.id) && current_save.inventory[entry.id] > 0:
+			if entry.item is EquipmentItem : 
+				if !use_type || (use_type && equipment_equipment_type == (entry.item as EquipmentItem).equipment_type) :
+					result[entry.id] = entry.item;
 	
 	return result;
 
@@ -197,7 +194,13 @@ func get_item_amount(id : int) -> int:
 
 
 func get_inventory_as_array() -> Array:
-	return current_save.inventory.keys();
+	var result : Array;
+	
+	for entry in item_database.entries :
+		if current_save.inventory.has(entry.id) && current_save.inventory[entry.id] > 0:
+			result.append(entry.id);
+	
+	return result;
 
 
 # Misc
