@@ -22,6 +22,7 @@ var intended_target : Array[EntityController];
 var action_replaced : bool = false;
 var current_item : Item;
 var sealing : bool;
+var seals_active : bool = true;
 var current_target : Array[EntityController];
 var current_behavior : EntityBehaviorObject;
 
@@ -95,6 +96,7 @@ func entity_init(params : BattleParams):
 	turn_number = 0;
 	can_heal = true;
 	can_cast = true;
+	seals_active = true;
 	
 	if current_entity != null:
 		if param != null : param.free();

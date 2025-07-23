@@ -91,6 +91,9 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 	for seal in seal_instances:
 		if seal.player_side == player_side : continue;
 		
+		# Check if entity's seals are active
+		if seal.seal_entity.seals_active : continue;
+		
 		# NOTE: This will double effects up and do a violation per flag.
 		for flag in action.spell_flags:
 			var sealed = false;
