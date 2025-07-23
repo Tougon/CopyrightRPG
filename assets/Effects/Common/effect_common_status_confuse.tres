@@ -63,7 +63,7 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_CONFUSE_PROC"
 
 [sub_resource type="Resource" id="Resource_t6wmj"]
 script = ExtResource("10_wa0ro")
-chance = 0.0
+chance = 0.5
 
 [sub_resource type="Resource" id="Resource_u7vjj"]
 script = ExtResource("10_wa0ro")
