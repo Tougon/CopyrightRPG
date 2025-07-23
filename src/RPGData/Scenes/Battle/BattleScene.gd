@@ -245,6 +245,10 @@ func _action_phase():
 		# Execute effects on move selected
 		entity.execute_move_selected_effects();
 		
+		# Await sequences if any have been called from On Move 
+		if sequencer.is_sequence_playing_or_queued() :
+			await EventManager.on_sequence_queue_empty;
+		
 		# Cast the spell
 		var spell_cast = entity.current_action.cast(entity, entity.current_target);
 		entity.action_result = spell_cast;

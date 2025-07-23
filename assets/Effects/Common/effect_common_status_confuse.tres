@@ -1,0 +1,134 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=36 format=3 uid="uid://dugq12fkxgmh2"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_ica7o"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_nh5re"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_44wkw"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_r325v"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_uisjm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_set_turn_limit.gd" id="6_d0kjr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_hwcgy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="8_of0yh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="9_bjgoy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="10_2juaj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="10_j8pbs"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_random.gd" id="10_wa0ro"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="11_2ssp3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_action_can_change_target.gd" id="11_lsr1y"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="12_5gkyq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_target.gd" id="12_o8fm7"]
+
+[sub_resource type="Resource" id="Resource_mfdjw"]
+script = ExtResource("2_nh5re")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_7qcvy"]
+script = ExtResource("3_44wkw")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_lkm5g"]
+script = ExtResource("5_uisjm")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_CONFUSE_ACTIVATE"
+target = 1
+animation = ExtResource("4_r325v")
+
+[sub_resource type="Resource" id="Resource_mc8f5"]
+script = ExtResource("6_d0kjr")
+min_turns = 3
+max_turns = 5
+
+[sub_resource type="Resource" id="Resource_fdc8l"]
+script = ExtResource("6_hwcgy")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_CONFUSE_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_h4wxx"]
+script = ExtResource("2_nh5re")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_3kxj3"]
+script = ExtResource("11_2ssp3")
+target = 1
+
+[sub_resource type="Resource" id="Resource_mgf38"]
+script = ExtResource("9_bjgoy")
+
+[sub_resource type="Resource" id="Resource_oar5g"]
+script = ExtResource("6_hwcgy")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_CONFUSE_PROC"
+
+[sub_resource type="Resource" id="Resource_t6wmj"]
+script = ExtResource("10_wa0ro")
+chance = 1.0
+
+[sub_resource type="Resource" id="Resource_u7vjj"]
+script = ExtResource("10_wa0ro")
+chance = 0.0
+
+[sub_resource type="Resource" id="Resource_5nwv6"]
+script = ExtResource("11_lsr1y")
+target = 1
+
+[sub_resource type="Resource" id="Resource_y4lok"]
+script = ExtResource("8_of0yh")
+target = 1
+pick_random = true
+reset_sealing = true
+
+[sub_resource type="Resource" id="Resource_aum5m"]
+script = ExtResource("12_o8fm7")
+target = 1
+
+[sub_resource type="Resource" id="Resource_1mob2"]
+script = ExtResource("10_j8pbs")
+check_success_type = 0
+check_success = Array[ExtResource("1_ica7o")]([SubResource("Resource_u7vjj"), SubResource("Resource_5nwv6")])
+on_success = Array[ExtResource("1_ica7o")]([SubResource("Resource_aum5m")])
+on_fail = Array[ExtResource("1_ica7o")]([SubResource("Resource_y4lok")])
+
+[sub_resource type="Resource" id="Resource_cmdy3"]
+script = ExtResource("10_j8pbs")
+check_success_type = 0
+check_success = Array[ExtResource("1_ica7o")]([SubResource("Resource_t6wmj")])
+on_success = Array[ExtResource("1_ica7o")]([SubResource("Resource_1mob2")])
+on_fail = Array[ExtResource("1_ica7o")]([])
+
+[sub_resource type="Resource" id="Resource_46fxo"]
+script = ExtResource("10_j8pbs")
+check_success_type = 0
+check_success = Array[ExtResource("1_ica7o")]([SubResource("Resource_h4wxx")])
+on_success = Array[ExtResource("1_ica7o")]([SubResource("Resource_mgf38"), SubResource("Resource_oar5g"), SubResource("Resource_cmdy3")])
+on_fail = Array[ExtResource("1_ica7o")]([SubResource("Resource_3kxj3")])
+
+[sub_resource type="Resource" id="Resource_c16dt"]
+script = ExtResource("10_2juaj")
+
+[sub_resource type="Resource" id="Resource_1g15b"]
+script = ExtResource("6_hwcgy")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_CONFUSE_STACK"
+
+[resource]
+script = ExtResource("12_5gkyq")
+stackable = true
+effect_name = "Confuse"
+generic = false
+priority = 5
+turn_limit = 5
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_ica7o")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_ica7o")]([SubResource("Resource_mfdjw")])
+on_activate = Array[ExtResource("1_ica7o")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_ica7o")]([])
+on_apply = Array[ExtResource("1_ica7o")]([SubResource("Resource_lkm5g"), SubResource("Resource_mc8f5")])
+on_move_selected = Array[ExtResource("1_ica7o")]([SubResource("Resource_46fxo")])
+on_move_completed = Array[ExtResource("1_ica7o")]([])
+on_deactivate = Array[ExtResource("1_ica7o")]([SubResource("Resource_fdc8l")])
+on_turn_start = Array[ExtResource("1_ica7o")]([])
+on_turn_end = Array[ExtResource("1_ica7o")]([])
+on_stack = Array[ExtResource("1_ica7o")]([SubResource("Resource_c16dt"), SubResource("Resource_1g15b")])

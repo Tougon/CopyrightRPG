@@ -24,7 +24,7 @@ func execute(instance : EffectInstance):
 		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 3));
 		user_pronouns.append(GrammarManager.get_pronoun(instance.user.param.entity_gender, 4));
 		
-		if instance.user.current_entity.generic && BattleScene.Instance.enemy_type_count[instance.user] <= 1:
+		if instance.user.current_entity.generic && BattleScene.Instance.enemy_type_count[instance.user.current_entity] <= 1:
 			user_article_def = GrammarManager.get_direct_article(user_name);
 			user_article_indef = GrammarManager.get_indirect_article(user_name);
 	
@@ -36,7 +36,7 @@ func execute(instance : EffectInstance):
 		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 3));
 		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 4));
 		
-		if instance.target.current_entity.generic && BattleScene.Instance.enemy_type_count[instance.target] <= 1:
+		if instance.target.current_entity.generic && BattleScene.Instance.enemy_type_count[instance.target.current_entity] <= 1:
 			target_article_def = GrammarManager.get_direct_article(target_name);
 			target_article_indef = GrammarManager.get_indirect_article(target_name);
 	
