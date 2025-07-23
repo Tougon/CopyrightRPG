@@ -174,6 +174,8 @@ func _action_phase():
 	var turn_order : Array[EntityController];
 	
 	for entity in entities:
+		entity.action_replaced = false;
+		
 		if !entity.is_defeated :
 			turn_order.append(entity);
 	
@@ -181,8 +183,8 @@ func _action_phase():
 	
 	# Process all turn start events and seals
 	for entity in turn_order :
-		entity.prev_action = entity.current_action;
-		entity.prev_target = entity.current_target.duplicate();
+		entity.intended_action = entity.current_action;
+		entity.intended_target = entity.current_target.duplicate();
 		
 		if !entity.is_defeated:
 			entity.execute_turn_start_effects();
@@ -467,6 +469,9 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 
 func _end_phase():
 	# Execute turn end effect functions
+	for entity in entities : 
+		entity.prev_action = entity.intended_action;
+		entity.prev_target = entity.intended_target.duplicate();
 	
 	# If at least one player is currently alive, check for a victory
 	if (!_all_players_defeated()) :

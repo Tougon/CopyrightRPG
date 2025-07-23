@@ -48,6 +48,8 @@ chance = 0.5
 script = ExtResource("10_gtd74")
 target = 1
 action = ExtResource("9_8wewc")
+use_previous = false
+pick_random = false
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_347a1"]
@@ -73,7 +75,7 @@ script = ExtResource("14_57e6d")
 stackable = true
 effect_name = "Stun"
 generic = false
-priority = 5
+priority = 8
 turn_limit = 3
 effect_type = 0
 check_success_type = 0

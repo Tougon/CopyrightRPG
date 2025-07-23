@@ -37,6 +37,8 @@ mp_amount = 0
 script = ExtResource("8_ftm8y")
 target = 1
 action = ExtResource("7_2rbby")
+use_previous = false
+pick_random = false
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_vqite"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ConsumableItem" load_steps=16 format=3 uid="uid://pgrl2ap5uhne"]
+[gd_resource type="Resource" script_class="ConsumableItem" load_steps=17 format=3 uid="uid://pgrl2ap5uhne"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_hmsku"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_uha6e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_5rade"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/consumable_item.gd" id="2_366gw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_function.gd" id="2_bdopr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_3nvsj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="3_8c2p3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_hp_check.gd" id="7_07hva"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/Functions/ifunc_heal.gd" id="7_n85r2"]
@@ -50,6 +51,10 @@ spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("1_uha6e")]([])
 effects_on_success = Array[ExtResource("1_uha6e")]([])
 properties = Array[ExtResource("2_5rade")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_3nvsj")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_3nvsj")]([])
 
 [sub_resource type="Resource" id="Resource_r8hmh"]
 script = ExtResource("7_07hva")

@@ -39,6 +39,8 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_STUN_DEACTIVATE"
 script = ExtResource("8_abiu8")
 target = 1
 action = ExtResource("7_c5ysx")
+use_previous = false
+pick_random = false
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_iihfa"]
@@ -60,7 +62,7 @@ script = ExtResource("12_ytryr")
 stackable = true
 effect_name = "Stun"
 generic = false
-priority = 5
+priority = 9
 turn_limit = 1
 effect_type = 0
 check_success_type = 0
