@@ -1,0 +1,179 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=37 format=3 uid="uid://bup308uw78yo0"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_8iyyo"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_m7y60"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_o3r3n"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="3_6ggkw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_dtl5j"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_set_turn_limit.gd" id="6_4bqji"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_pmw0b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_eynqa"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="7_ij7y5"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="8_uc50f"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="9_f0oti"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="10_xriis"]
+
+[sub_resource type="Resource" id="Resource_so25k"]
+script = ExtResource("2_o3r3n")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_7qcvy"]
+script = ExtResource("2_m7y60")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_lkm5g"]
+script = ExtResource("4_dtl5j")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_AGITATION_ACTIVATE"
+target = 1
+animation = ExtResource("3_6ggkw")
+
+[sub_resource type="Resource" id="Resource_43ptt"]
+script = ExtResource("6_4bqji")
+min_turns = 3
+max_turns = 5
+
+[sub_resource type="Resource" id="Resource_53joa"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 0
+amount = 1.5
+
+[sub_resource type="Resource" id="Resource_xmc5k"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 2
+amount = 1.5
+
+[sub_resource type="Resource" id="Resource_rg7f3"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 1
+amount = 0.75
+
+[sub_resource type="Resource" id="Resource_lnlhb"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 3
+amount = 0.75
+
+[sub_resource type="Resource" id="Resource_2xjd1"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 4
+amount = 1.25
+
+[sub_resource type="Resource" id="Resource_ilutl"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 5
+amount = 0.75
+
+[sub_resource type="Resource" id="Resource_o51bw"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = true
+stat = 6
+amount = 0.75
+
+[sub_resource type="Resource" id="Resource_fdc8l"]
+script = ExtResource("6_pmw0b")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_AGITATION_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_vi5kq"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 0
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_xd81b"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 2
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_a26yf"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 1
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_2quex"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 3
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_nab30"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 4
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_min1m"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 5
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_21uoy"]
+script = ExtResource("7_ij7y5")
+target = 1
+apply = false
+stat = 6
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_4m3mj"]
+script = ExtResource("8_uc50f")
+
+[sub_resource type="Resource" id="Resource_vdyr4"]
+script = ExtResource("9_f0oti")
+target = 1
+
+[sub_resource type="Resource" id="Resource_7jpvs"]
+script = ExtResource("6_pmw0b")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_AGITATION_TICK"
+
+[sub_resource type="Resource" id="Resource_1g15b"]
+script = ExtResource("6_pmw0b")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_AGITATION_STACK"
+
+[sub_resource type="Resource" id="Resource_s0poj"]
+script = ExtResource("10_xriis")
+
+[resource]
+script = ExtResource("7_eynqa")
+stackable = true
+effect_name = "Agitation"
+generic = false
+priority = 5
+turn_limit = 5
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_8iyyo")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_8iyyo")]([SubResource("Resource_so25k")])
+on_activate = Array[ExtResource("1_8iyyo")]([SubResource("Resource_7qcvy")])
+on_failed_to_activate = Array[ExtResource("1_8iyyo")]([])
+on_apply = Array[ExtResource("1_8iyyo")]([SubResource("Resource_lkm5g"), SubResource("Resource_43ptt"), SubResource("Resource_53joa"), SubResource("Resource_xmc5k"), SubResource("Resource_rg7f3"), SubResource("Resource_lnlhb"), SubResource("Resource_2xjd1"), SubResource("Resource_ilutl"), SubResource("Resource_o51bw")])
+on_move_selected = Array[ExtResource("1_8iyyo")]([SubResource("Resource_7jpvs")])
+on_move_completed = Array[ExtResource("1_8iyyo")]([SubResource("Resource_4m3mj"), SubResource("Resource_vdyr4")])
+on_deactivate = Array[ExtResource("1_8iyyo")]([SubResource("Resource_fdc8l"), SubResource("Resource_vi5kq"), SubResource("Resource_xd81b"), SubResource("Resource_a26yf"), SubResource("Resource_2quex"), SubResource("Resource_nab30"), SubResource("Resource_min1m"), SubResource("Resource_21uoy")])
+on_turn_start = Array[ExtResource("1_8iyyo")]([])
+on_turn_end = Array[ExtResource("1_8iyyo")]([])
+on_stack = Array[ExtResource("1_8iyyo")]([SubResource("Resource_1g15b"), SubResource("Resource_s0poj")])

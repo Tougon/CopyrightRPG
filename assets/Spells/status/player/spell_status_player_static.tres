@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_5xr71"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_2sbqv"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="3_wwgpf"]
+[ext_resource type="Resource" uid="uid://bup308uw78yo0" path="res://assets/Effects/Common/effect_common_status_agitation.tres" id="4_0ut0a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_jnf5g"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="4_k7ee5"]
-[ext_resource type="Resource" uid="uid://du5d0ivyq72li" path="res://assets/Effects/Common/effect_common_status_pressure.tres" id="4_vggtn"]
 [ext_resource type="Resource" uid="uid://cwtnk7xpl801x" path="res://assets/Flags/stun.tres" id="5_3k0y4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_an8td"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="5_ixm0u"]
@@ -15,7 +15,7 @@
 [sub_resource type="Resource" id="Resource_1wpro"]
 script = ExtResource("3_2sbqv")
 chance = 1.0
-effect = ExtResource("4_vggtn")
+effect = ExtResource("4_0ut0a")
 
 [sub_resource type="Resource" id="Resource_yifa3"]
 script = ExtResource("4_jnf5g")

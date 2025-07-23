@@ -1,12 +1,22 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=14 format=3 uid="uid://dguhi8bo5rkdb"]
+[gd_resource type="Resource" script_class="Effect" load_steps=22 format=3 uid="uid://dguhi8bo5rkdb"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_p43w4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_6h4yy"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_61d2m"]
 [ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="3_fupkm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_fnb5f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_set_seal.gd" id="5_lbtsg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_w6xkv"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_bdhwo"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="8_8blgl"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="9_jbi14"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="10_g5wn6"]
+
+[sub_resource type="Resource" id="Resource_x071c"]
+script = ExtResource("2_6h4yy")
+check_mode = 2
+use_limit = true
+turns = 3
 
 [sub_resource type="Resource" id="Resource_7qcvy"]
 script = ExtResource("2_61d2m")
@@ -38,18 +48,28 @@ can_seal = true
 script = ExtResource("6_w6xkv")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_DISTRACT_STACK"
 
+[sub_resource type="Resource" id="Resource_4vi3o"]
+script = ExtResource("8_8blgl")
+
+[sub_resource type="Resource" id="Resource_iad26"]
+script = ExtResource("9_jbi14")
+
+[sub_resource type="Resource" id="Resource_8mawk"]
+script = ExtResource("10_g5wn6")
+target = 1
+
 [resource]
 script = ExtResource("7_bdhwo")
 stackable = true
 effect_name = "Distracted"
 generic = false
 priority = 5
-turn_limit = 0
+turn_limit = 5
 effect_type = 0
 check_success_type = 0
 check_success = Array[ExtResource("1_p43w4")]([])
 check_remain_active_type = 0
-check_remain_active = Array[ExtResource("1_p43w4")]([])
+check_remain_active = Array[ExtResource("1_p43w4")]([SubResource("Resource_x071c")])
 on_activate = Array[ExtResource("1_p43w4")]([SubResource("Resource_7qcvy")])
 on_failed_to_activate = Array[ExtResource("1_p43w4")]([])
 on_apply = Array[ExtResource("1_p43w4")]([SubResource("Resource_lkm5g"), SubResource("Resource_5rjvb")])
@@ -57,5 +77,5 @@ on_move_selected = Array[ExtResource("1_p43w4")]([])
 on_move_completed = Array[ExtResource("1_p43w4")]([])
 on_deactivate = Array[ExtResource("1_p43w4")]([SubResource("Resource_fdc8l"), SubResource("Resource_peo7w")])
 on_turn_start = Array[ExtResource("1_p43w4")]([])
-on_turn_end = Array[ExtResource("1_p43w4")]([])
-on_stack = Array[ExtResource("1_p43w4")]([SubResource("Resource_1g15b")])
+on_turn_end = Array[ExtResource("1_p43w4")]([SubResource("Resource_iad26"), SubResource("Resource_8mawk")])
+on_stack = Array[ExtResource("1_p43w4")]([SubResource("Resource_1g15b"), SubResource("Resource_4vi3o")])
