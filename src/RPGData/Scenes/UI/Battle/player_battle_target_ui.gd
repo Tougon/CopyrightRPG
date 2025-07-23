@@ -127,7 +127,7 @@ func _initialize_target_menu(entity : EntityController):
 			target_to_info[target] = info;
 			
 			# Set the initial selection if the last selection is valid
-			if entity.prev_target.size() == 1 && entity.prev_target[0].param.entity_name == target.param.entity_name:
+			if entity.prev_target.size() == 1 && entity.prev_target[0].current_entity== target.current_entity && entity.prev_target[0].param.entity_name == target.param.entity_name:
 				initial_selection = info;
 				selection_remind = true;
 		

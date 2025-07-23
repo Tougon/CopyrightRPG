@@ -182,7 +182,7 @@ func _action_phase():
 	# Process all turn start events and seals
 	for entity in turn_order :
 		entity.prev_action = entity.current_action;
-		entity.prev_target = entity.current_target;
+		entity.prev_target = entity.current_target.duplicate();
 		
 		if !entity.is_defeated:
 			entity.execute_turn_start_effects();
@@ -374,7 +374,7 @@ func _action_phase():
 		EventManager.hide_entity_ui.emit();
 		
 		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
-			if seal_manager.can_seal_spell(entity.current_action):
+			if seal_manager.can_seal_spell(entity.current_action) && entity.seal_effect != null:
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
 				
