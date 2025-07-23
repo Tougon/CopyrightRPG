@@ -1,18 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca6d0l8ch43v4"]
+[gd_scene load_steps=4 format=3 uid="uid://ca6d0l8ch43v4"]
 
 [ext_resource type="PackedScene" uid="uid://b1yeonj32wfeb" path="res://src/RPGData/Scenes/Entity/EntityController.tscn" id="1_it6kr"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/PlayerController.gd" id="2_6enct"]
-[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="3_8bhdk"]
-[ext_resource type="Resource" uid="uid://dciwv5n41ixne" path="res://assets/Spells/generic/spell_generic_defend.tres" id="4_su36j"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="5_yqsgs"]
 [ext_resource type="Texture2D" uid="uid://bim7bg23jk7em" path="res://assets/Sprites/Entities/PlayerA/player_main_neutral.png" id="6_hst7t"]
 
 [node name="EntityBase" instance=ExtResource("1_it6kr")]
 script = ExtResource("2_6enct")
 player_id = 0
-attack_action = ExtResource("3_8bhdk")
-defend_action = ExtResource("4_su36j")
-seal_effect = ExtResource("5_yqsgs")
+default_attack_action = null
+default_defend_action = null
+default_seal_effect = null
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 1)

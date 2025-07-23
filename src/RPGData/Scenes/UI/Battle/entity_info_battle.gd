@@ -22,11 +22,19 @@ func change_hp(new_hp : float):
 	hp_bar.set_value(new_hp);
 
 
+func change_hp_immediate(new_hp : float):
+	hp_bar.set_value_immediate(new_hp);
+
+
 func change_mp(new_mp : float):
 	$"Container/MP Bar".visible = true;
 	if !active : await show_ui();
 	
 	mp_bar.set_value(new_mp);
+
+
+func change_mp_immediate(new_mp : float):
+	mp_bar.set_value_immediate(new_mp);
 
 
 func show_ui():

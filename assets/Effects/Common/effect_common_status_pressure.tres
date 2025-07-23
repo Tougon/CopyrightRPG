@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Effect" load_steps=27 format=3 uid="uid://du5d0ivyq72li"]
+[gd_resource type="Resource" script_class="Effect" load_steps=30 format=3 uid="uid://du5d0ivyq72li"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_j1sqh"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_fjw6v"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_is_using_item.gd" id="3_44066"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_b6e0g"]
 [ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_25huw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_f8oou"]
@@ -19,6 +20,11 @@ script = ExtResource("2_fjw6v")
 check_mode = 2
 use_limit = true
 turns = 3
+
+[sub_resource type="Resource" id="Resource_m7fod"]
+script = ExtResource("3_44066")
+target = 1
+invert = true
 
 [sub_resource type="Resource" id="Resource_7qcvy"]
 script = ExtResource("3_b6e0g")
@@ -40,6 +46,10 @@ max_turns = 5
 [sub_resource type="Resource" id="Resource_fdc8l"]
 script = ExtResource("7_dpl8v")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_PRESSURE_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_24ts3"]
+script = ExtResource("7_dpl8v")
+dialogue_key = "T_EFFECT_GENERIC_STATUS_PRESSURE_FAIL"
 
 [sub_resource type="Resource" id="Resource_h4wxx"]
 script = ExtResource("2_fjw6v")
@@ -82,17 +92,17 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_PRESSURE_STACK"
 [resource]
 script = ExtResource("16_snoal")
 stackable = true
-effect_name = "Confuse"
+effect_name = "Pressure"
 generic = false
 priority = 6
 turn_limit = 5
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("1_j1sqh")]([])
+check_success = Array[ExtResource("1_j1sqh")]([SubResource("Resource_m7fod")])
 check_remain_active_type = 0
 check_remain_active = Array[ExtResource("1_j1sqh")]([SubResource("Resource_mfdjw")])
 on_activate = Array[ExtResource("1_j1sqh")]([SubResource("Resource_7qcvy")])
-on_failed_to_activate = Array[ExtResource("1_j1sqh")]([])
+on_failed_to_activate = Array[ExtResource("1_j1sqh")]([SubResource("Resource_24ts3")])
 on_apply = Array[ExtResource("1_j1sqh")]([SubResource("Resource_lkm5g"), SubResource("Resource_mc8f5")])
 on_move_selected = Array[ExtResource("1_j1sqh")]([SubResource("Resource_46fxo")])
 on_move_completed = Array[ExtResource("1_j1sqh")]([])

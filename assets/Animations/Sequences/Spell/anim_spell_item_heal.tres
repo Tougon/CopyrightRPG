@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=17 format=3 uid="uid://b0k07wbgbdkf5"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=20 format=3 uid="uid://b0k07wbgbdkf5"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_oxiby"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="2_bya6v"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="3_dqqxb"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_a718m"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/consume_item.gd" id="5_mmxcn"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_nevjj"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="9_g30h1"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="10_rdg1m"]
 
@@ -72,6 +73,26 @@ frame = 90
 frame_order = 0
 action = SubResource("Resource_1etwd")
 
+[sub_resource type="Resource" id="Resource_ngku4"]
+script = ExtResource("6_nevjj")
+vibrate = true
+damage_time = 0.35
+damage_delay = 0.0
+shake_duration = 0.0
+shake_decay = 0.35
+force_dodge = true
+effect_user = false
+manual_override = false
+use_fixed_damage = true
+damage_amount = 0
+percent_amount = 0.0
+
+[sub_resource type="Resource" id="Resource_lesaj"]
+script = ExtResource("1_oxiby")
+frame = 90
+frame_order = 1
+action = SubResource("Resource_ngku4")
+
 [sub_resource type="Resource" id="Resource_jim8f"]
 script = ExtResource("9_g30h1")
 
@@ -85,4 +106,4 @@ action = SubResource("Resource_jim8f")
 script = ExtResource("10_rdg1m")
 animation_name = "Item Heal"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_oxiby")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_o1j1i")])
+animation_sequence = Array[ExtResource("1_oxiby")]([SubResource("Resource_ufi1u"), SubResource("Resource_xkyrv"), SubResource("Resource_ik65d"), SubResource("Resource_lesaj"), SubResource("Resource_o1j1i")])

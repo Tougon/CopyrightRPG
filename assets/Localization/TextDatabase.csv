@@ -98,6 +98,7 @@ T_EFFECT_GENERIC_STATUS_PRESSURE_ACTIVATE,{t_article_def}{t_entity} falls under 
 T_EFFECT_GENERIC_STATUS_PRESSURE_PROC,{t_article_def}{t_entity} is under pressure!,,
 T_EFFECT_GENERIC_STATUS_PRESSURE_DEACTIVATE,{t_article_def}{t_entity} feels relieved!,,
 T_EFFECT_GENERIC_STATUS_PRESSURE_STACK,{t_article_def}{t_entity}'s pressure builds!,,
+T_EFFECT_GENERIC_STATUS_PRESSURE_FAIL,{t_article_def}{t_entity} kept it cool!,,
 T_EFFECT_GENERIC_STATUS_CONFUSE_ACTIVATE,{t_article_def}{t_entity} has no idea what's going on!,,
 T_EFFECT_GENERIC_STATUS_CONFUSE_PROC,{t_article_def}{t_entity} is confused!,,
 T_EFFECT_GENERIC_STATUS_CONFUSE_DEACTIVATE,{t_article_def}{t_entity} snaps out of it!,,
