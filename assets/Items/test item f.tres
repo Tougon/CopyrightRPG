@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_p7esj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_l0nye"]
-[ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/damage/player/spell_damage_player_secretchord.tres" id="3_djho2"]
+[ext_resource type="Resource" uid="uid://2eos7tpnua6h" path="res://assets/Spells/player/player_a/spell_player_secretchord.tres" id="3_djho2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_attack.gd" id="4_nxhsr"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_5bg3x"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="6_se1hy"]

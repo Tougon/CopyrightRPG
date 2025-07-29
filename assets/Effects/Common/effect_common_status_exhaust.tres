@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_mp_cost.gd" id="6_0fc8q"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="6_2co35"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_mvirf"]
-[ext_resource type="Resource" uid="uid://yo1k76pgqcbp" path="res://assets/Spells/flavor/spell_flavor_exhausted.tres" id="7_2rbby"]
+[ext_resource type="Resource" uid="uid://yo1k76pgqcbp" path="res://assets/Spells/core/spell_core_exhausted.tres" id="7_2rbby"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_o4x18"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="8_ftm8y"]
 

@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="6_mtrxa"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="7_ty32a"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/cast_sub_spell.gd" id="8_3yq27"]
-[ext_resource type="Resource" uid="uid://6kinr54u5ofy" path="res://assets/Spells/damage/common/spell_damage_common_blazingrock_b.tres" id="9_iuw0x"]
+[ext_resource type="Resource" uid="uid://6kinr54u5ofy" path="res://assets/Spells/common/spell_common_blazingrock_b.tres" id="9_iuw0x"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="10_lrvho"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="11_fdd8s"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="12_7qw6f"]

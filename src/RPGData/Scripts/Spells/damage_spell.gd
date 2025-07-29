@@ -54,6 +54,7 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	
 	var base_check = accuracy / evasion;
 	var hit = (spell_accuracy + (ACCURACY_BONUS * luck)) * base_check;
+	print("HIT RATE: " + str(hit));
 	
 	if amt != -1 :
 		hit = (amt + (ACCURACY_BONUS * luck)) * base_check;

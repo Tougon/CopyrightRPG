@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://x64kqx0do0fq"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_8022a"]
+
+[resource]
+script = ExtResource("1_8022a")
+flag_name_key = "turquoise"

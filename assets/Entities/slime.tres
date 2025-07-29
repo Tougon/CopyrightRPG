@@ -9,9 +9,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="9_n0rge"]
-[ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/flavor/spell_flavor_slime_idle_00.tres" id="9_vrc5r"]
+[ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/spell_enemy_slime_idle_00.tres" id="9_vrc5r"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="10_5xb1c"]
-[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/generic/spell_generic_attack.tres" id="11_ul1t6"]
+[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/core/spell_core_attack.tres" id="11_ul1t6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="13_a88bw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="16_rv22r"]
 

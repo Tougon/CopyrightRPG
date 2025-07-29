@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_iq8ch"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="7_gno3b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_random.gd" id="8_o6v6x"]
-[ext_resource type="Resource" uid="uid://4ch7ihyb6wyn" path="res://assets/Spells/flavor/spell_flavor_drowsy.tres" id="9_8wewc"]
+[ext_resource type="Resource" uid="uid://4ch7ihyb6wyn" path="res://assets/Spells/core/spell_core_drowsy.tres" id="9_8wewc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="10_gtd74"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="11_3ptum"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="12_uyxfw"]

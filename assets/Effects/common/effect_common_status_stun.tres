@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_wv2ub"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_7ft6m"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_038ny"]
-[ext_resource type="Resource" uid="uid://b2q6alnhkwh3m" path="res://assets/Spells/flavor/spell_flavor_stunned.tres" id="7_c5ysx"]
+[ext_resource type="Resource" uid="uid://b2q6alnhkwh3m" path="res://assets/Spells/core/spell_core_stunned.tres" id="7_c5ysx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="8_abiu8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="9_1lkiu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="10_akm3l"]
