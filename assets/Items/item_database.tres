@@ -33,16 +33,16 @@ script = ExtResource("1_pxlfu")
 id = 5
 item_path = "res://assets/Items/test item b.tres"
 
+[sub_resource type="Resource" id="Resource_ddi35"]
+script = ExtResource("1_pxlfu")
+id = 8
+item_path = "res://assets/Items/test item e.tres"
+
 [sub_resource type="Resource" id="Resource_6d5lo"]
 script = ExtResource("1_pxlfu")
 id = 6
 item_path = "res://assets/Items/test item c.tres"
 
-[sub_resource type="Resource" id="Resource_8xrh7"]
-script = ExtResource("1_pxlfu")
-id = 7
-item_path = "res://assets/Items/test item e.tres"
-
 [resource]
 script = ExtResource("2_ruhu0")
-entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_wde6q"), SubResource("Resource_gtt2u"), SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_46j0w"), SubResource("Resource_6d5lo"), SubResource("Resource_8xrh7")])
+entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_wde6q"), SubResource("Resource_gtt2u"), SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_46j0w"), SubResource("Resource_ddi35"), SubResource("Resource_6d5lo")])

@@ -5,10 +5,25 @@ class_name ItemDatabase
 # Database representing a list of every item in the game
 @export var entries: Array[ItemDatabaseEntry] :
 	set(value):
+		var should_rebake = false;
+		var loading = false;
+		
+		# If the size is 0, assume
+		if entries != null :
+			loading = entries.size() == 0 && value != null && value.size() > 0;
+			
+			if !loading :
+				# If any new entries have been added, set their IDs
+				for i in entries.size():
+					if value != null && i < value.size():
+						if entries[i] == null && value[i] != null:
+							should_rebake = true;
+		
 		entries = value;
 		
-		if Engine.is_editor_hint():
-			_rebake_ids();
+		if Engine.is_editor_hint() :
+			if should_rebake : 
+				_rebake_ids();
 
 func initialize():
 	for item_id in entries.size() :
