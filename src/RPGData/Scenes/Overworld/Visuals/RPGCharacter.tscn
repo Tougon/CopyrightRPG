@@ -1,36 +1,79 @@
-[gd_scene load_steps=12 format=3 uid="uid://blcq1iqrvxi3o"]
+[gd_scene load_steps=23 format=3 uid="uid://blcq1iqrvxi3o"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
 [ext_resource type="Resource" uid="uid://1dj4k34vderk" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_New.tres" id="2_bbgsx"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_data.gd" id="2_jv2ym"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="3_0qmwc"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_group.gd" id="4_0t1r4"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="4_ljrgu"]
+[ext_resource type="Texture2D" uid="uid://6u0cxgfxr404" path="res://assets/Sprites/Overworld/player_main/sketch_shade_back.png" id="5_387h1"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="6_kd104"]
+
+[sub_resource type="Resource" id="Resource_jnirq"]
+script = ExtResource("4_ljrgu")
+frame_sprite = ExtResource("5_387h1")
+frame_time = 0.1
+sfx_key = ""
+
+[sub_resource type="Resource" id="Resource_wvmvj"]
+script = ExtResource("3_0qmwc")
+sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_jnirq")])
 
 [sub_resource type="Resource" id="Resource_yglfv"]
 script = ExtResource("4_0t1r4")
-north = ExtResource("2_bbgsx")
+north = SubResource("Resource_wvmvj")
 east = ExtResource("2_bbgsx")
 south = ExtResource("2_bbgsx")
 west = ExtResource("2_bbgsx")
+
+[sub_resource type="Resource" id="Resource_3b6rm"]
+script = ExtResource("4_ljrgu")
+frame_sprite = ExtResource("5_387h1")
+frame_time = 0.1
+sfx_key = ""
+
+[sub_resource type="Resource" id="Resource_eu1cv"]
+script = ExtResource("3_0qmwc")
+sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_3b6rm")])
 
 [sub_resource type="Resource" id="Resource_lo5eu"]
 script = ExtResource("4_0t1r4")
-north = ExtResource("2_bbgsx")
+north = SubResource("Resource_eu1cv")
 east = ExtResource("2_bbgsx")
 south = ExtResource("2_bbgsx")
 west = ExtResource("2_bbgsx")
+
+[sub_resource type="Resource" id="Resource_h6vgw"]
+script = ExtResource("4_ljrgu")
+frame_sprite = ExtResource("5_387h1")
+frame_time = 0.1
+sfx_key = ""
+
+[sub_resource type="Resource" id="Resource_cu5pi"]
+script = ExtResource("3_0qmwc")
+sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_h6vgw")])
 
 [sub_resource type="Resource" id="Resource_4y3gd"]
 script = ExtResource("4_0t1r4")
-north = ExtResource("2_bbgsx")
+north = SubResource("Resource_cu5pi")
 east = ExtResource("2_bbgsx")
 south = ExtResource("2_bbgsx")
 west = ExtResource("2_bbgsx")
 
+[sub_resource type="Resource" id="Resource_onr2y"]
+script = ExtResource("4_ljrgu")
+frame_sprite = ExtResource("5_387h1")
+frame_time = 0.1
+sfx_key = ""
+
+[sub_resource type="Resource" id="Resource_f32oq"]
+script = ExtResource("3_0qmwc")
+sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_onr2y")])
+
 [sub_resource type="Resource" id="Resource_tc00q"]
 script = ExtResource("4_0t1r4")
-north = ExtResource("2_bbgsx")
+north = SubResource("Resource_f32oq")
 east = ExtResource("2_bbgsx")
 south = ExtResource("2_bbgsx")
 west = ExtResource("2_bbgsx")

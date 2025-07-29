@@ -71,13 +71,17 @@ func set_direction(new_direction : Vector2):
 	
 	_previous_direction = _direction;
 	_direction = new_direction;
+	_update_anim();
 
 
 func set_state(new_state : AnimationState):
 	if _current_state == new_state : return;
 	
 	_current_state = new_state;
-	
+	_update_anim();
+
+
+func _update_anim():
 	var anim_group : RPGCharacterAnimationGroup;
 	
 	match (_current_state):
@@ -90,9 +94,11 @@ func set_state(new_state : AnimationState):
 	
 	if anim_group == null : return;
 	
-	_current_anim = anim_group.get_anim(_direction, _previous_direction);
+	var anim = anim_group.get_anim(_direction, _previous_direction);
 	
-	_update_sprite();
+	if anim != _current_anim:
+		_current_anim = anim;
+		_update_sprite();
 
 
 func play_one_shot(anim_name : String):
