@@ -1,0 +1,110 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=28 format=3 uid="uid://bjbjnajow7bfa"]
+
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_p7rm4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_xfssu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_mg0pe"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_5ybby"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_ctmk5"]
+[ext_resource type="Resource" uid="uid://dugq12fkxgmh2" path="res://assets/Effects/Common/effect_common_status_confuse.tres" id="4_7v5pl"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_qllud"]
+[ext_resource type="Resource" uid="uid://dguhi8bo5rkdb" path="res://assets/Effects/Common/effect_common_status_distracted.tres" id="5_1ln4y"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_uu0ld"]
+[ext_resource type="Resource" uid="uid://du5d0ivyq72li" path="res://assets/Effects/Common/effect_common_status_pressure.tres" id="6_roppt"]
+[ext_resource type="Resource" uid="uid://bup308uw78yo0" path="res://assets/Effects/Common/effect_common_status_agitation.tres" id="7_frhrd"]
+[ext_resource type="Resource" uid="uid://d4ccx6phxn3j3" path="res://assets/Effects/Common/effect_common_status_misery.tres" id="8_ttrwm"]
+[ext_resource type="Resource" uid="uid://buarybtnsxscb" path="res://assets/Effects/Common/effect_common_status_exhaust.tres" id="9_p5iwm"]
+[ext_resource type="Resource" uid="uid://gpm3ab27cqfb" path="res://assets/Effects/Common/effect_common_status_drowsy.tres" id="10_kgyj1"]
+[ext_resource type="Resource" uid="uid://dx4uieatfu3hr" path="res://assets/Effects/Common/effect_common_status_stun.tres" id="11_erdsm"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="16_gymh8"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="17_7ypdb"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="18_l6emi"]
+
+[sub_resource type="Resource" id="Resource_xf82b"]
+script = ExtResource("3_ctmk5")
+chance = 0.15
+effect = ExtResource("4_7v5pl")
+
+[sub_resource type="Resource" id="Resource_wtfw2"]
+script = ExtResource("3_ctmk5")
+chance = 0.15
+effect = ExtResource("5_1ln4y")
+
+[sub_resource type="Resource" id="Resource_bwb1e"]
+script = ExtResource("3_ctmk5")
+chance = 0.15
+effect = ExtResource("6_roppt")
+
+[sub_resource type="Resource" id="Resource_ahorn"]
+script = ExtResource("3_ctmk5")
+chance = 0.15
+effect = ExtResource("7_frhrd")
+
+[sub_resource type="Resource" id="Resource_pc36r"]
+script = ExtResource("3_ctmk5")
+chance = 0.125
+effect = ExtResource("8_ttrwm")
+
+[sub_resource type="Resource" id="Resource_wvvp6"]
+script = ExtResource("3_ctmk5")
+chance = 0.125
+effect = ExtResource("9_p5iwm")
+
+[sub_resource type="Resource" id="Resource_nyyyd"]
+script = ExtResource("3_ctmk5")
+chance = 0.1
+effect = ExtResource("10_kgyj1")
+
+[sub_resource type="Resource" id="Resource_0yllc"]
+script = ExtResource("3_ctmk5")
+chance = 0.05
+effect = ExtResource("11_erdsm")
+
+[sub_resource type="Resource" id="Resource_7q650"]
+script = ExtResource("1_xfssu")
+chance = 0.9
+use_luck = true
+effect_set = Array[ExtResource("3_ctmk5")]([SubResource("Resource_xf82b"), SubResource("Resource_wtfw2"), SubResource("Resource_bwb1e"), SubResource("Resource_ahorn"), SubResource("Resource_pc36r"), SubResource("Resource_wvvp6"), SubResource("Resource_nyyyd"), SubResource("Resource_0yllc")])
+
+[resource]
+script = ExtResource("4_qllud")
+spell_power = 0.0
+spell_attack_type = 1
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+check_accuracy = false
+spell_accuracy = 80.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+can_critical = false
+critical_chance = 16
+spell_name_key = "T_SPELL_PLAYERA_02"
+spell_description_key = "T_SPELL_PLAYERA_02_DESC"
+spell_cast_message_key = "T_CAST_PLAYERA_02"
+spell_type = 2
+spell_target = 0
+spell_cost = 18
+spell_priority = 0
+spell_flags = Array[ExtResource("5_uu0ld")]([ExtResource("16_gymh8"), ExtResource("17_7ypdb"), ExtResource("18_l6emi")])
+animation_sequence = ExtResource("1_p7rm4")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_xfssu")]([SubResource("Resource_7q650")])
+effects_on_success = Array[ExtResource("1_xfssu")]([])
+properties = Array[ExtResource("3_5ybby")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_mg0pe")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_mg0pe")]([])

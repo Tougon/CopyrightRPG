@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=31 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=33 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_3drj8"]
 [ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="2_5sjuy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="4_lqr1n"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="5_fxx2f"]
 [ext_resource type="Resource" uid="uid://b0u0k150tx86x" path="res://assets/Spells/player/player_a/spell_player_a_01.tres" id="6_jwvff"]
+[ext_resource type="Resource" uid="uid://bjbjnajow7bfa" path="res://assets/Spells/player/player_a/spell_player_a_02.tres" id="7_l2aq2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_r454n"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="8_41vao"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_hytim"]
@@ -67,9 +68,14 @@ script = ExtResource("5_fxx2f")
 spell = ExtResource("6_jwvff")
 level = 0
 
+[sub_resource type="Resource" id="Resource_o1ebh"]
+script = ExtResource("5_fxx2f")
+spell = ExtResource("7_l2aq2")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_r454n")
-list = Array[ExtResource("5_fxx2f")]([SubResource("Resource_ott5o")])
+list = Array[ExtResource("5_fxx2f")]([SubResource("Resource_ott5o"), SubResource("Resource_o1ebh")])
 
 [sub_resource type="Curve" id="Curve_5kava"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
