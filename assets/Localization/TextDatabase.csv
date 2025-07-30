@@ -29,7 +29,7 @@ T_BATTLE_TURN_READY,{entity} is thinking...,,
 T_CAST_GENERIC_ATTACK,{article_def}{entity} attacks!,,
 T_CAST_GENERIC_DEFEND,{article_def}{entity} defends!,,
 
-T_CAST_PLAYERA_01,{article_def}{entity} clacks {pronoun3} sticks!,,
+T_CAST_PLAYERA_01,{article_def}{entity} clacks {pronoun2} sticks!,,
 T_CAST_PLAYERA_02,{article_def}{entity} begins to air drum!,,
 T_CAST_PLAYERA_03,{article_def}{entity} hits the crashes!,,
 T_CAST_PLAYERA_04,{article_def}{entity} plays an awful sound!,,

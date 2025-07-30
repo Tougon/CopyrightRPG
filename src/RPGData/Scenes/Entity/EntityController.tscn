@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b1yeonj32wfeb"]
+[gd_scene load_steps=23 format=3 uid="uid://b1yeonj32wfeb"]
 
 [ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_u887t"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntityController.gd" id="2_cc50b"]
@@ -43,6 +43,56 @@ tween_resource = SubResource("Resource_padva")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="Resource" id="Resource_1lal7"]
+script = ExtResource("9_5i4wj")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.1
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.6
+"From Float" = 0.0
+
+[sub_resource type="Resource" id="Resource_eh1rg"]
+script = ExtResource("10_fj1nh")
+frames = Array[ExtResource("9_5i4wj")]([SubResource("Resource_1lal7")])
+
+[sub_resource type="Resource" id="Resource_xnvjj"]
+script = ExtResource("9_5i4wj")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.1
+delay = 0.0
+transition = 1
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 0.6
+
+[sub_resource type="Resource" id="Resource_w88pi"]
+script = ExtResource("10_fj1nh")
+frames = Array[ExtResource("9_5i4wj")]([SubResource("Resource_xnvjj")])
+
+[sub_resource type="Resource" id="Resource_sey52"]
+script = ExtResource("8_plqjl")
+tween_name = "Entity Ready Up"
+sequence = Array[ExtResource("10_fj1nh")]([SubResource("Resource_eh1rg"), SubResource("Resource_w88pi")])
+
+[sub_resource type="Resource" id="Resource_ue3df"]
+script = ExtResource("7_5uy3v")
+tween_name = "Entity Ready Up"
+tween_resource = SubResource("Resource_sey52")
+play_on_start = false
+next_tween = ""
+
 [node name="EntityBase" instance=ExtResource("1_u887t")]
 y_sort_enabled = true
 script = ExtResource("2_cc50b")
@@ -57,7 +107,7 @@ y_sort_enabled = true
 script = ExtResource("4_l5njq")
 
 [node name="TweenPlayer" parent="." index="1"]
-sequence_list = Array[ExtResource("7_5uy3v")]([ExtResource("6_rklrg"), SubResource("Resource_8hfa6")])
+sequence_list = Array[ExtResource("7_5uy3v")]([ExtResource("6_rklrg"), SubResource("Resource_8hfa6"), SubResource("Resource_ue3df")])
 
 [node name="Entity Info Battle" parent="." index="3" instance=ExtResource("5_12ej3")]
 modulate = Color(1, 1, 1, 0)

@@ -211,6 +211,13 @@ func _action_phase():
 		if entity.is_defeated || _all_players_defeated():
 			continue;
 		
+		entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
+		
+		if enemies.has(entity):
+			entity.tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+		
 		EventManager.set_player_bg.emit(entity);
 		
 		var is_target_valid : bool = true;
