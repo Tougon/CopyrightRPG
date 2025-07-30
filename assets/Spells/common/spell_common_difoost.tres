@@ -16,6 +16,7 @@
 script = ExtResource("3_3ddfm")
 chance = 1.0
 effect = ExtResource("4_c2ewk")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_q1odl"]
 script = ExtResource("4_o2jhw")
@@ -27,6 +28,7 @@ effect_set = Array[ExtResource("3_3ddfm")]([SubResource("Resource_e3lva")])
 script = ExtResource("3_3ddfm")
 chance = 1.0
 effect = ExtResource("5_k02aq")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_3e5vc"]
 script = ExtResource("4_o2jhw")

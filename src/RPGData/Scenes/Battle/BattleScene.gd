@@ -321,6 +321,17 @@ func _action_phase():
 		
 		await EventManager.on_sequence_queue_empty;
 		
+		# Check to catch any missing dialogue that may have been appended from the sequence
+		for spell in spell_cast : 
+			if spell.subspell_casts != null :
+				for subspell in spell.subspell_casts :
+					if subspell.success : 
+						any_cast_succeeded = true;
+			
+			for hit_result in spell.hit_results:
+				if hit_result.length() > 0 && !post_anim_dialogue.has(hit_result):
+					post_anim_dialogue.append(hit_result);
+		
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
@@ -369,6 +380,7 @@ func _action_phase():
 			
 			if e != null && proc <= effect.chance * luck:
 				var inst = e.create_effect_instance(entity, entity, null);
+				inst.all_casts = spell_cast;
 				inst.check_success();
 				
 				if inst.cast_success && any_cast_succeeded: 
@@ -402,6 +414,9 @@ func _action_phase():
 		EventManager.on_entity_turn_end.emit(entity);
 		
 		for spell in spell_cast :
+			if spell.subspell_casts != null :
+				for subspell in spell.subspell_casts:
+					subspell.free();
 			spell.free();
 		spell_cast.clear();
 	

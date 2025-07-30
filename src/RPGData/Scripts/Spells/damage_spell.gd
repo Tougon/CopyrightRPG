@@ -36,6 +36,9 @@ enum SpellHitType { Physical, Special }
 @export_range(0, 100) var spell_accuracy : float = 100;
 @export var check_accuracy_per_hit : bool = false;
 @export_range(0, 100) var spell_accuracy_per_hit : float = 100;
+@export var force_dodge_text : bool = false;
+@export var force_miss_text : bool = false;
+@export var force_miss_plural_text : bool = false;
 
 @export_group("Critical Hit Parameters")
 @export var can_critical : bool = true;
@@ -82,12 +85,12 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 		var generic = false;
 		var rand = randf();
 		
-		if evasion > accuracy || rand < 0.5:
+		if ((evasion > accuracy || rand < 0.5) || force_dodge_text) && !force_miss_text:
 			hit_result = tr("T_BATTLE_ACTION_DODGE");
 			entity_name = target.param.entity_name;
 			generic = target.param.entity_generic;
 		else :
-			if spell_target == SpellTarget.All ||  spell_target == SpellTarget.AllEnemy || spell_target == SpellTarget.AllExceptSelf || spell_target == SpellTarget.AllParty:
+			if (spell_target == SpellTarget.All ||  spell_target == SpellTarget.AllEnemy || spell_target == SpellTarget.AllExceptSelf || spell_target == SpellTarget.AllParty) || force_miss_plural_text:
 				hit_result = tr("T_BATTLE_ACTION_MISS_PLURAL");
 			else:
 				hit_result = tr("T_BATTLE_ACTION_MISS");

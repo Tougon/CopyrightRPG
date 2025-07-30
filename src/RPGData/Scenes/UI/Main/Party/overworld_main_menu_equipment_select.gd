@@ -101,6 +101,7 @@ func _refresh_equipment_ui():
 		$BG/None.visible = false;
 		$"BG/Item Visuals/Close".visible = false;
 	
+	menu_panel.set_index(0);
 	menu_panel.set_data(valid_items);
 
 

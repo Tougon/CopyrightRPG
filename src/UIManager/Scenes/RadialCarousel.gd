@@ -98,6 +98,7 @@ func _redraw_items() :
 		_carousel_items[i].set_highlight(i==0);
 	
 	current_index = _index - 1;
+	
 	for i in range(span * 2, span, -1):
 		if current_index < 0:
 			current_index = _data.size() - 1;

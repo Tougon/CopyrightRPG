@@ -84,6 +84,7 @@ on_stack = Array[ExtResource("4_qd4ld")]([])
 script = ExtResource("3_kfuly")
 chance = 1.0
 effect = SubResource("Resource_lq6cm")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_b2845"]
 script = ExtResource("4_fero0")
@@ -125,6 +126,7 @@ on_stack = Array[ExtResource("4_qd4ld")]([])
 script = ExtResource("3_kfuly")
 chance = 0.5
 effect = SubResource("Resource_q60sk")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_1225v"]
 script = ExtResource("2_idwye")
@@ -160,6 +162,7 @@ on_stack = Array[ExtResource("4_qd4ld")]([])
 script = ExtResource("3_kfuly")
 chance = 0.5
 effect = SubResource("Resource_fpkfv")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_saq2w"]
 script = ExtResource("4_fero0")
@@ -201,6 +204,7 @@ on_stack = Array[ExtResource("4_qd4ld")]([])
 script = ExtResource("3_kfuly")
 chance = 1.0
 effect = SubResource("Resource_vo7ta")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_6q8n1"]
 script = ExtResource("4_fero0")
@@ -227,6 +231,8 @@ negate = false
 vary_hit_count = false
 min_number_of_hits = 1
 max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
 check_accuracy = true
 spell_accuracy = 100.0
 check_accuracy_per_hit = false

@@ -32,6 +32,7 @@ var fail_type : SpellFailType;
 var fail_message : String;
 
 var effects : Array[EffectInstance];
+var subspell_casts : Array[SpellCast];
 
 func _init():
 	pass;

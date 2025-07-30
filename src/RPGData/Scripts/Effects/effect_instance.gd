@@ -13,6 +13,7 @@ var user : EntityController;
 var target : EntityController;
 
 var spell : SpellCast;
+var all_casts : Array[SpellCast];
 var spell_data : Spell
 var spell_override : Spell;
 

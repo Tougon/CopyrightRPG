@@ -1,8 +1,12 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=4 format=3 uid="uid://6kinr54u5ofy"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://6kinr54u5ofy"]
 
 [ext_resource type="Resource" uid="uid://vvdqgx4g43x8" path="res://assets/Animations/Sequences/Spell/anim_spell_sub_fire_effect.tres" id="1_71fpm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_6n24t"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_o5wer"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_h0tmw"]
 [ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="3_qa56v"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_sns55"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="6_j50td"]
 
 [resource]
 script = ExtResource("2_6n24t")
@@ -23,6 +27,8 @@ negate = false
 vary_hit_count = false
 min_number_of_hits = 1
 max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
 check_accuracy = true
 spell_accuracy = 75.0
 check_accuracy_per_hit = false
@@ -36,8 +42,14 @@ spell_type = 1
 spell_target = 8
 spell_cost = 0
 spell_priority = 0
-spell_flags = Array[Resource("res://addons/tflags/scripts/tflag.gd")]([ExtResource("3_qa56v")])
+spell_flags = Array[ExtResource("6_j50td")]([ExtResource("3_qa56v")])
 animation_sequence = ExtResource("1_71fpm")
-effects_on_hit = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-effects_on_success = Array[Resource("res://src/RPGData/Scripts/Effects/effect_set_chance.gd")]([])
-properties = Array[Resource("res://src/RPGData/Scripts/Effects/effect.gd")]([])
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_o5wer")]([])
+effects_on_success = Array[ExtResource("2_o5wer")]([])
+properties = Array[ExtResource("4_sns55")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_h0tmw")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_h0tmw")]([])

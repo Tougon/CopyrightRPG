@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=6 format=3 uid="uid://7riop2nlfsx"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_s7rkk"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="2_su5la"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="4_i64ja"]
+
+[sub_resource type="Resource" id="Resource_xsu06"]
+script = ExtResource("2_su5la")
+
+[sub_resource type="Resource" id="Resource_1h7gr"]
+script = ExtResource("1_s7rkk")
+frame = 5
+frame_order = 0
+action = SubResource("Resource_xsu06")
+
+[resource]
+script = ExtResource("4_i64ja")
+animation_name = ""
+hide_ui_on_start = false
+animation_sequence = Array[ExtResource("1_s7rkk")]([SubResource("Resource_1h7gr")])

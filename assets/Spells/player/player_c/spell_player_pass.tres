@@ -15,6 +15,7 @@
 script = ExtResource("3_b018f")
 chance = 1.0
 effect = ExtResource("4_g5sjx")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_6ajyo"]
 script = ExtResource("2_e0esw")

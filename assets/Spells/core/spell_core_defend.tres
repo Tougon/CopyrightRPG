@@ -77,6 +77,7 @@ on_stack = Array[ExtResource("4_2l02i")]([])
 script = ExtResource("2_kad87")
 chance = 1.0
 effect = SubResource("Resource_boko1")
+use_luck = false
 
 [sub_resource type="Resource" id="Resource_aqxlw"]
 script = ExtResource("3_s18sb")

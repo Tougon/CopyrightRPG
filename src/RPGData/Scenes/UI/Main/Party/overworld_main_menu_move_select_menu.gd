@@ -98,6 +98,7 @@ func _refresh_move_ui():
 	if _get_num_moves_set() > 1 && current_selection != null :
 		valid_moves.append(null);
 	
+	menu_panel.set_index(0);
 	menu_panel.set_data(valid_moves);
 	
 	if valid_moves.size() == 0:
