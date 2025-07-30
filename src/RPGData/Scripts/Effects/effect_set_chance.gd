@@ -8,12 +8,21 @@ class_name EffectSetChance
 @export var effect_set : Array[EffectChance];
 
 
-func get_effect() -> Effect:
+func get_effect(luck : float = 1) -> Effect:
 	var random = randf();
 	var current : float = 0;
 	
 	for effect in effect_set:
-		current += effect.chance;
+		if effect.use_luck : 
+			if luck != 0 :
+				current += (effect.chance * luck);
+			else :
+				current += (effect.chance);
+		else :
+			if luck != 0 : 
+				current += (effect.chance / luck);
+			else :
+				current += (effect.chance);
 		
 		if random <= current:
 			return effect.effect;

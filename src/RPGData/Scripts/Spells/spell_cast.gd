@@ -64,7 +64,7 @@ func set_hits(hit : Array[bool]):
 		
 		if spell != null && hits[i] == true:
 			for n in spell.effects_on_hit.size():
-				var eff = spell.effects_on_hit[n].get_effect();
+				var eff = spell.effects_on_hit[n].get_effect(user.param.entity_luck);
 				var proc = randf();
 				
 				var luck = 1;

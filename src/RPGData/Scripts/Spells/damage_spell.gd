@@ -28,6 +28,8 @@ enum SpellHitType { Physical, Special }
 @export_range(1, 10) var min_number_of_hits : int = 1;
 @export_range(1, 10) var max_number_of_hits : int = 1;
 @export var hit_count_curve : Curve;
+@export var use_multihit_attack_type : bool = false;
+@export var multihit_attack_type : Array[SpellHitType];
 
 @export_group("Accuracy Parameters")
 @export var check_accuracy : bool = true;
@@ -114,16 +116,20 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 		var time = hit_count_curve.sample(randf() * luck);
 		num_hits = roundi(lerp(min_number_of_hits, max_number_of_hits, time));
 	
-	var atk_type = spell_attack_type;
-	var def_type = spell_attack_type;
-	if vary_defense_type : def_type = spell_defense_type;
-	
 	var result : Array[int];
 	var crit : Array[bool];
 	var hit : Array[bool];
 	var index : Array[int];
 	
 	for i in num_hits:
+		var atk_type = spell_attack_type;
+		
+		if use_multihit_attack_type && multihit_attack_type != null && i < multihit_attack_type.size():
+			atk_type = multihit_attack_type[i];
+		
+		var def_type = spell_attack_type;
+		if vary_defense_type : def_type = spell_defense_type;
+		
 		if i > 0 && spell_target == SpellTarget.RandomEnemyPerHit :
 			target = cached_targets[randi_range(0, cached_targets.size() - 1)];
 		index.append(cached_targets.find(target));
