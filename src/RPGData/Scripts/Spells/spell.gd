@@ -110,16 +110,21 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 						cast.fail_type = SpellCast.SpellFailType.NoEffect;
 						cast.fail_message = tr("T_BATTLE_ACTION_FAIL");
 			else :
+				var index : Array[int];
+				index.append(cached_targets.find(target))
+				
 				if immune : 
 					cast.set_hits([true]);
 					cast.set_damage([0]);
 					cast.set_critical([false]);
+					cast.target_index_override = index;
 					cast.fail_type = SpellCast.SpellFailType.NoEffect;
 					cast.fail_message = tr("T_BATTLE_ACTION_FAIL");
 				else :
 					cast.set_hits([false]);
 					cast.set_damage([0]);
 					cast.set_critical([false]);
+					cast.target_index_override = index;
 					cast.fail_type = SpellCast.SpellFailType.Miss;
 			
 			# Deactivate properties

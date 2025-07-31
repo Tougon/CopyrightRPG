@@ -120,6 +120,7 @@ vibrate = true
 damage_time = 0.35
 damage_delay = 0.0
 show_ui = true
+show_miss = true
 
 [sub_resource type="Resource" id="Resource_w3mw2"]
 script = ExtResource("1_i3bju")

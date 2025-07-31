@@ -115,6 +115,7 @@ vibrate = true
 damage_time = 0.6
 damage_delay = 0.14
 show_ui = true
+show_miss = true
 
 [sub_resource type="Resource" id="Resource_bh5j5"]
 script = ExtResource("1_dv1v5")

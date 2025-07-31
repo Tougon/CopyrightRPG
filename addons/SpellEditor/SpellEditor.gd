@@ -153,7 +153,7 @@ func _add_spell(file_name : String):
 					
 					# Check to see if the value is valid
 					# NOTE: May need more in depth checks to fetch all spells
-					if value == "Spell" || value == "DamageSpell":
+					if value == "Spell" || value == "DamageSpell" || value == "InfiniteLoopSpell":
 						# Load the resource at the given path
 						var loaded = ResourceLoader.load(file_name);
 						

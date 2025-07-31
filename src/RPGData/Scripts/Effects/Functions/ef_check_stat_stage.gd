@@ -64,5 +64,3 @@ func execute(instance : EffectInstance):
 					instance.cast_success = false;
 		
 	else : instance.cast_success = false;
-
-

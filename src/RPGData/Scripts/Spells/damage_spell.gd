@@ -42,7 +42,7 @@ enum SpellHitType { Physical, Special }
 
 @export_group("Critical Hit Parameters")
 @export var can_critical : bool = true;
-@export_range(1, 24) var critical_chance : int = 16;
+@export_range(1, 32) var critical_chance : int = 16;
 
 
 func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityController, amt : float = -1):
@@ -59,10 +59,11 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	
 	var base_check = accuracy / evasion;
 	var hit = (spell_accuracy + (ACCURACY_BONUS * luck)) * base_check;
-	print("HIT RATE: " + str(hit));
 	
 	if amt != -1 :
 		hit = (amt + (ACCURACY_BONUS * luck)) * base_check;
+	
+	print("HIT RATE: " + str(hit));
 	
 	var accuracy_mods = user.get_accuracy_modifiers();
 	
@@ -125,85 +126,90 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	var index : Array[int];
 	
 	for i in num_hits:
-		var atk_type = spell_attack_type;
-		
-		if use_multihit_attack_type && multihit_attack_type != null && i < multihit_attack_type.size():
-			atk_type = multihit_attack_type[i];
-		
-		var def_type = spell_attack_type;
-		if vary_defense_type : def_type = spell_defense_type;
-		
-		if i > 0 && spell_target == SpellTarget.RandomEnemyPerHit :
-			target = cached_targets[randi_range(0, cached_targets.size() - 1)];
-		index.append(cached_targets.find(target));
-		
-		# I think this may be an unfair roll. 
-		# It rolls once for the spell, and then again later for the first hit.
-		if check_accuracy_per_hit && !check_spell_hit(cast, user, target, spell_accuracy_per_hit):
-			hit.append(false);
-			crit.append(false);
-			result.append(0);
-			continue;
-		else : 
-			cast.clear_hit_result();
-		
-		hit.append(true);
-		
-		var damage = damage_roll(atk_type, def_type, user.level, user.param, user.get_attack_modifier(), user.get_sp_attack_modifier(), target.level, target.param, target.current_hp, target.get_defense_modifier(), target.get_sp_defense_modifier(), target.can_heal, crit);
-		
-		# Deals damage using a percentage of the target's current HP
-		# Will never defeat an enemy except in very exceptional situations
-		if fixed_damage && percent_damage :
-			result.append(roundi(damage));
-			continue;
-		# Deals damage using a percentage of the target's maximum HP
-		# Use sparingly or for heals
-		elif percent_damage : 
-			result.append(roundi(damage));
-			continue;
-		# Deals direct damage using the fixed damage amount
-		elif fixed_damage : 
-			result.append(roundi(damage));
-			continue;
-		
-		for flag in spell_flags:
-			if target.flag_modifiers.has(flag.flag_name_key):
-				damage *= target.flag_modifiers[flag.flag_name_key];
-		
-		var atk_mods_post = user.get_attack_modifiers();
-		if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
-		var def_mods_post = target.get_defense_modifiers();
-		if def_type == SpellHitType.Special: def_mods_post = target.get_sp_defense_modifiers();
-		
-		if !ignore_attack_modifiers:
-			for f in atk_mods_post :
-				damage *= f;
-		if !ignore_defense_modifiers:
-			for f in def_mods_post:
-				damage /= f;
-		
-		# One time attack boost if flags overlap affinity
-		for flag in user.current_entity.affinity:
-			if spell_flags.has(flag):
-				print("AFFINITY")
-				damage *= 1.5;
-				break;
-		
-		print("Full Damage: " + str(damage))
-		damage *= randf_range(0.85, 1.0);
-		
-		var critical = crit.back();
-		if critical : damage *= 1.5
-		
-		if negate : 
-			if target.can_heal : result.append(-roundi(damage));
-			else : result.append(0);
-		else : result.append(roundi(damage));
+		_damage_loop(user, target, cast, result, crit, hit, index, i);
 	
 	cast.set_damage(result);
 	cast.set_hits(hit);
 	cast.set_critical(crit);
 	cast.target_index_override = index;
+
+
+func _damage_loop(user : EntityController, target : EntityController, cast : SpellCast, result : Array, crit : Array, hit : Array, index : Array, i : int):
+	
+	var atk_type = spell_attack_type;
+	
+	if use_multihit_attack_type && multihit_attack_type != null && i < multihit_attack_type.size():
+		atk_type = multihit_attack_type[i];
+	
+	var def_type = spell_attack_type;
+	if vary_defense_type : def_type = spell_defense_type;
+	
+	if i > 0 && spell_target == SpellTarget.RandomEnemyPerHit :
+		target = cached_targets[randi_range(0, cached_targets.size() - 1)];
+	index.append(cached_targets.find(target));
+	
+	# I think this may be an unfair roll. 
+	# It rolls once for the spell, and then again later for the first hit.
+	if check_accuracy_per_hit && !check_spell_hit(cast, user, target, spell_accuracy_per_hit):
+		hit.append(false);
+		crit.append(false);
+		result.append(0);
+		return;
+	else : 
+		cast.clear_hit_result();
+	
+	hit.append(true);
+	
+	var damage = damage_roll(atk_type, def_type, user.level, user.param, user.get_attack_modifier(), user.get_sp_attack_modifier(), target.level, target.param, target.current_hp, target.get_defense_modifier(), target.get_sp_defense_modifier(), target.can_heal, crit);
+	
+	# Deals damage using a percentage of the target's current HP
+	# Will never defeat an enemy except in very exceptional situations
+	if fixed_damage && percent_damage :
+		result.append(roundi(damage));
+		return;
+	# Deals damage using a percentage of the target's maximum HP
+	# Use sparingly or for heals
+	elif percent_damage : 
+		result.append(roundi(damage));
+		return;
+	# Deals direct damage using the fixed damage amount
+	elif fixed_damage : 
+		result.append(roundi(damage));
+		return;
+	
+	for flag in spell_flags:
+		if target.flag_modifiers.has(flag.flag_name_key):
+			damage *= target.flag_modifiers[flag.flag_name_key];
+	
+	var atk_mods_post = user.get_attack_modifiers();
+	if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();
+	var def_mods_post = target.get_defense_modifiers();
+	if def_type == SpellHitType.Special: def_mods_post = target.get_sp_defense_modifiers();
+	
+	if !ignore_attack_modifiers:
+		for f in atk_mods_post :
+			damage *= f;
+	if !ignore_defense_modifiers:
+		for f in def_mods_post:
+			damage /= f;
+	
+	# One time attack boost if flags overlap affinity
+	for flag in user.current_entity.affinity:
+		if spell_flags.has(flag):
+			print("AFFINITY")
+			damage *= 1.5;
+			break;
+	
+	print("Full Damage: " + str(damage))
+	damage *= randf_range(0.85, 1.0);
+	
+	var critical = crit.back();
+	if critical : damage *= 1.5
+	
+	if negate : 
+		if target.can_heal : result.append(-roundi(damage));
+		else : result.append(0);
+	else : result.append(roundi(damage));
 
 
 func damage_roll(atk_type : SpellHitType, def_type : SpellHitType, user_level : int, user_param : EntityParams, user_atk_mod : float, user_mag_mod : float, target_level : int, target_param : EntityParams, target_hp : int, target_def_mod : float, target_res_mod : float, target_can_heal : bool, crit : Array[bool]) -> float:
