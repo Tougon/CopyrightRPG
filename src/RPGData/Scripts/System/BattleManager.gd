@@ -3,6 +3,8 @@ extends Node
 # Class that defines constant variables for the battle system
 const INSTANCE_BATTLE_WINDOW : bool = false;
 
+const MAX_ENEMY_COUNT : int = 5;
+
 # Determines the length of the tweens for enemy repositioning
 const ENEMY_REPOSITION_TIME : float = 0.30;
 

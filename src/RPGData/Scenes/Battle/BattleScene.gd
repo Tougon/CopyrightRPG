@@ -409,9 +409,6 @@ func _action_phase():
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed
 		
-		print("!")
-		print(flags);
-		
 		# Check if action is sealed
 		if !_all_players_defeated():
 			seal_manager.check_for_seal(entity, players.has(entity), flags);

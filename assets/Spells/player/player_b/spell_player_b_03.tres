@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=17 format=3 uid="uid://bb4drvwbwvkel"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=22 format=3 uid="uid://bb4drvwbwvkel"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_1q2hj"]
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_a285w"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_cpbpp"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_g1x6a"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_ggwv2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="5_j0rsr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="6_bt2rl"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="7_vnv7b"]
 [ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="8_2qw6b"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_koukw"]
@@ -19,6 +21,48 @@
 [sub_resource type="Curve" id="Curve_1ypsv"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
 point_count = 2
+
+[sub_resource type="Resource" id="Resource_ndq4k"]
+script = ExtResource("6_bt2rl")
+target = 0
+apply = true
+stat = 5
+amount = 1.0
+use_num_targets = true
+min_amount = 0.55
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_uh7ma"]
+script = ExtResource("6_bt2rl")
+target = 0
+apply = false
+stat = 5
+amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_svc5d"]
+script = ExtResource("3_cpbpp")
+stackable = false
+effect_name = "B03 Property"
+generic = false
+priority = 3
+turn_limit = 1
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("5_j0rsr")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("5_j0rsr")]([])
+on_activate = Array[ExtResource("5_j0rsr")]([SubResource("Resource_ndq4k")])
+on_failed_to_activate = Array[ExtResource("5_j0rsr")]([])
+on_apply = Array[ExtResource("5_j0rsr")]([])
+on_move_selected = Array[ExtResource("5_j0rsr")]([])
+on_move_completed = Array[ExtResource("5_j0rsr")]([])
+on_deactivate = Array[ExtResource("5_j0rsr")]([SubResource("Resource_uh7ma")])
+on_turn_start = Array[ExtResource("5_j0rsr")]([])
+on_turn_end = Array[ExtResource("5_j0rsr")]([])
+on_stack = Array[ExtResource("5_j0rsr")]([])
 
 [resource]
 script = ExtResource("4_g1x6a")
@@ -47,7 +91,7 @@ randomized_flags = Array[ExtResource("5_ggwv2")]([ExtResource("7_vnv7b"), ExtRes
 check_accuracy = false
 spell_accuracy = 100.0
 check_accuracy_per_hit = true
-spell_accuracy_per_hit = 75.0
+spell_accuracy_per_hit = 90.0
 force_dodge_text = false
 force_miss_text = false
 force_miss_plural_text = false
@@ -66,7 +110,7 @@ spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])
 effects_on_hit = Array[ExtResource("1_1q2hj")]([])
 effects_on_success = Array[ExtResource("1_1q2hj")]([])
-properties = Array[ExtResource("3_cpbpp")]([])
+properties = Array[ExtResource("3_cpbpp")]([SubResource("Resource_svc5d")])
 can_use_overworld = false
 overworld_check = Array[ExtResource("2_supcn")]([])
 overworld_check_type = 0

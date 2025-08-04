@@ -203,8 +203,8 @@ func call_sequence_function(action : AnimationSequenceAction):
 		index = 0;
 	
 	var cast_inst : SpellCast = null;
-	if target_index < spell_cast.size():
-		cast_inst = spell_cast[target_index];
+	if index < spell_cast.size():
+		cast_inst = spell_cast[index];
 	
 	var hit_index = 0;
 	if cast_inst != null : hit_index = cast_inst.current_hit; 
