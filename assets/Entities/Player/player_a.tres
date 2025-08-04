@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=43 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_3drj8"]
-[ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="2_5sjuy"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="2_k8ekf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="3_ro4m8"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="3_rseb8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="4_lqr1n"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="5_fxx2f"]
 [ext_resource type="Resource" uid="uid://b0u0k150tx86x" path="res://assets/Spells/player/player_a/spell_player_a_01.tres" id="6_jwvff"]
@@ -58,14 +59,14 @@ max = 100000
 growth = SubResource("Curve_lr1dx")
 
 [sub_resource type="Curve" id="Curve_2qcc2"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.708892, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_dlenl"]
 script = ExtResource("4_lqr1n")
 min = 1.0
-max = 1.6
+max = 5.0
 growth = SubResource("Curve_2qcc2")
 
 [sub_resource type="Resource" id="Resource_ott5o"]
@@ -167,7 +168,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_dlenl")
 level_exp = SubResource("Resource_w2t4l")
-affinity = Array[ExtResource("1_3drj8")]([ExtResource("2_5sjuy")])
+affinity = Array[ExtResource("1_3drj8")]([ExtResource("2_k8ekf"), ExtResource("3_rseb8")])
 weakness = Array[ExtResource("8_41vao")]([])
 resistance = Array[ExtResource("8_41vao")]([])
 min_level = 50

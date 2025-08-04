@@ -7,6 +7,7 @@ enum SpellFailType { InvalidMP, InvalidCast, Miss, NoEffect }
 
 var success : bool = false;
 var spell : Spell;
+var spell_flags : Array[TFlag];
 var user : EntityController;
 var target : EntityController;
 

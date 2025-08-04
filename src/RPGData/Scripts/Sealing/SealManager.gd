@@ -81,7 +81,7 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	_play_seal_effects(seal_inst, entity);
 
 
-func check_for_seal(entity : EntityController, player_side : bool) -> bool:
+func check_for_seal(entity : EntityController, player_side : bool, override_flags : Array[TFlag]) -> bool:
 	var action = entity.current_action;
 	
 	# Realistically should never be null but w/e, safety check
@@ -95,7 +95,12 @@ func check_for_seal(entity : EntityController, player_side : bool) -> bool:
 		if seal.seal_entity.seals_active : continue;
 		
 		# NOTE: This will double effects up and do a violation per flag.
-		for flag in action.spell_flags:
+		var flags = action.spell_flags.duplicate();
+		
+		if override_flags != null :
+			flags = override_flags;
+		
+		for flag in flags:
 			var sealed = false;
 			
 			if seal.seal_source.spell_flags.has(flag):

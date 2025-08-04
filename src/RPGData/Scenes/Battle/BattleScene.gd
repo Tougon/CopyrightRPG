@@ -261,6 +261,8 @@ func _action_phase():
 		var spell_cast = entity.current_action.cast(entity, entity.current_target);
 		entity.action_result = spell_cast;
 		
+		var flags : Array[TFlag] = [];
+		
 		var pre_anim_dialogue : Array[String];
 		var post_anim_dialogue : Array[String];
 		
@@ -286,6 +288,8 @@ func _action_phase():
 					
 					var item_fail_msg = format_dialogue(tr("T_BATTLE_ACTION_FAIL"), entity.param.entity_name, entity.current_entity);
 					post_anim_dialogue.append(item_fail_msg);
+			
+			flags.append_array(spell.spell_flags.duplicate());
 			
 			if spell.success : 
 				any_cast_succeeded = true;
@@ -355,39 +359,40 @@ func _action_phase():
 			await get_tree().create_timer(BattleManager.ENEMY_REPOSITION_TIME).timeout
 			await get_tree().process_frame;
 		
-		for spell in spell_cast:
-			if _all_players_defeated() : continue;
-			var effects = spell.effects;
-			
-			for effect in effects:
-				if effect.cast_success : 
-					effect.on_activate();
-				else :
-					effect.on_failed_to_activate();
-		
-		for effect in entity.current_action.effects_on_success:
-			if _all_players_defeated() : continue;
-			var e = effect.get_effect();
-			var proc = randf();
-			
-			var luck = 1;
-			# Originally included to prevent negative luck but...
-			# we kind of want that, no?
-			#if entity.param.entity_luck > 1:
-			if effect.use_luck :
-				luck = entity.param.entity_luck;
-			
-			if e != null && proc <= effect.chance * luck:
-				var inst = e.create_effect_instance(entity, entity, null);
-				inst.all_casts = spell_cast;
-				inst.check_success();
+		if amt > 0 :
+			for spell in spell_cast:
+				if _all_players_defeated() : continue;
+				var effects = spell.effects;
 				
-				if inst.cast_success && any_cast_succeeded: 
-					inst.on_activate();
-				else :
-					inst.on_failed_to_activate();
+				for effect in effects:
+					if effect.cast_success : 
+						effect.on_activate();
+					else :
+						effect.on_failed_to_activate();
 		
-		entity.execute_move_completed_effects();
+			for effect in entity.current_action.effects_on_success:
+				if _all_players_defeated() : continue;
+				var e = effect.get_effect();
+				var proc = randf();
+				
+				var luck = 1;
+				# Originally included to prevent negative luck but...
+				# we kind of want that, no?
+				#if entity.param.entity_luck > 1:
+				if effect.use_luck :
+					luck = entity.param.entity_luck;
+				
+				if e != null && proc <= effect.chance * luck:
+					var inst = e.create_effect_instance(entity, entity, null);
+					inst.all_casts = spell_cast;
+					inst.check_success();
+					
+					if inst.cast_success && any_cast_succeeded: 
+						inst.on_activate();
+					else :
+						inst.on_failed_to_activate();
+			
+			entity.execute_move_completed_effects();
 		
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
@@ -404,9 +409,12 @@ func _action_phase():
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed
 		
+		print("!")
+		print(flags);
+		
 		# Check if action is sealed
 		if !_all_players_defeated():
-			seal_manager.check_for_seal(entity, players.has(entity));
+			seal_manager.check_for_seal(entity, players.has(entity), flags);
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		

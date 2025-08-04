@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=28 format=3 uid="uid://8i7hybweexe0"]
+[gd_resource type="Resource" script_class="Entity" load_steps=30 format=3 uid="uid://8i7hybweexe0"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_uejv1"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="2_gsxgw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_iyfiq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="3_1i1kt"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="3_mb5d7"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_skakr"]
 [ext_resource type="Resource" uid="uid://dwtc7y67rv1y0" path="res://assets/Spells/player/player_d/spell_player_aplus.tres" id="5_pbqyj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="6_q7s76"]
@@ -118,7 +120,7 @@ base_crit_resist_modifier = 1.0
 base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_qu4vm")
-affinity = Array[ExtResource("1_uejv1")]([])
+affinity = Array[ExtResource("1_uejv1")]([ExtResource("2_gsxgw"), ExtResource("3_mb5d7")])
 weakness = Array[ExtResource("7_efghe")]([])
 resistance = Array[ExtResource("7_efghe")]([])
 min_level = 50

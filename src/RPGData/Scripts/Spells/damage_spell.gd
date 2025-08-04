@@ -30,6 +30,8 @@ enum SpellHitType { Physical, Special }
 @export var hit_count_curve : Curve;
 @export var use_multihit_attack_type : bool = false;
 @export var multihit_attack_type : Array[SpellHitType];
+@export var randomize_flag_per_hit : bool = false;
+@export var randomized_flags : Array[TFlag];
 
 @export_group("Accuracy Parameters")
 @export var check_accuracy : bool = true;
@@ -125,6 +127,8 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	var hit : Array[bool];
 	var index : Array[int];
 	
+	if randomize_flag_per_hit : cast.spell_flags.clear();
+	
 	for i in num_hits:
 		_damage_loop(user, target, cast, result, crit, hit, index, i);
 	
@@ -135,6 +139,14 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 
 
 func _damage_loop(user : EntityController, target : EntityController, cast : SpellCast, result : Array, crit : Array, hit : Array, index : Array, i : int):
+	
+	var flags = spell_flags.duplicate();
+	
+	if randomize_flag_per_hit :
+		var random = randomized_flags.pick_random();
+		flags = [random];
+		cast.spell_flags.append(random);
+		print(random.flag_name_key);
 	
 	var atk_type = spell_attack_type;
 	
@@ -177,7 +189,7 @@ func _damage_loop(user : EntityController, target : EntityController, cast : Spe
 		result.append(roundi(damage));
 		return;
 	
-	for flag in spell_flags:
+	for flag in flags:
 		if target.flag_modifiers.has(flag.flag_name_key):
 			damage *= target.flag_modifiers[flag.flag_name_key];
 	
@@ -195,7 +207,7 @@ func _damage_loop(user : EntityController, target : EntityController, cast : Spe
 	
 	# One time attack boost if flags overlap affinity
 	for flag in user.current_entity.affinity:
-		if spell_flags.has(flag):
+		if flags.has(flag):
 			print("AFFINITY")
 			damage *= 1.5;
 			break;

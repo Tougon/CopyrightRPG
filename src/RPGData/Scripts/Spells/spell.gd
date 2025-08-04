@@ -68,6 +68,7 @@ func cast(user : EntityController, targets : Array[EntityController]):
 func _cast(user : EntityController, target : EntityController, result : Array[SpellCast], mp_check : bool):
 	var cast = SpellCast.new();
 	cast.spell = self;
+	cast.spell_flags = spell_flags.duplicate();
 	cast.user = user;
 	cast.target = target;
 	
