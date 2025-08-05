@@ -17,6 +17,9 @@ var all_casts : Array[SpellCast];
 var spell_data : Spell
 var spell_override : Spell;
 
+# Arbitrary cached data
+var data : Dictionary;
+
 func get_effect_name() -> String:
 	return effect.get_effect_name(self);
 

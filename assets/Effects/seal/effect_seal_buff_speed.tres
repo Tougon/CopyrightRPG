@@ -16,6 +16,8 @@ check_mode = 2
 stage = 0
 max = true
 min = false
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_7rh7j"]
 script = ExtResource("3_i0415")
@@ -28,6 +30,8 @@ script = ExtResource("4_awjpe")
 target = 0
 stat = 4
 amount = 1
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_tgpjx"]
 script = ExtResource("5_n8t30")
@@ -38,6 +42,7 @@ script = ExtResource("6_njt44")
 stackable = true
 effect_name = "Speed Buff"
 generic = true
+repeatable = false
 priority = 3
 turn_limit = 0
 effect_type = 0

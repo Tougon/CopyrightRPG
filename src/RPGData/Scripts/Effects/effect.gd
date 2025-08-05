@@ -16,6 +16,8 @@ enum EffectCheckType { AND, OR }
 @export var effect_name : String = "";
 ## Used to allow for certain effects to be applied independently while using the same name (i.e. stat buffs)
 @export var generic : bool = false;
+## Used to allow for each instance of this effect to count separately.
+@export var repeatable : bool = false;
 # Order effects should execute at the end of a turn. Higher priorities execute sooner.
 @export_range(0, 9) var priority : int = 3;
 # Turn limit applied to instances of this effect. Generally only used for displays.

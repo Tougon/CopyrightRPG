@@ -16,6 +16,8 @@ check_mode = 2
 stage = 0
 max = true
 min = false
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_684vj"]
 script = ExtResource("3_smek2")
@@ -28,6 +30,8 @@ script = ExtResource("7_kxtx0")
 target = 0
 stat = 1
 amount = 1
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_tgpjx"]
 script = ExtResource("6_qf01t")
@@ -38,6 +42,7 @@ script = ExtResource("11_rw3ql")
 stackable = true
 effect_name = "Defense Buff"
 generic = true
+repeatable = false
 priority = 3
 turn_limit = 0
 effect_type = 0

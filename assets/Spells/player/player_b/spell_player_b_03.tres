@@ -47,6 +47,7 @@ script = ExtResource("3_cpbpp")
 stackable = false
 effect_name = "B03 Property"
 generic = false
+repeatable = false
 priority = 3
 turn_limit = 1
 effect_type = 0

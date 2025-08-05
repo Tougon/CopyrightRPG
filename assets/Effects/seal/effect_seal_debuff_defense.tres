@@ -16,6 +16,8 @@ check_mode = 1
 stage = 0
 max = false
 min = true
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_684vj"]
 script = ExtResource("4_wr05e")
@@ -28,6 +30,8 @@ script = ExtResource("5_7snff")
 target = 1
 stat = 1
 amount = -1
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_tgpjx"]
 script = ExtResource("6_2rgp8")
@@ -38,6 +42,7 @@ script = ExtResource("7_qw663")
 stackable = true
 effect_name = "Defense Debuff"
 generic = true
+repeatable = false
 priority = 3
 turn_limit = 0
 effect_type = 0

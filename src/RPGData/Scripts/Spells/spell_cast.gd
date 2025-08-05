@@ -77,7 +77,7 @@ func set_hits(hit : Array[bool]):
 				if proc <= (spell.effects_on_hit[n].chance * luck) && eff != null:
 					var exists = check_for_effect(eff)
 					
-					if !exists || (exists && eff.stackable):
+					if !exists || (exists && (eff.stackable || eff.repeatable)):
 						var inst = eff.create_effect_instance(user, target, self);
 						inst.check_success();
 						effects.append(inst);

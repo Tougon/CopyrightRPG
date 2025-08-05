@@ -24,8 +24,6 @@ func execute(instance : EffectInstance):
 	if use_num_targets :
 		var targets = (entity.get_possible_targets().size() - 1) as float;
 		mod_amount = lerpf(min_amount, max_amount, targets / ((BattleManager.MAX_ENEMY_COUNT -1) as float));
-		print(targets);
-		print(mod_amount);
 	
 	if entity && !entity.is_defeated:
 		match stat :

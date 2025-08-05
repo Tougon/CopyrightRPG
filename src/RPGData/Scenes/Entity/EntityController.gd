@@ -667,7 +667,11 @@ func execute_turn_end_effects():
 func apply_effect(instance : EffectInstance):
 	if is_defeated : return;
 	
-	if instance.effect.stackable:
+	if instance.effect.repeatable:
+		effects.append(instance);
+		instance.on_apply();
+	
+	elif instance.effect.stackable:
 		var existing_instance = _find_effect_by_name(instance.get_effect_name());
 		
 		if existing_instance != null :

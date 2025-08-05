@@ -42,6 +42,9 @@ target = 1
 apply = true
 stat = 0
 amount = 1.5
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_xmc5k"]
 script = ExtResource("7_ij7y5")
@@ -49,6 +52,9 @@ target = 1
 apply = true
 stat = 2
 amount = 1.5
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_rg7f3"]
 script = ExtResource("7_ij7y5")
@@ -56,6 +62,9 @@ target = 1
 apply = true
 stat = 1
 amount = 0.75
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_lnlhb"]
 script = ExtResource("7_ij7y5")
@@ -63,6 +72,9 @@ target = 1
 apply = true
 stat = 3
 amount = 0.75
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_2xjd1"]
 script = ExtResource("7_ij7y5")
@@ -70,6 +82,9 @@ target = 1
 apply = true
 stat = 4
 amount = 1.25
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_ilutl"]
 script = ExtResource("7_ij7y5")
@@ -77,6 +92,9 @@ target = 1
 apply = true
 stat = 5
 amount = 0.75
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_o51bw"]
 script = ExtResource("7_ij7y5")
@@ -84,6 +102,9 @@ target = 1
 apply = true
 stat = 6
 amount = 0.75
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_fdc8l"]
 script = ExtResource("6_pmw0b")
@@ -95,6 +116,9 @@ target = 1
 apply = false
 stat = 0
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_xd81b"]
 script = ExtResource("7_ij7y5")
@@ -102,6 +126,9 @@ target = 1
 apply = false
 stat = 2
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_a26yf"]
 script = ExtResource("7_ij7y5")
@@ -109,6 +136,9 @@ target = 1
 apply = false
 stat = 1
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_2quex"]
 script = ExtResource("7_ij7y5")
@@ -116,6 +146,9 @@ target = 1
 apply = false
 stat = 3
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_nab30"]
 script = ExtResource("7_ij7y5")
@@ -123,6 +156,9 @@ target = 1
 apply = false
 stat = 4
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_min1m"]
 script = ExtResource("7_ij7y5")
@@ -130,6 +166,9 @@ target = 1
 apply = false
 stat = 5
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_21uoy"]
 script = ExtResource("7_ij7y5")
@@ -137,6 +176,9 @@ target = 1
 apply = false
 stat = 6
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_4m3mj"]
 script = ExtResource("8_uc50f")
@@ -161,6 +203,7 @@ script = ExtResource("7_eynqa")
 stackable = true
 effect_name = "Agitation"
 generic = false
+repeatable = false
 priority = 5
 turn_limit = 5
 effect_type = 0

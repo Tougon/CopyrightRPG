@@ -43,6 +43,7 @@ script = ExtResource("7_w0u7b")
 stackable = true
 effect_name = "Doom"
 generic = false
+repeatable = false
 priority = 5
 turn_limit = 0
 effect_type = 0

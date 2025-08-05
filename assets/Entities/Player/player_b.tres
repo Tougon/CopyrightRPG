@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=34 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=36 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_82a6o"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://dfcemb2bstofd" path="res://assets/Spells/player/player_b/spell_player_b_02.tres" id="8_tm3um"]
 [ext_resource type="Resource" uid="uid://bb4drvwbwvkel" path="res://assets/Spells/player/player_b/spell_player_b_03.tres" id="9_7nhc5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_vkdbv"]
+[ext_resource type="Resource" uid="uid://b1i43hy3vkuen" path="res://assets/Spells/player/player_b/spell_player_b_04.tres" id="10_8uhs6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_y86e6"]
 
 [sub_resource type="Curve" id="Curve_w4glt"]
@@ -69,9 +70,14 @@ script = ExtResource("4_xfhba")
 spell = ExtResource("9_7nhc5")
 level = 0
 
+[sub_resource type="Resource" id="Resource_1h1lf"]
+script = ExtResource("4_xfhba")
+spell = ExtResource("10_8uhs6")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_bv3cl")
-list = Array[ExtResource("4_xfhba")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc")])
+list = Array[ExtResource("4_xfhba")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf")])
 
 [sub_resource type="Curve" id="Curve_cg64e"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

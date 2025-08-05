@@ -57,6 +57,7 @@ script = ExtResource("7_o4x18")
 stackable = true
 effect_name = "Exhaust"
 generic = false
+repeatable = false
 priority = 5
 turn_limit = 0
 effect_type = 0

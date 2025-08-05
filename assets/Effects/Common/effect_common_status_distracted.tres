@@ -63,6 +63,7 @@ script = ExtResource("7_bdhwo")
 stackable = true
 effect_name = "Distracted"
 generic = false
+repeatable = false
 priority = 5
 turn_limit = 5
 effect_type = 0

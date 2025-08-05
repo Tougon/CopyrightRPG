@@ -38,11 +38,14 @@ func execute(instance : EffectInstance):
 		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 3));
 		target_pronouns.append(GrammarManager.get_pronoun(instance.target.param.entity_gender, 4));
 		
-		if instance.target.current_entity.generic && BattleScene.Instance.enemy_type_count.has(instance.target) && BattleScene.Instance.enemy_type_count[instance.target] <= 1:
+		if instance.target.current_entity.generic && BattleScene.Instance.enemy_type_count.has(instance.target.current_entity) && BattleScene.Instance.enemy_type_count[instance.target.current_entity] <= 1:
 			target_article_def = GrammarManager.get_direct_article(target_name);
 			target_article_indef = GrammarManager.get_indirect_article(target_name);
 	
-	var dialogue = tr(dialogue_key);
+	var key = dialogue_key;
+	if key == "cache" : key = instance.data["hybrid_key"];
+	
+	var dialogue = tr(key);
 	var spell_name = "";
 	if instance.spell_data != null : spell_name = tr(instance.spell_data.spell_name_key);
 	dialogue = dialogue.format({article_indef = user_article_indef, article_def = user_article_def, entity = user_name, t_article_indef = target_article_indef, t_article_def = target_article_def, t_entity = target_name, spell = spell_name});

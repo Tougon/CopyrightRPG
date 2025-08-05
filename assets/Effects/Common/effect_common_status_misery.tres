@@ -39,6 +39,7 @@ script = ExtResource("14_imft4")
 stackable = true
 effect_name = "Misery"
 generic = false
+repeatable = false
 priority = 5
 turn_limit = 0
 effect_type = 0

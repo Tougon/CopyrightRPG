@@ -117,6 +117,7 @@ script = ExtResource("12_5gkyq")
 stackable = true
 effect_name = "Confuse"
 generic = false
+repeatable = false
 priority = 7
 turn_limit = 5
 effect_type = 0

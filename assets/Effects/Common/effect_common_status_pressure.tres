@@ -94,6 +94,7 @@ script = ExtResource("16_snoal")
 stackable = true
 effect_name = "Pressure"
 generic = false
+repeatable = false
 priority = 6
 turn_limit = 5
 effect_type = 0

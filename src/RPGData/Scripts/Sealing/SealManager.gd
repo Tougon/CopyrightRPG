@@ -42,16 +42,18 @@ func _on_entity_defeated(entity : EntityController):
 
 func _send_seal_inactive_message(seal : SealInstance, entity : EntityController):
 	var seal_msg = tr("T_BATTLE_ACTION_SEAL_INACTIVE");
+	var seal_entity_name = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]"
+	var entity_name = "[color=FFFF00]" + entity.param.entity_name + "[/color]"
 	
 	if seal.seal_entity.current_entity.generic && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] <= 1:
-		seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = seal.seal_entity.param.entity_name });
+		seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = seal_entity_name });
 	else:
-		seal_msg = seal_msg.format({ article_def = "", entity = seal.seal_entity.param.entity_name });
+		seal_msg = seal_msg.format({ article_def = "", entity = seal_entity_name });
 	
 	if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity] && BattleScene.Instance.enemy_type_count[entity.current_entity] <= 1:
-		seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = entity.param.entity_name });
+		seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = entity_name });
 	else: 
-		seal_msg = seal_msg.format({ t_article_def = "", t_entity = entity.param.entity_name });
+		seal_msg = seal_msg.format({ t_article_def = "", t_entity = entity_name });
 	
 	seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
 	EventManager.on_dialogue_queue.emit(seal_msg);

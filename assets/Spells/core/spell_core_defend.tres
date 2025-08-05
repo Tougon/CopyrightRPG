@@ -23,6 +23,9 @@ target = 0
 apply = true
 stat = 1
 amount = 2.85
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_u3sc1"]
 script = ExtResource("2_1v07i")
@@ -30,6 +33,9 @@ target = 0
 apply = true
 stat = 3
 amount = 2.85
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_rcybr"]
 script = ExtResource("2_1v07i")
@@ -37,6 +43,9 @@ target = 0
 apply = false
 stat = 1
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_fvcgi"]
 script = ExtResource("2_1v07i")
@@ -44,6 +53,9 @@ target = 0
 apply = false
 stat = 3
 amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_hyoc8"]
 script = ExtResource("1_xw038")
@@ -56,6 +68,7 @@ script = ExtResource("1_ijy4m")
 stackable = false
 effect_name = "Defend"
 generic = false
+repeatable = false
 priority = 5
 turn_limit = 1
 effect_type = 0

@@ -62,6 +62,7 @@ script = ExtResource("12_ytryr")
 stackable = true
 effect_name = "Stun"
 generic = false
+repeatable = false
 priority = 9
 turn_limit = 1
 effect_type = 0

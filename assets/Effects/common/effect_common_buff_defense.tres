@@ -27,6 +27,8 @@ check_mode = 2
 stage = 0
 max = true
 min = false
+use_stage = false
+use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_aje20"]
 script = ExtResource("4_ahb81")
@@ -48,6 +50,11 @@ script = ExtResource("8_smvle")
 target = 0
 stat = 1
 amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_a5ard"]
 script = ExtResource("7_dkc0h")
@@ -58,6 +65,11 @@ script = ExtResource("8_smvle")
 target = 0
 stat = 1
 amount = -1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_tgpjx"]
 script = ExtResource("7_dkc0h")
@@ -82,6 +94,7 @@ script = ExtResource("12_jqy2h")
 stackable = true
 effect_name = "Defense Buff"
 generic = true
+repeatable = false
 priority = 3
 turn_limit = 3
 effect_type = 0
