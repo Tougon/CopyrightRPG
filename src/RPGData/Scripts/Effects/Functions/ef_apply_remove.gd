@@ -8,6 +8,11 @@ class_name EFApplyRemove
 @export var deactivate : bool = true;
 
 func execute(instance : EffectInstance):
+	if target == Target.FIELD:
+		print("HELL")
+		BattleScene.Instance._field_effects.append(instance);
+		return;
+	
 	var entity : EntityController;
 	if target == Target.USER:
 		entity = instance.user;

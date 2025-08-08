@@ -1,4 +1,4 @@
-extends Object
+extends RefCounted
 class_name SpellCast
 
 # SpellCast is a class that represents the result of a spell use.

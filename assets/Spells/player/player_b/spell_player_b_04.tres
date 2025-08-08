@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=37 format=3 uid="uid://b1i43hy3vkuen"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=39 format=3 uid="uid://b1i43hy3vkuen"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_u32g8"]
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_vhfxb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="6_668q7"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="6_l67b3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="7_84lb6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_random.gd" id="7_y6j6m"]
 [ext_resource type="Resource" uid="uid://og0qk6g8xxb4" path="res://assets/Animations/Sequences/Common/anim_common_stat_lower.tres" id="8_8io0e"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="9_rxral"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="10_632pj"]
@@ -38,6 +39,10 @@ max = false
 min = true
 use_stage = true
 use_modifiers = true
+
+[sub_resource type="Resource" id="Resource_5urkg"]
+script = ExtResource("7_y6j6m")
+chance = 0.65
 
 [sub_resource type="Resource" id="Resource_1m8al"]
 script = ExtResource("6_668q7")
@@ -106,7 +111,7 @@ priority = 3
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("4_okwdt")]([SubResource("Resource_ilkve")])
+check_success = Array[ExtResource("4_okwdt")]([SubResource("Resource_ilkve"), SubResource("Resource_5urkg")])
 check_remain_active_type = 0
 check_remain_active = Array[ExtResource("4_okwdt")]([SubResource("Resource_wyiyx")])
 on_activate = Array[ExtResource("4_okwdt")]([SubResource("Resource_1m8al")])

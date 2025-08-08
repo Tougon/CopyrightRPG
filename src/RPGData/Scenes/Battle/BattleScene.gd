@@ -22,6 +22,8 @@ var current_player_index : int;
 var defeated_enemies : Array[DefeatedEntity];
 var player_item_delta : Dictionary;
 
+var _field_effects : Array[EffectInstance];
+
 
 func _ready():
 	Instance = self;
@@ -82,9 +84,9 @@ func begin_battle(params : BattleParams):
 	_begin_turn();
 	
 	# Free the params from memory
-	if params != null:
-		params.destroy();
-		params.free();
+	#if params != null:
+	#	params.destroy();
+	#	params.free();
 
 
 func _begin_turn():
@@ -417,12 +419,13 @@ func _action_phase():
 		
 		EventManager.on_entity_turn_end.emit(entity);
 		
-		for spell in spell_cast :
-			if spell.subspell_casts != null :
-				for subspell in spell.subspell_casts:
-					subspell.free();
-			spell.free();
-		spell_cast.clear();
+		# IMPORTANT: We need this, but any cast tied to an effect should stay
+		#for spell in spell_cast :
+		#	if spell.subspell_casts != null :
+		#		for subspell in spell.subspell_casts:
+		#			subspell.free();
+		#	spell.free();
+		#spell_cast.clear();
 	
 	await get_tree().process_frame;
 	_end_phase();
@@ -541,6 +544,15 @@ func _end_phase():
 	if sequencer.is_sequence_playing_or_queued() :
 		await EventManager.on_sequence_queue_empty;
 	EventManager.hide_entity_ui.emit();
+	
+	# TEMP
+	for effect in _field_effects:
+		print(effect.get_effect_name())
+		print(effect.all_casts.size())
+		for cast in effect.all_casts:
+			if cast != null :
+				print(cast.target)
+	# END TEMP
 	
 	# Check to see if the effects have caused a loss state
 	if _all_players_defeated() :

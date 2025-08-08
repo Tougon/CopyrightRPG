@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=19 format=3 uid="uid://ceaostxq3mx7x"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_u1pvb"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_wjp0w"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_i0nog"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_37vp3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_mj2h0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_57wt8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_q4ylh"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_buy1d"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="5_jtiux"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="6_njweh"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="9_cfej6"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="10_myfxe"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="11_owemb"]
+
+[sub_resource type="Resource" id="Resource_rg1qh"]
+script = ExtResource("5_jtiux")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_sh2ys"]
+script = ExtResource("6_njweh")
+target = 2
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_ouwde"]
+script = ExtResource("3_37vp3")
+stackable = true
+effect_name = "Smokescreen"
+generic = false
+repeatable = false
+priority = 9
+turn_limit = 3
+effect_type = 1
+check_success_type = 0
+check_success = Array[ExtResource("4_57wt8")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_57wt8")]([SubResource("Resource_rg1qh")])
+on_activate = Array[ExtResource("4_57wt8")]([SubResource("Resource_sh2ys")])
+on_failed_to_activate = Array[ExtResource("4_57wt8")]([])
+on_apply = Array[ExtResource("4_57wt8")]([])
+on_move_selected = Array[ExtResource("4_57wt8")]([])
+on_move_completed = Array[ExtResource("4_57wt8")]([])
+on_deactivate = Array[ExtResource("4_57wt8")]([])
+on_turn_start = Array[ExtResource("4_57wt8")]([])
+on_turn_end = Array[ExtResource("4_57wt8")]([])
+on_stack = Array[ExtResource("4_57wt8")]([])
+
+[sub_resource type="Resource" id="Resource_8r2rs"]
+script = ExtResource("3_mj2h0")
+chance = 1.0
+effect = SubResource("Resource_ouwde")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_q245i"]
+script = ExtResource("1_u1pvb")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_mj2h0")]([SubResource("Resource_8r2rs")])
+
+[resource]
+script = ExtResource("4_q4ylh")
+spell_name_key = "T_SPELL_PLAYERB_05"
+spell_description_key = "T_SPELL_PLAYERB_05_DESC"
+spell_cast_message_key = "T_CAST_PLAYERB_05"
+spell_type = 2
+spell_target = 7
+spell_cost = 20
+spell_priority = 0
+spell_flags = Array[ExtResource("5_buy1d")]([ExtResource("9_cfej6"), ExtResource("10_myfxe"), ExtResource("11_owemb")])
+animation_sequence = ExtResource("1_wjp0w")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_u1pvb")]([])
+effects_on_success = Array[ExtResource("1_u1pvb")]([SubResource("Resource_q245i")])
+properties = Array[ExtResource("3_37vp3")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_i0nog")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_i0nog")]([])
