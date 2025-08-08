@@ -129,11 +129,7 @@ func entity_init(params : BattleParams):
 		offense_modifiers = {};
 		defense_modifiers = {};
 		
-		for mod in current_entity.weakness:
-			if !defense_modifiers.has(mod.flag.flag_name_key):
-				defense_modifiers[mod.flag.flag_name_key] = mod.modifier;
-		
-		for mod in current_entity.resistance:
+		for mod in current_entity.defense_modifiers:
 			if !defense_modifiers.has(mod.flag.flag_name_key):
 				defense_modifiers[mod.flag.flag_name_key] = mod.modifier;
 		

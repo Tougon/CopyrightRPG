@@ -88,6 +88,7 @@ func entity_init(params : BattleParams):
 	
 	current_hp = hp_mod;
 	current_mp = mp_mod;
+	is_defeated = current_hp <= 0;
 	
 	if entity_ui : 
 		entity_ui.change_hp_immediate(current_hp);
