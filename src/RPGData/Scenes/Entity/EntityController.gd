@@ -270,7 +270,8 @@ func select_random_action():
 
 
 func set_target(trigger : EntityController = null):
-	var available = get_possible_targets();
+	var available = get_possible_targets(null, true);
+	print(available.size())
 	var index = randi_range(0, available.size() - 1);
 	
 	match current_action.spell_target:
@@ -521,7 +522,7 @@ func get_evasion() -> float:
 	return param.entity_dodge_modifier;
 
 
-func get_possible_targets(spell : Spell = null) -> Array[EntityController]:
+func get_possible_targets(spell : Spell = null, add_defeated : bool = false) -> Array[EntityController]:
 	var result : Array[EntityController];
 	
 	var action_to_check = current_action;
@@ -531,49 +532,49 @@ func get_possible_targets(spell : Spell = null) -> Array[EntityController]:
 	match action_to_check.spell_target:
 		Spell.SpellTarget.All:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 			for ally in allies:
-				if !ally.is_defeated:
+				if !ally.is_defeated || add_defeated:
 					result.append(ally);
 		Spell.SpellTarget.SingleEnemy:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 		Spell.SpellTarget.RandomEnemy:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 		Spell.SpellTarget.RandomEnemyPerHit:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 		Spell.SpellTarget.AllEnemy:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 		Spell.SpellTarget.AllEnemyExcept:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 		Spell.SpellTarget.AllExceptSelf:
 			for enemy in enemies:
-				if !enemy.is_defeated:
+				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 			for ally in allies:
-				if !ally.is_defeated && !ally == self:
+				if (!ally.is_defeated || add_defeated) && !ally == self:
 					result.append(ally);
 		Spell.SpellTarget.SingleParty:
 			result.append(self);
 			for ally in allies:
-				if !ally.is_defeated && !ally == self:
+				if (!ally.is_defeated || add_defeated) && !ally == self:
 					result.append(ally);
 		Spell.SpellTarget.AllParty:
 			for ally in allies:
-				if !ally.is_defeated:
+				if !ally.is_defeated || add_defeated:
 					result.append(ally);
 		Spell.SpellTarget.Self:
-			if !is_defeated:
+			if !is_defeated || add_defeated:
 				result.append(self);
 	
 	return result;

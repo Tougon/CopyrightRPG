@@ -56,9 +56,11 @@ func _initialize_target_menu(entity : EntityController):
 	
 	target_to_info.clear();
 	var spell_target = entity.current_action.spell_target;
-	var targets = entity.get_possible_targets();
+	var targets = entity.get_possible_targets(null, true);
+	
 	# TODO: Perhaps only do this if the selected spell is the same?
 	var selection_remind = false;
+	var first_valid_selection = 0;
 	
 	if spell_target == Spell.SpellTarget.RandomEnemyPerHit :
 		entity.current_target = targets;
@@ -79,7 +81,7 @@ func _initialize_target_menu(entity : EntityController):
 		
 		for i in targets.size():
 			var arrow = target_arrow_pool[i];
-			arrow.visible = true;
+			arrow.visible = !targets[i].is_defeated;
 			arrows.append(arrow);
 		
 		info.initialize(targets, arrows, entity, true);
@@ -95,7 +97,7 @@ func _initialize_target_menu(entity : EntityController):
 		
 		for i in targets.size():
 			var arrow = target_arrow_pool[i];
-			arrow.visible = false;
+			arrow.visible = !targets[i].is_defeated;
 			arrows.append(arrow);
 			temp_targets.append(targets[i]);
 		
@@ -105,7 +107,7 @@ func _initialize_target_menu(entity : EntityController):
 			temp_targets.erase(targets[i]);
 			
 			var info = target_info_pool[i];
-			info.visible = true;
+			info.visible = !targets[i].is_defeated;
 			info.global_position = targets[i].global_position;
 			
 			info.initialize(temp_targets.duplicate(), arrows.duplicate(), entity, false);
@@ -120,7 +122,15 @@ func _initialize_target_menu(entity : EntityController):
 			var target = targets[i];
 			var info = target_info_pool[i];
 			
-			info.visible = true;
+			if target.is_defeated : 
+				target_arrow_pool[i].visible = false;
+				info.visible = false;
+				
+				if i == first_valid_selection :
+					first_valid_selection += 1;
+				continue;
+			
+			info.visible = !target.is_defeated;
 			info.global_position = target.global_position;
 			
 			info.initialize([target], [target_arrow_pool[i]], entity, false);
@@ -136,7 +146,7 @@ func _initialize_target_menu(entity : EntityController):
 			target_arrow_pool[i].visible = false;
 	
 	if !selection_remind : 
-		initial_selection = all_selections[0];
+		initial_selection = all_selections[first_valid_selection];
 
 
 func _on_target_highlighted(entity : EntityController, all : bool):

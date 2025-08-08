@@ -108,9 +108,8 @@ func _begin_turn():
 		entity.is_ready = false;
 		entity.reset_action();
 		
-		if !entity.is_defeated :
-			if players.has(entity) : allies.append(entity);
-			if enemies.has(entity) : targets.append(entity);
+		if players.has(entity) : allies.append(entity);
+		if enemies.has(entity) : targets.append(entity);
 	
 	for player in players:
 		player.allies.append_array(allies);

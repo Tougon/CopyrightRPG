@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://dst6mwll01him"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_xbk8a"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_fv3p1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_wxcnk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_28u42"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_0wdv5"]
+
+[resource]
+script = ExtResource("4_28u42")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = ""
+spell_type = 0
+spell_target = 0
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("5_0wdv5")]([])
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_xbk8a")]([])
+effects_on_success = Array[ExtResource("1_xbk8a")]([])
+properties = Array[ExtResource("3_wxcnk")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_fv3p1")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_fv3p1")]([])

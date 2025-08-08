@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=49 format=3 uid="uid://cuniv2y42pgsd"]
+[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://cuniv2y42pgsd"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_c6ej8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_y4sq3"]
@@ -13,7 +13,6 @@
 [ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/common/spell_common_fire.tres" id="11_jesm8"]
 [ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/spell_enemy_slime_idle_00.tres" id="11_rmx2u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="12_mhqnn"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="13_13pel"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="14_msnbl"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="15_mjnvl"]
 
@@ -101,8 +100,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("1_y4sq3")
-min = 35
-max = 42
+min = 5
+max = 10
 growth = SubResource("Curve_7i6bh")
 
 [sub_resource type="Curve" id="Curve_k6ron"]
@@ -204,12 +203,11 @@ sp_def = SubResource("Resource_iu8tl")
 spd = SubResource("Resource_70cwv")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
-base_accuracy_modifier = 0.8
+base_accuracy_modifier = 5.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_m1s8s")
 affinity = Array[ExtResource("1_c6ej8")]([])
-weakness = Array[ExtResource("13_13pel")]([])
-resistance = Array[ExtResource("13_13pel")]([])
+defense_modifiers = null
 min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_k6ron")
