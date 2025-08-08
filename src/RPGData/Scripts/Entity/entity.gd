@@ -87,7 +87,6 @@ func get_level_exp(level : int) -> int:
 	if level_exp == null : return 50;
 	return level_exp.get_current(level, max_level);
 
-# TODO: Weakness was unimplemented in the old version.
 @export_group("Modifiers")
 @export var affinity : Array[TFlag];
 @export var weakness : Array[FlagModifier];

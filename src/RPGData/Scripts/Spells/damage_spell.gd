@@ -191,8 +191,10 @@ func _damage_loop(user : EntityController, target : EntityController, cast : Spe
 		return;
 	
 	for flag in flags:
-		if target.flag_modifiers.has(flag.flag_name_key):
-			damage *= target.flag_modifiers[flag.flag_name_key];
+		if user.offense_modifiers.has(flag.flag_name_key):
+			damage *= user.offense_modifiers[flag.flag_name_key];
+		if target.defense_modifiers.has(flag.flag_name_key):
+			damage *= target.defense_modifiers[flag.flag_name_key];
 	
 	var atk_mods_post = user.get_attack_modifiers();
 	if atk_type == SpellHitType.Special: atk_mods_post = user.get_sp_attack_modifiers();

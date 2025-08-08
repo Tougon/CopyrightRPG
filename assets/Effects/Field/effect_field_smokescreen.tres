@@ -18,7 +18,7 @@ script = ExtResource("4_lcje8")
 side = 0
 apply = true
 stat = 5
-amount = 0.0
+amount = 0.7
 
 [sub_resource type="Resource" id="Resource_ofm7u"]
 script = ExtResource("3_a5d11")

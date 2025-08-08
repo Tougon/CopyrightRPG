@@ -49,7 +49,9 @@ var sp_def_mods : Dictionary;
 var spd_mods : Dictionary;
 var evasion_mods : Dictionary;
 var accuracy_mods : Dictionary;
-var flag_modifiers : Dictionary;
+
+var offense_modifiers : Dictionary;
+var defense_modifiers : Dictionary;
 
 var is_defeated : bool = false;
 var is_identified : bool = false;
@@ -124,15 +126,16 @@ func entity_init(params : BattleParams):
 		evasion_mods = {};
 		accuracy_mods = {};
 		
-		flag_modifiers = {};
+		offense_modifiers = {};
+		defense_modifiers = {};
 		
 		for mod in current_entity.weakness:
-			if !flag_modifiers.has(mod.flag.flag_name_key):
-				flag_modifiers[mod.flag.flag_name_key] = mod.modifier;
+			if !defense_modifiers.has(mod.flag.flag_name_key):
+				defense_modifiers[mod.flag.flag_name_key] = mod.modifier;
 		
 		for mod in current_entity.resistance:
-			if !flag_modifiers.has(mod.flag.flag_name_key):
-				flag_modifiers[mod.flag.flag_name_key] = mod.modifier;
+			if !defense_modifiers.has(mod.flag.flag_name_key):
+				defense_modifiers[mod.flag.flag_name_key] = mod.modifier;
 		
 		# NOTE: Players will have the ability to overwrite this
 		current_hp = max_hp;

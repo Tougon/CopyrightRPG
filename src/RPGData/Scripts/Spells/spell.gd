@@ -174,7 +174,7 @@ func check_can_cast(user : EntityController, target : EntityController):
 
 func check_spell_immune(target : EntityController):
 	for flag in spell_flags:
-		if target.flag_modifiers.has(flag.flag_name_key) && target.flag_modifiers[flag.flag_name_key] == 0:
+		if target.defense_modifiers.has(flag.flag_name_key) && target.defense_modifiers[flag.flag_name_key] == 0:
 			return true;
 	return false;
 
