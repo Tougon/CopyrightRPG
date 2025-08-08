@@ -7,6 +7,7 @@ var turn_limit : int = 0;
 var strength : int = 0;
 
 var cast_success : bool = false;
+var applied : bool = false;
 
 var effect : Effect;
 var user : EntityController;
@@ -55,3 +56,8 @@ func on_move_completed():
 
 func on_turn_end():
 	effect.on_turn_end_instance(self);
+
+
+func free() -> void:
+	print("REMOVING " + get_effect_name());
+	super.free();

@@ -242,6 +242,9 @@ func select_action():
 					set_target();
 			else:
 				select_random_action();
+			
+			if result != null :
+				result.free();
 	else:
 		select_random_action();
 
@@ -692,6 +695,8 @@ func remove_effect(instance : EffectInstance, deactivate : bool = true):
 	if effects.has(instance) :
 		if deactivate : instance.on_deactivate();
 		effects.erase(instance);
+		await get_tree().process_frame;
+		instance.free();
 
 
 func _find_effect_by_name(name : String) -> EffectInstance:
@@ -715,7 +720,9 @@ func apply_property(instance : EffectInstance):
 
 func clear_properties():
 	for p in properties:
+		if p == null : continue;
 		p.on_deactivate();
+		p.free();
 	properties.clear();
 
 

@@ -35,6 +35,7 @@ func _on_entity_defeated(entity : EntityController):
 			# TODO: Do not do if the battle is over
 			_send_seal_inactive_message(seal, entity);
 			
+			seal_instances[index].free();
 			seal_instances.remove_at(index);
 		else :
 			index += 1;
@@ -131,6 +132,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 						eff_instance.spell_override = seal.seal_source;
 						eff_instance.check_success();
 						if eff_instance.cast_success : eff_instance.on_activate();
+						if !eff_instance.applied : eff_instance.free();
 					
 					_play_seal_effects(seal, entity, flag);
 	
@@ -182,6 +184,7 @@ func _on_entity_turn_end(entity : EntityController) :
 			
 			if seal_instances[i].seal_turn_count <= 0:
 				_send_seal_inactive_message(seal_instances[i], entity);
+				seal_instances[i].free();
 				seal_instances.remove_at(i);
 				i -= 1;
 		

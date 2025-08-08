@@ -1,3 +1,4 @@
+# NOTE: This is all old code and will not work. If we need this later, rework.
 extends EffectFunction
 class_name EFApplyProperty
 

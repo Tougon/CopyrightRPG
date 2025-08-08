@@ -42,6 +42,7 @@ func _on_player_selected(id : int):
 		preview_image.get_node("TweenPlayerUI").play_tween_name("Zap");
 	_current_index = id;
 	
+	if _result != null : _result.free();
 	_result = ItemResult.new();
 	
 	var item_id = DataManager.item_database.get_id(_current_item);

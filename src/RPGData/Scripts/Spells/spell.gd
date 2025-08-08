@@ -85,9 +85,11 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				if !_check_is_property_in_list(prop_instances, e):
 					var eff = e.create_effect_instance(user, target, cast);
 					eff.check_success();
+					
 					if eff.cast_success: 
 						eff.on_activate();
 						prop_instances.append(eff);
+					else : eff.free();
 			
 			var user_prop_instances = user.properties;
 			
@@ -96,6 +98,7 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 				
 				if e.cast_success: 
 					e.on_activate();
+				else : e.free();
 			
 			var immune = check_spell_immune(target);
 			cast.success = !immune && check_spell_hit(cast, user, target);
@@ -131,6 +134,7 @@ func _cast(user : EntityController, target : EntityController, result : Array[Sp
 			# Deactivate properties
 			for p in prop_instances:
 				p.on_deactivate();
+				p.free();
 			
 			user.clear_properties();
 		else: cast.fail_type = SpellCast.SpellFailType.InvalidCast;

@@ -1,4 +1,4 @@
-extends RefCounted
+extends Object
 class_name SpellCast
 
 # SpellCast is a class that represents the result of a spell use.
@@ -176,3 +176,8 @@ func get_previous_hit_damage() -> int:
 
 func increment_hit():
 	current_hit += 1;
+
+
+func free() -> void:
+	print("DELETING")
+	super.free();

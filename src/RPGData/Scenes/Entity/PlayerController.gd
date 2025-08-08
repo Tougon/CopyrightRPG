@@ -103,6 +103,9 @@ func entity_init(params : BattleParams):
 				
 				if inst.cast_success :
 					inst.on_activate();
+				if !inst.applied :
+					inst.free();
+	
 	Sequencer.block_sequence = false;
 	
 	# Override move list with player's set

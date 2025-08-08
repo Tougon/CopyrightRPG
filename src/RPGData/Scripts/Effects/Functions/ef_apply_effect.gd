@@ -20,3 +20,5 @@ func execute(instance : EffectInstance):
 			inst.on_activate();
 		else :
 			inst.on_failed_to_activate();
+		
+		if !inst.applied : inst.free();

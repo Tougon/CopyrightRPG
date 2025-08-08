@@ -12,6 +12,7 @@ func execute(sequence : AnimationSequence):
 		sequence.current_action_index = current_loop.start_order;
 	else:
 		sequence.loops.erase(current_loop);
+		current_loop.free();
 	
 	sequence.looping = sequence.loops.size() > 0;
 
