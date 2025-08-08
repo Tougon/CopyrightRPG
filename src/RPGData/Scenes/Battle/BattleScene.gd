@@ -22,6 +22,8 @@ var current_player_index : int;
 var defeated_enemies : Array[DefeatedEntity];
 var player_item_delta : Dictionary;
 
+var _field_effects : Array[FieldEffectInstance];
+
 
 func _ready():
 	Instance = self;
@@ -538,6 +540,17 @@ func _end_phase():
 			return;
 	
 	# If the battle is not over, apply effects
+	
+	var to_remove : Array[FieldEffect] = [];
+	for field_effect in _field_effects:
+		field_effect.turns_active += 1;
+		
+		if field_effect.effect.turn_limit >= 0 && field_effect.turns_active >= field_effect.effect.turn_limit :
+			to_remove.append(field_effect.effect);
+	
+	for field_effect in to_remove :
+		remove_field_effect(field_effect);
+	
 	for entity in entities:
 		entity.sealing = false;
 		
@@ -565,6 +578,37 @@ func _end_phase():
 		if _all_enemies_defeated() : 
 			_end_phase();
 		else : _begin_turn();
+
+
+# Effect functions
+func apply_field_effect(field_effect : FieldEffect) :
+	if field_effect != null :
+		var inst = _get_instance_from_field_effect(field_effect);
+		if inst != null : 
+			if field_effect.stackable : 
+				inst.turns_active = 0;
+				field_effect.stack(players, enemies);
+			else :
+				var fail_msg = format_dialogue(tr("T_BATTLE_ACTION_FAIL"), "", null);
+				EventManager.on_dialogue_queue.emit(fail_msg);
+		else :
+			_field_effects.append(field_effect.create_instance())
+			field_effect.activate(players, enemies);
+
+
+func _get_instance_from_field_effect(field_effect : FieldEffect) -> FieldEffectInstance:
+	for effect in _field_effects:
+		if effect.effect == field_effect : return effect;
+	
+	return null;
+
+
+func remove_field_effect(field_effect : FieldEffect) :
+	if field_effect != null :
+		var inst = _get_instance_from_field_effect(field_effect);
+		field_effect.deactivate(players, enemies);
+		_field_effects.erase(inst);
+		inst.free();
 
 
 # Support functions
@@ -602,7 +646,16 @@ func _get_closest_unused_root_to_entity(enemy : EntityController, root : Node, u
 
 
 # Event responses
+func _on_entity_register(entity : EntityController):
+	for field_effect in _field_effects:
+		if entity is PlayerController : 
+			field_effect.effect.activate([entity], []);
+		else : 
+			field_effect.effect.activate([], [entity]);
+
+
 func _on_player_register(entity : EntityController):
+	_on_entity_register(entity);
 	entities.append(entity);
 	players.append(entity);
 	
@@ -626,6 +679,7 @@ func _on_enemy_register(entity : EntityController):
 	else :
 		enemy_type_count[entity.current_entity] = 1;
 	
+	_on_entity_register(entity);
 	entities.append(entity);
 	enemies.append(entity);
 	
@@ -697,7 +751,7 @@ func _on_player_defeated(entity : EntityController):
 	var defeat_key = "T_BATTLE_DEFEAT_PLAYER";
 	var defeat_msg = format_dialogue(tr(defeat_key), entity.param.entity_name, entity.current_entity);
 	EventManager.on_dialogue_queue.emit(defeat_msg);
-	
+
 
 func _on_enemy_defeated(entity : EntityController):
 	var defeated = DefeatedEntity.new();

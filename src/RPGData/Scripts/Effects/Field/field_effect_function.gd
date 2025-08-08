@@ -1,10 +1,9 @@
 extends Resource
 
-class_name EffectFunction
-enum Target { USER, TARGET }
-enum CheckMode { EQUALS, GREATER, LESS, GREATEREQUAL, LESSEQUAL }
+class_name FieldEffectFunction
+enum Side { BOTH, PLAYER, ENEMY }
 enum Stat { ATTACK, DEFENSE, SPATTACK, SPDEFENSE, SPEED, ACCURACY, EVASION, HIGHEST, LOWEST, CACHE }
 
 # Skeleton function used to run an arbitrary event function
-func execute(instance : EffectInstance):
+func execute(field_effect : FieldEffect, players : Array[EntityController], enemies : Array[EntityController]):
 	pass;

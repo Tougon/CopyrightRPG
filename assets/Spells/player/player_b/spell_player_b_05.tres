@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=19 format=3 uid="uid://ceaostxq3mx7x"]
+[gd_resource type="Resource" script_class="Spell" load_steps=18 format=3 uid="uid://ceaostxq3mx7x"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_u1pvb"]
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_wjp0w"]
@@ -8,28 +8,21 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_57wt8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_q4ylh"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_buy1d"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="5_jtiux"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="6_njweh"]
+[ext_resource type="Resource" uid="uid://p8yua2qx7e7e" path="res://assets/Effects/Field/effect_field_smokescreen.tres" id="5_ev3gk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove_field_effect.gd" id="6_aev88"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="9_cfej6"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="10_myfxe"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="11_owemb"]
 
-[sub_resource type="Resource" id="Resource_rg1qh"]
-script = ExtResource("5_jtiux")
-check_mode = 2
-use_limit = true
-turns = 3
-
-[sub_resource type="Resource" id="Resource_sh2ys"]
-script = ExtResource("6_njweh")
-target = 2
+[sub_resource type="Resource" id="Resource_nd202"]
+script = ExtResource("6_aev88")
+field_effect = ExtResource("5_ev3gk")
 apply = true
-deactivate = true
 
 [sub_resource type="Resource" id="Resource_ouwde"]
 script = ExtResource("3_37vp3")
 stackable = true
-effect_name = "Smokescreen"
+effect_name = "Smokescreen Activate"
 generic = false
 repeatable = false
 priority = 9
@@ -38,8 +31,8 @@ effect_type = 1
 check_success_type = 0
 check_success = Array[ExtResource("4_57wt8")]([])
 check_remain_active_type = 0
-check_remain_active = Array[ExtResource("4_57wt8")]([SubResource("Resource_rg1qh")])
-on_activate = Array[ExtResource("4_57wt8")]([SubResource("Resource_sh2ys")])
+check_remain_active = Array[ExtResource("4_57wt8")]([])
+on_activate = Array[ExtResource("4_57wt8")]([SubResource("Resource_nd202")])
 on_failed_to_activate = Array[ExtResource("4_57wt8")]([])
 on_apply = Array[ExtResource("4_57wt8")]([])
 on_move_selected = Array[ExtResource("4_57wt8")]([])

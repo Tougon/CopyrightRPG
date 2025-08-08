@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="FieldEffect" load_steps=11 format=3 uid="uid://p8yua2qx7e7e"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Field/field_effect_function.gd" id="1_vdmya"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Field/field_effect.gd" id="2_embqq"]
+[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="2_vfkny"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Field/Functions/fef_send_hybrid.gd" id="3_a5d11"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Field/Functions/fef_stat_modifier.gd" id="4_lcje8"]
+
+[sub_resource type="Resource" id="Resource_2c4aa"]
+script = ExtResource("3_a5d11")
+dialogue_key = "T_EFFECT_PLAYERB_05_ACTIVATE"
+single_instance = false
+side = 0
+animation = ExtResource("2_vfkny")
+
+[sub_resource type="Resource" id="Resource_wko32"]
+script = ExtResource("4_lcje8")
+side = 0
+apply = true
+stat = 5
+amount = 0.0
+
+[sub_resource type="Resource" id="Resource_ofm7u"]
+script = ExtResource("3_a5d11")
+dialogue_key = "T_EFFECT_PLAYERB_05_DEACTIVATE"
+single_instance = false
+side = 0
+animation = ExtResource("2_vfkny")
+
+[sub_resource type="Resource" id="Resource_e5hcr"]
+script = ExtResource("4_lcje8")
+side = 0
+apply = false
+stat = 5
+amount = 1.0
+
+[sub_resource type="Resource" id="Resource_6iclp"]
+script = ExtResource("3_a5d11")
+dialogue_key = "T_EFFECT_PLAYERB_05_STACK"
+single_instance = false
+side = 0
+animation = ExtResource("2_vfkny")
+
+[resource]
+script = ExtResource("2_embqq")
+stackable = true
+effect_name = "Smokescreen"
+turn_limit = 3
+on_activate = Array[ExtResource("1_vdmya")]([SubResource("Resource_2c4aa"), SubResource("Resource_wko32")])
+on_stack = Array[ExtResource("1_vdmya")]([SubResource("Resource_6iclp")])
+on_deactivate = Array[ExtResource("1_vdmya")]([SubResource("Resource_ofm7u"), SubResource("Resource_e5hcr")])

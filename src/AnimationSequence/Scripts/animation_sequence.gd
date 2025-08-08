@@ -79,22 +79,24 @@ func _init(in_tree : SceneTree, obj : AnimationSequenceObject, u : EntityControl
 func init_sequence(obj : AnimationSequenceObject, u : EntityController):
 	aso = obj;
 	user = u;
-	root = u.get_parent();
 	
-	user_position = user.position;
-	user_rotation = user.rotation;
-	user_scale = user.scale;
-	user_sprite = user.sprite;
-	if user_sprite != null : user_sprite_position = user.sprite.position;
-	user_color = user_sprite.modulate;
-	user_amount = user.mat.get_shader_parameter("overlay_color_amount");
-	
-	direction_x = user.scale.x / abs(user.scale.x);
-	direction_y = user.scale.y / abs(user.scale.y);
-	
-	if user.use_override_direction :
-		direction_x = user.override_direction.x / abs(user.override_direction.x);
-		direction_y = user.override_direction.y / abs(user.override_direction.y);
+	if u != null :
+		root = u.get_parent();
+		
+		user_position = user.position;
+		user_rotation = user.rotation;
+		user_scale = user.scale;
+		user_sprite = user.sprite;
+		if user_sprite != null : user_sprite_position = user.sprite.position;
+		user_color = user_sprite.modulate;
+		user_amount = user.mat.get_shader_parameter("overlay_color_amount");
+		
+		direction_x = user.scale.x / abs(user.scale.x);
+		direction_y = user.scale.y / abs(user.scale.y);
+		
+		if user.use_override_direction :
+			direction_x = user.override_direction.x / abs(user.override_direction.x);
+			direction_y = user.override_direction.y / abs(user.override_direction.y);
 	
 	if target != null:
 		for t in target:
