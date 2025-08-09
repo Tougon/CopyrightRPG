@@ -31,6 +31,9 @@ func set_sealing(_sealing : bool):
 			disabled = entity.current_mp < action.spell_cost;
 			mp_label.text = str(action.spell_cost) + tr("T_MP");
 			theme_type_variation = "Button";
+		
+		if action.target_defeated_entities : 
+			disabled = BattleScene.Instance.get_num_active_players(true) == 0;
 
 
 func _on_pressed():

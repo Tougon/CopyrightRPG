@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://cuniv2y42pgsd"]
+[gd_resource type="Resource" script_class="Entity" load_steps=49 format=3 uid="uid://cuniv2y42pgsd"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_c6ej8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_y4sq3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="6_oejkj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="7_x5omw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="8_1jh4h"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="8_vmaou"]
 [ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/core/spell_core_attack.tres" id="10_72uuh"]
 [ext_resource type="Resource" uid="uid://dismt7uphl63v" path="res://assets/Spells/common/spell_common_fire.tres" id="11_jesm8"]
 [ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/spell_enemy_slime_idle_00.tres" id="11_rmx2u"]
@@ -207,7 +208,7 @@ base_accuracy_modifier = 5.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_m1s8s")
 affinity = Array[ExtResource("1_c6ej8")]([])
-defense_modifiers = null
+defense_modifiers = Array[ExtResource("8_vmaou")]([])
 min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_k6ron")

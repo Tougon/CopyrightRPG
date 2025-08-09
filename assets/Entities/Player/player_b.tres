@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=39 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=42 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_82a6o"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="3_7fs00"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="3_j3ev3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_xfhba"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="5_0sdrg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_bv3cl"]
 [ext_resource type="Resource" uid="uid://tl2y5yt4lo16" path="res://assets/Spells/player/player_b/spell_player_b_01.tres" id="7_xium4"]
+[ext_resource type="Resource" uid="uid://dst6mwll01him" path="res://assets/Spells/common/spell_common_revive.tres" id="8_0llj2"]
 [ext_resource type="Resource" uid="uid://dfcemb2bstofd" path="res://assets/Spells/player/player_b/spell_player_b_02.tres" id="8_tm3um"]
 [ext_resource type="Resource" uid="uid://bb4drvwbwvkel" path="res://assets/Spells/player/player_b/spell_player_b_03.tres" id="9_7nhc5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_vkdbv"]
@@ -56,6 +58,11 @@ min = 0.7
 max = 1.1
 growth = SubResource("Curve_bfk5e")
 
+[sub_resource type="Resource" id="Resource_cey3s"]
+script = ExtResource("4_xfhba")
+spell = ExtResource("8_0llj2")
+level = 0
+
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("4_xfhba")
 spell = ExtResource("7_xium4")
@@ -88,7 +95,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_bv3cl")
-list = Array[ExtResource("4_xfhba")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7"), SubResource("Resource_q21lg")])
+list = Array[ExtResource("4_xfhba")]([SubResource("Resource_cey3s"), SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7"), SubResource("Resource_q21lg")])
 
 [sub_resource type="Curve" id="Curve_cg64e"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -150,7 +157,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_ghury")
 affinity = Array[ExtResource("1_82a6o")]([ExtResource("2_aonv8"), ExtResource("3_j3ev3")])
-defense_modifiers = null
+defense_modifiers = Array[ExtResource("5_0sdrg")]([])
 min_level = 50
 max_level = 99
 entity_sprites = Array[String](["res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/UI/Status/temp_portrait_b_full.png"])

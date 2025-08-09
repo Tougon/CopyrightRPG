@@ -1,0 +1,178 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=26 format=3 uid="uid://dqp1jypfk654c"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_ixvc7"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="2_1w7ee"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_ul7qc"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/visibility_change.gd" id="4_djw6h"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="5_hijhm"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="5_jmp5d"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="6_takq4"]
+
+[sub_resource type="Resource" id="Resource_6f4jc"]
+script = ExtResource("3_ul7qc")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color"
+material_property = true
+duration = 0.01
+delay = 0.0
+transition = 7
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+
+[sub_resource type="Resource" id="Resource_rcnry"]
+script = ExtResource("2_1w7ee")
+use_directionality = false
+target = 0
+effect_index = 0
+tween = SubResource("Resource_6f4jc")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_f80l7"]
+script = ExtResource("1_ixvc7")
+frame = 2
+frame_order = 0
+action = SubResource("Resource_rcnry")
+
+[sub_resource type="Resource" id="Resource_jtbhn"]
+script = ExtResource("3_ul7qc")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 1.0
+
+[sub_resource type="Resource" id="Resource_rs5vt"]
+script = ExtResource("2_1w7ee")
+use_directionality = false
+target = 0
+effect_index = 0
+tween = SubResource("Resource_jtbhn")
+override_defeated = true
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_0tm42"]
+script = ExtResource("1_ixvc7")
+frame = 2
+frame_order = 2
+action = SubResource("Resource_rs5vt")
+
+[sub_resource type="Resource" id="Resource_bytg2"]
+script = ExtResource("3_ul7qc")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_alpha_amount"
+material_property = true
+duration = 1.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 1.0
+
+[sub_resource type="Resource" id="Resource_7mlt6"]
+script = ExtResource("2_1w7ee")
+use_directionality = false
+target = 0
+effect_index = 0
+tween = SubResource("Resource_bytg2")
+override_defeated = true
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_2fami"]
+script = ExtResource("1_ixvc7")
+frame = 2
+frame_order = 3
+action = SubResource("Resource_7mlt6")
+
+[sub_resource type="Resource" id="Resource_gj30i"]
+script = ExtResource("4_djw6h")
+visible = true
+target = 0
+effect_index = 0
+node_path = "Sprite2D"
+
+[sub_resource type="Resource" id="Resource_50pt3"]
+script = ExtResource("1_ixvc7")
+frame = 3
+frame_order = 0
+action = SubResource("Resource_gj30i")
+
+[sub_resource type="Resource" id="Resource_ny536"]
+script = ExtResource("3_ul7qc")
+target = "Sprite2D"
+property_name = "shader_parameter/overlay_color_amount"
+material_property = true
+duration = 1.0
+delay = 0.0
+transition = 7
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 0.0
+"From Float" = 1.0
+
+[sub_resource type="Resource" id="Resource_fl0o4"]
+script = ExtResource("2_1w7ee")
+use_directionality = false
+target = 0
+effect_index = 0
+tween = SubResource("Resource_ny536")
+override_defeated = true
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_444i8"]
+script = ExtResource("1_ixvc7")
+frame = 70
+frame_order = 1
+action = SubResource("Resource_fl0o4")
+
+[sub_resource type="Resource" id="Resource_5b6aj"]
+script = ExtResource("5_jmp5d")
+target = 0
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_8utuc"]
+script = ExtResource("1_ixvc7")
+frame = 70
+frame_order = 2
+action = SubResource("Resource_5b6aj")
+
+[sub_resource type="Resource" id="Resource_lsu2b"]
+script = ExtResource("5_hijhm")
+
+[sub_resource type="Resource" id="Resource_uxavq"]
+script = ExtResource("1_ixvc7")
+frame = 106
+frame_order = 5
+action = SubResource("Resource_lsu2b")
+
+[resource]
+script = ExtResource("6_takq4")
+animation_name = "Revive"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_ixvc7")]([SubResource("Resource_f80l7"), SubResource("Resource_0tm42"), SubResource("Resource_2fami"), SubResource("Resource_50pt3"), SubResource("Resource_444i8"), SubResource("Resource_8utuc"), SubResource("Resource_uxavq")])

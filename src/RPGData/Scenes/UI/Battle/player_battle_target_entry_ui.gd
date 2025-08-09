@@ -36,7 +36,11 @@ func _on_focus_entered():
 	EventManager.highlight_target.emit(targets[0], all);
 	
 	for i in arrows.size():
-		arrows[i].visible = !targets[i].is_defeated;;
+		if player.current_action.target_defeated_entities : 
+			arrows[i].visible = targets[i].is_defeated;
+		else :
+			arrows[i].visible = !targets[i].is_defeated;
+		
 		arrows[i].get_node("TweenPlayerUI").play_tween_name("Arrow Bob");
 	
 	for target in targets:

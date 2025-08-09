@@ -457,6 +457,14 @@ func on_defeat():
 	current_item = null;
 
 
+func revive(hp : int):
+	print("Reviving:")
+	is_defeated = false;
+	current_hp = hp;
+	last_hit = -hp;
+	current_action == null;
+
+
 func _play_defeat_animation():
 	var defeat_anim = default_defeat_anim;
 	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;

@@ -212,6 +212,10 @@ func _action_phase():
 		if entity.is_defeated || _all_players_defeated():
 			continue;
 		
+		if entity.current_action == null :
+			EventManager.on_entity_turn_end.emit(entity);
+			continue;
+		
 		entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
 		# Looks bad on players for now but this is a sprite issue
 		entity.tween.play_tween_name("Entity Ready Up");
@@ -224,9 +228,13 @@ func _action_phase():
 		var num_active = get_num_active_enemies();
 		
 		# Multi target moves still work if at least one target still exists.
-		for target in entity.current_target:
-			if target.is_defeated:
+		var target_index = 0;
+		while target_index < entity.current_target.size():
+			var target = entity.current_target[target_index];
+			
+			if (target.is_defeated && !entity.current_action.target_defeated_entities) || (!target.is_defeated && entity.current_action.target_defeated_entities):
 				entity.current_target.erase(target);
+			else : target_index += 1;
 		
 		if entity.current_target.size() == 0:
 			is_target_valid = false;
@@ -618,11 +626,22 @@ func can_seal(spell : Spell) -> bool:
 	return seal_manager.can_seal_spell(spell);
 
 
-func get_num_active_enemies() -> int:
+func get_num_active_players(invert : bool = false) -> int:
+	var result = 0;
+	
+	for player in players:
+		if !player.is_defeated && !invert : result += 1;
+		if player.is_defeated && invert : result += 1;
+	
+	return result;
+
+
+func get_num_active_enemies(invert : bool = false) -> int:
 	var result = 0;
 	
 	for enemy in enemies:
-		if !enemy.is_defeated : result += 1;
+		if !enemy.is_defeated && !invert : result += 1;
+		if enemy.is_defeated && invert : result += 1;
 	
 	return result;
 

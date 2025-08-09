@@ -122,7 +122,7 @@ func _initialize_target_menu(entity : EntityController):
 			var target = targets[i];
 			var info = target_info_pool[i];
 			
-			if target.is_defeated : 
+			if (target.is_defeated && !entity.current_action.target_defeated_entities) || (!target.is_defeated && entity.current_action.target_defeated_entities): 
 				target_arrow_pool[i].visible = false;
 				info.visible = false;
 				
@@ -130,7 +130,7 @@ func _initialize_target_menu(entity : EntityController):
 					first_valid_selection += 1;
 				continue;
 			
-			info.visible = !target.is_defeated;
+			info.visible = true;
 			info.global_position = target.global_position;
 			
 			info.initialize([target], [target_arrow_pool[i]], entity, false);
