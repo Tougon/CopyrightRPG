@@ -65,6 +65,7 @@ var current_mp : int;
 var last_hit : int;
 
 var is_ready : bool = false;
+var skip_decision : bool = false;
 
 var allies : Array[EntityController];
 var enemies : Array[EntityController];
@@ -736,8 +737,9 @@ func clear_properties():
 
 # Misc functions
 func reset_action():
-	current_action = null;
-	action_result = [null];
+	if !skip_decision :
+		current_action = null;
+		action_result = [null];
 
 
 static func compare_speed (a : EntityController, b : EntityController) -> bool:

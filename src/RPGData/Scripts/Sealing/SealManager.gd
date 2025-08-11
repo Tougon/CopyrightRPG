@@ -88,7 +88,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 	var action = entity.current_action;
 	
 	# Realistically should never be null but w/e, safety check
-	if action == null : return false;
+	if action == null || (action != null && action.ignore_seals) : return false;
 	var has_sealed = false;
 	
 	for seal in seal_instances:

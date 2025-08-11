@@ -5,6 +5,7 @@ class_name EFReplaceAction
 @export var action : Spell;
 @export var use_previous : bool = false;
 @export var pick_random : bool = false;
+@export var retain_target : bool = false;
 @export var reset_sealing : bool = true;
 
 func execute(instance : EffectInstance):
@@ -24,7 +25,7 @@ func execute(instance : EffectInstance):
 				entity.current_action = previous;
 			
 				# If the repeated action's targetting differs from the selection, randomize target
-				if entity.current_action.spell_target != previous.spell_target:
+				if entity.current_action.spell_target != previous.spell_target && !retain_target:
 					entity.set_target();
 				
 				entity.action_replaced = true;
@@ -46,7 +47,8 @@ func execute(instance : EffectInstance):
 		
 		elif action != null : 
 			entity.current_action = action;
-			entity.set_target();
+			if !retain_target :
+				entity.set_target();
 			entity.action_replaced = true;
 		
 		if reset_sealing:

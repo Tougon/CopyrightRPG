@@ -45,10 +45,9 @@ func create_data():
 		member.id = i;
 		member.level = 5;
 		member.exp = 0;
-		member.unlocked = i <= 1;
+		member.unlocked = true#i == 1;
 		member.move_list = move_list;
 		member.hp_value = entity.get_hp(member.level);
-		if i == 0 : member.hp_value = 0;
 		member.mp_value = entity.get_mp(member.level);
 		party_data.append(member);
 	

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=42 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_82a6o"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
@@ -9,14 +9,15 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="5_0sdrg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_bv3cl"]
 [ext_resource type="Resource" uid="uid://tl2y5yt4lo16" path="res://assets/Spells/player/player_b/spell_player_b_01.tres" id="7_xium4"]
-[ext_resource type="Resource" uid="uid://dst6mwll01him" path="res://assets/Spells/common/spell_common_revive.tres" id="8_0llj2"]
+[ext_resource type="Resource" uid="uid://beyjnruquj0x" path="res://assets/Spells/player/player_b/spell_player_b_08.tres" id="8_feqgb"]
 [ext_resource type="Resource" uid="uid://dfcemb2bstofd" path="res://assets/Spells/player/player_b/spell_player_b_02.tres" id="8_tm3um"]
 [ext_resource type="Resource" uid="uid://bb4drvwbwvkel" path="res://assets/Spells/player/player_b/spell_player_b_03.tres" id="9_7nhc5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_vkdbv"]
+[ext_resource type="Resource" uid="uid://ccdoq72unnbem" path="res://assets/Spells/player/player_b/spell_player_b_07.tres" id="9_yh6vl"]
 [ext_resource type="Resource" uid="uid://b1i43hy3vkuen" path="res://assets/Spells/player/player_b/spell_player_b_04.tres" id="10_8uhs6"]
+[ext_resource type="Resource" uid="uid://d337yxpegbtkt" path="res://assets/Spells/player/player_b/spell_player_b_06A.tres" id="10_qdyho"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_y86e6"]
 [ext_resource type="Resource" uid="uid://ceaostxq3mx7x" path="res://assets/Spells/player/player_b/spell_player_b_05.tres" id="11_j5j3k"]
-[ext_resource type="Resource" uid="uid://dwtc7y67rv1y0" path="res://assets/Spells/player/player_d/spell_player_aplus.tres" id="12_mk7nk"]
 
 [sub_resource type="Curve" id="Curve_w4glt"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -58,9 +59,19 @@ min = 0.7
 max = 1.1
 growth = SubResource("Curve_bfk5e")
 
-[sub_resource type="Resource" id="Resource_cey3s"]
+[sub_resource type="Resource" id="Resource_id7q6"]
 script = ExtResource("4_xfhba")
-spell = ExtResource("8_0llj2")
+spell = ExtResource("8_feqgb")
+level = 0
+
+[sub_resource type="Resource" id="Resource_s84s3"]
+script = ExtResource("4_xfhba")
+spell = ExtResource("9_yh6vl")
+level = 0
+
+[sub_resource type="Resource" id="Resource_0srua"]
+script = ExtResource("4_xfhba")
+spell = ExtResource("10_qdyho")
 level = 0
 
 [sub_resource type="Resource" id="Resource_egsue"]
@@ -88,14 +99,9 @@ script = ExtResource("4_xfhba")
 spell = ExtResource("11_j5j3k")
 level = 0
 
-[sub_resource type="Resource" id="Resource_q21lg"]
-script = ExtResource("4_xfhba")
-spell = ExtResource("12_mk7nk")
-level = 0
-
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_bv3cl")
-list = Array[ExtResource("4_xfhba")]([SubResource("Resource_cey3s"), SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7"), SubResource("Resource_q21lg")])
+list = Array[ExtResource("4_xfhba")]([SubResource("Resource_id7q6"), SubResource("Resource_s84s3"), SubResource("Resource_0srua"), SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7")])
 
 [sub_resource type="Curve" id="Curve_cg64e"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

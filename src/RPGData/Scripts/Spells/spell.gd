@@ -21,7 +21,8 @@ enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, 
 @export var target_defeated_entities : bool = false;
 @export var spell_cost : int;
 @export var spell_priority : int;
-@export var spell_flags : Array[TFlag];
+@export var spell_flags : Array[TFlag]
+@export var ignore_seals : bool = false;
 
 @export_subgroup("Spell Animation")
 @export var animation_sequence : AnimationSequenceObject;

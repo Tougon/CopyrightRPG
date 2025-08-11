@@ -37,8 +37,8 @@ func execute(instance : EffectInstance):
 			EffectFunction.Stat.SPATTACK: entity_stage = entity.sp_atk_stage;
 			EffectFunction.Stat.SPDEFENSE: entity_stage = entity.sp_def_stage;
 			EffectFunction.Stat.SPEED: entity_stage = entity.spd_stage;
-			EffectFunction.Stat.ACCURACY: entity_stage = entity.accuracy_stage_stage;
-			EffectFunction.Stat.EVASION: entity_stage = entity.evasion_stage_stage;
+			EffectFunction.Stat.ACCURACY: entity_stage = entity.accuracy_stage;
+			EffectFunction.Stat.EVASION: entity_stage = entity.evasion_stage;
 		
 		match check_mode :
 			EffectFunction.CheckMode.EQUALS:

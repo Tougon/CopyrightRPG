@@ -1,0 +1,104 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=20 format=3 uid="uid://ccdoq72unnbem"]
+
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_8h1wo"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_drd6h"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_sakp6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_3uof2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_xaocp"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_debpk"]
+[ext_resource type="Resource" uid="uid://cv2vy73wpvatg" path="res://assets/Effects/Common/effect_common_debuff_evasion.tres" id="4_f5tcw"]
+[ext_resource type="Resource" uid="uid://dugq12fkxgmh2" path="res://assets/Effects/Common/effect_common_status_confuse.tres" id="4_pq40b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_d1hg0"]
+[ext_resource type="Resource" uid="uid://dguhi8bo5rkdb" path="res://assets/Effects/Common/effect_common_status_distracted.tres" id="6_jlwvq"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="7_sshtt"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="8_76nkh"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_twv20"]
+
+[sub_resource type="Resource" id="Resource_j5svh"]
+script = ExtResource("3_3uof2")
+chance = 1.0
+effect = ExtResource("4_f5tcw")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_hoip3"]
+script = ExtResource("1_drd6h")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_3uof2")]([SubResource("Resource_j5svh")])
+
+[sub_resource type="Resource" id="Resource_vrlbd"]
+script = ExtResource("3_3uof2")
+chance = 1.0
+effect = ExtResource("4_pq40b")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_pr1c6"]
+script = ExtResource("1_drd6h")
+chance = 0.4
+use_luck = true
+effect_set = Array[ExtResource("3_3uof2")]([SubResource("Resource_vrlbd")])
+
+[sub_resource type="Resource" id="Resource_w6ool"]
+script = ExtResource("3_3uof2")
+chance = 1.0
+effect = ExtResource("6_jlwvq")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_exiu3"]
+script = ExtResource("1_drd6h")
+chance = 0.2
+use_luck = true
+effect_set = Array[ExtResource("3_3uof2")]([SubResource("Resource_w6ool")])
+
+[resource]
+script = ExtResource("5_d1hg0")
+spell_power = 0.0
+spell_attack_type = 1
+vary_defense_type = false
+spell_defense_type = 1
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_debpk")]([])
+check_accuracy = false
+spell_accuracy = 82.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = false
+critical_chance = 16
+spell_name_key = "T_SPELL_PLAYERB_07"
+spell_description_key = "T_SPELL_PLAYERB_07_DESC"
+spell_cast_message_key = "T_CAST_PLAYERB_07"
+spell_type = 2
+spell_target = 3
+target_defeated_entities = false
+spell_cost = 36
+spell_priority = 0
+spell_flags = Array[ExtResource("4_debpk")]([ExtResource("7_sshtt"), ExtResource("8_76nkh"), ExtResource("9_twv20")])
+ignore_seals = false
+animation_sequence = ExtResource("1_8h1wo")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_drd6h")]([SubResource("Resource_hoip3"), SubResource("Resource_pr1c6"), SubResource("Resource_exiu3")])
+effects_on_success = Array[ExtResource("1_drd6h")]([])
+properties = Array[ExtResource("3_xaocp")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_sakp6")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_sakp6")]([])

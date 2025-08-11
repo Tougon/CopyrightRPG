@@ -50,6 +50,7 @@ target = 1
 action = ExtResource("9_8wewc")
 use_previous = false
 pick_random = false
+retain_target = false
 reset_sealing = true
 
 [sub_resource type="Resource" id="Resource_347a1"]

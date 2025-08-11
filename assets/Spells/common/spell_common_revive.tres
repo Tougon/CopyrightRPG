@@ -73,6 +73,7 @@ target_defeated_entities = true
 spell_cost = 36
 spell_priority = 0
 spell_flags = Array[ExtResource("5_0wdv5")]([])
+ignore_seals = false
 animation_sequence = ExtResource("1_1jypl")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

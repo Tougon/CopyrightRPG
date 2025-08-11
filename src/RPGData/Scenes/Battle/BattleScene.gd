@@ -142,7 +142,7 @@ func _decision_phase():
 		
 		await get_tree().process_frame;
 		
-		if players[current_player_index].is_ready :
+		if players[current_player_index].is_ready || players[current_player_index].skip_decision:
 			if players[current_player_index].current_item != null:
 				players[current_player_index].subtract_item(players[current_player_index].current_item);
 			current_player_index = _get_next_valid_player_index(current_player_index + 1);
@@ -869,21 +869,21 @@ func _is_lowest_valid_player() -> bool:
 	if current_player_index == 0 : return true;
 	
 	for i in range(current_player_index, 0, -1):
-		if !players[i - 1].is_defeated : return false;
+		if !players[i - 1].is_defeated && !players[i - 1].skip_decision: return false;
 	
 	return true;
 
 
 func _get_next_valid_player_index(val : int) -> int:
 	for i in range(val, players.size()):
-		if !players[i].is_defeated && !players[i].is_ready : return i;
+		if !players[i].is_defeated && (!players[i].is_ready && !players[i].skip_decision): return i;
 	
 	return players.size();
 
 
 func _get_prev_valid_player_index(val : int) -> int:
 	for i in range(val, 0, -1):
-		if !players[i - 1].is_defeated : return i - 1;
+		if !players[i - 1].is_defeated && !players[i - 1].skip_decision : return i - 1;
 	
 	return -1;
 
