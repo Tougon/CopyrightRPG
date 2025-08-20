@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=16 format=3 uid="uid://dv47uixix05p"]
+
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_lq0g1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_vdp2o"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_olaep"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_77yum"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_mo62e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_p6m07"]
+[ext_resource type="Resource" uid="uid://cq78s1t2kuo47" path="res://assets/Effects/Common/effect_common_buff_speed.tres" id="4_sjvcv"]
+[ext_resource type="Resource" uid="uid://bup308uw78yo0" path="res://assets/Effects/Common/effect_common_status_agitation.tres" id="5_58o86"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_d4o8m"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="10_0apa2"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="11_eo2cr"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="12_utmv3"]
+
+[sub_resource type="Resource" id="Resource_m3ji0"]
+script = ExtResource("3_mo62e")
+chance = 0.75
+effect = ExtResource("4_sjvcv")
+use_luck = true
+
+[sub_resource type="Resource" id="Resource_odfe7"]
+script = ExtResource("3_mo62e")
+chance = 1.0
+effect = ExtResource("5_58o86")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_gadfx"]
+script = ExtResource("1_vdp2o")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_mo62e")]([SubResource("Resource_m3ji0"), SubResource("Resource_odfe7")])
+
+[resource]
+script = ExtResource("4_p6m07")
+spell_name_key = "T_SPELL_PLAYERC_03"
+spell_description_key = "T_SPELL_PLAYERC_03_DESC"
+spell_cast_message_key = "T_CAST_PLAYERC_03"
+spell_type = 3
+spell_target = 5
+ignore_self = true
+target_defeated_entities = false
+spell_cost = 14
+spell_priority = 0
+spell_flags = Array[ExtResource("5_d4o8m")]([ExtResource("10_0apa2"), ExtResource("11_eo2cr"), ExtResource("12_utmv3")])
+ignore_seals = false
+animation_sequence = ExtResource("1_lq0g1")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_vdp2o")]([SubResource("Resource_gadfx")])
+effects_on_success = Array[ExtResource("1_vdp2o")]([])
+properties = Array[ExtResource("3_77yum")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_olaep")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_olaep")]([])

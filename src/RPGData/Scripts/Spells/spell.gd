@@ -18,6 +18,7 @@ enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, 
 @export_subgroup("Spell Core")
 @export var spell_type : SpellType;
 @export var spell_target : SpellTarget;
+@export var ignore_self : bool = false;
 @export var target_defeated_entities : bool = false;
 @export var spell_cost : int;
 @export var spell_priority : int;

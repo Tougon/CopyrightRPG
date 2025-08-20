@@ -272,7 +272,6 @@ func select_random_action():
 
 func set_target(trigger : EntityController = null):
 	var available = get_possible_targets(null, true);
-	print(available.size())
 	var index = randi_range(0, available.size() - 1);
 	
 	match current_action.spell_target:
@@ -571,12 +570,11 @@ func get_possible_targets(spell : Spell = null, add_defeated : bool = false) -> 
 				if !enemy.is_defeated || add_defeated:
 					result.append(enemy);
 			for ally in allies:
-				if (!ally.is_defeated || add_defeated) && !ally == self:
+				if (!ally.is_defeated || add_defeated) && ally != self:
 					result.append(ally);
 		Spell.SpellTarget.SingleParty:
-			result.append(self);
 			for ally in allies:
-				if (!ally.is_defeated || add_defeated) && !ally == self:
+				if (!ally.is_defeated || add_defeated) && (!action_to_check.ignore_self || (action_to_check.ignore_self && ally != self)):
 					result.append(ally);
 		Spell.SpellTarget.AllParty:
 			for ally in allies:
