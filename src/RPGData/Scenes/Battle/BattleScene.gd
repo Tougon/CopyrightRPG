@@ -206,14 +206,17 @@ func _action_phase():
 	
 	await get_tree().process_frame;
 	
-	for entity in turn_order:
+	while turn_order.size() > 0:
+		var entity = turn_order[0]
 		EventManager.on_entity_move.emit(entity);
 		
 		if entity.is_defeated || _all_players_defeated():
+			turn_order.remove_at(0);
 			continue;
 		
 		if entity.current_action == null :
 			EventManager.on_entity_turn_end.emit(entity);
+			turn_order.remove_at(0);
 			continue;
 		
 		entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
@@ -245,7 +248,9 @@ func _action_phase():
 			var alternate_targets = entity.get_possible_targets();
 			
 			# If no alternate targets exist, skip the turn.
-			if alternate_targets.size() == 0 : continue;
+			if alternate_targets.size() == 0 : 
+				turn_order.remove_at(0);
+				continue;
 			
 			var target_type = entity.current_action.spell_target;
 			
@@ -370,7 +375,8 @@ func _action_phase():
 		
 		if amt > 0 :
 			for spell in spell_cast:
-				if _all_players_defeated() : continue;
+				if _all_players_defeated() : 
+					continue;
 				var effects = spell.effects;
 				
 				for effect in effects:
@@ -439,6 +445,9 @@ func _action_phase():
 					subspell.free();
 			spell.free();
 		spell_cast.clear();
+		
+		turn_order.remove_at(0);
+		turn_order.sort_custom(_compare_speed);
 	
 	await get_tree().process_frame;
 	_end_phase();
