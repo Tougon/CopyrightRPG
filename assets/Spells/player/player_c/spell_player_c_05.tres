@@ -1,0 +1,240 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=45 format=3 uid="uid://cd3h8xitopuul"]
+
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_r31bg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_v8egu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_ov0un"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_djq5u"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="5_btqqe"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="6_w1kw1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="7_hu7ao"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="8_33pbw"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="9_fiku7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="10_5vvl4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="11_vg8is"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="12_b1fkm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="13_dx6n0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="14_1jmov"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="15_gywea"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="16_5oi7d"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="17_h4u10"]
+[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="18_xj5jb"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="19_sa88h"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="20_mls2k"]
+
+[sub_resource type="Resource" id="Resource_fcec7"]
+script = ExtResource("5_btqqe")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_r13nt"]
+script = ExtResource("6_w1kw1")
+target = 1
+stat = 7
+check_mode = 2
+stage = 0
+max = true
+min = false
+use_stage = true
+use_modifiers = false
+
+[sub_resource type="Resource" id="Resource_xb1rw"]
+script = ExtResource("7_hu7ao")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_5drl5"]
+script = ExtResource("8_33pbw")
+target = 1
+stat = 7
+amount = 1
+use_stage = true
+use_modifiers = false
+cache_stat = true
+activation_strings = Array[String](["T_EFFECT_GENERIC_ATTACK_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_DEFENSE_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_SPATTACK_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_SPDEFENSE_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_SPEED_BOOST_TARGET_ACTIVATE"])
+deactivation_strings = Array[String](["T_EFFECT_PLAYERC_04_DEACTIVATE_ATK", "T_EFFECT_PLAYERC_04_DEACTIVATE_DEF", "T_EFFECT_PLAYERC_04_DEACTIVATE_MAG", "T_EFFECT_PLAYERC_04_DEACTIVATE_RES", "T_EFFECT_PLAYERC_04_DEACTIVATE_SPD"])
+
+[sub_resource type="Resource" id="Resource_n5iyn"]
+script = ExtResource("10_5vvl4")
+dialogue_key = "cache"
+target = 1
+animation = ExtResource("9_fiku7")
+
+[sub_resource type="Resource" id="Resource_b0srk"]
+script = ExtResource("8_33pbw")
+target = 1
+stat = 9
+amount = -1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_1f5gh"]
+script = ExtResource("11_vg8is")
+dialogue_key = "cache"
+
+[sub_resource type="Resource" id="Resource_psmoh"]
+script = ExtResource("12_b1fkm")
+
+[sub_resource type="Resource" id="Resource_hcols"]
+script = ExtResource("13_dx6n0")
+target = 1
+
+[sub_resource type="Resource" id="Resource_15cxw"]
+script = ExtResource("14_1jmov")
+stackable = false
+effect_name = "C05_1"
+generic = false
+repeatable = true
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_djq5u")]([SubResource("Resource_r13nt")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_djq5u")]([SubResource("Resource_fcec7")])
+on_activate = Array[ExtResource("4_djq5u")]([SubResource("Resource_xb1rw")])
+on_failed_to_activate = Array[ExtResource("4_djq5u")]([])
+on_apply = Array[ExtResource("4_djq5u")]([SubResource("Resource_5drl5"), SubResource("Resource_n5iyn")])
+on_move_selected = Array[ExtResource("4_djq5u")]([])
+on_move_completed = Array[ExtResource("4_djq5u")]([SubResource("Resource_psmoh"), SubResource("Resource_hcols")])
+on_deactivate = Array[ExtResource("4_djq5u")]([SubResource("Resource_b0srk"), SubResource("Resource_1f5gh")])
+on_turn_start = Array[ExtResource("4_djq5u")]([])
+on_turn_end = Array[ExtResource("4_djq5u")]([])
+on_stack = Array[ExtResource("4_djq5u")]([])
+
+[sub_resource type="Resource" id="Resource_123f4"]
+script = ExtResource("3_ov0un")
+chance = 1.0
+effect = SubResource("Resource_15cxw")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_tiq3k"]
+script = ExtResource("2_v8egu")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_ov0un")]([SubResource("Resource_123f4")])
+
+[sub_resource type="Resource" id="Resource_t8mnn"]
+script = ExtResource("5_btqqe")
+check_mode = 0
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_gdxve"]
+script = ExtResource("6_w1kw1")
+target = 1
+stat = 8
+check_mode = 2
+stage = 0
+max = true
+min = false
+use_stage = true
+use_modifiers = false
+
+[sub_resource type="Resource" id="Resource_a1ull"]
+script = ExtResource("7_hu7ao")
+target = 1
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_r4idb"]
+script = ExtResource("8_33pbw")
+target = 1
+stat = 8
+amount = 1
+use_stage = true
+use_modifiers = false
+cache_stat = true
+activation_strings = Array[String](["T_EFFECT_GENERIC_ATTACK_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_DEFENSE_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_SPATTACK_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_SPDEFENSE_BOOST_TARGET_ACTIVATE", "T_EFFECT_GENERIC_SPEED_BOOST_TARGET_ACTIVATE"])
+deactivation_strings = Array[String](["T_EFFECT_PLAYERC_04_DEACTIVATE_ATK", "T_EFFECT_PLAYERC_04_DEACTIVATE_DEF", "T_EFFECT_PLAYERC_04_DEACTIVATE_MAG", "T_EFFECT_PLAYERC_04_DEACTIVATE_RES", "T_EFFECT_PLAYERC_04_DEACTIVATE_SPD"])
+
+[sub_resource type="Resource" id="Resource_ai8t1"]
+script = ExtResource("10_5vvl4")
+dialogue_key = "cache"
+target = 1
+animation = ExtResource("9_fiku7")
+
+[sub_resource type="Resource" id="Resource_xnwim"]
+script = ExtResource("8_33pbw")
+target = 1
+stat = 9
+amount = -1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_p83qe"]
+script = ExtResource("11_vg8is")
+dialogue_key = "cache"
+
+[sub_resource type="Resource" id="Resource_2iypn"]
+script = ExtResource("12_b1fkm")
+
+[sub_resource type="Resource" id="Resource_qmq2d"]
+script = ExtResource("13_dx6n0")
+target = 0
+
+[sub_resource type="Resource" id="Resource_11byh"]
+script = ExtResource("14_1jmov")
+stackable = false
+effect_name = "C05_2"
+generic = false
+repeatable = true
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_djq5u")]([SubResource("Resource_gdxve")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_djq5u")]([SubResource("Resource_t8mnn")])
+on_activate = Array[ExtResource("4_djq5u")]([SubResource("Resource_a1ull")])
+on_failed_to_activate = Array[ExtResource("4_djq5u")]([])
+on_apply = Array[ExtResource("4_djq5u")]([SubResource("Resource_r4idb"), SubResource("Resource_ai8t1")])
+on_move_selected = Array[ExtResource("4_djq5u")]([])
+on_move_completed = Array[ExtResource("4_djq5u")]([SubResource("Resource_2iypn"), SubResource("Resource_qmq2d")])
+on_deactivate = Array[ExtResource("4_djq5u")]([SubResource("Resource_xnwim"), SubResource("Resource_p83qe")])
+on_turn_start = Array[ExtResource("4_djq5u")]([])
+on_turn_end = Array[ExtResource("4_djq5u")]([])
+on_stack = Array[ExtResource("4_djq5u")]([])
+
+[sub_resource type="Resource" id="Resource_a1837"]
+script = ExtResource("3_ov0un")
+chance = 1.0
+effect = SubResource("Resource_11byh")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_52pbj"]
+script = ExtResource("2_v8egu")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_ov0un")]([SubResource("Resource_a1837")])
+
+[resource]
+script = ExtResource("16_5oi7d")
+spell_name_key = "T_SPELL_PLAYERC_05"
+spell_description_key = "T_SPELL_PLAYERC_05_DESC"
+spell_cast_message_key = "T_CAST_PLAYERC_05"
+spell_type = 3
+spell_target = 5
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 26
+spell_priority = 0
+spell_flags = Array[ExtResource("17_h4u10")]([ExtResource("18_xj5jb"), ExtResource("19_sa88h"), ExtResource("20_mls2k")])
+ignore_seals = false
+animation_sequence = ExtResource("1_r31bg")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_v8egu")]([SubResource("Resource_tiq3k"), SubResource("Resource_52pbj")])
+effects_on_success = Array[ExtResource("2_v8egu")]([])
+properties = Array[ExtResource("14_1jmov")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("15_gywea")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("15_gywea")]([])

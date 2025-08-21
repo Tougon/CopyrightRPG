@@ -61,6 +61,7 @@ spell_description_key = "T_SPELL_PLAYERB_05_DESC"
 spell_cast_message_key = "T_CAST_PLAYERB_05"
 spell_type = 2
 spell_target = 7
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 20
 spell_priority = 0

@@ -110,6 +110,7 @@ spell_description_key = "T_SPELL_PLAYERA_02_DESC"
 spell_cast_message_key = "T_CAST_PLAYERA_02"
 spell_type = 2
 spell_target = 0
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 18
 spell_priority = 0

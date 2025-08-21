@@ -103,6 +103,7 @@ spell_description_key = "T_SPELL_PLAYERB_03_DESC"
 spell_cast_message_key = "T_CAST_PLAYERB_03"
 spell_type = 1
 spell_target = 2
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 20
 spell_priority = 0

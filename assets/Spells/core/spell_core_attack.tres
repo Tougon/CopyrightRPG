@@ -55,6 +55,7 @@ spell_description_key = ""
 spell_cast_message_key = "T_CAST_GENERIC_ATTACK"
 spell_type = 1
 spell_target = 0
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 0
 spell_priority = 0

@@ -47,6 +47,7 @@ spell_description_key = "T_SPELL_PLAYERB_06B_DESC"
 spell_cast_message_key = "T_CAST_PLAYERB_06B"
 spell_type = 1
 spell_target = 0
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 0
 spell_priority = 0

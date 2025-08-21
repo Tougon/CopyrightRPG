@@ -28,6 +28,10 @@ func execute(instance : EffectInstance):
 		if target_stat == EffectFunction.Stat.LOWEST || target_stat == EffectFunction.Stat.HIGHEST :
 			target_stat = _get_highest_or_lowest_stat(entity);
 		
+		if target_stat == EffectFunction.Stat.RANDOM :
+			var possible_stats = [ EffectFunction.Stat.ATTACK, EffectFunction.Stat.DEFENSE, EffectFunction.Stat.SPATTACK, EffectFunction.Stat.SPDEFENSE, EffectFunction.Stat.SPEED ];
+			target_stat = possible_stats.pick_random();
+		
 		if cache_stat : 
 			instance.data["stat"] = target_stat;
 			instance.data["hybrid_key"] = _get_activation_string(target_stat);

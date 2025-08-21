@@ -30,6 +30,7 @@ spell_description_key = "T_SPELL_STATUS_COMMON_SPATOOST"
 spell_cast_message_key = "T_CAST_STATUS_COMMON_SPATOOST"
 spell_type = 3
 spell_target = 4
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 15
 spell_priority = 0

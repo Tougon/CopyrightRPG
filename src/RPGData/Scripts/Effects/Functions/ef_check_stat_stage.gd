@@ -31,6 +31,11 @@ func execute(instance : EffectInstance):
 			target_stat = _get_highest_or_lowest_stat(entity);
 			print("RESULT: " + str(target_stat))
 		
+		if target_stat == EffectFunction.Stat.RANDOM :
+			var possible_stats = [ EffectFunction.Stat.ATTACK, EffectFunction.Stat.DEFENSE, EffectFunction.Stat.SPATTACK, EffectFunction.Stat.SPDEFENSE, EffectFunction.Stat.SPEED ];
+			target_stat = possible_stats.pick_random();
+			instance.data["stat"] = target_stat;
+		
 		match target_stat : 
 			EffectFunction.Stat.ATTACK: entity_stage = entity.atk_stage;
 			EffectFunction.Stat.DEFENSE: entity_stage = entity.def_stage;

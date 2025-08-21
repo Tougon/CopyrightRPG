@@ -50,6 +50,7 @@ spell_description_key = ""
 spell_cast_message_key = "T_CAST_DAMAGE_COMMON_WIND"
 spell_type = 1
 spell_target = 0
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 8
 spell_priority = 0

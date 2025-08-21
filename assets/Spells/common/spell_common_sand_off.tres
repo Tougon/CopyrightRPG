@@ -60,6 +60,7 @@ spell_description_key = ""
 spell_cast_message_key = "T_CAST_STATUS_COMMON_SAND_OFF"
 spell_type = 4
 spell_target = 3
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 24
 spell_priority = 0

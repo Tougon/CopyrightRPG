@@ -103,6 +103,7 @@ spell_description_key = "T_SPELL_PLAYERA_06_DESC"
 spell_cast_message_key = "T_CAST_PLAYERA_06"
 spell_type = 1
 spell_target = 2
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 1
 spell_priority = 0

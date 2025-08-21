@@ -68,6 +68,7 @@ spell_description_key = "T_SPELL_PLAYERC_01_DESC"
 spell_cast_message_key = "T_CAST_PLAYERC_01"
 spell_type = 5
 spell_target = 5
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 10
 spell_priority = 0

@@ -30,6 +30,7 @@ spell_description_key = ""
 spell_cast_message_key = "T_CAST_STATUS_PLAYER_PASS"
 spell_type = 3
 spell_target = 5
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 12
 spell_priority = 0

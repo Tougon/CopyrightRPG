@@ -99,6 +99,7 @@ spell_description_key = "T_SPELL_PLAYERB_06A_DESC"
 spell_cast_message_key = "T_CAST_PLAYERB_06A"
 spell_type = 1
 spell_target = 0
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 22
 spell_priority = 0

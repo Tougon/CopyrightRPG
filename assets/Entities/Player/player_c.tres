@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=32 format=3 uid="uid://8i7hybweexe0"]
+[gd_resource type="Resource" script_class="Entity" load_steps=40 format=3 uid="uid://8i7hybweexe0"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_uejv1"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="2_gsxgw"]
@@ -12,6 +12,10 @@
 [ext_resource type="Resource" uid="uid://24judeqcy264" path="res://assets/Spells/player/player_c/spell_player_c_01.tres" id="8_dytxe"]
 [ext_resource type="Resource" uid="uid://dv47uixix05p" path="res://assets/Spells/player/player_c/spell_player_c_03.tres" id="9_jqpxc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="9_otg1d"]
+[ext_resource type="Resource" uid="uid://dtjjimm6j4sk1" path="res://assets/Spells/player/player_c/spell_player_c_04.tres" id="10_5d0gb"]
+[ext_resource type="Resource" uid="uid://cd3h8xitopuul" path="res://assets/Spells/player/player_c/spell_player_c_05.tres" id="10_mdx1f"]
+[ext_resource type="Resource" uid="uid://bpt726lyb67yy" path="res://assets/Spells/player/player_c/spell_player_c_06.tres" id="10_nea7g"]
+[ext_resource type="Resource" uid="uid://bgte2rnixklqx" path="res://assets/Spells/player/player_c/spell_player_c_07.tres" id="13_gn7ib"]
 
 [sub_resource type="Curve" id="Curve_juo7r"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -63,9 +67,29 @@ script = ExtResource("4_skakr")
 spell = ExtResource("9_jqpxc")
 level = 0
 
+[sub_resource type="Resource" id="Resource_332aq"]
+script = ExtResource("4_skakr")
+spell = ExtResource("10_5d0gb")
+level = 0
+
+[sub_resource type="Resource" id="Resource_fuhnm"]
+script = ExtResource("4_skakr")
+spell = ExtResource("10_mdx1f")
+level = 0
+
+[sub_resource type="Resource" id="Resource_jw3ga"]
+script = ExtResource("4_skakr")
+spell = ExtResource("10_nea7g")
+level = 0
+
+[sub_resource type="Resource" id="Resource_444mk"]
+script = ExtResource("4_skakr")
+spell = ExtResource("13_gn7ib")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("6_q7s76")
-list = Array[ExtResource("4_skakr")]([SubResource("Resource_i3ueo"), SubResource("Resource_7vy43")])
+list = Array[ExtResource("4_skakr")]([SubResource("Resource_i3ueo"), SubResource("Resource_7vy43"), SubResource("Resource_332aq"), SubResource("Resource_fuhnm"), SubResource("Resource_jw3ga"), SubResource("Resource_444mk")])
 
 [sub_resource type="Curve" id="Curve_1mgh0"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

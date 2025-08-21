@@ -69,6 +69,7 @@ spell_description_key = ""
 spell_cast_message_key = "T_CAST_STATUS_COMMON_REVIVE"
 spell_type = 2
 spell_target = 5
+ignore_self = false
 target_defeated_entities = true
 spell_cost = 36
 spell_priority = 0

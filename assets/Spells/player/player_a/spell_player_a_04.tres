@@ -75,6 +75,7 @@ spell_description_key = "T_SPELL_PLAYERA_04_DESC"
 spell_cast_message_key = "T_CAST_PLAYERA_04"
 spell_type = 1
 spell_target = 0
+ignore_self = false
 target_defeated_entities = false
 spell_cost = 22
 spell_priority = 0
