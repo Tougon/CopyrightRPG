@@ -17,12 +17,13 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	var crit : Array[bool];
 	var hit : Array[bool];
 	var index : Array[int];
+	var power : float = check_spell_power(user, target);
 	var i = 0;
 	
 	spell_accuracy_per_hit = spell_accuracy;
 	
 	while hit.size() < hit_limit :
-		_damage_loop(user, target, cast, result, crit, hit, index, i);
+		_damage_loop(power, user, target, cast, result, crit, hit, index, i);
 		
 		if !hit[i] : 
 			break;

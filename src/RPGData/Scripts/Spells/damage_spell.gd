@@ -127,11 +127,12 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	var crit : Array[bool];
 	var hit : Array[bool];
 	var index : Array[int];
+	var power : float = check_spell_power(user, target);
 	
 	if randomize_flag_per_hit : cast.spell_flags.clear();
 	
 	for i in num_hits:
-		_damage_loop(user, target, cast, result, crit, hit, index, i);
+		_damage_loop(power, user, target, cast, result, crit, hit, index, i);
 	
 	cast.set_damage(result);
 	cast.set_hits(hit);
@@ -139,7 +140,7 @@ func calculate_damage(user : EntityController, target : EntityController, cast :
 	cast.target_index_override = index;
 
 
-func _damage_loop(user : EntityController, target : EntityController, cast : SpellCast, result : Array, crit : Array, hit : Array, index : Array, i : int):
+func _damage_loop(power : float, user : EntityController, target : EntityController, cast : SpellCast, result : Array, crit : Array, hit : Array, index : Array, i : int):
 	
 	var flags = spell_flags.duplicate();
 	
@@ -173,7 +174,7 @@ func _damage_loop(user : EntityController, target : EntityController, cast : Spe
 	
 	hit.append(true);
 	
-	var damage = damage_roll(atk_type, def_type, user.level, user.param, user.get_attack_modifier(), user.get_sp_attack_modifier(), target.level, target.param, target.current_hp, target.get_defense_modifier(), target.get_sp_defense_modifier(), target.can_heal, crit);
+	var damage = damage_roll(power, atk_type, def_type, user.level, user.param, user.get_attack_modifier(), user.get_sp_attack_modifier(), target.level, target.param, target.current_hp, target.get_defense_modifier(), target.get_sp_defense_modifier(), target.can_heal, crit);
 	
 	# Deals damage using a percentage of the target's current HP
 	# Will never defeat an enemy except in very exceptional situations
@@ -227,7 +228,7 @@ func _damage_loop(user : EntityController, target : EntityController, cast : Spe
 	else : result.append(roundi(damage));
 
 
-func damage_roll(atk_type : SpellHitType, def_type : SpellHitType, user_level : int, user_param : EntityParams, user_atk_mod : float, user_mag_mod : float, target_level : int, target_param : EntityParams, target_hp : int, target_def_mod : float, target_res_mod : float, target_can_heal : bool, crit : Array[bool]) -> float:
+func damage_roll(power : float, atk_type : SpellHitType, def_type : SpellHitType, user_level : int, user_param : EntityParams, user_atk_mod : float, user_mag_mod : float, target_level : int, target_param : EntityParams, target_hp : int, target_def_mod : float, target_res_mod : float, target_can_heal : bool, crit : Array[bool]) -> float:
 	# Deals damage using a percentage of the target's current HP
 	# Will never defeat an enemy except in very exceptional situations
 	if fixed_damage && percent_damage :
@@ -290,7 +291,7 @@ func damage_roll(atk_type : SpellHitType, def_type : SpellHitType, user_level : 
 	if critical && def_mod > 1 : def_mod = 1;
 	
 	# Revised damage formula that takes into account user's level
-	var damage = ((((user_level) as float) / 5.0) + 5.0) * spell_power;
+	var damage = ((((user_level) as float) / 5.0) + 5.0) * power;
 	if !ignore_target_defense :
 		damage *= (((float)(atk * atk_mod)) / ((float)(def * def_mod)));
 	else : 
@@ -301,6 +302,10 @@ func damage_roll(atk_type : SpellHitType, def_type : SpellHitType, user_level : 
 	damage /= 10.0;
 	
 	return damage;
+
+
+func check_spell_power(user : EntityController, target : EntityController) -> float :
+	return spell_power;
 
 
 func cast_overworld(user : int, target : int, preview : bool = false) -> int:
@@ -346,7 +351,7 @@ func cast_overworld(user : int, target : int, preview : bool = false) -> int:
 			target_param.entity_sp_def += (e as EquipmentItem).res_mod;
 			target_param.entity_spd += (e as EquipmentItem).spd_mod;
 	
-	var damage = (damage_roll(spell_attack_type, spell_defense_type, user_data.level, user_param, 1.0, 1.0, target_data.level, target_param, target_data.hp_value, 1.0, 1.0, !target_data.status.has("Doom"), []));
+	var damage = (damage_roll(spell_power, spell_attack_type, spell_defense_type, user_data.level, user_param, 1.0, 1.0, target_data.level, target_param, target_data.hp_value, 1.0, 1.0, !target_data.status.has("Doom"), []));
 	
 	if target_data.hp_value - damage >= target_param.entity_hp:
 		return -(target_param.entity_hp - target_data.hp_value);
