@@ -15,6 +15,7 @@ class_name ASAApplyDamage
 @export var use_fixed_damage : bool = true;
 @export var damage_amount : int;
 @export_range(0, 1) var percent_amount : float;
+@export var negate : bool = false;
 
 func execute(sequence : AnimationSequence):
 	var target = sequence.target[sequence.target_index];
@@ -26,6 +27,8 @@ func execute(sequence : AnimationSequence):
 		if !use_fixed_damage :
 			var max = target.max_hp as float;
 			manual_dmg = roundi((max * percent_amount))
+		
+		if negate : manual_dmg = -manual_dmg;
 		
 		target.apply_damage(manual_dmg, false, vibrate, true, damage_time, damage_delay, shake_duration, shake_decay, force_dodge);
 		sequence.applied_damage_this_frame = true;

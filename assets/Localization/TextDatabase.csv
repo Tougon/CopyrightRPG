@@ -219,6 +219,12 @@ T_EFFECT_PLAYERC_07_DEACTIVATE_RES,{t_article_def}{t_entity}'s resistance is res
 T_EFFECT_PLAYERC_07_DEACTIVATE_SPD,{t_article_def}{t_entity}'s speed is restored!,,
 
 T_EFFECT_PLAYERD_03_ACTIVATE,{article_def}{entity} got hurt from the slide!,,
+T_EFFECT_PLAYERD_04_ACTIVATE,{article_def}{entity} begins to feel calm!,,
+T_EFFECT_PLAYERD_04_STACK,{article_def}{entity}'s calming effect is renewed!,,
+T_EFFECT_PLAYERD_04_DEACTIVATE,{article_def}{entity}'s calming effect wears off!,,
+T_EFFECT_PLAYERD_05_ACTIVATE,{article_def}{entity} begins to feel excited!,,
+T_EFFECT_PLAYERD_05_STACK,{article_def}{entity}'s exciting effect is renewed!,,
+T_EFFECT_PLAYERD_05_DEACTIVATE,{article_def}{entity}'s exciting effect wears off!,,
 T_EFFECT_PLAYERD_06_ACTIVATE_01,{article_def}{entity} feels a power within!,,
 T_EFFECT_PLAYERD_06_ACTIVATE_02,{article_def}{entity}'s stats rise!,,
 
