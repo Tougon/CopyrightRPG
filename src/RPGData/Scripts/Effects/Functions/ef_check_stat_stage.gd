@@ -36,6 +36,18 @@ func execute(instance : EffectInstance):
 			target_stat = possible_stats.pick_random();
 			instance.data["stat"] = target_stat;
 		
+		
+		if target_stat == EffectFunction.Stat.BESTOFFENSE :
+			var atk = entity.param.entity_atk;
+			var mag = entity.param.entity_sp_atk;
+			
+			# Prioritize attack in the event of a tie
+			# I suspect tie scenarios could happen in the early game
+			if mag > atk : target_stat = EffectFunction.Stat.SPATTACK;
+			else : target_stat = EffectFunction.Stat.ATTACK;
+			
+			instance.data["stat"] = target_stat;
+		
 		match target_stat : 
 			EffectFunction.Stat.ATTACK: entity_stage = entity.atk_stage;
 			EffectFunction.Stat.DEFENSE: entity_stage = entity.def_stage;

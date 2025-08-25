@@ -34,6 +34,8 @@ func set_sealing(_sealing : bool):
 		
 		if action.target_defeated_entities : 
 			disabled = BattleScene.Instance.get_num_active_players(true) == 0;
+		if action.ignore_self :
+			disabled = BattleScene.Instance.get_num_active_players(false) <= 1;
 
 
 func _on_pressed():

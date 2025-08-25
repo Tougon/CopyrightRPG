@@ -45,7 +45,7 @@ func create_data():
 		member.id = i;
 		member.level = 5;
 		member.exp = 0;
-		member.unlocked = i >= 2;
+		member.unlocked = i >= 3;
 		member.move_list = move_list;
 		member.hp_value = entity.get_hp(member.level);
 		member.mp_value = entity.get_mp(member.level);

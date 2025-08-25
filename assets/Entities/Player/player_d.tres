@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=32 format=3 uid="uid://bnwh1ljsi2ph"]
+[gd_resource type="Resource" script_class="Entity" load_steps=30 format=3 uid="uid://bnwh1ljsi2ph"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_lwhc4"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="2_87oo2"]
@@ -6,9 +6,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="3_qf516"]
 [ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="3_ytmwm"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_p5sd2"]
-[ext_resource type="Resource" uid="uid://cl12kvbw661qa" path="res://assets/Spells/player/player_c/spell_player_doubleplay.tres" id="5_a1ef3"]
-[ext_resource type="Resource" uid="uid://dbbotcnm6e42b" path="res://assets/Spells/player/player_c/spell_player_pass.tres" id="6_okn66"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_8ddd3"]
+[ext_resource type="Resource" uid="uid://c7c5rw2e2syjj" path="res://assets/Spells/player/player_d/spell_player_d_01.tres" id="8_4is8j"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="8_ramf8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="9_ps7m7"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_4i7b2"]
@@ -55,17 +54,12 @@ growth = SubResource("Curve_08sas")
 
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("4_p5sd2")
-spell = ExtResource("5_a1ef3")
-level = 0
-
-[sub_resource type="Resource" id="Resource_doaht"]
-script = ExtResource("4_p5sd2")
-spell = ExtResource("6_okn66")
+spell = ExtResource("8_4is8j")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_8ddd3")
-list = Array[ExtResource("4_p5sd2")]([SubResource("Resource_egsue"), SubResource("Resource_doaht")])
+list = Array[ExtResource("4_p5sd2")]([SubResource("Resource_egsue")])
 
 [sub_resource type="Curve" id="Curve_48hqc"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

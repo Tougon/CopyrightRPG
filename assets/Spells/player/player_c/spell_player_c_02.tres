@@ -12,6 +12,7 @@
 
 [resource]
 script = ExtResource("5_7k602")
+exclude_self_buffs = true
 spell_power = 20.0
 spell_attack_type = 0
 vary_defense_type = false
