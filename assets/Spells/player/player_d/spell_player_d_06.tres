@@ -1,0 +1,171 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=26 format=3 uid="uid://co3wanejjp2vv"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_gxba1"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_yke58"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_dp11u"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_07eqx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_xeok1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_8v7te"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_k4dpe"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_qc0ic"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_udnoe"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_gusab"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="7_vndoh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="8_vo2ua"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="13_27s8f"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="14_4u481"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="15_jqy0q"]
+
+[sub_resource type="Resource" id="Resource_ec4jv"]
+script = ExtResource("5_qc0ic")
+target = 0
+stat = 0
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_kxa0y"]
+script = ExtResource("5_qc0ic")
+target = 0
+stat = 1
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_kgr0a"]
+script = ExtResource("5_qc0ic")
+target = 0
+stat = 2
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_gfayt"]
+script = ExtResource("5_qc0ic")
+target = 0
+stat = 3
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_b00de"]
+script = ExtResource("5_qc0ic")
+target = 0
+stat = 4
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_7hylq"]
+script = ExtResource("6_gusab")
+dialogue_key = "T_EFFECT_PLAYERD_06_ACTIVATE_01"
+
+[sub_resource type="Resource" id="Resource_x4a0o"]
+script = ExtResource("8_vo2ua")
+dialogue_key = "T_EFFECT_PLAYERD_06_ACTIVATE_02"
+target = 0
+animation = ExtResource("7_vndoh")
+
+[sub_resource type="Resource" id="Resource_xeug5"]
+script = ExtResource("3_07eqx")
+stackable = false
+effect_name = "D06"
+generic = false
+repeatable = true
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_8v7te")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_8v7te")]([])
+on_activate = Array[ExtResource("4_8v7te")]([SubResource("Resource_ec4jv"), SubResource("Resource_kxa0y"), SubResource("Resource_kgr0a"), SubResource("Resource_gfayt"), SubResource("Resource_b00de"), SubResource("Resource_7hylq"), SubResource("Resource_x4a0o")])
+on_failed_to_activate = Array[ExtResource("4_8v7te")]([])
+on_apply = Array[ExtResource("4_8v7te")]([])
+on_move_selected = Array[ExtResource("4_8v7te")]([])
+on_move_completed = Array[ExtResource("4_8v7te")]([])
+on_deactivate = Array[ExtResource("4_8v7te")]([])
+on_turn_start = Array[ExtResource("4_8v7te")]([])
+on_turn_end = Array[ExtResource("4_8v7te")]([])
+on_stack = Array[ExtResource("4_8v7te")]([])
+
+[sub_resource type="Resource" id="Resource_uyqqs"]
+script = ExtResource("3_xeok1")
+chance = 1.0
+effect = SubResource("Resource_xeug5")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_3i1yx"]
+script = ExtResource("1_gxba1")
+chance = 0.15
+use_luck = true
+effect_set = Array[ExtResource("3_xeok1")]([SubResource("Resource_uyqqs")])
+
+[resource]
+script = ExtResource("5_udnoe")
+spell_power = 60.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_k4dpe")]([])
+check_accuracy = true
+spell_accuracy = 95.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = "T_SPELL_PLAYERD_06"
+spell_description_key = "T_SPELL_PLAYERD_06_DESC"
+spell_cast_message_key = "T_CAST_PLAYERD_06"
+spell_type = 1
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 26
+spell_priority = 0
+spell_flags = Array[ExtResource("4_k4dpe")]([ExtResource("13_27s8f"), ExtResource("14_4u481"), ExtResource("15_jqy0q")])
+ignore_seals = false
+animation_sequence = ExtResource("1_yke58")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_gxba1")]([SubResource("Resource_3i1yx")])
+effects_on_success = Array[ExtResource("1_gxba1")]([])
+properties = Array[ExtResource("3_07eqx")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_dp11u")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_dp11u")]([])
