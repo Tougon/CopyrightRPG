@@ -1,20 +1,29 @@
-[gd_scene load_steps=75 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=84 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Floor.gd" id="2_act5h"]
 [ext_resource type="Texture2D" uid="uid://cilblfu0x6vq7" path="res://assets/Sprites/Tilemaps/temp_mallfloor_reduced.png" id="2_eurfx"]
 [ext_resource type="Texture2D" uid="uid://y7nksgkkpbaf" path="res://assets/Sprites/Tilemaps/temp_mallwall_reduced.png" id="3_f2mtj"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/EncounterManager.gd" id="4_xae0e"]
+[ext_resource type="Texture2D" uid="uid://cdml7he1cdhvb" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_bottom_back.png" id="5_8yu3f"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="5_i4cpf"]
+[ext_resource type="Texture2D" uid="uid://b5yd8aa6n8a8s" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_bottom_middle.png" id="6_lluu2"]
 [ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.tscn" id="6_sme4y"]
-[ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="7_d6syl"]
+[ext_resource type="Texture2D" uid="uid://hl0mhvb0qwfo" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_bottom_front.png" id="7_mxnls"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="7_w8n3k"]
+[ext_resource type="Texture2D" uid="uid://d3yequfxrtvgu" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_part_back.png" id="8_k8xj1"]
 [ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="8_mqtea"]
 [ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="9_8smr2"]
+[ext_resource type="Texture2D" uid="uid://8kfpotuo1664" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_part_middle.png" id="9_vyw8a"]
 [ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="10_834wq"]
+[ext_resource type="Texture2D" uid="uid://b8wxa4nnlruxx" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_part_front.png" id="10_kcane"]
+[ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="11_2x4t4"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="11_udhh3"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="12_6nji2"]
+[ext_resource type="Texture2D" uid="uid://cbdmt3n3rgb5t" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_top_back.png" id="12_8yveg"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="13_cnf8m"]
+[ext_resource type="Texture2D" uid="uid://c5oaat6mwq1yu" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_top_middle.png" id="13_j4wp2"]
+[ext_resource type="Texture2D" uid="uid://b7kswtrvu36wv" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_top_front.png" id="14_6s05b"]
 [ext_resource type="Resource" uid="uid://c3njfcjmrqtit" path="res://assets/Tweens/Transition/erode_in.tres" id="14_oir0v"]
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="15_ip7l3"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="16_lo2xy"]
@@ -256,10 +265,6 @@ free_camera = NodePath("Free PhantomCamera")
 canvas_modulate = NodePath("UI/CanvasModulate")
 bgm_id = "unfinished_sympathy"
 
-[node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("37_j44eh")]
-position = Vector2(607, 363)
-run_multiplier = 1.75
-
 [node name="Floors" type="Node2D" parent="."]
 
 [node name="G" type="Node2D" parent="Floors"]
@@ -276,12 +281,146 @@ tile_set = SubResource("TileSet_whai2")
 [node name="Environment" type="Node2D" parent="Floors/G"]
 y_sort_enabled = true
 
-[node name="FloorChangeTrigger" parent="Floors/G/Environment" instance=ExtResource("22_hwsgw")]
-position = Vector2(608, 289)
-end_floor = 1
+[node name="Escalators" type="Node2D" parent="Floors/G/Environment"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Floors/G/Environment/FloorChangeTrigger"]
-texture = ExtResource("7_d6syl")
+[node name="EscalatorBase" type="Node2D" parent="Floors/G/Environment/Escalators"]
+position = Vector2(801, 512)
+scale = Vector2(2, 2)
+
+[node name="Visual" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase"]
+
+[node name="Bottom" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+texture = ExtResource("5_8yu3f")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+texture = ExtResource("6_lluu2")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+texture = ExtResource("7_mxnls")
+
+[node name="Segment_1" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-32, -8)
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+texture = ExtResource("10_kcane")
+
+[node name="Segment_2" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-64, -24)
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 48)
+scale = Vector2(2, 1)
+texture = ExtResource("11_2x4t4")
+
+[node name="Segment_3" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-96, -40)
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 56)
+scale = Vector2(2, 2)
+texture = ExtResource("11_2x4t4")
+
+[node name="Segment_4" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-128, -56)
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 64)
+scale = Vector2(2, 3)
+texture = ExtResource("11_2x4t4")
+
+[node name="Segment_5" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-160, -72)
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 72)
+scale = Vector2(2, 4)
+texture = ExtResource("11_2x4t4")
+
+[node name="Top" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+visible = false
+position = Vector2(-191.5, -87.5)
+
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Top"]
+texture = ExtResource("12_8yveg")
+
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Top"]
+texture = ExtResource("13_j4wp2")
+
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Top"]
+texture = ExtResource("14_6s05b")
+
+[node name="FT2" parent="Floors/G/Environment/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
+position = Vector2(-67, -28.5)
+scale = Vector2(0.5, 0.5)
+end_floor = 1
+teleport = true
+teleport_target = NodePath("../../../../../1F/Environment/Escalators/EscalatorBase/FT1")
+
+[node name="Start" parent="Floors/G/Environment/Escalators/EscalatorBase/FT2" index="0"]
+position = Vector2(122, 61)
+
+[node name="End" parent="Floors/G/Environment/Escalators/EscalatorBase/FT2" index="1"]
+position = Vector2(-124, -51)
+
+[node name="Collision" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase"]
+
+[node name="Area2D" type="StaticBody2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision/Area2D"]
+polygon = PackedVector2Array(9.5, 20, 13.5, 24, 13.5, 31, -176.5, 31, -176, -55, -177.5, -63, -158.5, -53.5, -94, -22.5, -45.5, 3, -14.5, 17.5)
+
+[node name="Area2D2" type="StaticBody2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision/Area2D2"]
+polygon = PackedVector2Array(6, -30.5, 12, -27.5, 7, -27, -17, -27, -174.5, -105, -176.5, -110.5, -165.546, -106.591, -15.5, -32.5)
 
 [node name="Sorted Items" type="Node2D" parent="Floors/G/Environment"]
 y_sort_enabled = true
@@ -440,7 +579,7 @@ script = ExtResource("2_act5h")
 floor_index = 1
 
 [node name="TileMapFloor" type="TileMapLayer" parent="Floors/1F"]
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQABAAAAAAACAAIAAQACAAAAAAACAAMAAQABAAAAAAACAAQAAQAAAAAAAAACAAUAAQABAAAAAAADAAAAAQAAAAAAAAADAAEAAQACAAAAAAADAAIAAQABAAAAAAADAAMAAQACAAAAAAADAAQAAQAAAAAAAAADAAUAAQACAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQABAAAAAAAEAAIAAQACAAAAAAAEAAMAAQABAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQABAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQABAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQACAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQABAAAAAAAJAAQAAQAAAAAAAAAJAAUAAQAAAAAAAAACAP//AQABAAAAAAAEAP//AQABAAAAAAADAP//AQACAAAAAAACAP7/AQACAAAAAAAEAP7/AQACAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAAAAP//AQAAAAEAAAAAAP7/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAAAAAACAP3/AQABAAAAAAADAP3/AQACAAAAAAAEAP3/AQABAAAAAAAAAPr/AQAAAAEAAAAAAPv/AQAAAAEAAAAAAPz/AQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAABAPr/AQAAAAEAAAABAPv/AQAAAAEAAAABAPz/AQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAABAAgAAQAAAAAAAAABAAkAAQAAAAEAAAABAAoAAQAAAAEAAAABAAsAAQAAAAEAAAACAPr/AQAAAAEAAAACAPv/AQAAAAEAAAACAPz/AQAAAAAAAAACAAYAAQACAAAAAAACAAcAAQABAAAAAAACAAgAAQAAAAAAAAACAAkAAQAAAAEAAAACAAoAAQAAAAEAAAACAAsAAQAAAAEAAAADAPr/AQAAAAEAAAADAPv/AQAAAAEAAAADAPz/AQAAAAAAAAADAP7/AQABAAAAAAADAAYAAQABAAAAAAADAAcAAQACAAAAAAADAAgAAQAAAAAAAAADAAkAAQAAAAEAAAADAAoAAQAAAAEAAAADAAsAAQAAAAEAAAAEAPr/AQAAAAEAAAAEAPv/AQAAAAEAAAAEAPz/AQAAAAAAAAAEAAYAAQACAAAAAAAEAAcAAQABAAAAAAAEAAgAAQAAAAAAAAAEAAkAAQAAAAEAAAAEAAoAAQAAAAEAAAAEAAsAAQAAAAEAAAAFAPr/AQAAAAEAAAAFAPv/AQAAAAEAAAAFAPz/AQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAkAAQAAAAEAAAAFAAoAAQAAAAEAAAAFAAsAAQAAAAEAAAAGAPr/AQAAAAEAAAAGAPv/AQAAAAEAAAAGAPz/AQAAAAAAAAAGAAYAAQACAAAAAAAGAAcAAQABAAAAAAAGAAgAAQAAAAAAAAAGAAkAAQAAAAEAAAAGAAoAAQAAAAEAAAAGAAsAAQAAAAEAAAAHAPr/AQAAAAEAAAAHAPv/AQAAAAEAAAAHAPz/AQAAAAAAAAAHAAYAAQABAAAAAAAHAAcAAQACAAAAAAAHAAgAAQAAAAAAAAAHAAkAAQAAAAEAAAAHAAoAAQAAAAEAAAAHAAsAAQAAAAEAAAAIAPr/AQAAAAEAAAAIAPv/AQAAAAEAAAAIAPz/AQAAAAAAAAAIAAYAAQACAAAAAAAIAAcAAQABAAAAAAAIAAgAAQAAAAAAAAAIAAkAAQAAAAEAAAAIAAoAAQAAAAEAAAAIAAsAAQAAAAEAAAAJAPr/AQAAAAEAAAAJAPv/AQAAAAEAAAAJAPz/AQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAkAAQAAAAEAAAAJAAoAAQAAAAEAAAAJAAsAAQAAAAEAAAAKAPr/AQAAAAEAAAAKAPv/AQAAAAEAAAAKAPz/AQAAAAAAAAAKAAQAAQAAAAAAAAAKAAUAAQABAAAAAAAKAAYAAQACAAAAAAAKAAcAAQABAAAAAAAKAAgAAQAAAAAAAAAKAAkAAQAAAAEAAAAKAAoAAQAAAAEAAAAKAAsAAQAAAAEAAAALAPr/AQAAAAEAAAALAPv/AQAAAAEAAAALAPz/AQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQACAAAAAAALAAYAAQABAAAAAAALAAcAAQACAAAAAAALAAgAAQAAAAAAAAALAAkAAQAAAAEAAAALAAoAAQAAAAEAAAALAAsAAQAAAAEAAAAMAPr/AQAAAAEAAAAMAPv/AQAAAAEAAAAMAPz/AQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQABAAAAAAAMAAYAAQACAAAAAAAMAAcAAQABAAAAAAAMAAgAAQAAAAAAAAAMAAkAAQAAAAEAAAAMAAoAAQAAAAEAAAAMAAsAAQAAAAEAAAANAPr/AQAAAAEAAAANAPv/AQAAAAEAAAANAPz/AQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAANAAgAAQAAAAAAAAANAAkAAQAAAAEAAAANAAoAAQAAAAEAAAANAAsAAQAAAAEAAAAOAPr/AQAAAAEAAAAOAPv/AQAAAAEAAAAOAPz/AQAAAAAAAAAOAP3/AQABAAAAAAAOAP7/AQACAAAAAAAOAP//AQABAAAAAAAOAAAAAQAAAAAAAAAOAAEAAQABAAAAAAAOAAIAAQACAAAAAAAOAAMAAQABAAAAAAAOAAQAAQAAAAAAAAAOAAUAAQABAAAAAAAOAAYAAQACAAAAAAAOAAcAAQABAAAAAAAOAAgAAQAAAAAAAAAOAAkAAQAAAAEAAAAOAAoAAQAAAAEAAAAOAAsAAQAAAAEAAAAPAPr/AQAAAAEAAAAPAPv/AQAAAAEAAAAPAPz/AQAAAAAAAAAPAP3/AQACAAAAAAAPAP7/AQABAAAAAAAPAP//AQACAAAAAAAPAAAAAQAAAAAAAAAPAAEAAQACAAAAAAAPAAIAAQABAAAAAAAPAAMAAQACAAAAAAAPAAQAAQAAAAAAAAAPAAUAAQACAAAAAAAPAAYAAQABAAAAAAAPAAcAAQACAAAAAAAPAAgAAQAAAAAAAAAPAAkAAQAAAAEAAAAPAAoAAQAAAAEAAAAPAAsAAQAAAAEAAAAQAPr/AQAAAAEAAAAQAPv/AQAAAAEAAAAQAPz/AQAAAAAAAAAQAP3/AQABAAAAAAAQAP7/AQACAAAAAAAQAP//AQABAAAAAAAQAAAAAQAAAAAAAAAQAAEAAQABAAAAAAAQAAIAAQACAAAAAAAQAAMAAQABAAAAAAAQAAQAAQAAAAAAAAAQAAUAAQABAAAAAAAQAAYAAQACAAAAAAAQAAcAAQABAAAAAAAQAAgAAQAAAAAAAAAQAAkAAQAAAAEAAAAQAAoAAQAAAAEAAAAQAAsAAQAAAAEAAAARAPr/AQAAAAEAAAARAPv/AQAAAAEAAAARAPz/AQAAAAAAAAARAP3/AQAAAAAAAAARAP7/AQAAAAAAAAARAP//AQAAAAAAAAARAAAAAQAAAAAAAAARAAEAAQAAAAAAAAARAAIAAQAAAAAAAAARAAMAAQAAAAAAAAARAAQAAQAAAAAAAAARAAUAAQAAAAAAAAARAAYAAQAAAAAAAAARAAcAAQAAAAAAAAARAAgAAQAAAAAAAAARAAkAAQAAAAEAAAARAAoAAQAAAAEAAAARAAsAAQAAAAEAAAASAPr/AQAAAAEAAAASAPv/AQAAAAEAAAASAPz/AQAAAAEAAAASAP3/AQAAAAEAAAASAP7/AQAAAAEAAAASAP//AQAAAAEAAAASAAAAAQAAAAEAAAASAAEAAQAAAAEAAAASAAIAAQAAAAEAAAASAAMAAQAAAAEAAAASAAQAAQAAAAEAAAASAAUAAQAAAAEAAAASAAYAAQAAAAEAAAASAAcAAQAAAAEAAAASAAgAAQAAAAEAAAASAAkAAQAAAAEAAAASAAoAAQAAAAEAAAASAAsAAQAAAAEAAAATAPr/AQAAAAEAAAATAPv/AQAAAAEAAAATAPz/AQAAAAEAAAATAP3/AQAAAAEAAAATAP7/AQAAAAEAAAATAP//AQAAAAEAAAATAAAAAQAAAAEAAAATAAEAAQAAAAEAAAATAAIAAQAAAAEAAAATAAMAAQAAAAEAAAATAAQAAQAAAAEAAAATAAUAAQAAAAEAAAATAAYAAQAAAAEAAAATAAcAAQAAAAEAAAATAAgAAQAAAAEAAAATAAkAAQAAAAEAAAATAAoAAQAAAAEAAAATAAsAAQAAAAEAAAAUAPr/AQAAAAEAAAAUAPv/AQAAAAEAAAAUAPz/AQAAAAEAAAAUAP3/AQAAAAEAAAAUAP7/AQAAAAEAAAAUAP//AQAAAAEAAAAUAAAAAQAAAAEAAAAUAAEAAQAAAAEAAAAUAAIAAQAAAAEAAAAUAAMAAQAAAAEAAAAUAAQAAQAAAAEAAAAUAAUAAQAAAAEAAAAUAAYAAQAAAAEAAAAUAAcAAQAAAAEAAAAUAAgAAQAAAAEAAAAUAAkAAQAAAAEAAAAUAAoAAQAAAAEAAAAUAAsAAQAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAABAAQAAQAAAAAAAAABAAUAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQABAAAAAAACAAIAAQACAAAAAAACAAMAAQABAAAAAAACAAQAAQAAAAAAAAACAAUAAQABAAAAAAADAAAAAQAAAAAAAAADAAEAAQACAAAAAAADAAIAAQABAAAAAAADAAMAAQACAAAAAAADAAQAAQAAAAAAAAADAAUAAQACAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQABAAAAAAAEAAIAAQACAAAAAAAEAAMAAQABAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQABAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQABAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQACAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQABAAAAAAAJAAQAAQAAAAAAAAACAP//AQABAAAAAAAEAP//AQABAAAAAAADAP//AQACAAAAAAACAP7/AQACAAAAAAAEAP7/AQACAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAAAAP//AQAAAAEAAAAAAP7/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAAAAAACAP3/AQABAAAAAAADAP3/AQACAAAAAAAEAP3/AQABAAAAAAAAAPr/AQAAAAEAAAAAAPv/AQAAAAEAAAAAAPz/AQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAABAPr/AQAAAAEAAAABAPv/AQAAAAEAAAABAPz/AQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAABAAgAAQAAAAAAAAABAAkAAQAAAAEAAAABAAoAAQAAAAEAAAABAAsAAQAAAAEAAAACAPr/AQAAAAEAAAACAPv/AQAAAAEAAAACAPz/AQAAAAAAAAACAAYAAQACAAAAAAACAAcAAQABAAAAAAACAAgAAQAAAAAAAAACAAkAAQAAAAEAAAACAAoAAQAAAAEAAAACAAsAAQAAAAEAAAADAPr/AQAAAAEAAAADAPv/AQAAAAEAAAADAPz/AQAAAAAAAAADAP7/AQABAAAAAAADAAYAAQABAAAAAAADAAcAAQACAAAAAAADAAgAAQAAAAAAAAADAAkAAQAAAAEAAAADAAoAAQAAAAEAAAADAAsAAQAAAAEAAAAEAPr/AQAAAAEAAAAEAPv/AQAAAAEAAAAEAPz/AQAAAAAAAAAEAAYAAQACAAAAAAAEAAcAAQABAAAAAAAEAAgAAQAAAAAAAAAEAAkAAQAAAAEAAAAEAAoAAQAAAAEAAAAEAAsAAQAAAAEAAAAFAPr/AQAAAAEAAAAFAPv/AQAAAAEAAAAFAPz/AQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAFAAgAAQAAAAAAAAAFAAkAAQAAAAEAAAAFAAoAAQAAAAEAAAAFAAsAAQAAAAEAAAAGAPr/AQAAAAEAAAAGAPv/AQAAAAEAAAAGAPz/AQAAAAAAAAAGAAYAAQACAAAAAAAGAAcAAQABAAAAAAAGAAgAAQAAAAAAAAAGAAkAAQAAAAEAAAAGAAoAAQAAAAEAAAAGAAsAAQAAAAEAAAAHAPr/AQAAAAEAAAAHAPv/AQAAAAEAAAAHAPz/AQAAAAAAAAAHAAYAAQABAAAAAAAHAAcAAQACAAAAAAAHAAgAAQAAAAAAAAAHAAkAAQAAAAEAAAAHAAoAAQAAAAEAAAAHAAsAAQAAAAEAAAAIAPr/AQAAAAEAAAAIAPv/AQAAAAEAAAAIAPz/AQAAAAAAAAAIAAYAAQACAAAAAAAIAAcAAQABAAAAAAAIAAgAAQAAAAAAAAAIAAkAAQAAAAEAAAAIAAoAAQAAAAEAAAAIAAsAAQAAAAEAAAAJAPr/AQAAAAEAAAAJAPv/AQAAAAEAAAAJAPz/AQAAAAAAAAAJAAcAAQAAAAAAAAAJAAgAAQAAAAAAAAAJAAkAAQAAAAEAAAAJAAoAAQAAAAEAAAAJAAsAAQAAAAEAAAAKAPr/AQAAAAEAAAAKAPv/AQAAAAEAAAAKAPz/AQAAAAAAAAAKAAQAAQAAAAAAAAAKAAgAAQAAAAAAAAAKAAkAAQAAAAEAAAAKAAoAAQAAAAEAAAAKAAsAAQAAAAEAAAALAPr/AQAAAAEAAAALAPv/AQAAAAEAAAALAPz/AQAAAAAAAAALAAQAAQAAAAAAAAALAAgAAQAAAAAAAAALAAkAAQAAAAEAAAALAAoAAQAAAAEAAAALAAsAAQAAAAEAAAAMAPr/AQAAAAEAAAAMAPv/AQAAAAEAAAAMAPz/AQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQABAAAAAAAMAAgAAQAAAAAAAAAMAAkAAQAAAAEAAAAMAAoAAQAAAAEAAAAMAAsAAQAAAAEAAAANAPr/AQAAAAEAAAANAPv/AQAAAAEAAAANAPz/AQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAANAAgAAQAAAAAAAAANAAkAAQAAAAEAAAANAAoAAQAAAAEAAAANAAsAAQAAAAEAAAAOAPr/AQAAAAEAAAAOAPv/AQAAAAEAAAAOAPz/AQAAAAAAAAAOAP3/AQABAAAAAAAOAP7/AQACAAAAAAAOAP//AQABAAAAAAAOAAAAAQAAAAAAAAAOAAEAAQABAAAAAAAOAAIAAQACAAAAAAAOAAMAAQABAAAAAAAOAAQAAQAAAAAAAAAOAAUAAQABAAAAAAAOAAYAAQACAAAAAAAOAAcAAQABAAAAAAAOAAgAAQAAAAAAAAAOAAkAAQAAAAEAAAAOAAoAAQAAAAEAAAAOAAsAAQAAAAEAAAAPAPr/AQAAAAEAAAAPAPv/AQAAAAEAAAAPAPz/AQAAAAAAAAAPAP3/AQACAAAAAAAPAP7/AQABAAAAAAAPAP//AQACAAAAAAAPAAAAAQAAAAAAAAAPAAEAAQACAAAAAAAPAAIAAQABAAAAAAAPAAMAAQACAAAAAAAPAAQAAQAAAAAAAAAPAAUAAQACAAAAAAAPAAYAAQABAAAAAAAPAAcAAQACAAAAAAAPAAgAAQAAAAAAAAAPAAkAAQAAAAEAAAAPAAoAAQAAAAEAAAAPAAsAAQAAAAEAAAAQAPr/AQAAAAEAAAAQAPv/AQAAAAEAAAAQAPz/AQAAAAAAAAAQAP3/AQABAAAAAAAQAP7/AQACAAAAAAAQAP//AQABAAAAAAAQAAAAAQAAAAAAAAAQAAEAAQABAAAAAAAQAAIAAQACAAAAAAAQAAMAAQABAAAAAAAQAAQAAQAAAAAAAAAQAAUAAQABAAAAAAAQAAYAAQACAAAAAAAQAAcAAQABAAAAAAAQAAgAAQAAAAAAAAAQAAkAAQAAAAEAAAAQAAoAAQAAAAEAAAAQAAsAAQAAAAEAAAARAPr/AQAAAAEAAAARAPv/AQAAAAEAAAARAPz/AQAAAAAAAAARAP3/AQAAAAAAAAARAP7/AQAAAAAAAAARAP//AQAAAAAAAAARAAAAAQAAAAAAAAARAAEAAQAAAAAAAAARAAIAAQAAAAAAAAARAAMAAQAAAAAAAAARAAQAAQAAAAAAAAARAAUAAQAAAAAAAAARAAYAAQAAAAAAAAARAAcAAQAAAAAAAAARAAgAAQAAAAAAAAARAAkAAQAAAAEAAAARAAoAAQAAAAEAAAARAAsAAQAAAAEAAAASAPr/AQAAAAEAAAASAPv/AQAAAAEAAAASAPz/AQAAAAEAAAASAP3/AQAAAAEAAAASAP7/AQAAAAEAAAASAP//AQAAAAEAAAASAAAAAQAAAAEAAAASAAEAAQAAAAEAAAASAAIAAQAAAAEAAAASAAMAAQAAAAEAAAASAAQAAQAAAAEAAAASAAUAAQAAAAEAAAASAAYAAQAAAAEAAAASAAcAAQAAAAEAAAASAAgAAQAAAAEAAAASAAkAAQAAAAEAAAASAAoAAQAAAAEAAAASAAsAAQAAAAEAAAATAPr/AQAAAAEAAAATAPv/AQAAAAEAAAATAPz/AQAAAAEAAAATAP3/AQAAAAEAAAATAP7/AQAAAAEAAAATAP//AQAAAAEAAAATAAAAAQAAAAEAAAATAAEAAQAAAAEAAAATAAIAAQAAAAEAAAATAAMAAQAAAAEAAAATAAQAAQAAAAEAAAATAAUAAQAAAAEAAAATAAYAAQAAAAEAAAATAAcAAQAAAAEAAAATAAgAAQAAAAEAAAATAAkAAQAAAAEAAAATAAoAAQAAAAEAAAATAAsAAQAAAAEAAAAUAPr/AQAAAAEAAAAUAPv/AQAAAAEAAAAUAPz/AQAAAAEAAAAUAP3/AQAAAAEAAAAUAP7/AQAAAAEAAAAUAP//AQAAAAEAAAAUAAAAAQAAAAEAAAAUAAEAAQAAAAEAAAAUAAIAAQAAAAEAAAAUAAMAAQAAAAEAAAAUAAQAAQAAAAEAAAAUAAUAAQAAAAEAAAAUAAYAAQAAAAEAAAAUAAcAAQAAAAEAAAAUAAgAAQAAAAEAAAAUAAkAAQAAAAEAAAAUAAoAAQAAAAEAAAAUAAsAAQAAAAEAAAAJAAUAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAUAAQABAAAAAAAKAAYAAQACAAAAAAAKAAcAAQABAAAAAAALAAUAAQACAAAAAAALAAYAAQABAAAAAAALAAcAAQACAAAAAAAMAAYAAQACAAAAAAAMAAcAAQABAAAAAAA=")
 tile_set = SubResource("TileSet_ca3if")
 
 [node name="TileMapWalls" type="TileMapLayer" parent="Floors/1F"]
@@ -450,12 +589,148 @@ tile_set = SubResource("TileSet_whai2")
 [node name="Environment" type="Node2D" parent="Floors/1F"]
 y_sort_enabled = true
 
-[node name="FloorChangeTrigger" parent="Floors/1F/Environment" instance=ExtResource("22_hwsgw")]
-position = Vector2(608, 289)
-end_floor = 1
+[node name="Escalators" type="Node2D" parent="Floors/1F/Environment"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Floors/1F/Environment/FloorChangeTrigger"]
-texture = ExtResource("7_d6syl")
+[node name="EscalatorBase" type="Node2D" parent="Floors/1F/Environment/Escalators"]
+position = Vector2(810, 675)
+scale = Vector2(2, 2)
+
+[node name="Visual" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase"]
+
+[node name="Bottom" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+visible = false
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+texture = ExtResource("5_8yu3f")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+texture = ExtResource("6_lluu2")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+texture = ExtResource("7_mxnls")
+
+[node name="Segment_1" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+visible = false
+position = Vector2(-32, -8)
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+texture = ExtResource("10_kcane")
+
+[node name="Segment_2" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+visible = false
+position = Vector2(-64, -24)
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 48)
+scale = Vector2(2, 1)
+texture = ExtResource("11_2x4t4")
+
+[node name="Segment_3" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-96, -40)
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 56)
+scale = Vector2(2, 2)
+texture = ExtResource("11_2x4t4")
+
+[node name="Segment_4" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-128, -56)
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 64)
+scale = Vector2(2, 3)
+texture = ExtResource("11_2x4t4")
+
+[node name="Segment_5" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-160, -72)
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+texture = ExtResource("8_k8xj1")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+texture = ExtResource("9_vyw8a")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+texture = ExtResource("10_kcane")
+
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+modulate = Color(0.545098, 0.705882, 0.67451, 1)
+position = Vector2(0, 72)
+scale = Vector2(2, 4)
+texture = ExtResource("11_2x4t4")
+
+[node name="Top" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+position = Vector2(-191.5, -87.5)
+
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Top"]
+texture = ExtResource("12_8yveg")
+
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Top"]
+texture = ExtResource("13_j4wp2")
+
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Top"]
+texture = ExtResource("14_6s05b")
+
+[node name="FT1" parent="Floors/1F/Environment/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
+position = Vector2(-147.5, -68)
+scale = Vector2(0.5, 0.5)
+end_floor = 1
+teleport = true
+teleport_target = NodePath("../../../../../G/Environment/Escalators/EscalatorBase/FT2")
+
+[node name="Start" parent="Floors/1F/Environment/Escalators/EscalatorBase/FT1" index="0"]
+position = Vector2(122, 61)
+
+[node name="End" parent="Floors/1F/Environment/Escalators/EscalatorBase/FT1" index="1"]
+position = Vector2(-124, -51)
+
+[node name="Collision" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase"]
+
+[node name="Area2D" type="StaticBody2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision/Area2D"]
+polygon = PackedVector2Array(9.5, 20, 13.5, 24, 13.5, 31, -176.5, 31, -176, -55, -182, -63, -189.5, -67, -214.5, -67.5, -216.5, -70, -195, -70, -173, -62, -94, -22.5, -45.5, 3, -14.5, 17.5)
+
+[node name="Area2D2" type="StaticBody2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision/Area2D2"]
+polygon = PackedVector2Array(6, -30.5, 12, -27.5, 7, -27, -17, -27, -176.5, -107.5, -190, -114.5, -215, -115, -215, -118.5, -188, -119, -165.546, -106.591, -15.5, -32.5)
 
 [node name="Lighting" type="Node2D" parent="Floors/1F/Environment"]
 visible = false
@@ -512,6 +787,10 @@ texture_scale = 1.75
 
 [node name="Transitions" type="Node" parent="Floors/1F/Environment"]
 
+[node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("37_j44eh")]
+position = Vector2(1040, 409)
+run_multiplier = 1.75
+
 [node name="EncounterManager" type="Node" parent="."]
 script = ExtResource("4_xae0e")
 enabled = false
@@ -562,7 +841,7 @@ color = Color(0.332738, 0.519136, 0.749071, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(607, 363)
+position = Vector2(880, 408)
 process_callback = 0
 limit_left = -16
 limit_top = -400
@@ -577,7 +856,7 @@ script = ExtResource("42_1yuub")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(607, 363)
+position = Vector2(880, 408)
 script = ExtResource("43_y1qfp")
 priority = 1
 follow_mode = 5
@@ -600,3 +879,6 @@ tween_on_load = false
 follow_damping = true
 draw_limits = true
 limit_target = NodePath("../Floors/G/TileMapWalls")
+
+[editable path="Floors/G/Environment/Escalators/EscalatorBase/FT2"]
+[editable path="Floors/1F/Environment/Escalators/EscalatorBase/FT1"]

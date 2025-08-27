@@ -9,6 +9,9 @@ class_name RPGPlayerController
 const COLLISION_DETECTION_RANGE : float  = 64.0;
 
 var direction_facing : Vector2 = Vector2(0, 1);
+var foot_offset : Vector2;
+
+var reparenting = false;
 
 var _movement_bounds : float = 0.5;
 var _prev_direction : Vector2;
@@ -39,6 +42,8 @@ func _ready():
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
 	_sight.reference_node = $CollisionShape2D;
+	
+	foot_offset = $CollisionShape2D.position;
 	
 	await get_tree().process_frame;
 	
@@ -222,6 +227,8 @@ func _on_all_menus_closed():
 
 
 func _exit_tree():
+	reparenting = true;
+	
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);

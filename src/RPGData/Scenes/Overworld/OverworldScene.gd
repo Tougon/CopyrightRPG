@@ -29,8 +29,10 @@ var _battle_end_timestamp : float;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	EventManager.on_overworld_change_floor.connect(_on_overworld_change_floor);
+	
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_end.connect(_on_battle_end);
+	
 	UIManager.on_menu_opened.connect(_on_menu_opened);
 	UIManager.on_menu_closing.connect(_on_menu_closing);
 	
@@ -45,6 +47,8 @@ func _ready() -> void:
 		for floor in all_floors:
 			var floor_data = floor as Floor;
 			if floor_data != null :
+				floor_data.visible = true;
+				
 				if !_floors.has(floor_data.floor_index):
 					_floors[floor_data.floor_index] = floor_data;
 					floor_data.set_floor_active(floor_data.floor_index == _current_floor_index);
@@ -85,8 +89,11 @@ func _ready() -> void:
 	EventManager.overworld_cutscene_fade_instant.connect(_fade_action_cutscene_instant);
 
 
-func _on_overworld_change_floor(new_floor : int):
+func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2):
 	if new_floor == _current_floor_index || !_floors.has(new_floor): return;
+	
+	if teleport : 
+		_overworld_player_teleport(pos);
 	
 	_floors[_current_floor_index].set_floor_active(false);
 	_floors[new_floor].set_floor_active(true);
@@ -99,9 +106,27 @@ func _on_overworld_change_floor(new_floor : int):
 	_current_floor_index = new_floor;
 	
 	game_camera.set_follow_target(null);
+	player_controller.reparent(self);
+	game_camera.set_follow_target(player_controller);
+	
+	await get_tree().create_timer(OverworldManager.FLOOR_TRANSITION_TIME).timeout
+	
+	game_camera.set_follow_target(null);
+	player_controller.reparenting = true;
 	_floors[_current_floor_index].put_player_on_floor(player_controller);
 	_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
 	game_camera.set_follow_target(player_controller);
+	
+	await get_tree().process_frame;
+	player_controller.reparenting = false;
+
+
+func _overworld_player_teleport(pos : Vector2):
+	pos -= player_controller.foot_offset;
+	var delta_pos = pos - player_controller.global_position;
+	player_controller.global_position = pos;
+	# probably move the camera as well?
+	game_camera.position += delta_pos;
 
 
 func _fade_action_cutscene(fade_in : bool):
@@ -275,8 +300,12 @@ func play_bgm(fade_time : float = 0, crossfade : bool = false, start_time : floa
 
 
 func _exit_tree():
+	if player_controller != null :
+		player_controller.reparenting = true;
+	
 	if EventManager != null:
 		EventManager.on_overworld_change_floor.disconnect(_on_overworld_change_floor);
+		
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_end.disconnect(_on_battle_end);
 		

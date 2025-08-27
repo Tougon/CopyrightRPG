@@ -16,9 +16,13 @@ func set_floor_active(active : bool):
 	tile_map_wall.collision_enabled = active;
 	
 	if active : 
+		set_process(true);
 		process_mode = ProcessMode.PROCESS_MODE_INHERIT;
+		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_INHERIT;
 	else :
+		set_process(false);
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED;
+		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_OFF;
 
 
 func set_floor_visible(visible : bool, tween : bool = true):
@@ -31,9 +35,9 @@ func set_floor_visible(visible : bool, tween : bool = true):
 		var mod_tween = get_tree().create_tween();
 		
 		if visible :
-			mod_tween.tween_property(self, "modulate", Color.WHITE, 1.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(self, "modulate", Color.WHITE, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
 		else :
-			mod_tween.tween_property(self, "modulate", Color.TRANSPARENT, 1.0).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(self, "modulate", Color.TRANSPARENT, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
 
 
 func put_player_on_floor(player : Node2D):
