@@ -105,20 +105,18 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 	
 	_current_floor_index = new_floor;
 	
-	game_camera.set_follow_target(null);
-	player_controller.reparent(self);
-	game_camera.set_follow_target(player_controller);
+	#game_camera.set_follow_target(null);
+	#player_controller.reparent(self);
+	#game_camera.set_follow_target(player_controller);
 	
-	await get_tree().create_timer(OverworldManager.FLOOR_TRANSITION_TIME).timeout
+	#await get_tree().create_timer(OverworldManager.FLOOR_TRANSITION_TIME).timeout
 	
 	game_camera.set_follow_target(null);
-	player_controller.reparenting = true;
 	_floors[_current_floor_index].put_player_on_floor(player_controller);
 	_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
 	game_camera.set_follow_target(player_controller);
 	
 	await get_tree().process_frame;
-	player_controller.reparenting = false;
 
 
 func _overworld_player_teleport(pos : Vector2):
@@ -301,7 +299,7 @@ func play_bgm(fade_time : float = 0, crossfade : bool = false, start_time : floa
 
 func _exit_tree():
 	if player_controller != null :
-		player_controller.reparenting = true;
+		player_controller.clean_up();
 	
 	if EventManager != null:
 		EventManager.on_overworld_change_floor.disconnect(_on_overworld_change_floor);

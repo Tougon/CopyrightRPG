@@ -11,13 +11,13 @@ const COLLISION_DETECTION_RANGE : float  = 64.0;
 var direction_facing : Vector2 = Vector2(0, 1);
 var foot_offset : Vector2;
 
-var reparenting = false;
-
 var _movement_bounds : float = 0.5;
 var _prev_direction : Vector2;
 var _will_process : bool = true;
 var _can_move : bool = true;
 var _in_dialogue : bool = false;
+var _reparenting : bool = false;
+var _exiting : bool = false;
 
 @onready var player_fade_offset: Node2D = $FadeOffset
 @onready var _sight : Area2D = $Sight
@@ -226,9 +226,12 @@ func _on_all_menus_closed():
 		#set_process(true);
 
 
-func _exit_tree():
-	reparenting = true;
-	
+func reparent_player(new_parent : Node2D):
+	_reparenting = true;
+	self.reparent(new_parent);
+
+
+func clean_up():
 	if EventManager != null:
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_dequeue.disconnect(_on_overworld_battle_dequeued);
@@ -241,3 +244,10 @@ func _exit_tree():
 	
 	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
 	Dialogic.timeline_ended.disconnect(_on_dialogue_end);
+
+
+func _exit_tree():
+	if _reparenting :
+		_reparenting = false;
+	else :
+		_exiting = true;

@@ -1,7 +1,7 @@
 extends Node
 
 # Class that defines constant or important variables for the overworld
-const FLOOR_TRANSITION_TIME : float = 0.5;
+const FLOOR_TRANSITION_TIME : float = 0.45;
 
 # Runtime variables
 var player_controller : RPGPlayerController;

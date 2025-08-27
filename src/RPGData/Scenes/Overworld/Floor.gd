@@ -8,6 +8,7 @@ class_name Floor
 @export var tile_map_aux : Array[TileMap];
 
 @onready var environment : Node2D = $Environment;
+@onready var environment_visuals : Node2D = $Environment/Visuals;
 
 
 # Active refers specifically to collision
@@ -28,20 +29,31 @@ func set_floor_active(active : bool):
 func set_floor_visible(visible : bool, tween : bool = true):
 	if !tween :
 		if visible : 
-			modulate = Color.WHITE;
+			tile_map_floor.modulate = Color.WHITE;
+			tile_map_wall.modulate = Color.WHITE;
+			environment_visuals.modulate = Color.WHITE;
 		else : 
-			modulate = Color.TRANSPARENT;
+			tile_map_floor.modulate = Color.TRANSPARENT;
+			tile_map_wall.modulate = Color.TRANSPARENT;
+			environment_visuals.modulate = Color.TRANSPARENT;
 	else :
+		if get_tree() == null : return;
+		
 		var mod_tween = get_tree().create_tween();
+		mod_tween.set_parallel(true);
 		
 		if visible :
-			mod_tween.tween_property(self, "modulate", Color.WHITE, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(tile_map_floor, "modulate", Color.WHITE, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(tile_map_wall, "modulate", Color.WHITE, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(environment_visuals, "modulate", Color.WHITE, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
 		else :
-			mod_tween.tween_property(self, "modulate", Color.TRANSPARENT, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(tile_map_floor, "modulate", Color.TRANSPARENT, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(tile_map_wall, "modulate", Color.TRANSPARENT, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			mod_tween.tween_property(environment_visuals, "modulate", Color.TRANSPARENT, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
 
 
 func put_player_on_floor(player : Node2D):
-	player.reparent(environment);
+	player.reparent_player(environment);
 
 
 func put_camera_on_floor(game_camera : PhantomCamera2D, free_camera : PhantomCamera2D):

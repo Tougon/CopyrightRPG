@@ -281,234 +281,236 @@ tile_set = SubResource("TileSet_whai2")
 [node name="Environment" type="Node2D" parent="Floors/G"]
 y_sort_enabled = true
 
-[node name="Escalators" type="Node2D" parent="Floors/G/Environment"]
+[node name="Visuals" type="Node2D" parent="Floors/G/Environment"]
 
-[node name="EscalatorBase" type="Node2D" parent="Floors/G/Environment/Escalators"]
+[node name="Escalators" type="Node2D" parent="Floors/G/Environment/Visuals"]
+
+[node name="EscalatorBase" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators"]
 position = Vector2(801, 512)
 scale = Vector2(2, 2)
 
-[node name="Visual" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase"]
+[node name="Visual" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase"]
 
-[node name="Bottom" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Bottom" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Bottom"]
 texture = ExtResource("5_8yu3f")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Bottom"]
 texture = ExtResource("6_lluu2")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Bottom"]
 texture = ExtResource("7_mxnls")
 
-[node name="Segment_1" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_1" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-32, -8)
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_1"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_1"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_1"]
 texture = ExtResource("10_kcane")
 
-[node name="Segment_2" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_2" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-64, -24)
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 48)
 scale = Vector2(2, 1)
 texture = ExtResource("11_2x4t4")
 
-[node name="Segment_3" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_3" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-96, -40)
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 56)
 scale = Vector2(2, 2)
 texture = ExtResource("11_2x4t4")
 
-[node name="Segment_4" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_4" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-128, -56)
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 64)
 scale = Vector2(2, 3)
 texture = ExtResource("11_2x4t4")
 
-[node name="Segment_5" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_5" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-160, -72)
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Fill" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 72)
 scale = Vector2(2, 4)
 texture = ExtResource("11_2x4t4")
 
-[node name="Top" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Top" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 visible = false
 position = Vector2(-191.5, -87.5)
 
-[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Top"]
+[node name="Back" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Top"]
 texture = ExtResource("12_8yveg")
 
-[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Top"]
+[node name="Middle" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Top"]
 texture = ExtResource("13_j4wp2")
 
-[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Visual/Top"]
+[node name="Front" type="Sprite2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Visual/Top"]
 texture = ExtResource("14_6s05b")
 
-[node name="FT2" parent="Floors/G/Environment/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
+[node name="FT2" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
 position = Vector2(-67, -28.5)
 scale = Vector2(0.5, 0.5)
 end_floor = 1
 teleport = true
-teleport_target = NodePath("../../../../../1F/Environment/Escalators/EscalatorBase/FT1")
+teleport_target = NodePath("../../../../../../1F/Environment/Visuals/Escalators/EscalatorBase/FT1")
 
-[node name="Start" parent="Floors/G/Environment/Escalators/EscalatorBase/FT2" index="0"]
+[node name="Start" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/FT2" index="0"]
 position = Vector2(122, 61)
 
-[node name="End" parent="Floors/G/Environment/Escalators/EscalatorBase/FT2" index="1"]
+[node name="End" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/FT2" index="1"]
 position = Vector2(-124, -51)
 
-[node name="Collision" type="Node2D" parent="Floors/G/Environment/Escalators/EscalatorBase"]
+[node name="Collision" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase"]
 
-[node name="Area2D" type="StaticBody2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision"]
+[node name="Area2D" type="StaticBody2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Collision"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Collision/Area2D"]
 polygon = PackedVector2Array(9.5, 20, 13.5, 24, 13.5, 31, -176.5, 31, -176, -55, -177.5, -63, -158.5, -53.5, -94, -22.5, -45.5, 3, -14.5, 17.5)
 
-[node name="Area2D2" type="StaticBody2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision"]
+[node name="Area2D2" type="StaticBody2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Collision"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/G/Environment/Escalators/EscalatorBase/Collision/Area2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Collision/Area2D2"]
 polygon = PackedVector2Array(6, -30.5, 12, -27.5, 7, -27, -17, -27, -174.5, -105, -176.5, -110.5, -165.546, -106.591, -15.5, -32.5)
 
-[node name="Sorted Items" type="Node2D" parent="Floors/G/Environment"]
+[node name="Sorted Items" type="Node2D" parent="Floors/G/Environment/Visuals"]
 y_sort_enabled = true
 
-[node name="Test Group" type="Node2D" parent="Floors/G/Environment/Sorted Items"]
+[node name="Test Group" type="Node2D" parent="Floors/G/Environment/Visuals/Sorted Items"]
 visible = false
 
-[node name="Interactable" parent="Floors/G/Environment/Sorted Items/Test Group" instance=ExtResource("21_3vjcp")]
+[node name="Interactable" parent="Floors/G/Environment/Visuals/Sorted Items/Test Group" instance=ExtResource("21_3vjcp")]
 visible = false
 position = Vector2(194, 446)
 default_active_state = false
 additional_active_state = Array[ExtResource("22_jlxcx")]([SubResource("Resource_8ofoh")])
 
-[node name="Interactable3" parent="Floors/G/Environment/Sorted Items/Test Group" instance=ExtResource("21_3vjcp")]
+[node name="Interactable3" parent="Floors/G/Environment/Visuals/Sorted Items/Test Group" instance=ExtResource("21_3vjcp")]
 visible = false
 position = Vector2(217, 294)
 default_active_state = false
 
-[node name="Interactable2" parent="Floors/G/Environment/Sorted Items/Test Group" instance=ExtResource("24_vkibq")]
+[node name="Interactable2" parent="Floors/G/Environment/Visuals/Sorted Items/Test Group" instance=ExtResource("24_vkibq")]
 visible = false
 position = Vector2(715, 311)
 default_dialogue = "temp_quest"
 additional_dialogue = Array[ExtResource("25_2uk2l")]([SubResource("Resource_vuma2")])
 object_id = "temp_quest_giver"
 
-[node name="Interactable4" parent="Floors/G/Environment/Sorted Items/Test Group" instance=ExtResource("24_vkibq")]
+[node name="Interactable4" parent="Floors/G/Environment/Visuals/Sorted Items/Test Group" instance=ExtResource("24_vkibq")]
 visible = false
 position = Vector2(282, 75)
 default_dialogue = "temp_cutscene"
 additional_dialogue = Array[ExtResource("25_2uk2l")]([SubResource("Resource_vuma2")])
 object_id = "temp_cutscene_giver"
 
-[node name="Boss" parent="Floors/G/Environment/Sorted Items" instance=ExtResource("21_3vjcp")]
+[node name="Boss" parent="Floors/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
 visible = false
 position = Vector2(608, -122)
 default_dialogue = "demo_boss_sequence"
 
-[node name="Sprite2D2" type="Sprite2D" parent="Floors/G/Environment/Sorted Items"]
+[node name="Sprite2D2" type="Sprite2D" parent="Floors/G/Environment/Visuals/Sorted Items"]
 position = Vector2(832, -122)
 texture = ExtResource("27_qxvdb")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Floors/G/Environment/Sorted Items"]
+[node name="Sprite2D3" type="Sprite2D" parent="Floors/G/Environment/Visuals/Sorted Items"]
 position = Vector2(679, -122)
 texture = ExtResource("28_1odem")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Floors/G/Environment/Sorted Items"]
+[node name="Sprite2D4" type="Sprite2D" parent="Floors/G/Environment/Visuals/Sorted Items"]
 position = Vector2(522, -122)
 texture = ExtResource("29_aeg5s")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Floors/G/Environment/Sorted Items"]
+[node name="Sprite2D5" type="Sprite2D" parent="Floors/G/Environment/Visuals/Sorted Items"]
 position = Vector2(370, -122)
 texture = ExtResource("30_c3b1v")
 
-[node name="CutsceneObject Test" type="Node2D" parent="Floors/G/Environment/Sorted Items" node_paths=PackedStringArray("tween_player")]
+[node name="CutsceneObject Test" type="Node2D" parent="Floors/G/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("tween_player")]
 visible = false
 position = Vector2(1085, 392)
 script = ExtResource("31_nncd6")
 object_id = "test_obj_1"
 tween_player = NodePath("TweenPlayer")
 
-[node name="Sprite2D" type="Sprite2D" parent="Floors/G/Environment/Sorted Items/CutsceneObject Test"]
+[node name="Sprite2D" type="Sprite2D" parent="Floors/G/Environment/Visuals/Sorted Items/CutsceneObject Test"]
 texture = ExtResource("32_tg7n6")
 
-[node name="TweenPlayer" type="Node" parent="Floors/G/Environment/Sorted Items/CutsceneObject Test"]
+[node name="TweenPlayer" type="Node" parent="Floors/G/Environment/Visuals/Sorted Items/CutsceneObject Test"]
 script = ExtResource("33_45och")
 sequence_list = Array[ExtResource("13_cnf8m")]([SubResource("Resource_jh7gi")])
 
-[node name="RPGOverworldFollower" parent="Floors/G/Environment/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
+[node name="RPGOverworldFollower" parent="Floors/G/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
 visible = false
 position = Vector2(461, 300)
-target = NodePath("../../../../../Player Controller")
+target = NodePath("../../../../../../Player Controller")
 
-[node name="RPGOverworldFollower2" parent="Floors/G/Environment/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
+[node name="RPGOverworldFollower2" parent="Floors/G/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
 visible = false
 position = Vector2(461, 300)
 target = NodePath("../RPGOverworldFollower")
 
-[node name="Lighting" type="Node2D" parent="Floors/G/Environment"]
+[node name="Lighting" type="Node2D" parent="Floors/G/Environment/Visuals"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Floors/G/Environment/Lighting"]
+[node name="Sprite2D" type="Sprite2D" parent="Floors/G/Environment/Visuals/Lighting"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 position = Vector2(608, -122)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_u2oxt")
 
-[node name="PointLight2D" type="PointLight2D" parent="Floors/G/Environment/Lighting/Sprite2D"]
+[node name="PointLight2D" type="PointLight2D" parent="Floors/G/Environment/Visuals/Lighting/Sprite2D"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -517,7 +519,7 @@ shadow_filter = 1
 texture = ExtResource("40_x6qxg")
 texture_scale = 1.75
 
-[node name="Sprite2D2" type="Sprite2D" parent="Floors/G/Environment/Lighting"]
+[node name="Sprite2D2" type="Sprite2D" parent="Floors/G/Environment/Visuals/Lighting"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
@@ -525,7 +527,7 @@ position = Vector2(1129, -122)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_u2oxt")
 
-[node name="PointLight2D" type="PointLight2D" parent="Floors/G/Environment/Lighting/Sprite2D2"]
+[node name="PointLight2D" type="PointLight2D" parent="Floors/G/Environment/Visuals/Lighting/Sprite2D2"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -534,7 +536,7 @@ shadow_filter = 1
 texture = ExtResource("40_x6qxg")
 texture_scale = 1.75
 
-[node name="Sprite2D3" type="Sprite2D" parent="Floors/G/Environment/Lighting"]
+[node name="Sprite2D3" type="Sprite2D" parent="Floors/G/Environment/Visuals/Lighting"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
@@ -542,7 +544,7 @@ position = Vector2(93.0001, -135)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_u2oxt")
 
-[node name="PointLight2D" type="PointLight2D" parent="Floors/G/Environment/Lighting/Sprite2D3"]
+[node name="PointLight2D" type="PointLight2D" parent="Floors/G/Environment/Visuals/Lighting/Sprite2D3"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -551,19 +553,19 @@ shadow_filter = 1
 texture = ExtResource("40_x6qxg")
 texture_scale = 1.75
 
-[node name="Cutscene Helpers" type="Node2D" parent="Floors/G/Environment"]
+[node name="Cutscene Helpers" type="Node2D" parent="Floors/G/Environment/Visuals"]
 
-[node name="Test" type="Node2D" parent="Floors/G/Environment/Cutscene Helpers"]
+[node name="Test" type="Node2D" parent="Floors/G/Environment/Visuals/Cutscene Helpers"]
 
-[node name="Camera Group 1" type="Node2D" parent="Floors/G/Environment/Cutscene Helpers/Test"]
+[node name="Camera Group 1" type="Node2D" parent="Floors/G/Environment/Visuals/Cutscene Helpers/Test"]
 position = Vector2(705, 0)
 
-[node name="Camera Pos" type="Node2D" parent="Floors/G/Environment/Cutscene Helpers/Test/Camera Group 1" node_paths=PackedStringArray("tween_player")]
+[node name="Camera Pos" type="Node2D" parent="Floors/G/Environment/Visuals/Cutscene Helpers/Test/Camera Group 1" node_paths=PackedStringArray("tween_player")]
 script = ExtResource("31_nncd6")
 object_id = "Test Camera Pos 1"
 tween_player = NodePath("TweenPlayer")
 
-[node name="TweenPlayer" type="Node" parent="Floors/G/Environment/Cutscene Helpers/Test/Camera Group 1/Camera Pos"]
+[node name="TweenPlayer" type="Node" parent="Floors/G/Environment/Visuals/Cutscene Helpers/Test/Camera Group 1/Camera Pos"]
 script = ExtResource("33_45och")
 sequence_list = Array[ExtResource("13_cnf8m")]([SubResource("Resource_sc2vl")])
 
@@ -589,160 +591,162 @@ tile_set = SubResource("TileSet_whai2")
 [node name="Environment" type="Node2D" parent="Floors/1F"]
 y_sort_enabled = true
 
-[node name="Escalators" type="Node2D" parent="Floors/1F/Environment"]
+[node name="Visuals" type="Node2D" parent="Floors/1F/Environment"]
 
-[node name="EscalatorBase" type="Node2D" parent="Floors/1F/Environment/Escalators"]
+[node name="Escalators" type="Node2D" parent="Floors/1F/Environment/Visuals"]
+
+[node name="EscalatorBase" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators"]
 position = Vector2(810, 675)
 scale = Vector2(2, 2)
 
-[node name="Visual" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase"]
+[node name="Visual" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase"]
 
-[node name="Bottom" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Bottom" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 visible = false
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Bottom"]
 texture = ExtResource("5_8yu3f")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Bottom"]
 texture = ExtResource("6_lluu2")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Bottom"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Bottom"]
 texture = ExtResource("7_mxnls")
 
-[node name="Segment_1" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_1" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 visible = false
 position = Vector2(-32, -8)
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_1"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_1"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_1"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_1"]
 texture = ExtResource("10_kcane")
 
-[node name="Segment_2" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_2" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 visible = false
 position = Vector2(-64, -24)
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_2"]
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_2"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 48)
 scale = Vector2(2, 1)
 texture = ExtResource("11_2x4t4")
 
-[node name="Segment_3" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_3" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-96, -40)
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_3"]
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_3"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 56)
 scale = Vector2(2, 2)
 texture = ExtResource("11_2x4t4")
 
-[node name="Segment_4" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_4" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-128, -56)
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_4"]
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_4"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 64)
 scale = Vector2(2, 3)
 texture = ExtResource("11_2x4t4")
 
-[node name="Segment_5" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Segment_5" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-160, -72)
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 texture = ExtResource("8_k8xj1")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 texture = ExtResource("9_vyw8a")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 texture = ExtResource("10_kcane")
 
-[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Segment_5"]
+[node name="Fill" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Segment_5"]
 modulate = Color(0.545098, 0.705882, 0.67451, 1)
 position = Vector2(0, 72)
 scale = Vector2(2, 4)
 texture = ExtResource("11_2x4t4")
 
-[node name="Top" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual"]
+[node name="Top" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual"]
 position = Vector2(-191.5, -87.5)
 
-[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Top"]
+[node name="Back" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Top"]
 texture = ExtResource("12_8yveg")
 
-[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Top"]
+[node name="Middle" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Top"]
 texture = ExtResource("13_j4wp2")
 
-[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Visual/Top"]
+[node name="Front" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Visual/Top"]
 texture = ExtResource("14_6s05b")
 
-[node name="FT1" parent="Floors/1F/Environment/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
+[node name="FT1" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
 position = Vector2(-147.5, -68)
 scale = Vector2(0.5, 0.5)
 end_floor = 1
 teleport = true
-teleport_target = NodePath("../../../../../G/Environment/Escalators/EscalatorBase/FT2")
+teleport_target = NodePath("../../../../../../G/Environment/Visuals/Escalators/EscalatorBase/FT2")
 
-[node name="Start" parent="Floors/1F/Environment/Escalators/EscalatorBase/FT1" index="0"]
+[node name="Start" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/FT1" index="0"]
 position = Vector2(122, 61)
 
-[node name="End" parent="Floors/1F/Environment/Escalators/EscalatorBase/FT1" index="1"]
+[node name="End" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/FT1" index="1"]
 position = Vector2(-124, -51)
 
-[node name="Collision" type="Node2D" parent="Floors/1F/Environment/Escalators/EscalatorBase"]
+[node name="Collision" type="Node2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase"]
 
-[node name="Area2D" type="StaticBody2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision"]
+[node name="Area2D" type="StaticBody2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Collision"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision/Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Collision/Area2D"]
 polygon = PackedVector2Array(9.5, 20, 13.5, 24, 13.5, 31, -176.5, 31, -176, -55, -182, -63, -189.5, -67, -214.5, -67.5, -216.5, -70, -195, -70, -173, -62, -94, -22.5, -45.5, 3, -14.5, 17.5)
 
-[node name="Area2D2" type="StaticBody2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision"]
+[node name="Area2D2" type="StaticBody2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Collision"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/1F/Environment/Escalators/EscalatorBase/Collision/Area2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/Collision/Area2D2"]
 polygon = PackedVector2Array(6, -30.5, 12, -27.5, 7, -27, -17, -27, -176.5, -107.5, -190, -114.5, -215, -115, -215, -118.5, -188, -119, -165.546, -106.591, -15.5, -32.5)
 
-[node name="Lighting" type="Node2D" parent="Floors/1F/Environment"]
+[node name="Lighting" type="Node2D" parent="Floors/1F/Environment/Visuals"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Floors/1F/Environment/Lighting"]
+[node name="Sprite2D" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Lighting"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 position = Vector2(608, -122)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_u2oxt")
 
-[node name="PointLight2D" type="PointLight2D" parent="Floors/1F/Environment/Lighting/Sprite2D"]
+[node name="PointLight2D" type="PointLight2D" parent="Floors/1F/Environment/Visuals/Lighting/Sprite2D"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -751,7 +755,7 @@ shadow_filter = 1
 texture = ExtResource("40_x6qxg")
 texture_scale = 1.75
 
-[node name="Sprite2D2" type="Sprite2D" parent="Floors/1F/Environment/Lighting"]
+[node name="Sprite2D2" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Lighting"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
@@ -759,7 +763,7 @@ position = Vector2(1129, -122)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_u2oxt")
 
-[node name="PointLight2D" type="PointLight2D" parent="Floors/1F/Environment/Lighting/Sprite2D2"]
+[node name="PointLight2D" type="PointLight2D" parent="Floors/1F/Environment/Visuals/Lighting/Sprite2D2"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -768,7 +772,7 @@ shadow_filter = 1
 texture = ExtResource("40_x6qxg")
 texture_scale = 1.75
 
-[node name="Sprite2D3" type="Sprite2D" parent="Floors/1F/Environment/Lighting"]
+[node name="Sprite2D3" type="Sprite2D" parent="Floors/1F/Environment/Visuals/Lighting"]
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
@@ -776,7 +780,7 @@ position = Vector2(93.0001, -135)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("39_u2oxt")
 
-[node name="PointLight2D" type="PointLight2D" parent="Floors/1F/Environment/Lighting/Sprite2D3"]
+[node name="PointLight2D" type="PointLight2D" parent="Floors/1F/Environment/Visuals/Lighting/Sprite2D3"]
 scale = Vector2(10, 10)
 color = Color(0.621524, 0.621524, 0.621524, 1)
 energy = 1.85
@@ -880,5 +884,5 @@ follow_damping = true
 draw_limits = true
 limit_target = NodePath("../Floors/G/TileMapWalls")
 
-[editable path="Floors/G/Environment/Escalators/EscalatorBase/FT2"]
-[editable path="Floors/1F/Environment/Escalators/EscalatorBase/FT1"]
+[editable path="Floors/G/Environment/Visuals/Escalators/EscalatorBase/FT2"]
+[editable path="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/FT1"]

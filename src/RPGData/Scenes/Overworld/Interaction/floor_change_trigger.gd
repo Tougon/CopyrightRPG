@@ -11,7 +11,9 @@ var _can_collide : bool = true;
 
 func _on_body_exited(body: Node2D) -> void:
 	if !_can_collide || !can_process() : return;
-	if body is RPGPlayerController && body.reparenting : return;
+	#if body is RPGPlayerController && body._exiting : 
+	#	print("FYUCK!")
+	#	return;
 	
 	_can_collide = false;
 	
