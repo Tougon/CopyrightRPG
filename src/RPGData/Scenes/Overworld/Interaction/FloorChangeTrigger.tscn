@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfijknefgnphk"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/floor_change_trigger.gd" id="1_iynia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsewk"]
+size = Vector2(64, 64)
+
+[node name="FloorChangeTrigger" type="Node2D"]
+script = ExtResource("1_iynia")
+
+[node name="Start" type="Node2D" parent="."]
+position = Vector2(128, 0)
+
+[node name="End" type="Node2D" parent="."]
+position = Vector2(-128, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fsewk")
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

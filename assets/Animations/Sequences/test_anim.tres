@@ -126,6 +126,7 @@ manual_override = false
 use_fixed_damage = true
 damage_amount = 0
 percent_amount = 0.0
+negate = false
 
 [sub_resource type="Resource" id="Resource_q3dud"]
 script = ExtResource("2_st50u")

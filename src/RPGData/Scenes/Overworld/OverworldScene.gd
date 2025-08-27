@@ -2,14 +2,21 @@ extends Node2D
 
 static var battle_scene : BattleScene = null;
 static var battle_scene_window : Window = null;
+
 @export_group("Gameplay Parameters")
 @export var battle_scene_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleScene.tscn");
 @export var player_controller : RPGPlayerController;
 @export var game_camera : PhantomCamera2D;
 @export var free_camera : PhantomCamera2D;
 @export var canvas_modulate : CanvasModulate;
+
 @export_group("Cosmetic Parameters")
 @export var bgm_id : String;
+
+# Flooring
+@onready var floor_root : Node = $Floors;
+var _current_floor_index : int = 0;
+var _floors : Dictionary;
 
 var _faded_out_cutscene : bool = false;
 var _bgm_time : float;
@@ -17,10 +24,11 @@ var _battle_start_timestamp : float;
 var _battle_end_timestamp : float;
 
 # May as well be deprecated
-var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
+#var battle_scene_window_ref : PackedScene = preload("res://src/RPGData/Scenes/Battle/BattleSceneWindow.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventManager.on_overworld_change_floor.connect(_on_overworld_change_floor);
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_end.connect(_on_battle_end);
 	UIManager.on_menu_opened.connect(_on_menu_opened);
@@ -28,6 +36,28 @@ func _ready() -> void:
 	
 	OverworldManager.player_controller = player_controller;
 	OverworldManager.free_camera = free_camera;
+	
+	_current_floor_index = DataManager.current_save.player_floor;
+	
+	if floor_root != null :
+		var all_floors = floor_root.get_children();
+		
+		for floor in all_floors:
+			var floor_data = floor as Floor;
+			if floor_data != null :
+				if !_floors.has(floor_data.floor_index):
+					_floors[floor_data.floor_index] = floor_data;
+					floor_data.set_floor_active(floor_data.floor_index == _current_floor_index);
+					floor_data.set_floor_visible(floor_data.floor_index <= _current_floor_index, false);
+					
+					if floor_data.floor_index == _current_floor_index :
+						game_camera.set_follow_target(null);
+						_floors[_current_floor_index].put_player_on_floor(player_controller);
+						_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
+						game_camera.set_follow_target(player_controller);
+				else:
+					floor_data.set_floor_active(false);
+					floor_data.set_floor_visible(false, false);
 	
 	await get_tree().process_frame;
 	
@@ -37,10 +67,11 @@ func _ready() -> void:
 	
 	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		if battle_scene_ref != null && battle_scene == null: 
-			battle_scene_window = battle_scene_window_ref.instantiate() as Window;
-			self.add_child(battle_scene_window);
-			battle_scene_window.visible = false;
-			battle_scene = battle_scene_window.get_node("BattleScene") as BattleScene;
+			pass;
+			#battle_scene_window = battle_scene_window_ref.instantiate() as Window;
+			#self.add_child(battle_scene_window);
+			#battle_scene_window.visible = false;
+			#battle_scene = battle_scene_window.get_node("BattleScene") as BattleScene;
 	else:
 		if battle_scene_ref != null && battle_scene == null: 
 			battle_scene = battle_scene_ref.instantiate() as BattleScene;
@@ -52,6 +83,25 @@ func _ready() -> void:
 	
 	EventManager.overworld_cutscene_fade_start.connect(_fade_action_cutscene);
 	EventManager.overworld_cutscene_fade_instant.connect(_fade_action_cutscene_instant);
+
+
+func _on_overworld_change_floor(new_floor : int):
+	if new_floor == _current_floor_index || !_floors.has(new_floor): return;
+	
+	_floors[_current_floor_index].set_floor_active(false);
+	_floors[new_floor].set_floor_active(true);
+	
+	if new_floor < _current_floor_index :
+		_floors[_current_floor_index].set_floor_visible(false);
+	else :
+		_floors[new_floor].set_floor_visible(true);
+	
+	_current_floor_index = new_floor;
+	
+	game_camera.set_follow_target(null);
+	_floors[_current_floor_index].put_player_on_floor(player_controller);
+	_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
+	game_camera.set_follow_target(player_controller);
 
 
 func _fade_action_cutscene(fade_in : bool):
@@ -226,6 +276,7 @@ func play_bgm(fade_time : float = 0, crossfade : bool = false, start_time : floa
 
 func _exit_tree():
 	if EventManager != null:
+		EventManager.on_overworld_change_floor.disconnect(_on_overworld_change_floor);
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_end.disconnect(_on_battle_end);
 		

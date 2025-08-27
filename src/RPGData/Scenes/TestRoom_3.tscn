@@ -422,8 +422,9 @@ position = Vector2(186, 866)
 texture = ExtResource("21_67xev")
 
 [node name="Stop Sign" parent="Environment/Sorted Items" instance=ExtResource("21_nxmrr")]
+process_mode = 4
 position = Vector2(472, -74)
-default_dialogue = "stop"
+script = null
 
 [node name="Sprite2D" parent="Environment/Sorted Items/Stop Sign" index="0"]
 texture = ExtResource("22_pksh0")
@@ -441,7 +442,7 @@ position = Vector2(0, -150)
 
 [node name="Stop Sign2" parent="Environment/Sorted Items" instance=ExtResource("21_nxmrr")]
 position = Vector2(472, -25)
-default_dialogue = "stop"
+script = null
 
 [node name="Sprite2D" parent="Environment/Sorted Items/Stop Sign2" index="0"]
 texture = ExtResource("22_pksh0")
@@ -472,7 +473,7 @@ script = ExtResource("33_1glqu")
 sequence_list = Array[ExtResource("13_sfw2l")]([SubResource("Resource_jh7gi")])
 
 [node name="Player Controller" parent="Environment/Sorted Items" groups=["Player"] instance=ExtResource("37_adod8")]
-position = Vector2(358, 173)
+position = Vector2(452, 166)
 run_multiplier = 1.75
 
 [node name="RPGOverworldFollower" parent="Environment/Sorted Items" node_paths=PackedStringArray("target") instance=ExtResource("38_nlnw5")]
@@ -564,7 +565,7 @@ scene_path = "res://src/RPGData/Scenes/TestRoom_2.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(480, 173)
+position = Vector2(480, 166)
 process_callback = 0
 limit_left = 0
 limit_top = -1408
@@ -579,7 +580,7 @@ script = ExtResource("42_17uxs")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(480, 173)
+position = Vector2(480, 166)
 script = ExtResource("43_xu6w7")
 priority = 1
 follow_mode = 5

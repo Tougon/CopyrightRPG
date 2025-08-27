@@ -2,6 +2,7 @@ extends Object
 class_name SaveData
 
 var player_position : Vector2;
+var player_floor : int;
 var inventory : Dictionary;
 
 
@@ -20,6 +21,12 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_STORAGE
 	})
 	
+	ret.append({
+		"name": "Player Floor",
+		"type": TYPE_INT,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
 	return ret;
 
 
@@ -28,6 +35,10 @@ func _get(property):
 	match property:
 		"Player Position":
 			return player_position;
+	
+	match property:
+		"Player Floor":
+			return player_floor;
 	
 	match property:
 		"Inventory":
@@ -39,6 +50,9 @@ func _set(property, val) -> bool:
 	
 	match property:
 		"Player Position":
+			player_position = val;
+			notify_property_list_changed();
+		"Player Floor":
 			player_position = val;
 			notify_property_list_changed();
 		"Inventory":
