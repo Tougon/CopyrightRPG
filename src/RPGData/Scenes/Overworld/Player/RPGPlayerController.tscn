@@ -19,7 +19,7 @@ speed = 200.0
 upward_sight_modifier = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 84)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_jbqi3")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]

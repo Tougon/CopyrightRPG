@@ -14,17 +14,18 @@ func _on_body_exited(body: Node2D) -> void:
 	if body is RPGPlayerController && body._exiting : return;
 	
 	_can_collide = false;
-	
-	print(name);
+	#print(name);
 	var pos = body.global_position;
+	var teleport_pos = global_position;
+	if teleport_target != null : teleport_pos = teleport_target.global_position;
 	
 	var dist_start = pos.distance_squared_to(start.global_position);
 	var dist_end = pos.distance_squared_to(end.global_position);
 	
 	if dist_end < dist_start :
-		EventManager.on_overworld_change_floor.emit(end_floor, teleport, teleport_target.global_position);
+		EventManager.on_overworld_change_floor.emit(end_floor, teleport, teleport_pos);
 	else :
-		EventManager.on_overworld_change_floor.emit(start_floor, teleport, teleport_target.global_position);
+		EventManager.on_overworld_change_floor.emit(start_floor, teleport, teleport_pos);
 	
 	await get_tree().process_frame;
 	_can_collide = true;

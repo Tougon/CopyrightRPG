@@ -91,9 +91,10 @@ character = SubResource("Resource_qb85u")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.498039)
-position = Vector2(0, 90)
+position = Vector2(0, -4)
 scale = Vector2(0.235, 0.085)
 texture = ExtResource("6_kd104")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8e0y2")
+offset = Vector2(0, -96)
