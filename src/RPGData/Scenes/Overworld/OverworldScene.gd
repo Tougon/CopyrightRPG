@@ -17,6 +17,7 @@ static var battle_scene_window : Window = null;
 @onready var floor_root : Node = $Floors;
 var _current_floor_index : int = 0;
 var _floors : Dictionary;
+var _can_change_floor : bool = true;
 
 var _faded_out_cutscene : bool = false;
 var _bgm_time : float;
@@ -90,7 +91,9 @@ func _ready() -> void:
 
 
 func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2):
-	if new_floor == _current_floor_index || !_floors.has(new_floor): return;
+	if !_can_change_floor || new_floor == _current_floor_index || !_floors.has(new_floor): return;
+	
+	_can_change_floor = false;
 	
 	if teleport : 
 		_overworld_player_teleport(pos);
@@ -117,6 +120,8 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 	game_camera.set_follow_target(player_controller);
 	
 	await get_tree().process_frame;
+	_can_change_floor = true;
+	#game_camera.set_follow_target(player_controller);
 
 
 func _overworld_player_teleport(pos : Vector2):
