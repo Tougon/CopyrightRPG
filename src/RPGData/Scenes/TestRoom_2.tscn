@@ -282,6 +282,7 @@ tile_set = SubResource("TileSet_whai2")
 y_sort_enabled = true
 
 [node name="Visuals" type="Node2D" parent="Floors/G/Environment"]
+y_sort_enabled = true
 
 [node name="Escalators" type="Node2D" parent="Floors/G/Environment/Visuals"]
 
@@ -592,6 +593,7 @@ tile_set = SubResource("TileSet_whai2")
 y_sort_enabled = true
 
 [node name="Visuals" type="Node2D" parent="Floors/1F/Environment"]
+y_sort_enabled = true
 
 [node name="Escalators" type="Node2D" parent="Floors/1F/Environment/Visuals"]
 
