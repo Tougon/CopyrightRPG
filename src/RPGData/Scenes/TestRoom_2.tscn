@@ -849,11 +849,12 @@ color = Color(0.332738, 0.519136, 0.749071, 1)
 physics_interpolation_mode = 1
 position = Vector2(880, 408)
 process_callback = 0
-limit_left = -16
-limit_top = -400
-limit_right = 1360
-limit_bottom = 768
+limit_left = 0
+limit_top = -352
+limit_right = 1216
+limit_bottom = 656
 position_smoothing_speed = 500.0
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300

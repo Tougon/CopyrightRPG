@@ -983,6 +983,7 @@ limit_top = -352
 limit_right = 1216
 limit_bottom = 656
 position_smoothing_speed = 500.0
+editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300

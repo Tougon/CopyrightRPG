@@ -114,7 +114,7 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 	game_camera.set_follow_target(null);
 	_floors[_current_floor_index].put_player_on_floor(player_controller);
 	_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
-	#game_camera.set_follow_target(player_controller);
+	game_camera.set_follow_target(player_controller);
 	
 	await get_tree().process_frame;
 
@@ -123,8 +123,7 @@ func _overworld_player_teleport(pos : Vector2):
 	pos -= player_controller.foot_offset;
 	var delta_pos = pos - player_controller.global_position;
 	player_controller.global_position = pos;
-	# probably move the camera as well?
-	#game_camera.position += delta_pos;
+	game_camera.teleport_position()
 
 
 func _fade_action_cutscene(fade_in : bool):
