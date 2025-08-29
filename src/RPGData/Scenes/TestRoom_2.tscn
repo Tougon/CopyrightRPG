@@ -435,11 +435,10 @@ offset = Vector2(0, 18)
 texture = ExtResource("5_8yu3f")
 offset = Vector2(0, 18)
 
-[node name="FT2" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
+[node name="FT2" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase" instance=ExtResource("22_hwsgw")]
 position = Vector2(-79, -34.785)
 scale = Vector2(0.5, 0.5)
 end_floor = 1
-teleport_target = NodePath("")
 
 [node name="Start" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/FT2" index="0"]
 position = Vector2(122, 61)
@@ -448,6 +447,7 @@ position = Vector2(122, 61)
 position = Vector2(-124, -51)
 
 [node name="Collision" type="Node2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase"]
+z_index = 1
 
 [node name="Area2D" type="StaticBody2D" parent="Floors/G/Environment/Visuals/Escalators/EscalatorBase/Collision"]
 
@@ -463,12 +463,11 @@ polygon = PackedVector2Array(6, -25.5, 12, -22.5, 7, -22, -17, -22, -174.5, -100
 y_sort_enabled = true
 
 [node name="Walls" type="Node2D" parent="Floors/G/Environment/Visuals/Sorted Items"]
-visible = false
 y_sort_enabled = true
 
 [node name="Escalator Wall" type="Node2D" parent="Floors/G/Environment/Visuals/Sorted Items/Walls"]
-position = Vector2(488, 576)
-scale = Vector2(1, 1.8)
+position = Vector2(488, 575)
+scale = Vector2(1, 1.92)
 
 [node name="Sprite2D" type="Sprite2D" parent="Floors/G/Environment/Visuals/Sorted Items/Walls/Escalator Wall"]
 self_modulate = Color(0.933333, 0.929412, 0.92549, 1)
@@ -656,6 +655,7 @@ tile_map_data = PackedByteArray("AAD//+f/AQAAAAUAAAAAAOf/AQAAAAUAAAABAOf/AQAAAAU
 tile_set = SubResource("TileSet_whai2")
 
 [node name="1F" type="Node2D" parent="Floors"]
+visible = false
 position = Vector2(0, -160)
 script = ExtResource("2_act5h")
 floor_index = 1
@@ -834,11 +834,10 @@ visible = false
 texture = ExtResource("5_8yu3f")
 offset = Vector2(0, 18)
 
-[node name="FT2" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase" node_paths=PackedStringArray("teleport_target") instance=ExtResource("22_hwsgw")]
+[node name="FT2" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase" instance=ExtResource("22_hwsgw")]
 position = Vector2(-144, -68)
 scale = Vector2(0.5, 0.5)
 end_floor = 1
-teleport_target = NodePath("")
 
 [node name="Start" parent="Floors/1F/Environment/Visuals/Escalators/EscalatorBase/FT2" index="0"]
 position = Vector2(122, 61)
