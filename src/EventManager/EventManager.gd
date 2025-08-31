@@ -25,6 +25,7 @@ signal on_message_queue(message : String);
 # Global Overworld Events
 signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float);
 signal on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2);
+signal on_player_enter_floor_change_zone(enter : bool);
 
 signal on_battle_queue(encounter : Encounter);
 signal on_battle_dequeue();
