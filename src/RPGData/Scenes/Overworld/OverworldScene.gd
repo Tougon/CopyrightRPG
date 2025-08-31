@@ -14,9 +14,11 @@ static var battle_scene_window : Window = null;
 @export var bgm_id : String;
 
 # Flooring
-@onready var floor_root : Node = $Floors;
+@onready var _area_root : Node = $Areas;
+var _areas : Dictionary;
+var _current_area : String;
+
 var _current_floor_index : int = 0;
-var _floors : Dictionary;
 var _can_change_floor : bool = true;
 
 var _faded_out_cutscene : bool = false;
@@ -40,31 +42,34 @@ func _ready() -> void:
 	OverworldManager.player_controller = player_controller;
 	OverworldManager.free_camera = free_camera;
 	
+	await get_tree().process_frame;
+	
+	_current_area = "atrium";
 	_current_floor_index = DataManager.current_save.player_floor;
 	
-	if floor_root != null :
-		var all_floors = floor_root.get_children();
+	if _area_root != null :
+		var all_areas = _area_root.get_children();
 		
-		for floor in all_floors:
-			var floor_data = floor as Floor;
-			if floor_data != null :
-				floor_data.visible = true;
+		for area in all_areas:
+			var area_data = area as OverworldArea;
+			
+			if area_data != null :
+				area_data.visible = true;
 				
-				if !_floors.has(floor_data.floor_index):
-					_floors[floor_data.floor_index] = floor_data;
-					floor_data.set_floor_active(floor_data.floor_index == _current_floor_index);
-					floor_data.set_floor_visible(floor_data.floor_index <= _current_floor_index, false);
+				if !_areas.has(area_data.area_name_key):
+					_areas[area_data.area_name_key] = area_data;
 					
-					if floor_data.floor_index == _current_floor_index :
+					if area_data.area_name_key == _current_area :
+						area_data.set_area_active(true);
+						area_data.set_floor_active(_current_floor_index, true);
+						area_data.set_floor_visible(_current_floor_index, true, false);
+						
 						game_camera.set_follow_target(null);
-						_floors[_current_floor_index].put_player_on_floor(player_controller);
-						_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
+						_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
+						_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
 						game_camera.set_follow_target(player_controller);
 				else:
-					floor_data.set_floor_active(false);
-					floor_data.set_floor_visible(false, false);
-	
-	await get_tree().process_frame;
+					area_data.set_area_active(false);
 	
 	# Not sure where BGM should be started
 	# TODO: Revaluate this?
@@ -91,20 +96,20 @@ func _ready() -> void:
 
 
 func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2):
-	if !_can_change_floor || new_floor == _current_floor_index || !_floors.has(new_floor): return;
+	if !_can_change_floor || new_floor == _current_floor_index || !_areas[_current_area].has_floor(new_floor): return;
 	
 	_can_change_floor = false;
 	
 	if teleport : 
 		_overworld_player_teleport(pos);
 	
-	_floors[_current_floor_index].set_floor_active(false);
-	_floors[new_floor].set_floor_active(true);
+	_areas[_current_area].set_floor_active(_current_floor_index, false);
+	_areas[_current_area].set_floor_active(new_floor, true);
 	
 	if new_floor < _current_floor_index :
-		_floors[_current_floor_index].set_floor_visible(false);
+		_areas[_current_area].set_floor_visible(_current_floor_index, false);
 	else :
-		_floors[new_floor].set_floor_visible(true);
+		_areas[_current_area].set_floor_visible(new_floor, true);
 	
 	_current_floor_index = new_floor;
 	
@@ -115,8 +120,8 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 	#await get_tree().create_timer(OverworldManager.FLOOR_TRANSITION_TIME).timeout
 	
 	game_camera.set_follow_target(null);
-	_floors[_current_floor_index].put_player_on_floor(player_controller);
-	_floors[_current_floor_index].put_camera_on_floor(game_camera, free_camera);
+	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
+	_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
 	game_camera.set_follow_target(player_controller);
 	
 	await get_tree().process_frame;
