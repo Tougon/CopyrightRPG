@@ -17,6 +17,7 @@ static var battle_scene_window : Window = null;
 @onready var _area_root : Node = $Areas;
 var _areas : Dictionary;
 var _current_area : String;
+var _can_change_area : bool = true;
 
 var _current_floor_index : int = 0;
 var _can_change_floor : bool = true;
@@ -31,6 +32,7 @@ var _battle_end_timestamp : float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	EventManager.on_overworld_change_area.connect(_on_overworld_change_area);
 	EventManager.on_overworld_change_floor.connect(_on_overworld_change_floor);
 	
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
@@ -93,6 +95,31 @@ func _ready() -> void:
 	
 	EventManager.overworld_cutscene_fade_start.connect(_fade_action_cutscene);
 	EventManager.overworld_cutscene_fade_instant.connect(_fade_action_cutscene_instant);
+
+
+func _on_overworld_change_area(new_area : String):
+	if !_can_change_area || new_area == _current_area || !_areas.has(new_area): return;
+	
+	_can_change_area = false;
+	
+	_areas[_current_area].set_floor_active(_current_floor_index, false);
+	_areas[_current_area].set_area_active(false);
+	_areas[new_area].set_area_active(true);
+	_areas[new_area].set_floor_active(_current_floor_index, true);
+	
+	for i in range(_current_floor_index, -10, -1) :
+		_areas[_current_area].set_floor_visible(i, false);
+		_areas[new_area].set_floor_visible(i, true);
+	
+	_current_area = new_area;
+
+	game_camera.set_follow_target(null);
+	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
+	_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
+	game_camera.set_follow_target(player_controller);
+	
+	await get_tree().process_frame;
+	_can_change_area = true;
 
 
 func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2):
@@ -311,6 +338,7 @@ func _exit_tree():
 		player_controller.clean_up();
 	
 	if EventManager != null:
+		EventManager.on_overworld_change_area.disconnect(_on_overworld_change_area);
 		EventManager.on_overworld_change_floor.disconnect(_on_overworld_change_floor);
 		
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);

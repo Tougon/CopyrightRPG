@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=89 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.tscn" id="37_j44eh"]
 [ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="38_c2a70"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="39_u2oxt"]
+[ext_resource type="PackedScene" uid="uid://jj8j131a8alj" path="res://src/RPGData/Scenes/Overworld/Interaction/AreaChangeTrigger.tscn" id="39_y8rwr"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="40_x6qxg"]
 [ext_resource type="PackedScene" uid="uid://2fue3n12jlip" path="res://src/RPGData/Scenes/Overworld/SceneTransition.tscn" id="41_s5s5c"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="42_1yuub"]
@@ -275,6 +276,7 @@ bgm_id = "unfinished_sympathy"
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Atrium" type="Node2D" parent="Areas"]
+visible = false
 script = ExtResource("2_a4cvd")
 area_name_key = "atrium"
 
@@ -1094,6 +1096,84 @@ tile_set = SubResource("TileSet_ca3if")
 
 [node name="Transitions" type="Node" parent="Areas/Atrium/1F/Environment"]
 
+[node name="Corridor" type="Node2D" parent="Areas"]
+script = ExtResource("2_a4cvd")
+area_name_key = "corridor"
+
+[node name="G" type="Node2D" parent="Areas/Corridor"]
+script = ExtResource("2_act5h")
+
+[node name="TileMapFloor" type="TileMapLayer" parent="Areas/Corridor/G"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAEAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAAAAAMAAQAAAAEAAAAAAAQAAQAAAAEAAAAAAAUAAQAAAAEAAAAAAP//AQAAAAEAAAAAAP7/AQAAAAEAAAAAAP3/AQAAAAEAAAAAAPr/AQAAAAEAAAAAAPv/AQAAAAEAAAAAAPz/AQAAAAEAAAAAAAYAAQAAAAEAAAAAAAcAAQAAAAEAAAAAAAgAAQAAAAEAAAAAAAkAAQAAAAEAAAAAAAoAAQAAAAEAAAAAAAsAAQAAAAEAAAD///7/AQAAAAEAAAD/////AQAAAAEAAAD//wAAAQAAAAEAAAD//wEAAQAAAAEAAADv//7/AQAAAAEAAADv////AQAAAAEAAADv/wAAAQAAAAEAAADv/wEAAQAAAAEAAADw//7/AQAAAAEAAADw////AQAAAAEAAADw/wAAAQAAAAEAAADw/wEAAQAAAAEAAADx//7/AQAAAAEAAADx////AQAAAAEAAADx/wAAAQAAAAEAAADx/wEAAQAAAAEAAADy//7/AQAAAAEAAADy////AQAAAAEAAADy/wAAAQAAAAEAAADy/wEAAQAAAAEAAADz//7/AQAAAAEAAADz////AQAAAAEAAADz/wAAAQAAAAEAAADz/wEAAQAAAAEAAAD0//7/AQAAAAEAAAD0////AQAAAAEAAAD0/wAAAQAAAAEAAAD0/wEAAQAAAAEAAAD1//7/AQAAAAEAAAD1////AQAAAAEAAAD1/wAAAQAAAAEAAAD1/wEAAQAAAAEAAAD2//7/AQAAAAEAAAD2////AQAAAAEAAAD2/wAAAQAAAAEAAAD2/wEAAQAAAAEAAAD3//7/AQAAAAEAAAD3////AQAAAAEAAAD3/wAAAQAAAAEAAAD3/wEAAQAAAAEAAAD4//7/AQAAAAEAAAD4////AQAAAAEAAAD4/wAAAQAAAAEAAAD4/wEAAQAAAAEAAAD5//7/AQAAAAEAAAD5////AQAAAAEAAAD5/wAAAQAAAAEAAAD5/wEAAQAAAAEAAAD6//7/AQAAAAEAAAD6////AQAAAAEAAAD6/wAAAQAAAAEAAAD6/wEAAQAAAAEAAAD7//7/AQAAAAEAAAD7////AQAAAAEAAAD7/wAAAQAAAAEAAAD7/wEAAQAAAAEAAAD8//7/AQAAAAEAAAD8////AQAAAAEAAAD8/wAAAQAAAAEAAAD8/wEAAQAAAAEAAAD9//7/AQAAAAEAAAD9////AQAAAAEAAAD9/wAAAQAAAAEAAAD9/wEAAQAAAAEAAAD+//7/AQAAAAEAAAD+////AQAAAAEAAAD+/wAAAQAAAAEAAAD+/wEAAQAAAAEAAAA=")
+tile_set = SubResource("TileSet_ca3if")
+
+[node name="TileMapWalls" type="TileMapLayer" parent="Areas/Corridor/G"]
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_whai2")
+
+[node name="Environment" type="Node2D" parent="Areas/Corridor/G"]
+y_sort_enabled = true
+
+[node name="Visuals" type="Node2D" parent="Areas/Corridor/G/Environment"]
+y_sort_enabled = true
+
+[node name="Escalators" type="Node2D" parent="Areas/Corridor/G/Environment/Visuals"]
+y_sort_enabled = true
+
+[node name="Sorted Items" type="Node2D" parent="Areas/Corridor/G/Environment/Visuals"]
+y_sort_enabled = true
+
+[node name="Stop" type="Sprite2D" parent="Areas/Corridor/G/Environment/Visuals/Sorted Items"]
+position = Vector2(1070, -25)
+texture = ExtResource("21_0uwxn")
+offset = Vector2(2.455, -112.88)
+
+[node name="Collider" type="StaticBody2D" parent="Areas/Corridor/G/Environment/Visuals/Sorted Items/Stop"]
+position = Vector2(2, -22)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Corridor/G/Environment/Visuals/Sorted Items/Stop/Collider"]
+position = Vector2(-4, 15)
+rotation = 1.5708
+scale = Vector2(0.995213, 1)
+shape = SubResource("RectangleShape2D_7oiwl")
+
+[node name="Lighting" type="Node2D" parent="Areas/Corridor/G/Environment/Visuals"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Corridor/G/Environment/Visuals/Lighting"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(-540, -7.62939e-06)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("39_u2oxt")
+
+[node name="PointLight2D" type="PointLight2D" parent="Areas/Corridor/G/Environment/Visuals/Lighting/Sprite2D"]
+scale = Vector2(10, 10)
+color = Color(0.621524, 0.621524, 0.621524, 1)
+energy = 1.85
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("40_x6qxg")
+texture_scale = 1.75
+
+[node name="Cutscene Helpers" type="Node2D" parent="Areas/Corridor/G/Environment/Visuals"]
+
+[node name="Transitions" type="Node" parent="Areas/Corridor/G/Environment"]
+
+[node name="SceneTransition" parent="Areas/Corridor/G/Environment/Transitions" instance=ExtResource("41_s5s5c")]
+visible = false
+position = Vector2(607, -178)
+scene_path = "res://src/RPGData/Scenes/TestRoom_2.tscn"
+
+[node name="Area Links" type="Node2D" parent="Areas"]
+
+[node name="AreaChangeTrigger" parent="Areas/Area Links" instance=ExtResource("39_y8rwr")]
+start_area = "atrium"
+end_area = "corridor"
+
+[node name="CollisionShape2D" parent="Areas/Area Links/AreaChangeTrigger/Area2D" index="0"]
+position = Vector2(0, 0.5)
+
 [node name="Floors (Teleport)" type="Node2D" parent="."]
 visible = false
 position = Vector2(-2000, 0)
@@ -1628,5 +1708,6 @@ limit_target = NodePath("../Areas/Atrium/G/TileMapWalls")
 
 [editable path="Areas/Atrium/G/Environment/Visuals/Escalators/EscalatorUp/FloorTrigger"]
 [editable path="Areas/Atrium/1F/Environment/Visuals/Escalators/EscalatorDown/FloorTrigger"]
+[editable path="Areas/Area Links/AreaChangeTrigger"]
 [editable path="Floors (Teleport)/G/Environment/Visuals/Escalators/EscalatorBase/FT2"]
 [editable path="Floors (Teleport)/1F/Environment/Visuals/Escalators/EscalatorBase/FT1"]

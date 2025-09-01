@@ -15,6 +15,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if !can_process() : return;
 	var pos = body.global_position;
 	
 	var dist_in = pos.distance_squared_to(in_point.global_position);
@@ -24,6 +25,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
+	if !can_process() : return;
 	var pos = body.global_position;
 	
 	var dist_in = pos.distance_squared_to(in_point.global_position);
