@@ -5849,7 +5849,7 @@ menu_name = "overworld_menu_main_sub_1"
 unfocus_on_open = false
 submenu = true
 initial_selection = NodePath("Save")
-all_selections = [NodePath("Save"), NodePath(""), NodePath("Delete")]
+all_selections = [NodePath("Save"), NodePath("Delete")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/System"]
@@ -5878,6 +5878,7 @@ offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../Delete")
+focus_neighbor_bottom = NodePath("../Delete")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_SAVE"
 
@@ -5894,6 +5895,7 @@ offset_right = 170.0
 offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_top = NodePath("../Save")
 focus_neighbor_bottom = NodePath("../Save")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_DELETE"

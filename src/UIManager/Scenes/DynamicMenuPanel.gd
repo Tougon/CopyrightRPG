@@ -80,6 +80,8 @@ func set_selected_index(new_index : int):
 	var min_visible = (_group_start_index - 1) * _grid_size.x
 	var max_visible = ((_group_start_index + _grid_size.y - 1) * _grid_size.x) - 1;
 	
+	if _current_selected_index == -1 : return;
+	
 	# Check if item is currently in the visible range
 	if _current_selected_index >= min_visible && _current_selected_index <= max_visible :
 		var group_index = _item_index_to_group_index(new_index);
