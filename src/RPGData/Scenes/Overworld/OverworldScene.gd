@@ -34,6 +34,7 @@ var _battle_end_timestamp : float;
 func _ready() -> void:
 	EventManager.on_overworld_change_area.connect(_on_overworld_change_area);
 	EventManager.on_overworld_change_floor.connect(_on_overworld_change_floor);
+	EventManager.on_player_enter_floor_change_zone.connect(_on_player_enter_floor_change_zone);
 	
 	EventManager.on_battle_queue.connect(_on_overworld_battle_queued);
 	EventManager.on_battle_end.connect(_on_battle_end);
@@ -46,7 +47,8 @@ func _ready() -> void:
 	
 	await get_tree().process_frame;
 	
-	_current_area = "atrium";
+	_current_area = DataManager.current_save.player_area;
+	if _current_area.is_empty() : _current_area = "main";
 	_current_floor_index = DataManager.current_save.player_floor;
 	
 	if _area_root != null :
@@ -112,6 +114,7 @@ func _on_overworld_change_area(new_area : String):
 		_areas[new_area].set_floor_visible(i, true);
 	
 	_current_area = new_area;
+	DataManager.current_save.player_area = _current_area;
 
 	game_camera.set_follow_target(null);
 	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
@@ -139,6 +142,7 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 		_areas[_current_area].set_floor_visible(new_floor, true);
 	
 	_current_floor_index = new_floor;
+	DataManager.current_save.player_floor = _current_floor_index;
 	
 	#game_camera.set_follow_target(null);
 	#player_controller.reparent(self);
@@ -161,6 +165,10 @@ func _overworld_player_teleport(pos : Vector2):
 	var delta_pos = pos - player_controller.global_position;
 	player_controller.global_position = pos;
 	game_camera.teleport_position()
+
+
+func _on_player_enter_floor_change_zone(enter : bool):
+	DataManager.current_save.player_floor_change = enter;
 
 
 func _fade_action_cutscene(fade_in : bool):
@@ -340,6 +348,7 @@ func _exit_tree():
 	if EventManager != null:
 		EventManager.on_overworld_change_area.disconnect(_on_overworld_change_area);
 		EventManager.on_overworld_change_floor.disconnect(_on_overworld_change_floor);
+		EventManager.on_player_enter_floor_change_zone.disconnect(_on_player_enter_floor_change_zone);
 		
 		EventManager.on_battle_queue.disconnect(_on_overworld_battle_queued);
 		EventManager.on_battle_end.disconnect(_on_battle_end);

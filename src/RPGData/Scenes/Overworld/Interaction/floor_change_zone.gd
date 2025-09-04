@@ -9,8 +9,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# TODOGAME: Cache state?
-	_on_player_enter_floor_change_zone(false);
+	_on_player_enter_floor_change_zone(DataManager.current_save.player_floor_change);
 	EventManager.on_player_enter_floor_change_zone.connect(_on_player_enter_floor_change_zone);
 
 

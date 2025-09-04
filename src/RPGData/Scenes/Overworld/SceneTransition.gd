@@ -11,6 +11,6 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Guh")
-	print(body.name);
+	if !can_process() || !is_visible_in_tree(): return;
+	print(name);
 	EventManager.load_scene.emit(scene_path);

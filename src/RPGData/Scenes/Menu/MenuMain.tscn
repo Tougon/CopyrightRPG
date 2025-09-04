@@ -1,0 +1,182 @@
+[gd_scene load_steps=25 format=3 uid="uid://bwraay02dnfrj"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Menu/menu_main.gd" id="1_67p6k"]
+[ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_2s2vu"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="3_x5fet"]
+[ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="4_8drr0"]
+[ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="5_s7qwc"]
+[ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="6_17ent"]
+[ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="7_dqf2r"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="8_npr8v"]
+[ext_resource type="Resource" uid="uid://c3njfcjmrqtit" path="res://assets/Tweens/Transition/erode_in.tres" id="9_trpta"]
+[ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="10_8mfhe"]
+[ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="11_mvd22"]
+[ext_resource type="Resource" uid="uid://bnvdca7lgydy3" path="res://assets/Tweens/Transition/fade_in.tres" id="12_4vtex"]
+[ext_resource type="Resource" uid="uid://b7evdmbcxg6wl" path="res://assets/Tweens/Transition/fade_out.tres" id="13_wy67g"]
+[ext_resource type="Resource" uid="uid://c2018oj6gvq61" path="res://assets/Tweens/Transition/fade_in_instant.tres" id="14_8go16"]
+[ext_resource type="Resource" uid="uid://b5imgyuuysj7p" path="res://assets/Tweens/Transition/fade_out_instant.tres" id="15_r0pme"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sohcf"]
+shader = ExtResource("5_s7qwc")
+shader_parameter/blur_amount = 4.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = null
+shader_parameter/focus_radius = 0.25
+shader_parameter/focus_edge = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m85ew"]
+shader = ExtResource("7_dqf2r")
+shader_parameter/noise_size = 1.0
+shader_parameter/noise_strength = 0.5
+shader_parameter/noise_magnitude = Vector2(1, 0.333)
+shader_parameter/noise_floor = 0.01
+shader_parameter/use_time = true
+shader_parameter/aspect_ratio = Vector2(1, 1.333)
+shader_parameter/uv_amount = 0.0
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/origin = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_1vddh"]
+script = ExtResource("8_npr8v")
+tween_name = "Battle Fade In"
+tween_resource = ExtResource("9_trpta")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_8srpl"]
+script = ExtResource("8_npr8v")
+tween_name = "Battle Fade Out"
+tween_resource = ExtResource("10_8mfhe")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_kd3c1"]
+script = ExtResource("8_npr8v")
+tween_name = "Battle Fade Complete"
+tween_resource = ExtResource("11_mvd22")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_ynn0l"]
+script = ExtResource("8_npr8v")
+tween_name = "Cutscene Fade In"
+tween_resource = ExtResource("12_4vtex")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_qagoa"]
+script = ExtResource("8_npr8v")
+tween_name = "Cutscene Fade Out"
+tween_resource = ExtResource("13_wy67g")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_sdbl4"]
+script = ExtResource("8_npr8v")
+tween_name = "Cutscene Fade In Instant"
+tween_resource = ExtResource("14_8go16")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_eblq6"]
+script = ExtResource("8_npr8v")
+tween_name = "Cutscene Fade Out Instant"
+tween_resource = ExtResource("15_r0pme")
+play_on_start = false
+next_tween = ""
+
+[node name="MenuMain" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MenuPanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("initial_selection", "all_selections")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_67p6k")
+menu_name = "menu_main"
+start_open = true
+initial_selection = NodePath("VBoxContainer/New Game")
+all_selections = [NodePath("VBoxContainer/New Game"), NodePath("VBoxContainer/Load Game")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MenuPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 60.0
+offset_bottom = 160.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][font_size=32][b][i]SORCERER[/i][/b][/font_size]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MenuPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 250.0
+offset_right = -200.0
+offset_bottom = -350.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="New Game" type="Button" parent="CanvasLayer/MenuPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "New Game"
+
+[node name="Load Game" type="Button" parent="CanvasLayer/MenuPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Load Game"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MenuPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "[center][font_size=12]©2025 TOUGON CORPORATION"
+
+[node name="TweenPlayerUI" type="Node" parent="CanvasLayer/MenuPanel"]
+script = ExtResource("2_2s2vu")
+
+[node name="BG Fade Canvas" type="CanvasLayer" parent="." node_paths=PackedStringArray("fade_sequence")]
+layer = 5
+visible = false
+script = ExtResource("3_x5fet")
+fade_sequence = NodePath("TweenPlayerUI")
+
+[node name="Blur" parent="BG Fade Canvas" instance=ExtResource("4_8drr0")]
+visible = false
+material = SubResource("ShaderMaterial_sohcf")
+
+[node name="Grain Noise" parent="BG Fade Canvas" instance=ExtResource("6_17ent")]
+visible = false
+material = SubResource("ShaderMaterial_m85ew")
+
+[node name="Erode" parent="BG Fade Canvas" instance=ExtResource("6_17ent")]
+material = SubResource("ShaderMaterial_m85ew")
+
+[node name="Fade" type="ColorRect" parent="BG Fade Canvas"]
+z_index = 50
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="TweenPlayerUI" type="Node" parent="BG Fade Canvas"]
+script = ExtResource("2_2s2vu")
+sequence_list = Array[ExtResource("8_npr8v")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa"), SubResource("Resource_sdbl4"), SubResource("Resource_eblq6")])
+
+[connection signal="pressed" from="CanvasLayer/MenuPanel/VBoxContainer/New Game" to="CanvasLayer/MenuPanel" method="_on_new_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/MenuPanel/VBoxContainer/Load Game" to="CanvasLayer/MenuPanel" method="_on_load_game_pressed"]

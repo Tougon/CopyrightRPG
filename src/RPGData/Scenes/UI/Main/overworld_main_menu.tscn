@@ -5849,7 +5849,7 @@ menu_name = "overworld_menu_main_sub_1"
 unfocus_on_open = false
 submenu = true
 initial_selection = NodePath("Save")
-all_selections = [NodePath("Save"), NodePath("Load"), NodePath("Delete")]
+all_selections = [NodePath("Save"), NodePath(""), NodePath("Delete")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_pblu3"), SubResource("Resource_3byi8")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/System"]
@@ -5878,27 +5878,8 @@ offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../Delete")
-focus_neighbor_bottom = NodePath("../Load")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_SAVE"
-
-[node name="Load" type="Button" parent="Body/System"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -79.0
-offset_right = 170.0
-offset_bottom = -29.0
-grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_top = NodePath("../Save")
-focus_neighbor_bottom = NodePath("../Delete")
-theme = ExtResource("13_ynyhx")
-text = "T_MENU_COMMON_LOAD"
 
 [node name="Delete" type="Button" parent="Body/System"]
 layout_mode = 1
@@ -5913,7 +5894,6 @@ offset_right = 170.0
 offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_neighbor_top = NodePath("../Load")
 focus_neighbor_bottom = NodePath("../Save")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_DELETE"
@@ -5943,5 +5923,4 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="value_changed" from="Body/Options/BGM Volume Slider" to="Body/Options" method="_on_bgm_volume_slider_value_changed"]
 [connection signal="value_changed" from="Body/Options/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="Body/System/Load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]

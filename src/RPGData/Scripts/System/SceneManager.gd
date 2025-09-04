@@ -5,6 +5,12 @@ const SCENE_LOAD_DELAY = 0.25;
 
 # The current active scene
 var current_scene;
+var current_scene_path;
+
+var set_position : bool = false;
+var use_target_player_position : bool = false;
+var target_player_position : Vector2;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +22,7 @@ func _ready() -> void:
 func _init_current_scene():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
+	current_scene_path = get_tree().current_scene.scene_file_path;
 
 
 # Loads the scene at the given path.
@@ -59,15 +66,25 @@ func _load_scene(path : String):
 			var scene_inst = new_scene.instantiate();
 			get_tree().root.add_child(scene_inst);
 			
-			EventManager.set_player_can_move.emit(false);
 			EventManager.overworld_transition_fade_start.emit(true);
 			EventManager.fade_bgm.emit(1, 0, false);
+			
+			await get_tree().process_frame;
+			
+			EventManager.set_player_can_move.emit(false);
+			
+			if set_position :
+				if use_target_player_position : 
+					OverworldManager.player_controller.position = target_player_position;
+					use_target_player_position = false;
+			
 			# TODO: Restore input
 			await EventManager.overworld_transition_fade_completed;
 			EventManager.set_player_can_move.emit(true);
 			
 			# Update the current scene reference
 			current_scene = scene_inst;
+			current_scene_path = path;
 			print(current_scene.name);
 		
 		else :

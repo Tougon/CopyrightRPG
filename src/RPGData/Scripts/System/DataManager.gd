@@ -16,15 +16,12 @@ func _ready():
 	current_save = SaveData.new();
 	_load_preferences();
 	
-	# TODO: Don't do this automatically
-	create_data();
+	initialize_data(true);
 	
 	await get_tree().process_frame;
 
 
-func create_data():
-	party_data = [];
-	
+func initialize_data(auto : bool):
 	if entity_database == null : print("Entity Database does not exist.");
 	if quest_database == null : print("Quest Database does not exist.");
 	if item_database == null : print("Item Database does not exist.");
@@ -33,7 +30,22 @@ func create_data():
 	entity_database.initialize();
 	item_database.initialize();
 	
-	# TODO: Better initialization for player?
+	initialize_party_data(auto)
+	
+	if auto :
+		current_save.inventory[0] = 2;
+		current_save.inventory[1] = 3;
+		current_save.inventory[2] = 3;
+		current_save.inventory[3] = 3;
+		current_save.inventory[4] = 3;
+		current_save.inventory[5] = 3;
+		current_save.inventory[6] = 3;
+		current_save.inventory[8] = 3;
+
+
+func initialize_party_data(auto : bool):
+	party_data = [];
+	
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		var entity = DataManager.entity_database.get_entity(i, true)
 		var move_list = entity.get_base_move_list();
@@ -43,23 +55,24 @@ func create_data():
 		
 		var member = PartyMemberData.new();
 		member.id = i;
-		member.level = 5;
+		if auto : member.level = 5;
+		else : member.level = 1;
 		member.exp = 0;
-		member.unlocked = true;
+		member.unlocked = auto;
 		member.move_list = move_list;
 		member.hp_value = entity.get_hp(member.level);
 		member.mp_value = entity.get_mp(member.level);
 		party_data.append(member);
+
+
+# Save Data Management Functions
+
+func create_new_save():
+	current_save = SaveData.new();
+	current_save.player_scene = "res://src/RPGData/Scenes/TestRoom_2.tscn";
 	
-	# TODO: Remove this. This is temp item stuff.
-	current_save.inventory[0] = 2;
-	current_save.inventory[1] = 3;
-	current_save.inventory[2] = 3;
-	current_save.inventory[3] = 3;
-	current_save.inventory[4] = 3;
-	current_save.inventory[5] = 3;
-	current_save.inventory[6] = 3;
-	current_save.inventory[8] = 3;
+	initialize_party_data(false);
+	party_data[0].unlocked = true;
 
 
 func load_data():
@@ -70,10 +83,9 @@ func load_data():
 		var save = save_file.get_var(true);
 		if save != null:
 			current_save = save;
-			
-			# TODO: Add load(s) elsewhere. Probably with a loaded delegate
-			OverworldManager.player_controller.position = current_save.player_position;
-		else: print("Corrupt Save File")
+		else: 
+			print("Corrupt Save File")
+			return;
 		
 		# Clear party data
 		party_data = [];
@@ -85,13 +97,19 @@ func load_data():
 			
 			if member != null:
 				party_data.append(member);
-			else : print("Corrupt Save File")
+			else : 
+				current_save = null;
+				print("Corrupt Save File")
+				return;
 		
 		var quest_data = save_file.get_var(true);
 		
 		if quest_data != null:
 			QuestManager.load_saved_quest_data(quest_data);
-		else : print("Corrupt Save File or Invalid Quest Data")
+		else : 
+			current_save = null;
+			print("Corrupt Save File")
+			return;
 		
 	else : print("No Save File")
 	
@@ -101,6 +119,7 @@ func load_data():
 func save_data():
 	# Update player position
 	current_save.player_position = OverworldManager.player_controller.position;
+	current_save.player_scene = SceneManager.current_scene_path;
 	
 	# Convert to binary and save
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
