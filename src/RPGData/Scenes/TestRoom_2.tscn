@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=92 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -50,6 +50,7 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="34_ovw04"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="35_ggcyw"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="36_efa3s"]
+[ext_resource type="PackedScene" uid="uid://bhgf2upgu87m3" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueTrigger.tscn" id="36_q35u8"]
 [ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.tscn" id="37_j44eh"]
 [ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="38_c2a70"]
 [ext_resource type="PackedScene" uid="uid://jj8j131a8alj" path="res://src/RPGData/Scenes/Overworld/Interaction/AreaChangeTrigger.tscn" id="39_mp0de"]
@@ -159,6 +160,20 @@ tween_name = "slide"
 tween_resource = SubResource("Resource_nhfo7")
 play_on_start = false
 next_tween = ""
+
+[sub_resource type="Resource" id="Resource_wagyf"]
+script = ExtResource("23_kd2pp")
+quest_name = "DemoProgression"
+check_type = 0
+use_step = false
+step_name = ""
+negate = true
+
+[sub_resource type="Resource" id="Resource_ynyhm"]
+script = ExtResource("22_jlxcx")
+active_state = true
+check_type = 0
+active_conditions = Array[ExtResource("23_kd2pp")]([SubResource("Resource_wagyf")])
 
 [sub_resource type="Resource" id="Resource_4wyvb"]
 script = ExtResource("36_efa3s")
@@ -287,7 +302,6 @@ bgm_id = "unfinished_sympathy"
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Ref" type="Node2D" parent="Areas"]
-visible = false
 script = ExtResource("2_a4cvd")
 area_name_key = "main"
 
@@ -737,6 +751,11 @@ visible = false
 position = Vector2(461, 300)
 target = NodePath("../RPGOverworldFollower")
 
+[node name="DialogueTrigger" parent="Areas/Ref/G/Environment/Visuals/Sorted Items" instance=ExtResource("36_q35u8")]
+position = Vector2(975, 258)
+additional_active_state = Array[ExtResource("22_jlxcx")]([SubResource("Resource_ynyhm")])
+default_dialogue = "demo_intro"
+
 [node name="Lighting" type="Node2D" parent="Areas/Ref/G/Environment/Visuals"]
 visible = false
 
@@ -1107,6 +1126,7 @@ tile_set = SubResource("TileSet_ca3if")
 [node name="Transitions" type="Node" parent="Areas/Ref/1F/Environment"]
 
 [node name="Ref2" type="Node2D" parent="Areas"]
+visible = false
 script = ExtResource("2_a4cvd")
 area_name_key = "coridoor"
 

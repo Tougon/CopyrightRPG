@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="QuestDatabase" load_steps=6 format=3 uid="uid://dxphr6tet5vr2"]
+[gd_resource type="Resource" script_class="QuestDatabase" load_steps=8 format=3 uid="uid://dxphr6tet5vr2"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/System/QuestDatabaseEntry.gd" id="1_j5sa6"]
 [ext_resource type="Resource" uid="uid://yra4mmseryxw" path="res://assets/Quests/temp.quest" id="2_7b8qt"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/System/QuestDatabase.gd" id="3_2dw22"]
+[ext_resource type="Resource" uid="uid://cgd46j5146iio" path="res://assets/Quests/demo.quest" id="3_ls2oh"]
 
 [sub_resource type="Resource" id="Resource_axicn"]
 script = ExtResource("1_j5sa6")
@@ -14,6 +15,11 @@ script = ExtResource("1_j5sa6")
 quest = ExtResource("2_7b8qt")
 quest_name = "Tutorial"
 
+[sub_resource type="Resource" id="Resource_oqpm3"]
+script = ExtResource("1_j5sa6")
+quest = ExtResource("3_ls2oh")
+quest_name = "DemoProgression"
+
 [resource]
 script = ExtResource("3_2dw22")
-quests = Array[ExtResource("1_j5sa6")]([SubResource("Resource_axicn"), SubResource("Resource_c48b4")])
+quests = Array[ExtResource("1_j5sa6")]([SubResource("Resource_axicn"), SubResource("Resource_c48b4"), SubResource("Resource_oqpm3")])

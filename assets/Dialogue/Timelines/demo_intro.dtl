@@ -1,0 +1,7 @@
+join demo_boss center
+[begin_quest quest="Demo" resource="DemoProgression"]
+[progress_quest quest="DemoProgression"]
+demo_boss: SOLVE MY MAZE.
+leave demo_boss
+[clear time="1.0" step="false"]
+[end_timeline]

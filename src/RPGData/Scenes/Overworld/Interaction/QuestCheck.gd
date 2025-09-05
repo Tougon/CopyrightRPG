@@ -22,7 +22,7 @@ func check():
 			
 			if quest_instance.size() > 0:
 				if use_step : 
-					var step = QuestManager.get_current_step(quest_name)["id"];
+					var step = QuestManager.get_current_step(quest_name)["details"];
 					if step_name == step : return !negate;
 					else : return negate;
 				else : return !negate;
@@ -34,7 +34,7 @@ func check():
 			if negate : return !QuestManager.is_quest_complete(quest_name);
 			else : return QuestManager.is_quest_complete(quest_name);
 		
-		CheckType.COMPLETE:
+		CheckType.FAILED:
 			if quest_instance.size() <= 0 : return false;
 			
 			if negate : return !QuestManager.is_quest_failed(quest_name);

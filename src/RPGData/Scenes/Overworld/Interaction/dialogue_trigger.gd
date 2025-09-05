@@ -1,13 +1,10 @@
 extends CutsceneObject
-class_name Interactable
+class_name DialogueTrigger
 
 @export var default_active_state : bool = true;
 @export var additional_active_state : Array[ActiveCheckGroup];
 @export var default_dialogue : String = "temp";
 @export var additional_dialogue : Array[DialogueCheckGroup];
-
-@onready var collision_root : Node2D = $Collider/CollisionShape2D;
-@onready var highlight_icon : InteractIcon = $"Interact Icon";
 
 
 func _ready():
@@ -59,12 +56,6 @@ func _update_active_state():
 	$Collider/CollisionShape2D.disabled = !active;
 
 
-func highlight(state : bool):
-	if highlight_icon != null :
-		if state : highlight_icon.tween.play_tween_name("Highlight");
-		else : highlight_icon.tween.play_tween_name("Unhighlight");
-
-
 func interact():
 	if Dialogic.current_timeline != null: return
 
@@ -92,3 +83,11 @@ func _get_interact_dialogue() -> String:
 		if result != "" : return result;
 	
 	return default_dialogue;
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if !can_process() : return;
+	if !(body is RPGPlayerController) : return;
+	if Dialogic.current_timeline != null: return
+	
+	Dialogic.start(_get_interact_dialogue())

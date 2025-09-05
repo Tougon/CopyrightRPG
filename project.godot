@@ -8,7 +8,7 @@
 
 config_version=5
 
-recent_projects=["res://assets/Quests/temp.quest"]
+recent_projects=["res://assets/Quests/temp.quest", "res://assets/Quests/demo.quest"]
 
 [application]
 
@@ -43,6 +43,7 @@ directories/dch_directory={
 }
 directories/dtl_directory={
 "demo_boss_sequence": "res://assets/Dialogue/Timelines/demo/demo_boss_sequence.dtl",
+"demo_intro": "res://assets/Dialogue/Timelines/demo_intro.dtl",
 "stop": "res://assets/Dialogue/Timelines/stop.dtl",
 "temp": "res://assets/Dialogue/Timelines/temp.dtl",
 "temp_cutscene": "res://assets/Dialogue/Timelines/temp_cutscene.dtl",

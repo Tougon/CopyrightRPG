@@ -1,0 +1,15 @@
+[remap]
+
+importer="quest_importer"
+type="Resource"
+uid="uid://cgd46j5146iio"
+path="res://.godot/imported/demo.quest-5ff29c0e9b80917ccbf5d02d78629075.tres"
+
+[deps]
+
+source_file="res://assets/Quests/demo.quest"
+dest_files=["res://.godot/imported/demo.quest-5ff29c0e9b80917ccbf5d02d78629075.tres"]
+
+[params]
+
+defaults=true
