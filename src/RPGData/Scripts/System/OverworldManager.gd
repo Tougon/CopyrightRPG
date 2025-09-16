@@ -7,6 +7,9 @@ const FLOOR_TRANSITION_TIME : float = 0.45;
 var player_controller : RPGPlayerController;
 var free_camera : PhantomCamera2D;
 
+var encounter_wait_time : float;
+var encounter_time : float;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() :
 	pass

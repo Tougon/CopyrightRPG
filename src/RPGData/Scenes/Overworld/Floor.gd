@@ -10,6 +10,8 @@ class_name Floor
 @onready var environment : Node2D = $Environment;
 @onready var environment_visuals : Node2D = $Environment/Visuals;
 
+@onready var lighting : Node2D = $Environment/Visuals/Lighting;
+
 
 # Active refers specifically to collision
 func set_floor_active(active : bool):
@@ -24,6 +26,8 @@ func set_floor_active(active : bool):
 		set_process(false);
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED;
 		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_OFF;
+	
+	if lighting != null : lighting.visible = active;
 
 
 func set_floor_visible(visible : bool, tween : bool = true):

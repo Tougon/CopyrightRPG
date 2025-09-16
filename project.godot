@@ -13,7 +13,7 @@ recent_projects=["res://assets/Quests/temp.quest", "res://assets/Quests/demo.que
 [application]
 
 config/name="Copyright RPG"
-run/main_scene="res://src/RPGData/Scenes/TestRoom.tscn"
+run/main_scene="res://src/RPGData/Scenes/TestRoom_2.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 config/icon="res://icon.svg"

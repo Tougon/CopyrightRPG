@@ -1,4 +1,5 @@
-extends Node
+extends Node2D
+class_name EncounterManager
 
 @export var enabled : bool = true;
 @export var encounters : Array[Encounter];
@@ -10,9 +11,8 @@ extends Node
 
 var current_chance : float = 0;
 var encounter_chance : float = 0;
-var wait_time : float = 0;
-var encounter_time : float = 0;
 var process_encounters : bool = true;
+var active : bool = true;
 
 func _ready():
 	EventManager.on_overworld_player_moved.connect(_on_overworld_player_moved);
@@ -24,16 +24,16 @@ func _ready():
 
 
 func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float):
-	if !enabled  || !process_encounters: return;
+	if !enabled || !active || !process_encounters: return;
 	
-	if wait_time < grace_period : 
-		wait_time += delta;
+	if OverworldManager.encounter_wait_time < grace_period : 
+		OverworldManager.encounter_wait_time  += delta;
 	else :
-		encounter_time += delta;
+		OverworldManager.encounter_time += delta;
 		
-		if encounter_time >= encounter_reroll_rate:
+		if OverworldManager.encounter_time >= encounter_reroll_rate:
 			encounter_chance = randf();
-			encounter_time = 0;
+			OverworldManager.encounter_time = 0;
 		
 		if encounter_chance < current_chance:
 			var encounter = _get_random_encounter();
@@ -67,8 +67,8 @@ func _get_random_encounter() -> Encounter:
 
 
 func _reset_encounter_variables(encounter : Encounter):
-	wait_time = 0;
-	encounter_time = 0;
+	OverworldManager.encounter_wait_time = 0;
+	OverworldManager.encounter_time = 0;
 	
 	current_chance = minimum_encounter_chance;
 	encounter_chance = randf();

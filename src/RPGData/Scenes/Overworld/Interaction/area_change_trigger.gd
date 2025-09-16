@@ -4,12 +4,15 @@ extends Node2D
 @onready var end : Node2D = $End;
 @export var start_area : String = "";
 @export var end_area : String = "";
+@export var check_floor : bool = false;
+@export var active_floors : Array[int];
 
 var _can_collide : bool = true;
 
 func _on_body_exited(body: Node2D) -> void:
 	if !_can_collide || !can_process() : return;
 	if body is RPGPlayerController && body._exiting : return;
+	if check_floor && !active_floors.has(DataManager.current_save.player_floor) : return
 	
 	_can_collide = false;
 	#print(name);
