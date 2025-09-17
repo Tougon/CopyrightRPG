@@ -12,6 +12,8 @@ class_name Floor
 
 @onready var lighting : Node2D = $Environment/Visuals/Lighting;
 
+@export var use_floor_as_bounds : bool = true;
+
 
 # Active refers specifically to collision
 func set_floor_active(active : bool):
@@ -61,5 +63,6 @@ func put_player_on_floor(player : Node2D):
 
 
 func put_camera_on_floor(game_camera : PhantomCamera2D, free_camera : PhantomCamera2D):
-	game_camera.limit_target = game_camera.get_path_to(tile_map_wall)
+	if use_floor_as_bounds : 
+		game_camera.limit_target = game_camera.get_path_to(tile_map_wall)
 	free_camera.limit_target = free_camera.get_path_to(tile_map_wall)

@@ -5,6 +5,7 @@ const FLOOR_TRANSITION_TIME : float = 0.45;
 
 # Runtime variables
 var player_controller : RPGPlayerController;
+var game_camera : PhantomCamera2D;
 var free_camera : PhantomCamera2D;
 
 var encounter_wait_time : float;

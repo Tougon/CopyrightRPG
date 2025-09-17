@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b57cnqh0ej1fi"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Camera/camera_area.gd" id="1_i8wow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b54pi"]
+size = Vector2(200, 200)
+
+[node name="Camera Area" type="Node2D"]
+script = ExtResource("1_i8wow")
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("RectangleShape2D_b54pi")
+
+[connection signal="body_entered" from="Collision" to="." method="_on_body_entered"]

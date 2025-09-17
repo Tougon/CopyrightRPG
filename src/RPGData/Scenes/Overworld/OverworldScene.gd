@@ -43,6 +43,7 @@ func _ready() -> void:
 	UIManager.on_menu_closing.connect(_on_menu_closing);
 	
 	OverworldManager.player_controller = player_controller;
+	OverworldManager.game_camera = game_camera;
 	OverworldManager.free_camera = free_camera;
 	
 	await get_tree().process_frame;
