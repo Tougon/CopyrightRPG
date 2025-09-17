@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cviyt63wxucnc"]
+[gd_scene load_steps=8 format=3 uid="uid://cviyt63wxucnc"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.gd" id="1_1wsnh"]
 [ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_ix7x6"]
@@ -10,6 +10,8 @@ size = Vector2(79, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqi8"]
 size = Vector2(32, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qt556"]
 
 [node name="Player" type="CharacterBody2D"]
 physics_interpolation_mode = 1
@@ -44,3 +46,12 @@ texture = ExtResource("3_rngrh")
 
 [node name="FadeOffset" type="Node2D" parent="."]
 position = Vector2(0, -39)
+
+[node name="Camera Collider" type="Area2D" parent="."]
+position = Vector2(0, -160)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera Collider"]
+shape = SubResource("RectangleShape2D_qt556")
+debug_color = Color(1, 0, 0, 0.419608)

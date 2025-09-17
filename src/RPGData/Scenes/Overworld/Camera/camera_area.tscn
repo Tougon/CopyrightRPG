@@ -9,8 +9,12 @@ size = Vector2(200, 200)
 script = ExtResource("1_i8wow")
 
 [node name="Collision" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 shape = SubResource("RectangleShape2D_b54pi")
+debug_color = Color(0.960784, 0, 0, 0.419608)
 
-[connection signal="body_entered" from="Collision" to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Collision" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="Collision" to="." method="_on_area_exited"]

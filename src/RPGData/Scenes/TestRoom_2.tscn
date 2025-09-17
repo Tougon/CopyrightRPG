@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=91 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://jj8j131a8alj" path="res://src/RPGData/Scenes/Overworld/Interaction/AreaChangeTrigger.tscn" id="39_mp0de"]
 [ext_resource type="Texture2D" uid="uid://c26peh6th8coj" path="res://assets/Sprites/Overworld/temp/test_logo.png" id="39_rjwar"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="39_u2oxt"]
+[ext_resource type="PackedScene" uid="uid://b57cnqh0ej1fi" path="res://src/RPGData/Scenes/Overworld/Camera/camera_area.tscn" id="40_65vet"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="40_x6qxg"]
 [ext_resource type="PackedScene" uid="uid://2fue3n12jlip" path="res://src/RPGData/Scenes/Overworld/SceneTransition.tscn" id="41_s5s5c"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="42_1yuub"]
@@ -219,6 +220,12 @@ tween_name = "Move 1"
 tween_resource = SubResource("Resource_lew6v")
 play_on_start = false
 next_tween = ""
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qund"]
+size = Vector2(1344, 3547)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmbqc"]
+size = Vector2(2493, 1422)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("9_8smr2")
@@ -1312,6 +1319,18 @@ position = Vector2(-339, -167)
 
 [node name="TempCameraShit" type="Node2D" parent="Areas"]
 
+[node name="Camera Area" parent="Areas/TempCameraShit" instance=ExtResource("40_65vet")]
+
+[node name="CollisionShape2D" parent="Areas/TempCameraShit/Camera Area/Collision" index="0"]
+position = Vector2(608, 1426.5)
+shape = SubResource("RectangleShape2D_1qund")
+
+[node name="Camera Area2" parent="Areas/TempCameraShit" instance=ExtResource("40_65vet")]
+
+[node name="CollisionShape2D" parent="Areas/TempCameraShit/Camera Area2/Collision" index="0"]
+position = Vector2(600.5, 3911)
+shape = SubResource("RectangleShape2D_pmbqc")
+
 [node name="Floors (Teleport)" type="Node2D" parent="."]
 process_mode = 4
 visible = false
@@ -1820,7 +1839,7 @@ follow_target = NodePath("../Player Controller")
 tween_resource = SubResource("Resource_6ugjw")
 tween_on_load = false
 follow_damping = true
-dead_zone_width = 0.06
+dead_zone_width = 0.08
 dead_zone_height = 0.06
 draw_limits = true
 
@@ -1836,5 +1855,7 @@ draw_limits = true
 
 [editable path="Areas/Ref/G/Environment/Visuals/Escalators/EscalatorUp/FloorTrigger"]
 [editable path="Areas/Ref/1F/Environment/Visuals/Escalators/EscalatorDown/FloorTrigger"]
+[editable path="Areas/TempCameraShit/Camera Area"]
+[editable path="Areas/TempCameraShit/Camera Area2"]
 [editable path="Floors (Teleport)/G/Environment/Visuals/Escalators/EscalatorBase/FT2"]
 [editable path="Floors (Teleport)/1F/Environment/Visuals/Escalators/EscalatorBase/FT1"]
