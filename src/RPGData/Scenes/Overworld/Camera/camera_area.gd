@@ -4,7 +4,7 @@ var _current_area : Area2D;
 var _current_shape : CollisionShape2D;
 var _set_camera : bool = false;
 
-func _physics_process(delta: float) :
+func _process(delta: float) :
 	if !_set_camera && _current_area != null && _current_shape != null :
 		var shape_pos = _current_shape.global_position;
 		var shape = _current_shape.shape;
@@ -23,12 +23,16 @@ func _physics_process(delta: float) :
 		var area_right = area_pos.x + (area_bounds.size.x * 0.5)
 		
 		if shape_top <= area_top && shape_bottom >= area_bottom && shape_left >= area_left && shape_right <= area_right :
-			_set_camera = true;
-			OverworldManager.game_camera.follow_damping = false;
-			OverworldManager.game_camera.limit_target = OverworldManager.game_camera.get_path_to($Collision/CollisionShape2D)
-			await get_tree().physics_frame;
-			OverworldManager.game_camera.follow_damping = true;
-			print("Setting to..." + name)
+			_set_camera_limit();
+
+
+func _set_camera_limit() :
+	_set_camera = true;
+	#OverworldManager.game_camera.follow_damping = false;
+	OverworldManager.game_camera.limit_target = OverworldManager.game_camera.get_path_to($Collision/CollisionShape2D)
+	OverworldManager.game_camera.teleport_position();
+	#await get_tree().create_timer(OverworldManager.game_camera.follow_damping_value.x).timeout
+	#OverworldManager.game_camera.follow_damping = true;
 
 
 func _on_area_entered(area: Area2D) :

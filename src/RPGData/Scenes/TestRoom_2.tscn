@@ -1318,6 +1318,7 @@ y_sort_enabled = true
 position = Vector2(-339, -167)
 
 [node name="TempCameraShit" type="Node2D" parent="Areas"]
+visible = false
 
 [node name="Camera Area" parent="Areas/TempCameraShit" instance=ExtResource("40_65vet")]
 

@@ -48,7 +48,7 @@ texture = ExtResource("3_rngrh")
 position = Vector2(0, -39)
 
 [node name="Camera Collider" type="Area2D" parent="."]
-position = Vector2(0, -160)
+position = Vector2(0, -128)
 collision_layer = 16
 collision_mask = 16
 
