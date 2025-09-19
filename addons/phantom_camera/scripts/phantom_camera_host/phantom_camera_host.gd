@@ -675,6 +675,7 @@ func _assign_new_active_pcam(pcam: Node) -> void:
 
 func _check_pcam_physics() -> void:
 	if _is_2d:
+		if _active_pcam_2d == null : return;
 		if _active_pcam_2d.get_follow_target_physics_based() and interpolation_mode != InterpolationMode.IDLE:
 			_follow_target_physics_based = true
 			camera_2d.reset_physics_interpolation()
