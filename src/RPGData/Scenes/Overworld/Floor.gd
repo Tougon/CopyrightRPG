@@ -63,6 +63,6 @@ func put_player_on_floor(player : Node2D):
 
 
 func put_camera_on_floor(game_camera : PhantomCamera2D, free_camera : PhantomCamera2D):
-	if use_floor_as_bounds : 
+	if use_floor_as_bounds && OverworldManager.ALLOW_CAMERA_LOCK : 
 		game_camera.limit_target = game_camera.get_path_to(tile_map_wall)
 	free_camera.limit_target = free_camera.get_path_to(tile_map_wall)

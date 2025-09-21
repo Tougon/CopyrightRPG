@@ -68,6 +68,7 @@ func _ready() -> void:
 						area_data.set_area_active(true);
 						area_data.set_floor_active(_current_floor_index, true);
 						area_data.set_floor_visible(_current_floor_index, true, false);
+						_area_root.move_child(area_data, -1);
 						
 						game_camera.set_follow_target(null);
 						_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
@@ -109,6 +110,7 @@ func _on_overworld_change_area(new_area : String):
 	_areas[_current_area].set_area_active(false);
 	_areas[new_area].set_area_active(true);
 	_areas[new_area].set_floor_active(_current_floor_index, true);
+	_area_root.move_child(_areas[new_area], -1);
 	
 	for i in range(_current_floor_index, -10, -1) :
 		_areas[_current_area].set_floor_visible(i, false);

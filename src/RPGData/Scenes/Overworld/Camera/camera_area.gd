@@ -64,6 +64,7 @@ func _set_camera_limit() :
 
 
 func _on_area_entered(area: Area2D) :
+	if !OverworldManager.ALLOW_CAMERA_LOCK : return;
 	if !(area.get_parent() is RPGPlayerController) : return;
 	
 	while (OverworldManager.game_camera == null) :

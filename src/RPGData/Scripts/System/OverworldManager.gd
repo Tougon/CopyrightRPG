@@ -2,6 +2,7 @@ extends Node
 
 # Class that defines constant or important variables for the overworld
 const FLOOR_TRANSITION_TIME : float = 0.45;
+const ALLOW_CAMERA_LOCK : bool = false;
 
 # Runtime variables
 var player_controller : RPGPlayerController;
