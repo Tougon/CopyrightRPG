@@ -13,8 +13,10 @@ size = Vector2(79, 34)
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_ys4go")
+movement_type = 1
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_efbox")]
+modulate = Color(0.270588, 0.333333, 0.301961, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)

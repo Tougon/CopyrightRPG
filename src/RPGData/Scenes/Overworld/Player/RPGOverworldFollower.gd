@@ -12,6 +12,7 @@ enum MovementType { Direct, Indirect }
 @export var max_distance : float = 256;
 @export var speed : float = 200;
 @export var run_multiplier : float = 1.5;
+@export var detect_followers : bool = false;
 
 @onready var _player_visual: RPGCharacter = $RPGCharacter
 
@@ -108,20 +109,24 @@ func _physics_process(delta: float) :
 						var collider = $ShapeCast2D.get_collider(0);
 						var colliding_player = false;
 						
-						if collider is RPGPlayerController || collider is RPGOverworldFollower :
+						if collider is RPGPlayerController || (collider is RPGOverworldFollower && detect_followers):
 							colliding_player = true;
 						
 						var new_dir : Vector2;
 						
-						# Diagonals allow you to clip
 						if abs(dir.x) != 0 && abs(dir.y) != 0 :
 							# NOTE: Diagonals behave oddly when colliding with a player
-							var normal = $ShapeCast2D.get_collision_normal(0);
+							#var normal = $ShapeCast2D.get_collision_normal(0);
 							
-							if abs(normal.x) > 0:
-								dir.x = 0;
-							if abs(normal.y) > 0 :
-								dir.y = 0;
+							#var norm_angle = rad_to_deg(normal.angle())
+							#if (norm_angle as int) % 90 != 0 :
+							#	norm_angle += 45;
+							#	normal = Vector2(cos(deg_to_rad((norm_angle))), sin(deg_to_rad((norm_angle))))
+							
+							#if abs(normal.x) == 1:
+							#	dir.x = 0;
+							#if abs(normal.y) == 1 :
+							#	dir.y = 0;
 							
 							new_dir = dir;
 						else :

@@ -316,26 +316,10 @@ bgm_id = "unfinished_sympathy"
 position = Vector2(607, 46)
 run_multiplier = 1.75
 
-[node name="RPGOverworldFollower3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
-position = Vector2(461, 300)
+[node name="RPGOverworldFollower" parent="." node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
 target = NodePath("../Player Controller")
-movement_type = 1
-speed = 280.0
-run_multiplier = 1.3
-
-[node name="RPGOverworldFollower4" parent="." node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
-position = Vector2(461, 300)
-target = NodePath("../Player Controller")
-movement_type = 1
-speed = 180.0
-run_multiplier = 1.85
-
-[node name="RPGOverworldFollower5" parent="." node_paths=PackedStringArray("target") instance=ExtResource("38_c2a70")]
-position = Vector2(461, 300)
-target = NodePath("../Player Controller")
-movement_type = 1
-speed = 150.0
-run_multiplier = 2.2
+speed = 230.0
+run_multiplier = 1.2
 
 [node name="Areas" type="Node2D" parent="."]
 
