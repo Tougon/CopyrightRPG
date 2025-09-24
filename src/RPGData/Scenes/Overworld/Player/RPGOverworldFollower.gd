@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 class_name RPGOverworldFollower
 
 enum MovementType { Direct, Indirect }
@@ -7,8 +7,11 @@ enum MovementType { Direct, Indirect }
 @export var target : Node2D;
 @export var movement_type : MovementType;
 @export var max_positions : int = 25;
+@export_group("Indirect Parameters")
 @export var target_radius : float = 64;
+@export var max_distance : float = 256;
 @export var speed : float = 200;
+@export var run_multiplier : float = 1.5;
 
 @onready var _player_visual: RPGCharacter = $RPGCharacter
 
@@ -26,6 +29,9 @@ var _physics_body_trans_current: Transform2D
 var _prev_target_direction : Vector2;
 var _ahead_of_target_idle : bool = false;
 var _ahead_of_target_motion : bool = false;
+var _running : bool = false;
+var _direction_locked : bool = false;
+var _override_direction : Vector2;
 
 
 func _ready() :
@@ -84,54 +90,73 @@ func _physics_process(delta: float) :
 				#	return;
 				var dif = target.position - _prev_target_position;
 				var dir = dif.normalized();
+				
 				var angle = rad_to_deg(dir.angle())
 				
 				# Target is in motion
 				if abs(target.position.distance_to(_prev_target_position)) > 0.1:
 					_prev_target_direction = dir;
-					$Collision/ShapeCast2D.rotation_degrees = angle - 90;
 					
-					if $Collision/ShapeCast2D.is_colliding() :
-						var collider = $Collision/ShapeCast2D.get_collider(0);
+					if dir.x != 0 : 
+						$ShapeCast2D.shape.size.x = $ShapeCast2D.shape.size.y;
+					else :
+						$ShapeCast2D.shape.size.x = $CollisionShape2D.shape.size.x;
+					
+					$ShapeCast2D.rotation_degrees = angle - 90;
+					
+					if $ShapeCast2D.is_colliding() :
+						var collider = $ShapeCast2D.get_collider(0);
+						var colliding_player = false;
 						
-						if collider is RPGPlayerController || collider.get_parent() is RPGOverworldFollower :
-							_prev_target_position = target.position; 
-							return;
+						if collider is RPGPlayerController || collider is RPGOverworldFollower :
+							colliding_player = true;
+						
+						var new_dir : Vector2;
+						
+						# Diagonals allow you to clip
+						if abs(dir.x) != 0 && abs(dir.y) != 0 :
+							# NOTE: Diagonals behave oddly when colliding with a player
+							var normal = $ShapeCast2D.get_collision_normal(0);
+							
+							if abs(normal.x) > 0:
+								dir.x = 0;
+							if abs(normal.y) > 0 :
+								dir.y = 0;
+							
+							new_dir = dir;
 						else :
-							var new_dir : Vector2;
+							new_dir = dir;
 							
-							# Diagonals allow you to clip
-							if abs(dir.x) != 0 && abs(dir.y) != 0 :
-								var normal = $Collision/ShapeCast2D.get_collision_normal(0);
-								
-								if abs(normal.x) > 0:
-									dir.x = 0;
-								if abs(normal.y) > 0 :
-									dir.y = 0;
-							else :
-								if dir.x != 0 :
-									if target.position.y < position.y :
-										new_dir.y = -abs(dir.x);
-									else : 
+							if dir.x != 0 :
+								if target.position.y < position.y :
+									if colliding_player :
 										new_dir.y = abs(dir.x);
-								
-								if dir.y != 0 :
-									if target.position.x < position.x :
-										new_dir.x = -abs(dir.y);
-									else : 
+									else :
+										new_dir.y = -abs(dir.x);
+								else : 
+									if colliding_player :
+										new_dir.y = -abs(dir.x);
+									else :
+										new_dir.y = abs(dir.x);
+							
+							if dir.y != 0 :
+								if target.position.x < position.x :
+									if colliding_player :
 										new_dir.x = abs(dir.y);
-							
-							dir = new_dir;
-							
-							# Update angle
-							#angle = rad_to_deg(dir.angle())
-							#$Collision/ShapeCast2D.rotation_degrees = angle - 90;
-							#if $Collision/ShapeCast2D.is_colliding() :
-							#	dir = Vector2.ZERO;
+									else :
+										new_dir.x = -abs(dir.y);
+								else : 
+									if colliding_player :
+										new_dir.x = -abs(dir.y);
+									else :
+										new_dir.x = abs(dir.y);
+						
+						dir = new_dir.normalized();
 					
 					# If we are far enough ahead of the target, do nothing until the target catches up
 					if (dir.y < 0 && position.y + target_radius * 1.5 < target.position.y) || (dir.y > 0 && position.y - target_radius * 1.5 > target.position.y) || (dir.x < 0 && position.x + target_radius * 1.5 < target.position.x) || (dir.x > 0 && position.x - target_radius * 1.5 > target.position.x):
 						_ahead_of_target_motion = true;
+						_running = false;
 					
 					if _ahead_of_target_motion || _ahead_of_target_idle :
 						if (dir.y < 0 && target.position.y + target_radius < position.y) || (dir.y > 0 && target.position.y - target_radius > position.y) || (dir.x < 0 && target.position.x + target_radius < position.x) || (dir.x > 0 && target.position.x - target_radius > position.x):
@@ -139,12 +164,22 @@ func _physics_process(delta: float) :
 							_ahead_of_target_idle = false;
 					
 					if !_ahead_of_target_idle && !_ahead_of_target_motion:
-						position += (dir * speed * get_physics_process_delta_time());
+						var s = speed;
+						
+						if abs(target.position.distance_to(position)) > max_distance :
+							_running = true;
+						
+						if _running :
+							s *= run_multiplier;
+						
+						velocity = dir * s;
+						move_and_slide();
 					
 					_prev_target_position = target.position;
 				else:
 					if (_prev_target_direction.y < 0 && position.y < target.position.y) || (_prev_target_direction.y > 0 && position.y > target.position.y) || (_prev_target_direction.x < 0 && position.x < target.position.x) || (_prev_target_direction.x > 0 && position.x > target.position.x):
 						_ahead_of_target_idle = true;
+						_running = false;
 					_ahead_of_target_motion = false;
 					_prev_target_position = target.position;
 
@@ -156,12 +191,16 @@ func _initialize_position():
 		MovementType.Indirect:
 			var offset = _get_random_offset();
 			position = target.position + offset;
-			print("OFFSET: " + str(offset));
 	
 	if target != null : 
 		_prev_target_position = target.position;
 	
 	_initialized = true;
+
+
+func _remove_direction_lock(delay : float):
+	await get_tree().create_timer(delay).timeout;
+	_direction_locked = false;
 
 
 func _get_random_offset() -> Vector2:

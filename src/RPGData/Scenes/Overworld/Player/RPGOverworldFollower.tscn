@@ -7,25 +7,22 @@
 size = Vector2(79, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajqo8"]
-size = Vector2(56, 34)
+size = Vector2(79, 34)
 
-[node name="RPGOverworldFollower" type="Node2D"]
+[node name="RPGOverworldFollower" type="CharacterBody2D"]
+collision_layer = 8
+motion_mode = 1
 script = ExtResource("1_ys4go")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_efbox")]
 
-[node name="Collision" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_nmj22")
 debug_color = Color(1.20327e-07, 0.647609, 0.206214, 0.42)
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="Collision"]
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_ajqo8")
 target_position = Vector2(0, 64)
 max_results = 8
-collision_mask = 9
