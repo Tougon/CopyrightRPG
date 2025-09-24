@@ -234,6 +234,8 @@ locale/translations=PackedStringArray("res://assets/Localization/TextDatabase.en
 2d_physics/layer_1="Physical"
 2d_physics/layer_2="Interaction"
 2d_physics/layer_3="Camera"
+2d_physics/layer_4="Follower"
+2d_physics/layer_5="Transition"
 
 [phantom_camera]
 

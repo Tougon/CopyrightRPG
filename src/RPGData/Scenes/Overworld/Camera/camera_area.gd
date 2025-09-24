@@ -25,12 +25,12 @@ func _set_camera_limit() :
 	var area_pos = $Collision/CollisionShape2D.global_position;
 	var area_bounds = $Collision/CollisionShape2D.shape;
 	
-	var area_top = area_pos.y + (area_bounds.size.y * 0.5)
-	var area_bottom = area_pos.y - (area_bounds.size.y * 0.5)
+	var area_top = area_pos.y - (area_bounds.size.y * 0.5)
+	var area_bottom = area_pos.y + (area_bounds.size.y * 0.5)
 	var area_left = area_pos.x - (area_bounds.size.x * 0.5)
 	var area_right = area_pos.x + (area_bounds.size.x * 0.5)
 	
-	if shape_top <= area_top && shape_bottom >= area_bottom && shape_left >= area_left && shape_right <= area_right :
+	if shape_top >= area_top && shape_bottom <= area_bottom && shape_left >= area_left && shape_right <= area_right :
 		_set_camera = true;
 		var should_tween = true;
 		

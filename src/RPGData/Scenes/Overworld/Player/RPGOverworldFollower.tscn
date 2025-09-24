@@ -1,9 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkrbdy7uuagi1"]
+[gd_scene load_steps=5 format=3 uid="uid://dkrbdy7uuagi1"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.gd" id="1_ys4go"]
 [ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_efbox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmj22"]
+size = Vector2(79, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajqo8"]
+size = Vector2(79, 34)
 
 [node name="RPGOverworldFollower" type="Node2D"]
 script = ExtResource("1_ys4go")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_efbox")]
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_nmj22")
+debug_color = Color(1.20327e-07, 0.647609, 0.206214, 0.42)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="Collision"]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_ajqo8")
+target_position = Vector2(0, 64)
+max_results = 8
+collision_mask = 9

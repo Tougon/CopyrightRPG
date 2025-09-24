@@ -229,6 +229,7 @@ func _on_all_menus_closed():
 func reparent_player(new_parent : Node2D):
 	_reparenting = true;
 	self.reparent(new_parent);
+	EventManager.on_overworld_player_reparented.emit(new_parent);
 
 
 func clean_up():
