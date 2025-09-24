@@ -87,12 +87,47 @@ func _physics_process(delta: float) :
 				var angle = rad_to_deg(dir.angle())
 				
 				# Target is in motion
-				if target.position.distance_to(_prev_target_position) > 0:
+				if abs(target.position.distance_to(_prev_target_position)) > 0.1:
 					_prev_target_direction = dir;
 					$Collision/ShapeCast2D.rotation_degrees = angle - 90;
 					
 					if $Collision/ShapeCast2D.is_colliding() :
-						return;
+						var collider = $Collision/ShapeCast2D.get_collider(0);
+						
+						if collider is RPGPlayerController || collider.get_parent() is RPGOverworldFollower :
+							_prev_target_position = target.position; 
+							return;
+						else :
+							var new_dir : Vector2;
+							
+							# Diagonals allow you to clip
+							if abs(dir.x) != 0 && abs(dir.y) != 0 :
+								var normal = $Collision/ShapeCast2D.get_collision_normal(0);
+								
+								if abs(normal.x) > 0:
+									dir.x = 0;
+								if abs(normal.y) > 0 :
+									dir.y = 0;
+							else :
+								if dir.x != 0 :
+									if target.position.y < position.y :
+										new_dir.y = -abs(dir.x);
+									else : 
+										new_dir.y = abs(dir.x);
+								
+								if dir.y != 0 :
+									if target.position.x < position.x :
+										new_dir.x = -abs(dir.y);
+									else : 
+										new_dir.x = abs(dir.y);
+							
+							dir = new_dir;
+							
+							# Update angle
+							#angle = rad_to_deg(dir.angle())
+							#$Collision/ShapeCast2D.rotation_degrees = angle - 90;
+							#if $Collision/ShapeCast2D.is_colliding() :
+							#	dir = Vector2.ZERO;
 					
 					# If we are far enough ahead of the target, do nothing until the target catches up
 					if (dir.y < 0 && position.y + target_radius * 1.5 < target.position.y) || (dir.y > 0 && position.y - target_radius * 1.5 > target.position.y) || (dir.x < 0 && position.x + target_radius * 1.5 < target.position.x) || (dir.x > 0 && position.x - target_radius * 1.5 > target.position.x):
@@ -111,6 +146,7 @@ func _physics_process(delta: float) :
 					if (_prev_target_direction.y < 0 && position.y < target.position.y) || (_prev_target_direction.y > 0 && position.y > target.position.y) || (_prev_target_direction.x < 0 && position.x < target.position.x) || (_prev_target_direction.x > 0 && position.x > target.position.x):
 						_ahead_of_target_idle = true;
 					_ahead_of_target_motion = false;
+					_prev_target_position = target.position;
 
 
 func _initialize_position():

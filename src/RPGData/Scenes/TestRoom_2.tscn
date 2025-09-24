@@ -320,7 +320,6 @@ run_multiplier = 1.75
 position = Vector2(461, 300)
 target = NodePath("../Player Controller")
 movement_type = 1
-speed = 180.0
 
 [node name="Areas" type="Node2D" parent="."]
 
