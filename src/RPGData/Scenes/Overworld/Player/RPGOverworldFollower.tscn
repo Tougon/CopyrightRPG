@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_efbox"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmj22"]
-size = Vector2(79, 34)
+size = Vector2(56, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajqo8"]
-size = Vector2(79, 34)
+size = Vector2(56, 34)
 
 [node name="RPGOverworldFollower" type="CharacterBody2D"]
 collision_layer = 8

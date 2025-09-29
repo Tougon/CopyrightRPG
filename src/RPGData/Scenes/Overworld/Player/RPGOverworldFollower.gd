@@ -34,6 +34,10 @@ var _running : bool = false;
 var _direction_locked : bool = false;
 var _override_direction : Vector2;
 
+# Visual Support
+var _current_bounds : Rect2;
+var _is_visible : bool = true;
+
 
 func _ready() :
 	if target != null : 
@@ -47,6 +51,7 @@ func _ready() :
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
 	EventManager.on_overworld_player_reparented.connect(_on_player_reparented);
+	EventManager.on_overworld_floor_active.connect(_on_floor_active);
 
 
 func _process(_delta: float) -> void:	
@@ -54,6 +59,8 @@ func _process(_delta: float) -> void:
 		_physics_body_trans_current,
 		Engine.get_physics_interpolation_fraction()
 	).origin
+	
+	_check_visibility();
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -241,6 +248,30 @@ func _on_player_reparented(parent : Node2D) :
 	self.reparent(parent);
 
 
+func _on_floor_active(floor : Floor) :
+	if floor != null : 
+		_current_bounds = floor.get_floor_bounds();
+		_check_visibility();
+
+
+func _check_visibility() :
+	var visible = _current_bounds.encloses(Rect2(position, Vector2.ONE));
+	
+	if visible != _is_visible :
+		if get_tree() == null : return;
+		
+		_is_visible = visible;
+		
+		var mod_tween = get_tree().create_tween();
+		mod_tween.set_parallel(true);
+		
+		if _is_visible :
+			mod_tween.tween_property(self, "modulate", Color.WHITE, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+		else :
+			mod_tween.tween_property(self, "modulate", Color.TRANSPARENT, OverworldManager.FLOOR_TRANSITION_TIME).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+			
+
+
 func _exit_tree():
 	if _reparenting : 
 		_reparenting = false;
@@ -250,3 +281,4 @@ func _exit_tree():
 		
 		if EventManager != null :
 			EventManager.on_overworld_player_reparented.disconnect(_on_player_reparented);
+			EventManager.on_overworld_floor_active.disconnect(_on_floor_active);

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbqi3"]
-size = Vector2(79, 34)
+size = Vector2(56, 34)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqi8"]
 size = Vector2(32, 96)

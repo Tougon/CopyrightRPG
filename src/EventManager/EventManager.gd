@@ -27,6 +27,7 @@ signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : 
 signal on_overworld_player_reparented(parent : Node2D);
 signal on_overworld_change_area(new_area : String);
 signal on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2);
+signal on_overworld_floor_active(floor : Floor);
 signal on_player_enter_floor_change_zone(enter : bool);
 
 signal on_battle_queue(encounter : Encounter);

@@ -24,6 +24,7 @@ func set_floor_active(active : bool):
 		set_process(true);
 		process_mode = ProcessMode.PROCESS_MODE_INHERIT;
 		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_INHERIT;
+		EventManager.on_overworld_floor_active.emit(self);
 	else :
 		set_process(false);
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED;
@@ -66,3 +67,11 @@ func put_camera_on_floor(game_camera : PhantomCamera2D, free_camera : PhantomCam
 	if use_floor_as_bounds && OverworldManager.ALLOW_CAMERA_LOCK : 
 		game_camera.limit_target = game_camera.get_path_to(tile_map_wall)
 	free_camera.limit_target = free_camera.get_path_to(tile_map_wall)
+
+
+func get_floor_bounds() -> Rect2:
+	var tile_map_bounds = Vector2(tile_map_floor.get_used_rect().size) * Vector2(tile_map_floor.tile_set.tile_size) * tile_map_floor.get_scale()
+	var tile_map_position : Vector2 = tile_map_floor.global_position + Vector2(tile_map_floor.get_used_rect().position) * Vector2(tile_map_floor.tile_set.tile_size) * tile_map_floor.get_scale();
+	
+	var bounds = Rect2(tile_map_position, tile_map_bounds);
+	return bounds;
