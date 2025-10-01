@@ -75,3 +75,10 @@ func get_floor_bounds() -> Rect2:
 	
 	var bounds = Rect2(tile_map_position, tile_map_bounds);
 	return bounds;
+
+
+func is_on_tile(pos : Vector2) -> bool:
+	var map_pos = tile_map_floor.local_to_map(tile_map_floor.to_local(pos));
+	var tile_data = tile_map_floor.get_cell_tile_data(map_pos);
+	
+	return tile_data != null;

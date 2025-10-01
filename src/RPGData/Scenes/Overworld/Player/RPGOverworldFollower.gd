@@ -4,6 +4,7 @@ class_name RPGOverworldFollower
 enum MovementType { Direct, Indirect }
 
 # The node we should follow
+@export var debug_info : bool = false;
 @export var target : Node2D;
 @export var movement_type : MovementType;
 @export var max_positions : int = 25;
@@ -35,7 +36,7 @@ var _direction_locked : bool = false;
 var _override_direction : Vector2;
 
 # Visual Support
-var _current_bounds : Rect2;
+var _current_floor : Floor;
 var _is_visible : bool = true;
 
 
@@ -250,12 +251,12 @@ func _on_player_reparented(parent : Node2D) :
 
 func _on_floor_active(floor : Floor) :
 	if floor != null : 
-		_current_bounds = floor.get_floor_bounds();
+		_current_floor = floor;
 		_check_visibility();
 
 
 func _check_visibility() :
-	var visible = _current_bounds.encloses(Rect2(position, Vector2.ONE));
+	var visible = _current_floor.is_on_tile(global_position);
 	
 	if visible != _is_visible :
 		if get_tree() == null : return;
