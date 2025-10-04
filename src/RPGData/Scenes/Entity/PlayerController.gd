@@ -192,7 +192,7 @@ func _on_player_items_changed(items : Dictionary, delta : Item):
 # Misc Functions
 func on_damage(crit : bool):
 	super.on_damage(crit);
-	EventManager.on_player_take_damage.emit(!is_defeated, crit, current_action == defend_action);
+	EventManager.on_player_take_damage.emit(is_defeated, crit, current_action == defend_action);
 
 
 func _on_defeat_complete():

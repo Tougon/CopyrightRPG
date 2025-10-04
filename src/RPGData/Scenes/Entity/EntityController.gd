@@ -5,6 +5,7 @@ class_name EntityController
 ## Tricks the animation sequence into thinking the entity is scaled differently
 @export var use_override_direction : bool = false;
 @export var override_direction : Vector2 = Vector2(1, 1);
+@export var default_appear_anim : AnimationSequenceObject;
 @export var default_dodge_anim : AnimationSequenceObject;
 @export var default_defeat_anim : AnimationSequenceObject;
 
@@ -76,6 +77,9 @@ var effects : Array[EffectInstance];
 var properties : Array[EffectInstance];
 
 var dodge_anim_sequence : AnimationSequence;
+
+var _appear_anim_playing : bool = false;
+var _defeat_anim_playing : bool = false;
 
 
 # Initialization
@@ -176,6 +180,7 @@ func load_sprite(path : String):
 
 
 func _on_battle_begin(params : BattleParams):
+	current_entity = null;
 	prev_action = null;
 	current_target.clear();
 	entity_init(params);
@@ -465,22 +470,54 @@ func revive(hp : int):
 	current_action == null;
 
 
+func play_appear_animation():
+	sprite.visible = false;
+	
+	var appear_anim = default_appear_anim;
+	if current_entity.appear_anim != null : appear_anim = current_entity.appear_anim;
+	
+	_appear_anim_playing = true;
+	
+	var animation_seq = AnimationSequence.new(get_tree(), appear_anim, self, [self], [null]);
+	animation_seq.sequence_ended.connect(_on_appear_anim_complete);
+	animation_seq.sequence_start();
+
+
+func _on_appear_anim_complete():
+	_appear_anim_playing = false;
+
+func is_appear_anim_playing() -> bool:
+	return _appear_anim_playing;
+
+
 func _play_defeat_animation():
 	var defeat_anim = default_defeat_anim;
 	if current_entity.defeat_anim != null : defeat_anim = current_entity.defeat_anim;
+	
+	_defeat_anim_playing = true;
 	
 	var animation_seq = AnimationSequence.new(get_tree(), defeat_anim, self, [self], [null]);
 	
 	if current_entity.type == Entity.Type.GENERIC:
 		_on_defeat_complete();
+		animation_seq.sequence_ended.connect(_on_defeat_anim_complete);
 		animation_seq.sequence_start();
 	else:
 		animation_seq.sequence_ended.connect(_on_defeat_complete);
+		animation_seq.sequence_ended.connect(_on_defeat_anim_complete);
 		EventManager.on_sequence_queue.emit(animation_seq);
 
 
 func _on_defeat_complete():
 	pass;
+
+
+func _on_defeat_anim_complete():
+	_defeat_anim_playing = false;
+
+
+func is_defeat_anim_playing() -> bool:
+	return _defeat_anim_playing;
 
 
 # Setter functions intended to be used to ensure gammeplay callbacks execute

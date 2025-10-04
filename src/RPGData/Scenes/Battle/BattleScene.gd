@@ -24,6 +24,9 @@ var player_item_delta : Dictionary;
 
 var _field_effects : Array[FieldEffectInstance];
 
+var _reserve_enemies : Array[Entity];
+var _reserve_controllers : Array[EntityController];
+
 
 func _ready():
 	Instance = self;
@@ -56,6 +59,9 @@ func begin_battle(params : BattleParams):
 	enemy_type_count.clear();
 	player_item_delta.clear();
 	
+	for i in range(BattleManager.MAX_ENEMY_COUNT, params.enemies.size()):
+		_reserve_enemies.append(params.enemies[i]);
+	
 	EventManager.on_battle_begin.emit(params);
 	
 	await get_tree().process_frame;
@@ -73,7 +79,7 @@ func begin_battle(params : BattleParams):
 	await EventManager.battle_fade_completed;
 	
 	# Print the opening dialogue
-	EventManager.on_dialogue_queue.emit(_get_intro_dialogue());
+	EventManager.on_dialogue_queue.emit(_get_intro_dialogue(enemies));
 	await EventManager.on_sequence_queue_empty;
 	
 	# Move the player controllers into view
@@ -354,7 +360,41 @@ func _action_phase():
 		
 		if post_anim_dialogue.size() > 0 : await EventManager.on_sequence_queue_empty;
 		
-		# Reposition enemies if any have been defeated
+		# Add reserve enemies if applicable
+		var spawned_entities : Array[EntityController];
+		for i in _reserve_controllers.size() :
+			if _reserve_enemies.size() == 0 :
+				break;
+			
+			var new_enemy = _reserve_enemies[0];
+			_reserve_enemies.remove_at(0);
+			
+			var enemy_controller = _reserve_controllers[0];
+			spawned_entities.append(enemy_controller);
+			_reserve_controllers.remove_at(0);
+			
+			while enemy_controller.is_defeat_anim_playing():
+				await get_tree().process_frame;
+			
+			# Reset the entity
+			enemy_controller.prev_action = null;
+			enemy_controller.current_action = null;
+			enemy_controller.current_target.clear();
+			enemy_controller.current_entity = new_enemy;
+			enemy_controller.entity_init(null);
+			_adjust_enemy_name(enemy_controller);
+			
+			enemy_controller.play_appear_animation();
+		
+		while is_any_entity_appearing(spawned_entities) :
+			await get_tree().process_frame;
+		
+		if spawned_entities.size() > 0:
+			var enemy_spawn_msg = _get_intro_dialogue(spawned_entities);
+			EventManager.on_dialogue_queue.emit(enemy_spawn_msg);
+			await EventManager.on_sequence_queue_empty;
+		
+		# Reposition enemies if necessary
 		var amt = get_num_active_enemies();
 		if num_active != amt:
 			var index = 0;
@@ -655,6 +695,14 @@ func get_num_active_enemies(invert : bool = false) -> int:
 	return result;
 
 
+func is_any_entity_appearing(entities_to_check : Array[EntityController]) -> bool :
+	for e in entities_to_check :
+		if e.is_appear_anim_playing() : 
+			return true;
+	
+	return false;
+
+
 func _get_closest_unused_root_to_entity(enemy : EntityController, root : Node, used : Array[int]) -> int:
 	var index = -1;
 	var distance = 1000000000;
@@ -693,6 +741,16 @@ func _on_enemy_register(entity : EntityController):
 	if enemies.size() == 0 : 
 		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
 	
+	_adjust_enemy_name(entity);
+	
+	_on_entity_register(entity);
+	entities.append(entity);
+	enemies.append(entity);
+	
+	_load_entity_audio(entity);
+
+
+func _adjust_enemy_name(entity : EntityController):
 	if enemy_type_count.has(entity.current_entity):
 		# Rename first entity of the same type
 		if enemy_type_count[entity.current_entity] == 1:
@@ -705,12 +763,6 @@ func _on_enemy_register(entity : EntityController):
 		entity.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
 	else :
 		enemy_type_count[entity.current_entity] = 1;
-	
-	_on_entity_register(entity);
-	entities.append(entity);
-	enemies.append(entity);
-	
-	_load_entity_audio(entity);
 
 
 func _load_entity_audio(entity : EntityController):
@@ -790,6 +842,8 @@ func _on_enemy_defeated(entity : EntityController):
 	enemies.erase(entity);
 	enemies.append(entity);
 	
+	_reserve_controllers.append(entity);
+	
 	var defeat_key = "T_BATTLE_DEFEAT_GENERIC";
 	if entity.current_entity.battle_defeat_key != null :
 		defeat_key = entity.current_entity.battle_defeat_key;
@@ -824,18 +878,18 @@ func format_dialogue(dialogue : String, name : String, entity : Entity, target_n
 
 
 # Helper functions for intro dialogue
-func _get_intro_dialogue() -> String:
-	if enemies.size() == 0 :
+func _get_intro_dialogue(dialogue_entities : Array[EntityController]) -> String:
+	if dialogue_entities.size() == 0 :
 		return "";
 	
-	var entity = enemies[0].current_entity;
-	var name = enemies[0].param.entity_name;
+	var entity = dialogue_entities[0].current_entity;
+	var name = dialogue_entities[0].param.entity_name;
 	var key = entity.battle_intro_key;
 	
-	if enemies.size() > 1:
+	if dialogue_entities.size() > 1:
 		if _all_enemies_same():
 			key += "_PLURAL";
-			name = enemies[0].param.entity_name_plural;
+			name = dialogue_entities[0].param.entity_name_plural;
 		else:
 			key += "_GROUP";
 	else:

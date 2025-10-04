@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=98 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
 [ext_resource type="Resource" uid="uid://bnwh1ljsi2ph" path="res://assets/Entities/Player/player_d.tres" id="8_hn632"]
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="8_it4wa"]
+[ext_resource type="Resource" uid="uid://blrnhee2dmhpg" path="res://assets/Animations/Sequences/Common/anim_common_appear.tres" id="8_od1m0"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
 [ext_resource type="PackedScene" uid="uid://diyulx0atyop6" path="res://src/Sequencing/Scripts/Sequencer.tscn" id="9_lx2fn"]
@@ -86,7 +87,7 @@ override_turn_count = false
 turn_count = 1
 seal_effects = Array[ExtResource("7_46juf")]([ExtResource("13_ppeub")])
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjsv2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mf1yg"]
 shader = ExtResource("22_0arau")
 shader_parameter/chaos = 0.0
 shader_parameter/radius = 1.4
@@ -163,29 +164,29 @@ tween_resource = SubResource("Resource_hqy65")
 play_on_start = false
 next_tween = ""
 
-[sub_resource type="Resource" id="Resource_s25wb"]
+[sub_resource type="Resource" id="Resource_wkp5l"]
 script = ExtResource("42_mqdqo")
 target = ""
 property_name = "shader_parameter/chaos"
 material_property = true
 duration = 0.25
-delay = 0.2
+delay = 0.0
 transition = 5
 ease = 0
 relative = false
 "Use From" = true
 "Value Type" = 1
-"Float Value" = 14.0
-"From Float" = 0.0
+"Float Value" = 0.0
+"From Float" = 20.0
 
-[sub_resource type="Resource" id="Resource_c1qtb"]
+[sub_resource type="Resource" id="Resource_1mk1i"]
 script = ExtResource("41_ktutj")
-frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_s25wb")])
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_wkp5l")])
 
 [sub_resource type="Resource" id="Resource_8v605"]
 script = ExtResource("40_0nnbl")
 tween_name = "Defeated"
-sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_c1qtb")])
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_1mk1i")])
 
 [sub_resource type="Resource" id="Resource_onyi7"]
 script = ExtResource("6_6cut8")
@@ -402,30 +403,35 @@ y_sort_enabled = true
 position = Vector2(473, 314)
 use_override_direction = true
 override_direction = Vector2(1, -1)
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 1
 use_override_direction = true
 override_direction = Vector2(1, -1)
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 2
 use_override_direction = true
 override_direction = Vector2(1, -1)
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 3
 use_override_direction = true
 override_direction = Vector2(1, -1)
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 4
 use_override_direction = true
 override_direction = Vector2(1, -1)
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="Video Effects Layer" type="Node" parent="Entities"]
 
@@ -460,6 +466,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_4qtjs")
 current_entity = ExtResource("7_5gsqw")
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 z_index = -1
@@ -471,6 +478,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_f6t8p")
 current_entity = ExtResource("10_66vq4")
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 z_index = -1
@@ -482,6 +490,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_epnwn")
 current_entity = ExtResource("12_qpkyi")
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 z_index = -1
@@ -493,6 +502,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_06evc")
 current_entity = ExtResource("8_hn632")
+default_appear_anim = ExtResource("8_od1m0")
 
 [node name="UI" type="Node" parent="."]
 
@@ -521,7 +531,7 @@ script = ExtResource("22_5fosr")
 tween_player = NodePath("Chromatic Abberation/TweenPlayerUI")
 
 [node name="Chromatic Abberation" type="ColorRect" parent="UI/Damage Effect Canvas"]
-material = SubResource("ShaderMaterial_qjsv2")
+material = SubResource("ShaderMaterial_mf1yg")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

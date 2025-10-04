@@ -11,7 +11,7 @@ func _on_player_take_damage(defeated : bool, crit : bool, block : bool):
 	if defeated :
 		tween_player.play_tween_name("Defeated");
 	elif block :
-		tween_player.play_tween_name("Blocked")
+		tween_player.play_tween_name("Blocked");
 	else :
 		tween_player.play_tween_name("Damage");
 

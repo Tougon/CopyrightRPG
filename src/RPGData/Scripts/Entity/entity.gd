@@ -110,6 +110,7 @@ func get_reward_exp(level : int) -> int:
 @export_file("*.png") var entity_sprites: Array[String];
 @export var battle_intro_key: String;
 @export var battle_defeat_key: String;
+@export var appear_anim : AnimationSequenceObject;
 @export var dodge_anim : AnimationSequenceObject;
 @export var defeat_anim : AnimationSequenceObject;
 @export var head_offset : Vector2;

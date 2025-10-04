@@ -12,6 +12,7 @@ func _on_battle_complete(result : BattleResult):
 		
 		if GameplayConstants.DEMO_MODE : result.exp = 0;
 		
+		result.exp = 0;
 		if result.exp > 0:
 			var exp : String;
 			

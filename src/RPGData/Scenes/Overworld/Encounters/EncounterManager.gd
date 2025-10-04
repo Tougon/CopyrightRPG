@@ -37,9 +37,6 @@ func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : f
 		
 		if encounter_chance < current_chance:
 			var encounter = _get_random_encounter();
-			print("encounter hit")
-			_reset_encounter_variables(null);
-			return;
 			EventManager.on_battle_queue.emit(encounter);
 			process_encounters = false;
 		else:
