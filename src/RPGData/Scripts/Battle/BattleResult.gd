@@ -2,6 +2,7 @@ extends Object
 class_name BattleResult
 
 var victory : bool;
+var fled : bool;
 var exp : int;
 
 var players : Array[BattleParamEntity]

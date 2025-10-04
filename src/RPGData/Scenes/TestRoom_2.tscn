@@ -256,6 +256,7 @@ size = Vector2(1345, 1572)
 script = ExtResource("44_pt3pb")
 enemy_ids = Array[int]([4, 4, 4, 4, 4, 4])
 odds = 1.0
+can_flee = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("9_8smr2")

@@ -27,6 +27,9 @@ var _field_effects : Array[FieldEffectInstance];
 var _reserve_enemies : Array[Entity];
 var _reserve_controllers : Array[EntityController];
 
+# Fleeing values
+var _can_flee : bool = true;
+
 
 func _ready():
 	Instance = self;
@@ -58,6 +61,8 @@ func begin_battle(params : BattleParams):
 	defeated_enemies = [];
 	enemy_type_count.clear();
 	player_item_delta.clear();
+	
+	_can_flee = params.can_flee;
 	
 	for i in range(BattleManager.MAX_ENEMY_COUNT, params.enemies.size()):
 		_reserve_enemies.append(params.enemies[i]);
@@ -144,7 +149,7 @@ func _decision_phase():
 	# For what purpose, Evan? For what purpose?
 	#await get_tree().create_timer(1.5).timeout
 	
-	while current_player_index < players.size():
+	while current_player_index < players.size() && current_player_index >= 0:
 		
 		await get_tree().process_frame;
 		
@@ -161,6 +166,8 @@ func _decision_phase():
 				EventManager.set_player_bg.emit(players[current_player_index]);
 				await get_tree().process_frame;
 				UIManager.open_menu_name("player_battle_main");
+	
+	if current_player_index == -1 : return;
 	
 	# Perhaps you'll want to remove the dialogue here instead of awaiting?
 	while dialogue_canvas.current_rows > 0:
@@ -824,6 +831,24 @@ func _on_player_menu_cancel():
 		EventManager.set_active_player.emit(players[current_player_index]);
 		EventManager.set_player_bg.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
+	else :
+		print("TEMP: EVENTUALLY MOVE THIS ELSEWHERE")
+		if _can_flee:
+			current_player_index = -1;
+			UIManager.close_menu_name("player_battle_main");
+			
+			# TODO: Do flee calculations
+			
+			var reward = BattleResult.new();
+			reward.victory = false;
+			reward.fled = true;
+			
+			EventManager.on_battle_completed.emit(reward); 
+		else : 
+			UIManager.close_menu_name("player_battle_main");
+			EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_NO"));
+			await EventManager.on_sequence_queue_empty;
+			UIManager.open_menu_name("player_battle_main");
 
 
 func _on_player_defeated(entity : EntityController):

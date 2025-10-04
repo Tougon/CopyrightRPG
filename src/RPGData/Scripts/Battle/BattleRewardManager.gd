@@ -48,7 +48,9 @@ func _on_battle_complete(result : BattleResult):
 					
 					player.override_level = level;
 					player.modified_exp_amt = award_exp;
-	else:
+	elif result != null && result.fled:
+		EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_SUCCESS"));
+	else :
 		# Defeat Music
 		EventManager.play_bgm.emit("battle_lose", 0.2, true, 0, 1);
 		

@@ -221,6 +221,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 	
 	# Perpare battle parameters
 	var params = BattleParams.new();
+	params.can_flee = encounter.can_flee;
 	
 	# Initialize player data
 	for i in GameplayConstants.MAX_PARTY_SIZE:
