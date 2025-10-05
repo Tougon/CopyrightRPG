@@ -8,6 +8,9 @@ var player_floor : int;
 var player_floor_change : bool;
 var inventory : Dictionary;
 
+var flee_group_chance : float;
+var flee_group : Array;
+
 
 func _get_property_list() -> Array:
 	var ret: Array = []
@@ -48,6 +51,18 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_STORAGE
 	})
 	
+	ret.append({
+		"name": "Flee Group Chance",
+		"type": TYPE_FLOAT,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
+	ret.append({
+		"name": "Flee Group",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
 	return ret;
 
 
@@ -64,6 +79,10 @@ func _get(property):
 			return player_floor;
 		"Player Floor Change":
 			return player_floor_change;
+		"Flee Group Chance":
+			return flee_group_chance;
+		"Flee Group":
+			return flee_group;
 		"Inventory":
 			return inventory;
 
@@ -86,6 +105,12 @@ func _set(property, val) -> bool:
 			notify_property_list_changed();
 		"Player Floor Change":
 			player_floor_change = val;
+			notify_property_list_changed();
+		"Flee Group Chance":
+			flee_group_chance = val;
+			notify_property_list_changed();
+		"Flee Group":
+			flee_group = val;
 			notify_property_list_changed();
 		"Inventory":
 			inventory = val;

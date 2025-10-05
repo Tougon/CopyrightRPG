@@ -29,7 +29,7 @@ var _reserve_controllers : Array[EntityController];
 
 # Fleeing values
 var _can_flee : bool = true;
-
+var _can_flee_this_turn : bool = true;
 
 func _ready():
 	Instance = self;
@@ -112,6 +112,9 @@ func _begin_turn():
 	var allies : Array[EntityController];
 	var targets : Array[EntityController];
 	
+	var speed_enemy : int;
+	var speed_player : int;
+	
 	for entity in entities:
 		entity.allies.clear();
 		entity.enemies.clear();
@@ -126,10 +129,20 @@ func _begin_turn():
 		player.allies.append_array(allies);
 		player.enemies.append_array(targets);
 		if player.is_defeated : player.is_ready = true;
+		else : 
+			if player.param.entity_spd > speed_player : 
+				speed_player = player.param.entity_spd
 	
 	for enemy in enemies:
 		enemy.allies.append_array(targets);
 		enemy.enemies.append_array(allies);
+		
+		if enemy.param.entity_spd > speed_enemy : 
+			speed_enemy = enemy.param.entity_spd
+	
+	var _flee_chance = (speed_player as float) / ((speed_enemy * 2) as float)
+	_flee_chance *= turn_number;
+	_can_flee_this_turn = randf() < _flee_chance;
 	
 	# Sort players/turn order by speed. Might cut this.
 	# It was really annoying in OMORI to have the order be fixed,
@@ -834,16 +847,20 @@ func _on_player_menu_cancel():
 	else :
 		print("TEMP: EVENTUALLY MOVE THIS ELSEWHERE")
 		if _can_flee:
-			current_player_index = -1;
-			UIManager.close_menu_name("player_battle_main");
-			
-			# TODO: Do flee calculations
-			
-			var reward = BattleResult.new();
-			reward.victory = false;
-			reward.fled = true;
-			
-			EventManager.on_battle_completed.emit(reward); 
+			if _can_flee_this_turn : 
+				current_player_index = -1;
+				UIManager.close_menu_name("player_battle_main");
+				
+				var reward = BattleResult.new();
+				reward.victory = false;
+				reward.fled = true;
+				
+				EventManager.on_battle_completed.emit(reward); 
+			else :
+				UIManager.close_menu_name("player_battle_main");
+				EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_FAIL"));
+				await EventManager.on_sequence_queue_empty;
+				UIManager.open_menu_name("player_battle_main");
 		else : 
 			UIManager.close_menu_name("player_battle_main");
 			EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_NO"));

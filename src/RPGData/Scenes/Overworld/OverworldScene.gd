@@ -10,6 +10,11 @@ static var battle_scene_window : Window = null;
 @export var free_camera : PhantomCamera2D;
 @export var canvas_modulate : CanvasModulate;
 
+@export_group("Encounter Parameters")
+@export_range(0, 1) var flee_group_grow_rate : float = 0.4;
+var _current_flee_group_chance : float = 0.0;
+var _current_flee_group : Array;
+
 @export_group("Cosmetic Parameters")
 @export var bgm_id : String;
 
@@ -92,6 +97,9 @@ func _ready() -> void:
 		if battle_scene_ref != null && battle_scene == null: 
 			battle_scene = battle_scene_ref.instantiate() as BattleScene;
 			battle_scene.begin_battle_on_ready = false;
+	
+	_current_flee_group_chance = DataManager.current_save.flee_group_chance;
+	_current_flee_group = DataManager.current_save.flee_group;
 	
 	QuestManager.quest_completed.connect(quest_complete)
 	Dialogic.timeline_started.connect(_on_dialogue_begin);
@@ -223,6 +231,17 @@ func _on_overworld_battle_queued(encounter : Encounter):
 	var params = BattleParams.new();
 	params.can_flee = encounter.can_flee;
 	
+	var enemies = encounter.enemy_ids.duplicate();
+	
+	if !encounter.ignore_flee_mechanics:
+		var rand = randf();
+		
+		if rand < _current_flee_group_chance :
+			params.can_flee = false;
+			enemies.append_array(_current_flee_group);
+		else : 
+			_current_flee_group.append_array(encounter.enemy_ids);
+	
 	# Initialize player data
 	for i in GameplayConstants.MAX_PARTY_SIZE:
 		if DataManager.party_data[i].unlocked:
@@ -254,7 +273,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 		else : params.players.append(null);
 	
 	# Initialize enemy data
-	for enemy_id in encounter.enemy_ids:
+	for enemy_id in enemies :
 		var enemy = DataManager.entity_database.get_entity(enemy_id);
 		
 		if enemy != null:
@@ -274,6 +293,17 @@ func _on_battle_end(result : BattleResult):
 	canvas_modulate.visible = true;
 	
 	# Process result
+	
+	# Handle fleeing mechanics
+	if result.fled : 
+		_current_flee_group_chance += flee_group_grow_rate;
+	else :
+		_current_flee_group_chance = 0;
+		_current_flee_group.clear();
+	
+	DataManager.current_save.flee_group = _current_flee_group;
+	DataManager.current_save.flee_group_chance = _current_flee_group_chance;
+	
 	# NOTE: For demo mode, we strip out any progression and item functions
 	# This is for replayability.
 	if !GameplayConstants.DEMO_MODE :
