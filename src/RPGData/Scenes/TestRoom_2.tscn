@@ -1486,6 +1486,7 @@ end_area = "backrooms_r"
 
 [node name="EncounterArea" parent="EncounterAreas" instance=ExtResource("43_swjwx")]
 position = Vector2(467, 4023)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_6jh6m")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
@@ -2012,7 +2013,7 @@ color = Color(0.332738, 0.519136, 0.749071, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(513, 4022)
+position = Vector2(513, 3958)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2024,13 +2025,14 @@ script = ExtResource("42_1yuub")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(513, 4022)
+position = Vector2(513, 3958)
 script = ExtResource("43_y1qfp")
 priority = 1
 follow_mode = 5
 follow_target = NodePath("../Player Controller")
 tween_resource = SubResource("Resource_6ugjw")
 tween_on_load = false
+follow_offset = Vector2(0, -64)
 follow_damping = true
 dead_zone_width = 0.08
 dead_zone_height = 0.06
