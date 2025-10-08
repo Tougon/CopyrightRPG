@@ -245,13 +245,14 @@ func _action_phase():
 			turn_order.remove_at(0);
 			continue;
 		
-		entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
-		# Looks bad on players for now but this is a sprite issue
-		entity.tween.play_tween_name("Entity Ready Up");
-		await get_tree().create_timer(0.2).timeout
-		await get_tree().process_frame;
-		
-		EventManager.set_player_bg.emit(entity);
+		if !(_all_players_defeated() || _all_enemies_defeated()) :
+			entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
+			# Looks bad on players for now but this is a sprite issue
+			entity.tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			
+			EventManager.set_player_bg.emit(entity);
 		
 		var is_target_valid : bool = true;
 		var num_active = get_num_active_enemies();

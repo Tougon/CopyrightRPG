@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://e6glciclsn3r"]
+
+[ext_resource type="Shader" path="res://assets/Shaders/dot_matrix.gdshader" id="1_gg2o8"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_gg2o8")
+shader_parameter/use_fisheye = false
+shader_parameter/fisheye_strength = 1.0
+shader_parameter/speed = 0.65
+shader_parameter/alpha = 0.1
+shader_parameter/scan_line_distance = 2.5
+shader_parameter/scan_line_strength = 0.45
+shader_parameter/use_vignette = true
+shader_parameter/vignette_strength = 0.3

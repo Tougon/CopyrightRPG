@@ -50,6 +50,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/VBoxContainer"]
+clip_children = 2
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
@@ -62,4 +63,5 @@ tab_size = 1
 shortcut_keys_enabled = false
 
 [node name="DialogueCanvasIcon" parent="." node_paths=PackedStringArray("dialogue_canvas") instance=ExtResource("3_qfgiv")]
+clip_children = 2
 dialogue_canvas = NodePath("..")

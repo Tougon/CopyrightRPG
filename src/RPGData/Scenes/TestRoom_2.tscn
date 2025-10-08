@@ -1310,6 +1310,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Root" type="Node2D" parent="Areas/Atrium/G/Environment/Visuals/Sorted Items/Walls"]
+visible = false
 position = Vector2(-32, 704)
 
 [node name="Sprite2D" type="Sprite2D" parent="Areas/Atrium/G/Environment/Visuals/Sorted Items/Walls/Root"]
