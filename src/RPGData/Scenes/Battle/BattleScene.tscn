@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=110 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -57,6 +57,8 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="42_mqdqo"]
 [ext_resource type="PackedScene" uid="uid://bm6asya0twwbv" path="res://assets/VFX/Generic/Seals/effect_particle_seal_green.tscn" id="43_ocmnn"]
 [ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="44_cht1j"]
+[ext_resource type="Shader" path="res://assets/Shaders/vhs_glitch.gdshader" id="44_rikuj"]
+[ext_resource type="Resource" path="res://assets/Tweens/Transition/distort_in_blades.tres" id="45_h4gce"]
 [ext_resource type="PackedScene" uid="uid://ccapvm3bs1fan" path="res://assets/VFX/Generic/Seals/effect_particle_seal_red.tscn" id="45_yfjyn"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="46_7tlbi"]
 [ext_resource type="PackedScene" uid="uid://di8qosr8vtymb" path="res://assets/VFX/Generic/Seals/effect_particle_seal_yellow.tscn" id="47_4vmaq"]
@@ -248,6 +250,97 @@ tween_resource = ExtResource("32_fepss")
 play_on_start = false
 next_tween = ""
 
+[sub_resource type="Resource" id="Resource_8s4v8"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/stablization"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_vqx8d"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/amount"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_yerxc"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_8s4v8"), SubResource("Resource_vqx8d")])
+
+[sub_resource type="Resource" id="Resource_x7e7h"]
+script = ExtResource("40_0nnbl")
+tween_name = "Reset"
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_yerxc")])
+
+[sub_resource type="Resource" id="Resource_w7s43"]
+script = ExtResource("6_6cut8")
+tween_name = "Reset"
+tween_resource = SubResource("Resource_x7e7h")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ngkb"]
+resource_local_to_scene = true
+shader = ExtResource("44_rikuj")
+shader_parameter/shake_power = 0.37
+shader_parameter/shake_block_size = 240.0
+shader_parameter/fade = 1.0
+shader_parameter/direction_r = Vector2(4.66, 0)
+shader_parameter/direction_g = Vector2(-0.06, 2.08)
+shader_parameter/direction_b = Vector2(-0.7, -0.3)
+
+[sub_resource type="Resource" id="Resource_kcgk4"]
+script = ExtResource("6_6cut8")
+tween_name = "Fade In"
+tween_resource = ExtResource("45_h4gce")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_o65uc"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/fade"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 1.0
+
+[sub_resource type="Resource" id="Resource_3dnb1"]
+script = ExtResource("41_ktutj")
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_o65uc")])
+
+[sub_resource type="Resource" id="Resource_80yy4"]
+script = ExtResource("40_0nnbl")
+tween_name = ""
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_3dnb1")])
+
+[sub_resource type="Resource" id="Resource_hkurq"]
+script = ExtResource("6_6cut8")
+tween_name = "Reset"
+tween_resource = SubResource("Resource_80yy4")
+play_on_start = false
+next_tween = ""
+
 [sub_resource type="Resource" id="Resource_che7u"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("38_sx3np")
@@ -284,16 +377,12 @@ duration = 0.0
 transition = 0
 ease = 2
 
-[sub_resource type="Resource" id="Resource_4jgiu"]
-script = ExtResource("41_ktutj")
-frames = Array[ExtResource("42_mqdqo")]([])
-
 [sub_resource type="Resource" id="Resource_2236n"]
 script = ExtResource("42_mqdqo")
 target = ""
 property_name = "zoom"
 material_property = false
-duration = 1.0
+duration = 1.4
 delay = 0.0
 transition = 3
 ease = 1
@@ -310,7 +399,7 @@ frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_2236n")])
 [sub_resource type="Resource" id="Resource_2evgq"]
 script = ExtResource("40_0nnbl")
 tween_name = "Zoom In"
-sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_4jgiu"), SubResource("Resource_susux")])
+sequence = Array[ExtResource("41_ktutj")]([SubResource("Resource_susux")])
 
 [sub_resource type="Resource" id="Resource_hglxi"]
 script = ExtResource("6_6cut8")
@@ -542,12 +631,12 @@ grow_vertical = 2
 script = ExtResource("5_35o0w")
 sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_we0kq"), SubResource("Resource_v3bgp"), SubResource("Resource_onyi7")])
 
-[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence", "camera_fade_sequence")]
+[node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_in_player", "fade_out_player", "camera_fade_player")]
 layer = 10
-visible = false
 script = ExtResource("20_ija8q")
-fade_sequence = NodePath("ColorRect/TweenPlayerUI")
-camera_fade_sequence = NodePath("../../PhantomCamera2D/TweenPlayer")
+fade_in_player = NodePath("TransitionIn/TweenPlayerUI")
+fade_out_player = NodePath("TransitionOut/TweenPlayerUI")
+camera_fade_player = NodePath("../../PhantomCamera2D/TweenPlayer")
 
 [node name="Fade Iris" type="TextureRect" parent="UI/BG Fade Canvas"]
 visible = false
@@ -582,7 +671,7 @@ grow_vertical = 2
 script = ExtResource("5_35o0w")
 sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_fj4kx"), SubResource("Resource_hrdhm")])
 
-[node name="ColorRect" type="ColorRect" parent="UI/BG Fade Canvas"]
+[node name="TransitionOut" type="ColorRect" parent="UI/BG Fade Canvas"]
 material = SubResource("ShaderMaterial_vx2hx")
 anchors_preset = 15
 anchor_right = 1.0
@@ -590,9 +679,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/ColorRect"]
+[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/TransitionOut"]
 script = ExtResource("5_35o0w")
-sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_42b2y"), SubResource("Resource_d45v6")])
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_42b2y"), SubResource("Resource_d45v6"), SubResource("Resource_w7s43")])
+
+[node name="TransitionIn" type="ColorRect" parent="UI/BG Fade Canvas"]
+material = SubResource("ShaderMaterial_3ngkb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TweenPlayerUI" type="Node" parent="UI/BG Fade Canvas/TransitionIn"]
+script = ExtResource("5_35o0w")
+sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_kcgk4"), SubResource("Resource_hkurq")])
 
 [node name="Core" type="Node" parent="."]
 
