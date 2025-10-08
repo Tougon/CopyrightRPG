@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d3q7hew02l55r"]
+[gd_scene load_steps=14 format=3 uid="uid://d3q7hew02l55r"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="5_pm4r5"]
 [ext_resource type="PackedScene" uid="uid://d4eqa4tmptcf" path="res://src/RPGData/Scenes/UI/Battle/player_stat_stage_display.tscn" id="7_d0eur"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="8_1w2p5"]
+[ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="9_ds235"]
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="9_umrjk"]
 
 [sub_resource type="Resource" id="Resource_j1ry4"]
@@ -238,18 +239,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Attack/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Attack/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_ATK"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Attack/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Defense" type="Control" parent="Status Area/ColorRect/Stats" index="1"]
 custom_minimum_size = Vector2(0, 50)
@@ -263,18 +265,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Defense/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Defense/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_DEF"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Defense/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Magic" type="Control" parent="Status Area/ColorRect/Stats" index="2"]
 custom_minimum_size = Vector2(0, 50)
@@ -288,18 +291,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Magic/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Magic/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_MAG"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Magic/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Resistance" type="Control" parent="Status Area/ColorRect/Stats" index="3"]
 custom_minimum_size = Vector2(0, 50)
@@ -313,18 +317,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Resistance/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Resistance/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_RES"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Resistance/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Speed" type="Control" parent="Status Area/ColorRect/Stats" index="4"]
 custom_minimum_size = Vector2(0, 50)
@@ -338,18 +343,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Speed/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Speed/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_SPD"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Speed/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Accuracy" type="Control" parent="Status Area/ColorRect/Stats" index="5"]
 custom_minimum_size = Vector2(0, 50)
@@ -363,18 +369,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Accuracy/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Accuracy/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_ACC"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Accuracy/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Evasion" type="Control" parent="Status Area/ColorRect/Stats" index="6"]
 custom_minimum_size = Vector2(0, 50)
@@ -388,18 +395,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="RichTextLabel" parent="Status Area/ColorRect/Stats/Evasion/HBoxContainer" index="0"]
+[node name="Label" type="Label" parent="Status Area/ColorRect/Stats/Evasion/HBoxContainer" index="0"]
+material = ExtResource("9_ds235")
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 5
 text = "T_STAT_EVA"
-fit_content = true
+vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Evasion/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-icon_size = 15.0
-separation = 4.0
+icon_size = 32.0
+separation = -12.0
 
 [node name="Noise" type="ColorRect" parent="Status Area/ColorRect" index="1"]
 material = ExtResource("9_umrjk")

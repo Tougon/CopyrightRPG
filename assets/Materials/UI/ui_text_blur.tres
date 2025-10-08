@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bick3fv0fx5jl"]
+
+[ext_resource type="Shader" path="res://assets/Shaders/glow.gdshader" id="1_fy7qt"]
+
+[resource]
+shader = ExtResource("1_fy7qt")
+shader_parameter/strength = 1.75
+shader_parameter/sample_power = 4
+shader_parameter/is_canvas_group = false

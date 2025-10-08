@@ -6,15 +6,18 @@ class_name PlayerStatStageDisplay
 @export var center_v : bool = true;
 @export var filled_texture : Texture2D;
 @export var empty_texture : Texture2D;
+@export var texture_mat : Material;
 
 var stat_icons : Array[TextureRect];
 var current_stage : int = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().process_frame;
+	
 	var x_pos = 0.0;
 	var y_pos = 0.0;
-	if center_v : y_pos = (size.y / 2.0) - (icon_size);
+	if center_v : y_pos = (size.y - icon_size) / 2.0;
 	
 	for i in (EntityController.STAT_STAGE_LIMIT * 2) + 1:
 		var stat_icon = TextureRect.new();
@@ -22,6 +25,7 @@ func _ready() -> void:
 		stat_icon.name = "Icon " + str(i + 1);
 		stat_icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE;
 		stat_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED;
+		stat_icon.material = texture_mat.duplicate();
 		
 		if i == EntityController.STAT_STAGE_LIMIT :
 			current_stage = i;

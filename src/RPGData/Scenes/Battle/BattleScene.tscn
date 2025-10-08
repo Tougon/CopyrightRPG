@@ -58,7 +58,7 @@
 [ext_resource type="PackedScene" uid="uid://bm6asya0twwbv" path="res://assets/VFX/Generic/Seals/effect_particle_seal_green.tscn" id="43_ocmnn"]
 [ext_resource type="Resource" uid="uid://bmhldaubaiu" path="res://assets/Flags/fire.tres" id="44_cht1j"]
 [ext_resource type="Shader" path="res://assets/Shaders/vhs_glitch.gdshader" id="44_rikuj"]
-[ext_resource type="Resource" path="res://assets/Tweens/Transition/distort_in_blades.tres" id="45_h4gce"]
+[ext_resource type="Resource" uid="uid://dnnktgjcqwttk" path="res://assets/Tweens/Transition/distort_in_blades.tres" id="45_h4gce"]
 [ext_resource type="PackedScene" uid="uid://ccapvm3bs1fan" path="res://assets/VFX/Generic/Seals/effect_particle_seal_red.tscn" id="45_yfjyn"]
 [ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="46_7tlbi"]
 [ext_resource type="PackedScene" uid="uid://di8qosr8vtymb" path="res://assets/VFX/Generic/Seals/effect_particle_seal_yellow.tscn" id="47_4vmaq"]
