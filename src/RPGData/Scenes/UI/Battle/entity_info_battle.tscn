@@ -1,9 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cddpjekmhp1aq"]
+[gd_scene load_steps=19 format=3 uid="uid://cddpjekmhp1aq"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/entity_info_battle.gd" id="1_s2jlx"]
 [ext_resource type="PackedScene" uid="uid://dia4envm7la1c" path="res://src/UIComponents/Scenes/underlay_bar.tscn" id="2_f6vck"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="3_lgwo2"]
+[ext_resource type="Texture2D" uid="uid://bamsk7m3j10v3" path="res://assets/Sprites/UI/Battle/ui_battle_corner_border.png" id="3_qhucg"]
+[ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="4_dmikg"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="4_k5ptv"]
+[ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="5_fnhid"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="5_qssom"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="6_f6b20"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="7_dw7an"]
@@ -96,6 +99,39 @@ text_format = "T_HP_AMOUNT"
 animation_type = 1
 bar_subtract_speed = 2.5
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Container/HP Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qhucg")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Noise" type="ColorRect" parent="Container/HP Bar"]
+material = ExtResource("4_dmikg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot Matrix" type="ColorRect" parent="Container/HP Bar"]
+material = ExtResource("5_fnhid")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Padding" type="Control" parent="Container"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
@@ -108,6 +144,39 @@ max_value = 1.0
 text_format = "T_MP_AMOUNT"
 animation_type = 1
 bar_subtract_speed = 2.5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Container/MP Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qhucg")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Noise" type="ColorRect" parent="Container/MP Bar"]
+material = ExtResource("4_dmikg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot Matrix" type="ColorRect" parent="Container/MP Bar"]
+material = ExtResource("5_fnhid")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("3_lgwo2")

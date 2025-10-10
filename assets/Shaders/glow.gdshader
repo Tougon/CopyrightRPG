@@ -27,6 +27,7 @@ vec2 rotate(vec2 v, float angle) {
 }
 
 void fragment() {
+	vec4 base_color = COLOR;
     vec2 pixel_size = is_canvas_group ? SCREEN_PIXEL_SIZE : TEXTURE_PIXEL_SIZE;
     vec2 uv = is_canvas_group ? SCREEN_UV : UV;
 
@@ -56,6 +57,9 @@ void fragment() {
 				sample_color = textureLod(screen_texture, sample_uv, 0.0);
 			} else {
 				sample_color = textureLod(TEXTURE, sample_uv, 0.0);
+				sample_color.r *= base_color.r;
+				sample_color.g *= base_color.g;
+				sample_color.b *= base_color.b;
 			}
 			layer_color += sample_color;
 		}
@@ -74,6 +78,6 @@ void fragment() {
 		color.rgb /= color.a > 0.0001 ? color.a : 1.0;
 		COLOR *= color;
 	} else {
-		COLOR = color + texture(TEXTURE, UV);
+		COLOR = color + (texture(TEXTURE, UV) * color);
 	}
 }

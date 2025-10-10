@@ -24,18 +24,37 @@ func _ready():
 		DisplayType.Full:
 			hp_bar.set_text_visible(true);
 			mp_bar.set_bar_visible(true);
+			
+			for child in hp_bar.get_children():
+				child.visible = true;
+			
+			for child in mp_bar.get_children():
+				child.visible = true;
+			
 		DisplayType.Restricted:
 			hp_bar.set_text_visible(false);
 			mp_bar.set_bar_visible(false);
+			
+			for child in hp_bar.get_children():
+				child.visible = false;
+			
+			for child in mp_bar.get_children():
+				child.visible = false;
 
 
 func set_specific_entity_info(entity : EntityController, all : bool = false):
 	if all:
 		if $"Container/Player Name" != null : $"Container/Player Name".text = tr("T_ENTITY_ALL");
 		hp_bar.set_bar_visible(false);
+		
+		for child in hp_bar.get_children():
+			child.visible = false;
 	else:
 		_set_entity_info(entity);
 		hp_bar.set_bar_visible(true);
+		
+		for child in hp_bar.get_children():
+			child.visible = true;
 
 
 func _set_entity_info(entity : EntityController):

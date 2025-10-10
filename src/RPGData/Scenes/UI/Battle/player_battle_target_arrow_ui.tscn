@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c474vq5ojc1tf"]
+[gd_scene load_steps=8 format=3 uid="uid://c474vq5ojc1tf"]
 
 [ext_resource type="Texture2D" uid="uid://c88xb0y4eiiu5" path="res://assets/Sprites/UI/Battle/targetting_arrow.png" id="1_54j8a"]
+[ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="2_2mijq"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_2u84v"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="3_80dx5"]
+[ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="3_hxjt1"]
 [ext_resource type="Resource" uid="uid://c11e2u0xs3jiy" path="res://assets/Tweens/UI/Battle/ui_player_battle_target_arrow.tres" id="4_4mlxe"]
 
 [sub_resource type="Resource" id="Resource_gb6tf"]
@@ -19,6 +21,7 @@ anchor_bottom = 0.067
 offset_bottom = -0.240002
 
 [node name="Arrow" type="TextureRect" parent="."]
+clip_children = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +30,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_54j8a")
 expand_mode = 3
+
+[node name="Noise" type="ColorRect" parent="Arrow"]
+material = ExtResource("2_2mijq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot Matrix" type="ColorRect" parent="Arrow"]
+material = ExtResource("3_hxjt1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("2_2u84v")

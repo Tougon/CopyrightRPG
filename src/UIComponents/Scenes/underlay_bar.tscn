@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dia4envm7la1c"]
+[gd_scene load_steps=4 format=3 uid="uid://dia4envm7la1c"]
 
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_jqoa6"]
 [ext_resource type="Script" path="res://src/UIComponents/Scenes/underlay_bar.gd" id="1_rkyd3"]
+[ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="2_xs0rl"]
 
 [node name="UnderlayBar" type="Control"]
 custom_minimum_size = Vector2(281, 50)
@@ -57,6 +58,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Text" type="RichTextLabel" parent="BarBackground/TextRoot"]
+material = ExtResource("2_xs0rl")
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("1_jqoa6")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfwqqndo7yhc8"]
+[gd_scene load_steps=9 format=3 uid="uid://cfwqqndo7yhc8"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/entity_info.gd" id="1_7bfck"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_qyhns"]
 [ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="2_w83yv"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="3_1kkkp"]
 [ext_resource type="PackedScene" uid="uid://dia4envm7la1c" path="res://src/UIComponents/Scenes/underlay_bar.tscn" id="3_e1bl8"]
+[ext_resource type="Texture2D" uid="uid://bamsk7m3j10v3" path="res://assets/Sprites/UI/Battle/ui_battle_corner_border.png" id="5_5n5h4"]
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="5_gjh3u"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="5_waoc4"]
 
@@ -51,6 +52,20 @@ max_value = 1.0
 text_format = "T_HP_AMOUNT"
 bar_subtract_speed = 2.0
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Container/HP Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_5n5h4")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
 [node name="Padding3" type="Control" parent="Container"]
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
@@ -61,6 +76,20 @@ start_value = 0.5
 max_value = 1.0
 text_format = "T_MP_AMOUNT"
 bar_subtract_speed = 2.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Container/MP Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_5n5h4")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="Padding4" type="Control" parent="Container"]
 custom_minimum_size = Vector2(19, 0)

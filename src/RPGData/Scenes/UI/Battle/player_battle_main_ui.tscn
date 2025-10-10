@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3q7hew02l55r"]
+[gd_scene load_steps=17 format=3 uid="uid://d3q7hew02l55r"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
@@ -10,6 +10,8 @@
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="8_1w2p5"]
 [ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="9_ds235"]
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="9_umrjk"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="10_e1chn"]
+[ext_resource type="Texture2D" uid="uid://bamsk7m3j10v3" path="res://assets/Sprites/UI/Battle/ui_battle_corner_border.png" id="12_br48n"]
 
 [sub_resource type="Resource" id="Resource_j1ry4"]
 script = ExtResource("3_ftnx2")
@@ -33,6 +35,10 @@ shader_parameter/color_secondary = Color(0.16274, 0.361658, 0.46422, 1)
 shader_parameter/aspect = Vector2(1, 0.5)
 shader_parameter/scale_factor = 1.0
 shader_parameter/amount = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_4636g"]
+font = ExtResource("10_e1chn")
+font_size = 18
 
 [node name="Player Main Menu" node_paths=PackedStringArray("atk_display", "def_display", "mag_display", "res_display", "spd_display", "acc_display", "eva_display", "initial_selection", "all_selections") instance=ExtResource("1_gohqw")]
 script = ExtResource("2_stk7e")
@@ -142,7 +148,6 @@ text = "T_BATTLE_MAIN_UI_ITEM"
 clip_text = true
 
 [node name="Padding5" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="8"]
-visible = false
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
 
@@ -209,10 +214,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = -5.0
-offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.2, 0.427451, 0.545098, 1)
@@ -245,6 +246,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_ATK"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Attack/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -271,6 +273,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_DEF"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Defense/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -297,6 +300,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_MAG"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Magic/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -323,6 +327,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_RES"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Resistance/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -349,6 +354,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_SPD"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Speed/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -375,6 +381,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_ACC"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Accuracy/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -401,6 +408,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 5
 text = "T_STAT_EVA"
+label_settings = SubResource("LabelSettings_4636g")
 vertical_alignment = 1
 
 [node name="Stat Display" parent="Status Area/ColorRect/Stats/Evasion/HBoxContainer" index="1" instance=ExtResource("7_d0eur")]
@@ -409,7 +417,21 @@ layout_mode = 2
 icon_size = 32.0
 separation = -12.0
 
-[node name="Noise" type="ColorRect" parent="Status Area/ColorRect" index="1"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Status Area/ColorRect" index="1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_br48n")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Noise" type="ColorRect" parent="Status Area/ColorRect" index="2"]
 material = ExtResource("9_umrjk")
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 1
@@ -420,7 +442,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Dot Matrix" type="ColorRect" parent="Status Area/ColorRect" index="2"]
+[node name="Dot Matrix" type="ColorRect" parent="Status Area/ColorRect" index="3"]
 material = ExtResource("8_1w2p5")
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 1
