@@ -12,6 +12,8 @@ var is_sealing : bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"BG Area/Player Options/ScrollContainer/GridContainer".columns = buttons_per_row * 2;
+	
 	for i in button_count :
 		var button = move_button.instantiate() as MagicButtonUI;
 		var spacer = button_spacer.instantiate() as Control;
@@ -31,7 +33,7 @@ func _enter_tree():
 	EventManager.initialize_magic_menu.connect(_initialize_magic_menu);
 
 
-func _set_active_entity(entity : EntityController):
+func _set_active_entity(entity : EntityController, is_first : bool):
 	current_entity = entity;
 
 
@@ -63,11 +65,17 @@ func _initialize_magic_menu(entity : EntityController):
 			var index = last_row_index + (i % buttons_per_row);
 			while index >= move_list.size() : index -= 1;
 			all_selections[i].focus_neighbor_top = all_selections[index].get_path();
+			
+			if i + buttons_per_row < move_list.size():
+				all_selections[i].focus_neighbor_bottom = all_selections[i + buttons_per_row].get_path();
 		
 		# If we're in the bottom row, wrap to the top
-		if i >= last_row_index:
+		elif i >= last_row_index:
 			var index = i % buttons_per_row;
 			all_selections[i].focus_neighbor_bottom = all_selections[index].get_path();
+			
+			if i - buttons_per_row > 0:
+				all_selections[i].focus_neighbor_top = all_selections[i - buttons_per_row].get_path();
 			
 			if i == move_list.size() - 1 : 
 				all_selections[i].focus_neighbor_right = all_selections[last_row_index].get_path();
@@ -77,12 +85,21 @@ func _initialize_magic_menu(entity : EntityController):
 			var index = i + buttons_per_row - 1;
 			while index >= move_list.size(): index -= 1;
 			all_selections[i].focus_neighbor_left = all_selections[index].get_path();
+			
+			if i + 1 < move_list.size():
+				all_selections[i].focus_neighbor_right = all_selections[i + 1].get_path();
 		elif i % buttons_per_row == buttons_per_row - 1 :
 			var index = i;
 			while index % buttons_per_row != 0: index -= 1;
 			all_selections[i].focus_neighbor_right = all_selections[index].get_path();
+			all_selections[i].focus_neighbor_left = all_selections[i - 1].get_path();
 		elif i == move_list.size() - 1 && move_list.size() <= buttons_per_row:
 			all_selections[i].focus_neighbor_right = all_selections[0].get_path();
+			if i - 1 >= 0 :
+				all_selections[i].focus_neighbor_left = all_selections[i - 1].get_path();
+		else :
+			all_selections[i].focus_neighbor_right = all_selections[i + 1].get_path();
+			all_selections[i].focus_neighbor_left = all_selections[i - 1].get_path();
 	
 	if default_selection && move_list.size() > 0:
 		initial_selection = all_selections[0];

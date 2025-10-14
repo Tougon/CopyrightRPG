@@ -15,6 +15,9 @@ var current_entity : EntityController;
 func _ready():
 	$"Status Area".visible = false;
 	super._ready();
+	
+	for selection in all_selections:
+		selection.focus_entered.connect(_on_button_focus);
 
 
 func _enter_tree():
@@ -31,7 +34,7 @@ func on_tween_end_active(tween_name : String):
 	#EventManager.on_message_queue.emit(msg);
 
 
-func _set_active_entity(entity : EntityController):
+func _set_active_entity(entity : EntityController, is_first : bool):
 	current_entity = entity;
 	
 	atk_display.set_stat_display_value(current_entity.atk_stage);
@@ -41,6 +44,12 @@ func _set_active_entity(entity : EntityController):
 	spd_display.set_stat_display_value(current_entity.spd_stage);
 	acc_display.set_stat_display_value(current_entity.accuracy_stage);
 	eva_display.set_stat_display_value(current_entity.evasion_stage);
+	
+	# Change text on ESC button
+	if is_first :
+		$"BG Area/Player Options/ScrollContainer/GridContainer/Escape/Label".text = tr("T_BATTLE_MAIN_UI_ESCAPE");
+	else :
+		$"BG Area/Player Options/ScrollContainer/GridContainer/Escape/Label".text = tr("T_BATTLE_MAIN_UI_BACK");
 
 
 func on_focus():
@@ -64,6 +73,10 @@ func on_focus():
 	$"BG Area/Player Options/ScrollContainer".ensure_control_visible(initial_selection);
 
 
+func _show_hide_status(show : bool):
+	$"Status Area".visible = show;
+
+
 func _on_attack_button_pressed():
 	EventManager.on_attack_select.emit();
 
@@ -80,16 +93,35 @@ func _on_item_button_pressed():
 	EventManager.on_item_select.emit();
 
 
+func _on_status_button_pressed():
+	_show_hide_status(true);
+
+
+func _on_escape_button_pressed():
+	EventManager.player_menu_cancel.emit(false);
+
+
 func on_menu_cancel():
-	EventManager.player_menu_cancel.emit();
+	if $"Status Area".visible :
+		_show_hide_status(false);
+		return;
+	
+	EventManager.player_menu_cancel.emit(true);
+
 
 func on_unfocus():
-	$"Status Area".visible = false;
+	_show_hide_status(false);
 
-func on_ui_aux_1():
-	$"Status Area".visible = !$"Status Area".visible;
+
+func on_ui_aux_2():
+	_show_hide_status(!$"Status Area".visible);
+
 
 func _on_panel_removed():
 	super._on_panel_removed();
 	if EventManager != null:
 		EventManager.set_active_player.disconnect(_set_active_entity);
+
+
+func _on_button_focus():
+	_show_hide_status(false);

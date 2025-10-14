@@ -73,7 +73,7 @@ func interact():
 
 
 func _get_active_state() -> bool:
-	if additional_active_state == null : return default_active_state;
+	if additional_active_state == null || additional_active_state.size() == 0: return default_active_state;
 	
 	for check in additional_active_state:
 		var result = check.determine_dialogue();

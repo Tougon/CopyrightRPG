@@ -149,7 +149,7 @@ func _begin_turn():
 	# Though I think that's moreso a problem with the game's UI design.
 	players.sort_custom(_compare_speed);
 	if players.size() > 0:
-		EventManager.set_active_player.emit(players[current_player_index]);
+		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
 		EventManager.set_player_bg.emit(players[current_player_index]);
 	
 	UIManager.open_menu_name("player_battle_main");
@@ -175,7 +175,7 @@ func _decision_phase():
 				UIManager.close_menu_name("player_battle_target")
 			
 			if current_player_index < players.size():
-				EventManager.set_active_player.emit(players[current_player_index]);
+				EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
 				EventManager.set_player_bg.emit(players[current_player_index]);
 				await get_tree().process_frame;
 				UIManager.open_menu_name("player_battle_main");
@@ -832,7 +832,7 @@ func _on_item_select():
 	UIManager.open_menu_name("player_battle_item");
 
 
-func _on_player_menu_cancel():
+func _on_player_menu_cancel(cancel_button : bool):
 	if !_is_lowest_valid_player():
 		current_player_index = _get_prev_valid_player_index(current_player_index);
 		players[current_player_index].is_ready = false;
@@ -842,11 +842,11 @@ func _on_player_menu_cancel():
 			players[current_player_index].add_item(players[current_player_index].current_item);
 			players[current_player_index].current_item = null;
 		
-		EventManager.set_active_player.emit(players[current_player_index]);
+		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
 		EventManager.set_player_bg.emit(players[current_player_index]);
 		UIManager.open_menu_name("player_battle_main");
-	else :
-		print("TEMP: EVENTUALLY MOVE THIS ELSEWHERE")
+	# Only execute flee operations if the button was pressed
+	elif !cancel_button :
 		if _can_flee:
 			if _can_flee_this_turn : 
 				current_player_index = -1;

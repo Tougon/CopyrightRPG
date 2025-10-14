@@ -65,16 +65,17 @@ signal register_player(entity : EntityController);
 signal register_enemy(entity : EntityController);
 
 signal set_player_ready();
-signal set_active_player(entity : EntityController);
+signal set_active_player(entity : EntityController, is_first : bool);
 signal set_player_bg(entity : EntityController);
 signal set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float);
 signal set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float, set_transparent : bool);
-signal player_menu_cancel();
+signal player_menu_cancel(cancel_button : bool);
 
 signal on_attack_select();
 signal on_defend_select();
 signal on_magic_select();
 signal on_item_select();
+
 signal initialize_target_menu(entity : EntityController);
 signal initialize_magic_menu(entity : EntityController);
 signal initialize_item_menu(entity : EntityController);

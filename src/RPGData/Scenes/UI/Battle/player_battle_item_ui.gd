@@ -30,7 +30,7 @@ func _enter_tree():
 	EventManager.initialize_item_menu.connect(_initialize_item_menu);
 
 
-func _set_active_entity(entity : EntityController):
+func _set_active_entity(entity : EntityController, is_first : bool):
 	current_entity = entity;
 	current_entity.current_item = null;
 

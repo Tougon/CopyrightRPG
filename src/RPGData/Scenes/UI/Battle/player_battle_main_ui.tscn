@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3q7hew02l55r"]
+[gd_scene load_steps=18 format=3 uid="uid://d3q7hew02l55r"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_gohqw"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.gd" id="2_stk7e"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="5_pm4r5"]
 [ext_resource type="PackedScene" uid="uid://d4eqa4tmptcf" path="res://src/RPGData/Scenes/UI/Battle/player_stat_stage_display.tscn" id="7_d0eur"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="8_1w2p5"]
+[ext_resource type="Script" path="res://src/UIComponents/ButtonLabel.gd" id="8_heyvc"]
 [ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="9_ds235"]
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="9_umrjk"]
 [ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="10_e1chn"]
@@ -52,7 +53,7 @@ eva_display = NodePath("Status Area/ColorRect/Stats/Evasion/HBoxContainer/Stat D
 menu_name = "player_battle_main"
 hide_on_unfocus = true
 initial_selection = NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Attack")
-all_selections = [NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Attack")]
+all_selections = [NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Attack"), NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Skills"), NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Status"), NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Defend"), NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Item"), NodePath("BG Area/Player Options/ScrollContainer/GridContainer/Escape")]
 sequence_list = Array[ExtResource("3_ftnx2")]([SubResource("Resource_j1ry4")])
 
 [node name="BG Area" parent="." index="0"]
@@ -68,7 +69,6 @@ layout_mode = 1
 anchor_top = 0.315
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.400001
 offset_top = 0.150002
 grow_horizontal = 2
 grow_vertical = 2
@@ -78,13 +78,14 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 14.0
-offset_right = -19.0
-offset_bottom = -16.0
+offset_left = 36.0
+offset_top = 5.0
+offset_right = -36.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
-horizontal_scroll_mode = 0
+horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
 [node name="GridContainer" type="GridContainer" parent="BG Area/Player Options/ScrollContainer" index="0"]
@@ -92,89 +93,182 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 10
-columns = 6
+theme_override_constants/v_separation = 0
+columns = 3
 
-[node name="Padding" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="0"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
-[node name="Attack" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="1"]
-custom_minimum_size = Vector2(281, 100)
+[node name="Attack" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="0"]
+custom_minimum_size = Vector2(222, 60)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Status")
+focus_neighbor_top = NodePath("../Defend")
+focus_neighbor_right = NodePath("../Skills")
+focus_neighbor_bottom = NodePath("../Defend")
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+clip_text = true
+
+[node name="Label" type="Label" parent="BG Area/Player Options/ScrollContainer/GridContainer/Attack" index="0"]
+material = ExtResource("9_ds235")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
 text = "T_BATTLE_MAIN_UI_ATTACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
+script = ExtResource("8_heyvc")
+override_pressed = true
 
-[node name="Padding2" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="2"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
-[node name="Magic" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="3"]
-custom_minimum_size = Vector2(281, 100)
+[node name="Skills" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="1"]
+custom_minimum_size = Vector2(222, 60)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Attack")
+focus_neighbor_top = NodePath("../Item")
+focus_neighbor_right = NodePath("../Status")
+focus_neighbor_bottom = NodePath("../Item")
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
-text = "T_BATTLE_MAIN_UI_MAGIC"
 clip_text = true
 
-[node name="Padding3" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="4"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
+[node name="Label" type="Label" parent="BG Area/Player Options/ScrollContainer/GridContainer/Skills" index="0"]
+material = ExtResource("9_ds235")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+text = "T_BATTLE_MAIN_UI_SKILLS"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("8_heyvc")
+override_pressed = true
 
-[node name="Defend" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="5"]
-custom_minimum_size = Vector2(281, 100)
+[node name="Status" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="2"]
+custom_minimum_size = Vector2(222, 60)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Skills")
+focus_neighbor_top = NodePath("../Escape")
+focus_neighbor_right = NodePath("../Attack")
+focus_neighbor_bottom = NodePath("../Escape")
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+clip_text = true
+
+[node name="Label" type="Label" parent="BG Area/Player Options/ScrollContainer/GridContainer/Status" index="0"]
+material = ExtResource("9_ds235")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+text = "T_BATTLE_MAIN_UI_STATUS"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("8_heyvc")
+override_pressed = true
+
+[node name="Defend" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="3"]
+custom_minimum_size = Vector2(222, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Escape")
+focus_neighbor_top = NodePath("../Attack")
+focus_neighbor_right = NodePath("../Item")
+focus_neighbor_bottom = NodePath("../Attack")
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+clip_text = true
+
+[node name="Label" type="Label" parent="BG Area/Player Options/ScrollContainer/GridContainer/Defend" index="0"]
+material = ExtResource("9_ds235")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
 text = "T_BATTLE_MAIN_UI_DEFEND"
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
+script = ExtResource("8_heyvc")
+override_pressed = true
 
-[node name="Padding4" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="6"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
-[node name="Item" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="7"]
-custom_minimum_size = Vector2(281, 100)
+[node name="Item" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="4"]
+custom_minimum_size = Vector2(222, 60)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Defend")
+focus_neighbor_top = NodePath("../Skills")
+focus_neighbor_right = NodePath("../Escape")
+focus_neighbor_bottom = NodePath("../Skills")
+theme = ExtResource("5_pm4r5")
+theme_override_font_sizes/font_size = 32
+clip_text = true
+
+[node name="Label" type="Label" parent="BG Area/Player Options/ScrollContainer/GridContainer/Item" index="0"]
+material = ExtResource("9_ds235")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
 text = "T_BATTLE_MAIN_UI_ITEM"
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
+script = ExtResource("8_heyvc")
+override_pressed = true
 
-[node name="Padding5" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="8"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
-[node name="Item2" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="9"]
-visible = false
-custom_minimum_size = Vector2(281, 100)
+[node name="Escape" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="5"]
+custom_minimum_size = Vector2(222, 60)
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath("../Item")
+focus_neighbor_top = NodePath("../Status")
+focus_neighbor_right = NodePath("../Defend")
+focus_neighbor_bottom = NodePath("../Status")
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
-text = "T_BATTLE_MAIN_UI_DEFEND"
 clip_text = true
 
-[node name="Padding6" type="Control" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="10"]
-visible = false
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
-[node name="Item3" type="Button" parent="BG Area/Player Options/ScrollContainer/GridContainer" index="11"]
-visible = false
-custom_minimum_size = Vector2(281, 100)
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="Label" type="Label" parent="BG Area/Player Options/ScrollContainer/GridContainer/Escape" index="0"]
+material = ExtResource("9_ds235")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("5_pm4r5")
 theme_override_font_sizes/font_size = 32
-text = "T_BATTLE_MAIN_UI_DEFEND"
+text = "T_BATTLE_MAIN_UI_ESCAPE"
+horizontal_alignment = 1
+vertical_alignment = 1
 clip_text = true
+script = ExtResource("8_heyvc")
+override_pressed = true
 
 [node name="Noise" type="ColorRect" parent="BG Area/Player Options" index="1"]
 material = ExtResource("9_umrjk")
@@ -197,6 +291,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Status Area" type="ColorRect" parent="." index="1"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -454,6 +549,8 @@ grow_vertical = 2
 mouse_filter = 2
 
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Attack" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Magic" to="." method="_on_magic_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Skills" to="." method="_on_magic_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Status" to="." method="_on_status_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Defend" to="." method="_on_defend_button_pressed"]
 [connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Item" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="BG Area/Player Options/ScrollContainer/GridContainer/Escape" to="." method="_on_escape_button_pressed"]

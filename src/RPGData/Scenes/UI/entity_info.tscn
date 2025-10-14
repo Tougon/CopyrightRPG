@@ -27,26 +27,23 @@ grow_vertical = 2
 theme_override_constants/separation = 0
 
 [node name="Padding" type="Control" parent="Container"]
-custom_minimum_size = Vector2(19, 0)
+custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 
 [node name="Player Name" type="Label" parent="Container"]
 material = ExtResource("2_w83yv")
-custom_minimum_size = Vector2(281, 0)
+custom_minimum_size = Vector2(296, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 theme = ExtResource("1_qyhns")
 theme_override_font_sizes/font_size = 36
 text = "PLAYER"
 vertical_alignment = 1
 
-[node name="Padding2" type="Control" parent="Container"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
 [node name="HP Bar" parent="Container" instance=ExtResource("3_e1bl8")]
+custom_minimum_size = Vector2(296, 50)
 layout_mode = 2
+size_flags_horizontal = 1
 start_value = 0.5
 max_value = 1.0
 text_format = "T_HP_AMOUNT"
@@ -66,12 +63,10 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Padding3" type="Control" parent="Container"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-
 [node name="MP Bar" parent="Container" instance=ExtResource("3_e1bl8")]
+custom_minimum_size = Vector2(296, 50)
 layout_mode = 2
+size_flags_horizontal = 1
 start_value = 0.5
 max_value = 1.0
 text_format = "T_MP_AMOUNT"
@@ -90,10 +85,6 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-
-[node name="Padding4" type="Control" parent="Container"]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("3_1kkkp")

@@ -50,14 +50,14 @@ func set_specific_entity_info(entity : EntityController, all : bool = false):
 		for child in hp_bar.get_children():
 			child.visible = false;
 	else:
-		_set_entity_info(entity);
+		_set_entity_info(entity, false);
 		hp_bar.set_bar_visible(true);
 		
 		for child in hp_bar.get_children():
 			child.visible = true;
 
 
-func _set_entity_info(entity : EntityController):
+func _set_entity_info(entity : EntityController, is_first : bool):
 	if delay_updates : 
 		await get_tree().process_frame;
 	
