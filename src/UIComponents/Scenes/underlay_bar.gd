@@ -77,6 +77,12 @@ func append_text(new_text : String):
 	text.text += new_text;
 
 
+func preview_value(target : float, current : float):
+	fill.scale.x = target;
+	underlay.scale.x = current;
+	underlay.visible = true;
+
+
 func set_value_immediate(val : float):
 	# Calculate fill amount
 	current_value = clamp(val, min_value, max_value);

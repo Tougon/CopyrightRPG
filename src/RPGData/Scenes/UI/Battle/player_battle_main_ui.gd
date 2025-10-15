@@ -61,7 +61,7 @@ func on_focus():
 			PlayerController.ActionType.DEFEND:
 				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Defend";
 			PlayerController.ActionType.SPELL:
-				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Magic";
+				initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Skills";
 			PlayerController.ActionType.ITEM:
 				if current_entity.has_any_items:
 					initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Item";

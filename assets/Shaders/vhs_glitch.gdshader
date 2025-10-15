@@ -20,6 +20,11 @@ uniform vec2 direction_g = vec2( 0.4, 1.0 );
 // B方向
 uniform vec2 direction_b = vec2( -0.7, -0.3 );
 
+uniform float modifier_r : hint_range(0.0, 1.0) = 1;
+uniform float modifier_g : hint_range(0.0, 1.0) = 1;
+uniform float modifier_b : hint_range(0.0, 1.0) = 1;
+uniform float saturation : hint_range(0.0, 1.0) = 1;
+
 uniform sampler2D screen_texture : hint_screen_texture, filter_nearest;
 
 
@@ -39,10 +44,13 @@ void fragment( )
 	) * shake_power * ( fade * 12.0 );
 
 	COLOR = vec4(
-		textureLod( screen_texture, fixed_uv + normalize( direction_r ) * fade, 0.0 ).r
-	,	textureLod( screen_texture, fixed_uv + normalize( direction_g ) * fade, 0.0 ).g
-	,	textureLod( screen_texture, fixed_uv + normalize( direction_b ) * fade, 0.0 ).b
+		textureLod( screen_texture, fixed_uv + normalize( direction_r ) * fade, 0.0 ).r * modifier_r
+	,	textureLod( screen_texture, fixed_uv + normalize( direction_g ) * fade, 0.0 ).g * modifier_g
+	,	textureLod( screen_texture, fixed_uv + normalize( direction_b ) * fade, 0.0 ).b * modifier_b
 	,	0.0
 	) * ( 1.0 - fade );
+	
+	 COLOR.rgb = mix(vec3(dot(COLOR.rgb, vec3(0.299, 0.587, 0.114))), COLOR.rgb, saturation);
+	
 	COLOR.a = 1.0;
 }

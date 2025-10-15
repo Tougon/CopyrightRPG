@@ -106,6 +106,8 @@ func clear_dialogue():
 	helper_label.append_text(bbcode);
 	
 	on_dialogue_print.emit();
+	
+	finish_print = false;
 
 
 func print_dialogue(text : String, await_key : bool = false):

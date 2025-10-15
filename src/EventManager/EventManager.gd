@@ -79,6 +79,7 @@ signal on_item_select();
 signal initialize_target_menu(entity : EntityController);
 signal initialize_magic_menu(entity : EntityController);
 signal initialize_item_menu(entity : EntityController);
+signal on_action_highlighted(action : Spell, cost : int, can_use : bool);
 signal on_action_selected(action : Spell, sealing : bool);
 signal highlight_target(entity : EntityController, all : bool);
 signal click_target(entity : EntityController);

@@ -1,0 +1,208 @@
+[gd_scene load_steps=23 format=3 uid="uid://cvtwqud6keh3w"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/flag_icon_group.gd" id="1_rxdci"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_po6jt"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="3_xf6c7"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="4_a06ok"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="5_bf800"]
+[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="6_4h17q"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="7_eq78t"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="8_dw8yp"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="9_8wem2"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="10_hisq1"]
+[ext_resource type="Resource" uid="uid://1vrs46mcmfqy" path="res://assets/Flags/null.tres" id="11_oqa55"]
+[ext_resource type="Texture2D" uid="uid://dvmod5a4sbpwf" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_red.png" id="12_elyow"]
+[ext_resource type="Texture2D" uid="uid://cje47aqmrid8i" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_orange.png" id="13_f7g75"]
+[ext_resource type="Material" uid="uid://bi4v6dqdvd5ha" path="res://assets/Materials/UI/ui_text_blur_small.tres" id="13_jcg61"]
+[ext_resource type="Texture2D" uid="uid://rotyjjwl4jtt" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_border.png" id="14_mug8c"]
+[ext_resource type="Texture2D" uid="uid://bsxswmm487nmn" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_yellow.png" id="14_uu0yb"]
+[ext_resource type="Texture2D" uid="uid://c7bgnd3og6we8" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_green.png" id="15_1fqjc"]
+[ext_resource type="Texture2D" uid="uid://d30gbfhra6v6k" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_turqouise.png" id="16_fepp1"]
+[ext_resource type="Texture2D" uid="uid://b70v4w8183ft1" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_blue.png" id="17_lqo6y"]
+[ext_resource type="Texture2D" uid="uid://dglmcb4kjrdh0" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_purple.png" id="18_evw3a"]
+[ext_resource type="Texture2D" uid="uid://bqjdqtp080j1t" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_pink.png" id="19_ocseq"]
+[ext_resource type="Texture2D" uid="uid://gysx4m4ijsrc" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_null.png" id="20_s3apn"]
+
+[node name="Flag Icon Group" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -720.0
+offset_bottom = -696.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rxdci")
+flags = Array[ExtResource("2_po6jt")]([ExtResource("3_xf6c7"), ExtResource("4_a06ok"), ExtResource("5_bf800"), ExtResource("6_4h17q"), ExtResource("7_eq78t"), ExtResource("8_dw8yp"), ExtResource("9_8wem2"), ExtResource("10_hisq1"), ExtResource("11_oqa55")])
+
+[node name="Icon Container" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Red" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("12_elyow")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Red"]
+self_modulate = Color(0.47696, 0.0593969, 0.0673112, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Orange" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("13_f7g75")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Orange"]
+self_modulate = Color(0.638429, 0.233676, 0, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Yellow" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("14_uu0yb")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Yellow"]
+self_modulate = Color(0.581394, 0.457466, 1.92523e-07, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Green" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("15_1fqjc")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Green"]
+self_modulate = Color(0.105882, 0.466667, 0, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Turquoise" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("16_fepp1")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Turquoise"]
+self_modulate = Color(0, 0.577629, 0.372306, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Blue" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("17_lqo6y")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Blue"]
+self_modulate = Color(0.0016066, 0.288953, 0.984077, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Purple" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("18_evw3a")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Purple"]
+self_modulate = Color(0.301681, 0.00114532, 0.598629, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Pink" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("19_ocseq")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Pink"]
+self_modulate = Color(1, 0.224956, 0.551906, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Null" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("20_s3apn")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Null"]
+self_modulate = Color(0.446777, 0.446777, 0.446777, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3

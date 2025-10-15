@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5tiyavs087su"]
+[gd_scene load_steps=6 format=3 uid="uid://b5tiyavs087su"]
 
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_5kehl"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_button.gd" id="2_4etfd"]
+[ext_resource type="Material" uid="uid://bi4v6dqdvd5ha" path="res://assets/Materials/UI/ui_text_blur_small.tres" id="3_lblmd"]
+[ext_resource type="Script" path="res://src/UIComponents/ButtonLabel.gd" id="4_w303o"]
+[ext_resource type="PackedScene" uid="uid://cvtwqud6keh3w" path="res://src/RPGData/Scenes/UI/flag_icon_group.tscn" id="5_r5xwg"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(296, 60)
@@ -9,20 +12,40 @@ offset_right = 295.0
 offset_bottom = 60.0
 theme = ExtResource("1_5kehl")
 theme_override_font_sizes/font_size = 24
-text = "T_BATTLE_MAIN_UI_ATTACK"
 clip_text = true
 script = ExtResource("2_4etfd")
 
+[node name="Label" type="Label" parent="."]
+material = ExtResource("3_lblmd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -4.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_5kehl")
+theme_override_font_sizes/font_size = 22
+text = "T_BATTLE_MAIN_UI_ATTACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("4_w303o")
+override_pressed = true
+
 [node name="MP Label" type="Label" parent="."]
+material = ExtResource("3_lblmd")
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -145.0
+offset_left = -156.0
 offset_top = -33.0
-offset_right = -5.0
+offset_right = -16.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_5kehl")
@@ -30,5 +53,52 @@ theme_override_font_sizes/font_size = 16
 text = "50 MP"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("4_w303o")
+override_pressed = true
 
+[node name="Flag Icon Group" parent="." instance=ExtResource("5_r5xwg")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 14.0
+offset_top = -26.0
+offset_right = -73.0
+offset_bottom = -8.0
+grow_vertical = 0
+
+[node name="Icon Container" parent="Flag Icon Group" index="0"]
+custom_minimum_size = Vector2(18, 18)
+offset_right = 7.0
+
+[node name="Red" parent="Flag Icon Group/Icon Container" index="0"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Orange" parent="Flag Icon Group/Icon Container" index="1"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Yellow" parent="Flag Icon Group/Icon Container" index="2"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Green" parent="Flag Icon Group/Icon Container" index="3"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Turquoise" parent="Flag Icon Group/Icon Container" index="4"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Blue" parent="Flag Icon Group/Icon Container" index="5"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Purple" parent="Flag Icon Group/Icon Container" index="6"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Pink" parent="Flag Icon Group/Icon Container" index="7"]
+custom_minimum_size = Vector2(18, 18)
+
+[node name="Null" parent="Flag Icon Group/Icon Container" index="8"]
+custom_minimum_size = Vector2(18, 18)
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
+
+[editable path="Flag Icon Group"]

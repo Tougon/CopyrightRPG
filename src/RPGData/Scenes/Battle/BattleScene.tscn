@@ -1,4 +1,4 @@
-[gd_scene load_steps=110 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=111 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -301,8 +301,12 @@ shader_parameter/shake_power = 0.37
 shader_parameter/shake_block_size = 240.0
 shader_parameter/fade = 1.0
 shader_parameter/direction_r = Vector2(4.66, 0)
-shader_parameter/direction_g = Vector2(-0.06, 2.08)
+shader_parameter/direction_g = Vector2(0.38, 2.08)
 shader_parameter/direction_b = Vector2(-0.7, -0.3)
+shader_parameter/modifier_r = 1.0
+shader_parameter/modifier_g = 1.0
+shader_parameter/modifier_b = 1.0
+shader_parameter/saturation = 1.0
 
 [sub_resource type="Resource" id="Resource_kcgk4"]
 script = ExtResource("6_6cut8")
@@ -325,9 +329,23 @@ relative = false
 "Value Type" = 1
 "Float Value" = 1.0
 
+[sub_resource type="Resource" id="Resource_kmc0h"]
+script = ExtResource("42_mqdqo")
+target = ""
+property_name = "shader_parameter/saturation"
+material_property = true
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 1.0
+
 [sub_resource type="Resource" id="Resource_3dnb1"]
 script = ExtResource("41_ktutj")
-frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_o65uc")])
+frames = Array[ExtResource("42_mqdqo")]([SubResource("Resource_o65uc"), SubResource("Resource_kmc0h")])
 
 [sub_resource type="Resource" id="Resource_80yy4"]
 script = ExtResource("40_0nnbl")

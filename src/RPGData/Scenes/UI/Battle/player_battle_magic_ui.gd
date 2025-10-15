@@ -31,6 +31,7 @@ func _enter_tree():
 	
 	EventManager.set_active_player.connect(_set_active_entity);
 	EventManager.initialize_magic_menu.connect(_initialize_magic_menu);
+	EventManager.on_action_highlighted.connect(_on_action_highlighted);
 
 
 func _set_active_entity(entity : EntityController, is_first : bool):
@@ -108,10 +109,31 @@ func _initialize_magic_menu(entity : EntityController):
 		all_selections[i].visible = false;
 
 
+func _on_action_highlighted(spell : Spell, cost : int, can_use : bool):
+	BattleScene.Instance.dialogue_canvas.skip_dialogue_to_end();
+	BattleScene.Instance.dialogue_canvas.clear_dialogue();
+	
+	# Not sure if I want to keep this but the above stays 100%.
+	var mp_mod = current_entity.current_mp;
+	if can_use : mp_mod -= cost;
+	
+	var percent = (mp_mod as float) / (current_entity.max_mp as float)
+	var current = (current_entity.current_mp as float) / (current_entity.max_mp as float)
+	
+	$"BG Area/Character Info".mp_bar.preview_value(percent, current);
+
+
 func _get_bottom_row_start_index(size : int) -> int:
 	if size < buttons_per_row : return size - 1;
 	elif size % buttons_per_row == 0 : return size - buttons_per_row;
 	return size - (size % buttons_per_row);
+
+
+func on_unfocus():
+	super.on_unfocus();
+	
+	BattleScene.Instance.dialogue_canvas.skip_dialogue_to_end();
+	BattleScene.Instance.dialogue_canvas.clear_dialogue();
 
 
 func on_menu_cancel():
@@ -128,8 +150,25 @@ func on_ui_aux_1():
 	super.on_ui_aux_1();
 
 
+func on_ui_aux_2() :
+	var button = UIManager.current_selection as MagicButtonUI;
+	
+	if button != null :
+		var spell = button.action;
+		
+		if spell != null : 
+			# If dialogue is still printing, end it
+			BattleScene.Instance.dialogue_canvas.skip_dialogue_to_end();
+			BattleScene.Instance.dialogue_canvas.clear_dialogue();
+			
+			var msg = tr(spell.spell_description_key);
+			EventManager.on_message_queue.emit(msg);
+			BattleScene.Instance.dialogue_canvas.skip_dialogue_to_end();
+
+
 func _on_panel_removed():
 	super._on_panel_removed();
 	if EventManager != null:
 		EventManager.set_active_player.disconnect(_set_active_entity);
 		EventManager.initialize_magic_menu.disconnect(_initialize_magic_menu);
+		EventManager.on_action_highlighted.disconnect(_on_action_highlighted);

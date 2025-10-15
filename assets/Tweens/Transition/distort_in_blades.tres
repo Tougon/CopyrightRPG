@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TweenResource" load_steps=6 format=3 uid="uid://dnnktgjcqwttk"]
+[gd_resource type="Resource" script_class="TweenResource" load_steps=7 format=3 uid="uid://dnnktgjcqwttk"]
 
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="1_dolwq"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="2_k5ef8"]
@@ -19,9 +19,24 @@ relative = false
 "Float Value" = 0.0
 "From Float" = 1.0
 
+[sub_resource type="Resource" id="Resource_w2ua6"]
+script = ExtResource("3_bqawb")
+target = ""
+property_name = "shader_parameter/saturation"
+material_property = true
+duration = 0.25
+delay = 0.25
+transition = 3
+ease = 0
+relative = false
+"Use From" = true
+"Value Type" = 1
+"Float Value" = 1.0
+"From Float" = 0.0
+
 [sub_resource type="Resource" id="Resource_oyu5f"]
 script = ExtResource("2_k5ef8")
-frames = Array[ExtResource("3_bqawb")]([SubResource("Resource_vfrj8")])
+frames = Array[ExtResource("3_bqawb")]([SubResource("Resource_vfrj8"), SubResource("Resource_w2ua6")])
 
 [resource]
 script = ExtResource("1_dolwq")
