@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bax2rjs6ennqq"]
+[gd_scene load_steps=10 format=3 uid="uid://bax2rjs6ennqq"]
 
 [ext_resource type="PackedScene" uid="uid://cy3k2aw7r14mq" path="res://src/RPGData/Scenes/UI/Battle/player_base_ui.tscn" id="1_r012b"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_ui.gd" id="2_v3riw"]
 [ext_resource type="PackedScene" uid="uid://be5mqb53supdl" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_button.tscn" id="3_tracl"]
-[ext_resource type="PackedScene" uid="uid://8bkb5h3xvbyj" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_spacer.tscn" id="4_yrdu8"]
+[ext_resource type="Script" path="res://src/UIManager/Scenes/DynamicMenuPanel.gd" id="5_bqn81"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="5_je8j1"]
 [ext_resource type="Resource" uid="uid://co1mhuro68xsc" path="res://assets/Tweens/UI/Battle/ui_player_battle_main_open.tres" id="6_esbiu"]
+[ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="7_btbtm"]
+[ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="8_2ie1d"]
 
 [sub_resource type="Resource" id="Resource_wr4f0"]
 script = ExtResource("5_je8j1")
@@ -14,15 +16,12 @@ tween_resource = ExtResource("6_esbiu")
 play_on_start = false
 next_tween = ""
 
-[node name="Player Item Menu" node_paths=PackedStringArray("button_root") instance=ExtResource("1_r012b")]
+[node name="Player Item Menu" node_paths=PackedStringArray("menu_panel") instance=ExtResource("1_r012b")]
 script = ExtResource("2_v3riw")
-button_count = 30
-buttons_per_row = 3
-move_button = ExtResource("3_tracl")
-button_spacer = ExtResource("4_yrdu8")
-button_root = NodePath("BG Area/Player Options/ScrollContainer/GridContainer")
+menu_panel = NodePath("BG Area/Player Options/Dynamic Panel")
 menu_name = "player_battle_item"
 hide_on_unfocus = true
+unfocus_on_open = false
 sequence_list = Array[ExtResource("5_je8j1")]([SubResource("Resource_wr4f0")])
 
 [node name="Player Options" type="Control" parent="BG Area" index="1"]
@@ -35,23 +34,56 @@ offset_top = 0.150002
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BG Area/Player Options" index="0"]
+[node name="Dynamic Panel" type="Panel" parent="BG Area/Player Options" index="0" node_paths=PackedStringArray("container")]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 10.0
-offset_right = -19.0
-offset_bottom = -10.0
+offset_left = 36.0
+offset_top = 5.0
+offset_right = -35.6
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_bqn81")
+container = NodePath("ScrollContainer")
+menu_item = ExtResource("3_tracl")
+item_size = Vector2(296, 60)
+item_spacing = Vector2(0, 0)
+boundary_limit = Vector2(800, 545)
+keep_column_on_wrap = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG Area/Player Options/Dynamic Panel" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="GridContainer" type="GridContainer" parent="BG Area/Player Options/ScrollContainer" index="0"]
+[node name="Control" type="Control" parent="BG Area/Player Options/Dynamic Panel/ScrollContainer" index="0"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 10
-columns = 6
+
+[node name="Noise" type="ColorRect" parent="BG Area/Player Options" index="1"]
+material = ExtResource("7_btbtm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot Matrix" type="ColorRect" parent="BG Area/Player Options" index="2"]
+material = ExtResource("8_2ie1d")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

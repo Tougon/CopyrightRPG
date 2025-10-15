@@ -2,6 +2,8 @@
 extends Panel
 class_name DynamicMenuPanel
 
+signal on_menu_items_ready(item_groups : Array[Array]);
+
 @export var container : ScrollContainer;
 @export var menu_item: PackedScene
 @export var item_size : Vector2 = Vector2(75.0, 75.0);
@@ -33,6 +35,8 @@ var _current_item_index : int = 0;
 var _last_group_index : int = 0;
 var _last_item_index : int = 0;
 
+var is_ready : bool = false;
+
 signal on_item_selected(data);
 signal on_item_clicked(data);
 
@@ -52,6 +56,8 @@ func _ready() -> void:
 	_group_start_index = 1;
 	
 	_spawn_menu_items();
+	on_menu_items_ready.emit(_item_groups);
+	is_ready = true;
 	
 	await get_tree().process_frame;
 	set_selected_index(0);
@@ -192,6 +198,10 @@ func _spawn_menu_items():
 			if item is Button :
 				(item as Button).pressed.connect(_on_item_clicked);
 			_item_groups[_item_groups.size() - 1].append(item);
+
+
+func get_menu_item_groups() -> Array[Array]:
+	return _item_groups;
 
 
 func _on_focus_entered():

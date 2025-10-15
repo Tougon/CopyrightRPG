@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_button.gd" id="2_rmpkp"]
 
 [node name="Button" type="Button"]
-custom_minimum_size = Vector2(295, 50)
+custom_minimum_size = Vector2(295, 60)
 offset_right = 295.0
 offset_bottom = 60.0
 theme = ExtResource("1_1twg6")

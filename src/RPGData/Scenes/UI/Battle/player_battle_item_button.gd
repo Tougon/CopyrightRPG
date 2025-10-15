@@ -7,10 +7,15 @@ var entity : EntityController;
 @onready var quantity_label : Label = $"Quantity Label";
 
 
+func refresh_data(data):
+	if data is ConsumableItem:
+		var item = data as ConsumableItem;
+		init_button(item, item.battle_effect, entity);
+
+
 func init_button(_item : Item, _action : Spell, _entity : EntityController):
 	item = _item;
 	action = _action;
-	entity = _entity;
 	text = action.spell_name_key;
 	if _entity.item_list.has(_item) : 
 		var amt = _entity.item_list[_item];
