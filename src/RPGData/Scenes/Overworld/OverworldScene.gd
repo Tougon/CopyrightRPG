@@ -231,7 +231,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 	var params = BattleParams.new();
 	params.can_flee = encounter.can_flee;
 	
-	var enemies = encounter.enemy_ids.duplicate();
+	var enemies = encounter.get_encounter_enemies();
 	
 	if !encounter.ignore_flee_mechanics:
 		var rand = randf();
@@ -240,7 +240,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 			params.can_flee = false;
 			enemies.append_array(_current_flee_group);
 		else : 
-			_current_flee_group.append_array(encounter.enemy_ids);
+			_current_flee_group.append_array(enemies);
 	
 	# Initialize player data
 	for i in GameplayConstants.MAX_PARTY_SIZE:
