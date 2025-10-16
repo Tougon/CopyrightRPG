@@ -12,11 +12,10 @@ func _on_battle_complete(result : BattleResult):
 		
 		if GameplayConstants.DEMO_MODE : result.exp = 0;
 		
-		result.exp = 0;
 		if result.exp > 0:
 			var exp : String;
 			
-			exp = tr("T_BATTLE_RESULT_VICTORY_EXP")
+			exp = tr("T_BATTLE_RESULT_VICTORY_EXP_PLURAL")
 			
 			exp = exp.format({amount = result.exp});
 			EventManager.on_dialogue_queue.emit(exp);
@@ -35,7 +34,7 @@ func _on_battle_complete(result : BattleResult):
 						award_exp -= (next_level_amt - current_exp);
 						current_exp = 0;
 						next_level_amt = player.override_entity.get_level_exp(level);
-						EventManager.on_dialogue_queue.emit(player.override_entity.name_key + " LEVEL UP! " + str(level));
+						EventManager.on_dialogue_queue.emit(tr(player.override_entity.name_key) + " LEVEL UP! " + str(level));
 						
 						# Increase HP and MP based on new level
 						var prev_hp = player.override_entity.get_hp(level - 1);

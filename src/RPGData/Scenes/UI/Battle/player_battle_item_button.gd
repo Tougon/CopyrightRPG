@@ -4,6 +4,7 @@ class_name ItemButtonUI
 var item : Item;
 var action : Spell;
 var entity : EntityController;
+@onready var label : Label = $"Label";
 @onready var quantity_label : Label = $"Quantity Label";
 
 
@@ -16,7 +17,7 @@ func refresh_data(data):
 func init_button(_item : Item, _action : Spell, _entity : EntityController):
 	item = _item;
 	action = _action;
-	text = action.spell_name_key;
+	label.text = action.spell_name_key;
 	if _entity.item_list.has(_item) : 
 		var amt = _entity.item_list[_item];
 		quantity_label.text = "x" + str(amt);

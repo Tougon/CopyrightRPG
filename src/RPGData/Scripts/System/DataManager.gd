@@ -33,14 +33,15 @@ func initialize_data(auto : bool):
 	initialize_party_data(auto)
 	
 	if auto :
-		current_save.inventory[0] = 2;
-		current_save.inventory[1] = 3;
-		current_save.inventory[2] = 3;
-		current_save.inventory[3] = 3;
-		current_save.inventory[4] = 3;
-		current_save.inventory[5] = 3;
-		current_save.inventory[6] = 3;
-		current_save.inventory[8] = 3;
+		print("REMOVE THIS LATER")
+		#current_save.inventory[0] = 2;
+		#current_save.inventory[1] = 3;
+		#current_save.inventory[2] = 3;
+		#current_save.inventory[3] = 3;
+		#current_save.inventory[4] = 3;
+		#current_save.inventory[5] = 3;
+		#current_save.inventory[6] = 3;
+		#current_save.inventory[8] = 3;
 
 
 func initialize_party_data(auto : bool):
@@ -55,7 +56,7 @@ func initialize_party_data(auto : bool):
 		
 		var member = PartyMemberData.new();
 		member.id = i;
-		if auto : member.level = 5;
+		if auto : member.level = 1;
 		else : member.level = 1;
 		member.exp = 0;
 		member.unlocked = auto;

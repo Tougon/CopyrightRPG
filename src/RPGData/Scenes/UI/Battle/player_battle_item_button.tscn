@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://be5mqb53supdl"]
+[gd_scene load_steps=5 format=3 uid="uid://be5mqb53supdl"]
 
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_1twg6"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_button.gd" id="2_rmpkp"]
+[ext_resource type="Material" uid="uid://bi4v6dqdvd5ha" path="res://assets/Materials/UI/ui_text_blur_small.tres" id="3_7tlr2"]
+[ext_resource type="Script" path="res://src/UIComponents/ButtonLabel.gd" id="4_w6umw"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(295, 60)
@@ -9,11 +11,31 @@ offset_right = 295.0
 offset_bottom = 60.0
 theme = ExtResource("1_1twg6")
 theme_override_font_sizes/font_size = 24
-text = "T_BATTLE_MAIN_UI_ATTACK"
 clip_text = true
 script = ExtResource("2_rmpkp")
 
+[node name="Label" type="Label" parent="."]
+material = ExtResource("3_7tlr2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -4.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1twg6")
+theme_override_font_sizes/font_size = 22
+text = "T_BATTLE_MAIN_UI_ATTACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("4_w6umw")
+override_pressed = true
+
 [node name="Quantity Label" type="Label" parent="."]
+material = ExtResource("3_7tlr2")
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -22,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -145.0
 offset_top = -33.0
-offset_right = -5.0
+offset_right = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_1twg6")
@@ -30,5 +52,7 @@ theme_override_font_sizes/font_size = 16
 text = "x0"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("4_w6umw")
+override_pressed = true
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

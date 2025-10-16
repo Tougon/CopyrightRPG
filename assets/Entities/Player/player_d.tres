@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=42 format=3 uid="uid://bnwh1ljsi2ph"]
+[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://bnwh1ljsi2ph"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_lwhc4"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="2_87oo2"]
@@ -48,6 +48,16 @@ min = 75
 max = 400
 growth = SubResource("Curve_u85t0")
 
+[sub_resource type="Curve" id="Curve_v818k"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_r2iwo"]
+script = ExtResource("2_oh4hg")
+min = 100
+max = 100000
+growth = SubResource("Curve_v818k")
+
 [sub_resource type="Curve" id="Curve_08sas"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
@@ -66,32 +76,32 @@ level = 0
 [sub_resource type="Resource" id="Resource_2kb1p"]
 script = ExtResource("4_p5sd2")
 spell = ExtResource("9_8w5jl")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_ngsms"]
 script = ExtResource("4_p5sd2")
 spell = ExtResource("10_hwd27")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_q6w4c"]
 script = ExtResource("4_p5sd2")
 spell = ExtResource("11_qr3lv")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_kgesv"]
 script = ExtResource("4_p5sd2")
 spell = ExtResource("12_7ekhg")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_k3f1n"]
 script = ExtResource("4_p5sd2")
 spell = ExtResource("11_b1nvm")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_66lbm"]
 script = ExtResource("4_p5sd2")
 spell = ExtResource("11_ljh1t")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_8ddd3")
@@ -156,6 +166,7 @@ base_crit_resist_modifier = 1.0
 base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_laxa8")
+level_exp = SubResource("Resource_r2iwo")
 affinity = Array[ExtResource("1_lwhc4")]([ExtResource("2_87oo2"), ExtResource("3_ytmwm")])
 defense_modifiers = Array[ExtResource("8_ramf8")]([])
 min_level = 50
