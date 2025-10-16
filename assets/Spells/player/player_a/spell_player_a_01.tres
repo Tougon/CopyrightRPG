@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_1rqva"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_cjjk7"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_myvgc"]
-[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="7_po734"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="7_sx6cj"]
 
 [resource]
 script = ExtResource("4_cjjk7")
@@ -49,7 +49,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 15
 spell_priority = 0
-spell_flags = Array[ExtResource("5_myvgc")]([ExtResource("7_po734")])
+spell_flags = Array[ExtResource("5_myvgc")]([ExtResource("7_sx6cj")])
 ignore_seals = false
 animation_sequence = ExtResource("1_f5xw7")
 spell_videos = Array[String]([])
