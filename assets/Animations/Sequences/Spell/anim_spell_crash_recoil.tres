@@ -43,7 +43,7 @@ ui_type = 0
 
 [sub_resource type="Resource" id="Resource_jclx6"]
 script = ExtResource("1_tqdoe")
-frame = 2
+frame = 3
 frame_order = 0
 action = SubResource("Resource_hcyco")
 

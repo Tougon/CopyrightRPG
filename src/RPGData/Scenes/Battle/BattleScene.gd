@@ -334,7 +334,9 @@ func _action_phase():
 					var item_fail_msg = format_dialogue(tr("T_BATTLE_ACTION_FAIL"), entity.param.entity_name, entity.current_entity);
 					post_anim_dialogue.append(item_fail_msg);
 			
-			flags.append_array(spell.spell_flags.duplicate());
+			for flag in spell.spell_flags :
+				if !flags.has(flag) :
+					flags.append(flag);
 			
 			if spell.success : 
 				any_cast_succeeded = true;

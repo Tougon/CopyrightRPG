@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=53 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=56 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="1_tkvbf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="7_0y07q"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckNumEntities.gd" id="7_pxqxe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="8_s3wuk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="9_n0rge"]
@@ -30,6 +31,24 @@ script = ExtResource("9_n0rge")
 min = 20
 max = 24
 growth = SubResource("Curve_fslmg")
+
+[sub_resource type="Resource" id="Resource_d3di1"]
+script = ExtResource("7_0y07q")
+move_id = 2
+check_player_side = false
+chance_if_sealed = 1.0
+weigh_seal_count = false
+caution_threshold = 0
+check_target = 0
+negate = true
+
+[sub_resource type="Resource" id="Resource_a4mql"]
+script = ExtResource("3_fjnas")
+behavior_check = Array[ExtResource("1_mkamh")]([SubResource("Resource_d3di1")])
+check_type = 0
+action_id = Array[int]([2])
+seal_chance = Array[float]([1.0])
+seal_id = Array[int]([])
 
 [sub_resource type="Resource" id="Resource_cgjp5"]
 script = ExtResource("7_pxqxe")
@@ -71,7 +90,7 @@ seal_id = Array[int]([0, 0])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("4_l7lga")
-behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_5q53p"), SubResource("Resource_tmbow"), SubResource("Resource_nso2o")])
+behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_a4mql"), SubResource("Resource_5q53p"), SubResource("Resource_tmbow"), SubResource("Resource_nso2o")])
 active_condition = Array[ExtResource("1_mkamh")]([])
 
 [sub_resource type="Resource" id="Resource_hf446"]
