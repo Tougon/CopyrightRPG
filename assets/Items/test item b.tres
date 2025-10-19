@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_en65d"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/move_item.gd" id="2_7ofgw"]
-[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/common/spell_common_earth.tres" id="2_aa685"]
+[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/reference/Old/spell_common_earth.tres" id="2_aa685"]
 
 [resource]
 script = ExtResource("2_7ofgw")

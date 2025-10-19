@@ -6,8 +6,8 @@ class_name Encounter;
 @export var can_flee : bool = true;
 @export var ignore_flee_mechanics : bool = false;
 
-@export_range(1, 5) var min_enemies : int = 1;
-@export_range(1, 5) var max_enemies : int = 3;
+@export_range(0, 9) var min_enemies : int = 1;
+@export_range(0, 9) var max_enemies : int = 3;
 @export var enemy_count_curve : Curve;
 
 @export var required_enemies : Array[int];
@@ -28,6 +28,10 @@ func get_encounter_enemies() -> Array[int] :
 	for i in num_enemies :
 		var enemy_seed = additional_enemy_curve.sample(randf());
 		var enemy_index = roundi(lerpf(0 as float, (additional_enemies.size() - 1) as float, enemy_seed));
-		result.append(additional_enemies[enemy_index]);
+		
+		if enemy_index < additional_enemies.size() && enemy_index >= 0:
+			result.append(additional_enemies[enemy_index]);
+		else :
+			result.append(primary_enemy);
 	
 	return result;

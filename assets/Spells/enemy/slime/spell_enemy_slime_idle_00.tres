@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=7 format=3 uid="uid://b3ygwa43ry22k"]
+
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_unbvi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_vpkcw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_wxs25"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_2vs58"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="5_h0gxd"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="6_fggw5"]
+
+[resource]
+script = ExtResource("5_h0gxd")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_FLAVOR_SLIME_IDLE"
+spell_type = 6
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("6_fggw5")]([])
+ignore_seals = false
+animation_sequence = ExtResource("1_unbvi")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_vpkcw")]([])
+effects_on_success = Array[ExtResource("2_vpkcw")]([])
+properties = Array[ExtResource("4_2vs58")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_wxs25")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_wxs25")]([])

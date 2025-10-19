@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://24judeqcy264"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=13 format=3 uid="uid://24judeqcy264"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_lqc5a"]
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_pb133"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_62t02"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/sof_check_hp.gd" id="5_8q7dl"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_wfr14"]
-[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_djlfr"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="10_c8cur"]
 
 [sub_resource type="Resource" id="Resource_mr7tw"]
@@ -72,7 +71,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 10
 spell_priority = 0
-spell_flags = Array[ExtResource("4_62t02")]([ExtResource("9_djlfr"), ExtResource("10_c8cur")])
+spell_flags = Array[ExtResource("4_62t02")]([ExtResource("10_c8cur")])
 ignore_seals = false
 animation_sequence = ExtResource("1_pb133")
 spell_videos = Array[String]([])

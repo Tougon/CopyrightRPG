@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=41 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=47 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -9,9 +9,11 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="9_n0rge"]
-[ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/spell_enemy_slime_idle_00.tres" id="9_vrc5r"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="10_5xb1c"]
-[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/core/spell_core_attack.tres" id="11_ul1t6"]
+[ext_resource type="Resource" uid="uid://crsawpip2wg8e" path="res://assets/Spells/enemy/slime/spell_enemy_slime_attack_00.tres" id="10_7x3rp"]
+[ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/slime/spell_enemy_slime_idle_00.tres" id="11_3b4ex"]
+[ext_resource type="Resource" uid="uid://bf6u1jm87fjkr" path="res://assets/Spells/common/spell_common_crash.tres" id="12_sordl"]
+[ext_resource type="Resource" uid="uid://co4y1vwe1ayoc" path="res://assets/Spells/enemy/slime/spell_enemy_slime_duplicate.tres" id="13_0cdny"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="13_a88bw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="16_rv22r"]
 
@@ -24,6 +26,19 @@ script = ExtResource("9_n0rge")
 min = 20
 max = 24
 growth = SubResource("Curve_fslmg")
+
+[sub_resource type="Resource" id="Resource_gfqkr"]
+script = ExtResource("3_fjnas")
+behavior_check = Array[ExtResource("1_mkamh")]([])
+check_type = 0
+action_id = Array[int]([3])
+seal_chance = Array[float]([])
+seal_id = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_k7bib"]
+script = ExtResource("4_l7lga")
+behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_gfqkr")])
+active_condition = Array[ExtResource("1_mkamh")]([])
 
 [sub_resource type="Resource" id="Resource_qxeax"]
 script = ExtResource("1_mkamh")
@@ -45,6 +60,7 @@ active_condition = Array[ExtResource("1_mkamh")]([])
 
 [sub_resource type="Resource" id="Resource_hf446"]
 script = ExtResource("1_lpo00")
+first_turn_behavior = SubResource("Resource_k7bib")
 turn_behavior = Array[ExtResource("4_l7lga")]([SubResource("Resource_k0d1d")])
 
 [sub_resource type="Curve" id="Curve_p1ga6"]
@@ -83,17 +99,27 @@ growth = SubResource("Curve_3ihce")
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("11_ul1t6")
+spell = ExtResource("10_7x3rp")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xrhrx"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("9_vrc5r")
+spell = ExtResource("11_3b4ex")
+level = 0
+
+[sub_resource type="Resource" id="Resource_akqwo"]
+script = ExtResource("1_fc75y")
+spell = ExtResource("12_sordl")
+level = 0
+
+[sub_resource type="Resource" id="Resource_hotbu"]
+script = ExtResource("1_fc75y")
+spell = ExtResource("13_0cdny")
 level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]
 script = ExtResource("1_44x03")
-list = Array[ExtResource("1_fc75y")]([SubResource("Resource_l1vsj"), SubResource("Resource_xrhrx")])
+list = Array[ExtResource("1_fc75y")]([SubResource("Resource_l1vsj"), SubResource("Resource_xrhrx"), SubResource("Resource_akqwo"), SubResource("Resource_hotbu")])
 
 [sub_resource type="Curve" id="Curve_v7tns"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -101,8 +127,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_4qt68"]
 script = ExtResource("9_n0rge")
-min = 30
-max = 35
+min = 100
+max = 110
 growth = SubResource("Curve_v7tns")
 
 [sub_resource type="Curve" id="Curve_hnfm3"]

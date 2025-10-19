@@ -26,6 +26,7 @@ var _field_effects : Array[FieldEffectInstance];
 
 var _reserve_enemies : Array[Entity];
 var _reserve_controllers : Array[EntityController];
+var _spawning = false;
 
 # Fleeing values
 var _can_flee : bool = true;
@@ -45,11 +46,14 @@ func _ready():
 	EventManager.on_player_defeated.connect(_on_player_defeated);
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
 	EventManager.on_player_item_consumed.connect(_on_player_item_consumed);
+	EventManager.add_entity_to_battle.connect(_add_entity_to_battle);
 	
 	if begin_battle_on_ready : begin_battle(null);
 
 
 func begin_battle(params : BattleParams):
+	_reserve_controllers.clear();
+	
 	var reference_height = get_window().size.y;
 	get_window().size = Vector2i((reference_height * 4 / 3), reference_height);
 	
@@ -476,6 +480,9 @@ func _action_phase():
 			
 			entity.execute_move_completed_effects();
 		
+		while _spawning:
+			await get_tree().process_frame;
+		
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
@@ -759,6 +766,10 @@ func _on_player_register(entity : EntityController):
 
 
 func _on_enemy_register(entity : EntityController):
+	if entity.param == null : 
+		_reserve_controllers.append(entity);
+		return;
+	
 	if enemies.size() == 0 : 
 		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
 	
@@ -1009,6 +1020,63 @@ func _on_player_item_consumed(item : Item):
 	player_item_delta[id] -= 1;
 
 
+func _add_entity_to_battle(entity : Entity):
+	if entity != null :
+		if _reserve_controllers.size() > 0:
+			_spawning = true;
+			
+			var enemy_controller = _reserve_controllers[0];
+			_reserve_controllers.remove_at(0);
+			
+			while enemy_controller.is_defeat_anim_playing():
+				await get_tree().process_frame;
+			
+			# Reset the entity
+			enemy_controller.prev_action = null;
+			enemy_controller.current_action = null;
+			enemy_controller.current_target.clear();
+			enemy_controller.current_entity = entity;
+			enemy_controller.visible = true;
+			
+			# If this has not been registered, register it
+			enemy_controller.entity_init(null);
+			
+			if enemies.has(enemy_controller) :
+				_adjust_enemy_name(enemy_controller);
+			else:
+				_on_enemy_register(enemy_controller);
+			
+			# Reposition enemies
+			var amt = get_num_active_enemies();
+			var index = 0;
+			var pos_root = enemy_positions.get_child(amt - 1);
+			var used : Array[int] = [];
+			
+			for i in range(enemies.size() - 1, -1, -1):
+				var enemy = enemies[i];
+				if !enemy.is_defeated:
+					index = _get_closest_unused_root_to_entity(enemy, pos_root, used);
+					
+					if index != -1 :
+						var time = BattleManager.ENEMY_REPOSITION_TIME;
+						if enemy == enemy_controller : time = 0.0;
+						enemy.set_enemy_position((pos_root.get_child(index) as Node2D).position, time);
+						used.append(index);
+			
+			enemy_controller.play_appear_animation();
+			
+			while is_any_entity_appearing([enemy_controller]) :
+				await get_tree().process_frame;
+			
+			var enemy_spawn_msg = _get_intro_dialogue([enemy_controller]);
+			EventManager.on_dialogue_queue.emit(enemy_spawn_msg);
+			await EventManager.on_sequence_queue_empty;
+			
+			_spawning = false;
+		else : 
+			_reserve_enemies.append(entity);
+
+
 func _on_destroy():
 	if EventManager != null:
 		EventManager.register_player.disconnect(_on_player_register);
@@ -1022,6 +1090,7 @@ func _on_destroy():
 		EventManager.on_player_defeated.disconnect(_on_player_defeated);
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
 		EventManager.on_player_item_consumed.disconnect(_on_player_item_consumed);
+		EventManager.add_entity_to_battle.disconnect(_add_entity_to_battle);
 	
 	if Instance == self:
 		Instance = null;

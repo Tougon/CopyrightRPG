@@ -120,6 +120,8 @@ func _check_path_for_spells(path : String):
 		var dirs = root.get_directories()
 		
 		for d in dirs:
+			if d.contains("reference"):
+				continue;
 			_check_path_for_spells(path + d + "/");
 		
 		var files = root.get_files();

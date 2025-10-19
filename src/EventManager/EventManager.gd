@@ -98,6 +98,8 @@ signal on_players_defeated();
 signal on_battle_completed(result : BattleResult);
 signal on_battle_end(result : BattleResult);
 
+signal add_entity_to_battle(entity : Entity);
+
 # Battle UI Events
 signal hide_entity_ui();
 signal battle_fade_start(fade_in : bool);

@@ -11,7 +11,6 @@ func entity_init(params : BattleParams):
 		# If enemy is out of bounds or null, do not use this enemy
 		if enemy_index >= params.enemies.size() || params.enemies[enemy_index] == null: 
 			visible = false;
-			return;
 		else : 
 			visible = true;
 			current_entity = params.enemies[enemy_index];
@@ -30,8 +29,11 @@ func entity_init(params : BattleParams):
 
 
 func set_enemy_position(pos : Vector2, time : float = 0.0):
-	var tween = get_tree().create_tween();
-	tween.tween_property(self, "position", pos, time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	if time <= 0.0 :
+		position = pos;
+	else :
+		var tween = get_tree().create_tween();
+		tween.tween_property(self, "position", pos, time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 
 func _set_seal_id(id : int):
