@@ -72,7 +72,7 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	# We need to add an extra turn because otherwise the turn it's active counts
 	# This effectively means 3 turns is 2.
 	if BattleManager.seal_before_attacking : turn_count += 1;
-	if effect.override_turn_count : turn_count = effect.override_turn_count;
+	if effect.override_turn_count : turn_count = effect.turn_count;
 	
 	var seal_inst = SealInstance.new(entity, spell, effect, turn_count, player_side);
 	seal_instances.append(seal_inst);
@@ -95,7 +95,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 		if seal.player_side == player_side : continue;
 		
 		# Check if entity's seals are active
-		if seal.seal_entity.seals_active : continue;
+		if !seal.seal_entity.seals_active : continue;
 		
 		# NOTE: This will double effects up and do a violation per flag.
 		var flags = action.spell_flags.duplicate();
@@ -118,7 +118,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 					else:
 						seal_msg = seal_msg.format({ article_def = "", entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
 					
-					if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity.generic] <= 1:
+					if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity] <= 1:
 						seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
 					else: 
 						seal_msg = seal_msg.format({ t_article_def = "", t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });

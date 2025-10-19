@@ -11,5 +11,4 @@ func execute(instance : EffectInstance):
 		new_entity = instance.user.current_entity;
 	
 	if new_entity != null :
-		print("Let's Go!");
 		EventManager.add_entity_to_battle.emit(new_entity);

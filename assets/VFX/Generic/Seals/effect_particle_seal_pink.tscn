@@ -1,12 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvhagctlq66n1"]
+[gd_scene load_steps=5 format=3 uid="uid://22h7swvo5kep"]
 
-[ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_j51bu"]
+[ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_7850p"]
 
 [sub_resource type="Gradient" id="Gradient_ta0i3"]
 offsets = PackedFloat32Array(0, 0.299451, 0.587912, 1)
-colors = PackedColorArray(0, 0.584314, 1, 0, 0.468692, 0.740916, 1, 1, 0.133817, 0.341372, 1, 1, 0, 0.424567, 0.736388, 0)
+colors = PackedColorArray(1, 0.390745, 0.731975, 0, 1, 0.520159, 0.86129, 1, 0.87, 0.1827, 0.75545, 1, 0.870588, 0.184314, 0.756863, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xg7e5"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d16gu"]
 gradient = SubResource("Gradient_ta0i3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qcgc"]
@@ -26,9 +26,9 @@ radial_accel_min = -350.0
 radial_accel_max = -350.0
 scale_min = 0.5
 scale_max = 0.5
-color_ramp = SubResource("GradientTexture1D_xg7e5")
+color_ramp = SubResource("GradientTexture1D_d16gu")
 
-[node name="seal" instance=ExtResource("1_j51bu")]
+[node name="seal" instance=ExtResource("1_7850p")]
 
 [node name="GPUParticles2D" parent="." index="0"]
 amount = 150
