@@ -114,7 +114,7 @@ texture_margin_bottom = 8.0
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_disabled_color = Color(0.752941, 0.752941, 0.752941, 1)
+Button/colors/font_disabled_color = Color(0.337255, 0.337255, 0.337255, 1)
 Button/colors/font_focus_color = Color(1, 1, 0, 1)
 Button/colors/font_hover_color = Color(1, 1, 0, 1)
 Button/colors/font_hover_pressed_color = Color(0.996094, 0.847656, 0, 1)

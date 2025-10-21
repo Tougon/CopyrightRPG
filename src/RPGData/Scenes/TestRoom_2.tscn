@@ -1544,7 +1544,10 @@ end_area = "backrooms_r"
 [node name="EncounterArea" parent="EncounterAreas" instance=ExtResource("43_swjwx")]
 position = Vector2(467, 4023)
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_6jh6m")])
-minimum_encounter_chance = 0.1
+grace_period = 0.0
+minimum_encounter_chance = 1.0
+encounter_increase_rate = 1.0
+encounter_reroll_rate = 0.0
 
 [node name="CollisionShape2D" parent="EncounterAreas/EncounterArea/Area2D" index="0"]
 position = Vector2(45.5, -49.5)

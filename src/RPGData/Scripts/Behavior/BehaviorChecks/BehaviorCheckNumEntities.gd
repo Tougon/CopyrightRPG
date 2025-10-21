@@ -6,6 +6,7 @@ enum CheckType {Less, LessEqual, Equal, GreaterEqual, Greater}
 
 @export var target_number : int;
 @export var check_type : CheckType;
+@export var count_self : bool = false;
 @export var use_scaled : bool = false;
 
 func check(user : EntityController, allies : Array[EntityController], targets : Array[EntityController], result : BehaviorCheckResult) -> bool:
@@ -24,7 +25,8 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 		
 		for ec in check_ec:
 			if (negate && ec.is_defeated) || (!negate && !ec.is_defeated):
-				num += 1;
+				if (ec == user && count_self) || (ec != user) :
+					num += 1;
 	
 	if use_scaled :
 		if check_target == CheckTarget.Allies :
