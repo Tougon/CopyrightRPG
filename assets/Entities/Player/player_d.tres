@@ -24,8 +24,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_wqjr8"]
 script = ExtResource("2_oh4hg")
-min = 29
-max = 285
+min = 26
+max = 300
 growth = SubResource("Curve_w1g6v")
 
 [sub_resource type="Curve" id="Curve_sxj0c"]
@@ -34,8 +34,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_kna2w"]
 script = ExtResource("2_oh4hg")
-min = 24
-max = 275
+min = 27
+max = 240
 growth = SubResource("Curve_sxj0c")
 
 [sub_resource type="Curve" id="Curve_u85t0"]
@@ -45,7 +45,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_dtmhy"]
 script = ExtResource("2_oh4hg")
 min = 58
-max = 400
+max = 370
 growth = SubResource("Curve_u85t0")
 
 [sub_resource type="Curve" id="Curve_v818k"]
@@ -114,7 +114,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_m0xym"]
 script = ExtResource("2_oh4hg")
 min = 52
-max = 190
+max = 296
 growth = SubResource("Curve_48hqc")
 
 [sub_resource type="Curve" id="Curve_lsq14"]
@@ -124,7 +124,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_yhl75"]
 script = ExtResource("2_oh4hg")
 min = 18
-max = 195
+max = 115
 growth = SubResource("Curve_lsq14")
 
 [sub_resource type="Curve" id="Curve_tkhrj"]
@@ -134,7 +134,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_3f7iu"]
 script = ExtResource("2_oh4hg")
 min = 23
-max = 235
+max = 195
 growth = SubResource("Curve_tkhrj")
 
 [sub_resource type="Curve" id="Curve_ev8vw"]
@@ -144,7 +144,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_vn7sd"]
 script = ExtResource("2_oh4hg")
 min = 16
-max = 215
+max = 150
 growth = SubResource("Curve_ev8vw")
 
 [resource]

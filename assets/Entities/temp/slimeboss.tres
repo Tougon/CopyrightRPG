@@ -156,6 +156,7 @@ chance_if_sealed = 0.5
 weigh_seal_count = true
 caution_threshold = 6
 weight = SubResource("Curve_sdqt1")
+result_if_zero = true
 check_target = 0
 negate = false
 
@@ -244,6 +245,7 @@ chance_if_sealed = 0.7
 weigh_seal_count = true
 caution_threshold = 6
 weight = SubResource("Curve_veu3s")
+result_if_zero = true
 check_target = 0
 negate = false
 
