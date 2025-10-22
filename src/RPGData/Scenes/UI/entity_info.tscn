@@ -49,6 +49,14 @@ max_value = 1.0
 text_format = "T_HP_AMOUNT"
 bar_subtract_speed = 2.0
 
+[node name="BarUnderlay" parent="Container/HP Bar/BarBackground" index="0"]
+offset_left = 4.0
+offset_right = -4.0
+
+[node name="BarFill" parent="Container/HP Bar/BarBackground" index="1"]
+offset_left = 4.0
+offset_right = -4.0
+
 [node name="NinePatchRect" type="NinePatchRect" parent="Container/HP Bar"]
 layout_mode = 1
 anchors_preset = 15
@@ -71,6 +79,14 @@ start_value = 0.5
 max_value = 1.0
 text_format = "T_MP_AMOUNT"
 bar_subtract_speed = 2.0
+
+[node name="BarUnderlay" parent="Container/MP Bar/BarBackground" index="0"]
+offset_left = 4.0
+offset_right = -4.0
+
+[node name="BarFill" parent="Container/MP Bar/BarBackground" index="1"]
+offset_left = 4.0
+offset_right = -4.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Container/MP Bar"]
 layout_mode = 1
@@ -107,3 +123,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[editable path="Container/HP Bar"]
+[editable path="Container/MP Bar"]

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=18 format=3 uid="uid://co4y1vwe1ayoc"]
+[gd_resource type="Resource" script_class="Spell" load_steps=20 format=3 uid="uid://co4y1vwe1ayoc"]
 
 [ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_6r2lq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_l3f2b"]
@@ -10,18 +10,23 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_086i2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_num_entities.gd" id="5_mr6l4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_add_entity.gd" id="5_oxoi0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="7_3v5b2"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_vhjic"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="10_nmt34"]
 
 [sub_resource type="Resource" id="Resource_56a1h"]
 script = ExtResource("5_mr6l4")
-target_number = 4
+target_number = 5
 check_target = 1
 check_mode = 2
 
 [sub_resource type="Resource" id="Resource_b05dw"]
 script = ExtResource("5_oxoi0")
 use_user = true
+
+[sub_resource type="Resource" id="Resource_hgp83"]
+script = ExtResource("7_3v5b2")
+dialogue_key = "T_BATTLE_ACTION_FAIL"
 
 [sub_resource type="Resource" id="Resource_heg22"]
 script = ExtResource("3_8iegi")
@@ -37,7 +42,7 @@ check_success = Array[ExtResource("4_yb2xl")]([SubResource("Resource_56a1h")])
 check_remain_active_type = 0
 check_remain_active = Array[ExtResource("4_yb2xl")]([])
 on_activate = Array[ExtResource("4_yb2xl")]([SubResource("Resource_b05dw")])
-on_failed_to_activate = Array[ExtResource("4_yb2xl")]([])
+on_failed_to_activate = Array[ExtResource("4_yb2xl")]([SubResource("Resource_hgp83")])
 on_apply = Array[ExtResource("4_yb2xl")]([])
 on_move_selected = Array[ExtResource("4_yb2xl")]([])
 on_move_completed = Array[ExtResource("4_yb2xl")]([])

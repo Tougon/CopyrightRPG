@@ -99,6 +99,14 @@ text_format = "T_HP_AMOUNT"
 animation_type = 1
 bar_subtract_speed = 2.5
 
+[node name="BarUnderlay" parent="Container/HP Bar/BarBackground" index="0"]
+offset_left = 4.0
+offset_right = -4.0
+
+[node name="BarFill" parent="Container/HP Bar/BarBackground" index="1"]
+offset_left = 4.0
+offset_right = -4.0
+
 [node name="NinePatchRect" type="NinePatchRect" parent="Container/HP Bar"]
 layout_mode = 1
 anchors_preset = 15
@@ -145,6 +153,14 @@ text_format = "T_MP_AMOUNT"
 animation_type = 1
 bar_subtract_speed = 2.5
 
+[node name="BarUnderlay" parent="Container/MP Bar/BarBackground" index="0"]
+offset_left = 4.0
+offset_right = -4.0
+
+[node name="BarFill" parent="Container/MP Bar/BarBackground" index="1"]
+offset_left = 4.0
+offset_right = -4.0
+
 [node name="NinePatchRect" type="NinePatchRect" parent="Container/MP Bar"]
 layout_mode = 1
 anchors_preset = 15
@@ -181,3 +197,6 @@ grow_vertical = 2
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("3_lgwo2")
 sequence_list = Array[ExtResource("4_k5ptv")]([SubResource("Resource_q4mcm"), SubResource("Resource_b7vq4")])
+
+[editable path="Container/HP Bar"]
+[editable path="Container/MP Bar"]

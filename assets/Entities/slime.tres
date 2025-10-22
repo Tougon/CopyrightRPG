@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=55 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=58 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="1_tkvbf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="3_fjnas"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_l7lga"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="7_jukg0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckNumEntities.gd" id="7_pxqxe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="8_6pleh"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="8_s3wuk"]
@@ -31,6 +32,25 @@ script = ExtResource("9_n0rge")
 min = 12
 max = 14
 growth = SubResource("Curve_fslmg")
+
+[sub_resource type="Resource" id="Resource_4tdkp"]
+script = ExtResource("7_jukg0")
+move_id = 2
+check_player_side = true
+chance_if_sealed = 0.65
+weigh_seal_count = false
+caution_threshold = 0
+result_if_zero = false
+check_target = 2
+negate = false
+
+[sub_resource type="Resource" id="Resource_32vf8"]
+script = ExtResource("3_fjnas")
+behavior_check = Array[ExtResource("1_mkamh")]([SubResource("Resource_4tdkp")])
+check_type = 0
+action_id = Array[int]([1, 1, 0])
+seal_chance = Array[float]([1.0, 1.0, 0.0])
+seal_id = Array[int]([0, 0, 0])
 
 [sub_resource type="Resource" id="Resource_cgjp5"]
 script = ExtResource("7_pxqxe")
@@ -82,7 +102,7 @@ seal_id = Array[int]([0, 0])
 
 [sub_resource type="Resource" id="Resource_k0d1d"]
 script = ExtResource("4_l7lga")
-behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_5q53p"), SubResource("Resource_tmbow"), SubResource("Resource_nso2o")])
+behavior_checks = Array[ExtResource("3_fjnas")]([SubResource("Resource_32vf8"), SubResource("Resource_5q53p"), SubResource("Resource_tmbow"), SubResource("Resource_nso2o")])
 active_condition = Array[ExtResource("1_mkamh")]([])
 
 [sub_resource type="Resource" id="Resource_hf446"]
@@ -153,8 +173,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_4qt68"]
 script = ExtResource("9_n0rge")
-min = 50
-max = 56
+min = 60
+max = 66
 growth = SubResource("Curve_v7tns")
 
 [sub_resource type="Curve" id="Curve_hnfm3"]
@@ -199,8 +219,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_70cwv"]
 script = ExtResource("9_n0rge")
-min = 120
-max = 140
+min = 12
+max = 14
 growth = SubResource("Curve_sdigb")
 
 [resource]
@@ -219,7 +239,7 @@ sp_def = SubResource("Resource_iu8tl")
 spd = SubResource("Resource_70cwv")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
-base_accuracy_modifier = 4.25
+base_accuracy_modifier = 0.85
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_m1s8s")
 affinity = Array[ExtResource("1_ogh0r")]([])

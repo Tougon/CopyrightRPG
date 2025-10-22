@@ -172,6 +172,7 @@ negate = false
 script = ExtResource("10_g5yem")
 target_number = 2
 check_type = 4
+count_self = false
 use_scaled = false
 check_target = 2
 negate = false
