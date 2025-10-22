@@ -175,6 +175,7 @@ spell_cost = 24
 spell_priority = 0
 spell_flags = Array[ExtResource("5_mau8s")]([ExtResource("6_1axw0"), ExtResource("7_e2jvw"), ExtResource("8_4p58m")])
 ignore_seals = false
+is_learnable = false
 animation_sequence = ExtResource("1_ivdst")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

@@ -320,6 +320,9 @@ func _on_battle_end(result : BattleResult):
 		for id in result.player_items.keys() :
 			DataManager.change_item_amount(id, result.player_items[id]);
 		
+		for id in result.reward_items.keys() :
+			DataManager.change_item_amount(id, result.reward_items[id]);
+		
 		for id in QuestManager.player_quests:
 			var metadata = QuestManager.get_meta_data(QuestManager.player_quests[id].quest_name);
 			

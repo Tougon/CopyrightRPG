@@ -13,16 +13,16 @@ func execute(instance : EffectInstance):
 	if check_target == CheckTarget.Self:
 		num = 1;
 	else:
-		var check_ec = instance.user.enemies;
-		
-		if check_target == CheckTarget.Allies:
-			check_ec = instance.user.allies;
-		
-		var entities : Array[EntityController];
-		
-		for ec in check_ec:
-			if !ec.is_defeated:
-				num += 1;
+		if instance.user is EnemyController :
+			if check_target == CheckTarget.Allies :
+				num = BattleScene.Instance.get_num_active_enemies();
+			else :
+				num = BattleScene.Instance.get_num_active_players();
+		else :
+			if check_target == CheckTarget.Allies :
+				num = BattleScene.Instance.get_num_active_players();
+			else :
+				num = BattleScene.Instance.get_num_active_enemies();
 	
 	match check_mode:
 		EffectFunction.CheckMode.LESS:

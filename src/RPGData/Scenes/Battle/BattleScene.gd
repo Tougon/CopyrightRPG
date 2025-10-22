@@ -32,6 +32,9 @@ var _spawning = false;
 var _can_flee : bool = true;
 var _can_flee_this_turn : bool = true;
 
+# Result caching
+var _reward_items : Array[Item];
+
 func _ready():
 	Instance = self;
 	
@@ -382,6 +385,14 @@ func _action_phase():
 				if hit_result.length() > 0 && !post_anim_dialogue.has(hit_result):
 					post_anim_dialogue.append(hit_result);
 		
+		if any_cast_succeeded && entity.current_action.is_learnable :
+			var move_item = DataManager.item_database.get_item_from_move(entity.current_action);
+			
+			if move_item != null :
+				if !_reward_items.has(move_item) :
+					print("Learn!")
+					_reward_items.append(move_item);
+		
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
@@ -621,6 +632,12 @@ func _end_phase():
 						result_player.status.append(effect.effect_name);
 			
 			reward.player_items = player_item_delta;
+			
+			for item in _reward_items :
+				var id = DataManager.item_database.get_id(item);
+				
+				if id != -1 :
+					reward.reward_items[id] = 1;
 			
 			EventManager.on_battle_completed.emit(reward); 
 			return;

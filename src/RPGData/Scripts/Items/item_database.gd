@@ -55,6 +55,17 @@ func get_id(item : Item) -> int:
 	return -1;
 
 
+func get_item_from_move(move : Spell) -> Item:
+	for entry in entries:
+		if entry.item != null :
+			var move_item = entry.item as MoveItem;
+			
+			if move_item != null && move_item.move == move :
+				return entry.item;
+	
+	return null;
+
+
 func _rebake_ids():
 	for entry in entries :
 		if entry != null : 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=58 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=59 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -70,9 +70,15 @@ mp_percent = 0.0
 check_target = 0
 negate = false
 
+[sub_resource type="Resource" id="Resource_m3uyh"]
+script = ExtResource("8_s3wuk")
+chance = 0.8
+check_target = 0
+negate = false
+
 [sub_resource type="Resource" id="Resource_5q53p"]
 script = ExtResource("3_fjnas")
-behavior_check = Array[ExtResource("1_mkamh")]([SubResource("Resource_cgjp5"), SubResource("Resource_tcmai")])
+behavior_check = Array[ExtResource("1_mkamh")]([SubResource("Resource_cgjp5"), SubResource("Resource_tcmai"), SubResource("Resource_m3uyh")])
 check_type = 0
 action_id = Array[int]([2])
 seal_chance = Array[float]([1.0])
