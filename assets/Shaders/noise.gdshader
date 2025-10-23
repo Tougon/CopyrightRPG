@@ -5,6 +5,7 @@ uniform vec4 color_secondary : source_color;
 uniform vec2 aspect = vec2(1,0.5);
 uniform float scale_factor = 1;
 uniform float amount = 1;
+uniform bool use_screen_uv = true;
 
 float random(vec2 uv, float time) {
 	return fract(sin(dot(uv, vec2(12.345 * time, 67.890 * time))) * (12345.67890 + time));
@@ -12,7 +13,13 @@ float random(vec2 uv, float time) {
 
 
 void fragment() {
-	vec2 uv = SCREEN_UV;
+	vec2 uv = UV;
+	
+	if (use_screen_uv) 
+	{
+		uv = SCREEN_UV;
+	}
+	
 	uv.x = round(uv.x * (scale_factor * aspect.x)) / (scale_factor * aspect.x);
 	uv.y = round(uv.y * (scale_factor * aspect.y)) / (scale_factor * aspect.y);
 

@@ -1543,6 +1543,7 @@ end_area = "backrooms_r"
 
 [node name="EncounterArea" parent="EncounterAreas" instance=ExtResource("43_swjwx")]
 position = Vector2(467, 4023)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_6jh6m")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0

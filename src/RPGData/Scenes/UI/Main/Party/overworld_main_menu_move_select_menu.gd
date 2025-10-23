@@ -77,9 +77,9 @@ func _refresh_move_ui():
 	if current_selection != null :
 		valid_moves.append(current_selection);
 	
-	# 2. All moves in the player's move list that aren't set
+	# 2. All unlocked moves in the player's move list that aren't set
 	for move in _current_player_entity.move_list.list:
-		if !_is_move_set(move.spell):
+		if _current_player_data.level >= move.level && !_is_move_set(move.spell):
 			valid_moves.append(move.spell);
 	
 	# 3. All unique moves in the inventory that aren't set
@@ -109,6 +109,7 @@ func _refresh_move_ui():
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".grab_focus();
+		$"BG/Move Select Items/Move Visuals/Use".visible = false;
 	else :
 		$"BG/Move Select Items/None".visible = false;
 		$"BG/Move Select Items/Move Visuals/Close".visible = false;

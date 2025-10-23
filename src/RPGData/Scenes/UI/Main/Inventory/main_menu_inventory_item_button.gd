@@ -6,7 +6,12 @@ func refresh_data(data):
 		var item = DataManager.item_database.get_item(data);
 		
 		if item != null :
-			text = tr(DataManager.item_database.get_item(data).item_name_key);
+			var item_name = tr(item.item_name_key);
+			
+			if item is MoveItem :
+				item_name = item_name.replace("[NAME]", tr((item as MoveItem).move.spell_name_key));
+			
+			text = item_name;
 			
 			var amount = DataManager.get_item_amount(data);
 			

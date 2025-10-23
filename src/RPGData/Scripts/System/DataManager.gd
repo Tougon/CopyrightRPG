@@ -41,7 +41,7 @@ func initialize_data(auto : bool):
 		#current_save.inventory[4] = 3;
 		#current_save.inventory[5] = 3;
 		#current_save.inventory[6] = 3;
-		#current_save.inventory[8] = 3;
+		#current_save.inventory[7] = 3;
 
 
 func initialize_party_data(auto : bool):

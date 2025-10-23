@@ -38,7 +38,12 @@ func _refresh_inventory_ui():
 func _on_item_selected(data):
 	var item = DataManager.item_database.get_item(data);
 	if item != null :
-		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(item.item_description_key);
+		var description = tr(item.item_description_key);
+		
+		if item is MoveItem :
+			description = description.replace("[NAME]", tr(item.move.spell_name_key));
+		
+		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = description;
 		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = load_image(item.item_icon_path);
 		
 		if _current_item_index != data:
@@ -52,7 +57,12 @@ func _on_item_selected(data):
 func _refresh_current_item():
 	if _current_item == null : return;
 	
-	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = tr(_current_item.item_description_key);
+	var description = tr(_current_item.item_description_key);
+		
+	if _current_item is MoveItem :
+		description = description.replace("[NAME]", tr(_current_item.move.spell_name_key));
+	
+	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = description;
 	$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = load_image(_current_item.item_icon_path);
 	
 	if _current_item_index == -1:
@@ -70,10 +80,6 @@ func load_image(path : String) -> Texture2D:
 func _on_item_clicked(data):
 	_current_item = DataManager.item_database.get_item(data);
 	EventManager.on_inventory_item_selected.emit(_current_item);
-	
-	# Do nothing if the item cannot be "used," it is a key item
-	if !((_current_item is ConsumableItem) || (_current_item is EquipmentItem)):
-		return;
 	
 	# TODO: Change text to "Equip" for equipment (if it's even done here)
 	UIManager.open_menu_name("overworld_menu_main_item_use");
