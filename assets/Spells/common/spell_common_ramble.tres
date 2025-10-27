@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://bcov26ff10ih1"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_evy1h"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_hoo7e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_2s020"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_7c1ph"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_fpcus"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_6o4a8"]
+[ext_resource type="Resource" uid="uid://gpm3ab27cqfb" path="res://assets/Effects/Common/effect_common_status_drowsy.tres" id="4_evjjh"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_nekp2"]
+[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="9_octhu"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="10_gqvqr"]
+
+[sub_resource type="Resource" id="Resource_1n3ur"]
+script = ExtResource("3_fpcus")
+chance = 1.0
+effect = ExtResource("4_evjjh")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_f2j7v"]
+script = ExtResource("1_evy1h")
+chance = 0.6
+use_luck = true
+effect_set = Array[ExtResource("3_fpcus")]([SubResource("Resource_1n3ur")])
+
+[resource]
+script = ExtResource("4_6o4a8")
+spell_name_key = "T_SPELL_GENERIC_RAMBLE"
+spell_description_key = "T_SPELL_GENERIC_RAMBLE_DESC"
+spell_cast_message_key = "T_CAST_DAMAGE_COMMON_RAMBLE"
+spell_type = 2
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 14
+spell_priority = 0
+spell_flags = Array[ExtResource("5_nekp2")]([ExtResource("9_octhu"), ExtResource("10_gqvqr")])
+ignore_seals = false
+is_learnable = true
+animation_sequence = ExtResource("1_hoo7e")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_evy1h")]([SubResource("Resource_f2j7v")])
+effects_on_success = Array[ExtResource("1_evy1h")]([])
+properties = Array[ExtResource("3_7c1ph")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_2s020")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_2s020")]([])

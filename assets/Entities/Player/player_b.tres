@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_ay3jb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="3_7fs00"]
-[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="3_j3ev3"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="3_ty6s6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_xfhba"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="5_0sdrg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_bv3cl"]
@@ -173,7 +173,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_ghury")
 level_exp = SubResource("Resource_inwad")
-affinity = Array[ExtResource("1_82a6o")]([ExtResource("2_aonv8"), ExtResource("3_j3ev3")])
+affinity = Array[ExtResource("1_82a6o")]([ExtResource("2_aonv8"), ExtResource("3_ty6s6")])
 defense_modifiers = Array[ExtResource("5_0sdrg")]([])
 min_level = 50
 max_level = 99

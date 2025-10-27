@@ -74,7 +74,7 @@ target = 1
 [resource]
 script = ExtResource("14_57e6d")
 stackable = true
-effect_name = "Stun"
+effect_name = "Drowsy"
 generic = false
 repeatable = false
 priority = 8

@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=15 format=3 uid="uid://c2n82bt3b6dpp"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_5ujmg"]
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_hpr0o"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_ljg23"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_2qpy0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_mblvx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_gbchv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_wef3k"]
+[ext_resource type="Resource" uid="uid://cptl0c8ad4cw7" path="res://assets/Effects/Spell/Enemy/effect_spell_enemy_cupthrow_effect.tres" id="5_h7od6"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_jonai"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_remove_effect.gd" id="6_1l76y"]
+
+[sub_resource type="Resource" id="Resource_jfffx"]
+script = ExtResource("6_1l76y")
+target = 0
+effect = ExtResource("5_h7od6")
+
+[sub_resource type="Resource" id="Resource_x8mgu"]
+script = ExtResource("3_mblvx")
+stackable = false
+effect_name = ""
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_wef3k")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_wef3k")]([])
+on_activate = Array[ExtResource("4_wef3k")]([SubResource("Resource_jfffx")])
+on_failed_to_activate = Array[ExtResource("4_wef3k")]([])
+on_apply = Array[ExtResource("4_wef3k")]([])
+on_move_selected = Array[ExtResource("4_wef3k")]([])
+on_move_completed = Array[ExtResource("4_wef3k")]([])
+on_deactivate = Array[ExtResource("4_wef3k")]([])
+on_turn_start = Array[ExtResource("4_wef3k")]([])
+on_turn_end = Array[ExtResource("4_wef3k")]([])
+on_stack = Array[ExtResource("4_wef3k")]([])
+
+[sub_resource type="Resource" id="Resource_58755"]
+script = ExtResource("3_2qpy0")
+chance = 1.0
+effect = SubResource("Resource_x8mgu")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_ovsge"]
+script = ExtResource("1_5ujmg")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_2qpy0")]([SubResource("Resource_58755")])
+
+[resource]
+script = ExtResource("4_gbchv")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_INSURANCEFRODD_REFILL"
+spell_type = 0
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 12
+spell_priority = 0
+spell_flags = Array[ExtResource("5_jonai")]([])
+ignore_seals = false
+is_learnable = false
+animation_sequence = ExtResource("1_hpr0o")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_5ujmg")]([])
+effects_on_success = Array[ExtResource("1_5ujmg")]([SubResource("Resource_ovsge")])
+properties = Array[ExtResource("3_mblvx")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_ljg23")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_ljg23")]([])

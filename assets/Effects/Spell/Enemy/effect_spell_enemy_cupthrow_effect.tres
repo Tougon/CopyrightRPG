@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=6 format=3 uid="uid://cptl0c8ad4cw7"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_6qr6x"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_wtlax"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_7of2e"]
+
+[sub_resource type="Resource" id="Resource_57wbt"]
+script = ExtResource("2_wtlax")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_j7x4x"]
+script = ExtResource("2_wtlax")
+target = 0
+apply = true
+deactivate = true
+
+[resource]
+script = ExtResource("3_7of2e")
+stackable = false
+effect_name = "Refill"
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_6qr6x")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_6qr6x")]([])
+on_activate = Array[ExtResource("1_6qr6x")]([SubResource("Resource_57wbt")])
+on_failed_to_activate = Array[ExtResource("1_6qr6x")]([SubResource("Resource_j7x4x")])
+on_apply = Array[ExtResource("1_6qr6x")]([])
+on_move_selected = Array[ExtResource("1_6qr6x")]([])
+on_move_completed = Array[ExtResource("1_6qr6x")]([])
+on_deactivate = Array[ExtResource("1_6qr6x")]([])
+on_turn_start = Array[ExtResource("1_6qr6x")]([])
+on_turn_end = Array[ExtResource("1_6qr6x")]([])
+on_stack = Array[ExtResource("1_6qr6x")]([])

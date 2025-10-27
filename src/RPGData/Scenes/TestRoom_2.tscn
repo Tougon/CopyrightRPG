@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=107 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -270,7 +270,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_6jh6m"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 4
-odds = 1.0
+odds = 0.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 2
@@ -279,6 +279,22 @@ enemy_count_curve = SubResource("Curve_oi8ft")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_k520c")
+
+[sub_resource type="Curve" id="Curve_i1rnu"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_4hehe"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 5
+odds = 1.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 0
+enemy_count_curve = SubResource("Curve_i1rnu")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("9_8smr2")
@@ -1543,8 +1559,7 @@ end_area = "backrooms_r"
 
 [node name="EncounterArea" parent="EncounterAreas" instance=ExtResource("43_swjwx")]
 position = Vector2(467, 4023)
-enabled = false
-encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_6jh6m")])
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_6jh6m"), SubResource("Resource_4hehe")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
 encounter_increase_rate = 1.0

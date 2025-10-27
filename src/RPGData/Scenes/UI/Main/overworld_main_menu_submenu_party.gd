@@ -147,6 +147,8 @@ func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = n
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/RES".set_stat_value(res, comp_res);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/SPD".set_stat_value(spd, comp_spd);
 	$"Entity Stats Area/Entity Stats Group/Stats/GridContainer/LCK".set_stat_value((lck * GameplayConstants.LUCK_SCALE), comp_lck);
+	
+	$"Entity Stats Area/Entity Portrait Group/Flag Icon Group".display_flags(_current_player_entity.affinity)
 
 
 func _refresh_move_list():

@@ -3,6 +3,7 @@ extends Spell
 class_name DamageSpell
 
 const ACCURACY_BONUS : int = 10;
+const AFFINITY_BONUS : float = 1.25;
 const BASE_STAT : float = 50;
 
 enum SpellHitType { Physical, Special }
@@ -213,7 +214,7 @@ func _damage_loop(power : float, user : EntityController, target : EntityControl
 	for flag in user.current_entity.affinity:
 		if flags.has(flag):
 			print("AFFINITY")
-			damage *= 1.5;
+			damage *= AFFINITY_BONUS;
 			break;
 	
 	print("Full Damage: " + str(damage))

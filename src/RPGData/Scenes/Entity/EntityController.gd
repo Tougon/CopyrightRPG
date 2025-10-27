@@ -735,6 +735,11 @@ func apply_effect(instance : EffectInstance):
 	effects.sort_custom(compare_effect_priority);
 
 
+func remove_effect_from_resource(effect : Effect, deactivate : bool = true):
+	var inst = _find_effect_by_name(effect.effect_name);
+	if inst != null :
+		remove_effect(inst, deactivate);
+
 func remove_effect(instance : EffectInstance, deactivate : bool = true):
 	if effects.has(instance) :
 		if deactivate : instance.on_deactivate();

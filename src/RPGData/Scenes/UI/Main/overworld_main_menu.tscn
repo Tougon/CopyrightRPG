@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=144 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cfktvvjn8vypu" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_stat_display.tscn" id="19_dtlof"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/overworld_main_menu_item_target_menu.gd" id="19_nfjs4"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu_submenu_options.gd" id="21_n8v21"]
+[ext_resource type="PackedScene" uid="uid://cvtwqud6keh3w" path="res://src/RPGData/Scenes/UI/flag_icon_group.tscn" id="22_gs7bb"]
 [ext_resource type="Texture2D" uid="uid://5d76dhs1f6r" path="res://assets/Sprites/UI/Status/ui_transparent_gradient.png" id="22_hh6a0"]
 [ext_resource type="Theme" uid="uid://b550bkf3byjyy" path="res://assets/Themes/Theme_UI_MainMenu_PartyButton.tres" id="23_dsf2l"]
 [ext_resource type="Script" path="res://src/VideoPlayer/video_player.gd" id="23_k7wig"]
@@ -1010,6 +1011,50 @@ theme_override_font_sizes/font_size = 28
 text = "PLAYER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Flag Icon Group" parent="Body/Party/Entity Stats Area/Entity Portrait Group" instance=ExtResource("22_gs7bb")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 6.0
+offset_top = -11.0
+offset_right = -81.0
+offset_bottom = 4.0
+grow_vertical = 0
+
+[node name="Icon Container" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group" index="0"]
+custom_minimum_size = Vector2(14, 14)
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 1.0
+theme_override_constants/separation = 4
+
+[node name="Red" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="0"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Orange" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="1"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Yellow" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="2"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Green" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="3"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Turquoise" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="4"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Blue" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="5"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Purple" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="6"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Pink" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="7"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Null" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="8"]
+custom_minimum_size = Vector2(14, 14)
 
 [node name="Entity Stats Group" type="VBoxContainer" parent="Body/Party/Entity Stats Area"]
 custom_minimum_size = Vector2(0, 20)
@@ -5968,3 +6013,5 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="value_changed" from="Body/Options/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]
+
+[editable path="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group"]
