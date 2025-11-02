@@ -185,7 +185,7 @@ max = 220
 growth = SubResource("Curve_ax5ad")
 
 [sub_resource type="Curve" id="Curve_i5b55"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+_data = [Vector2(0, 0), 0.0, -0.0651269, 0, 0, Vector2(1, 1), 1.97838, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_8fgku"]
@@ -305,7 +305,7 @@ luck = SubResource("Resource_jbk66")
 affinity = Array[ExtResource("1_usdnu")]([])
 defense_modifiers = Array[ExtResource("2_trhxq")]([SubResource("Resource_hv7x6"), SubResource("Resource_l6pew")])
 min_level = 1
-max_level = 1
+max_level = 3
 level_curve = SubResource("Curve_i5b55")
 reward_exp = SubResource("Resource_0dugh")
 entity_sprites = Array[String](["res://assets/Sprites/Entities/Temp/infrog_neutral.png"])

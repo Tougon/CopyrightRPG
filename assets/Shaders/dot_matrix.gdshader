@@ -42,7 +42,7 @@ void fragment() {
 		uv = curve( uv );
 		vec3 oricol = texture( screen_texture, vec2(q.x,q.y) ).xyz;
 	}
-	
+
 	vec3 col;
 	float x =  sin(0.3*TIME+uv.y*21.0)*sin(0.7*TIME+uv.y*29.0)*sin(0.3+0.33*TIME+uv.y*31.0)*0.0017;
 
@@ -54,7 +54,7 @@ void fragment() {
     col.b += 0.08*texture(TEXTURE,0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
 
     col = clamp(col*0.6+0.4*col*col*1.0,0.0,1.0);
-	
+
 	if (use_vignette){
 		float vig = (0.0 + 1.0*16.0*UV.x*UV.y*(1.0-UV.x)*(1.0-UV.y));
 		col *= vec3(pow(vig,vignette_strength));

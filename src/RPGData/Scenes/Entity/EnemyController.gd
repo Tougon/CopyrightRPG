@@ -17,7 +17,7 @@ func entity_init(params : BattleParams):
 	
 	if current_entity != null:
 		var level_relative = current_entity.level_curve.sample(randf());
-		level = lerp(current_entity.min_level, current_entity.max_level, level_relative);
+		level = roundi(lerpf(current_entity.min_level as float, current_entity.max_level as float, level_relative));
 		
 		seal_effect_list = current_entity.seal_effect_list;
 	
