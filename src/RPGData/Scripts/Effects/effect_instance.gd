@@ -10,8 +10,18 @@ var cast_success : bool = false;
 var applied : bool = false;
 
 var effect : Effect;
+
 var user : EntityController;
+var user_entity : Entity;
+var user_name : String;
+var user_gender : Entity.Gender;
+var user_generic : bool;
+
 var target : EntityController;
+var target_entity : Entity;
+var target_name : String;
+var target_gender : Entity.Gender;
+var target_generic : bool;
 
 var spell : SpellCast;
 var all_casts : Array[SpellCast];

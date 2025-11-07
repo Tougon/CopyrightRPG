@@ -43,8 +43,19 @@ enum EffectCheckType { AND, OR }
 
 func create_effect_instance(user : EntityController, target : EntityController, cast : SpellCast) -> EffectInstance:
 	var instance = EffectInstance.new();
+	
 	instance.user = user;
+	instance.user_entity = user.current_entity;
+	instance.user_name = user.param.entity_name;
+	instance.user_gender = user.param.entity_gender;
+	instance.user_generic = user.param.entity_generic;
+	
 	instance.target = target;
+	instance.target_entity = target.current_entity;
+	instance.target_name = target.param.entity_name;
+	instance.target_gender = target.param.entity_gender;
+	instance.target_generic = target.param.entity_generic;
+	
 	instance.spell = cast;
 	if cast != null : instance.spell_data = cast.spell;
 	instance.effect = self;

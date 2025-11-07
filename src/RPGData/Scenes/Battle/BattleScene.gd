@@ -506,7 +506,16 @@ func _action_phase():
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
 				
 				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
-				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
+				
+				var action_name = "";
+				
+				if entity.current_action.spell_name_key.is_empty() :
+					action_name = tr("T_SPELL_GENERIC_PRONOUN");
+					action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(entity.param.entity_gender, 3) })
+				else :
+					action_name = tr(entity.current_action.spell_name_key);
+				
+				seal_msg = seal_msg.format({ action = action_name });
 				EventManager.on_dialogue_queue.emit(seal_msg);
 				await EventManager.on_sequence_queue_empty;
 			# TODO: Dialogue if seal failed

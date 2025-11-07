@@ -45,6 +45,7 @@ func _send_seal_inactive_message(seal : SealInstance, entity : EntityController)
 	var seal_msg = tr("T_BATTLE_ACTION_SEAL_INACTIVE");
 	var seal_entity_name = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]"
 	var entity_name = "[color=FFFF00]" + entity.param.entity_name + "[/color]"
+	var action_name = "";
 	
 	if seal.seal_entity.current_entity.generic && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] <= 1:
 		seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = seal_entity_name });
@@ -56,7 +57,13 @@ func _send_seal_inactive_message(seal : SealInstance, entity : EntityController)
 	else: 
 		seal_msg = seal_msg.format({ t_article_def = "", t_entity = entity_name });
 	
-	seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
+	if seal.seal_source.spell_name_key.is_empty() :
+		action_name = tr("T_SPELL_GENERIC_PRONOUN");
+		action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(entity.param.entity_gender, 3) })
+	else :
+		action_name = tr(seal.seal_source.spell_name_key);
+	
+	seal_msg = seal_msg.format({ action = action_name });
 	EventManager.on_dialogue_queue.emit(seal_msg);
 
 
@@ -123,7 +130,14 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 					else: 
 						seal_msg = seal_msg.format({ t_article_def = "", t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
 					
-					seal_msg = seal_msg.format({ action = tr(seal.seal_source.spell_name_key) });
+					var action_name = "";
+					if seal.seal_source.spell_name_key.is_empty() :
+						action_name = tr("T_SPELL_GENERIC_PRONOUN");
+						action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(entity.param.entity_gender, 3) })
+					else :
+						action_name = tr(seal.seal_source.spell_name_key);
+					
+					seal_msg = seal_msg.format({ action = action_name });
 					EventManager.on_dialogue_queue.emit(seal_msg);
 				
 					for eff in seal.seal_effect.seal_effects:

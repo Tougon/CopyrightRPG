@@ -106,7 +106,9 @@ func entity_init(params : BattleParams):
 	seals_active = true;
 	
 	if current_entity != null:
-		if param != null : param.free();
+		if param != null : 
+			param.destroy();
+			param.free();
 		
 		param = current_entity.create_entity_params(level);
 		

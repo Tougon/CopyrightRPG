@@ -83,8 +83,10 @@ T_CAST_PLAYERD_07,{article_def}{entity} does a thing!,,
 
 T_CAST_DAMAGE_COMMON_CRASH,{article_def}{entity} charges forth!,,
 T_CAST_DAMAGE_COMMON_RAMBLE,{article_def}{entity} begins lecturing!,,
+T_CAST_STATUS_COMMON_SPITPOISON,{article_def}{entity} insults {target}!,,
 
 T_CAST_GENERIC_PARTYWIPE,{article_def}{entity} wipes the party!,,
+
 T_CAST_DAMAGE_COMMON_BLAZINGROCK,{article_def}{entity} conjures a Blazing Rock!,,
 T_CAST_DAMAGE_COMMON_EARTH,{article_def}{entity} unleashes the power of Earth!,,
 T_CAST_DAMAGE_COMMON_FIRE,{article_def}{entity} unleashes the power of Fire!,,
@@ -95,10 +97,16 @@ T_CAST_DAMAGE_COMMON_RAGINGWIND,{article_def}{entity} conjures a Raging Wind!,,
 T_CAST_DAMAGE_ENEMY_INSURANCEFRODD_ATTACK,{article_def}{entity} does a big smack!,,
 T_CAST_DAMAGE_ENEMY_INSURANCEFRODD_CUPTHROW_00,{article_def}{entity} throws a cup of hot coffee!,,
 T_CAST_DAMAGE_ENEMY_INSURANCEFRODD_CUPTHROW_01,{article_def}{entity} throws a cup of iced coffee!,,
-T_CAST_DAMAGE_ENEMY_INSURANCEFRODD_REFILL,{article_def}{entity} prepares a fresh cup of joe.,,
+T_CAST_STATUS_ENEMY_INSURANCEFRODD_REFILL,{article_def}{entity} prepares a fresh cup of joe.,,
 
 T_CAST_DAMAGE_ENEMY_MINDFREAK,MINDFREAAAAAAAAAK!,,
-T_CAST_DAMAGE_ENEMY_SLIME_DUPLICATE,{article_def}{entity} duplicates!,,
+
+T_CAST_STATUS_ENEMY_SCRUBBLES_ACCURACY,{article_def}{entity} scrubs up a storm!,,
+T_CAST_DAMAGE_ENEMY_SCRUBBLES_ATTACK,{article_def}{entity} launches at high speed!,,
+T_CAST_DAMAGE_ENEMY_SCRUBBLES_MULTIATTACK,{article_def}{entity} furiously scrubs {t_article_def}{t_entity}!,,
+
+T_CAST_STATUS_ENEMY_SLIME_DUPLICATE,{article_def}{entity} duplicates!,,
+
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_BIGHIT,{article_def}{entity} charges full throttle!,,
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_SPREAD,{article_def}{entity} makes the earth shake!,,
 
@@ -184,6 +192,10 @@ T_EFFECT_GENERIC_SPEED_BOOST_STACK,The effect of {t_article_def}{t_entity}'s spe
 T_EFFECT_GENERIC_SPEED_BOOST_TARGET_ACTIVATE,{t_article_def}{t_entity}'s speed rose!,,
 T_EFFECT_GENERIC_SPEED_DROP_ACTIVATE,{t_article_def}{t_entity}'s speed fell!,,
 T_EFFECT_GENERIC_SPEED_DROP_LARGE_ACTIVATE,{t_article_def}{t_entity}'s speed harshly fell!,,
+T_EFFECT_GENERIC_ACCURACY_DROP_ACTIVATE,{t_article_def}{t_entity}'s accuracy fell!,,
+T_EFFECT_GENERIC_ACCURACY_DROP_DEACTIVATE,{t_article_def}{t_entity}'s accuracy drop from {spell} wore off!,,
+T_EFFECT_GENERIC_ACCURACY_DROP_FAIL,{t_article_def}{t_entity}'s accuracy can't go lower!,,
+T_EFFECT_GENERIC_ACCURACY_DROP_STACK,The effect of {t_article_def}{t_entity}'s accuracy drop was renewed!,,
 T_EFFECT_GENERIC_EVASION_DROP_ACTIVATE,{t_article_def}{t_entity}'s evasion fell!,,
 T_EFFECT_GENERIC_EVASION_DROP_DEACTIVATE,{t_article_def}{t_entity}'s evasion drop from {spell} wore off!,,
 T_EFFECT_GENERIC_EVASION_DROP_FAIL,{t_article_def}{t_entity}'s evasion can't go lower!,,
@@ -332,6 +344,9 @@ T_MP_AMOUNT,[b]MP: [color=FFFF00]{current}[/color]/{max},,
 T_MP_AMOUNT_FLAT,MP: {current}/{max},,
 T_PARTY_DESCRIPTION_USE_SPELL,Use this spell on whom?,,
 T_PARTY_USER_SPELL,USE,,
+
+T_SPELL_GENERIC,[color=FFFF00]{article_def}{entity}'s[/color] Move,,
+T_SPELL_GENERIC_PRONOUN,{pronoun3} Move,,
 T_SPELL_GENERIC_ATTACK,Attack,,
 T_SPELL_GENERIC_DEFEND,Defend,,
 
@@ -339,6 +354,8 @@ T_SPELL_GENERIC_CRASH,Crash,,
 T_SPELL_GENERIC_CRASH_DESC,Crash into the target with all your strength. Deals slight recoil damage.,,
 T_SPELL_GENERIC_RAMBLE,Ramble,,
 T_SPELL_GENERIC_RAMBLE_DESC,"Begin lecturing at the target, potentially making them drowsy.",,
+T_SPELL_GENERIC_SPITPOISON,Spit Poison,,
+T_SPELL_GENERIC_SPITPOISON_DESC,"Deliver choice words to the target, potentially making them miserable.",,
 
 T_SPELL_PLAYERA_01,Beat,,
 T_SPELL_PLAYERA_01_DESC,Clack your sticks to create a simple repetitive rhythm. Can deal high damage but tends to miss.,,
