@@ -187,11 +187,14 @@ func sequence_end():
 		target[i].position = target_position[i];
 		target[i].rotation = target_rotation[i];
 		target[i].scale = target_scale[i];
+		
 		if target_sprite[i] != null:
 			target_sprite[i].modulate = target_color[i];
 			target_sprite[i].position = target_sprite_position[i];
-		target[i].mat.set_shader_parameter("overlay_color_amount", target_amount[i]);
-		target[i].mat.set_shader_parameter("alpha_amount", 0);
+		
+		if !target[i].is_defeated :
+			target[i].mat.set_shader_parameter("overlay_color_amount", target_amount[i]);
+			target[i].mat.set_shader_parameter("alpha_amount", 0);
 	
 	for frame in aso.animation_sequence:
 		frame.action.cooldown();
