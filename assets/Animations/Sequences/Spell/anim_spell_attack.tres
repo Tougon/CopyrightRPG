@@ -87,6 +87,7 @@ action = SubResource("Resource_vbnhx")
 
 [sub_resource type="Resource" id="Resource_jrssm"]
 script = ExtResource("8_gycvc")
+group = -1
 index = 2
 target = 0
 effect_index = 0
@@ -151,6 +152,7 @@ action = SubResource("Resource_n472o")
 
 [sub_resource type="Resource" id="Resource_fahfa"]
 script = ExtResource("8_gycvc")
+group = -1
 index = 0
 target = 0
 effect_index = 0

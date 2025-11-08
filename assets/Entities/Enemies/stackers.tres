@@ -1,0 +1,140 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=27 format=3 uid="uid://da33h2478wy8g"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_ygu5r"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_hwq38"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_xmxpj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="3_qes5y"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_k2mh1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="4_mqt24"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="4_o2vr0"]
+
+[sub_resource type="Curve" id="Curve_0o7oy"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_mr7gp"]
+script = ExtResource("2_hwq38")
+min = 15
+max = 20
+growth = SubResource("Curve_0o7oy")
+
+[sub_resource type="Curve" id="Curve_1pmaj"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_lu6rj"]
+script = ExtResource("2_hwq38")
+min = 15
+max = 20
+growth = SubResource("Curve_1pmaj")
+
+[sub_resource type="Curve" id="Curve_63dlk"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_3sl4v"]
+script = ExtResource("2_hwq38")
+min = 120
+max = 135
+growth = SubResource("Curve_63dlk")
+
+[sub_resource type="Curve" id="Curve_yyp0y"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0r8vb"]
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_f4n2q"]
+script = ExtResource("4_mqt24")
+min = 1.0
+max = 1.0
+growth = SubResource("Curve_0r8vb")
+
+[sub_resource type="Curve" id="Curve_tv5jk"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_1kg16"]
+script = ExtResource("2_hwq38")
+min = 60
+max = 70
+growth = SubResource("Curve_tv5jk")
+
+[sub_resource type="Curve" id="Curve_bmb16"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_kcde7"]
+script = ExtResource("2_hwq38")
+min = 35
+max = 50
+growth = SubResource("Curve_bmb16")
+
+[sub_resource type="Curve" id="Curve_5ct7g"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_yy6aa"]
+script = ExtResource("2_hwq38")
+min = 15
+max = 20
+growth = SubResource("Curve_5ct7g")
+
+[sub_resource type="Curve" id="Curve_s8ohv"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_t03s2"]
+script = ExtResource("2_hwq38")
+min = 15
+max = 20
+growth = SubResource("Curve_s8ohv")
+
+[sub_resource type="Curve" id="Curve_fxgcl"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_d2bpn"]
+script = ExtResource("2_hwq38")
+min = 10
+max = 13
+growth = SubResource("Curve_fxgcl")
+
+[resource]
+script = ExtResource("3_qes5y")
+name_key = "T_ENTITY_STACKERS"
+description_key = "T_DESCRIPTION_STACKERS"
+gender = 4
+type = 0
+generic = true
+hp = SubResource("Resource_3sl4v")
+mp = SubResource("Resource_1kg16")
+atk = SubResource("Resource_mr7gp")
+def = SubResource("Resource_lu6rj")
+sp_atk = SubResource("Resource_yy6aa")
+sp_def = SubResource("Resource_t03s2")
+spd = SubResource("Resource_d2bpn")
+base_crit_chance_modifier = 1.0
+base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
+base_dodge_modifier = 1.0
+luck = SubResource("Resource_f4n2q")
+affinity = Array[ExtResource("1_ygu5r")]([])
+defense_modifiers = Array[ExtResource("2_xmxpj")]([])
+min_level = 1
+max_level = 3
+level_curve = SubResource("Curve_yyp0y")
+reward_exp = SubResource("Resource_kcde7")
+entity_sprites = Array[ExtResource("4_o2vr0")]([])
+battle_intro_key = "T_BATTLE_INTRO_STACKERS"
+battle_defeat_key = "T_BATTLE_DEFEAT_STACKERS"
+head_offset = Vector2(0, 0)
+entity_bgm_key = "MF2"
+entity_video = "res://video/test_bw.ogv"
+entity_video_material = "res://assets/Materials/VideoMaterials/entity_test_00.tres"
+entity_video_repeat_mode = 3
+entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/entity_test_01.tres"
+entity_thought_repeat_mode = 3
+seal_effect_list = Array[ExtResource("4_k2mh1")]([])

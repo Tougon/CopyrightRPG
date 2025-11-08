@@ -36,7 +36,7 @@ func _on_player_selected(id : int):
 	var entity_id = entity_data.id;
 	var entity = DataManager.entity_database.get_entity(entity_id);
 	 
-	preview_image.texture = ResourceLoader.load(entity.entity_sprites[3], "Texture2D") as Texture2D;
+	preview_image.texture = ResourceLoader.load(entity.entity_sprites[0].sprites[3], "Texture2D") as Texture2D;
 	
 	if _current_index != id :
 		preview_image.get_node("TweenPlayerUI").play_tween_name("Zap");

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=68 format=3 uid="uid://cv65c7cujmx6h"]
+[gd_resource type="Resource" script_class="Entity" load_steps=70 format=3 uid="uid://cv65c7cujmx6h"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_usdnu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_trhxq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://blt8jey2gewdx" path="res://assets/Spells/enemy/insurance_frodd/spell_enemy_insurancefrodd_attack_00.tres" id="8_ih2sc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="8_sm7yu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="10_66kck"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="14_6dxqd"]
 [ext_resource type="Resource" uid="uid://bgsxj3eex66j" path="res://assets/Spells/enemy/insurance_frodd/spell_enemy_insurancefrodd_cupthrow_00.tres" id="14_7nrml"]
 [ext_resource type="Resource" uid="uid://cqjv3rsjmku13" path="res://assets/Spells/enemy/insurance_frodd/spell_enemy_insurancefrodd_cupthrow_01.tres" id="15_w463e"]
 [ext_resource type="Resource" uid="uid://c2n82bt3b6dpp" path="res://assets/Spells/enemy/insurance_frodd/spell_enemy_insurancefrodd_refill.tres" id="16_2go2c"]
@@ -174,6 +175,10 @@ script = ExtResource("2_trhxq")
 flag = ExtResource("5_j1mnu")
 modifier = 1.1
 
+[sub_resource type="Resource" id="Resource_q5gim"]
+script = ExtResource("14_6dxqd")
+sprites = Array[String](["res://assets/Sprites/Entities/Temp/infrog_neutral.png"])
+
 [sub_resource type="Curve" id="Curve_ax5ad"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
@@ -308,7 +313,7 @@ min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_i5b55")
 reward_exp = SubResource("Resource_0dugh")
-entity_sprites = Array[String](["res://assets/Sprites/Entities/Temp/infrog_neutral.png"])
+entity_sprites = Array[ExtResource("14_6dxqd")]([SubResource("Resource_q5gim")])
 battle_intro_key = "T_BATTLE_INTRO_INSURANCEFRODD"
 battle_defeat_key = "T_BATTLE_DEFEAT_INSURANCEFRODD"
 head_offset = Vector2(0, -120)

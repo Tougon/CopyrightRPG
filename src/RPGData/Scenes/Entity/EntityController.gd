@@ -76,6 +76,7 @@ var action_result : Array[SpellCast];
 var effects : Array[EffectInstance];
 var properties : Array[EffectInstance];
 
+var sprite_group : int;
 var dodge_anim_sequence : AnimationSequence;
 
 var _appear_anim_playing : bool = false;
@@ -150,8 +151,13 @@ func entity_init(params : BattleParams):
 		# Load sprites
 		param.entity_sprites = [];
 		
-		for path in current_entity.entity_sprites:
-			if path != null : load_sprite(path);
+		sprite_group = 0;
+		
+		for i in current_entity.entity_sprites.size():
+			param.entity_sprites.append([]);
+			
+			for path in current_entity.entity_sprites[i].sprites :
+				if path != null : load_sprite(path, i);
 		
 		# TODO: Save data for enemy types.
 		# This variable is largely vestigal from older iterations and may be scrapped.
@@ -160,7 +166,8 @@ func entity_init(params : BattleParams):
 		current_behavior = current_entity.behavior;
 		
 		if param.entity_sprites.size() > 0 :
-			sprite.texture = param.entity_sprites[0];
+			if param.entity_sprites[sprite_group].size() > 0:
+				sprite.texture = param.entity_sprites[sprite_group][0];
 		else : sprite.texture = null;
 		_reset_shader_parameters();
 		
@@ -175,10 +182,10 @@ func entity_init(params : BattleParams):
 		effects.clear();
 
 
-func load_sprite(path : String):
+func load_sprite(path : String, group : int):
 	if ResourceLoader.exists(path, "Texture2D"):
 		var sprite = ResourceLoader.load(path, "Texture2D") as Texture2D;
-		param.entity_sprites.append(sprite);
+		param.entity_sprites[group].append(sprite);
 
 
 func _on_battle_begin(params : BattleParams):
@@ -392,8 +399,8 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 			set_damage_sprite(damage_time);
 		
 		if is_defeated :
-			if param.entity_sprites.size() > 1:
-				sprite.texture = param.entity_sprites[1];
+			if param.entity_sprites[sprite_group].size() > 1:
+				sprite.texture = param.entity_sprites[sprite_group][1];
 			
 			TweenExtensions.shake_position_2d(sprite, shake, 47.5, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, shake_decay);
 			await get_tree().create_timer(shake).timeout;
@@ -411,9 +418,9 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 
 
 func set_damage_sprite(damage_time : float):
-	if param.entity_sprites.size() > 1:
+	if param.entity_sprites[sprite_group].size() > 1:
 		var previous = sprite.texture;
-		sprite.texture = param.entity_sprites[1];
+		sprite.texture = param.entity_sprites[sprite_group][1];
 		await get_tree().create_timer(damage_time).timeout
 		sprite.texture = previous;
 

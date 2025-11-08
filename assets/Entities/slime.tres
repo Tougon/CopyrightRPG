@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=59 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=61 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="10_5xb1c"]
 [ext_resource type="Resource" uid="uid://crsawpip2wg8e" path="res://assets/Spells/enemy/slime/spell_enemy_slime_attack_00.tres" id="10_7x3rp"]
 [ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/slime/spell_enemy_slime_idle_00.tres" id="11_3b4ex"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="12_4r68o"]
 [ext_resource type="Resource" uid="uid://bf6u1jm87fjkr" path="res://assets/Spells/common/spell_common_crash.tres" id="12_sordl"]
 [ext_resource type="Resource" uid="uid://co4y1vwe1ayoc" path="res://assets/Spells/enemy/slime/spell_enemy_slime_duplicate.tres" id="13_0cdny"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="13_a88bw"]
@@ -124,6 +125,10 @@ script = ExtResource("9_n0rge")
 min = 12
 max = 14
 growth = SubResource("Curve_p1ga6")
+
+[sub_resource type="Resource" id="Resource_pvc6i"]
+script = ExtResource("12_4r68o")
+sprites = Array[String](["res://assets/Sprites/Entities/Slime/slime_n_neutral.png", "res://assets/Sprites/Entities/Slime/slime_n_damage.png", "res://assets/Sprites/Entities/Slime/slime_n_attack.png"])
 
 [sub_resource type="Curve" id="Curve_7i6bh"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -254,7 +259,7 @@ min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_k6ron")
 reward_exp = SubResource("Resource_x0kwu")
-entity_sprites = Array[String](["res://assets/Sprites/Entities/Slime/slime_n_neutral.png", "res://assets/Sprites/Entities/Slime/slime_n_damage.png", "res://assets/Sprites/Entities/Slime/slime_n_attack.png"])
+entity_sprites = Array[ExtResource("12_4r68o")]([SubResource("Resource_pvc6i")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, -50)

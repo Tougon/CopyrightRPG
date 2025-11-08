@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=58 format=3 uid="uid://cauy0q3462jvi"]
+[gd_resource type="Resource" script_class="Entity" load_steps=60 format=3 uid="uid://cauy0q3462jvi"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_p3cat"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_1ihsh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_p0ehi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="8_r2r0k"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="9_o8g2b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="10_u7xl7"]
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="10_y5u6p"]
 [ext_resource type="Resource" uid="uid://c1lyjwvn6kcxd" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_attack.tres" id="11_qbskd"]
 [ext_resource type="Resource" uid="uid://cxruw607jap5m" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_multiattack.tres" id="12_kdhoa"]
@@ -128,6 +129,10 @@ script = ExtResource("3_bfbhk")
 min = 10
 max = 12
 growth = SubResource("Curve_ic17k")
+
+[sub_resource type="Resource" id="Resource_fp08g"]
+script = ExtResource("10_u7xl7")
+sprites = Array[String](["res://assets/Sprites/Entities/Temp/scrubbles_neutral.png"])
 
 [sub_resource type="Curve" id="Curve_adq3p"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -258,7 +263,7 @@ min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_avbp0")
 reward_exp = SubResource("Resource_6o8k0")
-entity_sprites = Array[String](["res://assets/Sprites/Entities/Temp/scrubbles_neutral.png"])
+entity_sprites = Array[ExtResource("10_u7xl7")]([SubResource("Resource_fp08g")])
 battle_intro_key = "T_BATTLE_INTRO_SCRUBBLES"
 battle_defeat_key = "T_BATTLE_DEFEAT_SCRUBBLES"
 head_offset = Vector2(0, 0)

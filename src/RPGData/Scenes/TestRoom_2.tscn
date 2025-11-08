@@ -279,7 +279,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_6jh6m"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 4
-odds = 0.0
+odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 2
@@ -299,12 +299,12 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_4hehe"]
 script = ExtResource("44_pt3pb")
-primary_enemy = 6
+primary_enemy = 7
 odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
-max_enemies = 1
+max_enemies = 0
 enemy_count_curve = SubResource("Curve_i1rnu")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])

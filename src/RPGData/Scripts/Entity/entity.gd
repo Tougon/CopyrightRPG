@@ -107,7 +107,7 @@ func get_reward_exp(level : int) -> int:
 	return reward_exp.get_current(level, max_level);
 
 @export_group("Aesthetics")
-@export_file("*.png") var entity_sprites: Array[String];
+@export var entity_sprites: Array[EntitySpriteGroup];
 @export var battle_intro_key: String;
 @export var battle_defeat_key: String;
 @export var appear_anim : AnimationSequenceObject;

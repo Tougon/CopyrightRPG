@@ -171,7 +171,7 @@ func sequence_end():
 	while effects.size() > 0:
 		effects[0].queue_free();
 		effects.remove_at(0);
-		
+	
 	await tree.process_frame;
 	
 	user.position = user_position;

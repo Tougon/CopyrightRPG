@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwasyygv0uw3e"]
+[gd_scene load_steps=4 format=3 uid="uid://bwasyygv0uw3e"]
 
 [ext_resource type="PackedScene" uid="uid://b1yeonj32wfeb" path="res://src/RPGData/Scenes/Entity/EntityController.tscn" id="1_hfutr"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EnemyController.gd" id="2_4tbuf"]
+[ext_resource type="Resource" uid="uid://blrnhee2dmhpg" path="res://assets/Animations/Sequences/Common/anim_common_appear.tres" id="3_ncq1q"]
 
 [node name="EntityBase" instance=ExtResource("1_hfutr")]
 script = ExtResource("2_4tbuf")
-seal_effect = null
 enemy_index = 0
+default_appear_anim = ExtResource("3_ncq1q")
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.75, 0.75)

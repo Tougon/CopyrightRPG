@@ -322,6 +322,7 @@ action = SubResource("Resource_5hvwq")
 
 [sub_resource type="Resource" id="Resource_vitke"]
 script = ExtResource("14_68h5b")
+group = -1
 index = 2
 target = 0
 effect_index = 0
@@ -334,6 +335,7 @@ action = SubResource("Resource_vitke")
 
 [sub_resource type="Resource" id="Resource_0qjxh"]
 script = ExtResource("14_68h5b")
+group = -1
 index = 0
 target = 0
 effect_index = 0

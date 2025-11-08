@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=7 format=3 uid="uid://heek1rryb0ek"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_bw50y"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_yf7uf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="3_50n2a"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="3_xd1s3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_kv2tv"]
+
+[sub_resource type="Resource" id="Resource_vgn2u"]
+script = ExtResource("3_50n2a")
+sprites = Array[String](["res://assets/Sprites/Entities/Temp/gremlin_neutral.png"])
+
+[resource]
+script = ExtResource("3_xd1s3")
+name_key = "T_ENTITY_CHOBBLIN"
+description_key = ""
+gender = 1
+type = 0
+generic = true
+base_crit_chance_modifier = 1.0
+base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
+base_dodge_modifier = 1.0
+affinity = Array[ExtResource("1_bw50y")]([])
+defense_modifiers = Array[ExtResource("2_yf7uf")]([])
+min_level = 50
+max_level = 50
+entity_sprites = Array[ExtResource("3_50n2a")]([SubResource("Resource_vgn2u")])
+battle_intro_key = ""
+battle_defeat_key = ""
+head_offset = Vector2(0, 0)
+entity_bgm_key = ""
+entity_video = ""
+entity_video_material = ""
+entity_video_repeat_mode = 3
+entity_thought_pattern_material = ""
+entity_thought_repeat_mode = 3
+seal_effect_list = Array[ExtResource("4_kv2tv")]([])

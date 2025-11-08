@@ -21,8 +21,9 @@ var entity_accuracy_modifier : float = 1;
 var entity_dodge_modifier : float = 1;
 var entity_luck : float;
 
-var entity_sprites: Array[Texture2D];
+var entity_sprites: Array;
 
 func destroy():
-	for sprite in entity_sprites:
-		if sprite != null: sprite = null
+	for group in entity_sprites:
+		for sprite in group :
+			if sprite != null: sprite = null

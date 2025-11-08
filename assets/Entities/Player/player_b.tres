@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=46 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_82a6o"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="3_ty6s6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_xfhba"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="5_0sdrg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="6_utwji"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_bv3cl"]
 [ext_resource type="Resource" uid="uid://tl2y5yt4lo16" path="res://assets/Spells/player/player_b/spell_player_b_01.tres" id="7_xium4"]
 [ext_resource type="Resource" uid="uid://beyjnruquj0x" path="res://assets/Spells/player/player_b/spell_player_b_08.tres" id="8_feqgb"]
@@ -38,6 +39,10 @@ script = ExtResource("2_ay3jb")
 min = 18
 max = 156
 growth = SubResource("Curve_8fb0c")
+
+[sub_resource type="Resource" id="Resource_0wcvm"]
+script = ExtResource("6_utwji")
+sprites = Array[String](["res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/UI/Status/temp_portrait_b_full.png"])
 
 [sub_resource type="Curve" id="Curve_61aun"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -177,7 +182,7 @@ affinity = Array[ExtResource("1_82a6o")]([ExtResource("2_aonv8"), ExtResource("3
 defense_modifiers = Array[ExtResource("5_0sdrg")]([])
 min_level = 50
 max_level = 99
-entity_sprites = Array[String](["res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/UI/Status/temp_portrait_b_full.png"])
+entity_sprites = Array[ExtResource("6_utwji")]([SubResource("Resource_0wcvm")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, -100)

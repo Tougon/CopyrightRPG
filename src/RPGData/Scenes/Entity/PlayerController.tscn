@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca6d0l8ch43v4"]
+[gd_scene load_steps=5 format=3 uid="uid://ca6d0l8ch43v4"]
 
 [ext_resource type="PackedScene" uid="uid://b1yeonj32wfeb" path="res://src/RPGData/Scenes/Entity/EntityController.tscn" id="1_it6kr"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/PlayerController.gd" id="2_6enct"]
+[ext_resource type="Resource" uid="uid://blrnhee2dmhpg" path="res://assets/Animations/Sequences/Common/anim_common_appear.tres" id="3_p40na"]
 [ext_resource type="Texture2D" uid="uid://bim7bg23jk7em" path="res://assets/Sprites/Entities/PlayerA/player_main_neutral.png" id="6_hst7t"]
 
 [node name="EntityBase" instance=ExtResource("1_it6kr")]
@@ -10,6 +11,7 @@ player_id = 0
 default_attack_action = null
 default_defend_action = null
 default_seal_effect = null
+default_appear_anim = ExtResource("3_p40na")
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 1)

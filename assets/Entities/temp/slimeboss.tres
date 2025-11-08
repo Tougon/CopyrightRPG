@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=90 format=3 uid="uid://dxdbu7u0q6ct6"]
+[gd_resource type="Resource" script_class="Entity" load_steps=91 format=3 uid="uid://dxdbu7u0q6ct6"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_m8lc7"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_tgypq"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="14_7om7i"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="14_lwdgs"]
 [ext_resource type="Resource" uid="uid://ihfxygkla2b5" path="res://assets/Spells/enemy/spell_enemy_superslime_spread.tres" id="14_n1xfv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="14_qoaak"]
 [ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/Seal/effect_seal_debuff_defense.tres" id="15_01wsr"]
 [ext_resource type="Resource" uid="uid://bn16op6jd3yb7" path="res://assets/Spells/reference/Old/spell_common_atoost.tres" id="15_f0ax6"]
 [ext_resource type="Resource" uid="uid://conbeqpmr4jye" path="res://assets/Spells/enemy/spell_enemy_superslime_bigdamage.tres" id="16_gsbgh"]
@@ -435,7 +436,7 @@ min_level = 5
 max_level = 5
 level_curve = SubResource("Curve_8jkfr")
 reward_exp = SubResource("Resource_x0kwu")
-entity_sprites = Array[String](["res://assets/Sprites/Entities/Slime Boss/slime_n_neutral.png", "res://assets/Sprites/Entities/Slime Boss/slime_n_damage.png", "res://assets/Sprites/Entities/Slime Boss/slime_n_attack.png"])
+entity_sprites = Array[ExtResource("14_qoaak")]([])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, -50)

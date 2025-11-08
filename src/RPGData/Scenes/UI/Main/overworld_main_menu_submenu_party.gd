@@ -44,8 +44,8 @@ func _set_entity_info(index : int):
 	# TODO: Animate name?
 	$"Entity Stats Area/Entity Portrait Group/Portrait/TweenPlayerUI".play_tween_name("Zap");
 	
-	if _current_player_entity.entity_sprites.size() > 3:
-		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(_current_player_entity.entity_sprites[3], "Texture2D") as Texture2D;
+	if _current_player_entity.entity_sprites[0].sprites.size() > 3:
+		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(_current_player_entity.entity_sprites[0].sprites[3], "Texture2D") as Texture2D;
 	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(_current_player_entity.name_key);
 	
 	if _current_player_data.level < 10 :
