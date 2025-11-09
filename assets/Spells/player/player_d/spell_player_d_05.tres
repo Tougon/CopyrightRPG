@@ -32,8 +32,12 @@ turns = 3
 [sub_resource type="Resource" id="Resource_nlgse"]
 script = ExtResource("6_casrd")
 target = 0
+check_previous = false
 check_type = true
 target_type = 1
+use_current_as_target = false
+invert = false
+default_result = true
 
 [sub_resource type="Resource" id="Resource_pinpi"]
 script = ExtResource("7_qckn8")
@@ -98,8 +102,12 @@ turns = 3
 [sub_resource type="Resource" id="Resource_7hfbv"]
 script = ExtResource("6_casrd")
 target = 0
+check_previous = false
 check_type = true
 target_type = 1
+use_current_as_target = false
+invert = false
+default_result = true
 
 [sub_resource type="Resource" id="Resource_8m743"]
 script = ExtResource("10_w5kw7")
@@ -176,6 +184,7 @@ spell_priority = 0
 spell_flags = Array[ExtResource("5_hjqm8")]([ExtResource("15_hwifa"), ExtResource("16_2e3fk"), ExtResource("17_jcj04")])
 ignore_seals = false
 is_learnable = false
+will_save_as_prev = true
 animation_sequence = ExtResource("1_qoxbl")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

@@ -25,6 +25,7 @@ enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, 
 @export var spell_flags : Array[TFlag]
 @export var ignore_seals : bool = false;
 @export var is_learnable : bool = false;
+@export var will_save_as_prev : bool = true;
 
 @export_subgroup("Spell Animation")
 @export var animation_sequence : AnimationSequenceObject;

@@ -133,7 +133,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 					var action_name = "";
 					if seal.seal_source.spell_name_key.is_empty() :
 						action_name = tr("T_SPELL_GENERIC_PRONOUN");
-						action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(entity.param.entity_gender, 3) })
+						action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(seal.seal_entity.param.entity_gender, 3) })
 					else :
 						action_name = tr(seal.seal_source.spell_name_key);
 					

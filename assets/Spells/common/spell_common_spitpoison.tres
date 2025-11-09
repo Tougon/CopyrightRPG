@@ -37,6 +37,7 @@ spell_priority = 0
 spell_flags = Array[ExtResource("5_ck4si")]([ExtResource("9_g7j6y"), ExtResource("10_u5xs7")])
 ignore_seals = false
 is_learnable = true
+will_save_as_prev = true
 animation_sequence = ExtResource("1_po8fn")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

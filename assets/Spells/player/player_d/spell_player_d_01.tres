@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=33 format=3 uid="uid://c7c5rw2e2syjj"]
+[gd_resource type="Resource" script_class="Spell" load_steps=36 format=3 uid="uid://c7c5rw2e2syjj"]
 
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_jlp4f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_wbtxl"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="11_m6gjb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="12_rfxwy"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="13_7208f"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="14_vaejf"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="18_sdc5c"]
 [ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="19_pvgti"]
 [ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="20_lagp8"]
@@ -83,9 +84,16 @@ script = ExtResource("12_rfxwy")
 script = ExtResource("13_7208f")
 target = 1
 
+[sub_resource type="Resource" id="Resource_vb3y0"]
+script = ExtResource("14_vaejf")
+
+[sub_resource type="Resource" id="Resource_480dl"]
+script = ExtResource("11_m6gjb")
+dialogue_key = "T_EFFECT_PLAYERD_01_STACK"
+
 [sub_resource type="Resource" id="Resource_a1y3y"]
 script = ExtResource("3_qdin7")
-stackable = false
+stackable = true
 effect_name = "D01"
 generic = false
 repeatable = false
@@ -104,7 +112,7 @@ on_move_completed = Array[ExtResource("4_ntmq0")]([SubResource("Resource_5ay08")
 on_deactivate = Array[ExtResource("4_ntmq0")]([SubResource("Resource_yu8mn"), SubResource("Resource_giw02")])
 on_turn_start = Array[ExtResource("4_ntmq0")]([])
 on_turn_end = Array[ExtResource("4_ntmq0")]([])
-on_stack = Array[ExtResource("4_ntmq0")]([])
+on_stack = Array[ExtResource("4_ntmq0")]([SubResource("Resource_vb3y0"), SubResource("Resource_480dl")])
 
 [sub_resource type="Resource" id="Resource_bj4pn"]
 script = ExtResource("3_l4lmd")
@@ -132,6 +140,7 @@ spell_priority = 0
 spell_flags = Array[ExtResource("5_4fj2f")]([ExtResource("18_sdc5c"), ExtResource("19_pvgti"), ExtResource("20_lagp8")])
 ignore_seals = false
 is_learnable = false
+will_save_as_prev = true
 animation_sequence = ExtResource("1_jlp4f")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

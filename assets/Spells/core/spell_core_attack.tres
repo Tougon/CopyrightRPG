@@ -62,6 +62,7 @@ spell_priority = 0
 spell_flags = Array[ExtResource("5_jog3g")]([])
 ignore_seals = false
 is_learnable = false
+will_save_as_prev = true
 animation_sequence = ExtResource("1_et0sp")
 spell_videos = Array[String](["res://video/attack.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/attack_test_00.tres"])

@@ -611,7 +611,12 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 func _end_phase():
 	# Execute turn end effect functions
 	for entity in entities : 
-		entity.prev_action = entity.intended_action;
+		if enemies.has(entity) :
+			if entity.intended_action.will_save_as_prev :
+				entity.prev_action = entity.intended_action;
+		else :
+				entity.prev_action = entity.intended_action;
+		
 		entity.prev_target = entity.intended_target.duplicate();
 	
 	# If at least one player is currently alive, check for a victory

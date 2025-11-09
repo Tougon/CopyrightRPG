@@ -189,6 +189,7 @@ spell_priority = 0
 spell_flags = Array[ExtResource("5_h54xa")]([ExtResource("21_yarp7")])
 ignore_seals = false
 is_learnable = false
+will_save_as_prev = true
 animation_sequence = ExtResource("1_3oamc")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

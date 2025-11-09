@@ -281,6 +281,7 @@ T_EFFECT_PLAYERC_07_DEACTIVATE_MAG,{t_article_def}{t_entity}'s magic is restored
 T_EFFECT_PLAYERC_07_DEACTIVATE_RES,{t_article_def}{t_entity}'s resistance is restored!,,
 T_EFFECT_PLAYERC_07_DEACTIVATE_SPD,{t_article_def}{t_entity}'s speed is restored!,,
 
+T_EFFECT_PLAYERD_01_STACK,Toss's effect is renewed!,,
 T_EFFECT_PLAYERD_03_ACTIVATE,{article_def}{entity} got hurt from the slide!,,
 T_EFFECT_PLAYERD_04_ACTIVATE,{article_def}{entity} begins to feel calm!,,
 T_EFFECT_PLAYERD_04_STACK,{article_def}{entity}'s calming effect is renewed!,,
@@ -363,7 +364,7 @@ T_MP_AMOUNT_FLAT,MP: {current}/{max},,
 T_PARTY_DESCRIPTION_USE_SPELL,Use this spell on whom?,,
 T_PARTY_USER_SPELL,USE,,
 
-T_SPELL_GENERIC,[color=FFFF00]{article_def}{entity}'s[/color] Move,,
+T_SPELL_GENERIC,{article_def}[color=FFFF00]{entity}'s[/color] Move,,
 T_SPELL_GENERIC_PRONOUN,{pronoun3} Move,,
 T_SPELL_GENERIC_ATTACK,Attack,,
 T_SPELL_GENERIC_DEFEND,Defend,,

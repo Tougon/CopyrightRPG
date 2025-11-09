@@ -66,6 +66,7 @@ spell_priority = 0
 spell_flags = Array[ExtResource("4_c0chr")]([ExtResource("9_kehg7")])
 ignore_seals = false
 is_learnable = false
+will_save_as_prev = true
 animation_sequence = ExtResource("1_eakik")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

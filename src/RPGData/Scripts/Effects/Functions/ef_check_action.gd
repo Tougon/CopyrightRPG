@@ -24,8 +24,8 @@ func execute(instance : EffectInstance):
 	if use_current_as_target : check_action = entity.current_action;
 	
 	if action != null:
-		if target_action != null : 
-			instance.cast_success = target_action == action;
+		if check_action != null : 
+			instance.cast_success = check_action == action;
 		else :
 			if check_type :
 				instance.cast_success = action.spell_type == target_type;
