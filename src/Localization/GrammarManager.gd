@@ -60,7 +60,7 @@ func get_pronoun(gender : Entity.Gender, type : int) -> String:
 						3: 
 							return "its";
 						4:
-							return "it's";
+							return "its";
 				Entity.Gender.MALE:
 					match type:
 						1:
@@ -70,7 +70,7 @@ func get_pronoun(gender : Entity.Gender, type : int) -> String:
 						3: 
 							return "his";
 						4:
-							return "he's";
+							return "his";
 				Entity.Gender.FEMALE:
 					match type:
 						1:
@@ -78,9 +78,9 @@ func get_pronoun(gender : Entity.Gender, type : int) -> String:
 						2:
 							return "her";
 						3: 
-							return "hers";
+							return "her";
 						4:
-							return "her's";
+							return "hers";
 				Entity.Gender.NONBINARY:
 					match type:
 						1:
@@ -88,7 +88,7 @@ func get_pronoun(gender : Entity.Gender, type : int) -> String:
 						2:
 							return "them";
 						3: 
-							return "theirs";
+							return "their";
 						4:
 							return "theirs";
 				Entity.Gender.PLURAL:
@@ -98,7 +98,7 @@ func get_pronoun(gender : Entity.Gender, type : int) -> String:
 						2:
 							return "them";
 						3: 
-							return "theirs";
+							return "their";
 						4:
 							return "theirs";
 	return "";

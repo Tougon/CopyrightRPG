@@ -43,7 +43,7 @@ func execute(instance : EffectInstance):
 			target_article_indef = GrammarManager.get_indirect_article(target_name);
 	
 	var key = dialogue_key;
-	if key == "cache" : key = instance.data["dialogue_key"];
+	if key == "cache" : key = instance.data["hybrid_key"];
 	
 	var dialogue = tr(key);
 	var spell_name = "";

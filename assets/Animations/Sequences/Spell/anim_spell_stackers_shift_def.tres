@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=16 format=3 uid="uid://d4gle1lpkdheb"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_xqi17"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_sprite.gd" id="2_36dbv"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="3_pk7uc"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_wnk30"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="5_qb2n1"]
+
+[sub_resource type="Resource" id="Resource_h2eoj"]
+script = ExtResource("2_36dbv")
+group = -1
+index = 3
+target = 0
+effect_index = 0
+
+[sub_resource type="Resource" id="Resource_0lbvq"]
+script = ExtResource("1_xqi17")
+frame = 5
+frame_order = 0
+action = SubResource("Resource_h2eoj")
+
+[sub_resource type="Resource" id="Resource_io85r"]
+script = ExtResource("3_pk7uc")
+target = 0
+effect_index = 0
+duration = 0.25
+vibration_speed = 50.0
+strength = Vector2(15, 0)
+transition_type = 4
+ease_type = 2
+decay_factor = 0.35
+
+[sub_resource type="Resource" id="Resource_x2r7v"]
+script = ExtResource("1_xqi17")
+frame = 5
+frame_order = 1
+action = SubResource("Resource_io85r")
+
+[sub_resource type="Resource" id="Resource_wayfx"]
+script = ExtResource("2_36dbv")
+group = 1
+index = 0
+target = 0
+effect_index = 0
+
+[sub_resource type="Resource" id="Resource_8cqu2"]
+script = ExtResource("1_xqi17")
+frame = 45
+frame_order = 0
+action = SubResource("Resource_wayfx")
+
+[sub_resource type="Resource" id="Resource_loyry"]
+script = ExtResource("3_pk7uc")
+target = 0
+effect_index = 0
+duration = 0.25
+vibration_speed = 50.0
+strength = Vector2(15, 0)
+transition_type = 4
+ease_type = 2
+decay_factor = 0.35
+
+[sub_resource type="Resource" id="Resource_vklp0"]
+script = ExtResource("1_xqi17")
+frame = 45
+frame_order = 1
+action = SubResource("Resource_loyry")
+
+[sub_resource type="Resource" id="Resource_kt3v1"]
+script = ExtResource("4_wnk30")
+
+[sub_resource type="Resource" id="Resource_owc5u"]
+script = ExtResource("1_xqi17")
+frame = 70
+frame_order = 0
+action = SubResource("Resource_kt3v1")
+
+[resource]
+script = ExtResource("5_qb2n1")
+animation_name = "Defense Shift"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_xqi17")]([SubResource("Resource_0lbvq"), SubResource("Resource_x2r7v"), SubResource("Resource_8cqu2"), SubResource("Resource_vklp0"), SubResource("Resource_owc5u")])

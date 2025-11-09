@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2wtovj71qn44"
-path="res://.godot/imported/stackers_01_default.png-c2760a30336533da01f419c5099f9995.ctex"
+uid="uid://b6vmvo63ejf7q"
+path="res://.godot/imported/stackers_02_neutral.png-1e5b46d838ec019a9377110bad4b52ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Entities/Temp/stackers_01_default.png"
-dest_files=["res://.godot/imported/stackers_01_default.png-c2760a30336533da01f419c5099f9995.ctex"]
+source_file="res://assets/Sprites/Entities/Temp/stackers_02_neutral.png"
+dest_files=["res://.godot/imported/stackers_02_neutral.png-1e5b46d838ec019a9377110bad4b52ac.ctex"]
 
 [params]
 

@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=17 format=3 uid="uid://c51h4x10qenyt"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_upkh1"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_vpikk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_ac17l"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_yyt4e"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_vx0jh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="5_uo0pp"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_xud2f"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_action.gd" id="6_pm537"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_ui58b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_play_animation.gd" id="8_6ymm4"]
+[ext_resource type="Resource" uid="uid://dup7ccjsbnc5e" path="res://assets/Animations/Sequences/Spell/anim_spell_stackers_shift_atk.tres" id="8_mymim"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="11_hy4go"]
+
+[sub_resource type="Resource" id="Resource_foemi"]
+script = ExtResource("6_pm537")
+target = 0
+check_previous = true
+check_type = false
+target_type = 0
+use_current_as_target = true
+invert = true
+default_result = false
+
+[sub_resource type="Resource" id="Resource_td4rr"]
+script = ExtResource("6_ui58b")
+dialogue_key = "T_CAST_STATUS_ENEMY_STACKERS_ATK_FORM"
+
+[sub_resource type="Resource" id="Resource_orosx"]
+script = ExtResource("8_6ymm4")
+target = 0
+animation = ExtResource("8_mymim")
+
+[sub_resource type="Resource" id="Resource_2ytnf"]
+script = ExtResource("3_yyt4e")
+stackable = false
+effect_name = ""
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("5_uo0pp")]([SubResource("Resource_foemi")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("5_uo0pp")]([])
+on_activate = Array[ExtResource("5_uo0pp")]([SubResource("Resource_td4rr"), SubResource("Resource_orosx")])
+on_failed_to_activate = Array[ExtResource("5_uo0pp")]([])
+on_apply = Array[ExtResource("5_uo0pp")]([])
+on_move_selected = Array[ExtResource("5_uo0pp")]([])
+on_move_completed = Array[ExtResource("5_uo0pp")]([])
+on_deactivate = Array[ExtResource("5_uo0pp")]([])
+on_turn_start = Array[ExtResource("5_uo0pp")]([])
+on_turn_end = Array[ExtResource("5_uo0pp")]([])
+on_stack = Array[ExtResource("5_uo0pp")]([])
+
+[resource]
+script = ExtResource("5_xud2f")
+spell_power = 45.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_vx0jh")]([])
+check_accuracy = true
+spell_accuracy = 80.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_STACKERS_ATTACK"
+spell_type = 1
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 10
+spell_priority = 0
+spell_flags = Array[ExtResource("4_vx0jh")]([ExtResource("11_hy4go")])
+ignore_seals = false
+is_learnable = false
+animation_sequence = ExtResource("1_vpikk")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_upkh1")]([])
+effects_on_success = Array[ExtResource("1_upkh1")]([])
+properties = Array[ExtResource("3_yyt4e")]([SubResource("Resource_2ytnf")])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_ac17l")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_ac17l")]([])

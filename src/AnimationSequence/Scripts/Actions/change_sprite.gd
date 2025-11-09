@@ -21,7 +21,7 @@ func execute(sequence : AnimationSequence):
 	
 	if controller != null:
 		# -1 is a wildcard that uses the controller's current group
-		if group < 0 :
+		if group >= 0 :
 			if group >= controller.param.entity_sprites.size():
 				controller.sprite_group = controller.param.entity_sprites.size() - 1;
 			else :
