@@ -12,8 +12,9 @@ func display_spell(spell : Spell, path : String, editor : EditorInterface):
 	self.editor = editor;
 	
 	if current_spell.spell_name_key == null || current_spell.spell_name_key.is_empty() || current_spell.spell_name_key.length() == 0:
-		$HBoxContainer/Label.text = str(path.get_file());
+		$HBoxContainer/Label.text = str(path.get_file()).replace("spell_enemy_", "");
 	else :
+		TranslationServer.reload_pseudolocalization()
 		$HBoxContainer/Label.text = TranslationServer.get_translation_object("en").get_message(current_spell.spell_name_key);
 
 

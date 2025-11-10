@@ -84,6 +84,8 @@ reset_sealing = true
 [sub_resource type="Resource" id="Resource_aum5m"]
 script = ExtResource("12_o8fm7")
 target = 1
+use_previous = false
+override_intended_target = false
 
 [sub_resource type="Resource" id="Resource_1mob2"]
 script = ExtResource("10_j8pbs")

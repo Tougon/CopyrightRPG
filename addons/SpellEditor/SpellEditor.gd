@@ -34,17 +34,19 @@ func _compare_name(a : Spell, b : Spell):
 	var a_name = "";
 	var b_name = "";
 	
+	TranslationServer.reload_pseudolocalization()
+	
 	if a.spell_name_key.is_empty() || a.spell_name_key.length() == 0:
-		a_name = a.resource_path.get_file();
+		a_name = str(a.resource_path.get_file()).replace("spell_enemy_", "");
 	else :
 		a_name = str(TranslationServer.get_translation_object("en").get_message(a.spell_name_key));
 	
 	if b.spell_name_key.is_empty() || b.spell_name_key.length() == 0:
-		b_name = b.resource_path.get_file();
+		b_name = str(b.resource_path.get_file()).replace("spell_enemy_", "");
 	else :
 		b_name = str(TranslationServer.get_translation_object("en").get_message(b.spell_name_key));
 	
-	return a_name < b_name;
+	return a_name.to_lower() < b_name.to_lower();
 
 
 func set_editor(editor : EditorInterface):
