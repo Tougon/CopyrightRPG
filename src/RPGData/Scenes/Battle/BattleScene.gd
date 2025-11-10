@@ -297,6 +297,9 @@ func _action_phase():
 					entity.current_target.append(alternate_targets);
 				Spell.SpellTarget.RandomEnemyPerHit:
 					entity.current_target.append(alternate_targets);
+			
+			# If the target is invalid, change intended target
+			entity.intended_target = entity.current_target.duplicate();
 		
 		# Execute effects on move selected
 		entity.execute_move_selected_effects();

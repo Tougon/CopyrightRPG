@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=7 format=3 uid="uid://es6dwluohltj"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_62wb2"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_kosjw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_23wrg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_46wt6"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_g3qak"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_2wxrr"]
+
+[resource]
+script = ExtResource("5_2wxrr")
+spell_power = 35.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_g3qak")]([])
+check_accuracy = true
+spell_accuracy = 90.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_ROTTEDPLANT_ATTACK"
+spell_type = 1
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("4_g3qak")]([])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_kosjw")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_62wb2")]([])
+effects_on_success = Array[ExtResource("1_62wb2")]([])
+properties = Array[ExtResource("3_46wt6")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_23wrg")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_23wrg")]([])

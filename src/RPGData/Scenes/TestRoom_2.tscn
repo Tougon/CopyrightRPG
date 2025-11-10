@@ -299,7 +299,7 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_4hehe"]
 script = ExtResource("44_pt3pb")
-primary_enemy = 7
+primary_enemy = 8
 odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false

@@ -14,12 +14,12 @@ float random(vec2 uv, float time) {
 
 void fragment() {
 	vec2 uv = UV;
-	
-	if (use_screen_uv) 
+
+	if (use_screen_uv)
 	{
 		uv = SCREEN_UV;
 	}
-	
+
 	uv.x = round(uv.x * (scale_factor * aspect.x)) / (scale_factor * aspect.x);
 	uv.y = round(uv.y * (scale_factor * aspect.y)) / (scale_factor * aspect.y);
 
