@@ -1,6 +1,8 @@
 extends EncounterManager
 
 func _ready() :
+	if encounters.size() == 0 : enabled = false;
+	
 	active = false;
 	super._ready();
 

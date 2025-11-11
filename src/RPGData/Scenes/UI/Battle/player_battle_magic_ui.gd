@@ -137,6 +137,7 @@ func on_unfocus():
 
 
 func on_menu_cancel():
+	current_entity.sealing = false;
 	UIManager.open_menu_name("player_battle_main");
 	super.on_menu_cancel();
 

@@ -24,6 +24,16 @@ func _ready() -> void:
 				_colors[c] = clr;
 
 
+func refresh_text_state():
+	if _button.disabled : 
+		self_modulate = _colors["font_disabled_color"];
+	else :
+		if _focused :
+			self_modulate = _colors["font_focus_color"];
+		else :
+			self_modulate = _colors["font_color"];
+
+
 func _on_button_focus_entered():
 	_focused = true;
 	

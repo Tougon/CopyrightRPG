@@ -9,6 +9,7 @@ static var battle_scene_window : Window = null;
 @export var game_camera : PhantomCamera2D;
 @export var free_camera : PhantomCamera2D;
 @export var canvas_modulate : CanvasModulate;
+@export var background_void : CanvasLayer;
 
 @export_group("Encounter Parameters")
 @export_range(0, 1) var flee_group_grow_rate : float = 0.4;
@@ -78,7 +79,7 @@ func _ready() -> void:
 						game_camera.set_follow_target(null);
 						_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
 						_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
-						game_camera.set_follow_target(player_controller);
+						game_camera.set_follow_target(player_controller.camera_offset);
 				else:
 					area_data.set_area_active(false);
 	
@@ -130,7 +131,7 @@ func _on_overworld_change_area(new_area : String):
 	game_camera.set_follow_target(null);
 	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
 	_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
-	game_camera.set_follow_target(player_controller);
+	game_camera.set_follow_target(player_controller.camera_offset);
 	
 	await get_tree().process_frame;
 	_can_change_area = true;
@@ -164,7 +165,7 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 	game_camera.set_follow_target(null);
 	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
 	_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
-	game_camera.set_follow_target(player_controller);
+	game_camera.set_follow_target(player_controller.camera_offset);
 	
 	await get_tree().process_frame;
 	_can_change_floor = true;
@@ -280,6 +281,8 @@ func _on_overworld_battle_queued(encounter : Encounter):
 			params.enemies.append(enemy);
 	
 	canvas_modulate.visible = false;
+	background_void.visible = false;
+	
 	if BattleManager.INSTANCE_BATTLE_WINDOW :
 		battle_scene_window.visible = true;
 		battle_scene.begin_battle(params);
@@ -291,6 +294,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 
 func _on_battle_end(result : BattleResult):
 	canvas_modulate.visible = true;
+	background_void.visible = true;
 	
 	# Process result
 	

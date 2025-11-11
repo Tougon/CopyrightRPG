@@ -615,7 +615,7 @@ func _end_phase():
 	# Execute turn end effect functions
 	for entity in entities : 
 		if enemies.has(entity) :
-			if entity.intended_action.will_save_as_prev :
+			if entity.intended_action != null && entity.intended_action.will_save_as_prev :
 				entity.prev_action = entity.intended_action;
 		else :
 				entity.prev_action = entity.intended_action;

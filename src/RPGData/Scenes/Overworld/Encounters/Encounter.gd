@@ -26,7 +26,10 @@ func get_encounter_enemies() -> Array[int] :
 	var num_enemies = roundi(lerpf(min_enemies as float, max_enemies as float, num_enemies_seed));
 	
 	for i in num_enemies :
-		var enemy_seed = additional_enemy_curve.sample(randf());
+		var enemy_seed = 0;
+		if additional_enemy_curve != null :
+			enemy_seed = additional_enemy_curve.sample(randf());
+		
 		var enemy_index = roundi(lerpf(0 as float, (additional_enemies.size() - 1) as float, enemy_seed));
 		
 		if enemy_index < additional_enemies.size() && enemy_index >= 0:

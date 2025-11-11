@@ -20,6 +20,7 @@ var _reparenting : bool = false;
 var _exiting : bool = false;
 
 @onready var player_fade_offset: Node2D = $FadeOffset
+@onready var camera_offset : Node2D = $CameraOffset
 @onready var _sight : Area2D = $Sight
 @onready var _player_visual: RPGCharacter = $RPGCharacter
 var _physics_body_trans_last: Transform2D

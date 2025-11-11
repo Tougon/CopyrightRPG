@@ -52,6 +52,9 @@ func set_sealing(_sealing : bool):
 			EventManager.on_action_highlighted.emit(action, _cost, !disabled);
 		else :
 			flag_group.set_sealing(false);
+		
+		text_label.refresh_text_state();
+		mp_label.refresh_text_state();
 
 
 func _on_pressed():

@@ -2957,7 +2957,6 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="Player Select Items" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
