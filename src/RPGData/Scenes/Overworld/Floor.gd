@@ -25,12 +25,16 @@ func set_floor_active(active : bool):
 		process_mode = ProcessMode.PROCESS_MODE_INHERIT;
 		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_INHERIT;
 		EventManager.on_overworld_floor_active.emit(self);
+		
+		if lighting != null :
+			lighting.reparent(environment);
+			lighting.reparent(environment_visuals);
 	else :
 		set_process(false);
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED;
 		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_OFF;
 	
-	if lighting != null : lighting.visible = active;
+	#if lighting != null : lighting.visible = active;
 
 
 func set_floor_visible(visible : bool, tween : bool = true):

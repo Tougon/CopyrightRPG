@@ -30,8 +30,9 @@ const MAX_LIGHTS_PER_OBJECT : int = 8;
 		_setup_shape_size();
 
 
+@export var origin_offset : Vector2;
+
 @export var static_receiver : bool = true;
-@export var falloff_y : bool = false;
 
 var _mat : ShaderMaterial;
 var _lights : Array[ZLight];
@@ -55,10 +56,11 @@ func _ready() -> void:
 		_sprite = (get_parent() as Sprite2D);
 	
 	if !Engine.is_editor_hint() :
-		_mat = (get_parent() as CanvasItem).material.duplicate() as ShaderMaterial;
-		(get_parent() as CanvasItem).material = _mat;
-		_current_pos = global_position;
-		_set_material_params();
+		if _sprite != null :
+			_mat = _sprite.material.duplicate() as ShaderMaterial;
+			(get_parent() as CanvasItem).material = _mat;
+			_current_pos = global_position;
+			_set_material_params();
 
 
 func _physics_process(delta: float) -> void:
@@ -78,9 +80,9 @@ func _set_material_params() :
 	# Define origin point for light in screenspace
 	var screen_pos = get_global_transform_with_canvas().origin;
 	
-	_mat.set_shader_parameter("origin", screen_pos);
-	_mat.set_shader_parameter("falloff_y", falloff_y);
-	#print("SCREEN POS: " + str(screen_pos))
+	_mat.set_shader_parameter("origin", (screen_pos + origin_offset));
+	#_mat.set_shader_parameter("falloff_y", falloff_y);
+	#print("SCREEN POS: " + str((screen_pos + origin_offset)) + _sprite.name)
 	
 	# Calculate light parameters
 	var light_origins : Array[Vector2];
@@ -92,6 +94,8 @@ func _set_material_params() :
 	
 	for i in MAX_LIGHTS_PER_OBJECT :
 		if i < _lights.size() :
+			if static_receiver:
+				print(get_parent().get_parent().name)
 			var light = _lights[i];
 			var light_screen_pos = light.get_global_transform_with_canvas().origin;
 			#print(light_screen_pos)
@@ -127,6 +131,8 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is ZLight && _lights.size() < MAX_LIGHTS_PER_OBJECT:
 		_lights.append(area as ZLight);
 		_set_material_params();
+		if static_receiver:
+			print(get_parent().get_parent().name)
 
 
 func _on_area_exited(area: Area2D) -> void:

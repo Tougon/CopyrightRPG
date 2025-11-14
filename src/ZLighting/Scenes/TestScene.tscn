@@ -1,38 +1,132 @@
-[gd_scene load_steps=11 format=3 uid="uid://60c4d5i3t1dl"]
+[gd_scene load_steps=22 format=3 uid="uid://60c4d5i3t1dl"]
 
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_bgh64"]
 [ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="2_6fxnb"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="2_beq74"]
 [ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="3_48vpc"]
+[ext_resource type="Texture2D" uid="uid://bgu42fkgqmfrh" path="res://assets/Sprites/Overworld/temp/bench_light_mask.png" id="5_ionkl"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="5_syh5p"]
+[ext_resource type="Texture2D" uid="uid://cbky407i8oahf" path="res://assets/Sprites/Overworld/temp/bench.png" id="6_66u7y"]
 [ext_resource type="Texture2D" uid="uid://b55lcyb83wev2" path="res://assets/Textures/Lights/square_full.png" id="6_bbjom"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="7_uuh6j"]
+[ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/player_main/player_main_light_mask.png" id="10_awm7t"]
+[ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="11_any1e"]
+[ext_resource type="Texture2D" uid="uid://c18kg7d7cg557" path="res://assets/Textures/Lights/sky_light.png" id="12_mc18x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fyol7"]
+shader = ExtResource("1_bgh64")
+shader_parameter/origin = Vector2(328, 200)
+shader_parameter/active_zlights = 1
+shader_parameter/light_origins = PackedVector2Array(326, 258)
+shader_parameter/light_is_circle = PackedInt32Array(1)
+shader_parameter/light_size = PackedVector2Array(159, 159)
+shader_parameter/light_color = PackedColorArray(1, 1, 1, 1)
+shader_parameter/light_energy = PackedFloat32Array(5)
+shader_parameter/light_falloff = PackedVector2Array(50, 50)
+shader_parameter/falloff_mask = ExtResource("5_ionkl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blqnn"]
+size = Vector2(64, 190)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxamt"]
+shader = ExtResource("1_bgh64")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/falloff_mask = ExtResource("10_awm7t")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_noohn"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd786"]
+size = Vector2(355, 355)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1bql"]
 radius = 159.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jv6tu"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_yerha"]
 radius = 109.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gt4j"]
 shader = ExtResource("1_bgh64")
 shader_parameter/origin = Vector2(481, 199)
-shader_parameter/falloff_y = false
-shader_parameter/active_zlights = 1
-shader_parameter/light_origins = PackedVector2Array(326, 258)
-shader_parameter/light_is_circle = PackedInt32Array(1)
-shader_parameter/light_size = PackedVector2Array(159, 159)
-shader_parameter/light_color = PackedColorArray(1, 0, 0, 1)
-shader_parameter/light_energy = PackedFloat32Array(5)
-shader_parameter/light_falloff = PackedVector2Array(109, 109)
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = PackedVector2Array()
+shader_parameter/light_is_circle = PackedInt32Array()
+shader_parameter/light_size = PackedVector2Array()
+shader_parameter/light_color = PackedColorArray()
+shader_parameter/light_energy = PackedFloat32Array()
+shader_parameter/light_falloff = PackedVector2Array()
+shader_parameter/falloff_mask = ExtResource("10_awm7t")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ngfl"]
+size = Vector2(76, 30)
 
 [node name="TestScene" type="Node2D"]
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Node2D"]
+material = SubResource("ShaderMaterial_fyol7")
+position = Vector2(328, 85)
+texture = ExtResource("6_66u7y")
+
+[node name="ZLightReceiver" parent="Node2D/Node2D/Sprite2D2" instance=ExtResource("2_beq74")]
+visible = false
+shape = SubResource("RectangleShape2D_blqnn")
+size = Vector2(64, 190)
+origin_offset = Vector2(0, 79)
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/Node2D"]
+material = SubResource("ShaderMaterial_wxamt")
+position = Vector2(238, 232)
+texture = ExtResource("11_any1e")
+
+[node name="ZLightReceiver" parent="Node2D/Node2D/Sprite2D3" instance=ExtResource("2_beq74")]
+shape = SubResource("RectangleShape2D_noohn")
+origin_offset = Vector2(0, 0)
+static_receiver = false
+
+[node name="Skylight" type="Sprite2D" parent="Node2D/Node2D"]
+self_modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(571, 0)
+texture = ExtResource("12_mc18x")
+
+[node name="ZLight" parent="Node2D/Node2D/Skylight" instance=ExtResource("3_48vpc")]
+position = Vector2(-208, -210)
+shape = SubResource("RectangleShape2D_dd786")
+size = Vector2(3.55, 3.55)
+energy = 5.0
+
+[node name="ZLight2" parent="Node2D/Node2D/Skylight" instance=ExtResource("3_48vpc")]
+position = Vector2(206, -210)
+shape = SubResource("RectangleShape2D_dd786")
+size = Vector2(3.55, 3.55)
+energy = 5.0
+
+[node name="ZLight3" parent="Node2D/Node2D/Skylight" instance=ExtResource("3_48vpc")]
+position = Vector2(-208, 210)
+shape = SubResource("RectangleShape2D_dd786")
+size = Vector2(3.55, 3.55)
+energy = 5.0
+
+[node name="ZLight4" parent="Node2D/Node2D/Skylight" instance=ExtResource("3_48vpc")]
+position = Vector2(206, 210)
+shape = SubResource("RectangleShape2D_dd786")
+size = Vector2(3.55, 3.55)
+energy = 5.0
+
 [node name="ZLight" parent="." instance=ExtResource("3_48vpc")]
-position = Vector2(326, 258)
+position = Vector2(1139, -12)
 shape = SubResource("CircleShape2D_g1bql")
 size = Vector2(1.59, 1)
-color = Color(1, 0, 0, 1)
 energy = 5.0
 falloff = 5.0
 
@@ -40,18 +134,21 @@ falloff = 5.0
 shape = SubResource("CircleShape2D_g1bql")
 
 [node name="FalloffPrev" parent="ZLight" index="1"]
-shape = SubResource("CircleShape2D_jv6tu")
+shape = SubResource("CircleShape2D_yerha")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0gt4j")
-position = Vector2(481, 199)
+position = Vector2(441, 222)
 texture = ExtResource("2_6fxnb")
 
 [node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("2_beq74")]
 position = Vector2(0, 84)
+shape = SubResource("RectangleShape2D_7ngfl")
 size = Vector2(76, 30)
+origin_offset = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="Sprite2D/ZLightReceiver" index="0"]
+shape = SubResource("RectangleShape2D_7ngfl")
 debug_color = Color(2.69532e-06, 0.649939, 0.120669, 0.42)
 
 [node name="UI" type="Node" parent="."]

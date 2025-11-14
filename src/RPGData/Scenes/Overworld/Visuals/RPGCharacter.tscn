@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://blcq1iqrvxi3o"]
+[gd_scene load_steps=28 format=3 uid="uid://blcq1iqrvxi3o"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://6u0cxgfxr404" path="res://assets/Sprites/Overworld/player_main/sketch_shade_back.png" id="5_387h1"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="6_kd104"]
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="9_886d1"]
+[ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/player_main/player_main_light_mask.png" id="10_dtr0a"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="11_iuhc3"]
 
 [sub_resource type="Resource" id="Resource_jnirq"]
@@ -90,7 +91,6 @@ slide = SubResource("Resource_4y3gd")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n7grm"]
 shader = ExtResource("9_886d1")
 shader_parameter/origin = null
-shader_parameter/falloff_y = null
 shader_parameter/active_zlights = 0
 shader_parameter/light_origins = null
 shader_parameter/light_is_circle = null
@@ -98,6 +98,7 @@ shader_parameter/light_size = null
 shader_parameter/light_color = null
 shader_parameter/light_energy = null
 shader_parameter/light_falloff = null
+shader_parameter/falloff_mask = ExtResource("10_dtr0a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quane"]
 size = Vector2(76, 26)
@@ -121,4 +122,5 @@ offset = Vector2(0, -96)
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_quane")
 size = Vector2(76, 26)
+origin_offset = null
 static_receiver = false

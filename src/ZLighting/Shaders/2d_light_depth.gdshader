@@ -1,7 +1,8 @@
 shader_type canvas_item;
 
 uniform vec2 origin;
-uniform bool falloff_y;
+//uniform bool falloff_y;
+uniform sampler2D falloff_mask;
 uniform int active_zlights : hint_range(0, 8) = 0;
 
 // For now, we'll cap to 8 lights max.
@@ -99,7 +100,13 @@ float energy_for_coord(vec2 coord, int light_index){
 
 
 void light() {
-	// It may be possible to add a uniform mask to handle if we use falloff
+	bool falloff_y = false;
+	vec4 falloff_tex = texture(falloff_mask, UV);
+	
+	if (falloff_tex == vec4(1.0, 1.0, 1.0, 1.0)){
+		falloff_y = true;
+	}
+	
 	vec2 coord = FRAGCOORD.xy;
 	if (!falloff_y) 
 		coord.y = origin.y;
