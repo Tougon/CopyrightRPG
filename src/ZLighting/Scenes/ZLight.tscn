@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://805y8gv2t51e"]
+
+[ext_resource type="Script" path="res://src/ZLighting/Scripts/z_light.gd" id="1_jc3p3"]
+
+[node name="ZLight" type="Area2D"]
+collision_layer = 32768
+collision_mask = 32768
+script = ExtResource("1_jc3p3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.95, 0, 0.0158331, 0.419608)
+
+[node name="FalloffPrev" type="CollisionShape2D" parent="."]

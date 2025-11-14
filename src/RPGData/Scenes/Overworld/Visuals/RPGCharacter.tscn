@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://blcq1iqrvxi3o"]
+[gd_scene load_steps=27 format=3 uid="uid://blcq1iqrvxi3o"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="4_ljrgu"]
 [ext_resource type="Texture2D" uid="uid://6u0cxgfxr404" path="res://assets/Sprites/Overworld/player_main/sketch_shade_back.png" id="5_387h1"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="6_kd104"]
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="9_886d1"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="11_iuhc3"]
 
 [sub_resource type="Resource" id="Resource_jnirq"]
 script = ExtResource("4_ljrgu")
@@ -85,6 +87,21 @@ walk = SubResource("Resource_tc00q")
 run = SubResource("Resource_lo5eu")
 slide = SubResource("Resource_4y3gd")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7grm"]
+shader = ExtResource("9_886d1")
+shader_parameter/origin = null
+shader_parameter/falloff_y = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quane"]
+size = Vector2(76, 26)
+
 [node name="RPGCharacter" type="Node2D"]
 script = ExtResource("1_g56y7")
 character = SubResource("Resource_qb85u")
@@ -96,5 +113,12 @@ scale = Vector2(0.235, 0.085)
 texture = ExtResource("6_kd104")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n7grm")
 texture = ExtResource("2_8e0y2")
 offset = Vector2(0, -96)
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("11_iuhc3")]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_quane")
+size = Vector2(76, 26)
+static_receiver = false

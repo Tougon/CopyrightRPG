@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=130 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -60,6 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://nfhph5vm0yf7" path="res://assets/Sprites/Tilemaps/pillar_middle.png" id="41_m05rx"]
 [ext_resource type="PackedScene" uid="uid://2fue3n12jlip" path="res://src/RPGData/Scenes/Overworld/SceneTransition.tscn" id="41_s5s5c"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="42_1yuub"]
+[ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="42_82eq1"]
 [ext_resource type="Texture2D" uid="uid://cv38j8dh6bfdi" path="res://assets/Sprites/Overworld/temp/trash_metal_empty.png" id="42_af4hy"]
 [ext_resource type="Texture2D" uid="uid://cid2fpv0rbt23" path="res://assets/Sprites/Tilemaps/pillar_top.png" id="42_esrtn"]
 [ext_resource type="Texture2D" uid="uid://c18kg7d7cg557" path="res://assets/Textures/Lights/sky_light.png" id="42_gujsv"]
@@ -271,6 +272,12 @@ texture = ExtResource("40_pwlnx")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qct0a")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe3y1"]
+size = Vector2(355, 355)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y1jo2"]
+radius = 100.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_emjjv"]
 size = Vector2(90, 119)
 
@@ -352,8 +359,14 @@ enemy_count_curve = SubResource("Curve_e4f7d")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eqpnf"]
+size = Vector2(2041, 672)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r63lc"]
 size = Vector2(2041, 636)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_52jsb"]
+size = Vector2(2041, 709)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vswt"]
 size = Vector2(1345, 1572)
@@ -1443,6 +1456,118 @@ y_sort_enabled = true
 [node name="Visuals" type="Node2D" parent="Areas/TestArea FR/G/Environment"]
 y_sort_enabled = true
 
+[node name="Lighting" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
+
+[node name="Base_Bright" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(535, 3560)
+texture = ExtResource("39_u2oxt")
+
+[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Base_Bright"]
+shadow_filter = 1
+texture = ExtResource("41_jj3lt")
+texture_scale = 4.88
+
+[node name="Skylight" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
+self_modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(509, 3487)
+texture = ExtResource("42_gujsv")
+
+[node name="ZLight" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
+position = Vector2(-208, -210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
+position = Vector2(206, -210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
+position = Vector2(-208, 210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
+position = Vector2(206, 210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="Skylight2" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
+self_modulate = Color(1, 1, 1, 0.352941)
+position = Vector2(509, 4453)
+texture = ExtResource("42_gujsv")
+
+[node name="ZLight" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
+position = Vector2(-208, -210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
+position = Vector2(206, -210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
+position = Vector2(-208, 210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
+position = Vector2(206, 210)
+shape = SubResource("RectangleShape2D_fe3y1")
+size = Vector2(3.55, 3.55)
+energy = 0.1
+
+[node name="Anchor Sign" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
+self_modulate = Color(0, 0.443137, 0.972549, 0.360784)
+position = Vector2(510, 3136)
+rotation = 3.14159
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("43_p0qcr")
+
+[node name="ZLight" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
+shape = SubResource("CircleShape2D_y1jo2")
+color = Color(0, 0.443137, 0.972549, 1)
+energy = 0.1
+falloff = 5.0
+
+[node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
+position = Vector2(-193.548, 1.69205e-05)
+shape = SubResource("CircleShape2D_y1jo2")
+color = Color(0, 0.443137, 0.972549, 1)
+energy = 0.1
+falloff = 5.0
+
+[node name="ZLight5" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
+position = Vector2(-367.742, 3.2149e-05)
+shape = SubResource("CircleShape2D_y1jo2")
+color = Color(0, 0.443137, 0.972549, 1)
+energy = 0.1
+falloff = 5.0
+
+[node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
+position = Vector2(177.419, -1.55105e-05)
+shape = SubResource("CircleShape2D_y1jo2")
+color = Color(0, 0.443137, 0.972549, 1)
+energy = 0.1
+falloff = 5.0
+
+[node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
+position = Vector2(354.839, -3.1021e-05)
+shape = SubResource("CircleShape2D_y1jo2")
+color = Color(0, 0.443137, 0.972549, 1)
+energy = 0.1
+falloff = 5.0
+
 [node name="Escalators" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 y_sort_enabled = true
 
@@ -1487,82 +1612,6 @@ position = Vector2(0, -64)
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 
-[node name="Lighting" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
-
-[node name="Point_Ref" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-z_index = 5
-position = Vector2(-273, 3138)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("39_u2oxt")
-
-[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Point_Ref"]
-position = Vector2(480, -1200)
-scale = Vector2(10, 10)
-color = Color(0.621524, 0.621524, 0.621524, 1)
-energy = 3.47
-shadow_filter = 1
-texture = ExtResource("40_x6qxg")
-texture_scale = 1.75
-
-[node name="Base" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 5
-position = Vector2(535, 3560)
-texture = ExtResource("39_u2oxt")
-
-[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Base"]
-color = Color(0.747913, 0.813405, 0.845216, 1)
-energy = 0.61
-shadow_filter = 1
-texture = ExtResource("41_jj3lt")
-texture_scale = 4.88
-
-[node name="Skylight" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 5
-position = Vector2(518, 3477)
-texture = ExtResource("39_u2oxt")
-
-[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight"]
-color = Color(0.844434, 0.88601, 0.906325, 1)
-energy = 0.17
-shadow_filter = 1
-texture = ExtResource("42_gujsv")
-texture_scale = 1.05
-
-[node name="Skylight2" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-self_modulate = Color(1, 1, 1, 0)
-z_index = 5
-position = Vector2(518, 4441)
-texture = ExtResource("39_u2oxt")
-
-[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2"]
-color = Color(0.844434, 0.88601, 0.906325, 1)
-energy = 0.17
-shadow_filter = 1
-texture = ExtResource("42_gujsv")
-texture_scale = 1.05
-
-[node name="Anchor Sign" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-self_modulate = Color(1, 1, 1, 0)
-y_sort_enabled = true
-position = Vector2(510, 3136)
-rotation = 1.5708
-texture = ExtResource("39_u2oxt")
-
-[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign"]
-y_sort_enabled = true
-rotation = -1.5708
-scale = Vector2(1, -1)
-color = Color(0, 0.443817, 0.970646, 1)
-energy = 1.13
-shadow_enabled = true
-shadow_filter = 1
-texture = ExtResource("43_p0qcr")
-texture_scale = 0.62
-
 [node name="Collision" type="Node2D" parent="Areas/TestArea FR/G/Environment"]
 visible = false
 
@@ -1588,16 +1637,20 @@ position = Vector2(649.5, -91.5)
 shape = SubResource("RectangleShape2D_hkjpb")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/TestArea FR/G"]
+visible = false
 
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 4290)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)/Area2D" index="0"]
-position = Vector2(0, 351)
+position = Vector2(0, 378)
+shape = SubResource("RectangleShape2D_eqpnf")
 
 [node name="EncounterArea (Mid)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 3652)
+enabled = false
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Mid)/Area2D" index="0"]
 position = Vector2(0, 316)
@@ -1605,9 +1658,11 @@ shape = SubResource("RectangleShape2D_r63lc")
 
 [node name="EncounterArea (Top)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 2944)
+enabled = false
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Top)/Area2D" index="0"]
-position = Vector2(0, 351)
+position = Vector2(0, 347.5)
+shape = SubResource("RectangleShape2D_52jsb")
 
 [node name="Camera Area" parent="Areas/TestArea FR/G" instance=ExtResource("40_0rg3s")]
 visible = false
@@ -1861,7 +1916,7 @@ encounter_reroll_rate = 0.0
 position = Vector2(45.5, -49.5)
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("37_j44eh")]
-position = Vector2(513, 4975)
+position = Vector2(513, 4942)
 run_multiplier = 1.75
 
 [node name="Floors (Teleport)" type="Node2D" parent="."]
@@ -2374,13 +2429,13 @@ script = ExtResource("12_6nji2")
 sequence_list = Array[ExtResource("13_cnf8m")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa"), SubResource("Resource_sdbl4"), SubResource("Resource_eblq6")])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI"]
-color = Color(0.407843, 0.541176, 0.658824, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="----------" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(513, 4895)
+position = Vector2(513, 4862)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2392,7 +2447,7 @@ script = ExtResource("42_1yuub")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(513, 4895)
+position = Vector2(513, 4862)
 script = ExtResource("43_y1qfp")
 priority = 1
 follow_mode = 5

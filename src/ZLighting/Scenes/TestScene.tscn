@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://60c4d5i3t1dl"]
+
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_bgh64"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="2_6fxnb"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="2_beq74"]
+[ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="3_48vpc"]
+[ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="5_syh5p"]
+[ext_resource type="Texture2D" uid="uid://b55lcyb83wev2" path="res://assets/Textures/Lights/square_full.png" id="6_bbjom"]
+[ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="7_uuh6j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g1bql"]
+radius = 159.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jv6tu"]
+radius = 109.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gt4j"]
+shader = ExtResource("1_bgh64")
+shader_parameter/origin = Vector2(481, 199)
+shader_parameter/falloff_y = false
+shader_parameter/active_zlights = 1
+shader_parameter/light_origins = PackedVector2Array(326, 258)
+shader_parameter/light_is_circle = PackedInt32Array(1)
+shader_parameter/light_size = PackedVector2Array(159, 159)
+shader_parameter/light_color = PackedColorArray(1, 0, 0, 1)
+shader_parameter/light_energy = PackedFloat32Array(5)
+shader_parameter/light_falloff = PackedVector2Array(109, 109)
+
+[node name="TestScene" type="Node2D"]
+
+[node name="ZLight" parent="." instance=ExtResource("3_48vpc")]
+position = Vector2(326, 258)
+shape = SubResource("CircleShape2D_g1bql")
+size = Vector2(1.59, 1)
+color = Color(1, 0, 0, 1)
+energy = 5.0
+falloff = 5.0
+
+[node name="CollisionShape2D" parent="ZLight" index="0"]
+shape = SubResource("CircleShape2D_g1bql")
+
+[node name="FalloffPrev" parent="ZLight" index="1"]
+shape = SubResource("CircleShape2D_jv6tu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0gt4j")
+position = Vector2(481, 199)
+texture = ExtResource("2_6fxnb")
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("2_beq74")]
+position = Vector2(0, 84)
+size = Vector2(76, 30)
+
+[node name="CollisionShape2D" parent="Sprite2D/ZLightReceiver" index="0"]
+debug_color = Color(2.69532e-06, 0.649939, 0.120669, 0.42)
+
+[node name="UI" type="Node" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="UI"]
+color = Color(0, 0, 0, 1)
+
+[node name="Base_Bright" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(337, 430)
+texture = ExtResource("5_syh5p")
+
+[node name="PointLight2D" type="PointLight2D" parent="Base_Bright"]
+shadow_filter = 1
+texture = ExtResource("6_bbjom")
+texture_scale = 4.88
+
+[node name="Base_Bright2" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(337, 430)
+texture = ExtResource("5_syh5p")
+
+[node name="PointLight2D" type="PointLight2D" parent="Base_Bright2"]
+color = Color(1, 0, 0, 1)
+energy = 16.0
+shadow_filter = 1
+texture = ExtResource("6_bbjom")
+texture_scale = 4.88
+
+[node name="Base_Bright3" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(337, 430)
+texture = ExtResource("5_syh5p")
+
+[node name="PointLight2D" type="PointLight2D" parent="Base_Bright3"]
+color = Color(0, 1, 0, 1)
+energy = 16.0
+shadow_filter = 1
+texture = ExtResource("6_bbjom")
+texture_scale = 4.88
+
+[node name="Base_Bright4" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(337, 430)
+texture = ExtResource("5_syh5p")
+
+[node name="PointLight2D" type="PointLight2D" parent="Base_Bright4"]
+color = Color(0, 1, 0, 1)
+shadow_filter = 1
+texture = ExtResource("6_bbjom")
+texture_scale = 4.88
+
+[node name="Ref" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(346, 283)
+texture = ExtResource("7_uuh6j")
+
+[editable path="ZLight"]
+[editable path="Sprite2D/ZLightReceiver"]
