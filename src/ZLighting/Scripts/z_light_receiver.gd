@@ -72,6 +72,8 @@ func _physics_process(delta: float) -> void:
 		if dist > 0 :
 			_set_material_params();
 			_current_pos = global_position
+	else :
+		_set_material_params();
 
 
 func _set_material_params() :
@@ -82,7 +84,7 @@ func _set_material_params() :
 	
 	_mat.set_shader_parameter("origin", (screen_pos + origin_offset));
 	#_mat.set_shader_parameter("falloff_y", falloff_y);
-	#print("SCREEN POS: " + str((screen_pos + origin_offset)) + _sprite.name)
+	print("SCREEN POS: " + str((screen_pos + origin_offset)) + _sprite.get_parent().name)
 	
 	# Calculate light parameters
 	var light_origins : Array[Vector2];
@@ -94,11 +96,9 @@ func _set_material_params() :
 	
 	for i in MAX_LIGHTS_PER_OBJECT :
 		if i < _lights.size() :
-			if static_receiver:
-				print(get_parent().get_parent().name)
 			var light = _lights[i];
 			var light_screen_pos = light.get_global_transform_with_canvas().origin;
-			#print(light_screen_pos)
+			print(str(light_screen_pos) + " " + light.name)
 			#print(light.get_size())
 			#print(light.get_falloff())
 			
