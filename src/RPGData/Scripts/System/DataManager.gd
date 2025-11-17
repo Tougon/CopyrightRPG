@@ -61,8 +61,8 @@ func initialize_party_data(auto : bool):
 		member.exp = 0;
 		member.unlocked = auto;
 		member.move_list = move_list;
-		member.hp_value = entity.get_hp(member.level);
-		member.mp_value = entity.get_mp(member.level);
+		member.hp_value = 5#entity.get_hp(member.level);
+		member.mp_value = 5#entity.get_mp(member.level);
 		party_data.append(member);
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=102 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -40,7 +40,6 @@
 [ext_resource type="PackedScene" uid="uid://2fue3n12jlip" path="res://src/RPGData/Scenes/Overworld/SceneTransition.tscn" id="41_s5s5c"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="42_1yuub"]
 [ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="42_82eq1"]
-[ext_resource type="Texture2D" uid="uid://cv38j8dh6bfdi" path="res://assets/Sprites/Overworld/temp/trash_metal_empty.png" id="42_af4hy"]
 [ext_resource type="Texture2D" uid="uid://c18kg7d7cg557" path="res://assets/Textures/Lights/sky_light.png" id="42_gujsv"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="42_ryfn6"]
 [ext_resource type="Material" uid="uid://bbjbjqi6dxca1" path="res://assets/Materials/VideoMaterials/entity_boss_test_00.tres" id="43_7fmwt"]
@@ -101,9 +100,6 @@ size = Vector2(355, 355)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y1jo2"]
 radius = 100.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_emjjv"]
-size = Vector2(90, 119)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_evoju"]
 shader = ExtResource("45_ww1mj")
@@ -203,6 +199,55 @@ additional_enemies = Array[int]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqpnf"]
 size = Vector2(2041, 672)
+
+[sub_resource type="Resource" id="Resource_6xxcy"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 4
+odds = 0.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_in7mb")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([4, 6])
+additional_enemy_curve = SubResource("Curve_6781o")
+
+[sub_resource type="Resource" id="Resource_q45wp"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 0
+odds = 0.25
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 0
+enemy_count_curve = SubResource("Curve_jsgub")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_a7n3h"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 6
+odds = 0.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_rhbyi")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_dtl0u"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 7
+odds = 0.1
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_e4f7d")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r63lc"]
 size = Vector2(2041, 636)
@@ -502,35 +547,35 @@ texture = ExtResource("43_p0qcr")
 [node name="ZLight" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 0.1
+energy = 1.5
 falloff = 5.0
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(-193.548, 1.69205e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 0.1
+energy = 1.5
 falloff = 5.0
 
 [node name="ZLight5" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(-367.742, 3.2149e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 0.1
+energy = 1.5
 falloff = 5.0
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(177.419, -1.55105e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 0.1
+energy = 1.5
 falloff = 5.0
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(354.839, -3.1021e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 0.1
+energy = 1.5
 falloff = 5.0
 
 [node name="Escalators" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
@@ -539,38 +584,31 @@ y_sort_enabled = true
 [node name="Sorted Items" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 y_sort_enabled = true
 
-[node name="Trash" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
-visible = false
-position = Vector2(-755, 3317)
-default_dialogue = "stop"
-object_id = "thank_you_1_1"
-
-[node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Trash" index="0"]
-texture = ExtResource("42_af4hy")
-
-[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Trash/Collider" index="0"]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_emjjv")
-
-[node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Trash" index="2"]
-position = Vector2(0, -64)
-
 [node name="Bench L_01" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
-position = Vector2(173, 3455)
+position = Vector2(201, 3573)
+default_dialogue = "common_bench_rest"
 object_id = "bench_l_01"
 
 [node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01" index="0"]
 material = SubResource("ShaderMaterial_evoju")
 texture = ExtResource("45_l41ax")
+offset = Vector2(0, -89)
 
 [node name="ZLightReceiver" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01/Sprite2D" index="0" instance=ExtResource("48_vdytv")]
+position = Vector2(0, -89)
 shape = SubResource("RectangleShape2D_ty2hn")
 size = Vector2(64, 190)
 origin_offset = Vector2(0, 89)
 
+[node name="Collider" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01" index="1"]
+position = Vector2(0, -89)
+
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01/Collider" index="0"]
 position = Vector2(0.5, 12.5)
 shape = SubResource("RectangleShape2D_hbt72")
+
+[node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01" index="2"]
+position = Vector2(0, -86)
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 
@@ -607,6 +645,14 @@ enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)/Area2D" index="0"]
+position = Vector2(0, 378)
+shape = SubResource("RectangleShape2D_eqpnf")
+
+[node name="EncounterArea (Low)2" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
+position = Vector2(508, 4290)
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_6xxcy"), SubResource("Resource_q45wp"), SubResource("Resource_a7n3h"), SubResource("Resource_dtl0u")])
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)2/Area2D" index="0"]
 position = Vector2(0, 378)
 shape = SubResource("RectangleShape2D_eqpnf")
 
@@ -1205,9 +1251,9 @@ tween_on_load = false
 follow_damping = true
 draw_limits = true
 
-[editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Trash"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)"]
+[editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)2"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Mid)"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Top)"]
 [editable path="Areas/TestArea FR/G/Camera Area"]

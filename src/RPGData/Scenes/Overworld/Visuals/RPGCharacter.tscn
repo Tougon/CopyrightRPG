@@ -122,5 +122,4 @@ offset = Vector2(0, -96)
 position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_quane")
 size = Vector2(76, 26)
-origin_offset = Vector2(0, 0)
 static_receiver = false

@@ -77,7 +77,7 @@ growth = SubResource("Curve_bfk5e")
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("4_xfhba")
 spell = ExtResource("7_xium4")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_fc1ry"]
 script = ExtResource("4_xfhba")

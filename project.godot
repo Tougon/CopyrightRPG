@@ -28,12 +28,12 @@ BattleManager="*res://src/RPGData/Scripts/System/BattleManager.gd"
 GrammarManager="*res://src/Localization/GrammarManager.gd"
 DataManager="*res://src/RPGData/Scripts/System/DataManager.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-QuestManager="*res://addons/quest_manager/QuestManager.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 CutsceneObjectManager="*res://src/CutsceneInterface/CutsceneObjectManager.gd"
 AudioManager="*res://src/AudioManager/AudioManager.tscn"
-DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 SceneManager="*res://src/RPGData/Scripts/System/SceneManager.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+QuestManager="*res://addons/quest_manager/QuestManager.gd"
 
 [dialogic]
 
@@ -42,6 +42,7 @@ directories/dch_directory={
 "temp_character_1": "res://assets/Dialogue/Characters/temp_character_1.dch"
 }
 directories/dtl_directory={
+"common_bench_rest": "res://assets/Dialogue/Timelines/common_bench_rest.dtl",
 "demo_boss_sequence": "res://assets/Dialogue/Timelines/demo/demo_boss_sequence.dtl",
 "demo_intro": "res://assets/Dialogue/Timelines/demo_intro.dtl",
 "stop": "res://assets/Dialogue/Timelines/stop.dtl",

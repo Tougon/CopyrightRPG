@@ -49,7 +49,7 @@ size = Vector2(355, 355)
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1bql"]
 radius = 159.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yerha"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_jfnb7"]
 radius = 109.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gt4j"]
@@ -91,7 +91,6 @@ texture = ExtResource("11_any1e")
 
 [node name="ZLightReceiver" parent="Node2D/Node2D/Sprite2D3" instance=ExtResource("2_beq74")]
 shape = SubResource("RectangleShape2D_noohn")
-origin_offset = Vector2(0, 0)
 static_receiver = false
 
 [node name="Skylight" type="Sprite2D" parent="Node2D/Node2D"]
@@ -134,7 +133,7 @@ falloff = 5.0
 shape = SubResource("CircleShape2D_g1bql")
 
 [node name="FalloffPrev" parent="ZLight" index="1"]
-shape = SubResource("CircleShape2D_yerha")
+shape = SubResource("CircleShape2D_jfnb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0gt4j")
@@ -145,7 +144,6 @@ texture = ExtResource("2_6fxnb")
 position = Vector2(0, 84)
 shape = SubResource("RectangleShape2D_7ngfl")
 size = Vector2(76, 30)
-origin_offset = Vector2(0, 0)
 
 [node name="CollisionShape2D" parent="Sprite2D/ZLightReceiver" index="0"]
 shape = SubResource("RectangleShape2D_7ngfl")
