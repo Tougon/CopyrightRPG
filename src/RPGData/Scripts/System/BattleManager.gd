@@ -8,6 +8,11 @@ const MAX_ENEMY_COUNT : int = 5;
 # Determines the length of the tweens for enemy repositioning
 const ENEMY_REPOSITION_TIME : float = 0.30;
 
+# Experimental battle changes
+const ENEMY_SEAL_INFINITE : bool = true;
+const ENEMY_SEAL_CAN_SEAL_SAME : bool = true;
+const ENEMY_SEAL_MULTIPLE_PER_TURN : bool = true;
+
 # Determines if text should print asynchonously
 # TODO: change to const
 var async_damage_text : bool = false;

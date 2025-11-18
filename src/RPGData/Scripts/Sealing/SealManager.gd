@@ -191,6 +191,10 @@ func _play_seal_effect(flag : SealVFX, target : EntityController) -> Node :
 
 
 func _on_entity_turn_end(entity : EntityController) :
+	# Do not increment enemy seals if the experimental change is active
+	if entity is EnemyController && BattleManager.ENEMY_SEAL_INFINITE:
+		return;
+	
 	var i : int = 0;
 	while i < seal_instances.size():
 		if seal_instances[i].seal_entity == entity:
