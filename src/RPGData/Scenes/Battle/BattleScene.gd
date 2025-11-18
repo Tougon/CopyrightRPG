@@ -194,6 +194,10 @@ func _decision_phase():
 	while dialogue_canvas.current_rows > 0:
 		await get_tree().process_frame;
 	
+	# Enemies always select their actions in order without the sort
+	# This means that E1 always takes priority regarding Seals
+	enemies.sort_custom(_compare_speed);
+	
 	for enemy in enemies:
 		if enemy.is_defeated : continue;
 		enemy.select_action();
@@ -228,7 +232,7 @@ func _action_phase():
 			await EventManager.on_sequence_queue_empty;
 		
 		if entity.sealing && BattleManager.seal_before_attacking:
-			if seal_manager.can_seal_spell(entity.current_action):
+			if seal_manager.can_seal_spell(entity.current_action, entity):
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
 				
@@ -504,7 +508,7 @@ func _action_phase():
 		EventManager.hide_entity_ui.emit();
 		
 		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
-			if seal_manager.can_seal_spell(entity.current_action) && entity.seal_effect != null:
+			if seal_manager.can_seal_spell(entity.current_action, entity) && entity.seal_effect != null:
 				# Create the seal
 				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
 				
@@ -736,7 +740,7 @@ func can_seal(spell : Spell) -> bool:
 	for player in players:
 		if player.sealing : return false;
 	
-	return seal_manager.can_seal_spell(spell);
+	return seal_manager.can_seal_spell(spell, null);
 
 
 func get_num_active_players(invert : bool = false) -> int:

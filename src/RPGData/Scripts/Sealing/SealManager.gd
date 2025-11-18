@@ -8,6 +8,8 @@ const MAX_SEALS_PER_SIDE : int = 4;
 
 var seal_instances : Array[SealInstance];
 var sealed_spells : Array[Spell];
+var enemy_sealed_spells : Dictionary;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,7 +69,13 @@ func _send_seal_inactive_message(seal : SealInstance, entity : EntityController)
 	EventManager.on_dialogue_queue.emit(seal_msg);
 
 
-func can_seal_spell(spell : Spell) -> bool:
+func can_seal_spell(spell : Spell, entity : EntityController) -> bool:
+	if BattleManager.ENEMY_SEAL_ALL_UNIQUE && entity is EnemyController :
+		if enemy_sealed_spells.has(entity) :
+			return !enemy_sealed_spells[entity].has(spell);
+		else :
+			return true;
+	
 	return !sealed_spells.has(spell);
 
 
@@ -85,7 +93,12 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	seal_instances.append(seal_inst);
 	
 	# Add spell to the sealed list
-	sealed_spells.append(spell);
+	if BattleManager.ENEMY_SEAL_ALL_UNIQUE && entity is EnemyController :
+		if !enemy_sealed_spells.has(entity) :
+			enemy_sealed_spells[entity] = [];
+		enemy_sealed_spells[entity].append(spell);
+	else :
+		sealed_spells.append(spell);
 	
 	EventManager.set_player_bg.emit(entity);
 	_play_seal_effects(seal_inst, entity);

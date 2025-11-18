@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=104 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -199,6 +199,43 @@ additional_enemies = Array[int]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqpnf"]
 size = Vector2(2041, 720)
+
+[sub_resource type="Resource" id="Resource_kbrox"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 4
+odds = 0.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 2
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_in7mb")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([4, 6])
+additional_enemy_curve = SubResource("Curve_6781o")
+
+[sub_resource type="Resource" id="Resource_2et6s"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 5
+odds = 0.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 0
+enemy_count_curve = SubResource("Curve_jsgub")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_i3ita"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 6
+odds = 1.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 2
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_rhbyi")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
 
 [sub_resource type="Curve" id="Curve_sbu6h"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -641,9 +678,18 @@ visible = false
 
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 4290)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)/Area2D" index="0"]
+position = Vector2(0, 354)
+shape = SubResource("RectangleShape2D_eqpnf")
+
+[node name="EncounterArea (Low)2" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
+position = Vector2(508, 4290)
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_kbrox"), SubResource("Resource_2et6s"), SubResource("Resource_i3ita"), SubResource("Resource_wpion")])
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)2/Area2D" index="0"]
 position = Vector2(0, 354)
 shape = SubResource("RectangleShape2D_eqpnf")
 
@@ -1245,6 +1291,7 @@ draw_limits = true
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)"]
+[editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)2"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Mid)"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Top)"]
 [editable path="Areas/TestArea FR/G/Camera Area"]

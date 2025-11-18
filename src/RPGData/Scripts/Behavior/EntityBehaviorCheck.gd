@@ -40,11 +40,13 @@ func determine_action(user : EntityController, allies : Array[EntityController],
 			var action = user.move_list[action_id[index]];
 			
 			for ally in allies:
-				if ally.sealing && ally.current_action == action:
+				# NOTE: This originally checked if the ally's action is equal to the target
+				# This would allow for the enemy to do multiple seals per turn.
+				if ally.sealing :
 					result.action_sealing = false;
 					return result;
 			
-			result.action_sealing = BattleManager.seal_manager.can_seal_spell(action);
+			result.action_sealing = BattleManager.seal_manager.can_seal_spell(action, user);
 			result.action_seal_id = 0;
 			
 			if result.action_sealing && seal_id.size() > 0: 

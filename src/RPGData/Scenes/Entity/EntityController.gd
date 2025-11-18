@@ -820,7 +820,8 @@ static func compare_speed (a : EntityController, b : EntityController) -> bool:
 	elif b_speed > a_speed:
 		return false;
 	
-	return false;
+	# Randomize if speed is tied
+	return randf() < 0.5;
 
 
 static func compare_speed_tie(a : EntityController, b : EntityController) -> bool:
