@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EntityStat" load_steps=3 format=3 uid="uid://crtd1x3v2fi4u"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="1_irati"]
+
+[sub_resource type="Curve" id="Curve_lr1dx"]
+_data = [Vector2(0, 0), 0.0, 0.75, 0, 0, Vector2(1, 1), 1.75, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_irati")
+min = 100
+max = 100000
+growth = SubResource("Curve_lr1dx")

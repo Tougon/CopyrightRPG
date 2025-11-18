@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=36 format=3 uid="uid://c7c5rw2e2syjj"]
+[gd_resource type="Resource" script_class="Spell" load_steps=34 format=3 uid="uid://c7c5rw2e2syjj"]
 
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_jlp4f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_wbtxl"]
@@ -19,8 +19,6 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="13_7208f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="14_vaejf"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="18_sdc5c"]
-[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="19_pvgti"]
-[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="20_lagp8"]
 
 [sub_resource type="Resource" id="Resource_iivt3"]
 script = ExtResource("5_i40jj")
@@ -137,7 +135,7 @@ ignore_self = true
 target_defeated_entities = false
 spell_cost = 12
 spell_priority = 0
-spell_flags = Array[ExtResource("5_4fj2f")]([ExtResource("18_sdc5c"), ExtResource("19_pvgti"), ExtResource("20_lagp8")])
+spell_flags = Array[ExtResource("5_4fj2f")]([ExtResource("18_sdc5c")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

@@ -18,7 +18,6 @@ func _ready():
 
 
 func _init_menu_panel_items(item_groups : Array[Array]) :
-	print("Yeah")
 	for group in item_groups :
 		for item in group :
 			var item_button = (item as ItemButtonUI)

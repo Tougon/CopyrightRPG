@@ -124,8 +124,11 @@ func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = n
 			comp_spd -= comp_equipment.spd_mod;
 			comp_lck -= (comp_equipment.lck_mod * GameplayConstants.LUCK_SCALE);
 	
-	var next_lvl = _current_player_entity.get_level_exp(_current_player_data.level) - _current_player_data.exp
-	$"Entity Stats Area/Entity Stats Group/Next Level/HBoxContainer/Value".text = str(next_lvl);
+	if _current_player_data.level < _current_player_entity.max_level :
+		var next_lvl = _current_player_entity.get_level_exp(_current_player_data.level) - _current_player_data.exp
+		$"Entity Stats Area/Entity Stats Group/Next Level/HBoxContainer/Value".text = str(next_lvl);
+	else :
+		$"Entity Stats Area/Entity Stats Group/Next Level/HBoxContainer/Value".text = "-";
 	
 	$"Entity Stats Area/Entity Stats Group/HP".set_values_immediate(_current_player_data.hp_value, 0, hp);
 	if comp_hp != 0 :

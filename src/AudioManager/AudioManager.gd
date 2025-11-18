@@ -163,7 +163,6 @@ func _set_sfx_volume(amount : float):
 
 
 func _set_bus_volume(index : int, amount : float):
-	# TODO: Curve this as using linear values will make this more severe
 	var log_amount = volume_curve.sample(amount);
 	AudioServer.set_bus_volume_db(index, lerp(MIN_VOLUME_AMOUNT, MAX_VOLUME_AMOUNT, log_amount));
 

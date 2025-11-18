@@ -9,6 +9,7 @@ class_name Interactable
 @onready var collision_root : Node2D = $Collider/CollisionShape2D;
 @onready var highlight_icon : InteractIcon = $"Interact Icon";
 
+var _highlighted : bool = false;
 
 func _ready():
 	super._ready();
@@ -19,6 +20,10 @@ func _ready():
 	QuestManager.next_step.connect(_on_update_step)
 	QuestManager.quest_completed.connect(_on_quest_complete)
 	QuestManager.quest_failed.connect(_on_quest_failed)
+	
+	Dialogic.timeline_started.connect(_on_dialogue_begin);
+	Dialogic.timeline_ended.connect(_on_dialogue_end);
+	
 	DataManager.on_data_loaded.connect(_update_active_state)
 	
 	_update_active_state();
@@ -31,6 +36,10 @@ func _exit_tree():
 	QuestManager.next_step.disconnect(_on_update_step)
 	QuestManager.quest_completed.disconnect(_on_quest_complete)
 	QuestManager.quest_failed.disconnect(_on_quest_failed)
+	
+	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
+	Dialogic.timeline_ended.disconnect(_on_dialogue_end);
+	
 	DataManager.on_data_loaded.disconnect(_update_active_state)
 
 
@@ -60,6 +69,8 @@ func _update_active_state():
 
 
 func highlight(state : bool):
+	_highlighted = state;
+	
 	if highlight_icon != null :
 		if state : highlight_icon.tween.play_tween_name("Highlight");
 		else : highlight_icon.tween.play_tween_name("Unhighlight");
@@ -92,3 +103,13 @@ func _get_interact_dialogue() -> String:
 		if result != "" : return result;
 	
 	return default_dialogue;
+
+
+func _on_dialogue_begin():
+	if highlight_icon != null :
+		if _highlighted : highlight_icon.tween.play_tween_name("Unhighlight");
+
+
+func _on_dialogue_end():
+	if highlight_icon != null :
+		if _highlighted : highlight_icon.tween.play_tween_name("Highlight");

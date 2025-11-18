@@ -9,6 +9,7 @@ var players : Array[BattleParamEntity]
 var enemies : Array[String]
 var player_items : Dictionary
 var reward_items : Dictionary
+var remaining_enemies : Array[int]
 
 func destroy():
 	for player in players:

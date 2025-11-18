@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=46 format=3 uid="uid://8i7hybweexe0"]
+[gd_resource type="Resource" script_class="Entity" load_steps=45 format=3 uid="uid://8i7hybweexe0"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_uejv1"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="2_i6khk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_skakr"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="6_oroyw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="6_q7s76"]
+[ext_resource type="Resource" uid="uid://crtd1x3v2fi4u" path="res://assets/Entities/Player/exp_curve.tres" id="7_db1al"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="7_efghe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="8_deayn"]
 [ext_resource type="Resource" uid="uid://24judeqcy264" path="res://assets/Spells/player/player_c/spell_player_c_01.tres" id="8_dytxe"]
@@ -52,16 +53,6 @@ script = ExtResource("2_iyfiq")
 min = 60
 max = 340
 growth = SubResource("Curve_epash")
-
-[sub_resource type="Curve" id="Curve_pkgyx"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_dtj4w"]
-script = ExtResource("2_iyfiq")
-min = 100
-max = 100000
-growth = SubResource("Curve_pkgyx")
 
 [sub_resource type="Curve" id="Curve_mxe6p"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -171,7 +162,7 @@ base_crit_resist_modifier = 1.0
 base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_qu4vm")
-level_exp = SubResource("Resource_dtj4w")
+level_exp = ExtResource("7_db1al")
 affinity = Array[ExtResource("1_uejv1")]([ExtResource("2_i6khk"), ExtResource("3_2bcbl")])
 defense_modifiers = Array[ExtResource("7_efghe")]([])
 min_level = 50

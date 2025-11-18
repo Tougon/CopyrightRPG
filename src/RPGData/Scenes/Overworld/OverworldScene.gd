@@ -240,8 +240,6 @@ func _on_overworld_battle_queued(encounter : Encounter):
 		if rand < _current_flee_group_chance :
 			params.can_flee = false;
 			enemies.append_array(_current_flee_group);
-		else : 
-			_current_flee_group.append_array(enemies);
 	
 	# Initialize player data
 	for i in GameplayConstants.MAX_PARTY_SIZE:
@@ -301,6 +299,7 @@ func _on_battle_end(result : BattleResult):
 	# Handle fleeing mechanics
 	if result.fled : 
 		_current_flee_group_chance += flee_group_grow_rate;
+		_current_flee_group.append_array(result.remaining_enemies);
 	else :
 		_current_flee_group_chance = 0;
 		_current_flee_group.clear();

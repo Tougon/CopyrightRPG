@@ -145,7 +145,7 @@ func _begin_turn():
 		enemy.enemies.append_array(allies);
 		
 		if enemy.param.entity_spd > speed_enemy : 
-			speed_enemy = enemy.param.entity_spd
+			speed_enemy = enemy.param.entity_spd;
 	
 	var _flee_chance = (speed_player as float) / ((speed_enemy * 2) as float)
 	_flee_chance *= turn_number;
@@ -393,7 +393,6 @@ func _action_phase():
 			
 			if move_item != null :
 				if !_reward_items.has(move_item) :
-					print("Learn!")
 					_reward_items.append(move_item);
 		
 		for dialogue in post_anim_dialogue:
@@ -902,6 +901,11 @@ func _on_player_menu_cancel(cancel_button : bool):
 				var reward = BattleResult.new();
 				reward.victory = false;
 				reward.fled = true;
+				
+				for enemy in enemies :
+					# Should never realistically occur but w/e
+					if !enemy.is_defeated :
+						reward.remaining_enemies.append(DataManager.entity_database.get_id(enemy.current_entity))
 				
 				EventManager.on_battle_completed.emit(reward); 
 			else :

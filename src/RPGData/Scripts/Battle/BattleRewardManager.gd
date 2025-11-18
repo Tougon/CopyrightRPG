@@ -34,7 +34,12 @@ func _on_battle_complete(result : BattleResult):
 						award_exp -= (next_level_amt - current_exp);
 						current_exp = 0;
 						next_level_amt = player.override_entity.get_level_exp(level);
-						EventManager.on_dialogue_queue.emit(tr(player.override_entity.name_key) + " LEVEL UP! " + str(level));
+						
+						var msg = tr("T_BATTLE_RESULT_LEVELUP");
+						
+						msg = msg.format({ entity = tr(player.override_entity.name_key), lvl = level })
+						
+						EventManager.on_dialogue_queue.emit(msg);
 						
 						# Increase HP and MP based on new level
 						var prev_hp = player.override_entity.get_hp(level - 1);
@@ -47,6 +52,23 @@ func _on_battle_complete(result : BattleResult):
 					
 					player.override_level = level;
 					player.modified_exp_amt = award_exp;
+			
+			# TODO: Plurals that aren't garbage
+			for id in result.reward_items :
+				var item = DataManager.item_database.get_item(id);
+				if item == null : continue;
+				
+				var item_name = tr(item.item_name_key);
+				
+				if item is MoveItem :
+					item_name = item_name.replace("[NAME]", tr(item.move.spell_name_key));
+				
+				item_name = GrammarManager.get_indirect_article(item_name) + item_name;
+				
+				var msg = tr("T_BATTLE_RESULT_ITEM");
+				msg = msg.format({item = item_name});
+				EventManager.on_dialogue_queue.emit(msg);
+			
 	elif result != null && result.fled:
 		EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_SUCCESS"));
 	else :

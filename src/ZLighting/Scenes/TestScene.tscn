@@ -49,7 +49,7 @@ size = Vector2(355, 355)
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1bql"]
 radius = 159.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jfnb7"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_aaesr"]
 radius = 109.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gt4j"]
@@ -133,7 +133,7 @@ falloff = 5.0
 shape = SubResource("CircleShape2D_g1bql")
 
 [node name="FalloffPrev" parent="ZLight" index="1"]
-shape = SubResource("CircleShape2D_jfnb7")
+shape = SubResource("CircleShape2D_aaesr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0gt4j")
