@@ -56,6 +56,7 @@ func _ready():
 
 func begin_battle(params : BattleParams):
 	_reserve_controllers.clear();
+	_reward_items.clear();
 	
 	var reference_height = get_window().size.y;
 	get_window().size = Vector2i((reference_height * 4 / 3), reference_height);
@@ -388,7 +389,7 @@ func _action_phase():
 				if hit_result.length() > 0 && !post_anim_dialogue.has(hit_result):
 					post_anim_dialogue.append(hit_result);
 		
-		if any_cast_succeeded && entity.current_action.is_learnable :
+		if enemies.has(entity) && entity.current_action.is_learnable :
 			var move_item = DataManager.item_database.get_item_from_move(entity.current_action);
 			
 			if move_item != null :

@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_h4wmt"]
 [ext_resource type="Resource" uid="uid://d4ccx6phxn3j3" path="res://assets/Effects/Common/effect_common_status_misery.tres" id="4_mj5yq"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_ck4si"]
-[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="9_g7j6y"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_anfu1"]
 [ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="10_u5xs7"]
 
 [sub_resource type="Resource" id="Resource_c67wt"]
@@ -34,7 +34,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 14
 spell_priority = 0
-spell_flags = Array[ExtResource("5_ck4si")]([ExtResource("9_g7j6y"), ExtResource("10_u5xs7")])
+spell_flags = Array[ExtResource("5_ck4si")]([ExtResource("9_anfu1"), ExtResource("10_u5xs7")])
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = true

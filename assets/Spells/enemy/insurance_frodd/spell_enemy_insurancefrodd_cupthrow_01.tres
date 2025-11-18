@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="6_wrob4"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_3hwpy"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="8_vry22"]
-[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="9_fobhl"]
+[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="9_3wwgv"]
 
 [sub_resource type="Resource" id="Resource_mrrns"]
 script = ExtResource("3_flfcw")
@@ -63,7 +63,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 0
 spell_priority = 0
-spell_flags = Array[ExtResource("7_3hwpy")]([ExtResource("9_fobhl")])
+spell_flags = Array[ExtResource("7_3hwpy")]([ExtResource("9_3wwgv")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

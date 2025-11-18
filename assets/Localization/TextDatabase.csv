@@ -114,7 +114,7 @@ T_CAST_DAMAGE_ENEMY_ROTTEDPLANT_ATTACK,{article_def}{entity} slams with a vine!,
 
 T_CAST_STATUS_ENEMY_SCRUBBLES_ACCURACY,{article_def}{entity} scrubs up a storm!,,
 T_CAST_DAMAGE_ENEMY_SCRUBBLES_ATTACK,{article_def}{entity} launches at high speed!,,
-T_CAST_DAMAGE_ENEMY_SCRUBBLES_MULTIATTACK,{article_def}{entity} furiously scrubs {t_article_def}{t_entity}!,,
+T_CAST_DAMAGE_ENEMY_SCRUBBLES_MULTIATTACK,{article_def}{entity} furiously scrubs {target}!,,
 
 T_CAST_STATUS_ENEMY_STACKERS_ATK_FORM,{article_def}{entity} stacks into attack formation!,,
 T_CAST_STATUS_ENEMY_STACKERS_DEF_FORM,{article_def}{entity} stacks into defense formation!,,

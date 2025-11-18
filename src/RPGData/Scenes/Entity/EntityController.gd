@@ -105,6 +105,9 @@ func entity_init(params : BattleParams):
 	can_heal = true;
 	can_cast = true;
 	seals_active = true;
+	sealing = false;
+	
+	prev_target.clear();
 	
 	if current_entity != null:
 		if param != null : 
