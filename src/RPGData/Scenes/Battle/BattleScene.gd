@@ -248,7 +248,7 @@ func _action_phase():
 		var entity = turn_order[0]
 		EventManager.on_entity_move.emit(entity);
 		
-		if entity.is_defeated || _all_players_defeated():
+		if entity.is_defeated || _all_players_defeated() || _all_enemies_defeated():
 			turn_order.remove_at(0);
 			continue;
 		
@@ -516,7 +516,7 @@ func _action_phase():
 				
 				var action_name = "";
 				
-				if entity.current_action.spell_name_key.is_empty() :
+				if entity.current_action.spell_name_key.is_empty() || (BattleManager.ENEMY_SEAL_FORCE_GENERIC_NAME && entity is EnemyController):
 					action_name = tr("T_SPELL_GENERIC_PRONOUN");
 					action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(entity.param.entity_gender, 3) })
 				else :

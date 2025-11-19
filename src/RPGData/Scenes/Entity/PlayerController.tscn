@@ -19,4 +19,5 @@ texture = ExtResource("6_hst7t")
 offset = Vector2(0, 180)
 
 [node name="Entity Info Battle" parent="." index="3"]
+z_index = 10
 display_type = 0

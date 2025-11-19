@@ -449,7 +449,6 @@ sequencer = NodePath("Core/Sequencer")
 dialogue_canvas = NodePath("UI/Dialogue Canvas")
 seal_manager = NodePath("Core/SealManager")
 enemy_positions = NodePath("Entities/Enemy Positions")
-begin_battle_on_ready = null
 persistent_effects = Array[ExtResource("7_46juf")]([ExtResource("3_wcutx"), ExtResource("4_1uuti"), ExtResource("5_gkncl")])
 
 [node name="Background" type="Node" parent="."]

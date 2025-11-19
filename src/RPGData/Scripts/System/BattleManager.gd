@@ -11,6 +11,7 @@ const ENEMY_REPOSITION_TIME : float = 0.30;
 # Experimental battle changes
 const ENEMY_SEAL_INFINITE : bool = true;
 const ENEMY_SEAL_ALL_UNIQUE : bool = true;
+const ENEMY_SEAL_FORCE_GENERIC_NAME : bool = true;
 
 # Determines if text should print asynchonously
 # TODO: change to const

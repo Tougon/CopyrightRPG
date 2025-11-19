@@ -11,3 +11,6 @@ default_appear_anim = ExtResource("3_ncq1q")
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(0.75, 0.75)
+
+[node name="Entity Info Battle" parent="." index="3"]
+z_index = 10

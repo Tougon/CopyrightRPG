@@ -29,13 +29,23 @@ func _on_battle_begin(params : BattleParams):
 func _on_entity_defeated(entity : EntityController):
 	var index = 0;
 	
+	var output_msg = false;
+	
+	for ally in entity.allies :
+		if !ally.is_defeated : 
+			output_msg = true;
+			break;
+	
 	while index < seal_instances.size() && seal_instances.size() > 0:
 		var seal = seal_instances[index];
 		
 		if seal.seal_entity == entity:
 			# Send a message saying the seal has been lifted
-			# TODO: Do not do if the battle is over
-			_send_seal_inactive_message(seal, entity);
+			# NOTE: Only runs once so we don't output excessive messages
+			if output_msg :
+				#_send_seal_inactive_message(seal, entity);
+				_send_seal_inactive_message(seal, entity, "T_BATTLE_ACTION_SEAL_INACTIVE_ALL");
+				output_msg = false;
 			
 			seal_instances[index].free();
 			seal_instances.remove_at(index);
@@ -43,8 +53,8 @@ func _on_entity_defeated(entity : EntityController):
 			index += 1;
 
 
-func _send_seal_inactive_message(seal : SealInstance, entity : EntityController):
-	var seal_msg = tr("T_BATTLE_ACTION_SEAL_INACTIVE");
+func _send_seal_inactive_message(seal : SealInstance, entity : EntityController, msg : String = "T_BATTLE_ACTION_SEAL_INACTIVE"):
+	var seal_msg = tr(msg);
 	var seal_entity_name = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]"
 	var entity_name = "[color=FFFF00]" + entity.param.entity_name + "[/color]"
 	var action_name = "";
@@ -144,7 +154,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 						seal_msg = seal_msg.format({ t_article_def = "", t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
 					
 					var action_name = "";
-					if seal.seal_source.spell_name_key.is_empty() :
+					if seal.seal_source.spell_name_key.is_empty() || (BattleManager.ENEMY_SEAL_FORCE_GENERIC_NAME && seal.seal_entity is EnemyController):
 						action_name = tr("T_SPELL_GENERIC_PRONOUN");
 						action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(seal.seal_entity.param.entity_gender, 3) })
 					else :
