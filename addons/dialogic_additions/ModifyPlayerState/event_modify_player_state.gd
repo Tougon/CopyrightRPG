@@ -16,6 +16,8 @@ var mp_amount := 0;
 var use_mp_percent := false;
 var mp_percent := 1.0;
 
+var remove_status := true;
+
 func _execute() -> void:
 	
 	if affect_all : 
@@ -47,6 +49,9 @@ func _modify_status(id : int):
 			
 			player_state.hp_value = clamp(hp_amt, 1, max_hp);
 			player_state.mp_value = clamp(mp_amt, 0, max_mp);
+		
+		if remove_status :
+			player_state.status.clear();
 
 
 #region INITIALIZE
@@ -80,6 +85,7 @@ func get_shortcode_parameters() -> Dictionary:
 		"mp_amt"		: {"property": "mp_amount", 	"default": 0},
 		"mp_percent_check"		: {"property": "use_mp_percent", 	"default": false},
 		"mp_percent_amt"		: {"property": "mp_percent", 	"default": 1.0},
+		"status"		: {"property": "remove_status", 	"default": false},
 	}
 
 # You can alternatively overwrite these 3 functions: to_text(), from_text(), is_valid_event()
@@ -115,5 +121,8 @@ func build_event_editor() -> void:
 			'left_text'		: 'MP Percent'})
 	add_body_edit('mp_amount', ValueType.NUMBER, {
 			'left_text'		: 'MP Amount'})
+	
+	add_body_edit('remove_status', ValueType.BOOL, {
+			'left_text'		: 'Remove Status'})
 
 #endregion

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="EntityDatabase" load_steps=13 format=3 uid="uid://bsiklh4dlic0l"]
+[gd_resource type="Resource" script_class="EntityDatabase" load_steps=14 format=3 uid="uid://bsiklh4dlic0l"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityDatabaseEntry.gd" id="1_veja8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityDatabase.gd" id="2_3dvry"]
@@ -53,6 +53,11 @@ script = ExtResource("1_veja8")
 entity_path = "res://assets/Entities/Enemies/chobblin.tres"
 playable = false
 
+[sub_resource type="Resource" id="Resource_2igsv"]
+script = ExtResource("1_veja8")
+entity_path = "res://assets/Entities/Enemies/eye.tres"
+playable = false
+
 [resource]
 script = ExtResource("2_3dvry")
-entries = Array[ExtResource("1_veja8")]([SubResource("Resource_g1vrn"), SubResource("Resource_i0wjx"), SubResource("Resource_iu4hh"), SubResource("Resource_6tw8m"), SubResource("Resource_7bvvg"), SubResource("Resource_bqqaw"), SubResource("Resource_yfcon"), SubResource("Resource_p6hvf"), SubResource("Resource_qe3gs"), SubResource("Resource_mcvpp")])
+entries = Array[ExtResource("1_veja8")]([SubResource("Resource_g1vrn"), SubResource("Resource_i0wjx"), SubResource("Resource_iu4hh"), SubResource("Resource_6tw8m"), SubResource("Resource_7bvvg"), SubResource("Resource_bqqaw"), SubResource("Resource_yfcon"), SubResource("Resource_p6hvf"), SubResource("Resource_qe3gs"), SubResource("Resource_mcvpp"), SubResource("Resource_2igsv")])

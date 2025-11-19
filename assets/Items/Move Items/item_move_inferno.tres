@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MoveItem" load_steps=4 format=3 uid="uid://1aeyk60v1bu8"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_yo50u"]
+[ext_resource type="Resource" uid="uid://qdkh8kbrn4yt" path="res://assets/Spells/common/spell_common_inferno.tres" id="2_shyfc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/move_item.gd" id="3_v2gxg"]
+
+[resource]
+script = ExtResource("3_v2gxg")
+move = ExtResource("2_shyfc")
+item_name_key = "T_ITEM_NAME_MOVE_GENERIC"
+item_description_key = "T_ITEM_DESCRIPTION_MOVE_GENERIC"
+item_icon_path = ""
+item_flags = Array[ExtResource("1_yo50u")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0
