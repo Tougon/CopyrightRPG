@@ -642,6 +642,7 @@ visible = false
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 4290)
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
+encounter_reroll_rate = 0.6
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)/Area2D" index="0"]
 position = Vector2(0, 354)

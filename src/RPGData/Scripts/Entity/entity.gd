@@ -86,6 +86,7 @@ func get_lck(level : int) -> float:
 func get_level_exp(level : int) -> int:
 	if level_exp == null : return 50;
 	return level_exp.get_current(level, max_level);
+	#return roundi((level_exp.get_current(level, max_level) as float) / 100) * 100;
 
 @export_group("Modifiers")
 @export var affinity : Array[TFlag];

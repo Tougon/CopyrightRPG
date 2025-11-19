@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=72 format=3 uid="uid://cv65c7cujmx6h"]
+[gd_resource type="Resource" script_class="Entity" load_steps=70 format=3 uid="uid://cv65c7cujmx6h"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_usdnu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_trhxq"]
@@ -36,19 +36,6 @@ script = ExtResource("3_64qxn")
 min = 15
 max = 21
 growth = SubResource("Curve_7puij")
-
-[sub_resource type="Resource" id="Resource_rp47s"]
-script = ExtResource("6_84a3l")
-behavior_check = Array[ExtResource("5_dvk31")]([])
-check_type = 0
-action_id = Array[int]([4])
-seal_chance = Array[float]([])
-seal_id = Array[int]([])
-
-[sub_resource type="Resource" id="Resource_6jtn3"]
-script = ExtResource("4_x70uk")
-behavior_checks = Array[ExtResource("6_84a3l")]([SubResource("Resource_rp47s")])
-active_condition = Array[ExtResource("5_dvk31")]([])
 
 [sub_resource type="Resource" id="Resource_37mdo"]
 script = ExtResource("7_ylfbd")
@@ -155,8 +142,8 @@ seal_id = Array[int]([0])
 script = ExtResource("6_84a3l")
 behavior_check = Array[ExtResource("5_dvk31")]([])
 check_type = 0
-action_id = Array[int]([1, 1, 2, 2])
-seal_chance = Array[float]([0.0, 1.0, 1.0, 1.0, 1.0])
+action_id = Array[int]([1, 1, 1, 2, 2])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
 seal_id = Array[int]([0, 0, 0, 0, 0])
 
 [sub_resource type="Resource" id="Resource_i4ld0"]
@@ -166,7 +153,6 @@ active_condition = Array[ExtResource("5_dvk31")]([])
 
 [sub_resource type="Resource" id="Resource_vfwvd"]
 script = ExtResource("3_0l4ic")
-first_turn_behavior = SubResource("Resource_6jtn3")
 turn_behavior = Array[ExtResource("4_x70uk")]([SubResource("Resource_i4ld0")])
 
 [sub_resource type="Curve" id="Curve_pebh2"]
@@ -175,8 +161,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_u7rdw"]
 script = ExtResource("3_64qxn")
-min = 14
-max = 16
+min = 18
+max = 24
 growth = SubResource("Curve_pebh2")
 
 [sub_resource type="Resource" id="Resource_hv7x6"]
@@ -199,8 +185,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_qlkd8"]
 script = ExtResource("3_64qxn")
-min = 190
-max = 220
+min = 220
+max = 265
 growth = SubResource("Curve_ax5ad")
 
 [sub_resource type="Curve" id="Curve_i5b55"]
@@ -262,8 +248,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_0dugh"]
 script = ExtResource("3_64qxn")
-min = 35
-max = 45
+min = 26
+max = 32
 growth = SubResource("Curve_k1g6b")
 
 [sub_resource type="Resource" id="Resource_67mf5"]
@@ -288,8 +274,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_xapyd"]
 script = ExtResource("3_64qxn")
-min = 14
-max = 16
+min = 18
+max = 24
 growth = SubResource("Curve_bm8xm")
 
 [sub_resource type="Curve" id="Curve_hlih0"]

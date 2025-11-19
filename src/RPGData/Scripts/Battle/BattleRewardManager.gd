@@ -63,10 +63,10 @@ func _on_battle_complete(result : BattleResult):
 				if item is MoveItem :
 					item_name = item_name.replace("[NAME]", tr(item.move.spell_name_key));
 				
-				item_name = GrammarManager.get_indirect_article(item_name) + item_name;
+				var article = GrammarManager.get_indirect_article(item_name);
 				
 				var msg = tr("T_BATTLE_RESULT_ITEM");
-				msg = msg.format({item = item_name});
+				msg = msg.format({item = item_name, item_a = article});
 				EventManager.on_dialogue_queue.emit(msg);
 			
 	elif result != null && result.fled:

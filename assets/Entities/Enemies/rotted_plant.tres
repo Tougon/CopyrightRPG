@@ -133,8 +133,8 @@ max = 300
 growth = SubResource("Curve_cfcxm")
 
 [sub_resource type="Curve" id="Curve_aeh1r"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.239512, 0, 0, Vector2(0.7543, 0.451734), 1.94809, 1.94809, 0, 0, Vector2(1, 1), 2.23144, 0.0, 1, 0]
+point_count = 3
 
 [sub_resource type="Resource" id="Resource_1kmh6"]
 script = ExtResource("6_3syfq")
