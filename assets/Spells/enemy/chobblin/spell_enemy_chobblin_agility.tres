@@ -1,0 +1,119 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=25 format=3 uid="uid://chwb8ct34rmnm"]
+
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_mxc8s"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_oec2a"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_0dq8t"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_pyfvd"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_v4coq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_oqw87"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_ud5si"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_jxh2x"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="5_t3rfb"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="6_qjy4u"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="7_v7xlb"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="8_gedvm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_play_animation.gd" id="9_xeud6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="10_d4bv8"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="15_3wovv"]
+
+[sub_resource type="Resource" id="Resource_3dxug"]
+script = ExtResource("5_t3rfb")
+target = 0
+stat = 4
+check_mode = 2
+stage = 0
+max = true
+min = false
+use_stage = false
+use_modifiers = false
+
+[sub_resource type="Resource" id="Resource_7565w"]
+script = ExtResource("6_qjy4u")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_o6ftj"]
+script = ExtResource("7_v7xlb")
+target = 0
+stat = 4
+amount = 2
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_6v8ts"]
+script = ExtResource("9_xeud6")
+target = 0
+animation = ExtResource("8_gedvm")
+
+[sub_resource type="Resource" id="Resource_biddh"]
+script = ExtResource("10_d4bv8")
+dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_LARGE_ACTIVATE"
+
+[sub_resource type="Resource" id="Resource_75gag"]
+script = ExtResource("10_d4bv8")
+dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_FAIL"
+
+[sub_resource type="Resource" id="Resource_n64in"]
+script = ExtResource("3_pyfvd")
+stackable = false
+effect_name = "Agility"
+generic = true
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_oqw87")]([SubResource("Resource_3dxug")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_oqw87")]([])
+on_activate = Array[ExtResource("4_oqw87")]([SubResource("Resource_7565w")])
+on_failed_to_activate = Array[ExtResource("4_oqw87")]([SubResource("Resource_75gag")])
+on_apply = Array[ExtResource("4_oqw87")]([SubResource("Resource_o6ftj"), SubResource("Resource_6v8ts"), SubResource("Resource_biddh")])
+on_move_selected = Array[ExtResource("4_oqw87")]([])
+on_move_completed = Array[ExtResource("4_oqw87")]([])
+on_deactivate = Array[ExtResource("4_oqw87")]([])
+on_turn_start = Array[ExtResource("4_oqw87")]([])
+on_turn_end = Array[ExtResource("4_oqw87")]([])
+on_stack = Array[ExtResource("4_oqw87")]([])
+
+[sub_resource type="Resource" id="Resource_axcgj"]
+script = ExtResource("3_v4coq")
+chance = 1.0
+effect = SubResource("Resource_n64in")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_dpsm1"]
+script = ExtResource("1_oec2a")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_v4coq")]([SubResource("Resource_axcgj")])
+
+[resource]
+script = ExtResource("4_ud5si")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_CHOBBLIN_AGILITY"
+spell_type = 3
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("5_jxh2x")]([ExtResource("15_3wovv")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_mxc8s")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_oec2a")]([SubResource("Resource_dpsm1")])
+effects_on_success = Array[ExtResource("1_oec2a")]([])
+properties = Array[ExtResource("3_pyfvd")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_0dq8t")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_0dq8t")]([])

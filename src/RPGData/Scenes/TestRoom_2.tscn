@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=104 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -211,7 +211,7 @@ point_count = 3
 [sub_resource type="Resource" id="Resource_vd5ei"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 8
-odds = 1.0
+odds = 0.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
@@ -220,6 +220,27 @@ enemy_count_curve = SubResource("Curve_m7hcq")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_sbu6h")
+
+[sub_resource type="Curve" id="Curve_t0lam"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_eppv3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_rp5pn"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 9
+odds = 1.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_eppv3")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+additional_enemy_curve = SubResource("Curve_t0lam")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r63lc"]
 size = Vector2(2041, 636)
@@ -650,7 +671,8 @@ shape = SubResource("RectangleShape2D_eqpnf")
 
 [node name="EncounterArea (Mid)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 3652)
-encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_vd5ei")])
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_vd5ei"), SubResource("Resource_rp5pn")])
+encounter_reroll_rate = 0.6
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Mid)/Area2D" index="0"]
 position = Vector2(0, 316)
@@ -689,7 +711,7 @@ encounter_reroll_rate = 0.0
 position = Vector2(45.5, -49.5)
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("37_j44eh")]
-position = Vector2(512, 4911)
+position = Vector2(512, 4105)
 run_multiplier = 1.75
 
 [node name="Floors (Teleport)" type="Node2D" parent="."]
@@ -1208,7 +1230,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(512, 4831)
+position = Vector2(512, 4025)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -1220,7 +1242,7 @@ script = ExtResource("42_1yuub")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(512, 4831)
+position = Vector2(512, 4025)
 script = ExtResource("43_y1qfp")
 priority = 1
 follow_mode = 5
