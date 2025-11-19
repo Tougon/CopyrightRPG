@@ -535,6 +535,27 @@ func _action_phase():
 		
 		EventManager.on_entity_turn_end.emit(entity);
 		
+		# Required in case any entity has been defeated from an effect
+		if !_spawning :
+			# Reposition enemies if necessary
+			amt = get_num_active_enemies();
+			if num_active != amt:
+				var index = 0;
+				var pos_root = enemy_positions.get_child(amt - 1);
+				var used : Array[int] = [];
+				
+				for i in range(enemies.size() - 1, -1, -1):
+					var enemy = enemies[i];
+					if !enemy.is_defeated:
+						index = _get_closest_unused_root_to_entity(enemy, pos_root, used);
+						
+						if index != -1 :
+							enemy.set_enemy_position((pos_root.get_child(index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
+							used.append(index);
+				
+				await get_tree().create_timer(BattleManager.ENEMY_REPOSITION_TIME).timeout
+				await get_tree().process_frame;
+		
 		# IMPORTANT: We need this, but any cast tied to an effect should stay
 		for spell in spell_cast :
 			if spell.subspell_casts != null :
