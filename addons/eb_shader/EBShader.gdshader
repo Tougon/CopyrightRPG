@@ -53,7 +53,7 @@ void fragment()
 		}
 
 		uv.x = floor(uv.x * pixel);
-		uv.y = floor(uv.y * pixel);
+		uv.y = floor(uv.y * pixel * 0.75);
 
 		uv = uv / pixel;
 	}
