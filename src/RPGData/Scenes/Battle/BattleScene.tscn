@@ -494,18 +494,18 @@ position = Vector2(720, 244)
 position = Vector2(230, 244)
 
 [node name="Root2" type="Node2D" parent="Entities/Enemy Positions/4"]
-position = Vector2(600, 314)
+position = Vector2(600, 349)
 
 [node name="Root1" type="Node2D" parent="Entities/Enemy Positions/4"]
-position = Vector2(380, 314)
+position = Vector2(380, 349)
 
 [node name="5" type="Node" parent="Entities/Enemy Positions"]
 
 [node name="Root5" type="Node2D" parent="Entities/Enemy Positions/5"]
-position = Vector2(180, 314)
+position = Vector2(180, 349)
 
 [node name="Root4" type="Node2D" parent="Entities/Enemy Positions/5"]
-position = Vector2(770, 314)
+position = Vector2(770, 349)
 
 [node name="Root3" type="Node2D" parent="Entities/Enemy Positions/5"]
 position = Vector2(300, 244)

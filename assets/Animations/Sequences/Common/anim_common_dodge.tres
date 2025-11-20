@@ -13,7 +13,7 @@ property_name = "position"
 material_property = false
 duration = 0.12
 delay = 0.0
-transition = 7
+transition = 5
 ease = 1
 relative = true
 "Use From" = false
@@ -43,9 +43,9 @@ script = ExtResource("3_v5jju")
 target = "Sprite2D"
 property_name = "position"
 material_property = false
-duration = 0.12
+duration = 0.19
 delay = 0.0
-transition = 7
+transition = 1
 ease = 1
 relative = true
 "Use From" = false
@@ -66,7 +66,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_h288w"]
 script = ExtResource("1_cpa7s")
-frame = 11
+frame = 9
 frame_order = 0
 action = SubResource("Resource_rtrud")
 

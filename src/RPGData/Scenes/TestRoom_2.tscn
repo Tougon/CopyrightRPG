@@ -236,10 +236,10 @@ odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
-max_enemies = 0
+max_enemies = 2
 enemy_count_curve = SubResource("Curve_eppv3")
 required_enemies = Array[int]([])
-additional_enemies = Array[int]([9, 9])
+additional_enemies = Array[int]([9, 10])
 additional_enemy_curve = SubResource("Curve_t0lam")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r63lc"]

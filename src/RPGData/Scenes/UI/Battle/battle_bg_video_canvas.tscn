@@ -44,8 +44,10 @@ shader_parameter/palette = SubResource("GradientTexture1D_7ol8p")
 shader = ExtResource("2_k620y")
 shader_parameter/color_primary = null
 shader_parameter/color_secondary = Color(1, 1, 1, 1)
-shader_parameter/resolution = Vector2(266.667, 200)
+shader_parameter/aspect = Vector2(1, 0.5)
+shader_parameter/scale_factor = 1.0
 shader_parameter/amount = 1.0
+shader_parameter/use_screen_uv = true
 
 [node name="BG Video Canvas" type="CanvasLayer" node_paths=PackedStringArray("video_layer", "attack_layer", "color_layer", "solid_layer", "static_layer")]
 layer = -10
