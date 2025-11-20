@@ -352,7 +352,7 @@ func _action_phase():
 			if spell.success : 
 				any_cast_succeeded = true;
 			else :
-				if spell.fail_message != "" : post_anim_dialogue.append(spell.fail_message);
+				#if spell.fail_message != "" : post_anim_dialogue.append(spell.fail_message);
 				if spell.fail_type == SpellCast.SpellFailType.InvalidMP : play_animation = false;
 			
 			for hit_result in spell.hit_results:
@@ -365,6 +365,10 @@ func _action_phase():
 					_get_spell_hit_messages_rand(entity, spell_cast, spell, post_anim_dialogue);
 				else :
 					_get_spell_hit_messages(entity, spell_cast, spell, post_anim_dialogue);
+		
+		if !any_cast_succeeded :
+			for spell in spell_cast :
+				post_anim_dialogue.append(spell.fail_message);
 		
 		var cast_msg = format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
 		# Format the cast message for targets
@@ -631,6 +635,7 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 			else : 
 				output.append(format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), entity.param.entity_name, entity.current_entity));
 		
+		if entity.current_hp - entity_damage[entity] <= 0: continue;
 		var damage_msg = format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), entity.param.entity_name, entity.current_entity);
 		damage_msg = damage_msg.format({damage = str(entity_damage[entity])});
 		output.append(damage_msg);

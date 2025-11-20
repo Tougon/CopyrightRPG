@@ -20,7 +20,7 @@ use_luck = false
 
 [sub_resource type="Resource" id="Resource_umerp"]
 script = ExtResource("1_tr46o")
-chance = 0.7
+chance = 0.6
 use_luck = true
 effect_set = Array[ExtResource("3_h0ud4")]([SubResource("Resource_cck60")])
 

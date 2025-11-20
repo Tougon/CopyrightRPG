@@ -27,10 +27,11 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 			if check_all :
 				if !state : all_same = false;
 			else :
-				if negate :
-					return !state;
-				else :
-					return state;
+				if state :
+					if negate :
+						return !state;
+					else :
+						return state;
 		
 		if negate :
 			return !all_same;
@@ -38,7 +39,8 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 			return all_same;
 	
 	if result.trigger_entity :
-		var state = result.trigger_entity.current_entity == target;
+		var state = result.trigger_entity.current_entity == entity;
+		result.check_target = check_target;
 		
 		if negate :
 			return !state;
