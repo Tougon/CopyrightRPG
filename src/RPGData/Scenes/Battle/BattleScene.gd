@@ -22,6 +22,8 @@ var current_player_index : int;
 var defeated_enemies : Array[DefeatedEntity];
 var player_item_delta : Dictionary;
 
+var _default_entity : Entity;
+
 var _field_effects : Array[FieldEffectInstance];
 
 var _reserve_enemies : Array[Entity];
@@ -74,6 +76,8 @@ func begin_battle(params : BattleParams):
 	
 	for i in range(BattleManager.MAX_ENEMY_COUNT, params.enemies.size()):
 		_reserve_enemies.append(params.enemies[i]);
+	
+	_default_entity = params.enemies[0];
 	
 	EventManager.on_battle_begin.emit(params);
 	
@@ -158,7 +162,7 @@ func _begin_turn():
 	players.sort_custom(_compare_speed);
 	if players.size() > 0:
 		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
-		EventManager.set_player_bg.emit(players[current_player_index]);
+		EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 	
 	UIManager.open_menu_name("player_battle_main");
 	
@@ -184,7 +188,7 @@ func _decision_phase():
 			
 			if current_player_index < players.size():
 				EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
-				EventManager.set_player_bg.emit(players[current_player_index]);
+				EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 				await get_tree().process_frame;
 				UIManager.open_menu_name("player_battle_main");
 	
@@ -210,6 +214,7 @@ func _decision_phase():
 
 
 func _action_phase():
+	EventManager.set_player_bg.emit(_default_entity);
 	var turn_order : Array[EntityController];
 	
 	for entity in entities:
@@ -264,7 +269,7 @@ func _action_phase():
 			await get_tree().create_timer(0.2).timeout
 			await get_tree().process_frame;
 			
-			EventManager.set_player_bg.emit(entity);
+			#EventManager.set_player_bg.emit(entity);
 		
 		var is_target_valid : bool = true;
 		var num_active = get_num_active_enemies();
@@ -368,7 +373,8 @@ func _action_phase():
 		
 		if !any_cast_succeeded :
 			for spell in spell_cast :
-				post_anim_dialogue.append(spell.fail_message);
+				if spell.fail_message != "" :
+					post_anim_dialogue.append(spell.fail_message);
 		
 		var cast_msg = format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
 		# Format the cast message for targets
@@ -920,7 +926,7 @@ func _on_player_menu_cancel(cancel_button : bool):
 			players[current_player_index].current_item = null;
 		
 		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
-		EventManager.set_player_bg.emit(players[current_player_index]);
+		EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 		UIManager.open_menu_name("player_battle_main");
 	# Only execute flee operations if the button was pressed
 	elif !cancel_button :

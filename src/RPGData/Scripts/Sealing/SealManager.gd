@@ -110,7 +110,7 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	else :
 		sealed_spells.append(spell);
 	
-	EventManager.set_player_bg.emit(entity);
+	#EventManager.set_player_bg.emit(entity);
 	_play_seal_effects(seal_inst, entity);
 
 

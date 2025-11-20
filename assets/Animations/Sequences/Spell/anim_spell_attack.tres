@@ -31,9 +31,10 @@ action = SubResource("Resource_5quh4")
 script = ExtResource("9_2d2tc")
 reset_bg = false
 index = 0
-mode = 0
-use_palette = false
-palette_fade_time = 1.0
+mode = 2
+use_palette = true
+palette_fade_time = 0.0
+remain_on_base = true
 
 [sub_resource type="Resource" id="Resource_fhloc"]
 script = ExtResource("2_st50u")
@@ -198,6 +199,7 @@ index = 0
 mode = 0
 use_palette = false
 palette_fade_time = 1.0
+remain_on_base = false
 
 [sub_resource type="Resource" id="Resource_3jdo4"]
 script = ExtResource("2_st50u")

@@ -18,6 +18,7 @@ enum LoadType { ENTITY, ATTACK }
 var _video_main : VideoStream;
 var _material_main : Material;
 var _material_ghost : Material;
+var _current_color_mat : Material;
 
 var _attack_to_video_map : Dictionary = {};
 var _entity_to_color_mat_map : Dictionary = {};
@@ -55,6 +56,7 @@ func _ready() -> void:
 func _process(delta: float):
 	if _is_attacking :
 		_attack_time += delta;
+		color_layer.material.set_shader_parameter("manual_time", _attack_time)
 		attack_layer.material.set_shader_parameter("manual_time", _attack_time)
 
 
@@ -116,13 +118,14 @@ func _load_spell_data(move : Spell):
 				_attack_to_shader_map[move].append(mat);
 
 
-func _set_player_bg(entity : EntityController):
-	if _entity_to_color_mat_map.has(entity.current_entity):
+func _set_player_bg(entity : Entity):
+	if _entity_to_color_mat_map.has(entity):
 		var previous = color_layer.material.get_shader_parameter("palette");
-		color_layer.material = _entity_to_color_mat_map[entity.current_entity].duplicate() as ShaderMaterial;
+		color_layer.material = _entity_to_color_mat_map[entity].duplicate() as ShaderMaterial;
+		color_layer.material.set_shader_parameter("palette", previous);
 		color_layer.material.set_shader_parameter("transition_palette", previous);
 		color_layer.material.set_shader_parameter("use_manual_time", false);
-		color_layer.texture_repeat = entity.current_entity.entity_thought_repeat_mode;
+		color_layer.texture_repeat = entity.entity_thought_repeat_mode;
 		
 		var tween = get_tree().create_tween();
 		tween.set_parallel(true);
@@ -135,15 +138,9 @@ func _set_player_bg(entity : EntityController):
 			property.set_trans(Tween.TRANS_QUART)
 			property.set_ease(Tween.EASE_OUT)
 			property.from(0);
-	
-	if effect_layer_list.size() > 0 && effect_layer_list[0] != null :
-		if entity is EnemyController : 
-			effect_layer_list[0].get_parent().z_index = 0;
-		else :
-			effect_layer_list[0].get_parent().z_index = -1;
 
 
-func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float):
+func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float, remain_on_base : bool):
 	if spell == null && _current_spell != null: 
 		# Disabling the following code in case we can later restore this functionality
 		# == DISABLED CODE ==
@@ -161,6 +158,7 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 		attack_layer.stream = null;
 		_current_spell = null;
 		
+		color_layer.material = _current_color_mat;
 		color_layer.visible = true;
 		color_layer.material.set_shader_parameter("transition_palette", attack_layer.material.get_shader_parameter("palette"));
 		
@@ -200,8 +198,26 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 			
 			#video_layer.play_video_at(0);
 			# == END DISABLED CODE ==
+			
 			var vid = _attack_to_video_map[spell][clamp(index, 0, _attack_to_video_map[spell].size() - 1)];
 			var mat = _attack_to_shader_map[spell][clamp(index, 0, _attack_to_shader_map[spell].size() - 1)].duplicate();
+			
+			if remain_on_base :
+				_current_color_mat = color_layer.material;
+				
+				var previous = color_layer.material.get_shader_parameter("palette");
+				color_layer.material = mat;
+				color_layer.material.set_shader_parameter("transition", 0.0);
+				
+				if use_entity_palette :
+					color_layer.material.set_shader_parameter("palette", previous);
+				color_layer.material.set_shader_parameter("transition_palette", previous);
+				color_layer.material.set_shader_parameter("use_manual_time", true);
+				
+				_current_spell = spell;
+				_is_attacking = true;
+				_attack_time = 0;
+				return;
 			
 			attack_layer.visible = true;
 			if change_video : attack_layer.stream = vid;

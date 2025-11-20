@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bpj6jtsinkopm"]
 
-[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_j5mlk"]
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_7c6rg"]
 
 [sub_resource type="Gradient" id="Gradient_flo7b"]
 interpolation_mode = 2
@@ -11,7 +11,7 @@ colors = PackedColorArray(0.670708, 0, 0.042751, 0.8, 0.75, 0.516, 0.21, 0.8, 0.
 gradient = SubResource("Gradient_flo7b")
 
 [resource]
-shader = ExtResource("1_j5mlk")
+shader = ExtResource("1_7c6rg")
 shader_parameter/screen_height = 720.0
 shader_parameter/amplitude = 0.1
 shader_parameter/frequency = 2.0
@@ -25,7 +25,7 @@ shader_parameter/enable_palette_cycling = true
 shader_parameter/enable_scan_lines = true
 shader_parameter/scan_line_mod = 4
 shader_parameter/palette_speed = 0.2
-shader_parameter/enable_pixelate = false
+shader_parameter/enable_pixelate = true
 shader_parameter/pixel_size = 96
 shader_parameter/transition = 1.0
 shader_parameter/time_offset = 0.0

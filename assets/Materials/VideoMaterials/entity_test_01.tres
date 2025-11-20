@@ -5,7 +5,7 @@
 [sub_resource type="Gradient" id="Gradient_ymf5e"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.295775, 0.510204, 0.714286, 1)
-colors = PackedColorArray(0.568416, 0.315484, 0.999976, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.568627, 0.313726, 1, 0.8, 0.980392, 0.768627, 1, 0.541176, 0.568627, 0.313726, 1, 0.8)
+colors = PackedColorArray(0.568416, 0.315484, 0.999976, 0.8, 0.501478, 0.424344, 9.62615e-08, 0.541176, 0.568627, 0.313726, 1, 0.8, 0.501961, 0.423529, 0, 0.541176, 0.568627, 0.313726, 1, 0.8)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_od5b8"]
 gradient = SubResource("Gradient_ymf5e")
@@ -26,7 +26,7 @@ shader_parameter/enable_palette_cycling = true
 shader_parameter/enable_scan_lines = true
 shader_parameter/scan_line_mod = 4
 shader_parameter/palette_speed = 0.2
-shader_parameter/enable_pixelate = false
+shader_parameter/enable_pixelate = true
 shader_parameter/pixel_size = 96
 shader_parameter/transition = 1.0
 shader_parameter/time_offset = 0.0
