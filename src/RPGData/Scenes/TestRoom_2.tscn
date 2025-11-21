@@ -139,7 +139,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_7nfh4"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 4
-odds = 1.0
+odds = 0.4
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 1
@@ -211,7 +211,7 @@ point_count = 3
 [sub_resource type="Resource" id="Resource_vd5ei"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 8
-odds = 0.0
+odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
@@ -232,7 +232,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_rp5pn"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 9
-odds = 1.0
+odds = 0.2
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
