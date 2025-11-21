@@ -397,6 +397,7 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 		if current_hp <= 0 :
 			on_defeat();
 			is_defeated = true;
+			on_damage(crit);
 		elif val > 0 : 
 			on_damage(crit);
 			set_damage_sprite(damage_time);

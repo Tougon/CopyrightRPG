@@ -83,6 +83,7 @@ mouse_filter = 2
 stream = ExtResource("5_w7ge3")
 
 [node name="SOLID" type="ColorRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -92,6 +93,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Attack Video Layer" parent="." instance=ExtResource("3_8xmgu")]
+modulate = Color(1, 1, 1, 0.784314)
 material = ExtResource("5_bg8ve")
 mouse_filter = 2
 stream = ExtResource("6_s5ki2")

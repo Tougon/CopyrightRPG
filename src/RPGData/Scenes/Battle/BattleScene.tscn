@@ -93,7 +93,7 @@ seal_effects = Array[ExtResource("7_46juf")]([ExtResource("13_ppeub")])
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mf1yg"]
 shader = ExtResource("22_0arau")
 shader_parameter/chaos = 0.0
-shader_parameter/radius = 1.4
+shader_parameter/radius = 2.0
 shader_parameter/attenuation = 2.5
 shader_parameter/saturation = 1.0
 shader_parameter/modulate = Color(1, 1, 1, 1)
@@ -172,7 +172,7 @@ script = ExtResource("42_mqdqo")
 target = ""
 property_name = "shader_parameter/chaos"
 material_property = true
-duration = 0.25
+duration = 0.375
 delay = 0.0
 transition = 5
 ease = 0

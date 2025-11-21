@@ -141,6 +141,7 @@ func _set_player_bg(entity : Entity):
 
 
 func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float, remain_on_base : bool):
+	return; # Temporarily disabled while we rethink backgrounds
 	if spell == null && _current_spell != null: 
 		# Disabling the following code in case we can later restore this functionality
 		# == DISABLED CODE ==

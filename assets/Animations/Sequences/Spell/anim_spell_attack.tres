@@ -38,7 +38,7 @@ remain_on_base = true
 
 [sub_resource type="Resource" id="Resource_fhloc"]
 script = ExtResource("2_st50u")
-frame = 2
+frame = 8
 frame_order = 3
 action = SubResource("Resource_60cch")
 
@@ -203,7 +203,7 @@ remain_on_base = false
 
 [sub_resource type="Resource" id="Resource_3jdo4"]
 script = ExtResource("2_st50u")
-frame = 28
+frame = 20
 frame_order = 4
 action = SubResource("Resource_dcvad")
 

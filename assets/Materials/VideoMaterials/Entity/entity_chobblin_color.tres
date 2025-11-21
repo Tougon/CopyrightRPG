@@ -3,7 +3,7 @@
 [ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_s20pt"]
 
 [sub_resource type="Gradient" id="Gradient_nmy6c"]
-colors = PackedColorArray(0.592448, 2.20198e-06, 4.33177e-07, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.38512, 0.2552, 0.58, 1, 0.172833, 0.172833, 0.172833, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dugms"]
 gradient = SubResource("Gradient_nmy6c")
