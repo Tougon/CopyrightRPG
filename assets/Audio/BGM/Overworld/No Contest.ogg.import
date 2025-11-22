@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cmdilk2j631el"
+path="res://.godot/imported/No Contest.ogg-d80096bae536923acde25c22c1b44cdc.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/Overworld/No Contest.ogg"
+dest_files=["res://.godot/imported/No Contest.ogg-d80096bae536923acde25c22c1b44cdc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

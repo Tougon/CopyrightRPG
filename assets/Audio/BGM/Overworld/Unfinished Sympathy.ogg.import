@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdehaax6u8jud"
+path="res://.godot/imported/Unfinished Sympathy.ogg-30514ea1f8dde2dfb643ee68d93ab463.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/Overworld/Unfinished Sympathy.ogg"
+dest_files=["res://.godot/imported/Unfinished Sympathy.ogg-30514ea1f8dde2dfb643ee68d93ab463.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=11.404
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -139,14 +139,14 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_7nfh4"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 4
-odds = 0.4
+odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 1
 max_enemies = 2
 enemy_count_curve = SubResource("Curve_in7mb")
 required_enemies = Array[int]([])
-additional_enemies = Array[int]([4, 6])
+additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_6781o")
 
 [sub_resource type="Curve" id="Curve_jsgub"]
@@ -428,7 +428,7 @@ free_camera = NodePath("Free PhantomCamera")
 canvas_modulate = NodePath("UI/CanvasModulate")
 background_void = NodePath("UI/Void")
 flee_group_grow_rate = 0.3
-bgm_id = "unfinished_sympathy"
+bgm_id = "broken_glass"
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -662,10 +662,23 @@ visible = false
 
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 4290)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 encounter_reroll_rate = 0.6
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)/Area2D" index="0"]
+position = Vector2(0, 354)
+shape = SubResource("RectangleShape2D_eqpnf")
+
+[node name="EncounterArea (Low)2" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
+position = Vector2(508, 4290)
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
+grace_period = 0.0
+minimum_encounter_chance = 1.0
+encounter_increase_rate = 1.0
+encounter_reroll_rate = 0.0
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)2/Area2D" index="0"]
 position = Vector2(0, 354)
 shape = SubResource("RectangleShape2D_eqpnf")
 
@@ -711,7 +724,7 @@ encounter_reroll_rate = 0.0
 position = Vector2(45.5, -49.5)
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("37_j44eh")]
-position = Vector2(512, 4105)
+position = Vector2(512, 4750)
 run_multiplier = 1.75
 
 [node name="Floors (Teleport)" type="Node2D" parent="."]
@@ -1230,7 +1243,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(512, 4025)
+position = Vector2(512, 4670)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -1242,7 +1255,7 @@ script = ExtResource("42_1yuub")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(512, 4025)
+position = Vector2(512, 4670)
 script = ExtResource("43_y1qfp")
 priority = 1
 follow_mode = 5
@@ -1268,6 +1281,7 @@ draw_limits = true
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)"]
+[editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)2"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Mid)"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Top)"]
 [editable path="Areas/TestArea FR/G/Camera Area"]

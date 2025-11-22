@@ -266,6 +266,10 @@ func _action_phase():
 			entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
 			# Looks bad on players for now but this is a sprite issue
 			entity.tween.play_tween_name("Entity Ready Up");
+			
+			if entity is PlayerController : AudioManager.play_sfx("player_act");
+			else : AudioManager.play_sfx("enemy_act");
+			
 			await get_tree().create_timer(0.2).timeout
 			await get_tree().process_frame;
 			

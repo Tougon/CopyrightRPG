@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=23 format=3 uid="uid://og0qk6g8xxb4"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=26 format=3 uid="uid://og0qk6g8xxb4"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_52l7r"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_overlay_texture.gd" id="2_jjafc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="4_f4x2t"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="5_ol612"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="6_l12cu"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/play_sfx.gd" id="6_tcckv"]
 
 [sub_resource type="Resource" id="Resource_8kaat"]
 script = ExtResource("2_jjafc")
@@ -155,8 +156,18 @@ frame = 60
 frame_order = 1
 action = SubResource("Resource_gipj6")
 
+[sub_resource type="Resource" id="Resource_y5i3i"]
+script = ExtResource("6_tcckv")
+sfx_key = "stat_lower"
+
+[sub_resource type="Resource" id="Resource_dnhh3"]
+script = ExtResource("1_52l7r")
+frame = 2
+frame_order = 10
+action = SubResource("Resource_y5i3i")
+
 [resource]
 script = ExtResource("6_l12cu")
 animation_name = "Stat Raise"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_52l7r")]([SubResource("Resource_bb3p7"), SubResource("Resource_l2pke"), SubResource("Resource_qan33"), SubResource("Resource_taqyx"), SubResource("Resource_t8as0"), SubResource("Resource_6na2o")])
+animation_sequence = Array[ExtResource("1_52l7r")]([SubResource("Resource_bb3p7"), SubResource("Resource_l2pke"), SubResource("Resource_qan33"), SubResource("Resource_taqyx"), SubResource("Resource_t8as0"), SubResource("Resource_6na2o"), SubResource("Resource_dnhh3")])

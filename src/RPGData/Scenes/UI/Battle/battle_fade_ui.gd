@@ -14,6 +14,8 @@ func _fade_action(fade_in : bool):
 	if fade_out_player : fade_out_player.get_parent().visible = !fade_in;
 	
 	if fade_in:
+		AudioManager.play_sfx("battle_in")
+		
 		if camera_fade_player != null :
 			camera_fade_player.play_tween_name("Transition Zoom In");
 		
@@ -24,6 +26,8 @@ func _fade_action(fade_in : bool):
 			fade_in_player.play_tween_name("Fade In");
 			await fade_in_player.tween_ended;
 	else:
+		AudioManager.play_sfx("battle_out")
+		
 		if fade_out_player != null :
 			fade_out_player.play_tween_name("Fade Out");
 			await fade_out_player.tween_ended;

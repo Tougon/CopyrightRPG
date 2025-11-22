@@ -171,7 +171,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 						if eff_instance.cast_success : eff_instance.on_activate();
 						if !eff_instance.applied : eff_instance.free();
 					
-					_play_seal_effects(seal, entity, flag);
+					_play_seal_effects(seal, entity, flag, false);
 	
 	return has_sealed;
 
@@ -189,12 +189,16 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 	return seal_count;
 
 
-func _play_seal_effects(seal : SealInstance, target : EntityController, show_only : TFlag = null) :
+func _play_seal_effects(seal : SealInstance, target : EntityController, show_only : TFlag = null, creating : bool = true) :
 	var vfx : Array[Node];
 	
 	for flag in seal_vfx:
 		if seal.seal_source.spell_flags.has(flag.flag) && (show_only == null || (show_only != null && flag.flag == show_only)):
 			vfx.append(_play_seal_effect(flag, target));
+			
+			if creating : AudioManager.play_sfx("seal_active");
+			else : AudioManager.play_sfx("seal_proc");
+			
 			await get_tree().create_timer(0.3).timeout;
 	
 	await get_tree().create_timer(1).timeout;

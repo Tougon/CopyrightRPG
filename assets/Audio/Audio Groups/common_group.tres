@@ -1,12 +1,22 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=7 format=3 uid="uid://vbiqobl25sbv"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=23 format=3 uid="uid://vbiqobl25sbv"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_tpp0k"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_dnokl"]
 
 [sub_resource type="Resource" id="Resource_xjkh2"]
 script = ExtResource("1_tpp0k")
-item_id = "no"
-item_path = "res://assets/Audio/SFX/no.ogg"
+item_id = "battle_start"
+item_path = "res://assets/Audio/SFX/battle_start.ogg"
+
+[sub_resource type="Resource" id="Resource_d1o4d"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_in"
+item_path = "res://assets/Audio/SFX/battle_in.ogg"
+
+[sub_resource type="Resource" id="Resource_0nf7k"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_out"
+item_path = "res://assets/Audio/SFX/battle_out.ogg"
 
 [sub_resource type="Resource" id="Resource_5gagl"]
 script = ExtResource("1_tpp0k")
@@ -23,6 +33,76 @@ script = ExtResource("1_tpp0k")
 item_id = "step_skid_common"
 item_path = "res://assets/Audio/SFX/step_skid.ogg"
 
+[sub_resource type="Resource" id="Resource_yxlli"]
+script = ExtResource("1_tpp0k")
+item_id = "player_act"
+item_path = "res://assets/Audio/SFX/player_act.ogg"
+
+[sub_resource type="Resource" id="Resource_wyrrp"]
+script = ExtResource("1_tpp0k")
+item_id = "enemy_act"
+item_path = "res://assets/Audio/SFX/enemy_act.ogg"
+
+[sub_resource type="Resource" id="Resource_fvtbx"]
+script = ExtResource("1_tpp0k")
+item_id = "heal"
+item_path = "res://assets/Audio/SFX/heal.ogg"
+
+[sub_resource type="Resource" id="Resource_xknkn"]
+script = ExtResource("1_tpp0k")
+item_id = "whoosh_high"
+item_path = "res://assets/Audio/SFX/whoosh_high.ogg"
+
+[sub_resource type="Resource" id="Resource_oyd2k"]
+script = ExtResource("1_tpp0k")
+item_id = "player_impact"
+item_path = "res://assets/Audio/SFX/player_impact.ogg"
+
+[sub_resource type="Resource" id="Resource_h4d0h"]
+script = ExtResource("1_tpp0k")
+item_id = "enemy_impact"
+item_path = "res://assets/Audio/SFX/enemy_impact.ogg"
+
+[sub_resource type="Resource" id="Resource_ecdm0"]
+script = ExtResource("1_tpp0k")
+item_id = "pulse"
+item_path = "res://assets/Audio/SFX/pulse.ogg"
+
+[sub_resource type="Resource" id="Resource_8riud"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_text_print_key"
+item_path = "res://assets/Audio/SFX/battle_text_print_key.ogg"
+
+[sub_resource type="Resource" id="Resource_l2pqv"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_text_print"
+item_path = "res://assets/Audio/SFX/battle_text_print_key.ogg"
+
+[sub_resource type="Resource" id="Resource_45iji"]
+script = ExtResource("1_tpp0k")
+item_id = "stat_raise"
+item_path = "res://assets/Audio/SFX/stat_raise.ogg"
+
+[sub_resource type="Resource" id="Resource_l2x2o"]
+script = ExtResource("1_tpp0k")
+item_id = "stat_lower"
+item_path = "res://assets/Audio/SFX/stat_lower.ogg"
+
+[sub_resource type="Resource" id="Resource_5xomw"]
+script = ExtResource("1_tpp0k")
+item_id = "defend"
+item_path = "res://assets/Audio/SFX/defend.ogg"
+
+[sub_resource type="Resource" id="Resource_yqr8g"]
+script = ExtResource("1_tpp0k")
+item_id = "seal_active"
+item_path = "res://assets/Audio/SFX/seal_active.ogg"
+
+[sub_resource type="Resource" id="Resource_fvq8y"]
+script = ExtResource("1_tpp0k")
+item_id = "seal_proc"
+item_path = "res://assets/Audio/SFX/seal_proc.ogg"
+
 [resource]
 script = ExtResource("2_dnokl")
-entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd")])
+entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_d1o4d"), SubResource("Resource_0nf7k"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd"), SubResource("Resource_yxlli"), SubResource("Resource_wyrrp"), SubResource("Resource_fvtbx"), SubResource("Resource_xknkn"), SubResource("Resource_oyd2k"), SubResource("Resource_h4d0h"), SubResource("Resource_ecdm0"), SubResource("Resource_8riud"), SubResource("Resource_l2pqv"), SubResource("Resource_45iji"), SubResource("Resource_l2x2o"), SubResource("Resource_5xomw"), SubResource("Resource_yqr8g"), SubResource("Resource_fvq8y")])

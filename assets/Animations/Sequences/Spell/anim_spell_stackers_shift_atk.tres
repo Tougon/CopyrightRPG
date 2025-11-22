@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=16 format=3 uid="uid://dup7ccjsbnc5e"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=21 format=3 uid="uid://dup7ccjsbnc5e"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_rrq2r"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="2_2b53e"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_sprite.gd" id="2_426n8"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="3_mt6jx"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="4_qbnh5"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/play_sfx.gd" id="5_wtyav"]
 
 [sub_resource type="Resource" id="Resource_h2eoj"]
 script = ExtResource("2_426n8")
@@ -75,8 +76,28 @@ frame = 70
 frame_order = 0
 action = SubResource("Resource_kt3v1")
 
+[sub_resource type="Resource" id="Resource_856dy"]
+script = ExtResource("5_wtyav")
+sfx_key = "pulse"
+
+[sub_resource type="Resource" id="Resource_nyknw"]
+script = ExtResource("1_rrq2r")
+frame = 5
+frame_order = 0
+action = SubResource("Resource_856dy")
+
+[sub_resource type="Resource" id="Resource_qfbhg"]
+script = ExtResource("5_wtyav")
+sfx_key = "pulse"
+
+[sub_resource type="Resource" id="Resource_ldh0f"]
+script = ExtResource("1_rrq2r")
+frame = 45
+frame_order = 0
+action = SubResource("Resource_qfbhg")
+
 [resource]
 script = ExtResource("4_qbnh5")
 animation_name = "Attack Shift"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_rrq2r")]([SubResource("Resource_0lbvq"), SubResource("Resource_x2r7v"), SubResource("Resource_o84if"), SubResource("Resource_vklp0"), SubResource("Resource_owc5u")])
+animation_sequence = Array[ExtResource("1_rrq2r")]([SubResource("Resource_0lbvq"), SubResource("Resource_x2r7v"), SubResource("Resource_o84if"), SubResource("Resource_vklp0"), SubResource("Resource_owc5u"), SubResource("Resource_nyknw"), SubResource("Resource_ldh0f")])

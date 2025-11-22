@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=7 format=3 uid="uid://v2gpdplk5e3f"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=9 format=3 uid="uid://v2gpdplk5e3f"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_d0iay"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_mfpne"]
@@ -6,23 +6,33 @@
 [sub_resource type="Resource" id="Resource_m8cui"]
 script = ExtResource("1_d0iay")
 item_id = "unfinished_sympathy"
-item_path = "res://assets/Audio/BGM/Unfinished Sympathy.ogg"
+item_path = "res://assets/Audio/BGM/Overworld/Unfinished Sympathy.ogg"
 
 [sub_resource type="Resource" id="Resource_pahdd"]
 script = ExtResource("1_d0iay")
 item_id = "mf2"
-item_path = "res://assets/Audio/BGM/MF2.ogg"
+item_path = "res://assets/Audio/BGM/Battle/MF2.ogg"
 
 [sub_resource type="Resource" id="Resource_xh4y1"]
 script = ExtResource("1_d0iay")
 item_id = "battle_lose"
-item_path = "res://assets/Audio/BGM/No Contest.ogg"
+item_path = "res://assets/Audio/BGM/Overworld/No Contest.ogg"
 
 [sub_resource type="Resource" id="Resource_6uw6f"]
 script = ExtResource("1_d0iay")
 item_id = "battle_win"
-item_path = "res://assets/Audio/BGM/No Contest.ogg"
+item_path = "res://assets/Audio/BGM/Overworld/No Contest.ogg"
+
+[sub_resource type="Resource" id="Resource_hptlk"]
+script = ExtResource("1_d0iay")
+item_id = "broken_glass"
+item_path = "res://assets/Audio/BGM/Overworld/Walking On Broken Glass.ogg"
+
+[sub_resource type="Resource" id="Resource_rchkq"]
+script = ExtResource("1_d0iay")
+item_id = "swamp_thing"
+item_path = "res://assets/Audio/BGM/Battle/Swamp Thing.ogg"
 
 [resource]
 script = ExtResource("2_mfpne")
-entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd"), SubResource("Resource_xh4y1"), SubResource("Resource_6uw6f")])
+entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd"), SubResource("Resource_xh4y1"), SubResource("Resource_6uw6f"), SubResource("Resource_hptlk"), SubResource("Resource_rchkq")])

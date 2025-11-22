@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dtfvja1p8q2m3"
+path="res://.godot/imported/Swamp Thing.ogg-7266be6bb695b106bfc5d1eae0640aa7.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/Battle/Swamp Thing.ogg"
+dest_files=["res://.godot/imported/Swamp Thing.ogg-7266be6bb695b106bfc5d1eae0640aa7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -192,7 +192,15 @@ func _on_player_items_changed(items : Dictionary, delta : Item):
 # Misc Functions
 func on_damage(crit : bool):
 	super.on_damage(crit);
+	
+	AudioManager.play_sfx("player_impact")
 	EventManager.on_player_take_damage.emit(is_defeated, crit, current_action == defend_action);
+
+
+func on_heal():
+	super.on_heal();
+	
+	AudioManager.play_sfx("heal")
 
 
 func _on_defeat_complete():

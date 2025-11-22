@@ -24,7 +24,7 @@ func _fade_action_battle(fade_in : bool):
 			fade_sequence.play_tween_name("Battle Fade Out");
 			
 			# Audio
-			EventManager.play_sfx.emit("no");
+			EventManager.play_sfx.emit("battle_start");
 		await fade_sequence.tween_ended;
 	
 	EventManager.overworld_battle_fade_completed.emit(fade_in);

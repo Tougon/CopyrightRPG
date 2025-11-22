@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=9 format=3 uid="uid://de4m0gaf7hq21"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=12 format=3 uid="uid://de4m0gaf7hq21"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_7ntr0"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="3_0wi62"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/play_sfx.gd" id="3_34t61"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="8_4gve2"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="9_1fk3u"]
 
@@ -22,6 +23,16 @@ frame = 5
 frame_order = 1
 action = SubResource("Resource_io85r")
 
+[sub_resource type="Resource" id="Resource_c2x0u"]
+script = ExtResource("3_34t61")
+sfx_key = "pulse"
+
+[sub_resource type="Resource" id="Resource_ch5on"]
+script = ExtResource("1_7ntr0")
+frame = 5
+frame_order = 2
+action = SubResource("Resource_c2x0u")
+
 [sub_resource type="Resource" id="Resource_kt3v1"]
 script = ExtResource("8_4gve2")
 
@@ -35,4 +46,4 @@ action = SubResource("Resource_kt3v1")
 script = ExtResource("9_1fk3u")
 animation_name = "Do Nothing"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_7ntr0")]([SubResource("Resource_x2r7v"), SubResource("Resource_owc5u")])
+animation_sequence = Array[ExtResource("1_7ntr0")]([SubResource("Resource_x2r7v"), SubResource("Resource_ch5on"), SubResource("Resource_owc5u")])

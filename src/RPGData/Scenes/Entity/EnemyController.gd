@@ -43,6 +43,12 @@ func _set_seal_id(id : int):
 		seal_effect = seal_effect_list.pick_random();
 
 
+func on_damage(crit : bool):
+	super.on_damage(crit);
+	
+	AudioManager.play_sfx("enemy_impact")
+
+
 func _on_defeat_complete():
 	super._on_defeat_complete();
 	

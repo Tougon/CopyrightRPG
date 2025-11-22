@@ -207,6 +207,11 @@ func _print_by_word(text : String):
 		
 		var word = _parse_bbcode(splits[n], post_bb);
 		
+		if _active_bbcode.size() > 0 :
+			AudioManager.play_sfx("battle_text_print_key", 0.5);
+		else :
+			AudioManager.play_sfx("battle_text_print", 0.5);
+		
 		# Check if the width will exceed the line
 		var text_pos = text_label.get_theme_font("normal_font", "RichTextLabel").get_string_size("" + (current_line + word + punctuation).to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, text_label.get_theme_font_size("normal_font_size"));
 		
