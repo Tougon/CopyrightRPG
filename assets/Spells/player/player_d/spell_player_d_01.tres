@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Spell" load_steps=34 format=3 uid="uid://c7c5rw2e2syjj"]
 
-[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_jlp4f"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_f62k4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_wbtxl"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_55ker"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_l4lmd"]
@@ -139,9 +139,9 @@ spell_flags = Array[ExtResource("5_4fj2f")]([ExtResource("18_sdc5c")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
-animation_sequence = ExtResource("1_jlp4f")
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
+animation_sequence = ExtResource("1_f62k4")
+spell_videos = Array[String](["res://video/spell/video_spell_toss.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playerd_00.tres"])
 effects_on_hit = Array[ExtResource("1_wbtxl")]([SubResource("Resource_73aei")])
 effects_on_success = Array[ExtResource("1_wbtxl")]([])
 properties = Array[ExtResource("3_qdin7")]([])

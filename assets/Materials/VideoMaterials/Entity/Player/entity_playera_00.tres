@@ -1,22 +1,23 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b667ibwrt725c"]
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dp5ic0hxd1ofy"]
 
-[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_g82e7"]
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_r1084"]
 
 [sub_resource type="Gradient" id="Gradient_bgvb5"]
-colors = PackedColorArray(0.38, 0.25745, 0.209, 1, 0.85, 0.799, 0.4675, 1)
+offsets = PackedFloat32Array(0, 0.938005, 1)
+colors = PackedColorArray(0.38, 0.25745, 0.209, 1, 0.7, 0.658, 0.385, 1, 0.380392, 0.258824, 0.207843, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_uw1op"]
 gradient = SubResource("Gradient_bgvb5")
 
 [resource]
-shader = ExtResource("1_g82e7")
+shader = ExtResource("1_r1084")
 shader_parameter/screen_height = 720.0
 shader_parameter/amplitude = 0.1
 shader_parameter/frequency = 3.5
-shader_parameter/speed = 2.0
+shader_parameter/speed = 0.2
 shader_parameter/amplitude_vertical = 0.1
 shader_parameter/frequency_vertical = 2.0
-shader_parameter/speed_vertical = 2.0
+shader_parameter/speed_vertical = 0.2
 shader_parameter/scroll_direction = Vector2(0, 0)
 shader_parameter/scrolling_speed = 0.0
 shader_parameter/enable_palette_cycling = true
@@ -27,7 +28,7 @@ shader_parameter/enable_pixelate = true
 shader_parameter/pixel_size = 96
 shader_parameter/transition = 1.0
 shader_parameter/time_offset = 0.5
-shader_parameter/time_scale = 1.1
+shader_parameter/time_scale = 1.0
 shader_parameter/use_manual_time = false
 shader_parameter/manual_time = null
 shader_parameter/palette = SubResource("GradientTexture2D_uw1op")
