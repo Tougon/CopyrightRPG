@@ -547,7 +547,9 @@ func _action_phase():
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		
-		EventManager.on_entity_turn_end.emit(entity);
+		# Don't process normal end turn calls if the battle has ended
+		if !(_all_players_defeated() || _all_enemies_defeated()) :
+			EventManager.on_entity_turn_end.emit(entity);
 		
 		# Required in case any entity has been defeated from an effect
 		if !_spawning :
@@ -597,13 +599,21 @@ func _get_spell_hit_messages(entity : EntityController, spell_cast : Array[Spell
 			else : 
 				output.append(format_dialogue(tr("T_BATTLE_ACTION_CRITICAL_GENERIC"), spell.target.param.entity_name, spell.target.current_entity));
 		
-		var damage_msg = format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
+		var damage_msg = "";
+		
+		if spell.spell is DamageSpell && (spell.spell as DamageSpell).negate :
+			damage_msg = format_dialogue(tr("T_BATTLE_ACTION_HEAL"), spell.target.param.entity_name, spell.target.current_entity);
+		else :
+			damage_msg = format_dialogue(tr("T_BATTLE_ACTION_DAMAGE"), spell.target.param.entity_name, spell.target.current_entity);
 		damage_msg = damage_msg.format({damage = str(spell.get_damage_applied())});
 		output.append(damage_msg);
 	elif spell.get_damage_applied() == 0 && spell.effects.size() == 0:
 		for hit in spell.hits:
 			if hit :
-				output.append(format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+				if spell.spell is DamageSpell && (spell.spell as DamageSpell).negate :
+					output.append(format_dialogue(tr("T_BATTLE_ACTION_NO_HEAL_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
+				else :
+					output.append(format_dialogue(tr("T_BATTLE_ACTION_NO_DAMAGE_SINGLE"), spell.target.param.entity_name, spell.target.current_entity));
 
 
 func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[SpellCast], spell : SpellCast, output : Array[String]):

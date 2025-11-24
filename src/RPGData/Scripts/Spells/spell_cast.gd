@@ -120,10 +120,16 @@ func get_damage_applied() -> int:
 	
 	for i in damage.size():
 		
-		if result + damage[i] > target.current_hp:
-			return target.current_hp;
-		
-		result += damage[i];
+		if damage[i] >  0 :
+			if result + damage[i] > target.current_hp:
+				return target.current_hp;
+			
+			result += damage[i];
+		else :
+			if target.current_hp + result + abs(damage[i]) > target.max_hp:
+				return target.max_hp - target.current_hp;
+			
+			result += abs(damage[i]);
 	
 	return result;
 

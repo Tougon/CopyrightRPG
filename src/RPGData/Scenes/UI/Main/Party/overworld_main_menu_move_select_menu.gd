@@ -6,7 +6,6 @@ var _target_index : int;
 var _current_spell : Spell;
 var _current_player_data : PartyMemberData;
 var _current_player_entity : Entity;
-var _current_player_material : Material;
 var _spell_to_item_id : Dictionary;
 
 var _materials : Array[Material];
@@ -33,7 +32,6 @@ func _on_player_move_selected(move_index : int, player_data : PartyMemberData, e
 	_target_index = move_index;
 	_current_player_data = player_data;
 	_current_player_entity = entity;
-	_current_player_material = load_material(_current_player_entity.entity_thought_pattern_material);
 	
 	_refresh_move_ui();
 
@@ -173,12 +171,11 @@ func _on_item_selected(data):
 
 
 func _load_spell_data(move : Spell):
-	_current_frame = 1;
+	_current_frame = 0;
 	_current_animation = null;
 	await get_tree().process_frame;
 	_current_animation = move.animation_sequence;
 	
-	$"BG/Move Select Items/Move Visuals/Vid".material = _current_player_material;
 	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 	
 	if move.spell_videos != null && move.spell_videos.size() > 0:
@@ -190,6 +187,7 @@ func _load_spell_data(move : Spell):
 		
 		# TODO: Delete
 		var video = null;
+		if _videos.size() > 0 : video = _videos[0];
 		
 		if video != null : 
 			$"BG/Move Select Items/Move Visuals/Vid".stream = video;
@@ -203,6 +201,9 @@ func _load_spell_data(move : Spell):
 		
 		for i in move.spell_video_materials.size():
 			_materials.append(load_material(move.spell_video_materials[i]));
+			
+			if i == 0 :
+				$"BG/Move Select Items/Move Visuals/Vid".material = _materials[i]
 		#print(_materials.size());
 	
 	_animation_loop();
@@ -259,7 +260,7 @@ func _change_material(index : int, use_entity_palette : bool, palette_transition
 		
 		if use_entity_palette :
 			vplayer.material.set_shader_parameter("transition_palette", previous);
-			vplayer.material.set_shader_parameter("palette", _current_player_material.get_shader_parameter("palette"));
+			#vplayer.material.set_shader_parameter("palette", _current_player_material.get_shader_parameter("palette"));
 		else:
 			vplayer.material.set_shader_parameter("transition_palette", previous);
 		
