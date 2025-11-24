@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bogmi7i4200eq"]
+
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_l17ua"]
+
+[sub_resource type="Gradient" id="Gradient_aklkr"]
+colors = PackedColorArray(0.1584, 0.66, 0.46772, 1, 0.2511, 0.34162, 0.93, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ql2q"]
+gradient = SubResource("Gradient_aklkr")
+
+[resource]
+shader = ExtResource("1_l17ua")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.1
+shader_parameter/frequency = 0.2
+shader_parameter/speed = 0.1
+shader_parameter/amplitude_vertical = 0.2
+shader_parameter/frequency_vertical = 2.0
+shader_parameter/speed_vertical = -0.4
+shader_parameter/scroll_direction = Vector2(0, -1)
+shader_parameter/scrolling_speed = 0.1
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/scan_line_mod = 4
+shader_parameter/palette_speed = 0.2
+shader_parameter/enable_pixelate = true
+shader_parameter/pixel_size = 96
+shader_parameter/transition = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/use_manual_time = false
+shader_parameter/manual_time = null
+shader_parameter/palette = SubResource("GradientTexture2D_8ql2q")

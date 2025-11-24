@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dh5y7dfyi2pse"
+path="res://.godot/imported/Jungle High.ogg-4f29d66590295bffac80dcab224c2207.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/Battle/Jungle High.ogg"
+dest_files=["res://.godot/imported/Jungle High.ogg-4f29d66590295bffac80dcab224c2207.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

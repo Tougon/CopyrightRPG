@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=9 format=3 uid="uid://v2gpdplk5e3f"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=22 format=3 uid="uid://v2gpdplk5e3f"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_d0iay"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_mfpne"]
@@ -33,6 +33,71 @@ script = ExtResource("1_d0iay")
 item_id = "swamp_thing"
 item_path = "res://assets/Audio/BGM/Battle/Swamp Thing.ogg"
 
+[sub_resource type="Resource" id="Resource_h46pr"]
+script = ExtResource("1_d0iay")
+item_id = "3kilos"
+item_path = "res://assets/Audio/BGM/Battle/3 Kilos.ogg"
+
+[sub_resource type="Resource" id="Resource_owfto"]
+script = ExtResource("1_d0iay")
+item_id = "full_throttle"
+item_path = "res://assets/Audio/BGM/Battle/Full Throttle.ogg"
+
+[sub_resource type="Resource" id="Resource_3jdh4"]
+script = ExtResource("1_d0iay")
+item_id = "giant"
+item_path = "res://assets/Audio/BGM/Battle/Giant.ogg"
+
+[sub_resource type="Resource" id="Resource_i0hvm"]
+script = ExtResource("1_d0iay")
+item_id = "insects"
+item_path = "res://assets/Audio/BGM/Battle/Insects.ogg"
+
+[sub_resource type="Resource" id="Resource_8jvcl"]
+script = ExtResource("1_d0iay")
+item_id = "jungle_high"
+item_path = "res://assets/Audio/BGM/Battle/Jungle High.ogg"
+
+[sub_resource type="Resource" id="Resource_k4ayl"]
+script = ExtResource("1_d0iay")
+item_id = "komit"
+item_path = "res://assets/Audio/BGM/Battle/Komit.ogg"
+
+[sub_resource type="Resource" id="Resource_akckc"]
+script = ExtResource("1_d0iay")
+item_id = "nitrogen"
+item_path = "res://assets/Audio/BGM/Battle/Nitrogen.ogg"
+
+[sub_resource type="Resource" id="Resource_fsb3k"]
+script = ExtResource("1_d0iay")
+item_id = "poison"
+item_path = "res://assets/Audio/BGM/Battle/Poison.ogg"
+
+[sub_resource type="Resource" id="Resource_3h73r"]
+script = ExtResource("1_d0iay")
+item_id = "razorback"
+item_path = "res://assets/Audio/BGM/Battle/Razorback.ogg"
+
+[sub_resource type="Resource" id="Resource_kmxfl"]
+script = ExtResource("1_d0iay")
+item_id = "rotorblade"
+item_path = "res://assets/Audio/BGM/Battle/Rotorblade.ogg"
+
+[sub_resource type="Resource" id="Resource_njjft"]
+script = ExtResource("1_d0iay")
+item_id = "scienide"
+item_path = "res://assets/Audio/BGM/Battle/Scienide.ogg"
+
+[sub_resource type="Resource" id="Resource_nnw0k"]
+script = ExtResource("1_d0iay")
+item_id = "speedway"
+item_path = "res://assets/Audio/BGM/Battle/Speedway.ogg"
+
+[sub_resource type="Resource" id="Resource_fkmln"]
+script = ExtResource("1_d0iay")
+item_id = "voyager304"
+item_path = "res://assets/Audio/BGM/Battle/Voyager 304.ogg"
+
 [resource]
 script = ExtResource("2_mfpne")
-entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd"), SubResource("Resource_xh4y1"), SubResource("Resource_6uw6f"), SubResource("Resource_hptlk"), SubResource("Resource_rchkq")])
+entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd"), SubResource("Resource_xh4y1"), SubResource("Resource_6uw6f"), SubResource("Resource_hptlk"), SubResource("Resource_rchkq"), SubResource("Resource_h46pr"), SubResource("Resource_owfto"), SubResource("Resource_3jdh4"), SubResource("Resource_i0hvm"), SubResource("Resource_8jvcl"), SubResource("Resource_k4ayl"), SubResource("Resource_akckc"), SubResource("Resource_fsb3k"), SubResource("Resource_3h73r"), SubResource("Resource_kmxfl"), SubResource("Resource_njjft"), SubResource("Resource_nnw0k"), SubResource("Resource_fkmln")])

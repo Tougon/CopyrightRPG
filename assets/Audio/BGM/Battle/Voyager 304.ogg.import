@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dxcdajcfhgfnc"
+path="res://.godot/imported/Voyager 304.ogg-494555b9a932505eedeaa47ad9f8a79d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/Battle/Voyager 304.ogg"
+dest_files=["res://.godot/imported/Voyager 304.ogg-494555b9a932505eedeaa47ad9f8a79d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

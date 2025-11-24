@@ -34,7 +34,7 @@ func initialize_data(auto : bool):
 	
 	if auto :
 		print("REMOVE THIS LATER")
-		current_save.inventory[7] = 3;
+		current_save.inventory[10] = 3;
 
 
 func initialize_party_data(auto : bool):
@@ -55,7 +55,7 @@ func initialize_party_data(auto : bool):
 		member.exp = 0;
 		member.unlocked = auto;
 		member.move_list = move_list;
-		member.hp_value = entity.get_hp(member.level) - 20;
+		member.hp_value = entity.get_hp(member.level);
 		member.mp_value = entity.get_mp(member.level);
 		party_data.append(member);
 
