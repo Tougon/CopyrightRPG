@@ -610,7 +610,7 @@ position = Vector2(0, -123)
 position = Vector2(-478, 4919)
 scale = Vector2(-1, 1)
 default_dialogue = "common_bench_rest"
-object_id = "bench_l_01"
+object_id = "bench_l_02"
 
 [node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02" index="0"]
 material = SubResource("ShaderMaterial_evoju")

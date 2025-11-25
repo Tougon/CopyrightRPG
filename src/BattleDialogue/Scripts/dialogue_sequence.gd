@@ -55,6 +55,7 @@ func unhandled_input(event : InputEvent) -> bool:
 				canvas.skip_dialogue_to_end();
 			else :
 				canvas.clear_dialogue();
+				#print("ENDING DIALOGUE SEQUENCE ADV");
 				sequence_end();
 			
 			return true;

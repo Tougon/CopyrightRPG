@@ -50,6 +50,7 @@ func _on_sequence_ended():
 		EventManager.on_sequence_queue_empty.emit();
 	
 	await get_tree().process_frame;
+	await get_tree().process_frame;
 	prev_sequence.free();
 
 

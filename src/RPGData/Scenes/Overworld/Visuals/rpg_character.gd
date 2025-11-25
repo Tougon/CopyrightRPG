@@ -161,6 +161,7 @@ func _on_dialogue_end():
 
 func _exit_tree():
 	if _reparenting : return;
-	super._exit_tree();
+	
 	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
 	Dialogic.timeline_ended.disconnect(_on_dialogue_end);
+	super._exit_tree();

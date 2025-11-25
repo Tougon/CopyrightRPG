@@ -26,8 +26,8 @@ func sequence_loop():
 func sequence_end():
 	active = false;
 	sequence_ended.emit();
-	await tree.process_frame;
-	self.free();
+	#await tree.process_frame;
+	#self.free();
 
 
 func unhandled_input(event : InputEvent) -> bool:

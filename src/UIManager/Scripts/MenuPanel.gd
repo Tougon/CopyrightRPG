@@ -18,6 +18,7 @@ class_name MenuPanel
 var focused : bool;
 var _is_tweening_open : bool;
 var _is_tweening_close : bool;
+var _is_tweening_focus : bool
 var ui_manager;
 var tween_player : TweenPlayer;
 
@@ -62,7 +63,9 @@ func set_focus(state : bool):
 		
 		if tween_player != null && tween_player.has_tween("Focus"):
 			if delay_selection_until_focus :
-				tween_player.tween_ended.connect(_on_focus_anim_complete);
+				if !_is_tweening_focus:
+					_is_tweening_focus = true;
+					tween_player.tween_ended.connect(_on_focus_anim_complete);
 			
 			tween_player.play_tween_name("Focus");
 		else :
@@ -99,6 +102,7 @@ func set_focus(state : bool):
 
 
 func _on_focus_anim_complete(tween_name : String):
+	_is_tweening_focus = false;
 	tween_player.tween_ended.disconnect(_on_focus_anim_complete);
 	initial_selection.grab_focus();
 
