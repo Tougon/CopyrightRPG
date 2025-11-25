@@ -31,6 +31,7 @@ var _reserve_controllers : Array[EntityController];
 var _spawning = false;
 
 # Fleeing values
+var _panic_battle : bool = false;
 var _can_flee : bool = true;
 var _can_flee_this_turn : bool = true;
 
@@ -79,7 +80,12 @@ func begin_battle(params : BattleParams):
 	
 	_default_entity = params.enemies[0];
 	
+	_panic_battle = params.panic_battle;
+	
 	EventManager.on_battle_begin.emit(params);
+	
+	if _panic_battle :
+		AudioManager.play_bgm("full_throttle", 0, true, 0, 1);
 	
 	await get_tree().process_frame;
 	
@@ -856,7 +862,7 @@ func _on_enemy_register(entity : EntityController):
 		_reserve_controllers.append(entity);
 		return;
 	
-	if enemies.size() == 0 : 
+	if enemies.size() == 0 && !_panic_battle: 
 		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
 	
 	_adjust_enemy_name(entity);

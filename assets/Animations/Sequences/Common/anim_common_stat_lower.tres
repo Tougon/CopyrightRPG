@@ -47,7 +47,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_l2pke"]
 script = ExtResource("1_52l7r")
-frame = 2
+frame = 5
 frame_order = 0
 action = SubResource("Resource_bx424")
 
@@ -79,7 +79,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_qan33"]
 script = ExtResource("1_52l7r")
-frame = 2
+frame = 5
 frame_order = 1
 action = SubResource("Resource_yi51u")
 
@@ -162,12 +162,12 @@ sfx_key = "stat_lower"
 
 [sub_resource type="Resource" id="Resource_dnhh3"]
 script = ExtResource("1_52l7r")
-frame = 2
+frame = 5
 frame_order = 10
 action = SubResource("Resource_y5i3i")
 
 [resource]
 script = ExtResource("6_l12cu")
-animation_name = "Stat Raise"
+animation_name = "Stat Lower"
 hide_ui_on_start = true
 animation_sequence = Array[ExtResource("1_52l7r")]([SubResource("Resource_bb3p7"), SubResource("Resource_l2pke"), SubResource("Resource_qan33"), SubResource("Resource_taqyx"), SubResource("Resource_t8as0"), SubResource("Resource_6na2o"), SubResource("Resource_dnhh3")])

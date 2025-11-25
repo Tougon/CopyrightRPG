@@ -159,7 +159,6 @@ func _on_target_clicked(entity : EntityController):
 	if info:
 		if info.selected:
 			info.select_target();
-			AudioManager.play_sfx("battle_menu_confirm", 0.1);
 		else:
 			info.grab_focus();
 

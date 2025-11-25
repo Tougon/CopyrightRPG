@@ -69,3 +69,5 @@ func _on_pressed():
 func select_target():
 	player.current_target = targets;
 	player.is_ready = true;
+	
+	AudioManager.play_sfx("battle_menu_confirm", 0.1);

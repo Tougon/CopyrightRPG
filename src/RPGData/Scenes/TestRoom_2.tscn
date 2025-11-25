@@ -139,7 +139,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_7nfh4"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 4
-odds = 1.0
+odds = 0.4
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 1
@@ -664,7 +664,6 @@ visible = false
 
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 4290)
-enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 encounter_reroll_rate = 0.6
 

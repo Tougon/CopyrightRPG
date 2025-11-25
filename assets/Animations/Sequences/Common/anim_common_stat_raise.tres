@@ -47,7 +47,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_l2pke"]
 script = ExtResource("1_w34xk")
-frame = 2
+frame = 5
 frame_order = 0
 action = SubResource("Resource_bx424")
 
@@ -79,7 +79,7 @@ relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_qan33"]
 script = ExtResource("1_w34xk")
-frame = 2
+frame = 5
 frame_order = 1
 action = SubResource("Resource_yi51u")
 
@@ -162,7 +162,7 @@ sfx_key = "stat_raise"
 
 [sub_resource type="Resource" id="Resource_va5t0"]
 script = ExtResource("1_w34xk")
-frame = 2
+frame = 5
 frame_order = 10
 action = SubResource("Resource_op3vb")
 

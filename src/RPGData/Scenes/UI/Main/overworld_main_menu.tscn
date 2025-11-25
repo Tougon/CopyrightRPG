@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=146 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -607,6 +607,20 @@ play_on_start = false
 next_tween = ""
 
 [sub_resource type="Resource" id="Resource_3byi8"]
+script = ExtResource("6_i4er7")
+tween_name = "Close"
+tween_resource = ExtResource("12_u23bx")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_iv3es"]
+script = ExtResource("6_i4er7")
+tween_name = "Open"
+tween_resource = ExtResource("11_gsdjh")
+play_on_start = false
+next_tween = ""
+
+[sub_resource type="Resource" id="Resource_jnawg"]
 script = ExtResource("6_i4er7")
 tween_name = "Close"
 tween_resource = ExtResource("12_u23bx")
@@ -5836,6 +5850,7 @@ unfocus_on_open = false
 submenu = true
 initial_selection = NodePath("BGM Volume Slider")
 all_selections = [NodePath("BGM Volume Slider"), NodePath("SFX Volume Slider")]
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_iv3es"), SubResource("Resource_jnawg")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Options"]
 layout_mode = 1

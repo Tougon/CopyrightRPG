@@ -239,6 +239,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 		
 		if rand < _current_flee_group_chance :
 			params.can_flee = false;
+			params.panic_battle = true;
 			enemies.append_array(_current_flee_group);
 	
 	# Initialize player data
