@@ -1,6 +1,7 @@
 [wait time="0.3"]
 [play_sound_clip sfx="main_menu_submenu_close"]
 [change_level set_lvl="true" delta="10.0"]
+[modify_player_state all_targets="true" hp_percent_check="true" mp_percent_check="true" status="true"]
 The party is now Level 10.
 [wait time="0.5"]
 [end_timeline]
