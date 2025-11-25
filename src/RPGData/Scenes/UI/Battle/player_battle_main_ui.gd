@@ -18,6 +18,9 @@ func _ready():
 	
 	for selection in all_selections:
 		selection.focus_entered.connect(_on_button_focus);
+		if selection is Button :
+			(selection as Button).button_down.connect(_on_button_down);
+			(selection as Button).pressed.connect(_on_button_up);
 
 
 func _enter_tree():
@@ -74,7 +77,14 @@ func on_focus():
 
 
 func _show_hide_status(show : bool):
+	var play_audio = show != $"Status Area".visible;
 	$"Status Area".visible = show;
+	
+	if play_audio :
+		if show :
+			AudioManager.play_sfx("battle_menu_aux", 0.1);
+		else :
+			AudioManager.play_sfx("battle_menu_cancel", 0.1);
 
 
 func _on_attack_button_pressed():
@@ -124,4 +134,13 @@ func _on_panel_removed():
 
 
 func _on_button_focus():
+	AudioManager.play_sfx("battle_menu_select", 0.1);
 	_show_hide_status(false);
+
+
+func _on_button_down():
+	AudioManager.play_sfx("battle_menu_press", 0.1);
+
+
+func _on_button_up():
+	AudioManager.play_sfx("battle_menu_confirm", 0.1);

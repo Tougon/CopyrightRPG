@@ -59,6 +59,7 @@ func set_sealing(_sealing : bool):
 
 func _on_pressed():
 	EventManager.on_action_selected.emit(action, sealing);
+	AudioManager.play_sfx("battle_menu_confirm", 0.1);
 
 
 func _on_focus_entered() :
@@ -68,3 +69,11 @@ func _on_focus_entered() :
 
 func _on_focus_exited() -> void:
 	flag_group.set_sealing(false);
+
+
+func _on_button_up() -> void:
+	pass;
+
+
+func _on_button_down() -> void:
+	AudioManager.play_sfx("battle_menu_press", 0.1);

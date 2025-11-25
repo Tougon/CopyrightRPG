@@ -942,6 +942,8 @@ func _on_player_menu_cancel(cancel_button : bool):
 		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
 		EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 		UIManager.open_menu_name("player_battle_main");
+		
+		AudioManager.play_sfx("battle_menu_cancel", 0.1);
 	# Only execute flee operations if the button was pressed
 	elif !cancel_button :
 		if _can_flee:

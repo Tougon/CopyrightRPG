@@ -618,12 +618,16 @@ current_entity = null
 [node name="Player UI" type="CanvasLayer" parent="UI"]
 
 [node name="Player Main Menu" parent="UI/Player UI" instance=ExtResource("6_uymxx")]
+delay_selection_until_focus = true
 
 [node name="Target Menu" parent="UI/Player UI" instance=ExtResource("8_q7178")]
+delay_selection_until_focus = true
 
 [node name="Player Magic Menu" parent="UI/Player UI" instance=ExtResource("11_og6hd")]
+delay_selection_until_focus = true
 
 [node name="Player Item Menu" parent="UI/Player UI" instance=ExtResource("20_dvxdd")]
+delay_selection_until_focus = true
 
 [node name="Dialogue Canvas" parent="UI" instance=ExtResource("9_4k33p")]
 offset = Vector2(0, 20)

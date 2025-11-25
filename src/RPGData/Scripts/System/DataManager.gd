@@ -34,7 +34,7 @@ func initialize_data(auto : bool):
 	
 	if auto :
 		print("REMOVE THIS LATER")
-		current_save.inventory[13] = 3;
+		#current_save.inventory[13] = 3;
 
 
 func initialize_party_data(auto : bool):

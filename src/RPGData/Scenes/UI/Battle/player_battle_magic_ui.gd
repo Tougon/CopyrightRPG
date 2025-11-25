@@ -121,6 +121,8 @@ func _on_action_highlighted(spell : Spell, cost : int, can_use : bool):
 	var current = (current_entity.current_mp as float) / (current_entity.max_mp as float)
 	
 	$"BG Area/Character Info".mp_bar.preview_value(percent, current);
+	
+	AudioManager.play_sfx("battle_menu_select", 0.1);
 
 
 func _get_bottom_row_start_index(size : int) -> int:
@@ -139,6 +141,7 @@ func on_unfocus():
 func on_menu_cancel():
 	current_entity.sealing = false;
 	UIManager.open_menu_name("player_battle_main");
+	AudioManager.play_sfx("battle_menu_cancel", 0.1);
 	super.on_menu_cancel();
 
 
@@ -147,6 +150,8 @@ func on_ui_aux_1():
 	
 	for button in all_selections:
 		(button as MagicButtonUI).set_sealing(is_sealing);
+	
+	AudioManager.play_sfx("battle_menu_aux", 0.1);
 	
 	super.on_ui_aux_1();
 
@@ -165,6 +170,11 @@ func on_ui_aux_2() :
 			var msg = tr(spell.spell_description_key);
 			EventManager.on_message_queue.emit(msg);
 			BattleScene.Instance.dialogue_canvas.skip_dialogue_to_end();
+	
+	
+	AudioManager.play_sfx("battle_menu_aux", 0.1);
+	
+	super.on_ui_aux_2();
 
 
 func _on_panel_removed():

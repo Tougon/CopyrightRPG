@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=23 format=3 uid="uid://vbiqobl25sbv"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=28 format=3 uid="uid://vbiqobl25sbv"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_tpp0k"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_dnokl"]
@@ -103,6 +103,31 @@ script = ExtResource("1_tpp0k")
 item_id = "seal_proc"
 item_path = "res://assets/Audio/SFX/seal_proc.ogg"
 
+[sub_resource type="Resource" id="Resource_tq8vy"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_menu_select"
+item_path = "res://assets/Audio/SFX/battle_menu_select.ogg"
+
+[sub_resource type="Resource" id="Resource_kw1vk"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_menu_confirm"
+item_path = "res://assets/Audio/SFX/battle_menu_confirm.ogg"
+
+[sub_resource type="Resource" id="Resource_ufxkw"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_menu_cancel"
+item_path = "res://assets/Audio/SFX/battle_menu_cancel.ogg"
+
+[sub_resource type="Resource" id="Resource_26fne"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_menu_aux"
+item_path = "res://assets/Audio/SFX/battle_menu_aux.ogg"
+
+[sub_resource type="Resource" id="Resource_27qad"]
+script = ExtResource("1_tpp0k")
+item_id = "battle_menu_press"
+item_path = "res://assets/Audio/SFX/battle_menu_press.ogg"
+
 [resource]
 script = ExtResource("2_dnokl")
-entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_d1o4d"), SubResource("Resource_0nf7k"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd"), SubResource("Resource_yxlli"), SubResource("Resource_wyrrp"), SubResource("Resource_fvtbx"), SubResource("Resource_xknkn"), SubResource("Resource_oyd2k"), SubResource("Resource_h4d0h"), SubResource("Resource_ecdm0"), SubResource("Resource_8riud"), SubResource("Resource_l2pqv"), SubResource("Resource_45iji"), SubResource("Resource_l2x2o"), SubResource("Resource_5xomw"), SubResource("Resource_yqr8g"), SubResource("Resource_fvq8y")])
+entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_d1o4d"), SubResource("Resource_0nf7k"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd"), SubResource("Resource_yxlli"), SubResource("Resource_wyrrp"), SubResource("Resource_fvtbx"), SubResource("Resource_xknkn"), SubResource("Resource_oyd2k"), SubResource("Resource_h4d0h"), SubResource("Resource_ecdm0"), SubResource("Resource_8riud"), SubResource("Resource_l2pqv"), SubResource("Resource_45iji"), SubResource("Resource_l2x2o"), SubResource("Resource_5xomw"), SubResource("Resource_yqr8g"), SubResource("Resource_fvq8y"), SubResource("Resource_tq8vy"), SubResource("Resource_kw1vk"), SubResource("Resource_ufxkw"), SubResource("Resource_26fne"), SubResource("Resource_27qad")])

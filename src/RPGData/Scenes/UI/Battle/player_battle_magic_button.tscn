@@ -97,6 +97,8 @@ custom_minimum_size = Vector2(18, 18)
 [node name="Null" parent="Flag Icon Group/Icon Container" index="8"]
 custom_minimum_size = Vector2(18, 18)
 
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

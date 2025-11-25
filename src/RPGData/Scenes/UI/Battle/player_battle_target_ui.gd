@@ -151,6 +151,7 @@ func _initialize_target_menu(entity : EntityController):
 
 func _on_target_highlighted(entity : EntityController, all : bool):
 	entity_info.set_specific_entity_info(entity, all);
+	AudioManager.play_sfx("battle_menu_select", 0.1);
 
 
 func _on_target_clicked(entity : EntityController):
@@ -158,12 +159,14 @@ func _on_target_clicked(entity : EntityController):
 	if info:
 		if info.selected:
 			info.select_target();
+			AudioManager.play_sfx("battle_menu_confirm", 0.1);
 		else:
 			info.grab_focus();
 
 
 func on_menu_cancel():
 	#UIManager.open_menu_name("player_battle_main");
+	AudioManager.play_sfx("battle_menu_cancel", 0.1);
 	super.on_menu_cancel();
 
 

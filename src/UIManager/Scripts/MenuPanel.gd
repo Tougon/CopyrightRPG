@@ -7,6 +7,7 @@ class_name MenuPanel
 @export var hide_on_unfocus : bool = false;
 @export var hide_when_inactive : bool = true;
 @export var unfocus_on_open : bool = true;
+@export var delay_selection_until_focus : bool = false;
 @export var submenu : bool = false;
 @export_group("Selections")
 @export var initial_selection : Control;
@@ -60,7 +61,13 @@ func set_focus(state : bool):
 		process_mode = Node.PROCESS_MODE_ALWAYS;
 		
 		if tween_player != null && tween_player.has_tween("Focus"):
+			if delay_selection_until_focus :
+				tween_player.tween_ended.connect(_on_focus_anim_complete);
+			
 			tween_player.play_tween_name("Focus");
+		else :
+			if delay_selection_until_focus :
+				initial_selection.grab_focus();
 		
 		on_focus();
 	
@@ -89,6 +96,11 @@ func set_focus(state : bool):
 		
 		if hide_on_unfocus:
 			self.hide();
+
+
+func _on_focus_anim_complete(tween_name : String):
+	tween_player.tween_ended.disconnect(_on_focus_anim_complete);
+	initial_selection.grab_focus();
 
 
 func on_focus():
