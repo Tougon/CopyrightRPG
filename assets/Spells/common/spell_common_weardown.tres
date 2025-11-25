@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=13 format=3 uid="uid://upxqelffyaqj"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_16gya"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_gdpwo"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_hwxim"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_ku2bg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_ocjm4"]
+[ext_resource type="Resource" uid="uid://5mcuhbf70h6c" path="res://assets/Effects/Common/effect_common_debuff_attack.tres" id="4_h4235"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_wdx3f"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_yngpy"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="7_a4smo"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="8_echj6"]
+
+[sub_resource type="Resource" id="Resource_gnikh"]
+script = ExtResource("3_ocjm4")
+chance = 1.0
+effect = ExtResource("4_h4235")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_xes5l"]
+script = ExtResource("1_16gya")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_ocjm4")]([SubResource("Resource_gnikh")])
+
+[resource]
+script = ExtResource("5_yngpy")
+spell_power = 0.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_wdx3f")]([])
+check_accuracy = true
+spell_accuracy = 90.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = false
+critical_chance = 16
+spell_name_key = "T_SPELL_GENERIC_WEARDOWN"
+spell_description_key = "T_SPELL_GENERIC_WEARDOWN_DESC"
+spell_cast_message_key = "T_CAST_STATUS_COMMON_WEARDOWN"
+spell_type = 4
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 14
+spell_priority = 0
+spell_flags = Array[ExtResource("4_wdx3f")]([ExtResource("7_a4smo"), ExtResource("8_echj6")])
+ignore_seals = false
+is_learnable = true
+will_save_as_prev = true
+animation_sequence = ExtResource("1_gdpwo")
+spell_videos = Array[String](["res://video/spell/video_spell_spitpoison.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_spitpoison.tres"])
+effects_on_hit = Array[ExtResource("1_16gya")]([SubResource("Resource_xes5l")])
+effects_on_success = Array[ExtResource("1_16gya")]([])
+properties = Array[ExtResource("3_ku2bg")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_hwxim")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_hwxim")]([])

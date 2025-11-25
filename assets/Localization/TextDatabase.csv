@@ -112,6 +112,7 @@ T_CAST_DAMAGE_COMMON_WICKEDSLASH,{article_def}{entity} slashes with {pronoun3} a
 T_CAST_STATUS_COMMON_RAMBLE,{article_def}{entity} begins lecturing!,,
 T_CAST_STATUS_COMMON_SPITPOISON,{article_def}{entity} insults {target}!,,
 T_CAST_STATUS_COMMON_TENSE,{article_def}{entity} tenses up!,,
+T_CAST_STATUS_COMMON_WEARDOWN,{article_def}{entity} lets their mind wander!,,
 
 T_CAST_GENERIC_PARTYWIPE,{article_def}{entity} wipes the party!,,
 
@@ -190,6 +191,9 @@ T_EFFECT_GENERIC_ATTACK_BOOST_TARGET_DEACTIVATE,{t_article_def}{t_entity}'s atta
 T_EFFECT_GENERIC_ATTACK_BOOST_TARGET_FAIL,{t_article_def}{t_entity}'s attack is maxed out!,,
 T_EFFECT_GENERIC_ATTACK_BOOST_TARGET_STACK,The effect of {t_article_def}{t_entity}'s attack boost was renewed!,,
 T_EFFECT_GENERIC_ATTACK_DROP_ACTIVATE,{t_article_def}{t_entity}'s attack fell!,,
+T_EFFECT_GENERIC_ATTACK_DROP_DEACTIVATE,{t_article_def}{t_entity}'s attack drop from {spell} wore off!,,
+T_EFFECT_GENERIC_ATTACK_DROP_FAIL,{t_article_def}{t_entity}'s attack can't go lower!,,
+T_EFFECT_GENERIC_ATTACK_DROP_STACK,The effect of {t_article_def}{t_entity}'s attack drop was renewed!,,
 T_EFFECT_GENERIC_ATTACK_DROP_LARGE_ACTIVATE,{t_article_def}{t_entity}'s attack harshly fell!,,
 T_EFFECT_GENERIC_DEFENSE_BOOST_ACTIVATE,{article_def}{entity}'s defense rose!,,
 T_EFFECT_GENERIC_DEFENSE_BOOST_DEACTIVATE,{article_def}{entity}'s defense boost from {spell} wore off!,,
@@ -414,6 +418,8 @@ T_SPELL_GENERIC_TRIATTACK,TriAttack,,
 T_SPELL_GENERIC_TRIATTACK_DESC,Perform a three hit combo.,,
 T_SPELL_GENERIC_TENSE,Tense,,
 T_SPELL_GENERIC_TENSE_DESC,Tense and relax your muscles to briefly increase your defense.,,
+T_SPELL_GENERIC_WEARDOWN,Stare Down,,
+T_SPELL_GENERIC_WEARDOWN_DESC,"Stare into space, catching a target off guard and lowering their attack power.",,
 T_SPELL_GENERIC_WICKEDSLASH,Wicked Slash,,
 T_SPELL_GENERIC_WICKEDSLASH_DESC,Strike a pose and unleash your secret technique. Has a high chance to deal critical damage.,,
 

@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="10_y5u6p"]
 [ext_resource type="Resource" uid="uid://c1lyjwvn6kcxd" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_attack.tres" id="11_qbskd"]
 [ext_resource type="Resource" uid="uid://cxruw607jap5m" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_multiattack.tres" id="12_kdhoa"]
-[ext_resource type="Resource" uid="uid://d3rg3mj0ah3i7" path="res://assets/Spells/common/spell_common_spitpoison.tres" id="13_rqe4t"]
+[ext_resource type="Resource" uid="uid://upxqelffyaqj" path="res://assets/Spells/common/spell_common_weardown.tres" id="16_gfuuj"]
 
 [sub_resource type="Curve" id="Curve_gylps"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -175,7 +175,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_a3olt"]
 script = ExtResource("5_3jw2l")
-spell = ExtResource("13_rqe4t")
+spell = ExtResource("16_gfuuj")
 level = 0
 
 [sub_resource type="Resource" id="Resource_aflc3"]
