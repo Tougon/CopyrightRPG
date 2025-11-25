@@ -869,6 +869,13 @@ func get_sprite_top_offset() -> Vector2:
 	return Vector2.ZERO;
 
 
+func get_sprite_bottom_offset() -> Vector2:
+	if current_entity != null :
+		return current_entity.foot_offset;
+	
+	return Vector2.ZERO;
+
+
 func _on_sprite_clicked():
 	EventManager.click_target.emit(self);
 

@@ -20,6 +20,8 @@ func entity_init(params : BattleParams):
 		level = roundi(lerpf(current_entity.min_level as float, current_entity.max_level as float, level_relative));
 		
 		seal_effect_list = current_entity.seal_effect_list;
+		
+		entity_ui.position = get_sprite_bottom_offset();
 	
 	super.entity_init(params)
 	await get_tree().process_frame;
