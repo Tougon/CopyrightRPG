@@ -44,7 +44,12 @@ directories/dch_directory={
 directories/dtl_directory={
 "common_bench_rest": "res://assets/Dialogue/Timelines/common_bench_rest.dtl",
 "demo_boss_sequence": "res://assets/Dialogue/Timelines/demo/demo_boss_sequence.dtl",
+"demo_decrease_lvl_1": "res://assets/Dialogue/Timelines/demo_decrease_lvl_1.dtl",
+"demo_increase_lvl_1": "res://assets/Dialogue/Timelines/demo_increase_lvl_1.dtl",
 "demo_intro": "res://assets/Dialogue/Timelines/demo_intro.dtl",
+"demo_set_lvl_1": "res://assets/Dialogue/Timelines/demo_set_lvl_1.dtl",
+"demo_set_lvl_10": "res://assets/Dialogue/Timelines/demo_set_lvl_10.dtl",
+"demo_set_lvl_5": "res://assets/Dialogue/Timelines/demo_set_lvl_5.dtl",
 "stop": "res://assets/Dialogue/Timelines/stop.dtl",
 "temp": "res://assets/Dialogue/Timelines/temp.dtl",
 "temp_cutscene": "res://assets/Dialogue/Timelines/temp_cutscene.dtl",

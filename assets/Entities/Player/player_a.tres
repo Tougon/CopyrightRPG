@@ -172,6 +172,7 @@ entity_sprites = Array[ExtResource("6_c31no")]([SubResource("Resource_whbe3")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = ""
 head_offset = Vector2(0, -100)
+foot_offset = Vector2(0, 0)
 entity_bgm_key = ""
 entity_video = ""
 entity_video_material = ""

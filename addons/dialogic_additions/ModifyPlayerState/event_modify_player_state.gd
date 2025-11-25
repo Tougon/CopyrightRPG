@@ -61,7 +61,7 @@ func _init() -> void:
 	event_name = "Modify Player State"
 	set_default_color('Color1')
 	event_category = "RPG"
-	event_sorting_index = 60
+	event_sorting_index = 50
 
 
 

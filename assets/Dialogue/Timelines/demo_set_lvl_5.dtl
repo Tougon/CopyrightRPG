@@ -1,0 +1,6 @@
+[wait time="0.3"]
+[play_sound_clip sfx="main_menu_submenu_close"]
+[change_level set_lvl="true" delta="5.0"]
+The party is now Level 5.
+[wait time="0.5"]
+[end_timeline]

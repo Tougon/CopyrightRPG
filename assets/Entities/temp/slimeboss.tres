@@ -440,6 +440,7 @@ entity_sprites = Array[ExtResource("14_qoaak")]([])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
 head_offset = Vector2(0, -50)
+foot_offset = Vector2(0, 0)
 entity_bgm_key = "MF2"
 entity_video = "res://video/boss.ogv"
 entity_video_material = "res://assets/Materials/VideoMaterials/entity_boss_test_00.tres"

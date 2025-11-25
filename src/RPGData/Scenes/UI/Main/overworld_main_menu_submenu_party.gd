@@ -61,11 +61,6 @@ func _set_entity_info(index : int):
 		$"Entity Stats Area/Entity Portrait Group/Portrait".texture = ResourceLoader.load(_current_player_entity.entity_sprites[0].sprites[3], "Texture2D") as Texture2D;
 	$"Entity Stats Area/Entity Portrait Group/Name/Label".text = tr(_current_player_entity.name_key);
 	
-	if _current_player_data.level < 10 :
-		$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = "0" + str(_current_player_data.level);
-	else :
-		$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(_current_player_data.level);
-	
 	_display_entity_stats();
 	_refresh_move_list();
 	_refresh_equipment_list();
@@ -75,6 +70,11 @@ func _set_entity_info(index : int):
 
 
 func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = null, equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon):
+	if _current_player_data.level < 10 :
+		$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = "0" + str(_current_player_data.level);
+	else :
+		$"Entity Stats Area/Entity Stats Group/Level/HBoxContainer/Value".text = str(_current_player_data.level);
+	
 	# Get current raw stat values
 	var param = _current_player_entity.create_entity_params(_current_player_data.level);
 	
@@ -306,6 +306,9 @@ func _on_equipment_item_highlighted(equipment : EquipmentItem, equipment_type : 
 # UI utility functions
 func set_active(state : bool):
 	if !state : cache_menu_state();
+	else :
+		if _current_player_data != null : _display_entity_stats();
+		
 	super.set_active(state);
 
 
