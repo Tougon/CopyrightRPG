@@ -13,6 +13,9 @@ const ENEMY_SEAL_INFINITE : bool = true;
 const ENEMY_SEAL_ALL_UNIQUE : bool = true;
 const ENEMY_SEAL_FORCE_GENERIC_NAME : bool = true;
 
+# Temporary mechanics
+const HEAL_ON_DEFEAT : bool = true;
+
 # Determines if text should print asynchonously
 # TODO: change to const
 var async_damage_text : bool = false;

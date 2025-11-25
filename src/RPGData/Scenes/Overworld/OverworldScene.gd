@@ -313,9 +313,18 @@ func _on_battle_end(result : BattleResult):
 	if !GameplayConstants.DEMO_MODE :
 		for i in result.players.size():
 			var player = result.players[i];
-			DataManager.party_data[player.id].hp_value = player.hp_offset;
-			DataManager.party_data[player.id].mp_value = player.mp_offset;
-			DataManager.party_data[player.id].status = player.status;
+			
+			# Very much a temp mechanic, delete this later
+			if BattleManager.HEAL_ON_DEFEAT :
+				var entity = DataManager.entity_database.get_entity(DataManager.party_data[player.id].id);
+				
+				DataManager.party_data[player.id].hp_value = entity.get_hp(DataManager.party_data[player.id].level);
+				DataManager.party_data[player.id].mp_value = entity.get_mp(DataManager.party_data[player.id].level);
+				DataManager.party_data[player.id].status = [];
+			else :
+				DataManager.party_data[player.id].hp_value = player.hp_offset;
+				DataManager.party_data[player.id].mp_value = player.mp_offset;
+				DataManager.party_data[player.id].status = player.status;
 			
 			if player.should_award_exp :
 				DataManager.party_data[player.id].level = player.override_level;

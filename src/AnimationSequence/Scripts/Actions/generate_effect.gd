@@ -29,11 +29,13 @@ func execute(sequence : AnimationSequence):
 	
 	if result == ResourceLoader.THREAD_LOAD_LOADED:
 		effect_scene = ResourceLoader.load_threaded_get(effect_scene_path) as PackedScene;
-	else :
+	elif ResourceLoader.exists(effect_scene_path, "PackedScene"):
 		ResourceLoader.load_threaded_request(effect_scene_path, "PackedScene");
 		result = ResourceLoader.load_threaded_get_status(effect_scene_path);
 		
 		while result == ResourceLoader.THREAD_LOAD_IN_PROGRESS :
+			if sequence == null :
+				return;
 			await sequence.tree.process_frame;
 		
 		effect_scene = ResourceLoader.load_threaded_get(effect_scene_path) as PackedScene;
