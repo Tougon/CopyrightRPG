@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=28 format=3 uid="uid://vbiqobl25sbv"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=38 format=3 uid="uid://vbiqobl25sbv"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_tpp0k"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_dnokl"]
@@ -128,6 +128,56 @@ script = ExtResource("1_tpp0k")
 item_id = "battle_menu_press"
 item_path = "res://assets/Audio/SFX/battle_menu_press.ogg"
 
+[sub_resource type="Resource" id="Resource_l2xgp"]
+script = ExtResource("1_tpp0k")
+item_id = "interactable_highlight"
+item_path = "res://assets/Audio/SFX/interactable_highlight.ogg"
+
+[sub_resource type="Resource" id="Resource_lkheb"]
+script = ExtResource("1_tpp0k")
+item_id = "interactable_unhighlight"
+item_path = "res://assets/Audio/SFX/interactable_unhighlight.ogg"
+
+[sub_resource type="Resource" id="Resource_yjnmu"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_open"
+item_path = "res://assets/Audio/SFX/main_menu_open.ogg"
+
+[sub_resource type="Resource" id="Resource_mwa3j"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_close"
+item_path = "res://assets/Audio/SFX/main_menu_close.ogg"
+
+[sub_resource type="Resource" id="Resource_u2kje"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_tab_change"
+item_path = "res://assets/Audio/SFX/main_menu_tab_change.ogg"
+
+[sub_resource type="Resource" id="Resource_d6ngq"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_select"
+item_path = "res://assets/Audio/SFX/main_menu_select.ogg"
+
+[sub_resource type="Resource" id="Resource_v2xiw"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_preview_glitch"
+item_path = "res://assets/Audio/SFX/main_menu_preview_glitch.ogg"
+
+[sub_resource type="Resource" id="Resource_gthg7"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_confirm"
+item_path = "res://assets/Audio/SFX/main_menu_confirm.ogg"
+
+[sub_resource type="Resource" id="Resource_ou8hu"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_radial_select"
+item_path = "res://assets/Audio/SFX/main_menu_radial_select.ogg"
+
+[sub_resource type="Resource" id="Resource_vatuj"]
+script = ExtResource("1_tpp0k")
+item_id = "main_menu_submenu_close"
+item_path = "res://assets/Audio/SFX/main_menu_submenu_close.ogg"
+
 [resource]
 script = ExtResource("2_dnokl")
-entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_d1o4d"), SubResource("Resource_0nf7k"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd"), SubResource("Resource_yxlli"), SubResource("Resource_wyrrp"), SubResource("Resource_fvtbx"), SubResource("Resource_xknkn"), SubResource("Resource_oyd2k"), SubResource("Resource_h4d0h"), SubResource("Resource_ecdm0"), SubResource("Resource_8riud"), SubResource("Resource_l2pqv"), SubResource("Resource_45iji"), SubResource("Resource_l2x2o"), SubResource("Resource_5xomw"), SubResource("Resource_yqr8g"), SubResource("Resource_fvq8y"), SubResource("Resource_tq8vy"), SubResource("Resource_kw1vk"), SubResource("Resource_ufxkw"), SubResource("Resource_26fne"), SubResource("Resource_27qad")])
+entries = Array[ExtResource("1_tpp0k")]([SubResource("Resource_xjkh2"), SubResource("Resource_d1o4d"), SubResource("Resource_0nf7k"), SubResource("Resource_5gagl"), SubResource("Resource_p1yjd"), SubResource("Resource_1kcvd"), SubResource("Resource_yxlli"), SubResource("Resource_wyrrp"), SubResource("Resource_fvtbx"), SubResource("Resource_xknkn"), SubResource("Resource_oyd2k"), SubResource("Resource_h4d0h"), SubResource("Resource_ecdm0"), SubResource("Resource_8riud"), SubResource("Resource_l2pqv"), SubResource("Resource_45iji"), SubResource("Resource_l2x2o"), SubResource("Resource_5xomw"), SubResource("Resource_yqr8g"), SubResource("Resource_fvq8y"), SubResource("Resource_tq8vy"), SubResource("Resource_kw1vk"), SubResource("Resource_ufxkw"), SubResource("Resource_26fne"), SubResource("Resource_27qad"), SubResource("Resource_l2xgp"), SubResource("Resource_lkheb"), SubResource("Resource_yjnmu"), SubResource("Resource_mwa3j"), SubResource("Resource_u2kje"), SubResource("Resource_d6ngq"), SubResource("Resource_v2xiw"), SubResource("Resource_gthg7"), SubResource("Resource_ou8hu"), SubResource("Resource_vatuj")])

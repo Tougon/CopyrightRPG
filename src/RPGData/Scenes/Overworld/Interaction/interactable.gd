@@ -72,8 +72,12 @@ func highlight(state : bool):
 	_highlighted = state;
 	
 	if highlight_icon != null :
-		if state : highlight_icon.tween.play_tween_name("Highlight");
-		else : highlight_icon.tween.play_tween_name("Unhighlight");
+		if state : 
+			highlight_icon.tween.play_tween_name("Highlight");
+			AudioManager.play_sfx("interactable_highlight", 0.05);
+		else : 
+			highlight_icon.tween.play_tween_name("Unhighlight");
+			AudioManager.play_sfx("interactable_unhighlight", 0.05);
 
 
 func interact():
@@ -112,4 +116,6 @@ func _on_dialogue_begin():
 
 func _on_dialogue_end():
 	if highlight_icon != null :
-		if _highlighted : highlight_icon.tween.play_tween_name("Highlight");
+		if _highlighted : 
+			highlight_icon.tween.play_tween_name("Highlight");
+			AudioManager.play_sfx("interactable_highlight", 0.05);

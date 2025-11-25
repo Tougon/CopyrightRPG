@@ -111,6 +111,10 @@ func on_unfocus():
 	pass;
 
 
+func is_active() -> bool:
+	return UIManager.active_menus.has(self);
+
+
 func get_all_children(in_node,arr:=[]):
 	arr.push_back(in_node)
 	for child in in_node.get_children():

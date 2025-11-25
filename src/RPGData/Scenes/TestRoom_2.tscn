@@ -117,7 +117,7 @@ shader_parameter/falloff_mask = ExtResource("46_atam0")
 size = Vector2(64, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbt72"]
-size = Vector2(61, 159)
+size = Vector2(82, 159)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5ogx"]
 size = Vector2(737, 459)
@@ -580,6 +580,8 @@ y_sort_enabled = true
 
 [node name="Bench L_01" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
 position = Vector2(1503, 4919)
+rotation = 3.14159
+scale = Vector2(-1, -1)
 default_dialogue = "common_bench_rest"
 object_id = "bench_l_01"
 
@@ -598,11 +600,11 @@ origin_offset = Vector2(0, 89)
 position = Vector2(0, -89)
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01/Collider" index="0"]
-position = Vector2(0.5, 12.5)
+position = Vector2(-10, 12.5)
 shape = SubResource("RectangleShape2D_hbt72")
 
 [node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01" index="2"]
-position = Vector2(0, -86)
+position = Vector2(0, -123)
 
 [node name="Bench L_02" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
 position = Vector2(-478, 4919)
@@ -625,11 +627,11 @@ origin_offset = Vector2(0, 89)
 position = Vector2(0, -89)
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02/Collider" index="0"]
-position = Vector2(0.5, 12.5)
+position = Vector2(-10, 12.5)
 shape = SubResource("RectangleShape2D_hbt72")
 
 [node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02" index="2"]
-position = Vector2(0, -86)
+position = Vector2(0, -123)
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 
@@ -662,6 +664,7 @@ visible = false
 
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 4290)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 encounter_reroll_rate = 0.6
 

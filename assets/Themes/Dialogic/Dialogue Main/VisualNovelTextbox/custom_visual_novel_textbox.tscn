@@ -1,11 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://dga05dkupahji"]
+[gd_scene load_steps=23 format=3 uid="uid://dga05dkupahji"]
 
 [ext_resource type="Script" path="res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/vn_textbox_layer.gd" id="1_bpydr"]
+[ext_resource type="AudioStream" uid="uid://b5tjtg0km6wf0" path="res://assets/Audio/SFX/text_box_close.ogg" id="2_4m7nh"]
 [ext_resource type="Script" path="res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/animations.gd" id="2_xy7a2"]
 [ext_resource type="Texture2D" uid="uid://dligk3b6lctcu" path="res://assets/Sprites/UI/Dialogue/ui_dialogue_border_left.png" id="3_054ht"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_4634k"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="3_cs6lb"]
 [ext_resource type="StyleBox" uid="uid://dkv1pl1c1dq6" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_default_panel.tres" id="3_ssa84"]
+[ext_resource type="AudioStream" uid="uid://bvdrolrfgosbg" path="res://assets/Audio/SFX/text_box_open.ogg" id="3_y36wo"]
 [ext_resource type="Texture2D" uid="uid://dlp4sbaplv4f8" path="res://assets/Sprites/UI/Dialogue/ui_dialogue_border_right.png" id="4_1dgj5"]
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="4_2jks3"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_ma5mw"]
@@ -239,6 +241,21 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(0, 256), Vector2(0, 0)]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Anchor/AnimationParent/Sizer/DialogTextPanel/TextBoxTransitionAudio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_4m7nh")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="Animation" id="Animation_htbgc"]
 resource_name = "textbox_pop"
@@ -339,6 +356,21 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Anchor/AnimationParent/Sizer/DialogTextPanel/TextBoxTransitionAudio")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_y36wo")
+}],
+"times": PackedFloat32Array(0.2)
+}
+tracks/8/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c14kh"]
 _data = {
@@ -517,6 +549,9 @@ script = ExtResource("7_bi7sh")
 animate_visibility = true
 name_label_root = NodePath("..")
 use_character_color = false
+
+[node name="TextBoxTransitionAudio" type="AudioStreamPlayer" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
+bus = &"SFX"
 
 [node name="Border Root" type="Control" parent="Anchor"]
 modulate = Color(1, 1, 1, 0)

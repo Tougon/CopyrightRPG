@@ -24,11 +24,24 @@ func _ready():
 	_set_entity_info(0);
 	
 	get_viewport().gui_focus_changed.connect(_on_gui_focus_changed);
+	
+	for i in all_selections.size():
+		if i < 9 :
+			(all_selections[i] as Button).focus_entered.connect(_on_button_focused);
+			(all_selections[i] as Button).pressed.connect(_on_button_pressed);
 
 
 func _on_gui_focus_changed(node: Node):
 	if focused && all_selections.has(node):
 		cursor.global_position = node.global_position;
+
+
+func _on_button_focused():
+	AudioManager.play_sfx("main_menu_select")
+
+
+func _on_button_pressed():
+	AudioManager.play_sfx("main_menu_confirm")
 
 
 # Party menu functions
@@ -56,6 +69,9 @@ func _set_entity_info(index : int):
 	_display_entity_stats();
 	_refresh_move_list();
 	_refresh_equipment_list();
+	
+	if is_active():
+		AudioManager.play_sfx("main_menu_preview_glitch");
 
 
 func _display_entity_stats(compare : bool = false, equipment : EquipmentItem = null, equipment_type : EquipmentItem.EquipmentType = EquipmentItem.EquipmentType.Weapon):

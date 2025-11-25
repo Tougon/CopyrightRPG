@@ -26,6 +26,7 @@ func _ready():
 	
 	menu_panel.on_item_highlighted.connect(_on_item_selected);
 	menu_panel.on_item_clicked.connect(_on_item_clicked);
+	menu_panel.on_scroll.connect(_on_scroll);
 
 
 func _on_player_move_selected(move_index : int, player_data : PartyMemberData, entity : Entity):
@@ -37,6 +38,12 @@ func _on_player_move_selected(move_index : int, player_data : PartyMemberData, e
 
 
 # UI Display Functions
+func set_active(state : bool):
+	if !state :
+		AudioManager.play_sfx("main_menu_submenu_close");
+	super.set_active(state);
+
+
 func on_focus():
 	super.on_focus();
 	await get_tree().process_frame;
@@ -290,6 +297,10 @@ func load_material(path : String) -> Material:
 		var mat = ResourceLoader.load(path, "Material") as Material;
 		return mat;
 	return null;
+
+
+func _on_scroll():
+	AudioManager.play_sfx("main_menu_radial_select");
 
 
 func _on_item_clicked(data):

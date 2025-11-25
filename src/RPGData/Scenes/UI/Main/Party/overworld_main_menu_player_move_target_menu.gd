@@ -33,6 +33,7 @@ func _on_player_selected(id : int):
 	
 	if _current_index != id :
 		preview_image.get_node("TweenPlayerUI").play_tween_name("Zap");
+		AudioManager.play_sfx("main_menu_preview_glitch");
 	_current_index = id;
 	
 	var hp_mod = _current_spell.cast_overworld(_current_user, id, true);
@@ -73,6 +74,8 @@ func _on_player_selected(id : int):
 		hp_bar_current.set_underlay_value((entity_data.hp_value - hp_mod) as float);
 	else:
 		hp_bar_current.set_underlay_value((user_data.hp_value) as float)
+	
+	AudioManager.play_sfx("main_menu_select");
 
 
 func _on_player_pressed(id : int):
@@ -83,7 +86,9 @@ func _on_player_pressed(id : int):
 	
 	if ! _current_spell.check_can_cast_overworld(_current_user, id) :
 		$"Visuals/Description".text = tr("T_ITEM_DESCRIPTION_NO_EFFECT");
+		AudioManager.play_sfx("pulse");
 	else :
+		AudioManager.play_sfx("main_menu_confirm");
 		# TODO: Does not handle status conditions properly. Applies to items as well
 		var result = _current_spell.cast_overworld(_current_user, id);
 		spell_used = true;
@@ -94,6 +99,8 @@ func _on_player_pressed(id : int):
 		# Play animation(s)
 		$"Visuals/Description".text = "";
 		$"Visuals/Player Info/Bars/HP".set_value(DataManager.party_data[id].hp_value);
+		
+		AudioManager.play_sfx("heal");
 		
 		mp_bar_current.set_value(DataManager.party_data[_current_user].mp_value);
 		
@@ -116,6 +123,11 @@ func _on_player_pressed(id : int):
 	
 	if DataManager.party_data[_current_user].mp_value < _current_spell.spell_cost:
 		UIManager.close_menu_name(self.menu_name);
+
+func set_active(state : bool):
+	if !state :
+		AudioManager.play_sfx("main_menu_submenu_close");
+	super.set_active(state);
 
 
 func on_menu_inactive():

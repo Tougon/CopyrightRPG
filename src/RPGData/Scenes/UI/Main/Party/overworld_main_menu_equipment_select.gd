@@ -36,6 +36,12 @@ func _on_player_equipment_selected(equipment_type : EquipmentItem.EquipmentType,
 
 
 # UI Display Functions
+func set_active(state : bool):
+	if !state :
+		AudioManager.play_sfx("main_menu_submenu_close");
+	super.set_active(state);
+
+
 func on_focus():
 	super.on_focus();
 	await get_tree().process_frame;
@@ -107,6 +113,8 @@ func _refresh_equipment_ui():
 
 func _on_scroll():
 	$"BG/Item Visuals/Equipment/TweenPlayerUI".play_tween_name("Zap");
+	AudioManager.play_sfx("main_menu_radial_select");
+	AudioManager.play_sfx("main_menu_preview_glitch");
 
 
 func _on_item_selected(data):

@@ -20,6 +20,7 @@ func on_ui_aux_2():
 
 func set_active(state : bool):
 	if !state : cache_menu_state();
+	else : AudioManager.play_sfx("main_menu_tab_change");
 	super.set_active(state);
 
 
