@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_01nfq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_1qc01"]
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="3_84l0i"]
+[ext_resource type="Resource" uid="uid://brtp5sutynbit" path="res://assets/Animations/Sequences/Common/anim_common_doom.tres" id="3_dojxf"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_pxrk3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_set_heal.gd" id="5_qrr0r"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="5_s6gtg"]
@@ -18,7 +18,7 @@ deactivate = true
 script = ExtResource("4_pxrk3")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_DOOM_ACTIVATE"
 target = 1
-animation = ExtResource("3_84l0i")
+animation = ExtResource("3_dojxf")
 
 [sub_resource type="Resource" id="Resource_7jo6x"]
 script = ExtResource("5_qrr0r")

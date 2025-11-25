@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmravcxdk67uk"]
+[gd_scene load_steps=5 format=3 uid="uid://bkbqsk1h685bk"]
 
-[ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_fw1lg"]
-[ext_resource type="Texture2D" uid="uid://bui1keto2i5cc" path="res://addons/Spellbook2D/shock.png" id="2_t7dp1"]
+[ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_n60o5"]
+[ext_resource type="Texture2D" uid="uid://bui1keto2i5cc" path="res://addons/Spellbook2D/shock.png" id="2_pqyy5"]
 
 [sub_resource type="Animation" id="Animation_jemqi"]
 resource_name = "zap"
@@ -25,11 +25,11 @@ _data = {
 "zap": SubResource("Animation_jemqi")
 }
 
-[node name="EntitySprite" instance=ExtResource("1_fw1lg")]
+[node name="EntitySprite" instance=ExtResource("1_n60o5")]
 
 [node name="Sprite2D" parent="." index="0"]
-modulate = Color(1, 1, 0, 1)
-texture = ExtResource("2_t7dp1")
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_pqyy5")
 hframes = 7
 
 [node name="AnimationPlayer" parent="." index="2"]

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_loh1o"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="3_n7xok"]
-[ext_resource type="Resource" uid="uid://dlyw6wjyooy3t" path="res://assets/Animations/Sequences/Common/anim_common_stunned.tres" id="4_ruwq3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="5_pot2d"]
+[ext_resource type="Resource" uid="uid://b6yt3celuvcfl" path="res://assets/Animations/Sequences/Common/anim_common_miserable_tick.tres" id="6_2nipw"]
 [ext_resource type="Resource" uid="uid://2sicxh21654y" path="res://assets/Animations/Sequences/Common/anim_common_miserable.tres" id="6_43d8i"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_nnbh6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="14_imft4"]
@@ -18,7 +18,7 @@ deactivate = true
 script = ExtResource("5_pot2d")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_ACTIVATE"
 target = 1
-animation = ExtResource("4_ruwq3")
+animation = ExtResource("6_43d8i")
 
 [sub_resource type="Resource" id="Resource_fdc8l"]
 script = ExtResource("6_nnbh6")
@@ -32,7 +32,7 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_STACK"
 script = ExtResource("5_pot2d")
 dialogue_key = "T_EFFECT_GENERIC_STATUS_MISERY_TICK"
 target = 1
-animation = ExtResource("6_43d8i")
+animation = ExtResource("6_2nipw")
 
 [resource]
 script = ExtResource("14_imft4")

@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=33 format=3 uid="uid://dlyw6wjyooy3t"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=33 format=3 uid="uid://brtp5sutynbit"]
 
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_u1ipk"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="2_f0166"]
-[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_mb8r4"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_uebke"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="5_uf725"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_hoex2"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="7_kvhar"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="8_0nkix"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="9_48m7s"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_br6xo"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="2_eyvoi"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="3_qa0mp"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_l03sa"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="5_55sdu"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="6_2c5w7"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="7_psj5t"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="8_fadqs"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="9_wquab"]
 
 [sub_resource type="Resource" id="Resource_q7i6f"]
-script = ExtResource("3_mb8r4")
+script = ExtResource("3_qa0mp")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_color"
 material_property = true
@@ -22,10 +22,10 @@ ease = 0
 relative = false
 "Use From" = false
 "Value Type" = 5
-"Color Value" = Color(1, 1, 1, 1)
+"Color Value" = Color(1, 0.847059, 0, 1)
 
 [sub_resource type="Resource" id="Resource_35glr"]
-script = ExtResource("2_f0166")
+script = ExtResource("2_eyvoi")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -37,13 +37,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_lqn7l"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 1
 frame_order = 0
 action = SubResource("Resource_35glr")
 
 [sub_resource type="Resource" id="Resource_ccbmd"]
-script = ExtResource("3_mb8r4")
+script = ExtResource("3_qa0mp")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_color_amount"
 material_property = true
@@ -57,7 +57,7 @@ relative = false
 "Float Value" = 0.5
 
 [sub_resource type="Resource" id="Resource_bx424"]
-script = ExtResource("2_f0166")
+script = ExtResource("2_eyvoi")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -69,13 +69,13 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_l2pke"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 2
 frame_order = 0
 action = SubResource("Resource_bx424")
 
 [sub_resource type="Resource" id="Resource_0uvtu"]
-script = ExtResource("3_mb8r4")
+script = ExtResource("3_qa0mp")
 target = "Sprite2D"
 property_name = "shader_parameter/overlay_color_amount"
 material_property = true
@@ -89,7 +89,7 @@ relative = false
 "Float Value" = 0.0
 
 [sub_resource type="Resource" id="Resource_4t0pj"]
-script = ExtResource("2_f0166")
+script = ExtResource("2_eyvoi")
 use_directionality = false
 target = 0
 effect_index = 0
@@ -101,34 +101,34 @@ relative_effect_index = 0
 relative_amount = 1.0
 
 [sub_resource type="Resource" id="Resource_45gcg"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 50
 frame_order = 0
 action = SubResource("Resource_4t0pj")
 
 [sub_resource type="Resource" id="Resource_gipj6"]
-script = ExtResource("4_uebke")
+script = ExtResource("4_l03sa")
 
 [sub_resource type="Resource" id="Resource_6na2o"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 70
 frame_order = 1
 action = SubResource("Resource_gipj6")
 
 [sub_resource type="Resource" id="Resource_qumjk"]
-script = ExtResource("5_uf725")
+script = ExtResource("5_55sdu")
 num_loops = 3
 loop_targets = false
 
 [sub_resource type="Resource" id="Resource_hf6ps"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 10
 frame_order = 0
 action = SubResource("Resource_qumjk")
 
 [sub_resource type="Resource" id="Resource_4k83e"]
-script = ExtResource("6_hoex2")
-effect_scene_path = "res://assets/VFX/Spells/Status/effect_status_zap.tscn"
+script = ExtResource("6_2c5w7")
+effect_scene_path = "res://assets/VFX/Spells/Status/effect_status_doom.tscn"
 relative = 0
 effect_index = 0
 effect_position = Vector2(0, 0)
@@ -143,52 +143,52 @@ scl_match_sequence_dir_y = false
 effect_variance = Vector2(150, 150)
 
 [sub_resource type="Resource" id="Resource_010jk"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 11
 frame_order = 0
 action = SubResource("Resource_4k83e")
 
 [sub_resource type="Resource" id="Resource_h17yo"]
-script = ExtResource("7_kvhar")
+script = ExtResource("7_psj5t")
 
 [sub_resource type="Resource" id="Resource_rd4mb"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 18
 frame_order = 0
 action = SubResource("Resource_h17yo")
 
 [sub_resource type="Resource" id="Resource_jo5d5"]
-script = ExtResource("5_uf725")
+script = ExtResource("5_55sdu")
 num_loops = 3
 loop_targets = false
 
 [sub_resource type="Resource" id="Resource_g8osk"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 37
 frame_order = 0
 action = SubResource("Resource_jo5d5")
 
 [sub_resource type="Resource" id="Resource_0pdyn"]
-script = ExtResource("8_0nkix")
+script = ExtResource("8_fadqs")
 effect_id = 0
 
 [sub_resource type="Resource" id="Resource_3bkxv"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 38
 frame_order = 0
 action = SubResource("Resource_0pdyn")
 
 [sub_resource type="Resource" id="Resource_wnpuv"]
-script = ExtResource("7_kvhar")
+script = ExtResource("7_psj5t")
 
 [sub_resource type="Resource" id="Resource_cwjlh"]
-script = ExtResource("1_u1ipk")
+script = ExtResource("1_br6xo")
 frame = 45
 frame_order = 0
 action = SubResource("Resource_wnpuv")
 
 [resource]
-script = ExtResource("9_48m7s")
+script = ExtResource("9_wquab")
 animation_name = "Stun"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_u1ipk")]([SubResource("Resource_lqn7l"), SubResource("Resource_l2pke"), SubResource("Resource_45gcg"), SubResource("Resource_6na2o"), SubResource("Resource_hf6ps"), SubResource("Resource_010jk"), SubResource("Resource_rd4mb"), SubResource("Resource_g8osk"), SubResource("Resource_3bkxv"), SubResource("Resource_cwjlh")])
+animation_sequence = Array[ExtResource("1_br6xo")]([SubResource("Resource_lqn7l"), SubResource("Resource_l2pke"), SubResource("Resource_45gcg"), SubResource("Resource_6na2o"), SubResource("Resource_hf6ps"), SubResource("Resource_010jk"), SubResource("Resource_rd4mb"), SubResource("Resource_g8osk"), SubResource("Resource_3bkxv"), SubResource("Resource_cwjlh")])
