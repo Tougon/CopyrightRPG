@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://qdkh8kbrn4yt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_2o3u4"]
-[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_5v1hr"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_jgste"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_jwm2u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_pv10f"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_djami"]
@@ -54,9 +54,9 @@ spell_flags = Array[ExtResource("4_djami")]([ExtResource("7_xvjxk"), ExtResource
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = true
-animation_sequence = ExtResource("1_5v1hr")
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
+animation_sequence = ExtResource("1_jgste")
+spell_videos = Array[String](["res://video/spell/video_spell_inferno.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_inferno.tres"])
 effects_on_hit = Array[ExtResource("1_2o3u4")]([])
 effects_on_success = Array[ExtResource("1_2o3u4")]([])
 properties = Array[ExtResource("3_pv10f")]([])

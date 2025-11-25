@@ -3,7 +3,8 @@
 [ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_s20pt"]
 
 [sub_resource type="Gradient" id="Gradient_nmy6c"]
-colors = PackedColorArray(0.38512, 0.2552, 0.58, 1, 0.172833, 0.172833, 0.172833, 1)
+offsets = PackedFloat32Array(0, 0.287749, 0.612536)
+colors = PackedColorArray(0.38512, 0.2552, 0.58, 1, 0.490791, 0, 0.164464, 1, 0.172833, 0.172833, 0.172833, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_dugms"]
 gradient = SubResource("Gradient_nmy6c")
@@ -12,13 +13,13 @@ gradient = SubResource("Gradient_nmy6c")
 shader = ExtResource("1_s20pt")
 shader_parameter/screen_height = 720.0
 shader_parameter/amplitude = 0.075
-shader_parameter/frequency = 0.1
-shader_parameter/speed = 0.1
+shader_parameter/frequency = 2.0
+shader_parameter/speed = 2.0
 shader_parameter/amplitude_vertical = 0.0
 shader_parameter/frequency_vertical = 0.0
 shader_parameter/speed_vertical = 0.0
-shader_parameter/scroll_direction = Vector2(0, 0)
-shader_parameter/scrolling_speed = 0.0
+shader_parameter/scroll_direction = Vector2(1, 0)
+shader_parameter/scrolling_speed = 0.3
 shader_parameter/enable_palette_cycling = true
 shader_parameter/enable_scan_lines = true
 shader_parameter/scan_line_mod = 4
