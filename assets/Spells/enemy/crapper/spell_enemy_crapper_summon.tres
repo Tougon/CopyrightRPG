@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=21 format=3 uid="uid://b643ctrfe24yl"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_fl7ci"]
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_qtxa7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_8mvfc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_6lcms"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_ri071"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_fitan"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_r6bh6"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_lwiwk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_num_entities.gd" id="5_qcnbb"]
+[ext_resource type="Resource" uid="uid://cauy0q3462jvi" path="res://assets/Entities/Enemies/scrubbles.tres" id="6_72fs3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_add_entity.gd" id="7_7vxv6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="8_wadsf"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="13_pyayv"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="14_y12lw"]
+
+[sub_resource type="Resource" id="Resource_20xt0"]
+script = ExtResource("5_qcnbb")
+target_number = 5
+check_target = 1
+check_mode = 2
+
+[sub_resource type="Resource" id="Resource_x5l83"]
+script = ExtResource("7_7vxv6")
+use_user = false
+entity_to_add = ExtResource("6_72fs3")
+
+[sub_resource type="Resource" id="Resource_um2ay"]
+script = ExtResource("8_wadsf")
+dialogue_key = "T_BATTLE_ACTION_FAIL"
+
+[sub_resource type="Resource" id="Resource_8sj7l"]
+script = ExtResource("3_6lcms")
+stackable = false
+effect_name = "Crapper Summon"
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_r6bh6")]([SubResource("Resource_20xt0")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_r6bh6")]([])
+on_activate = Array[ExtResource("4_r6bh6")]([SubResource("Resource_x5l83")])
+on_failed_to_activate = Array[ExtResource("4_r6bh6")]([SubResource("Resource_um2ay")])
+on_apply = Array[ExtResource("4_r6bh6")]([])
+on_move_selected = Array[ExtResource("4_r6bh6")]([])
+on_move_completed = Array[ExtResource("4_r6bh6")]([])
+on_deactivate = Array[ExtResource("4_r6bh6")]([])
+on_turn_start = Array[ExtResource("4_r6bh6")]([])
+on_turn_end = Array[ExtResource("4_r6bh6")]([])
+on_stack = Array[ExtResource("4_r6bh6")]([])
+
+[sub_resource type="Resource" id="Resource_rwm6v"]
+script = ExtResource("3_ri071")
+chance = 1.0
+effect = SubResource("Resource_8sj7l")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_rxpe7"]
+script = ExtResource("1_fl7ci")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_ri071")]([SubResource("Resource_rwm6v")])
+
+[resource]
+script = ExtResource("4_fitan")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_ENEMY_CRAPPER_SUMMON"
+spell_type = 2
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 8
+spell_priority = 0
+spell_flags = Array[ExtResource("5_lwiwk")]([ExtResource("13_pyayv"), ExtResource("14_y12lw")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_qtxa7")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_fl7ci")]([])
+effects_on_success = Array[ExtResource("1_fl7ci")]([SubResource("Resource_rxpe7")])
+properties = Array[ExtResource("3_6lcms")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_8mvfc")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_8mvfc")]([])

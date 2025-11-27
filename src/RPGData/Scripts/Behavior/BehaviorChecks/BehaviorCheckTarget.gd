@@ -3,6 +3,7 @@ extends BehaviorCheck
 class_name BehaviorCheckTarget
 
 @export var target : Entity;
+@export var target_id : int = -1;
 @export var default_state : bool;
 @export var use_self : bool;
 @export var check_all : bool = false;
@@ -10,6 +11,9 @@ class_name BehaviorCheckTarget
 func check(user : EntityController, allies : Array[EntityController], targets : Array[EntityController], result : BehaviorCheckResult) -> bool:
 	var entity = target;
 	if use_self : entity = user.current_entity;
+	
+	if entity == null && target_id >= 0 :
+		entity = DataManager.entity_database.get_entity(target_id);
 	
 	if check_target == CheckTarget.Self:
 		var state = user.current_entity == entity;

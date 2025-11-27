@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://d3rg3mj0ah3i7"]
+[gd_resource type="Resource" script_class="Spell" load_steps=14 format=3 uid="uid://d3rg3mj0ah3i7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_hya74"]
-[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_po8fn"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_l5ogb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_d1pac"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_d8s4t"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_mcmsq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_ck4si"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_anfu1"]
 [ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="10_u5xs7"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="11_tllpb"]
 
 [sub_resource type="Resource" id="Resource_c67wt"]
 script = ExtResource("3_mcmsq")
@@ -34,11 +35,11 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 24
 spell_priority = 0
-spell_flags = Array[ExtResource("5_ck4si")]([ExtResource("9_anfu1"), ExtResource("10_u5xs7")])
+spell_flags = Array[ExtResource("5_ck4si")]([ExtResource("9_anfu1"), ExtResource("10_u5xs7"), ExtResource("11_tllpb")])
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = true
-animation_sequence = ExtResource("1_po8fn")
+animation_sequence = ExtResource("1_l5ogb")
 spell_videos = Array[String](["res://video/spell/video_spell_spitpoison.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_spitpoison.tres"])
 effects_on_hit = Array[ExtResource("1_hya74")]([SubResource("Resource_yy2hc")])

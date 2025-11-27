@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDatabase" load_steps=18 format=3 uid="uid://dicsdl1lvm1rp"]
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=19 format=3 uid="uid://dicsdl1lvm1rp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database_entry.gd" id="1_pxlfu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database.gd" id="2_ruhu0"]
@@ -78,6 +78,11 @@ script = ExtResource("1_pxlfu")
 id = 14
 item_path = "res://assets/Items/Move Items/item_move_weardown.tres"
 
+[sub_resource type="Resource" id="Resource_02mup"]
+script = ExtResource("1_pxlfu")
+id = 15
+item_path = "res://assets/Items/Move Items/item_move_spitpoison.tres"
+
 [resource]
 script = ExtResource("2_ruhu0")
-entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_wde6q"), SubResource("Resource_gtt2u"), SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_46j0w"), SubResource("Resource_ddi35"), SubResource("Resource_6d5lo"), SubResource("Resource_15f7p"), SubResource("Resource_kbd6t"), SubResource("Resource_kg12u"), SubResource("Resource_0710e"), SubResource("Resource_gj8rl"), SubResource("Resource_leynn"), SubResource("Resource_gbnu5")])
+entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_wde6q"), SubResource("Resource_gtt2u"), SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_46j0w"), SubResource("Resource_ddi35"), SubResource("Resource_6d5lo"), SubResource("Resource_15f7p"), SubResource("Resource_kbd6t"), SubResource("Resource_kg12u"), SubResource("Resource_0710e"), SubResource("Resource_gj8rl"), SubResource("Resource_leynn"), SubResource("Resource_gbnu5"), SubResource("Resource_02mup")])
