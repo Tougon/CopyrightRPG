@@ -210,7 +210,7 @@ func _decision_phase():
 	
 	for enemy in enemies:
 		if enemy.is_defeated : continue;
-		enemy.select_action();
+		if !enemy.skip_decision : enemy.select_action();
 		enemy.is_ready = true;
 	
 	# Timer to resolve fadeout issues with the glow
@@ -728,7 +728,8 @@ func _end_phase():
 		remove_field_effect(field_effect);
 	
 	for entity in entities:
-		entity.sealing = false;
+		if !entity.skip_decision:
+			entity.sealing = false;
 		
 		if !entity.is_defeated:
 			# NOTE: In the original game, this is where we checked for remain active.

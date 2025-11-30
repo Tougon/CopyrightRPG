@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AudioGroup" load_steps=22 format=3 uid="uid://v2gpdplk5e3f"]
+[gd_resource type="Resource" script_class="AudioGroup" load_steps=23 format=3 uid="uid://v2gpdplk5e3f"]
 
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="1_d0iay"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="2_mfpne"]
@@ -98,6 +98,11 @@ script = ExtResource("1_d0iay")
 item_id = "voyager304"
 item_path = "res://assets/Audio/BGM/Battle/Voyager 304.ogg"
 
+[sub_resource type="Resource" id="Resource_getd5"]
+script = ExtResource("1_d0iay")
+item_id = "tempest"
+item_path = "res://assets/Audio/BGM/Battle/Tempest.ogg"
+
 [resource]
 script = ExtResource("2_mfpne")
-entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd"), SubResource("Resource_xh4y1"), SubResource("Resource_6uw6f"), SubResource("Resource_hptlk"), SubResource("Resource_rchkq"), SubResource("Resource_h46pr"), SubResource("Resource_owfto"), SubResource("Resource_3jdh4"), SubResource("Resource_i0hvm"), SubResource("Resource_8jvcl"), SubResource("Resource_k4ayl"), SubResource("Resource_akckc"), SubResource("Resource_fsb3k"), SubResource("Resource_3h73r"), SubResource("Resource_kmxfl"), SubResource("Resource_njjft"), SubResource("Resource_nnw0k"), SubResource("Resource_fkmln")])
+entries = Array[ExtResource("1_d0iay")]([SubResource("Resource_m8cui"), SubResource("Resource_pahdd"), SubResource("Resource_xh4y1"), SubResource("Resource_6uw6f"), SubResource("Resource_hptlk"), SubResource("Resource_rchkq"), SubResource("Resource_h46pr"), SubResource("Resource_owfto"), SubResource("Resource_3jdh4"), SubResource("Resource_i0hvm"), SubResource("Resource_8jvcl"), SubResource("Resource_k4ayl"), SubResource("Resource_akckc"), SubResource("Resource_fsb3k"), SubResource("Resource_3h73r"), SubResource("Resource_kmxfl"), SubResource("Resource_njjft"), SubResource("Resource_nnw0k"), SubResource("Resource_fkmln"), SubResource("Resource_getd5")])

@@ -77,6 +77,10 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	var evasion_mods = target.get_evasion_modifiers();
 	
 	for mod in evasion_mods:
+		if mod == 0 :
+			hit = 0; 
+			break;
+		
 		hit /= mod;
 		evasion *= mod;
 	

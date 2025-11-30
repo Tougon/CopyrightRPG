@@ -46,6 +46,7 @@ growth = SubResource("Curve_tv5ok")
 [sub_resource type="Resource" id="Resource_6oco8"]
 script = ExtResource("9_qsphg")
 target = ExtResource("8_ca47b")
+target_id = -1
 default_state = false
 use_self = false
 check_all = false

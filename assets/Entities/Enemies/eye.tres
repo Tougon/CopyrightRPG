@@ -58,6 +58,7 @@ negate = false
 
 [sub_resource type="Resource" id="Resource_dnlru"]
 script = ExtResource("8_m7j6d")
+target_id = -1
 default_state = true
 use_self = true
 check_all = true

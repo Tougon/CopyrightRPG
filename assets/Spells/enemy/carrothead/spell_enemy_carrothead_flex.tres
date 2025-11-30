@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=7 format=3 uid="uid://drbk3xia7c0cn"]
+
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_sn7v1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_xwdcu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_i3x15"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_e75ub"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_mnf5w"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_pfpf4"]
+
+[resource]
+script = ExtResource("4_mnf5w")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_FLAVOR_ENEMY_CARROTHEAD_FLEX"
+spell_type = 6
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("5_pfpf4")]([])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_sn7v1")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_xwdcu")]([])
+effects_on_success = Array[ExtResource("1_xwdcu")]([])
+properties = Array[ExtResource("3_e75ub")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_i3x15")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_i3x15")]([])

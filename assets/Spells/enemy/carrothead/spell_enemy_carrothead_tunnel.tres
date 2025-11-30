@@ -1,0 +1,151 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=33 format=3 uid="uid://c112557hhcivk"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_2xwux"]
+[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_kauum"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_2d6xv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_11kki"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_836y3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_cpf4c"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_ifdur"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_1ompy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="5_wlmt8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="6_tali1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_set_skip_decision.gd" id="7_m1ntg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="8_fiv46"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="9_0cwg5"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="9_tngo1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="10_asvp0"]
+[ext_resource type="Resource" uid="uid://cew68lxr4r6hu" path="res://assets/Spells/enemy/carrothead/spell_enemy_carrothead_punch.tres" id="11_wdx81"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="12_ryis8"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="17_x6n30"]
+
+[sub_resource type="Resource" id="Resource_nmhmf"]
+script = ExtResource("5_wlmt8")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_qgisj"]
+script = ExtResource("6_tali1")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_jjio0"]
+script = ExtResource("7_m1ntg")
+target = 0
+skip_decision = true
+
+[sub_resource type="Resource" id="Resource_8gsap"]
+script = ExtResource("8_fiv46")
+target = 0
+apply = true
+stat = 6
+amount = 0.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_6v8n2"]
+script = ExtResource("9_0cwg5")
+dialogue_key = "T_EFFECT_CARROTHEAD_DIG_ACTIVATE"
+target = 0
+animation = ExtResource("1_kauum")
+
+[sub_resource type="Resource" id="Resource_b03pf"]
+script = ExtResource("7_m1ntg")
+target = 0
+skip_decision = false
+
+[sub_resource type="Resource" id="Resource_8jo6i"]
+script = ExtResource("8_fiv46")
+target = 0
+apply = false
+stat = 6
+amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_ydtmt"]
+script = ExtResource("9_tngo1")
+target = 0
+
+[sub_resource type="Resource" id="Resource_vbp5r"]
+script = ExtResource("10_asvp0")
+
+[sub_resource type="Resource" id="Resource_6uk4q"]
+script = ExtResource("9_0cwg5")
+dialogue_key = "T_EFFECT_CARROTHEAD_DIG_DEACTIVATE"
+target = 0
+animation = ExtResource("1_kauum")
+
+[sub_resource type="Resource" id="Resource_d0in0"]
+script = ExtResource("12_ryis8")
+target = 0
+action = ExtResource("11_wdx81")
+use_previous = false
+pick_random = false
+retain_target = true
+reset_sealing = false
+
+[sub_resource type="Resource" id="Resource_jgsso"]
+script = ExtResource("3_11kki")
+stackable = false
+effect_name = "Carrothead Dig"
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 1
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_ifdur")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_ifdur")]([SubResource("Resource_nmhmf")])
+on_activate = Array[ExtResource("4_ifdur")]([SubResource("Resource_qgisj")])
+on_failed_to_activate = Array[ExtResource("4_ifdur")]([])
+on_apply = Array[ExtResource("4_ifdur")]([SubResource("Resource_jjio0"), SubResource("Resource_8gsap"), SubResource("Resource_6v8n2")])
+on_move_selected = Array[ExtResource("4_ifdur")]([SubResource("Resource_vbp5r"), SubResource("Resource_6uk4q")])
+on_move_completed = Array[ExtResource("4_ifdur")]([SubResource("Resource_ydtmt")])
+on_deactivate = Array[ExtResource("4_ifdur")]([SubResource("Resource_b03pf"), SubResource("Resource_8jo6i")])
+on_turn_start = Array[ExtResource("4_ifdur")]([])
+on_turn_end = Array[ExtResource("4_ifdur")]([SubResource("Resource_d0in0")])
+on_stack = Array[ExtResource("4_ifdur")]([])
+
+[sub_resource type="Resource" id="Resource_y8xlg"]
+script = ExtResource("3_836y3")
+chance = 1.0
+effect = SubResource("Resource_jgsso")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_bnicu"]
+script = ExtResource("1_2xwux")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_836y3")]([SubResource("Resource_y8xlg")])
+
+[resource]
+script = ExtResource("4_cpf4c")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_ENEMY_CARROTHEAD_DIG"
+spell_type = 2
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("5_1ompy")]([ExtResource("17_x6n30")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_kauum")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_2xwux")]([])
+effects_on_success = Array[ExtResource("1_2xwux")]([SubResource("Resource_bnicu")])
+properties = Array[ExtResource("3_11kki")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_2d6xv")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_2d6xv")]([])

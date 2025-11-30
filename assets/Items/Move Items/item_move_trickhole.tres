@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MoveItem" load_steps=4 format=3 uid="uid://dp444xw8mww1o"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_5dt4e"]
+[ext_resource type="Resource" uid="uid://c7frll1u3ox0q" path="res://assets/Spells/common/spell_common_trickhole.tres" id="2_uo0oq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/move_item.gd" id="3_wmwtd"]
+
+[resource]
+script = ExtResource("3_wmwtd")
+move = ExtResource("2_uo0oq")
+item_name_key = "T_ITEM_NAME_MOVE_GENERIC"
+item_description_key = "T_ITEM_DESCRIPTION_MOVE_GENERIC"
+item_icon_path = ""
+item_flags = Array[ExtResource("1_5dt4e")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://c7frll1u3ox0q"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_3d85g"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_kwn1k"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_6l72b"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_7t4ri"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_mb6h2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_wf2j8"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="7_014hp"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="8_rtr4x"]
+
+[resource]
+script = ExtResource("5_wf2j8")
+spell_power = 57.0
+spell_attack_type = 1
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_mb6h2")]([])
+check_accuracy = true
+spell_accuracy = 90.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 12
+spell_name_key = "T_SPELL_GENERIC_TRICKHOLE"
+spell_description_key = "T_SPELL_GENERIC_TRICKHOLE_DESC"
+spell_cast_message_key = "T_CAST_DAMAGE_COMMON_TRICKHOLE"
+spell_type = 1
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 20
+spell_priority = 0
+spell_flags = Array[ExtResource("4_mb6h2")]([ExtResource("7_014hp"), ExtResource("8_rtr4x")])
+ignore_seals = false
+is_learnable = true
+will_save_as_prev = true
+animation_sequence = ExtResource("1_kwn1k")
+spell_videos = Array[String](["res://video/spell/video_spell_trickhole.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_trickhole.tres"])
+effects_on_hit = Array[ExtResource("1_3d85g")]([])
+effects_on_success = Array[ExtResource("1_3d85g")]([])
+properties = Array[ExtResource("3_7t4ri")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_6l72b")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_6l72b")]([])
