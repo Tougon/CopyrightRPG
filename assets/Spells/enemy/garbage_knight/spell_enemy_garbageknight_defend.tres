@@ -1,0 +1,126 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=21 format=3 uid="uid://c32m4ii6pyf2x"]
+
+[ext_resource type="Resource" uid="uid://c1yvqg3xp3v7d" path="res://assets/Animations/Sequences/Spell/anim_spell_defend.tres" id="1_ubwp3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_xu8gv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_bspmr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_7sd82"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="5_fwat4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="6_ya1j1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_b3ktr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="8_da3a3"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="9_beyal"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="10_gsuaa"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="11_u1b33"]
+
+[sub_resource type="Resource" id="Resource_q3vou"]
+script = ExtResource("5_fwat4")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_00eq3"]
+script = ExtResource("6_ya1j1")
+target = 0
+apply = true
+stat = 1
+amount = 2.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_u3sc1"]
+script = ExtResource("6_ya1j1")
+target = 0
+apply = true
+stat = 3
+amount = 2.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_rcybr"]
+script = ExtResource("6_ya1j1")
+target = 0
+apply = false
+stat = 1
+amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_fvcgi"]
+script = ExtResource("6_ya1j1")
+target = 0
+apply = false
+stat = 3
+amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_hyoc8"]
+script = ExtResource("5_fwat4")
+target = 0
+apply = false
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_boko1"]
+script = ExtResource("7_b3ktr")
+stackable = false
+effect_name = "Defend"
+generic = false
+repeatable = false
+priority = 5
+turn_limit = 1
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_7sd82")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_7sd82")]([])
+on_activate = Array[ExtResource("4_7sd82")]([SubResource("Resource_q3vou")])
+on_failed_to_activate = Array[ExtResource("4_7sd82")]([])
+on_apply = Array[ExtResource("4_7sd82")]([SubResource("Resource_00eq3"), SubResource("Resource_u3sc1")])
+on_move_selected = Array[ExtResource("4_7sd82")]([])
+on_move_completed = Array[ExtResource("4_7sd82")]([])
+on_deactivate = Array[ExtResource("4_7sd82")]([SubResource("Resource_rcybr"), SubResource("Resource_fvcgi")])
+on_turn_start = Array[ExtResource("4_7sd82")]([])
+on_turn_end = Array[ExtResource("4_7sd82")]([SubResource("Resource_hyoc8")])
+on_stack = Array[ExtResource("4_7sd82")]([])
+
+[sub_resource type="Resource" id="Resource_mwms7"]
+script = ExtResource("3_bspmr")
+chance = 1.0
+effect = SubResource("Resource_boko1")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_aqxlw"]
+script = ExtResource("2_xu8gv")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_bspmr")]([SubResource("Resource_mwms7")])
+
+[resource]
+script = ExtResource("9_beyal")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_STATUS_ENEMY_GARBAGEKNIGHT_DEFEND"
+spell_type = 0
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 5
+spell_flags = Array[ExtResource("10_gsuaa")]([ExtResource("11_u1b33")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_ubwp3")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_xu8gv")]([])
+effects_on_success = Array[ExtResource("2_xu8gv")]([SubResource("Resource_aqxlw")])
+properties = Array[ExtResource("7_b3ktr")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("8_da3a3")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("8_da3a3")]([])

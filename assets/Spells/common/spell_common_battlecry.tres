@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=15 format=3 uid="uid://2eqhtfvm548k"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_fqi7x"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_rvl5e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_smqsg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_7yqkh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_fy8pd"]
+[ext_resource type="Resource" uid="uid://cejp21u2amshl" path="res://assets/Effects/Common/effect_common_buff_attack.tres" id="4_abr8i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_lp847"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_m8hux"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="7_nd1oq"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="8_x5rd2"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="9_e4iwm"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="10_xda0w"]
+
+[sub_resource type="Resource" id="Resource_8e4d6"]
+script = ExtResource("3_7yqkh")
+chance = 1.0
+effect = ExtResource("4_abr8i")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_48ayf"]
+script = ExtResource("1_fqi7x")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_7yqkh")]([SubResource("Resource_8e4d6")])
+
+[resource]
+script = ExtResource("4_lp847")
+spell_name_key = "T_SPELL_GENERIC_BATTLECRY"
+spell_description_key = "T_SPELL_GENERIC_BATTLECRY_DESC"
+spell_cast_message_key = "T_CAST_STATUS_COMMON_BATTLECRY"
+spell_type = 2
+spell_target = 6
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 28
+spell_priority = 0
+spell_flags = Array[ExtResource("5_m8hux")]([ExtResource("7_nd1oq"), ExtResource("8_x5rd2"), ExtResource("9_e4iwm"), ExtResource("10_xda0w")])
+ignore_seals = false
+is_learnable = true
+will_save_as_prev = true
+animation_sequence = ExtResource("1_rvl5e")
+spell_videos = Array[String](["res://video/spell/video_spell_battlecry.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_battlecry.tres"])
+effects_on_hit = Array[ExtResource("1_fqi7x")]([SubResource("Resource_48ayf")])
+effects_on_success = Array[ExtResource("1_fqi7x")]([])
+properties = Array[ExtResource("3_fy8pd")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_smqsg")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_smqsg")]([])

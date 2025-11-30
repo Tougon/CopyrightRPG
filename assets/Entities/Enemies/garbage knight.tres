@@ -1,0 +1,292 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=63 format=3 uid="uid://d3vrspr67u842"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_i7m5a"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_rqcol"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_ubkbr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="3_2mmws"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="3_xmxcf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="4_ji0lu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="4_pnc0e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckNumEntities.gd" id="5_a8208"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="5_mef82"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="5_t8814"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="6_x3yc0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="7_8m8nd"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="8_7d8yg"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="9_o7phk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="10_ua2on"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="14_510rl"]
+[ext_resource type="Resource" uid="uid://lgmv228q5ims" path="res://assets/Spells/enemy/garbage_knight/spell_enemy_garbageknight_stab.tres" id="15_1pj3y"]
+[ext_resource type="Resource" uid="uid://co3b0ay0iv1hq" path="res://assets/Spells/enemy/garbage_knight/spell_enemy_garbageknight_furyattack.tres" id="16_8m5qx"]
+[ext_resource type="Resource" uid="uid://c32m4ii6pyf2x" path="res://assets/Spells/enemy/garbage_knight/spell_enemy_garbageknight_defend.tres" id="17_2dbkv"]
+[ext_resource type="Resource" uid="uid://2eqhtfvm548k" path="res://assets/Spells/common/spell_common_battlecry.tres" id="18_jinia"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="19_n4mpx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="22_8ss7c"]
+[ext_resource type="Resource" uid="uid://cejp21u2amshl" path="res://assets/Effects/Common/effect_common_buff_attack.tres" id="23_vctpr"]
+
+[sub_resource type="Curve" id="Curve_doo2o"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_h7h2o"]
+script = ExtResource("2_rqcol")
+min = 29
+max = 33
+growth = SubResource("Curve_doo2o")
+
+[sub_resource type="Resource" id="Resource_1ay1g"]
+script = ExtResource("5_a8208")
+target_number = 0
+check_type = 4
+count_self = false
+use_scaled = false
+check_target = 1
+negate = false
+
+[sub_resource type="Resource" id="Resource_6hn2t"]
+script = ExtResource("4_ji0lu")
+behavior_check = Array[ExtResource("3_xmxcf")]([SubResource("Resource_1ay1g")])
+check_type = 0
+action_id = Array[int]([3, 3, 0, 0, 2])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+seal_id = Array[int]([0, 0, 0, 0, 0])
+
+[sub_resource type="Resource" id="Resource_t7rld"]
+script = ExtResource("4_ji0lu")
+behavior_check = Array[ExtResource("3_xmxcf")]([])
+check_type = 0
+action_id = Array[int]([3, 0, 0, 2, 2])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+seal_id = Array[int]([0, 0, 0, 0, 0])
+
+[sub_resource type="Resource" id="Resource_m45ll"]
+script = ExtResource("6_x3yc0")
+behavior_checks = Array[ExtResource("4_ji0lu")]([SubResource("Resource_6hn2t"), SubResource("Resource_t7rld")])
+active_condition = Array[ExtResource("3_xmxcf")]([])
+
+[sub_resource type="Resource" id="Resource_n2agu"]
+script = ExtResource("8_7d8yg")
+hp_percent = 0.5
+randomize_target = false
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_ydqx0"]
+script = ExtResource("9_o7phk")
+chance = 0.3
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_6k5hu"]
+script = ExtResource("4_ji0lu")
+behavior_check = Array[ExtResource("3_xmxcf")]([SubResource("Resource_n2agu"), SubResource("Resource_ydqx0")])
+check_type = 0
+action_id = Array[int]([2])
+seal_chance = Array[float]([1.0])
+seal_id = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_08sa1"]
+script = ExtResource("10_ua2on")
+move_id = 0
+check_player_side = true
+chance_if_sealed = 1.0
+weigh_seal_count = false
+caution_threshold = 0
+result_if_zero = false
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_y8l6j"]
+script = ExtResource("10_ua2on")
+move_id = 2
+check_player_side = true
+chance_if_sealed = 1.0
+weigh_seal_count = false
+caution_threshold = 0
+result_if_zero = false
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_q3f5x"]
+script = ExtResource("4_ji0lu")
+behavior_check = Array[ExtResource("3_xmxcf")]([SubResource("Resource_08sa1"), SubResource("Resource_y8l6j")])
+check_type = 0
+action_id = Array[int]([3, 3, 0, 1, 1])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+seal_id = Array[int]([0, 0, 0, 0, 0])
+
+[sub_resource type="Resource" id="Resource_xcium"]
+script = ExtResource("4_ji0lu")
+behavior_check = Array[ExtResource("3_xmxcf")]([])
+check_type = 0
+action_id = Array[int]([3, 0, 0, 1, 2])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+seal_id = Array[int]([0, 0, 0, 0, 0])
+
+[sub_resource type="Resource" id="Resource_3kmfq"]
+script = ExtResource("6_x3yc0")
+behavior_checks = Array[ExtResource("4_ji0lu")]([SubResource("Resource_6k5hu"), SubResource("Resource_q3f5x"), SubResource("Resource_xcium")])
+active_condition = Array[ExtResource("3_xmxcf")]([])
+
+[sub_resource type="Resource" id="Resource_5c5me"]
+script = ExtResource("7_8m8nd")
+first_turn_behavior = SubResource("Resource_m45ll")
+turn_behavior = Array[ExtResource("6_x3yc0")]([SubResource("Resource_3kmfq")])
+
+[sub_resource type="Curve" id="Curve_y4bl8"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_2ucuh"]
+script = ExtResource("2_rqcol")
+min = 38
+max = 45
+growth = SubResource("Curve_y4bl8")
+
+[sub_resource type="Resource" id="Resource_bm6rt"]
+script = ExtResource("3_2mmws")
+sprites = Array[String](["res://assets/Sprites/Entities/Temp/garbageknight_neutral.png"])
+
+[sub_resource type="Curve" id="Curve_wfr87"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_uhwo3"]
+script = ExtResource("2_rqcol")
+min = 410
+max = 450
+growth = SubResource("Curve_wfr87")
+
+[sub_resource type="Curve" id="Curve_xk4er"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kmr4g"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_84fhk"]
+script = ExtResource("5_t8814")
+min = 1.0
+max = 1.0
+growth = SubResource("Curve_kmr4g")
+
+[sub_resource type="Resource" id="Resource_277fn"]
+script = ExtResource("14_510rl")
+spell = ExtResource("15_1pj3y")
+level = 0
+
+[sub_resource type="Resource" id="Resource_3o5bd"]
+script = ExtResource("14_510rl")
+spell = ExtResource("16_8m5qx")
+level = 0
+
+[sub_resource type="Resource" id="Resource_q3n16"]
+script = ExtResource("14_510rl")
+spell = ExtResource("17_2dbkv")
+level = 0
+
+[sub_resource type="Resource" id="Resource_3jino"]
+script = ExtResource("14_510rl")
+spell = ExtResource("18_jinia")
+level = 0
+
+[sub_resource type="Resource" id="Resource_eq4wn"]
+script = ExtResource("19_n4mpx")
+list = Array[ExtResource("14_510rl")]([SubResource("Resource_277fn"), SubResource("Resource_3o5bd"), SubResource("Resource_q3n16"), SubResource("Resource_3jino")])
+
+[sub_resource type="Curve" id="Curve_6s373"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_k4fui"]
+script = ExtResource("2_rqcol")
+min = 200
+max = 250
+growth = SubResource("Curve_6s373")
+
+[sub_resource type="Curve" id="Curve_diiry"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_5qbel"]
+script = ExtResource("2_rqcol")
+min = 136
+max = 182
+growth = SubResource("Curve_diiry")
+
+[sub_resource type="Resource" id="Resource_ag177"]
+script = ExtResource("5_mef82")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("22_8ss7c")]([ExtResource("23_vctpr")])
+
+[sub_resource type="Curve" id="Curve_ql5f6"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_l6kh1"]
+script = ExtResource("2_rqcol")
+min = 20
+max = 25
+growth = SubResource("Curve_ql5f6")
+
+[sub_resource type="Curve" id="Curve_lx8c3"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_1drfq"]
+script = ExtResource("2_rqcol")
+min = 25
+max = 30
+growth = SubResource("Curve_lx8c3")
+
+[sub_resource type="Curve" id="Curve_jh2ri"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_m2u6u"]
+script = ExtResource("2_rqcol")
+min = 15
+max = 20
+growth = SubResource("Curve_jh2ri")
+
+[resource]
+script = ExtResource("4_pnc0e")
+name_key = "T_ENTITY_GARBAGEKNIGHT"
+description_key = "T_DESCRIPTION_GARBAGEKNIGHT"
+gender = 0
+type = 0
+generic = true
+hp = SubResource("Resource_uhwo3")
+mp = SubResource("Resource_k4fui")
+atk = SubResource("Resource_h7h2o")
+def = SubResource("Resource_2ucuh")
+sp_atk = SubResource("Resource_l6kh1")
+sp_def = SubResource("Resource_1drfq")
+spd = SubResource("Resource_m2u6u")
+base_crit_chance_modifier = 1.0
+base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
+base_dodge_modifier = 1.0
+luck = SubResource("Resource_84fhk")
+affinity = Array[ExtResource("1_i7m5a")]([])
+defense_modifiers = Array[ExtResource("2_ubkbr")]([])
+min_level = 1
+max_level = 3
+level_curve = SubResource("Curve_xk4er")
+reward_exp = SubResource("Resource_5qbel")
+entity_sprites = Array[ExtResource("3_2mmws")]([SubResource("Resource_bm6rt")])
+battle_intro_key = "T_BATTLE_INTRO_GARBAGEKNIGHT"
+battle_defeat_key = "T_BATTLE_DEFEAT_GARBAGEKNIGHT"
+head_offset = Vector2(-15, -126)
+foot_offset = Vector2(0, 150)
+entity_bgm_key = "giant"
+entity_video = "res://video/entity/video_entity_garbageknight.ogv"
+entity_video_material = "res://assets/Materials/VideoMaterials/Entity/entity_garbageknight_color.tres"
+entity_video_repeat_mode = 3
+entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/Entity/entity_garbageknight_color.tres"
+entity_thought_repeat_mode = 3
+move_list = SubResource("Resource_eq4wn")
+behavior = SubResource("Resource_5c5me")
+seal_effect_list = Array[ExtResource("5_mef82")]([SubResource("Resource_ag177")])

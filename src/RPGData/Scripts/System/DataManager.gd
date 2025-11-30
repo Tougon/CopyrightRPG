@@ -33,8 +33,13 @@ func initialize_data(auto : bool):
 	initialize_party_data(auto)
 	
 	if auto :
+		# Temporarily grant 4 copies of every move item
 		print("REMOVE THIS LATER")
-		current_save.inventory[18] = 3;
+		for i in range(0, 100):
+			var item = item_database.get_item(i);
+			
+			if item is MoveItem :
+				current_save.inventory[i] = 4;
 
 
 func initialize_party_data(auto : bool):
