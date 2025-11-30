@@ -120,7 +120,7 @@ func get_damage_applied() -> int:
 	
 	for i in damage.size():
 		
-		if damage[i] >  0 :
+		if damage[i] >= 0 :
 			if result + damage[i] > target.current_hp:
 				return target.current_hp;
 			
