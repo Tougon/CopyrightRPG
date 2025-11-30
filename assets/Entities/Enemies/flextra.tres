@@ -1,0 +1,219 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=49 format=3 uid="uid://g6kkahte3q3t"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_e0e86"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_awqo8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="3_1nvxb"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="3_2mehp"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="4_4jch2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="4_fual1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="4_j7o4u"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="5_2tuic"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="5_4g2ta"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="5_826by"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="6_rucxs"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="7_lfj4y"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="8_c8xjk"]
+[ext_resource type="Resource" uid="uid://dhgurk814tx7g" path="res://assets/Effects/Seal/effect_seal_debuff_attack.tres" id="9_tn0hv"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="11_onr2f"]
+[ext_resource type="Resource" uid="uid://cl3tdictosiwg" path="res://assets/Spells/enemy/flextra/spell_enemy_flextra_attack.tres" id="12_3x4jp"]
+[ext_resource type="Resource" uid="uid://dwqqe3fys42x0" path="res://assets/Spells/common/spell_common_boast.tres" id="13_g86us"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="14_h2kxx"]
+
+[sub_resource type="Curve" id="Curve_aavho"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_1pfe6"]
+script = ExtResource("4_fual1")
+min = 38
+max = 46
+growth = SubResource("Curve_aavho")
+
+[sub_resource type="Curve" id="Curve_ex557"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_67if8"]
+script = ExtResource("7_lfj4y")
+move_id = -1
+check_player_side = true
+chance_if_sealed = 1.0
+weigh_seal_count = true
+caution_threshold = 7
+weight = SubResource("Curve_ex557")
+result_if_zero = false
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_6mnyo"]
+script = ExtResource("6_rucxs")
+behavior_check = Array[ExtResource("5_826by")]([SubResource("Resource_67if8")])
+check_type = 0
+action_id = Array[int]([1])
+seal_chance = Array[float]([1.0])
+seal_id = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_df2ip"]
+script = ExtResource("6_rucxs")
+behavior_check = Array[ExtResource("5_826by")]([])
+check_type = 0
+action_id = Array[int]([0])
+seal_chance = Array[float]([1.0])
+seal_id = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_k03cb"]
+script = ExtResource("4_4jch2")
+behavior_checks = Array[ExtResource("6_rucxs")]([SubResource("Resource_6mnyo"), SubResource("Resource_df2ip")])
+active_condition = Array[ExtResource("5_826by")]([])
+
+[sub_resource type="Resource" id="Resource_hhv87"]
+script = ExtResource("3_1nvxb")
+turn_behavior = Array[ExtResource("4_4jch2")]([SubResource("Resource_k03cb")])
+
+[sub_resource type="Curve" id="Curve_4hxre"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_oqorx"]
+script = ExtResource("4_fual1")
+min = 30
+max = 38
+growth = SubResource("Curve_4hxre")
+
+[sub_resource type="Resource" id="Resource_uorxv"]
+script = ExtResource("3_2mehp")
+sprites = Array[String](["res://assets/Sprites/Entities/Temp/flextra_neutral.png"])
+
+[sub_resource type="Curve" id="Curve_j1naj"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_sh0yv"]
+script = ExtResource("4_fual1")
+min = 375
+max = 415
+growth = SubResource("Curve_j1naj")
+
+[sub_resource type="Curve" id="Curve_ewfck"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_jbiwc"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_qtsna"]
+script = ExtResource("5_2tuic")
+min = 1.0
+max = 1.0
+growth = SubResource("Curve_jbiwc")
+
+[sub_resource type="Resource" id="Resource_rmoob"]
+script = ExtResource("11_onr2f")
+spell = ExtResource("12_3x4jp")
+level = 0
+
+[sub_resource type="Resource" id="Resource_maf4c"]
+script = ExtResource("11_onr2f")
+spell = ExtResource("13_g86us")
+level = 0
+
+[sub_resource type="Resource" id="Resource_fuqwi"]
+script = ExtResource("14_h2kxx")
+list = Array[ExtResource("11_onr2f")]([SubResource("Resource_rmoob"), SubResource("Resource_maf4c")])
+
+[sub_resource type="Curve" id="Curve_m0wmy"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_tj8r3"]
+script = ExtResource("4_fual1")
+min = 300
+max = 350
+growth = SubResource("Curve_m0wmy")
+
+[sub_resource type="Curve" id="Curve_ed2yj"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_bpbya"]
+script = ExtResource("4_fual1")
+min = 124
+max = 155
+growth = SubResource("Curve_ed2yj")
+
+[sub_resource type="Resource" id="Resource_vywb6"]
+script = ExtResource("5_4g2ta")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("8_c8xjk")]([ExtResource("9_tn0hv")])
+
+[sub_resource type="Curve" id="Curve_xaspd"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_g3p55"]
+script = ExtResource("4_fual1")
+min = 38
+max = 46
+growth = SubResource("Curve_xaspd")
+
+[sub_resource type="Curve" id="Curve_dvus5"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_t3scn"]
+script = ExtResource("4_fual1")
+min = 36
+max = 44
+growth = SubResource("Curve_dvus5")
+
+[sub_resource type="Curve" id="Curve_r51j8"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_wyai7"]
+script = ExtResource("4_fual1")
+min = 36
+max = 43
+growth = SubResource("Curve_r51j8")
+
+[resource]
+script = ExtResource("4_j7o4u")
+name_key = "T_ENTITY_FLEXTRA"
+description_key = "T_DESCRIPTION_FLEXTRA"
+gender = 0
+type = 0
+generic = true
+hp = SubResource("Resource_sh0yv")
+mp = SubResource("Resource_tj8r3")
+atk = SubResource("Resource_1pfe6")
+def = SubResource("Resource_oqorx")
+sp_atk = SubResource("Resource_g3p55")
+sp_def = SubResource("Resource_t3scn")
+spd = SubResource("Resource_wyai7")
+base_crit_chance_modifier = 1.0
+base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
+base_dodge_modifier = 1.0
+luck = SubResource("Resource_qtsna")
+affinity = Array[ExtResource("1_e0e86")]([])
+defense_modifiers = Array[ExtResource("2_awqo8")]([])
+min_level = 1
+max_level = 3
+level_curve = SubResource("Curve_ewfck")
+reward_exp = SubResource("Resource_bpbya")
+entity_sprites = Array[ExtResource("3_2mehp")]([SubResource("Resource_uorxv")])
+battle_intro_key = "T_BATTLE_INTRO_FLEXTRA"
+battle_defeat_key = "T_BATTLE_DEFEAT_FLEXTRA"
+head_offset = Vector2(-40, -180)
+foot_offset = Vector2(0, 160)
+entity_bgm_key = "nitrogen"
+entity_video = "res://video/entity/video_entity_sb.ogv"
+entity_video_material = "res://assets/Materials/VideoMaterials/Entity/entity_flextra_color.tres"
+entity_video_repeat_mode = 3
+entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/Entity/entity_flextra_color.tres"
+entity_thought_repeat_mode = 3
+move_list = SubResource("Resource_fuqwi")
+behavior = SubResource("Resource_hhv87")
+seal_effect_list = Array[ExtResource("5_4g2ta")]([SubResource("Resource_vywb6")])

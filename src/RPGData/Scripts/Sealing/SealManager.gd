@@ -189,6 +189,16 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 	return seal_count;
 
 
+func get_player_seal_count() -> int:
+	var seal_count = 0;
+	
+	for seal in seal_instances:
+		if seal.player_side == false : continue;
+		else : seal_count += 1;
+	
+	return seal_count;
+
+
 func _play_seal_effects(seal : SealInstance, target : EntityController, show_only : TFlag = null, creating : bool = true) :
 	var vfx : Array[Node];
 	

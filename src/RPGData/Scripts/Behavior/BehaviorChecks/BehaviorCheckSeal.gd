@@ -16,7 +16,10 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 	if user.move_list.size() < move_id:
 		return false;
 	
-	var seal_count = BattleScene.Instance.seal_manager.get_seal_overlap_count(user.move_list[move_id], check_player_side);
+	var seal_count = 0;
+	
+	if move_id >= 0 : seal_count = BattleScene.Instance.seal_manager.get_seal_overlap_count(user.move_list[move_id], check_player_side);
+	else : seal_count = BattleScene.Instance.seal_manager.get_player_seal_count();
 	
 	if seal_count == 0 : return result_if_zero;
 	

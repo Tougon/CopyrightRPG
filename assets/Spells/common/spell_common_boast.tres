@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=15 format=3 uid="uid://dwqqe3fys42x0"]
+
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_3dsrc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_3t0vy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_2wy5c"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_gqge7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_j4m0s"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_c2n8d"]
+[ext_resource type="Resource" uid="uid://du5d0ivyq72li" path="res://assets/Effects/Common/effect_common_status_pressure.tres" id="4_pj7xb"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_46iet"]
+[ext_resource type="Resource" uid="uid://qxwl7uycg24b" path="res://assets/Effects/Common/effect_common_debuff_defense.tres" id="5_wbstv"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="10_ql7vu"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="11_6ish4"]
+
+[sub_resource type="Resource" id="Resource_mwaya"]
+script = ExtResource("3_j4m0s")
+chance = 0.3
+effect = ExtResource("4_pj7xb")
+use_luck = true
+
+[sub_resource type="Resource" id="Resource_6x40u"]
+script = ExtResource("3_j4m0s")
+chance = 0.5
+effect = ExtResource("5_wbstv")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_eu5ta"]
+script = ExtResource("1_3t0vy")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_j4m0s")]([SubResource("Resource_mwaya"), SubResource("Resource_6x40u")])
+
+[resource]
+script = ExtResource("4_c2n8d")
+spell_name_key = "T_SPELL_GENERIC_BOAST"
+spell_description_key = "T_SPELL_GENERIC_BOAST_DESC"
+spell_cast_message_key = "T_CAST_STATUS_COMMON_BOAST"
+spell_type = 2
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 22
+spell_priority = 0
+spell_flags = Array[ExtResource("5_46iet")]([ExtResource("10_ql7vu"), ExtResource("11_6ish4")])
+ignore_seals = false
+is_learnable = true
+will_save_as_prev = true
+animation_sequence = ExtResource("1_3dsrc")
+spell_videos = Array[String](["res://video/spell/video_spell_boast.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_boast.tres"])
+effects_on_hit = Array[ExtResource("1_3t0vy")]([SubResource("Resource_eu5ta")])
+effects_on_success = Array[ExtResource("1_3t0vy")]([])
+properties = Array[ExtResource("3_gqge7")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_2wy5c")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_2wy5c")]([])

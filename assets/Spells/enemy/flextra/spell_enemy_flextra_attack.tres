@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=16 format=3 uid="uid://cl3tdictosiwg"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_dt0l4"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_nn2dr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_uw16r"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_a7yhg"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_x52m4"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_xqecj"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="6_du1el"]
+[ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="7_d0gtx"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="8_76k4o"]
+[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="9_i1x1c"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="10_cpjir"]
+[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="11_kxpbu"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="12_iqn7e"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="13_is441"]
+
+[sub_resource type="Curve" id="Curve_dg0y5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("5_xqecj")
+spell_power = 20.0
+spell_attack_type = 1
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = true
+min_number_of_hits = 5
+max_number_of_hits = 5
+hit_count_curve = SubResource("Curve_dg0y5")
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = true
+randomized_flags = Array[ExtResource("4_x52m4")]([ExtResource("6_du1el"), ExtResource("7_d0gtx"), ExtResource("8_76k4o"), ExtResource("9_i1x1c"), ExtResource("10_cpjir"), ExtResource("11_kxpbu"), ExtResource("12_iqn7e"), ExtResource("13_is441")])
+check_accuracy = false
+spell_accuracy = 100.0
+check_accuracy_per_hit = true
+spell_accuracy_per_hit = 85.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_FLEXTRA"
+spell_type = 1
+spell_target = 2
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("4_x52m4")]([ExtResource("13_is441"), ExtResource("12_iqn7e"), ExtResource("11_kxpbu"), ExtResource("9_i1x1c")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_nn2dr")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_dt0l4")]([])
+effects_on_success = Array[ExtResource("1_dt0l4")]([])
+properties = Array[ExtResource("3_a7yhg")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_uw16r")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_uw16r")]([])
