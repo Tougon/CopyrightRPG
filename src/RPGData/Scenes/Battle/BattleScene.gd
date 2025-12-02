@@ -103,6 +103,7 @@ func begin_battle(params : BattleParams):
 	
 	# Print the opening dialogue
 	EventManager.on_dialogue_queue.emit(_get_intro_dialogue(enemies));
+	if _panic_battle : EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_NO"));
 	await EventManager.on_sequence_queue_empty;
 	
 	# Move the player controllers into view

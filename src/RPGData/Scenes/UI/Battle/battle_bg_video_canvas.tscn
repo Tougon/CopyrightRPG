@@ -8,8 +8,8 @@
 [ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_bg8ve"]
 [ext_resource type="VideoStream" path="res://video/boss.ogv" id="5_w7ge3"]
 [ext_resource type="VideoStream" path="res://video/attack.ogv" id="6_s5ki2"]
-[ext_resource type="Material" uid="uid://bpipm0yj4y2tj" path="res://assets/Materials/VideoMaterials/Spells/spell_battlecry.tres" id="9_5h0cu"]
-[ext_resource type="VideoStream" path="res://video/spell/video_spell_battlecry.ogv" id="10_kmvkn"]
+[ext_resource type="Material" uid="uid://yv2vmjfel752" path="res://assets/Materials/VideoMaterials/Entity/entity_lazr_color.tres" id="9_n81j7"]
+[ext_resource type="VideoStream" path="res://video/spell/video_spell_flashingslash.ogv" id="10_qogol"]
 
 [sub_resource type="Gradient" id="Gradient_4qnt8"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
@@ -100,8 +100,8 @@ mouse_filter = 2
 stream = ExtResource("6_s5ki2")
 
 [node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("9_5h0cu")
+material = ExtResource("9_n81j7")
 mouse_filter = 2
-stream = ExtResource("10_kmvkn")
+stream = ExtResource("10_qogol")
 delay_start = true
 delay_time = 0.5

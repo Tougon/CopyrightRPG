@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=6 format=3 uid="uid://cjbf1av2h6ta0"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_tx2ko"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_k0hoc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="3_x3p0w"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/entity.gd" id="4_57xe0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="5_j0rrd"]
+
+[resource]
+script = ExtResource("4_57xe0")
+name_key = "T_ENTITY_CABLESNAKE"
+description_key = ""
+gender = 0
+type = 0
+generic = true
+base_crit_chance_modifier = 1.0
+base_crit_resist_modifier = 1.0
+base_accuracy_modifier = 1.0
+base_dodge_modifier = 1.0
+affinity = Array[ExtResource("1_tx2ko")]([])
+defense_modifiers = Array[ExtResource("2_k0hoc")]([])
+min_level = 50
+max_level = 50
+entity_sprites = Array[ExtResource("3_x3p0w")]([])
+battle_intro_key = ""
+battle_defeat_key = ""
+head_offset = Vector2(0, 0)
+foot_offset = Vector2(0, 0)
+entity_bgm_key = ""
+entity_video = ""
+entity_video_material = ""
+entity_video_repeat_mode = 3
+entity_thought_pattern_material = ""
+entity_thought_repeat_mode = 3
+seal_effect_list = Array[ExtResource("5_j0rrd")]([])
