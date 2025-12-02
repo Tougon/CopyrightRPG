@@ -73,7 +73,7 @@ deactivation_strings = Array[String]([])
 
 [sub_resource type="Resource" id="Resource_tgpjx"]
 script = ExtResource("7_ltklj")
-dialogue_key = "T_EFFECT_GENERIC_DEFENSE_BOOST_FAIL"
+dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_FAIL"
 
 [sub_resource type="Resource" id="Resource_dyxoj"]
 script = ExtResource("9_e5cnx")

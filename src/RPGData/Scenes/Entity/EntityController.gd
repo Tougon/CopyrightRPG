@@ -634,7 +634,7 @@ func get_possible_targets(spell : Spell = null, add_defeated : bool = false) -> 
 					result.append(ally);
 		Spell.SpellTarget.AllParty:
 			for ally in allies:
-				if !ally.is_defeated || add_defeated:
+				if (!ally.is_defeated || add_defeated) && (!action_to_check.ignore_self || (action_to_check.ignore_self && ally != self)):
 					result.append(ally);
 		Spell.SpellTarget.Self:
 			if !is_defeated || add_defeated:

@@ -66,6 +66,9 @@ func set_hits(hit : Array[bool]):
 		
 		if spell != null && hits[i] == true:
 			for n in spell.effects_on_hit.size():
+				# Do not apply effects if we ignore self
+				if user == target && spell.ignore_self : continue;
+				
 				var eff = spell.effects_on_hit[n].get_effect(user.param.entity_luck);
 				var proc = randf();
 				
