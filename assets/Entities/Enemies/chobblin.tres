@@ -183,8 +183,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_l5yeh"]
 script = ExtResource("2_x8kq8")
-min = 22
-max = 31
+min = 25
+max = 33
 growth = SubResource("Curve_raurb")
 
 [sub_resource type="Resource" id="Resource_vgn2u"]
@@ -326,8 +326,8 @@ base_dodge_modifier = 1.0
 luck = SubResource("Resource_j3086")
 affinity = Array[ExtResource("1_bw50y")]([])
 defense_modifiers = Array[ExtResource("2_yf7uf")]([])
-min_level = 1
-max_level = 3
+min_level = 5
+max_level = 7
 level_curve = SubResource("Curve_hpvdx")
 reward_exp = SubResource("Resource_8ap3b")
 entity_sprites = Array[ExtResource("3_50n2a")]([SubResource("Resource_vgn2u")])

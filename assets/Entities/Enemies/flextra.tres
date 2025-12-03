@@ -25,8 +25,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_1pfe6"]
 script = ExtResource("4_fual1")
-min = 38
-max = 46
+min = 36
+max = 42
 growth = SubResource("Curve_aavho")
 
 [sub_resource type="Curve" id="Curve_ex557"]
@@ -76,8 +76,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_oqorx"]
 script = ExtResource("4_fual1")
-min = 27
-max = 34
+min = 29
+max = 35
 growth = SubResource("Curve_4hxre")
 
 [sub_resource type="Resource" id="Resource_uorxv"]
@@ -90,7 +90,7 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_sh0yv"]
 script = ExtResource("4_fual1")
-min = 375
+min = 220
 max = 415
 growth = SubResource("Curve_j1naj")
 
@@ -128,7 +128,7 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_tj8r3"]
 script = ExtResource("4_fual1")
-min = 300
+min = 200
 max = 350
 growth = SubResource("Curve_m0wmy")
 
@@ -138,8 +138,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_bpbya"]
 script = ExtResource("4_fual1")
-min = 124
-max = 155
+min = 157
+max = 186
 growth = SubResource("Curve_ed2yj")
 
 [sub_resource type="Resource" id="Resource_vywb6"]
@@ -154,8 +154,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_g3p55"]
 script = ExtResource("4_fual1")
-min = 35
-max = 43
+min = 44
+max = 50
 growth = SubResource("Curve_xaspd")
 
 [sub_resource type="Curve" id="Curve_dvus5"]
@@ -164,8 +164,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_t3scn"]
 script = ExtResource("4_fual1")
-min = 36
-max = 44
+min = 38
+max = 46
 growth = SubResource("Curve_dvus5")
 
 [sub_resource type="Curve" id="Curve_r51j8"]
@@ -174,8 +174,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_wyai7"]
 script = ExtResource("4_fual1")
-min = 36
-max = 43
+min = 52
+max = 60
 growth = SubResource("Curve_r51j8")
 
 [resource]
@@ -199,8 +199,8 @@ base_dodge_modifier = 1.0
 luck = SubResource("Resource_qtsna")
 affinity = Array[ExtResource("1_e0e86")]([])
 defense_modifiers = Array[ExtResource("2_awqo8")]([])
-min_level = 1
-max_level = 3
+min_level = 8
+max_level = 10
 level_curve = SubResource("Curve_ewfck")
 reward_exp = SubResource("Resource_bpbya")
 entity_sprites = Array[ExtResource("3_2mehp")]([SubResource("Resource_uorxv")])

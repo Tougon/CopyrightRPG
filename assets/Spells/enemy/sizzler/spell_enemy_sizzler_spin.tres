@@ -15,7 +15,7 @@ point_count = 2
 
 [resource]
 script = ExtResource("5_p0tsb")
-spell_power = 16.0
+spell_power = 20.0
 spell_attack_type = 1
 vary_defense_type = false
 spell_defense_type = 0

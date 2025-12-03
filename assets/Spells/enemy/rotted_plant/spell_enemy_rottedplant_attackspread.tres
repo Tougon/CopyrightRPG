@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("5_qmcwk")
-spell_power = 15.0
+spell_power = 25.0
 spell_attack_type = 0
 vary_defense_type = false
 spell_defense_type = 0

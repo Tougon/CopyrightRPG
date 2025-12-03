@@ -79,8 +79,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_nnafe"]
 script = ExtResource("2_xbul6")
-min = 22
-max = 27
+min = 27
+max = 34
 growth = SubResource("Curve_b0inn")
 
 [sub_resource type="Resource" id="Resource_kysek"]
@@ -147,7 +147,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_5at2c"]
 script = ExtResource("2_xbul6")
 min = 56
-max = 78
+max = 76
 growth = SubResource("Curve_65ylp")
 
 [sub_resource type="Resource" id="Resource_ycyop"]
@@ -172,8 +172,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_gtokk"]
 script = ExtResource("2_xbul6")
-min = 22
-max = 27
+min = 27
+max = 34
 growth = SubResource("Curve_bi555")
 
 [sub_resource type="Curve" id="Curve_t40px"]
@@ -207,8 +207,8 @@ base_dodge_modifier = 1.1
 luck = SubResource("Resource_mkijp")
 affinity = Array[ExtResource("1_5l5nj")]([])
 defense_modifiers = Array[ExtResource("2_m4412")]([])
-min_level = 1
-max_level = 3
+min_level = 5
+max_level = 7
 level_curve = SubResource("Curve_82khw")
 reward_exp = SubResource("Resource_5at2c")
 entity_sprites = Array[ExtResource("3_txs2l")]([SubResource("Resource_kysek")])

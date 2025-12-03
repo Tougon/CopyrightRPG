@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=135 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -240,7 +240,7 @@ size = Vector2(2041, 641)
 [sub_resource type="Resource" id="Resource_vd5ei"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 8
-odds = 0.5
+odds = 0.3
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
@@ -261,7 +261,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_rp5pn"]
 script = ExtResource("44_pt3pb")
 primary_enemy = 9
-odds = 0.5
+odds = 0.15
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 0
@@ -271,8 +271,176 @@ required_enemies = Array[int]([])
 additional_enemies = Array[int]([9, 10])
 additional_enemy_curve = SubResource("Curve_t0lam")
 
+[sub_resource type="Curve" id="Curve_h2vr7"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_t3jh2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_o2obl"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 10
+odds = 0.15
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_t3jh2")
+required_enemies = Array[int]([9])
+additional_enemies = Array[int]([9, 10])
+additional_enemy_curve = SubResource("Curve_h2vr7")
+
+[sub_resource type="Curve" id="Curve_syyvl"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2ixay"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_u5y5y"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 11
+odds = 0.1
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 1
+enemy_count_curve = SubResource("Curve_2ixay")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([6])
+additional_enemy_curve = SubResource("Curve_syyvl")
+
+[sub_resource type="Curve" id="Curve_xh8ds"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kyt1b"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_id5s3"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 12
+odds = 0.15
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 2
+max_enemies = 3
+enemy_count_curve = SubResource("Curve_kyt1b")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([12, 13])
+additional_enemy_curve = SubResource("Curve_xh8ds")
+
+[sub_resource type="Curve" id="Curve_pyc8h"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4auex"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 0, Vector2(1, 1), 0.851101, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_b1hs4"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 13
+odds = 0.15
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 2
+max_enemies = 3
+enemy_count_curve = SubResource("Curve_4auex")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([12, 13])
+additional_enemy_curve = SubResource("Curve_pyc8h")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r63lc"]
 size = Vector2(2041, 636)
+
+[sub_resource type="Curve" id="Curve_mgbly"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_fx2qu"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_404dh"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 14
+odds = 0.3
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_fx2qu")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+additional_enemy_curve = SubResource("Curve_mgbly")
+
+[sub_resource type="Curve" id="Curve_wwedi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_s57i0"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_v14ed"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 15
+odds = 0.2
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 3
+enemy_count_curve = SubResource("Curve_s57i0")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([12, 13, 15])
+additional_enemy_curve = SubResource("Curve_wwedi")
+
+[sub_resource type="Curve" id="Curve_qlru4"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_u7wnp"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_pti0o"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 16
+odds = 0.3
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_u7wnp")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+additional_enemy_curve = SubResource("Curve_qlru4")
+
+[sub_resource type="Curve" id="Curve_tx265"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_3x51j"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_qckch"]
+script = ExtResource("44_pt3pb")
+primary_enemy = 17
+odds = 0.2
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_3x51j")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([16, 16, 17])
+additional_enemy_curve = SubResource("Curve_tx265")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52jsb"]
 size = Vector2(2041, 643)
@@ -879,6 +1047,7 @@ shape = SubResource("RectangleShape2D_hkjpb")
 [node name="Encounter Areas" type="Node2D" parent="Areas/TestArea FR/G"]
 
 [node name="TEST AREA" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
+visible = false
 position = Vector2(508, 3652)
 enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_jcr5d")])
@@ -905,7 +1074,7 @@ shape = SubResource("RectangleShape2D_hi4at")
 [node name="EncounterArea (Mid)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 visible = false
 position = Vector2(508, 3652)
-encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_vd5ei"), SubResource("Resource_rp5pn")])
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_vd5ei"), SubResource("Resource_rp5pn"), SubResource("Resource_o2obl"), SubResource("Resource_u5y5y"), SubResource("Resource_id5s3"), SubResource("Resource_b1hs4")])
 encounter_increase_rate = 0.1
 encounter_reroll_rate = 0.6
 
@@ -916,6 +1085,7 @@ shape = SubResource("RectangleShape2D_r63lc")
 [node name="EncounterArea (Top)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 visible = false
 position = Vector2(508, 2944)
+encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_404dh"), SubResource("Resource_v14ed"), SubResource("Resource_pti0o"), SubResource("Resource_qckch")])
 encounter_increase_rate = 0.1
 
 [node name="CollisionShape2D" parent="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Top)/Area2D" index="0"]

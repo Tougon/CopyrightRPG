@@ -109,8 +109,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_r5m5t"]
 script = ExtResource("2_bsbm1")
-min = 32
-max = 40
+min = 28
+max = 36
 growth = SubResource("Curve_g5seg")
 
 [sub_resource type="Resource" id="Resource_ov6k8"]
@@ -129,7 +129,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_pvpyc"]
 script = ExtResource("2_bsbm1")
 min = 280
-max = 360
+max = 340
 growth = SubResource("Curve_cfcxm")
 
 [sub_resource type="Curve" id="Curve_aeh1r"]
@@ -176,8 +176,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_7urbd"]
 script = ExtResource("2_bsbm1")
-min = 65
-max = 95
+min = 75
+max = 105
 growth = SubResource("Curve_qegen")
 
 [sub_resource type="Resource" id="Resource_wtoxi"]
@@ -192,8 +192,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_r06b0"]
 script = ExtResource("2_bsbm1")
-min = 12
-max = 20
+min = 22
+max = 28
 growth = SubResource("Curve_iqu1h")
 
 [sub_resource type="Curve" id="Curve_533hs"]
@@ -212,8 +212,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_t8vom"]
 script = ExtResource("2_bsbm1")
-min = 5
-max = 10
+min = 20
+max = 24
 growth = SubResource("Curve_niyiw")
 
 [resource]
@@ -236,8 +236,8 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 0.8
 affinity = Array[ExtResource("1_yaymf")]([])
 defense_modifiers = Array[ExtResource("2_ha825")]([SubResource("Resource_ov6k8")])
-min_level = 1
-max_level = 3
+min_level = 5
+max_level = 7
 level_curve = SubResource("Curve_aeh1r")
 reward_exp = SubResource("Resource_7urbd")
 entity_sprites = Array[ExtResource("3_84fdb")]([SubResource("Resource_7a26v")])
