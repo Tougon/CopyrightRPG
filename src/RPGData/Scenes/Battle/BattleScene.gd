@@ -476,6 +476,8 @@ func _action_phase():
 						enemy.set_enemy_position((pos_root.get_child(index) as Node2D).position, BattleManager.ENEMY_REPOSITION_TIME);
 						used.append(index);
 			
+			num_active = amt;
+			
 			await get_tree().create_timer(BattleManager.ENEMY_REPOSITION_TIME).timeout
 			await get_tree().process_frame;
 		
@@ -527,6 +529,8 @@ func _action_phase():
 		if sequencer.is_sequence_playing_or_queued() :
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
+		
+		num_active = get_num_active_enemies();
 		
 		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
 			if seal_manager.can_seal_spell(entity.current_action, entity) && entity.seal_effect != null:
