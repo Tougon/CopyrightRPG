@@ -37,6 +37,9 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 					else :
 						return state;
 		
+		if !check_all :
+			return negate;
+		
 		if negate :
 			return !all_same;
 		else :

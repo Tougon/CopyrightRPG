@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=64 format=3 uid="uid://cauy0q3462jvi"]
+[gd_resource type="Resource" script_class="Entity" load_steps=63 format=3 uid="uid://cauy0q3462jvi"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_p3cat"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_1ihsh"]
@@ -29,41 +29,12 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_ldbd6"]
 script = ExtResource("3_bfbhk")
-min = 14
-max = 16
+min = 15
+max = 17
 growth = SubResource("Curve_gylps")
-
-[sub_resource type="Resource" id="Resource_gbln6"]
-script = ExtResource("3_dxcen")
-name_key = ""
-description_key = ""
-gender = 0
-type = 0
-generic = true
-base_crit_chance_modifier = 1.0
-base_crit_resist_modifier = 1.0
-base_accuracy_modifier = 1.0
-base_dodge_modifier = 1.0
-affinity = Array[ExtResource("1_p3cat")]([])
-defense_modifiers = Array[ExtResource("2_1ihsh")]([])
-min_level = 50
-max_level = 50
-entity_sprites = Array[ExtResource("10_u7xl7")]([])
-battle_intro_key = ""
-battle_defeat_key = ""
-head_offset = Vector2(0, 0)
-foot_offset = Vector2(0, 0)
-entity_bgm_key = ""
-entity_video = ""
-entity_video_material = ""
-entity_video_repeat_mode = 3
-entity_thought_pattern_material = ""
-entity_thought_repeat_mode = 3
-seal_effect_list = Array[ExtResource("4_8qf6y")]([])
 
 [sub_resource type="Resource" id="Resource_lh1uu"]
 script = ExtResource("4_gxk4x")
-target = SubResource("Resource_gbln6")
 target_id = 11
 default_state = false
 use_self = false
@@ -173,8 +144,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_jnlh2"]
 script = ExtResource("3_bfbhk")
-min = 10
-max = 12
+min = 14
+max = 16
 growth = SubResource("Curve_ic17k")
 
 [sub_resource type="Resource" id="Resource_fp08g"]
@@ -235,8 +206,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_xxod7"]
 script = ExtResource("3_bfbhk")
-min = 53
-max = 59
+min = 63
+max = 75
 growth = SubResource("Curve_hv4yl")
 
 [sub_resource type="Curve" id="Curve_dg6pi"]
@@ -261,8 +232,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_iae17"]
 script = ExtResource("3_bfbhk")
-min = 14
-max = 16
+min = 15
+max = 17
 growth = SubResource("Curve_8dwuk")
 
 [sub_resource type="Curve" id="Curve_qmyn4"]
@@ -271,8 +242,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_kcatw"]
 script = ExtResource("3_bfbhk")
-min = 10
-max = 12
+min = 14
+max = 16
 growth = SubResource("Curve_qmyn4")
 
 [sub_resource type="Curve" id="Curve_ti0pb"]
@@ -281,8 +252,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_i0qn3"]
 script = ExtResource("3_bfbhk")
-min = 32
-max = 40
+min = 41
+max = 49
 growth = SubResource("Curve_ti0pb")
 
 [resource]
@@ -313,7 +284,7 @@ reward_exp = SubResource("Resource_6o8k0")
 entity_sprites = Array[ExtResource("10_u7xl7")]([SubResource("Resource_fp08g")])
 battle_intro_key = "T_BATTLE_INTRO_SCRUBBLES"
 battle_defeat_key = "T_BATTLE_DEFEAT_SCRUBBLES"
-head_offset = Vector2(0, -120)
+head_offset = Vector2(-16, -130)
 foot_offset = Vector2(0, 40)
 entity_bgm_key = "scienide"
 entity_video = "res://video/entity/video_entity_scrubbles.ogv"

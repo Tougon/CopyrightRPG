@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=66 format=3 uid="uid://cjbf1av2h6ta0"]
+[gd_resource type="Resource" script_class="Entity" load_steps=64 format=3 uid="uid://cjbf1av2h6ta0"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_tx2ko"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_k0hoc"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="5_tjx0g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="7_y30ij"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="8_rnj7e"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckDefenseLowest.gd" id="9_wybpn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="10_ltkv3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="14_ddq2w"]
 [ext_resource type="Resource" uid="uid://imhhic8grw77" path="res://assets/Spells/enemy/cablesnake/spell_enemy_cablesnake_strike.tres" id="15_bdjfk"]
@@ -105,16 +104,9 @@ script = ExtResource("3_vti0h")
 check_target = 0
 negate = false
 
-[sub_resource type="Resource" id="Resource_irf47"]
-script = ExtResource("9_wybpn")
-use_stages = true
-use_modifiers = false
-check_target = 2
-negate = false
-
 [sub_resource type="Resource" id="Resource_qb862"]
 script = ExtResource("4_rwrfc")
-behavior_check = Array[ExtResource("3_vti0h")]([SubResource("Resource_ovkfa"), SubResource("Resource_irf47")])
+behavior_check = Array[ExtResource("3_vti0h")]([SubResource("Resource_ovkfa")])
 check_type = 0
 action_id = Array[int]([0])
 seal_chance = Array[float]([0.0])

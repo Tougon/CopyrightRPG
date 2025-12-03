@@ -27,8 +27,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_nx3bb"]
 script = ExtResource("2_ay3jb")
-min = 18
-max = 105
+min = 16
+max = 246
 growth = SubResource("Curve_w4glt")
 
 [sub_resource type="Curve" id="Curve_8fb0c"]
@@ -37,8 +37,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_mel65"]
 script = ExtResource("2_ay3jb")
-min = 18
-max = 156
+min = 17
+max = 258
 growth = SubResource("Curve_8fb0c")
 
 [sub_resource type="Resource" id="Resource_0wcvm"]
@@ -52,7 +52,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_0tkgf"]
 script = ExtResource("2_ay3jb")
 min = 50
-max = 267
+max = 534
 growth = SubResource("Curve_61aun")
 
 [sub_resource type="Curve" id="Curve_bfk5e"]
@@ -116,7 +116,7 @@ point_count = 2
 [sub_resource type="Resource" id="Resource_7lb3s"]
 script = ExtResource("2_ay3jb")
 min = 60
-max = 416
+max = 512
 growth = SubResource("Curve_cg64e")
 
 [sub_resource type="Curve" id="Curve_xxp8h"]
@@ -125,8 +125,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_lh4ws"]
 script = ExtResource("2_ay3jb")
-min = 30
-max = 325
+min = 26
+max = 386
 growth = SubResource("Curve_xxp8h")
 
 [sub_resource type="Curve" id="Curve_1liai"]
@@ -135,8 +135,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_ayqxh"]
 script = ExtResource("2_ay3jb")
-min = 19
-max = 180
+min = 20
+max = 342
 growth = SubResource("Curve_1liai")
 
 [sub_resource type="Curve" id="Curve_ddd2l"]
@@ -145,8 +145,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_fyc1p"]
 script = ExtResource("2_ay3jb")
-min = 25
-max = 234
+min = 20
+max = 352
 growth = SubResource("Curve_ddd2l")
 
 [resource]
@@ -171,7 +171,7 @@ luck = SubResource("Resource_ghury")
 level_exp = ExtResource("7_iiqun")
 affinity = Array[ExtResource("1_82a6o")]([ExtResource("2_aonv8"), ExtResource("3_ty6s6")])
 defense_modifiers = Array[ExtResource("5_0sdrg")]([])
-min_level = 50
+min_level = 1
 max_level = 99
 entity_sprites = Array[ExtResource("6_utwji")]([SubResource("Resource_0wcvm")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"

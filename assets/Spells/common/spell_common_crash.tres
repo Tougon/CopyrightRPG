@@ -55,7 +55,7 @@ effect_set = Array[ExtResource("3_2kjt7")]([SubResource("Resource_xdt2f")])
 
 [resource]
 script = ExtResource("5_2nwiy")
-spell_power = 65.0
+spell_power = 57.0
 spell_attack_type = 0
 vary_defense_type = false
 spell_defense_type = 0

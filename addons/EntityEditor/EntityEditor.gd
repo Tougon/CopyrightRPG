@@ -8,6 +8,7 @@ var entity_list : Array[Entity];
 var entity_to_path = {};
 var entity_to_list_item = {};
 var editor : EditorInterface;
+var _is_importing : bool = false;
 
 func _ready():
 	print("Initializing entities...")
@@ -156,3 +157,97 @@ func _add_entity(file_name : String):
 							entity_list.append(loaded as Entity);
 							entity_to_path[(loaded as Entity)] = file_name;
 							return;
+
+
+func _on_export_to_csv_pressed() -> void:
+	_is_importing = false;
+	
+	var dialog = FileDialog.new();
+	dialog.set_file_mode(FileDialog.FILE_MODE_SAVE_FILE);
+	dialog.set_access(FileDialog.ACCESS_RESOURCES);
+	dialog.current_dir = "res://";
+	dialog.file_selected.connect(_on_csv_dir_selected);
+	add_child(dialog)
+	dialog.popup_centered_ratio();
+
+
+
+func _on_csv_dir_selected(path : String):
+	print(path);
+	
+	if !_is_importing :
+		if !path.ends_with(".csv"):
+			path += ".csv"
+		
+		var file : FileAccess;
+		file = FileAccess.open(path, FileAccess.WRITE);
+		
+		var csv_header = "Name Key,Name,LVL Min,LVL Max,HP Min,HP Max,MP Min,MP Max,ATK Min,ATK Max,DEF Min,DEF Max,MAG Min,MAG Max,RES Min,RES Max,SPD Min,SPD Max,EXP Min,EXP Max";
+		file.store_csv_line(csv_header.split(","));
+		
+		for entity in entity_list:
+			var entity_name = TranslationServer.get_translation_object("en").get_message(entity.name_key);
+			var csv_output = entity.name_key + "," + entity_name + "," + str(entity.min_level) + "," + str(entity.max_level) + "," + str(entity.hp.min) + "," + str(entity.hp.max) + "," + str(entity.mp.min) + "," + str(entity.mp.max) + "," + str(entity.atk.min) + "," + str(entity.atk.max) + "," + str(entity.def.min) + "," + str(entity.def.max) + "," + str(entity.sp_atk.min) + "," + str(entity.sp_atk.max) + "," + str(entity.sp_def.min) + "," + str(entity.sp_def.max) + "," + str(entity.spd.min) + "," + str(entity.spd.max) + ",";
+			
+			if entity.reward_exp != null :
+				csv_output += str(entity.reward_exp.min) + "," + str(entity.reward_exp.max);
+			else :
+				csv_output += "0,0";
+			
+			file.store_csv_line(csv_output.split(","));
+		
+		file.close();
+	
+	else:
+		print("IMPORT")
+		if !path.ends_with(".csv"):
+			return;
+		
+		var file : FileAccess;
+		file = FileAccess.open(path, FileAccess.READ);
+		
+		var header = file.get_csv_line(",");
+		
+		while !file.eof_reached():
+			var line = file.get_csv_line(",");
+			
+			for entity in entity_list :
+				if entity.name_key == line[0]:
+					print("UPDATING " + line[1]);
+					
+					entity.min_level = line[2].to_int();
+					entity.max_level = line[3].to_int();
+					
+					entity.hp.max = line[5].to_int();
+					entity.hp.min = line[4].to_int();
+					entity.mp.max = line[7].to_int();
+					entity.mp.min = line[6].to_int();
+					
+					entity.atk.max = line[9].to_int();
+					entity.atk.min = line[8].to_int();
+					entity.def.max = line[11].to_int();
+					entity.def.min = line[10].to_int();
+					entity.sp_atk.max = line[13].to_int();
+					entity.sp_atk.min = line[12].to_int();
+					entity.sp_def.max = line[15].to_int();
+					entity.sp_def.min = line[14].to_int();
+					entity.spd.max = line[17].to_int();
+					entity.spd.min = line[16].to_int();
+					
+					if entity.reward_exp != null :
+						entity.reward_exp.max = line[19].to_int();
+						entity.reward_exp.min = line[18].to_int();
+		
+		file.close();
+
+
+func _on_import_from_csv_pressed() -> void:
+	_is_importing = true;
+	
+	var dialog = FileDialog.new();
+	dialog.set_file_mode(FileDialog.FILE_MODE_OPEN_FILE);
+	dialog.set_access(FileDialog.ACCESS_RESOURCES);
+	dialog.current_dir = "res://";
+	dialog.file_selected.connect(_on_csv_dir_selected);
+	add_child(dialog)
+	dialog.popup_centered_ratio();

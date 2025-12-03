@@ -32,4 +32,21 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "Create Entity"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Export to CSV" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export to CSV"
+
+[node name="Import from CSV" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Import from CSV"
+
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Export to CSV" to="." method="_on_export_to_csv_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Import from CSV" to="." method="_on_import_from_csv_pressed"]
