@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ri0hvon0t14r"
+path="res://.godot/imported/Running One (Large Mix).ogg-a676aa4a9eba56d12e6c8802aa91fd15.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/BGM/Battle/Running One (Large Mix).ogg"
+dest_files=["res://.godot/imported/Running One (Large Mix).ogg-a676aa4a9eba56d12e6c8802aa91fd15.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

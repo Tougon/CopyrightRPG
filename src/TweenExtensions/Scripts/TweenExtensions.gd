@@ -4,7 +4,6 @@ class_name TweenExtensions
 
 
 static func shake_position_2d(node : Node, duration : float, vibration_speed : float, strength : Vector2, transition_type : Tween.TransitionType = Tween.TRANS_SINE, ease_type : Tween.EaseType = Tween.EASE_IN, decay_factor : float = 0.66, randomize_start : bool = false):
-	
 	if vibration_speed == 0: return;
 	
 	var direction : Vector2;

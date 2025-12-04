@@ -219,6 +219,7 @@ growth = SubResource("Curve_niyiw")
 [resource]
 script = ExtResource("4_uqs1l")
 name_key = "T_ENTITY_ROTTEDPLANT"
+name_key_short = "T_ENTITY_ROTTEDPLANT_SHORT"
 description_key = "T_DESCRIPTION_ROTTEDPLANT"
 gender = 0
 type = 0

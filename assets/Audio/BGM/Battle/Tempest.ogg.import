@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Tempest.ogg-89861ef606444cefb5eea7284539c8b0.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

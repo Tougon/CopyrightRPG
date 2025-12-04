@@ -237,6 +237,7 @@ growth = SubResource("Curve_sdigb")
 [resource]
 script = ExtResource("1_tkvbf")
 name_key = "T_ENTITY_SLIME"
+name_key_short = null
 description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 0

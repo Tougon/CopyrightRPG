@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Insects.ogg-6bb6a3dba260a3fe55630b92d8e143c9.
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

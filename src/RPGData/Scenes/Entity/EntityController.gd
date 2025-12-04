@@ -175,6 +175,7 @@ func entity_init(params : BattleParams):
 		_reset_shader_parameters();
 		
 		sprite.visible = true;
+		sprite.position = Vector2.ZERO;
 		
 		entity_ui.set_specific_entity_info(self);
 		
@@ -382,6 +383,7 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
 				
 				dodge_anim_sequence = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
+				dodge_anim_sequence.sequence_ended.connect(_free_dodge_sequence);
 				dodge_anim_sequence.sequence_start();
 		else :
 			if dodge_anyway && !hit:
@@ -389,6 +391,7 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 				if current_entity.dodge_anim != null : dodge_anim = current_entity.dodge_anim;
 				
 				dodge_anim_sequence = AnimationSequence.new(get_tree(), dodge_anim, self, [self], [null]);
+				dodge_anim_sequence.sequence_ended.connect(_free_dodge_sequence);
 				dodge_anim_sequence.sequence_start();
 	else :
 		last_hit = val;
@@ -421,6 +424,14 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 		if crit && BattleManager.async_crit_text: 
 			var msg = tr("T_BATTLE_ACTION_CRITICAL_GENERIC").format({entity = param.entity_name});
 			EventManager.on_message_queue.emit(msg);
+
+
+func _free_dodge_sequence():
+	if dodge_anim_sequence != null :
+		dodge_anim_sequence.sequence_ended.disconnect(_free_dodge_sequence);
+		await get_tree().process_frame;
+		dodge_anim_sequence.free();
+		dodge_anim_sequence = null;
 
 
 func set_damage_sprite(damage_time : float):
@@ -828,7 +839,7 @@ static func compare_speed (a : EntityController, b : EntityController) -> bool:
 		return false;
 	
 	# Randomize if speed is tied
-	return randf() < 0.5;
+	return randi() % 2 == 1;
 
 
 static func compare_speed_tie(a : EntityController, b : EntityController) -> bool:

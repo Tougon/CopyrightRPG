@@ -36,6 +36,8 @@ func set_enemy_position(pos : Vector2, time : float = 0.0):
 	else :
 		var tween = get_tree().create_tween();
 		tween.tween_property(self, "position", pos, time).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	
+	sprite.position = Vector2.ZERO;
 
 
 func _set_seal_id(id : int):

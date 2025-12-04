@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/No Contest.ogg-d80096bae536923acde25c22c1b44c
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

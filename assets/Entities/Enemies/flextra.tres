@@ -181,6 +181,7 @@ growth = SubResource("Curve_r51j8")
 [resource]
 script = ExtResource("4_j7o4u")
 name_key = "T_ENTITY_FLEXTRA"
+name_key_short = "T_ENTITY_FLEXTRA_SHORT"
 description_key = "T_DESCRIPTION_FLEXTRA"
 gender = 0
 type = 0

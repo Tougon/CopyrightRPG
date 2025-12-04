@@ -75,9 +75,6 @@ func _set_entity_info(entity : EntityController, is_first : bool):
 	var player_name = get_node_or_null("Container/Player Name");
 	
 	if player_name != null : 
-		if entity.param.entity_name.length() > MAX_NAME_LENGTH :
-			player_name.text = entity.param.entity_name.substr(0, MAX_NAME_LENGTH) + "-";
-		else :
-			player_name.text = entity.param.entity_name;
+		player_name.text = entity.param.entity_name_short;
 	hp_bar.set_values_immediate(entity.current_hp, 0, entity.max_hp);
 	mp_bar.set_values_immediate(entity.current_mp, 0, entity.max_mp);

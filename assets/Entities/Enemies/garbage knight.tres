@@ -254,6 +254,7 @@ growth = SubResource("Curve_jh2ri")
 [resource]
 script = ExtResource("4_pnc0e")
 name_key = "T_ENTITY_GARBAGEKNIGHT"
+name_key_short = "T_ENTITY_GARBAGEKNIGHT_SHORT"
 description_key = "T_DESCRIPTION_GARBAGEKNIGHT"
 gender = 0
 type = 0

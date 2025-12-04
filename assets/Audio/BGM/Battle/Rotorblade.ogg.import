@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Rotorblade.ogg-d91d203fbdfd5843a09434bb5220a4
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

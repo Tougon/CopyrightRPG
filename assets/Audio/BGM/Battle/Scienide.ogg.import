@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Scienide.ogg-4308454a4aabefaa39bff19c7ed83e3e
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

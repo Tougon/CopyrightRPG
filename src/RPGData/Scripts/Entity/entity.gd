@@ -8,6 +8,7 @@ enum Type { GENERIC, PLAYER, BOSS }
 
 @export_group("Identification")
 @export var name_key : String;
+@export var name_key_short : String;
 @export var description_key : String;
 @export var gender : Gender;
 @export var type : Type;
@@ -135,6 +136,12 @@ func create_entity_params(level : int) -> EntityParams:
 	
 	# Fetch text data from localization
 	param.entity_name = tr(name_key);
+	
+	if name_key_short == null || name_key_short.is_empty() :
+		param.entity_name_short = tr(name_key);
+	else:
+		param.entity_name_short = tr(name_key_short);
+	
 	param.entity_name_plural = tr(name_key + "_PLURAL");
 	param.entity_description = tr(description_key);
 	

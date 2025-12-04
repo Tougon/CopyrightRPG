@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Voyager 304.ogg-494555b9a932505eedeaa47ad9f8a
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

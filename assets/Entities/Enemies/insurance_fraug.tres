@@ -291,6 +291,7 @@ growth = SubResource("Curve_hlih0")
 [resource]
 script = ExtResource("3_cbxxm")
 name_key = "T_ENTITY_INSURANCEFRODD"
+name_key_short = "T_ENTITY_INSURANCEFRODD_SHORT"
 description_key = "T_DESCRIPTION_INSURANCEFRODD"
 gender = 1
 type = 0

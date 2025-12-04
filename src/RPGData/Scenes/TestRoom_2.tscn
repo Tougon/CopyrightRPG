@@ -775,10 +775,37 @@ y_sort_enabled = true
 [node name="Sorted Items" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 y_sort_enabled = true
 
-[node name="Bench L_01" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
+[node name="Bench R_01" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
 position = Vector2(1503, 4919)
 rotation = 3.14159
 scale = Vector2(-1, -1)
+default_dialogue = "common_bench_rest"
+object_id = "bench_r_01"
+
+[node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_01" index="0"]
+material = SubResource("ShaderMaterial_evoju")
+texture = ExtResource("45_l41ax")
+offset = Vector2(0, -89)
+
+[node name="ZLightReceiver" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_01/Sprite2D" index="0" instance=ExtResource("48_vdytv")]
+position = Vector2(0, -89)
+shape = SubResource("RectangleShape2D_ty2hn")
+size = Vector2(64, 190)
+origin_offset = Vector2(0, 89)
+
+[node name="Collider" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_01" index="1"]
+position = Vector2(0, -89)
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_01/Collider" index="0"]
+position = Vector2(-10, 12.5)
+shape = SubResource("RectangleShape2D_hbt72")
+
+[node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_01" index="2"]
+position = Vector2(0, -123)
+
+[node name="Bench L_01" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
+position = Vector2(-478, 4919)
+scale = Vector2(-1, 1)
 default_dialogue = "common_bench_rest"
 object_id = "bench_l_01"
 
@@ -803,8 +830,36 @@ shape = SubResource("RectangleShape2D_hbt72")
 [node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01" index="2"]
 position = Vector2(0, -123)
 
+[node name="Bench R_02" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
+position = Vector2(1503, 4042)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+default_dialogue = "common_bench_rest"
+object_id = "bench_r_02"
+
+[node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_02" index="0"]
+material = SubResource("ShaderMaterial_evoju")
+texture = ExtResource("45_l41ax")
+offset = Vector2(0, -89)
+
+[node name="ZLightReceiver" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_02/Sprite2D" index="0" instance=ExtResource("48_vdytv")]
+position = Vector2(0, -89)
+shape = SubResource("RectangleShape2D_ty2hn")
+size = Vector2(64, 190)
+origin_offset = Vector2(0, 89)
+
+[node name="Collider" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_02" index="1"]
+position = Vector2(0, -89)
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_02/Collider" index="0"]
+position = Vector2(-10, 12.5)
+shape = SubResource("RectangleShape2D_hbt72")
+
+[node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_02" index="2"]
+position = Vector2(0, -123)
+
 [node name="Bench L_02" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
-position = Vector2(-478, 4919)
+position = Vector2(-478, 4042)
 scale = Vector2(-1, 1)
 default_dialogue = "common_bench_rest"
 object_id = "bench_l_02"
@@ -828,6 +883,61 @@ position = Vector2(-10, 12.5)
 shape = SubResource("RectangleShape2D_hbt72")
 
 [node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02" index="2"]
+position = Vector2(0, -123)
+
+[node name="Bench R_03" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
+position = Vector2(1503, 3160)
+rotation = 3.14159
+scale = Vector2(-1, -1)
+default_dialogue = "common_bench_rest"
+object_id = "bench_r_03"
+
+[node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_03" index="0"]
+material = SubResource("ShaderMaterial_evoju")
+texture = ExtResource("45_l41ax")
+offset = Vector2(0, -89)
+
+[node name="ZLightReceiver" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_03/Sprite2D" index="0" instance=ExtResource("48_vdytv")]
+position = Vector2(0, -89)
+shape = SubResource("RectangleShape2D_ty2hn")
+size = Vector2(64, 190)
+origin_offset = Vector2(0, 89)
+
+[node name="Collider" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_03" index="1"]
+position = Vector2(0, -89)
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_03/Collider" index="0"]
+position = Vector2(-10, 12.5)
+shape = SubResource("RectangleShape2D_hbt72")
+
+[node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_03" index="2"]
+position = Vector2(0, -123)
+
+[node name="Bench L_03" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
+position = Vector2(-478, 3160)
+scale = Vector2(-1, 1)
+default_dialogue = "common_bench_rest"
+object_id = "bench_l_03"
+
+[node name="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_03" index="0"]
+material = SubResource("ShaderMaterial_evoju")
+texture = ExtResource("45_l41ax")
+offset = Vector2(0, -89)
+
+[node name="ZLightReceiver" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_03/Sprite2D" index="0" instance=ExtResource("48_vdytv")]
+position = Vector2(0, -89)
+shape = SubResource("RectangleShape2D_ty2hn")
+size = Vector2(64, 190)
+origin_offset = Vector2(0, 89)
+
+[node name="Collider" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_03" index="1"]
+position = Vector2(0, -89)
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_03/Collider" index="0"]
+position = Vector2(-10, 12.5)
+shape = SubResource("RectangleShape2D_hbt72")
+
+[node name="Interact Icon" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_03" index="2"]
 position = Vector2(0, -123)
 
 [node name="SET_LEVEL_01" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("21_3vjcp")]
@@ -1048,6 +1158,7 @@ shape = SubResource("RectangleShape2D_hkjpb")
 
 [node name="TEST AREA" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 3652)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_jcr5d")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
@@ -1669,8 +1780,12 @@ tween_on_load = false
 follow_damping = true
 draw_limits = true
 
+[editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_01"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_01"]
+[editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_02"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_02"]
+[editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench R_03"]
+[editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Bench L_03"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/SET_LEVEL_01"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/SET_LEVEL_05"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/SET_LEVEL_10"]

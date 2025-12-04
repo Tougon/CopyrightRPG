@@ -332,6 +332,7 @@ growth = SubResource("Curve_fxgcl")
 [resource]
 script = ExtResource("3_qes5y")
 name_key = "T_ENTITY_STACKERS"
+name_key_short = "T_ENTITY_STACKERS_SHORT"
 description_key = "T_DESCRIPTION_STACKERS"
 gender = 0
 type = 0

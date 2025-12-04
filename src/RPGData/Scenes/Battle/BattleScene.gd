@@ -530,8 +530,6 @@ func _action_phase():
 			await EventManager.on_sequence_queue_empty;
 		EventManager.hide_entity_ui.emit();
 		
-		num_active = get_num_active_enemies();
-		
 		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
 			if seal_manager.can_seal_spell(entity.current_action, entity) && entity.seal_effect != null:
 				# Create the seal
@@ -881,16 +879,18 @@ func _on_enemy_register(entity : EntityController):
 
 
 func _adjust_enemy_name(entity : EntityController):
+	# TODO: ABC's instead of 123's
 	if enemy_type_count.has(entity.current_entity):
 		# Rename first entity of the same type
 		if enemy_type_count[entity.current_entity] == 1:
 			for enemy in enemies:
 				if enemy.current_entity == entity.current_entity:
-					# TODO: ABC's instead of 123's
 					enemy.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
+					enemy.param.entity_name_short += " " + str(enemy_type_count[entity.current_entity]);
 		
 		enemy_type_count[entity.current_entity] += 1;
 		entity.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
+		entity.param.entity_name_short += " " + str(enemy_type_count[entity.current_entity]);
 	else :
 		enemy_type_count[entity.current_entity] = 1;
 
@@ -1083,7 +1083,7 @@ func _all_enemies_defeated() -> bool:
 	return true;
 
 
-func _compare_speed(a : EntityController, b : EntityController):
+static func _compare_speed(a : EntityController, b : EntityController):
 	return EntityController.compare_speed(a, b);
 
 
