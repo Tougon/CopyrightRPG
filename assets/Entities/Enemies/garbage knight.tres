@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=63 format=3 uid="uid://d3vrspr67u842"]
+[gd_resource type="Resource" script_class="Entity" load_steps=66 format=3 uid="uid://d3vrspr67u842"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_i7m5a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_rqcol"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="5_t8814"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="6_x3yc0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="7_8m8nd"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckEffect.gd" id="7_iikhb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="8_7d8yg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="9_o7phk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="10_ua2on"]
@@ -22,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://2eqhtfvm548k" path="res://assets/Spells/common/spell_common_battlecry.tres" id="18_jinia"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="19_n4mpx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="22_8ss7c"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="23_4iwmc"]
 [ext_resource type="Resource" uid="uid://cejp21u2amshl" path="res://assets/Effects/Common/effect_common_buff_attack.tres" id="23_vctpr"]
 
 [sub_resource type="Curve" id="Curve_doo2o"]
@@ -43,9 +45,17 @@ use_scaled = false
 check_target = 1
 negate = false
 
+[sub_resource type="Resource" id="Resource_btjds"]
+script = ExtResource("7_iikhb")
+target = 0
+effect = ExtResource("23_vctpr")
+randomize_target = false
+check_target = 0
+negate = false
+
 [sub_resource type="Resource" id="Resource_6hn2t"]
 script = ExtResource("4_ji0lu")
-behavior_check = Array[ExtResource("3_xmxcf")]([SubResource("Resource_1ay1g")])
+behavior_check = Array[ExtResource("3_xmxcf")]([SubResource("Resource_1ay1g"), SubResource("Resource_btjds")])
 check_type = 0
 action_id = Array[int]([3, 3, 0, 0, 2])
 seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
@@ -219,7 +229,7 @@ growth = SubResource("Curve_diiry")
 script = ExtResource("5_mef82")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("22_8ss7c")]([ExtResource("23_vctpr")])
+seal_effects = Array[ExtResource("22_8ss7c")]([ExtResource("23_4iwmc")])
 
 [sub_resource type="Curve" id="Curve_ql5f6"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

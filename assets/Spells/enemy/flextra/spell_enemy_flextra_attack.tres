@@ -21,7 +21,7 @@ point_count = 2
 
 [resource]
 script = ExtResource("5_xqecj")
-spell_power = 20.0
+spell_power = 18.0
 spell_attack_type = 1
 vary_defense_type = false
 spell_defense_type = 0
@@ -37,7 +37,7 @@ percent_damage_amt = 0.5
 negate = false
 vary_hit_count = true
 min_number_of_hits = 5
-max_number_of_hits = 5
+max_number_of_hits = 4
 hit_count_curve = SubResource("Curve_dg0y5")
 use_multihit_attack_type = false
 multihit_attack_type = Array[int]([])
