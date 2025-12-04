@@ -38,6 +38,9 @@ var _can_flee_this_turn : bool = true;
 # Result caching
 var _reward_items : Array[Item];
 
+# Enemy modifiers
+var _current_num_entities : int = 1;
+
 func _ready():
 	Instance = self;
 	
@@ -77,6 +80,8 @@ func begin_battle(params : BattleParams):
 	
 	for i in range(BattleManager.MAX_ENEMY_COUNT, params.enemies.size()):
 		_reserve_enemies.append(params.enemies[i]);
+	
+	_current_num_entities = min(BattleManager.MAX_ENEMY_COUNT, params.enemies.size());
 	
 	_default_entity = params.enemies[0];
 	
@@ -391,7 +396,9 @@ func _action_phase():
 		var cast_msg = format_dialogue(tr(entity.current_action.spell_cast_message_key), entity.param.entity_name, entity.current_entity);
 		# Format the cast message for targets
 		if spell_cast.size() > 0:
-			cast_msg = cast_msg.format({target = GrammarManager.get_plural_string(entity.current_target)})
+			var target_name = GrammarManager.get_plural_string(entity.current_target);
+			target_name = "[color=FFFF00]" + target_name + "[/color]";
+			cast_msg = cast_msg.format({target = target_name})
 		
 		pre_anim_dialogue.append(cast_msg);
 		
@@ -877,6 +884,25 @@ func _on_enemy_register(entity : EntityController):
 	enemies.append(entity);
 	
 	_load_entity_audio(entity);
+	
+	print("BEFORE MOD: " + str(entity.param.entity_atk));
+	print("BEFORE MOD: " + str(entity.param.entity_def));
+	print("BEFORE MOD: " + str(entity.param.entity_sp_atk));
+	print("BEFORE MOD: " + str(entity.param.entity_sp_def));
+	
+	for i in _current_num_entities - 1 :
+		entity.max_hp /= BattleManager.ENEMY_STAT_DIVISOR;
+		entity.param.entity_atk /= BattleManager.ENEMY_STAT_DIVISOR;
+		entity.param.entity_def /= BattleManager.ENEMY_STAT_DIVISOR;
+		entity.param.entity_sp_atk /= BattleManager.ENEMY_STAT_DIVISOR;
+		entity.param.entity_sp_def /= BattleManager.ENEMY_STAT_DIVISOR;
+	
+	entity.param.entity_hp = entity.max_hp;
+	
+	print("AFTER MOD: " + str(entity.param.entity_atk));
+	print("AFTER MOD: " + str(entity.param.entity_def));
+	print("AFTER MOD: " + str(entity.param.entity_sp_atk));
+	print("AFTER MOD: " + str(entity.param.entity_sp_def));
 
 
 func _adjust_enemy_name(entity : EntityController):
@@ -888,10 +914,12 @@ func _adjust_enemy_name(entity : EntityController):
 				if enemy.current_entity == entity.current_entity:
 					enemy.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
 					enemy.param.entity_name_short += " " + str(enemy_type_count[entity.current_entity]);
+					enemy.param.renamed = true;
 		
 		enemy_type_count[entity.current_entity] += 1;
 		entity.param.entity_name += " " + str(enemy_type_count[entity.current_entity]);
 		entity.param.entity_name_short += " " + str(enemy_type_count[entity.current_entity]);
+		entity.param.renamed = true;
 	else :
 		enemy_type_count[entity.current_entity] = 1;
 
@@ -1001,6 +1029,7 @@ func _on_enemy_defeated(entity : EntityController):
 	# Send the unused controller to the back of the list
 	enemies.erase(entity);
 	enemies.append(entity);
+	_current_num_entities -= 1;
 	
 	_reserve_controllers.append(entity);
 	
@@ -1130,6 +1159,7 @@ func _add_entity_to_battle(entity : Entity):
 	if entity != null :
 		if _reserve_controllers.size() > 0:
 			_spawning = true;
+			_current_num_entities = get_num_active_enemies() + 1;
 			
 			var enemy_controller = _reserve_controllers[0];
 			_reserve_controllers.remove_at(0);

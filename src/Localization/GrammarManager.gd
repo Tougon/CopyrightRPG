@@ -24,7 +24,7 @@ func get_plural_string(names : Array[EntityController]) -> String:
 			for i in names.size():
 				var name = names[i].param.entity_name;
 				
-				if names[i].param.entity_generic :
+				if names[i].param.entity_generic && !names[i].param.renamed:
 					result += get_direct_article(name) + name;
 				else :
 					result += name;

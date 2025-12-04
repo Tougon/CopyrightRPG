@@ -2910,9 +2910,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 76.0
+offset_left = 119.0
 offset_top = -23.0
-offset_right = -30.0
+offset_right = 13.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -2947,6 +2947,51 @@ texture = ExtResource("40_n1ghd")
 expand_mode = 5
 stretch_mode = 5
 
+[node name="Flag Icon Group" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals" instance=ExtResource("22_gs7bb")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 79.0
+offset_top = -21.0
+offset_right = -8.0
+offset_bottom = -6.0
+grow_vertical = 0
+
+[node name="Icon Container" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group" index="0"]
+custom_minimum_size = Vector2(10, 10)
+offset_left = -18.0
+offset_top = 3.0
+offset_right = 30.0
+offset_bottom = -1.0
+theme_override_constants/separation = 4
+
+[node name="Red" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="0"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Orange" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="1"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Yellow" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="2"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Green" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="3"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Turquoise" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="4"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Blue" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="5"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Purple" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="6"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Pink" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="7"]
+custom_minimum_size = Vector2(10, 10)
+
+[node name="Null" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="8"]
+custom_minimum_size = Vector2(10, 10)
+
 [node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 material = ExtResource("16_egfar")
 layout_mode = 1
@@ -2971,6 +3016,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="Player Select Items" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6029,3 +6075,4 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]
 
 [editable path="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group"]

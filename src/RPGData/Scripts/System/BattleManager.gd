@@ -12,6 +12,7 @@ const ENEMY_REPOSITION_TIME : float = 0.30;
 const ENEMY_SEAL_INFINITE : bool = true;
 const ENEMY_SEAL_ALL_UNIQUE : bool = true;
 const ENEMY_SEAL_FORCE_GENERIC_NAME : bool = true;
+const ENEMY_STAT_DIVISOR : float = 1.07;
 
 # Temporary mechanics
 const HEAL_ON_DEFEAT : bool = true;

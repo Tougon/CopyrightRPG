@@ -53,6 +53,7 @@ func on_focus():
 	else :
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
+		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
 		$"BG/Move Select Items/None".visible = true;
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".visible = true;
@@ -110,6 +111,7 @@ func _refresh_move_ui():
 		$"BG/Move Select Items/Move Visuals/Vid/Name".text = "";
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
+		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
 		$"BG/Move Select Items/None".visible = true;
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".visible = true;
@@ -161,6 +163,8 @@ func _on_item_selected(data):
 		$"BG/Move Select Items/Move Visuals/Vid/Name".text = tr(data.spell_name_key);
 		$"BG/Move Select Items/Move Visuals/Description".text = tr(data.spell_description_key);
 		$"BG/Move Select Items/Move Visuals/Cost".text = tr("T_MP_COST").format({cost = data.spell_cost});
+		$"BG/Move Select Items/Move Visuals/Flag Icon Group".display_flags(data.spell_flags);
+		
 		if data.spell_videos.size() > 0 :
 			_load_spell_data(data as Spell)
 		else :
@@ -172,6 +176,7 @@ func _on_item_selected(data):
 		$"BG/Move Select Items/Move Visuals/Vid/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Cost".text = "-";
+		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 	
 	$"BG/Move Select Items/Move Visuals/Use".visible = _can_use_spell;

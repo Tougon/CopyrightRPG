@@ -21,7 +21,7 @@ use_modifiers = false
 
 [sub_resource type="Resource" id="Resource_7rh7j"]
 script = ExtResource("3_i0415")
-dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_ACTIVATE"
+dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_SEAL_ACTIVATE"
 target = 0
 animation = ExtResource("3_a72cc")
 

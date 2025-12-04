@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("4_o4apy")
-spell_power = 35.0
+spell_power = 40.0
 spell_attack_type = 1
 vary_defense_type = false
 spell_defense_type = 1

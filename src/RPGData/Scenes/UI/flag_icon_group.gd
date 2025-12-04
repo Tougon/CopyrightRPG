@@ -21,6 +21,11 @@ func display_flags(flags_to_display : Array[TFlag]):
 		_icons[i].visible = flags_to_display.has(flags[i]);
 
 
+func clear_flags():
+	for i in flags.size():
+		_icons[i].visible = false;
+
+
 func set_sealing(sealing : bool):
 	for icon in _icons:
 		icon.get_child(0).visible = sealing;

@@ -2,9 +2,10 @@ extends Object
 class_name EntityParams
 
 var entity_name : String;
-var entity_name_short : String
+var entity_name_short : String;
 var entity_name_plural : String;
 var entity_description : String;
+var renamed : bool = false;
 
 var entity_gender : Entity.Gender;
 var entity_generic : bool;
