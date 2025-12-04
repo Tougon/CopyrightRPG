@@ -199,6 +199,7 @@ growth = SubResource("Curve_gf4wa")
 [resource]
 script = ExtResource("4_wt72m")
 name_key = "T_ENTITY_CARROTHEAD"
+name_key_short = ""
 description_key = "T_DESCRIPTION_CARROTHEAD"
 gender = 0
 type = 0

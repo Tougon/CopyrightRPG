@@ -265,6 +265,7 @@ growth = SubResource("Curve_x4785")
 [resource]
 script = ExtResource("4_rxche")
 name_key = "T_ENTITY_CRAPPER"
+name_key_short = ""
 description_key = "T_DESCRIPTION_CRAPPER"
 gender = 0
 type = 0

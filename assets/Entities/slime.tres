@@ -73,7 +73,7 @@ negate = false
 
 [sub_resource type="Resource" id="Resource_m3uyh"]
 script = ExtResource("8_s3wuk")
-chance = 0.8
+chance = 0.65
 check_target = 0
 negate = false
 
@@ -237,7 +237,7 @@ growth = SubResource("Curve_sdigb")
 [resource]
 script = ExtResource("1_tkvbf")
 name_key = "T_ENTITY_SLIME"
-name_key_short = null
+name_key_short = ""
 description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 0

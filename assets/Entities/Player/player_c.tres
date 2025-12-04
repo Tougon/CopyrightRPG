@@ -146,6 +146,7 @@ growth = SubResource("Curve_o22ga")
 [resource]
 script = ExtResource("8_deayn")
 name_key = "T_ENTITY_PLAYER_HEALER"
+name_key_short = ""
 description_key = "T_DESCRIPTION_SLIME"
 gender = 1
 type = 1

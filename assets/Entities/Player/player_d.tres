@@ -146,6 +146,7 @@ growth = SubResource("Curve_ev8vw")
 [resource]
 script = ExtResource("9_ps7m7")
 name_key = "T_ENTITY_PLAYER_FIGHTER"
+name_key_short = ""
 description_key = "T_DESCRIPTION_SLIME"
 gender = 2
 type = 1

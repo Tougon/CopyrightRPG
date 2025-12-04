@@ -360,6 +360,7 @@ growth = SubResource("Curve_2kj7k")
 [resource]
 script = ExtResource("4_ylc7e")
 name_key = "T_ENTITY_LAZR"
+name_key_short = ""
 description_key = "T_DESCRIPTION_LAZR"
 gender = 0
 type = 0

@@ -152,6 +152,7 @@ growth = SubResource("Curve_ddd2l")
 [resource]
 script = ExtResource("9_vkdbv")
 name_key = "T_ENTITY_PLAYER_MAGE"
+name_key_short = ""
 description_key = "T_DESCRIPTION_SLIME"
 gender = 1
 type = 1

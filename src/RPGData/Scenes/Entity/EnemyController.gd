@@ -17,7 +17,14 @@ func entity_init(params : BattleParams):
 	
 	if current_entity != null:
 		var level_relative = current_entity.level_curve.sample(randf());
-		level = roundi(lerpf(current_entity.min_level as float, current_entity.max_level as float, level_relative));
+		var max_level = current_entity.max_level;
+		
+		# Experimental change: weakens enemies if party is too weak
+		if GameplayConstants.DECEMBER_BUILD :
+			if current_entity.min_level == 1 && _apply_pity_mods():
+				max_level = 2;
+		
+		level = roundi(lerpf(current_entity.min_level as float, max_level as float, level_relative));
 		
 		seal_effect_list = current_entity.seal_effect_list;
 		
@@ -28,6 +35,14 @@ func entity_init(params : BattleParams):
 	
 	if params != null :
 		EventManager.register_enemy.emit(self);
+
+
+func _apply_pity_mods() -> bool:
+	for player in DataManager.party_data :
+		if player.level == 1 :
+			return true;
+	
+	return false;
 
 
 func set_enemy_position(pos : Vector2, time : float = 0.0):

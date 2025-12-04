@@ -189,6 +189,7 @@ growth = SubResource("Curve_t40px")
 [resource]
 script = ExtResource("4_vaqip")
 name_key = "T_ENTITY_SIZZLER"
+name_key_short = ""
 description_key = "T_DESCRIPTION_CARROTHEAD"
 gender = 0
 type = 0

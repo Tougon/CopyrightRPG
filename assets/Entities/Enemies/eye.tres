@@ -238,6 +238,7 @@ growth = SubResource("Curve_ssw1b")
 [resource]
 script = ExtResource("4_03ecx")
 name_key = "T_ENTITY_EYE"
+name_key_short = ""
 description_key = "T_DESCRIPTION_EYE"
 gender = 0
 type = 0

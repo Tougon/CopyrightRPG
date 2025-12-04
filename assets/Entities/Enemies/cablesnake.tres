@@ -261,6 +261,7 @@ growth = SubResource("Curve_oinfn")
 [resource]
 script = ExtResource("4_57xe0")
 name_key = "T_ENTITY_CABLESNAKE"
+name_key_short = ""
 description_key = "T_DESCRIPTION_CABLESNAKE"
 gender = 0
 type = 0

@@ -308,6 +308,7 @@ growth = SubResource("Curve_2r0ph")
 [resource]
 script = ExtResource("3_xd1s3")
 name_key = "T_ENTITY_CHOBBLIN"
+name_key_short = ""
 description_key = "T_DESCRIPTION_CHOBBLIN"
 gender = 1
 type = 0

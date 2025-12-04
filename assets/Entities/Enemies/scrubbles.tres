@@ -259,6 +259,7 @@ growth = SubResource("Curve_ti0pb")
 [resource]
 script = ExtResource("3_dxcen")
 name_key = "T_ENTITY_SCRUBBLES"
+name_key_short = ""
 description_key = "T_DESCRIPTION_SCRUBBLES"
 gender = 0
 type = 0

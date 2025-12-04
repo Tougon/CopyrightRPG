@@ -414,6 +414,7 @@ growth = SubResource("Curve_sdigb")
 [resource]
 script = ExtResource("14_7om7i")
 name_key = "T_ENTITY_SUPERSLIME"
+name_key_short = ""
 description_key = "T_DESCRIPTION_SLIME"
 gender = 0
 type = 2

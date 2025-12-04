@@ -82,6 +82,8 @@ var dodge_anim_sequence : AnimationSequence;
 var _appear_anim_playing : bool = false;
 var _defeat_anim_playing : bool = false;
 
+var turn_seed : float = 0.0;
+
 
 # Initialization
 func _ready():
@@ -839,9 +841,11 @@ static func compare_speed (a : EntityController, b : EntityController) -> bool:
 		return false;
 	
 	# Randomize if speed is tied
-	return randi() % 2 == 1;
+	return a.turn_seed > b.turn_seed;
 
 
+# What the hell is this?
+# Seems redundant given that compare_speed already handles ties.
 static func compare_speed_tie(a : EntityController, b : EntityController) -> bool:
 	var result = compare_speed(a, b);
 	

@@ -140,6 +140,7 @@ func _begin_turn():
 		entity.turn_number += 1;
 		entity.is_ready = false;
 		entity.reset_action();
+		entity.turn_seed = randf();
 		
 		if players.has(entity) : allies.append(entity);
 		if enemies.has(entity) : targets.append(entity);

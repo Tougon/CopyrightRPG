@@ -42,10 +42,11 @@ func set_sealing(_sealing : bool):
 			mp_label.text = str(_cost) + tr("T_MP");
 			theme_type_variation = "Button";
 		
-		if action.target_defeated_entities : 
-			disabled = BattleScene.Instance.get_num_active_players(true) == 0;
-		if action.ignore_self :
-			disabled = BattleScene.Instance.get_num_active_players(false) <= 1;
+		if !disabled :
+			if action.target_defeated_entities : 
+				disabled = BattleScene.Instance.get_num_active_players(true) == 0;
+			if action.ignore_self :
+				disabled = BattleScene.Instance.get_num_active_players(false) <= 1;
 		
 		if UIManager.current_selection == self :
 			flag_group.set_sealing(sealing && !disabled);
