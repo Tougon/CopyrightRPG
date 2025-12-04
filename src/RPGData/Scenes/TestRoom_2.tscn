@@ -1158,6 +1158,7 @@ shape = SubResource("RectangleShape2D_hkjpb")
 
 [node name="TEST AREA" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 position = Vector2(508, 3652)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_jcr5d")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0

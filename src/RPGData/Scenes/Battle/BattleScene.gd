@@ -174,7 +174,7 @@ func _begin_turn():
 	# Though I think that's moreso a problem with the game's UI design.
 	players.sort_custom(_compare_speed);
 	if players.size() > 0:
-		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
+		EventManager.set_active_player.emit(players[current_player_index], _is_lowest_valid_player());
 		EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 	
 	UIManager.open_menu_name("player_battle_main");
@@ -200,7 +200,7 @@ func _decision_phase():
 				UIManager.close_menu_name("player_battle_target")
 			
 			if current_player_index < players.size():
-				EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
+				EventManager.set_active_player.emit(players[current_player_index], _is_lowest_valid_player());
 				EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 				await get_tree().process_frame;
 				UIManager.open_menu_name("player_battle_main");
@@ -980,7 +980,7 @@ func _on_player_menu_cancel(cancel_button : bool):
 			players[current_player_index].add_item(players[current_player_index].current_item);
 			players[current_player_index].current_item = null;
 		
-		EventManager.set_active_player.emit(players[current_player_index], current_player_index == 0);
+		EventManager.set_active_player.emit(players[current_player_index], _is_lowest_valid_player());
 		EventManager.set_player_bg.emit(players[current_player_index].current_entity);
 		UIManager.open_menu_name("player_battle_main");
 		
