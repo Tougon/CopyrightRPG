@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=9 format=3 uid="uid://7gb1tq4bx06b"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_2d3c1"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="2_75qmo"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="3_fccra"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="5_0y5go"]
+
+[sub_resource type="Resource" id="Resource_gipj6"]
+script = ExtResource("2_75qmo")
+
+[sub_resource type="Resource" id="Resource_6na2o"]
+script = ExtResource("1_2d3c1")
+frame = 40
+frame_order = 1
+action = SubResource("Resource_gipj6")
+
+[sub_resource type="Resource" id="Resource_ojty4"]
+script = ExtResource("3_fccra")
+vibrate = true
+damage_time = 0.35
+damage_delay = 0.0
+shake_duration = 0.0
+shake_decay = 0.35
+force_dodge = true
+effect_user = false
+manual_override = true
+use_fixed_damage = false
+damage_amount = 0
+percent_amount = 0.1
+mp_damage = true
+negate = false
+
+[sub_resource type="Resource" id="Resource_beybr"]
+script = ExtResource("1_2d3c1")
+frame = 2
+frame_order = 0
+action = SubResource("Resource_ojty4")
+
+[resource]
+script = ExtResource("5_0y5go")
+animation_name = "MP Damage"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_2d3c1")]([SubResource("Resource_6na2o"), SubResource("Resource_beybr")])

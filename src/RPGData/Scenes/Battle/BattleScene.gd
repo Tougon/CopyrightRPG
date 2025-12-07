@@ -276,6 +276,7 @@ func _action_phase():
 			continue;
 		
 		if !(_all_players_defeated() || _all_enemies_defeated()) :
+			EventManager.hide_entity_ui.emit();
 			entity.mat.set_shader_parameter("overlay_color", Color.WHITE)
 			# Looks bad on players for now but this is a sprite issue
 			entity.tween.play_tween_name("Entity Ready Up");

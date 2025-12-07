@@ -277,6 +277,8 @@ T_EFFECT_GENERIC_ATTACK_DROP_DEACTIVATE,{t_article_def}{t_entity}'s attack drop 
 T_EFFECT_GENERIC_ATTACK_DROP_FAIL,{t_article_def}{t_entity}'s attack can't go lower!,,
 T_EFFECT_GENERIC_ATTACK_DROP_STACK,The effect of {t_article_def}{t_entity}'s attack drop was renewed!,,
 T_EFFECT_GENERIC_ATTACK_DROP_LARGE_ACTIVATE,{t_article_def}{t_entity}'s attack harshly fell!,,
+T_EFFECT_GENERIC_DAMAGE_HP_ACTIVATE,{t_article_def}{t_entity} got hurt!,,
+T_EFFECT_GENERIC_DAMAGE_MP_ACTIVATE,{t_article_def}{t_entity} loses energy!,,
 T_EFFECT_GENERIC_DEFENSE_BOOST_ACTIVATE,{article_def}{entity}'s defense rose!,,
 T_EFFECT_GENERIC_DEFENSE_BOOST_DEACTIVATE,{article_def}{entity}'s defense boost from {spell} wore off!,,
 T_EFFECT_GENERIC_DEFENSE_BOOST_FAIL,{article_def}{entity}'s defense is maxed out!,,

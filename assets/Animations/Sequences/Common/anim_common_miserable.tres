@@ -189,6 +189,6 @@ action = SubResource("Resource_wnpuv")
 
 [resource]
 script = ExtResource("9_mgihu")
-animation_name = "Stun"
+animation_name = "Miserable"
 hide_ui_on_start = true
 animation_sequence = Array[ExtResource("1_jdhsy")]([SubResource("Resource_lqn7l"), SubResource("Resource_l2pke"), SubResource("Resource_45gcg"), SubResource("Resource_6na2o"), SubResource("Resource_hf6ps"), SubResource("Resource_010jk"), SubResource("Resource_rd4mb"), SubResource("Resource_g8osk"), SubResource("Resource_3bkxv"), SubResource("Resource_cwjlh")])

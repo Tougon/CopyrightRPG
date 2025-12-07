@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=6 format=3 uid="uid://6rs1etki424l"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_0uqwn"]
+[ext_resource type="Resource" uid="uid://7gb1tq4bx06b" path="res://assets/Animations/Sequences/Common/anim_common_seal_mp_damage.tres" id="2_3t6k2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="3_smlxs"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_m6vs8"]
+
+[sub_resource type="Resource" id="Resource_7rh7j"]
+script = ExtResource("3_smlxs")
+dialogue_key = "T_EFFECT_GENERIC_DAMAGE_MP_ACTIVATE"
+target = 0
+animation = ExtResource("2_3t6k2")
+
+[resource]
+script = ExtResource("4_m6vs8")
+stackable = true
+effect_name = "MP 10"
+generic = true
+repeatable = false
+priority = 3
+turn_limit = 0
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_0uqwn")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_0uqwn")]([])
+on_activate = Array[ExtResource("1_0uqwn")]([SubResource("Resource_7rh7j")])
+on_failed_to_activate = Array[ExtResource("1_0uqwn")]([])
+on_apply = Array[ExtResource("1_0uqwn")]([])
+on_move_selected = Array[ExtResource("1_0uqwn")]([])
+on_move_completed = Array[ExtResource("1_0uqwn")]([])
+on_deactivate = Array[ExtResource("1_0uqwn")]([])
+on_turn_start = Array[ExtResource("1_0uqwn")]([])
+on_turn_end = Array[ExtResource("1_0uqwn")]([])
+on_stack = Array[ExtResource("1_0uqwn")]([])
