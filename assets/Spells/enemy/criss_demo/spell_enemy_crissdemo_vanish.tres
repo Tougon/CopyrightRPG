@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=20 format=3 uid="uid://7vdy23dyqdmi"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=23 format=3 uid="uid://7vdy23dyqdmi"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_2a5fq"]
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_dp560"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_hccyo"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_geuk6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_va8y2"]
+[ext_resource type="Resource" uid="uid://dugq12fkxgmh2" path="res://assets/Effects/Common/effect_common_status_confuse.tres" id="4_1yp60"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_5tt8l"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_px563"]
 [ext_resource type="Resource" uid="uid://bxri5cxkq5oca" path="res://assets/Animations/Sequences/Common/anim_common_set_visible.tres" id="5_mr3t2"]
@@ -13,6 +14,18 @@
 [ext_resource type="Resource" uid="uid://6qchgchmget7" path="res://assets/Animations/Sequences/Common/anim_common_set_invisible.tres" id="9_8medy"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="10_bsax5"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="13_vxdwn"]
+
+[sub_resource type="Resource" id="Resource_n13yb"]
+script = ExtResource("3_va8y2")
+chance = 1.0
+effect = ExtResource("4_1yp60")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_aupum"]
+script = ExtResource("1_2a5fq")
+chance = 0.5
+use_luck = false
+effect_set = Array[ExtResource("3_va8y2")]([SubResource("Resource_n13yb")])
 
 [sub_resource type="Resource" id="Resource_hieem"]
 script = ExtResource("6_o1bna")
@@ -131,7 +144,7 @@ will_save_as_prev = true
 animation_sequence = ExtResource("1_dp560")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])
-effects_on_hit = Array[ExtResource("1_2a5fq")]([])
+effects_on_hit = Array[ExtResource("1_2a5fq")]([SubResource("Resource_aupum")])
 effects_on_success = Array[ExtResource("1_2a5fq")]([SubResource("Resource_pdx4q")])
 properties = Array[ExtResource("3_geuk6")]([SubResource("Resource_7mg5c")])
 can_use_overworld = false

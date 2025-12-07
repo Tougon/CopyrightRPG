@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BehaviorCheckHP" load_steps=2 format=3 uid="uid://rdasmtw7yk7s"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckHP.gd" id="1_byn4s"]
+
+[resource]
+script = ExtResource("1_byn4s")
+hp_percent = 0.35
+randomize_target = false
+check_target = 0
+negate = false

@@ -516,6 +516,8 @@ T_MP_AMOUNT_FLAT,MP: {current}/{max},,
 T_PARTY_DESCRIPTION_USE_SPELL,Use this spell on whom?,,
 T_PARTY_USER_SPELL,USE,,
 
+T_SEAL_GENERIC,the seal,,
+
 T_SPELL_GENERIC,{article_def}[color=FFFF00]{entity}'s[/color] Move,,
 T_SPELL_GENERIC_PRONOUN,{pronoun3} Move,,
 T_SPELL_GENERIC_ATTACK,Attack,,

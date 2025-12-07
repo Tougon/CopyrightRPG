@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EntityBehaviorCheck" load_steps=3 format=3 uid="uid://bplvxw8yl5ga"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="1_rh1pa"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="2_e8x44"]
+
+[resource]
+script = ExtResource("2_e8x44")
+behavior_check = Array[ExtResource("1_rh1pa")]([])
+check_type = 0
+action_id = Array[int]([3])
+seal_chance = Array[float]([0.0])
+seal_id = Array[int]([0])

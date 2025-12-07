@@ -1,0 +1,102 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=22 format=3 uid="uid://drbqebh56v06h"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_ocpvu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_turns.gd" id="2_dmaqh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_e6he4"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="3_14pou"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_23cnm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_5v4is"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_5jdis"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_1usjy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="7_raofn"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="9_srgw2"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="10_vevme"]
+
+[sub_resource type="Resource" id="Resource_ahufg"]
+script = ExtResource("2_dmaqh")
+check_mode = 2
+use_limit = true
+turns = 3
+
+[sub_resource type="Resource" id="Resource_jsj2g"]
+script = ExtResource("2_e6he4")
+target = 0
+stat = 2
+check_mode = 2
+stage = 0
+max = true
+min = false
+use_stage = false
+use_modifiers = false
+
+[sub_resource type="Resource" id="Resource_7rh7j"]
+script = ExtResource("4_23cnm")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_ACTIVATE"
+target = 0
+animation = ExtResource("3_14pou")
+
+[sub_resource type="Resource" id="Resource_blxbe"]
+script = ExtResource("5_5v4is")
+target = 0
+stat = 2
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_ujyfs"]
+script = ExtResource("7_raofn")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_qnvmy"]
+script = ExtResource("6_5jdis")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_DEACTIVATE"
+
+[sub_resource type="Resource" id="Resource_shkwo"]
+script = ExtResource("5_5v4is")
+target = 0
+stat = 2
+amount = -1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_tgpjx"]
+script = ExtResource("6_5jdis")
+dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_FAIL"
+
+[sub_resource type="Resource" id="Resource_4bnai"]
+script = ExtResource("9_srgw2")
+target = 0
+
+[sub_resource type="Resource" id="Resource_l8wdj"]
+script = ExtResource("10_vevme")
+
+[resource]
+script = ExtResource("7_1usjy")
+stackable = true
+effect_name = "Special Attack Buff Temp"
+generic = true
+repeatable = true
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_ocpvu")]([SubResource("Resource_jsj2g")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_ocpvu")]([SubResource("Resource_ahufg")])
+on_activate = Array[ExtResource("1_ocpvu")]([SubResource("Resource_7rh7j"), SubResource("Resource_blxbe"), SubResource("Resource_ujyfs")])
+on_failed_to_activate = Array[ExtResource("1_ocpvu")]([SubResource("Resource_tgpjx")])
+on_apply = Array[ExtResource("1_ocpvu")]([])
+on_move_selected = Array[ExtResource("1_ocpvu")]([SubResource("Resource_l8wdj")])
+on_move_completed = Array[ExtResource("1_ocpvu")]([SubResource("Resource_4bnai")])
+on_deactivate = Array[ExtResource("1_ocpvu")]([SubResource("Resource_qnvmy"), SubResource("Resource_shkwo")])
+on_turn_start = Array[ExtResource("1_ocpvu")]([])
+on_turn_end = Array[ExtResource("1_ocpvu")]([])
+on_stack = Array[ExtResource("1_ocpvu")]([])

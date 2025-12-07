@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="EntityBehaviorCheck" load_steps=12 format=3 uid="uid://bgpf4pgb3o2od"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="1_efqbi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="2_dhfg1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="3_5bvrx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSealTarget.gd" id="3_w20h6"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="4_vwtsq"]
+
+[sub_resource type="Curve" id="Curve_2qwsc"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_levvs"]
+script = ExtResource("2_dhfg1")
+move_id = 0
+check_player_side = true
+chance_if_sealed = 1.0
+weigh_seal_count = true
+caution_threshold = 8
+weight = SubResource("Curve_2qwsc")
+result_if_zero = false
+check_target = 2
+negate = false
+
+[sub_resource type="Curve" id="Curve_kw820"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_pt52k"]
+script = ExtResource("2_dhfg1")
+move_id = 1
+check_player_side = true
+chance_if_sealed = 1.0
+weigh_seal_count = true
+caution_threshold = 8
+weight = SubResource("Curve_kw820")
+result_if_zero = false
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_1a8ac"]
+script = ExtResource("3_5bvrx")
+chance = 0.8
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_g3gxb"]
+script = ExtResource("3_w20h6")
+check_target = 2
+negate = false
+
+[resource]
+script = ExtResource("4_vwtsq")
+behavior_check = Array[ExtResource("1_efqbi")]([SubResource("Resource_levvs"), SubResource("Resource_pt52k"), SubResource("Resource_1a8ac"), SubResource("Resource_g3gxb")])
+check_type = 0
+action_id = Array[int]([4, 5])
+seal_chance = Array[float]([1.0, 0.0])
+seal_id = Array[int]([3, 0])

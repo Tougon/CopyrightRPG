@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=42 format=3 uid="uid://df5wqqjn43uqj"]
+[gd_resource type="Resource" script_class="Entity" load_steps=102 format=3 uid="uid://df5wqqjn43uqj"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_84sle"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_d4s2f"]
@@ -10,12 +10,38 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="5_fgjxa"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="5_l81d8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="5_phh4n"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="5_t3ybo"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="6_hoq8k"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="6_u3mru"]
+[ext_resource type="Resource" uid="uid://cf3eh0y3tarlq" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_fire_01.tres" id="7_k01j1"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="8_afobs"]
+[ext_resource type="Resource" uid="uid://rdasmtw7yk7s" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_conditional.tres" id="8_figxb"]
+[ext_resource type="Resource" uid="uid://cxihiq151idtw" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_escape_01.tres" id="8_kpqyk"]
+[ext_resource type="Resource" uid="uid://c41wm02085sra" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_levitate_01.tres" id="9_7hncv"]
+[ext_resource type="Resource" uid="uid://6lriywqbe4mf" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn1_00.tres" id="9_wxr5l"]
+[ext_resource type="Resource" uid="uid://6i0o0c4dl1yj" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn1_01.tres" id="10_4ko2m"]
+[ext_resource type="Resource" uid="uid://p6ujtwja2nlo" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_slight.tres" id="10_vmpgw"]
 [ext_resource type="Resource" uid="uid://do2ksvmyo1x2s" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_theultimate.tres" id="11_7b10u"]
+[ext_resource type="Resource" uid="uid://bmk7vdfg4u732" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn1_02.tres" id="11_qm78b"]
+[ext_resource type="Resource" uid="uid://7vdy23dyqdmi" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_vanish.tres" id="11_yx763"]
+[ext_resource type="Resource" uid="uid://b3l8dp6aadvfl" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_gross.tres" id="12_g1fyb"]
+[ext_resource type="Resource" uid="uid://bgpf4pgb3o2od" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn2_00.tres" id="12_opocc"]
+[ext_resource type="Resource" uid="uid://bqf1kkwabi0r2" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn2_01.tres" id="13_uws5f"]
+[ext_resource type="Resource" uid="uid://bgnwi0jn3gpwn" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn2_02.tres" id="14_ivgpw"]
+[ext_resource type="Resource" uid="uid://tq0ie7hf0t6x" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_escape_02.tres" id="14_jixxj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="15_1ji0c"]
+[ext_resource type="Resource" uid="uid://7ypa65i6to3g" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_fire_02.tres" id="15_6gd17"]
+[ext_resource type="Resource" uid="uid://c7k7i8tefuvob" path="res://assets/Entities/Enemies/criss_boss_demo/phase1_turn2_03.tres" id="15_fpkbn"]
 [ext_resource type="Resource" uid="uid://bdbbs7k468rpy" path="res://assets/Effects/Seal/effect_seal_stun.tres" id="16_0jflq"]
+[ext_resource type="Resource" uid="uid://6rs1etki424l" path="res://assets/Effects/Seal/effect_seal_damage_mp.tres" id="16_f2858"]
+[ext_resource type="Resource" uid="uid://ceitxttyukqy3" path="res://assets/Entities/Enemies/criss_boss_demo/phase2_conditional.tres" id="16_r328f"]
+[ext_resource type="Resource" uid="uid://btf8wuoa5ranb" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_fire_03.tres" id="16_u0i57"]
+[ext_resource type="Resource" uid="uid://c536tq37266kc" path="res://assets/Effects/Seal/effect_seal_damage_hp.tres" id="16_xgi3y"]
+[ext_resource type="Resource" uid="uid://c70r8i0jicr0a" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_levitate_02.tres" id="17_gm0he"]
+[ext_resource type="Resource" uid="uid://xhvtpu82af6r" path="res://assets/Entities/Enemies/criss_boss_demo/phase2_turn1_00.tres" id="17_meq7q"]
+[ext_resource type="Resource" uid="uid://dr7v4hwa0k00g" path="res://assets/Entities/Enemies/criss_boss_demo/phase2_turn1_01.tres" id="18_0crlp"]
+[ext_resource type="Resource" uid="uid://bplvxw8yl5ga" path="res://assets/Entities/Enemies/criss_boss_demo/phase2_turn1_02.tres" id="19_txksg"]
+[ext_resource type="Resource" uid="uid://drbqebh56v06h" path="res://assets/Effects/Seal/effect_seal_buff_sp_attack_temporary.tres" id="35_xw683"]
 
 [sub_resource type="Curve" id="Curve_ml2vp"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -27,7 +53,21 @@ min = 44
 max = 44
 growth = SubResource("Curve_ml2vp")
 
-[sub_resource type="Resource" id="Resource_61lua"]
+[sub_resource type="Resource" id="Resource_t3jda"]
+script = ExtResource("5_t3ybo")
+chance = 0.5
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_yra4q"]
+script = ExtResource("6_hoq8k")
+behavior_check = Array[ExtResource("5_fgjxa")]([SubResource("Resource_t3jda")])
+check_type = 0
+action_id = Array[int]([2, 4])
+seal_chance = Array[float]([1.0, 1.0])
+seal_id = Array[int]([2, 3])
+
+[sub_resource type="Resource" id="Resource_reykg"]
 script = ExtResource("6_hoq8k")
 behavior_check = Array[ExtResource("5_fgjxa")]([])
 check_type = 0
@@ -35,14 +75,125 @@ action_id = Array[int]([0])
 seal_chance = Array[float]([1.0])
 seal_id = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_fjj01"]
+[sub_resource type="Resource" id="Resource_c1ltw"]
 script = ExtResource("4_08jet")
-behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_61lua")])
+behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_yra4q"), SubResource("Resource_reykg")])
 active_condition = Array[ExtResource("5_fgjxa")]([])
 
-[sub_resource type="Resource" id="Resource_7q184"]
+[sub_resource type="Resource" id="Resource_2xi2q"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([ExtResource("9_wxr5l"), ExtResource("10_4ko2m"), ExtResource("11_qm78b")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("8_figxb")])
+
+[sub_resource type="Resource" id="Resource_8hxdx"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([ExtResource("12_opocc"), ExtResource("13_uws5f"), ExtResource("14_ivgpw"), ExtResource("15_fpkbn")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("8_figxb")])
+
+[sub_resource type="Resource" id="Resource_afepj"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([ExtResource("12_opocc"), ExtResource("13_uws5f"), ExtResource("14_ivgpw"), ExtResource("15_fpkbn")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("8_figxb")])
+
+[sub_resource type="Resource" id="Resource_xqsko"]
+script = ExtResource("6_hoq8k")
+behavior_check = Array[ExtResource("5_fgjxa")]([])
+check_type = 0
+action_id = Array[int]([3])
+seal_chance = Array[float]([0.0])
+seal_id = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_bxuav"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_xqsko")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("8_figxb")])
+
+[sub_resource type="Resource" id="Resource_hdded"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([ExtResource("12_opocc"), ExtResource("13_uws5f"), ExtResource("14_ivgpw"), ExtResource("15_fpkbn")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("8_figxb")])
+
+[sub_resource type="Resource" id="Resource_vh1as"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([ExtResource("12_opocc"), ExtResource("13_uws5f"), ExtResource("14_ivgpw"), ExtResource("15_fpkbn")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("8_figxb")])
+
+[sub_resource type="Resource" id="Resource_guvys"]
+script = ExtResource("6_hoq8k")
+behavior_check = Array[ExtResource("5_fgjxa")]([])
+check_type = 0
+action_id = Array[int]([6])
+seal_chance = Array[float]([0.0])
+seal_id = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_1ju0h"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_guvys")])
+active_condition = Array[ExtResource("5_fgjxa")]([])
+
+[sub_resource type="Resource" id="Resource_p1qe4"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([ExtResource("17_meq7q"), ExtResource("18_0crlp"), ExtResource("19_txksg")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("16_r328f")])
+
+[sub_resource type="Resource" id="Resource_0liks"]
+script = ExtResource("5_fgjxa")
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_2dush"]
+script = ExtResource("6_hoq8k")
+behavior_check = Array[ExtResource("5_fgjxa")]([SubResource("Resource_0liks")])
+check_type = 0
+action_id = Array[int]([0, 0, 0, 1, 1])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+seal_id = Array[int]([0, 0, 0, 1, 1])
+
+[sub_resource type="Resource" id="Resource_r73rx"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_2dush")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("16_r328f")])
+
+[sub_resource type="Resource" id="Resource_0qdrm"]
+script = ExtResource("5_fgjxa")
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_7rdhl"]
+script = ExtResource("6_hoq8k")
+behavior_check = Array[ExtResource("5_fgjxa")]([SubResource("Resource_0qdrm")])
+check_type = 0
+action_id = Array[int]([0, 0, 0, 1, 1])
+seal_chance = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0])
+seal_id = Array[int]([0, 0, 0, 1, 1])
+
+[sub_resource type="Resource" id="Resource_0f0wf"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_7rdhl")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("16_r328f")])
+
+[sub_resource type="Resource" id="Resource_yqv8m"]
+script = ExtResource("5_fgjxa")
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_jnigv"]
+script = ExtResource("6_hoq8k")
+behavior_check = Array[ExtResource("5_fgjxa")]([SubResource("Resource_yqv8m")])
+check_type = 0
+action_id = Array[int]([6])
+seal_chance = Array[float]([0.0])
+seal_id = Array[int]([3])
+
+[sub_resource type="Resource" id="Resource_i0cvq"]
+script = ExtResource("4_08jet")
+behavior_checks = Array[ExtResource("6_hoq8k")]([SubResource("Resource_jnigv")])
+active_condition = Array[ExtResource("5_fgjxa")]([ExtResource("16_r328f")])
+
+[sub_resource type="Resource" id="Resource_ktm48"]
 script = ExtResource("3_3pw3x")
-turn_behavior = Array[ExtResource("4_08jet")]([SubResource("Resource_fjj01")])
+first_turn_behavior = SubResource("Resource_c1ltw")
+turn_behavior = Array[ExtResource("4_08jet")]([SubResource("Resource_2xi2q"), SubResource("Resource_8hxdx"), SubResource("Resource_afepj"), SubResource("Resource_bxuav"), SubResource("Resource_hdded"), SubResource("Resource_vh1as"), SubResource("Resource_1ju0h"), SubResource("Resource_p1qe4"), SubResource("Resource_r73rx"), SubResource("Resource_0f0wf"), SubResource("Resource_i0cvq")])
 
 [sub_resource type="Curve" id="Curve_1gij5"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -84,12 +235,62 @@ growth = SubResource("Curve_min7o")
 
 [sub_resource type="Resource" id="Resource_w326h"]
 script = ExtResource("6_u3mru")
+spell = ExtResource("7_k01j1")
+level = 0
+
+[sub_resource type="Resource" id="Resource_u73nr"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("8_kpqyk")
+level = 0
+
+[sub_resource type="Resource" id="Resource_l808y"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("9_7hncv")
+level = 0
+
+[sub_resource type="Resource" id="Resource_3lqp1"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("10_vmpgw")
+level = 0
+
+[sub_resource type="Resource" id="Resource_njovq"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("11_yx763")
+level = 0
+
+[sub_resource type="Resource" id="Resource_uatgw"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("12_g1fyb")
+level = 0
+
+[sub_resource type="Resource" id="Resource_746ny"]
+script = ExtResource("6_u3mru")
 spell = ExtResource("11_7b10u")
+level = 0
+
+[sub_resource type="Resource" id="Resource_rdfyq"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("14_jixxj")
+level = 0
+
+[sub_resource type="Resource" id="Resource_sux8x"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("15_6gd17")
+level = 0
+
+[sub_resource type="Resource" id="Resource_blrvm"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("16_u0i57")
+level = 0
+
+[sub_resource type="Resource" id="Resource_jyx7e"]
+script = ExtResource("6_u3mru")
+spell = ExtResource("17_gm0he")
 level = 0
 
 [sub_resource type="Resource" id="Resource_plkwk"]
 script = ExtResource("8_afobs")
-list = Array[ExtResource("6_u3mru")]([SubResource("Resource_w326h")])
+list = Array[ExtResource("6_u3mru")]([SubResource("Resource_w326h"), SubResource("Resource_u73nr"), SubResource("Resource_l808y"), SubResource("Resource_3lqp1"), SubResource("Resource_njovq"), SubResource("Resource_uatgw"), SubResource("Resource_746ny"), SubResource("Resource_rdfyq"), SubResource("Resource_sux8x"), SubResource("Resource_blrvm"), SubResource("Resource_jyx7e")])
 
 [sub_resource type="Curve" id="Curve_jnvjh"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -106,7 +307,25 @@ script = ExtResource("2_d4s2f")
 min = 0
 max = 0
 
-[sub_resource type="Resource" id="Resource_ugtbh"]
+[sub_resource type="Resource" id="Resource_n2v8v"]
+script = ExtResource("5_phh4n")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("15_1ji0c")]([ExtResource("35_xw683")])
+
+[sub_resource type="Resource" id="Resource_pfj6l"]
+script = ExtResource("5_phh4n")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("15_1ji0c")]([ExtResource("16_xgi3y")])
+
+[sub_resource type="Resource" id="Resource_bxehg"]
+script = ExtResource("5_phh4n")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("15_1ji0c")]([ExtResource("16_f2858")])
+
+[sub_resource type="Resource" id="Resource_63m1c"]
 script = ExtResource("5_phh4n")
 override_turn_count = false
 turn_count = 1
@@ -180,5 +399,5 @@ entity_video_repeat_mode = 3
 entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/Entity/entity_mindfreak_color.tres"
 entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_plkwk")
-behavior = SubResource("Resource_7q184")
-seal_effect_list = Array[ExtResource("5_phh4n")]([SubResource("Resource_ugtbh")])
+behavior = SubResource("Resource_ktm48")
+seal_effect_list = Array[ExtResource("5_phh4n")]([SubResource("Resource_n2v8v"), SubResource("Resource_pfj6l"), SubResource("Resource_bxehg"), SubResource("Resource_63m1c")])

@@ -95,6 +95,7 @@ manual_override = false
 use_fixed_damage = true
 damage_amount = 0
 percent_amount = 0.0
+mp_damage = false
 negate = false
 
 [sub_resource type="Resource" id="Resource_q3dud"]

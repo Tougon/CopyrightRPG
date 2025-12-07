@@ -202,6 +202,7 @@ manual_override = true
 use_fixed_damage = false
 damage_amount = 0
 percent_amount = 0.05
+mp_damage = false
 negate = true
 
 [sub_resource type="Resource" id="Resource_beybr"]

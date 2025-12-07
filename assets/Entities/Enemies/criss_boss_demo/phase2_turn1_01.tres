@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EntityBehaviorCheck" load_steps=8 format=3 uid="uid://dr7v4hwa0k00g"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheck.gd" id="1_exmih"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="2_1u8sc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSealTarget.gd" id="3_v3pcq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="4_f1dei"]
+
+[sub_resource type="Curve" id="Curve_k7ik4"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_j0eyk"]
+script = ExtResource("2_1u8sc")
+move_id = 3
+check_player_side = true
+chance_if_sealed = 1.0
+weigh_seal_count = true
+caution_threshold = 8
+weight = SubResource("Curve_k7ik4")
+result_if_zero = false
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_yqaqr"]
+script = ExtResource("3_v3pcq")
+check_target = 2
+negate = false
+
+[resource]
+script = ExtResource("4_f1dei")
+behavior_check = Array[ExtResource("1_exmih")]([SubResource("Resource_j0eyk"), SubResource("Resource_yqaqr")])
+check_type = 0
+action_id = Array[int]([4])
+seal_chance = Array[float]([1.0])
+seal_id = Array[int]([3])
