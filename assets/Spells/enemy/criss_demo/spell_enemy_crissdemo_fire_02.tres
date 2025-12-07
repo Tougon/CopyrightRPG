@@ -1,12 +1,26 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://7ypa65i6to3g"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=12 format=3 uid="uid://7ypa65i6to3g"]
 
 [ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_cq1ii"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_4kbrm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_8cp8m"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_pkbtx"]
+[ext_resource type="Resource" uid="uid://cki4844i5og0k" path="res://assets/Effects/Spell/Enemy/effect_spell_enemy_crissdemo_fire_lvl3.tres" id="4_tkfpt"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_vfgm5"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_ypw7u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="6_8k40b"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="7_qydmi"]
+
+[sub_resource type="Resource" id="Resource_lansr"]
+script = ExtResource("3_8cp8m")
+chance = 1.0
+effect = ExtResource("4_tkfpt")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_u2s1g"]
+script = ExtResource("2_4kbrm")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_8cp8m")]([SubResource("Resource_lansr")])
 
 [resource]
 script = ExtResource("6_8k40b")
@@ -42,7 +56,7 @@ can_critical = true
 critical_chance = 16
 spell_name_key = ""
 spell_description_key = ""
-spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_01"
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_02"
 spell_type = 1
 spell_target = 0
 ignore_self = false
@@ -57,7 +71,7 @@ animation_sequence = ExtResource("1_cq1ii")
 spell_videos = Array[String](["res://video/spell/video_spell_criss_fire.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_fire_color.tres"])
 effects_on_hit = Array[ExtResource("2_4kbrm")]([])
-effects_on_success = Array[ExtResource("2_4kbrm")]([])
+effects_on_success = Array[ExtResource("2_4kbrm")]([SubResource("Resource_u2s1g")])
 properties = Array[ExtResource("4_vfgm5")]([])
 can_use_overworld = false
 overworld_check = Array[ExtResource("3_pkbtx")]([])

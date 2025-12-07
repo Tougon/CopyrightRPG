@@ -30,8 +30,6 @@ func execute(instance : EffectInstance):
 			instance.cast_success = check_action == action;
 		else :
 			if use_path_as_target : 
-				print(action.resource_path)
-				print(path);
 				instance.cast_success = action.resource_path == path;
 			elif check_type :
 				instance.cast_success = action.spell_type == target_type;

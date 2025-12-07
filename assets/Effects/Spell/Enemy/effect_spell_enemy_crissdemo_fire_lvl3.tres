@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=14 format=3 uid="uid://cki4844i5og0k"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_bye1p"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_v7vax"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_action.gd" id="3_w5okn"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_remove_effect.gd" id="4_o4tdx"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="5_5wlye"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="6_502k1"]
+[ext_resource type="Resource" uid="uid://btf8wuoa5ranb" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_fire_03.tres" id="6_buobf"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_nj0pj"]
+
+[sub_resource type="Resource" id="Resource_1lnym"]
+script = ExtResource("2_v7vax")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_nuytl"]
+script = ExtResource("4_o4tdx")
+target = 0
+use_effect_name = true
+effect_name = "Fire Lvl 2"
+
+[sub_resource type="Resource" id="Resource_hwg06"]
+script = ExtResource("3_w5okn")
+target = 0
+check_previous = false
+check_type = false
+target_type = 0
+use_current_as_target = false
+use_path_as_target = true
+path = "res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_fire_01.tres"
+invert = false
+default_result = false
+
+[sub_resource type="Resource" id="Resource_11n28"]
+script = ExtResource("5_5wlye")
+target = 0
+action = ExtResource("6_buobf")
+use_previous = false
+pick_random = false
+retain_target = false
+reset_sealing = false
+force_sealing = true
+
+[sub_resource type="Resource" id="Resource_5qshg"]
+script = ExtResource("6_502k1")
+check_success_type = 0
+check_success = Array[ExtResource("1_bye1p")]([SubResource("Resource_hwg06")])
+on_success = Array[ExtResource("1_bye1p")]([SubResource("Resource_11n28")])
+on_fail = Array[ExtResource("1_bye1p")]([])
+
+[resource]
+script = ExtResource("7_nj0pj")
+stackable = false
+effect_name = "Fire Lvl 3"
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_bye1p")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_bye1p")]([])
+on_activate = Array[ExtResource("1_bye1p")]([SubResource("Resource_1lnym"), SubResource("Resource_nuytl")])
+on_failed_to_activate = Array[ExtResource("1_bye1p")]([])
+on_apply = Array[ExtResource("1_bye1p")]([])
+on_move_selected = Array[ExtResource("1_bye1p")]([SubResource("Resource_5qshg")])
+on_move_completed = Array[ExtResource("1_bye1p")]([])
+on_deactivate = Array[ExtResource("1_bye1p")]([])
+on_turn_start = Array[ExtResource("1_bye1p")]([])
+on_turn_end = Array[ExtResource("1_bye1p")]([])
+on_stack = Array[ExtResource("1_bye1p")]([])

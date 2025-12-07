@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=9 format=3 uid="uid://bxri5cxkq5oca"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_gutas"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/visibility_change.gd" id="2_mg5ia"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="2_tqkki"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="3_iwabx"]
+
+[sub_resource type="Resource" id="Resource_oiwtt"]
+script = ExtResource("2_mg5ia")
+visible = true
+target = 0
+effect_index = 0
+node_path = "Sprite2D"
+
+[sub_resource type="Resource" id="Resource_ar8se"]
+script = ExtResource("1_gutas")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_oiwtt")
+
+[sub_resource type="Resource" id="Resource_wmcyk"]
+script = ExtResource("3_iwabx")
+
+[sub_resource type="Resource" id="Resource_athf2"]
+script = ExtResource("1_gutas")
+frame = 2
+frame_order = 0
+action = SubResource("Resource_wmcyk")
+
+[resource]
+script = ExtResource("2_tqkki")
+animation_name = "Visible"
+hide_ui_on_start = false
+animation_sequence = Array[ExtResource("1_gutas")]([SubResource("Resource_ar8se"), SubResource("Resource_athf2")])

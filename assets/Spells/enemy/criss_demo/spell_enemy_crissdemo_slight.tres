@@ -1,29 +1,46 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://p6ujtwja2nlo"]
+[gd_resource type="Resource" script_class="Spell" load_steps=12 format=3 uid="uid://p6ujtwja2nlo"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_j54tk"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_n8n16"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_tte6q"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_mvude"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_vdxes"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_g6i4k"]
+[ext_resource type="Resource" uid="uid://cq78s1t2kuo47" path="res://assets/Effects/Common/effect_common_buff_speed.tres" id="4_p0v40"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_ghx3l"]
+[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="9_luqbm"]
+
+[sub_resource type="Resource" id="Resource_442a4"]
+script = ExtResource("3_vdxes")
+chance = 1.0
+effect = ExtResource("4_p0v40")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_tm5rd"]
+script = ExtResource("1_j54tk")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_vdxes")]([SubResource("Resource_442a4")])
 
 [resource]
 script = ExtResource("4_g6i4k")
 spell_name_key = ""
 spell_description_key = ""
-spell_cast_message_key = ""
-spell_type = 0
-spell_target = 0
+spell_cast_message_key = "T_CAST_STATUS_ENEMY_MINDFREAK_SLIGHT"
+spell_type = 3
+spell_target = 4
 ignore_self = false
 target_defeated_entities = false
-spell_cost = 0
+spell_cost = 12
 spell_priority = 0
-spell_flags = Array[ExtResource("5_ghx3l")]([])
+spell_flags = Array[ExtResource("5_ghx3l")]([ExtResource("9_luqbm")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
-effects_on_hit = Array[ExtResource("1_j54tk")]([])
+animation_sequence = ExtResource("1_n8n16")
+spell_videos = Array[String](["res://video/spell/video_spell_criss_card.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_slight_color.tres"])
+effects_on_hit = Array[ExtResource("1_j54tk")]([SubResource("Resource_tm5rd")])
 effects_on_success = Array[ExtResource("1_j54tk")]([])
 properties = Array[ExtResource("3_mvude")]([])
 can_use_overworld = false

@@ -1,30 +1,60 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://c41wm02085sra"]
+[gd_resource type="Resource" script_class="Spell" load_steps=15 format=3 uid="uid://c41wm02085sra"]
 
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_4tnbe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_vlnr4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_l7nvt"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_c46lc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_g04yc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_2jnwp"]
+[ext_resource type="Resource" uid="uid://bx0yxylm3svww" path="res://assets/Effects/Common/effect_common_debuff_spdefense.tres" id="4_tvoy3"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_1tccv"]
+[ext_resource type="Resource" uid="uid://7pnmftfhompp" path="res://assets/Effects/Spell/Enemy/effect_spell_enemy_crissdemo_levitate_lvl2.tres" id="5_avb8h"]
+[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="10_wxx16"]
+
+[sub_resource type="Resource" id="Resource_wjhkk"]
+script = ExtResource("3_c46lc")
+chance = 1.0
+effect = ExtResource("4_tvoy3")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_gfdtq"]
+script = ExtResource("1_vlnr4")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_c46lc")]([SubResource("Resource_wjhkk")])
+
+[sub_resource type="Resource" id="Resource_8xhla"]
+script = ExtResource("3_c46lc")
+chance = 1.0
+effect = ExtResource("5_avb8h")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_dcly7"]
+script = ExtResource("1_vlnr4")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_c46lc")]([SubResource("Resource_8xhla")])
 
 [resource]
 script = ExtResource("4_2jnwp")
 spell_name_key = ""
 spell_description_key = ""
-spell_cast_message_key = ""
-spell_type = 0
+spell_cast_message_key = "T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_01"
+spell_type = 4
 spell_target = 0
 ignore_self = false
 target_defeated_entities = false
-spell_cost = 0
+spell_cost = 14
 spell_priority = 0
-spell_flags = Array[ExtResource("5_1tccv")]([])
+spell_flags = Array[ExtResource("5_1tccv")]([ExtResource("10_wxx16")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
-effects_on_hit = Array[ExtResource("1_vlnr4")]([])
-effects_on_success = Array[ExtResource("1_vlnr4")]([])
+animation_sequence = ExtResource("1_4tnbe")
+spell_videos = Array[String](["res://video/spell/video_spell_criss_levitate.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_levitate_color.tres"])
+effects_on_hit = Array[ExtResource("1_vlnr4")]([SubResource("Resource_gfdtq")])
+effects_on_success = Array[ExtResource("1_vlnr4")]([SubResource("Resource_dcly7")])
 properties = Array[ExtResource("3_g04yc")]([])
 can_use_overworld = false
 overworld_check = Array[ExtResource("2_l7nvt")]([])

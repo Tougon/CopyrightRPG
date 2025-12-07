@@ -772,6 +772,11 @@ func remove_effect_from_resource(effect : Effect, deactivate : bool = true):
 	if inst != null :
 		remove_effect(inst, deactivate);
 
+func remove_effect_from_name(effect_name : String, deactivate : bool = true):
+	var inst = _find_effect_by_name(effect_name);
+	if inst != null :
+		remove_effect(inst, deactivate);
+
 func remove_effect(instance : EffectInstance, deactivate : bool = true):
 	if effects.has(instance) :
 		if deactivate : instance.on_deactivate();

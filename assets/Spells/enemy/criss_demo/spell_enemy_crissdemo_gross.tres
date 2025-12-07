@@ -1,29 +1,58 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://b3l8dp6aadvfl"]
+[gd_resource type="Resource" script_class="Spell" load_steps=14 format=3 uid="uid://b3l8dp6aadvfl"]
 
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_frmsh"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_wt6oe"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_5e30i"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_c174e"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_iidxk"]
+[ext_resource type="Resource" uid="uid://5mcuhbf70h6c" path="res://assets/Effects/Common/effect_common_debuff_attack.tres" id="4_erp2u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_tihka"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_mm2em"]
+[ext_resource type="Resource" uid="uid://dguhi8bo5rkdb" path="res://assets/Effects/Common/effect_common_status_distracted.tres" id="5_mty1u"]
+
+[sub_resource type="Resource" id="Resource_u0yvr"]
+script = ExtResource("3_iidxk")
+chance = 1.0
+effect = ExtResource("4_erp2u")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_fo41y"]
+script = ExtResource("1_wt6oe")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_iidxk")]([SubResource("Resource_u0yvr")])
+
+[sub_resource type="Resource" id="Resource_4hhgd"]
+script = ExtResource("3_iidxk")
+chance = 1.0
+effect = ExtResource("5_mty1u")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_r2ck0"]
+script = ExtResource("1_wt6oe")
+chance = 0.75
+use_luck = false
+effect_set = Array[ExtResource("3_iidxk")]([SubResource("Resource_4hhgd")])
 
 [resource]
 script = ExtResource("4_tihka")
 spell_name_key = ""
 spell_description_key = ""
-spell_cast_message_key = ""
-spell_type = 0
+spell_cast_message_key = "T_CAST_STATUS_ENEMY_MINDFREAK_GROSS_01"
+spell_type = 2
 spell_target = 0
 ignore_self = false
 target_defeated_entities = false
-spell_cost = 0
+spell_cost = 20
 spell_priority = 0
 spell_flags = Array[ExtResource("5_mm2em")]([])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
-effects_on_hit = Array[ExtResource("1_wt6oe")]([])
+animation_sequence = ExtResource("1_frmsh")
+spell_videos = Array[String](["res://video/spell/video_spell_criss_gross.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_gross_color.tres"])
+effects_on_hit = Array[ExtResource("1_wt6oe")]([SubResource("Resource_fo41y"), SubResource("Resource_r2ck0")])
 effects_on_success = Array[ExtResource("1_wt6oe")]([])
 properties = Array[ExtResource("3_c174e")]([])
 can_use_overworld = false

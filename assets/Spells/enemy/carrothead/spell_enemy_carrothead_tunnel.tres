@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=33 format=3 uid="uid://c112557hhcivk"]
+[gd_resource type="Resource" script_class="Spell" load_steps=37 format=3 uid="uid://c112557hhcivk"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_2xwux"]
 [ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_kauum"]
@@ -14,8 +14,11 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="8_fiv46"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="9_0cwg5"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="9_tngo1"]
+[ext_resource type="Resource" uid="uid://6qchgchmget7" path="res://assets/Animations/Sequences/Common/anim_common_set_invisible.tres" id="10_6ahjk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_increment_turn.gd" id="10_asvp0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_play_animation.gd" id="11_77c0c"]
 [ext_resource type="Resource" uid="uid://cew68lxr4r6hu" path="res://assets/Spells/enemy/carrothead/spell_enemy_carrothead_punch.tres" id="11_wdx81"]
+[ext_resource type="Resource" uid="uid://bxri5cxkq5oca" path="res://assets/Animations/Sequences/Common/anim_common_set_visible.tres" id="12_gi4ie"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="12_ryis8"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="17_x6n30"]
 
@@ -52,6 +55,11 @@ dialogue_key = "T_EFFECT_CARROTHEAD_DIG_ACTIVATE"
 target = 0
 animation = ExtResource("1_kauum")
 
+[sub_resource type="Resource" id="Resource_bnak1"]
+script = ExtResource("11_77c0c")
+target = 0
+animation = ExtResource("10_6ahjk")
+
 [sub_resource type="Resource" id="Resource_b03pf"]
 script = ExtResource("7_m1ntg")
 target = 0
@@ -78,7 +86,7 @@ script = ExtResource("10_asvp0")
 script = ExtResource("9_0cwg5")
 dialogue_key = "T_EFFECT_CARROTHEAD_DIG_DEACTIVATE"
 target = 0
-animation = ExtResource("1_kauum")
+animation = ExtResource("12_gi4ie")
 
 [sub_resource type="Resource" id="Resource_d0in0"]
 script = ExtResource("12_ryis8")
@@ -105,7 +113,7 @@ check_remain_active_type = 0
 check_remain_active = Array[ExtResource("4_ifdur")]([SubResource("Resource_nmhmf")])
 on_activate = Array[ExtResource("4_ifdur")]([SubResource("Resource_qgisj")])
 on_failed_to_activate = Array[ExtResource("4_ifdur")]([])
-on_apply = Array[ExtResource("4_ifdur")]([SubResource("Resource_jjio0"), SubResource("Resource_8gsap"), SubResource("Resource_6v8n2")])
+on_apply = Array[ExtResource("4_ifdur")]([SubResource("Resource_jjio0"), SubResource("Resource_8gsap"), SubResource("Resource_6v8n2"), SubResource("Resource_bnak1")])
 on_move_selected = Array[ExtResource("4_ifdur")]([SubResource("Resource_vbp5r"), SubResource("Resource_6uk4q")])
 on_move_completed = Array[ExtResource("4_ifdur")]([SubResource("Resource_ydtmt")])
 on_deactivate = Array[ExtResource("4_ifdur")]([SubResource("Resource_b03pf"), SubResource("Resource_8jo6i")])

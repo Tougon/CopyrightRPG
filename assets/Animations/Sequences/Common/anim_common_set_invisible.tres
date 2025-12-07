@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=9 format=3 uid="uid://6qchgchmget7"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_a4p16"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/visibility_change.gd" id="2_g0uks"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="3_iojip"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="4_8su72"]
+
+[sub_resource type="Resource" id="Resource_oiwtt"]
+script = ExtResource("2_g0uks")
+visible = false
+target = 0
+effect_index = 0
+node_path = "Sprite2D"
+
+[sub_resource type="Resource" id="Resource_ar8se"]
+script = ExtResource("1_a4p16")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_oiwtt")
+
+[sub_resource type="Resource" id="Resource_wmcyk"]
+script = ExtResource("3_iojip")
+
+[sub_resource type="Resource" id="Resource_athf2"]
+script = ExtResource("1_a4p16")
+frame = 2
+frame_order = 0
+action = SubResource("Resource_wmcyk")
+
+[resource]
+script = ExtResource("4_8su72")
+animation_name = "Visible"
+hide_ui_on_start = false
+animation_sequence = Array[ExtResource("1_a4p16")]([SubResource("Resource_ar8se"), SubResource("Resource_athf2")])

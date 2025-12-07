@@ -1,12 +1,26 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://cf3eh0y3tarlq"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=12 format=3 uid="uid://cf3eh0y3tarlq"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_djdrm"]
 [ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_y6hsc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_6kavy"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_4kfmd"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_nx0sl"]
+[ext_resource type="Resource" uid="uid://ctb4boy6k81sh" path="res://assets/Effects/Spell/Enemy/effect_spell_enemy_crissdemo_fire_lvl2.tres" id="4_a0ilq"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_j22by"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_d612x"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="7_peiwv"]
+
+[sub_resource type="Resource" id="Resource_8kuq6"]
+script = ExtResource("3_nx0sl")
+chance = 1.0
+effect = ExtResource("4_a0ilq")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_51uli"]
+script = ExtResource("1_djdrm")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_nx0sl")]([SubResource("Resource_8kuq6")])
 
 [resource]
 script = ExtResource("5_d612x")
@@ -57,7 +71,7 @@ animation_sequence = ExtResource("1_y6hsc")
 spell_videos = Array[String](["res://video/spell/video_spell_criss_fire.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_fire_color.tres"])
 effects_on_hit = Array[ExtResource("1_djdrm")]([])
-effects_on_success = Array[ExtResource("1_djdrm")]([])
+effects_on_success = Array[ExtResource("1_djdrm")]([SubResource("Resource_51uli")])
 properties = Array[ExtResource("3_4kfmd")]([])
 can_use_overworld = false
 overworld_check = Array[ExtResource("2_6kavy")]([])

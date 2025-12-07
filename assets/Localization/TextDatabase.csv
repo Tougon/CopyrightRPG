@@ -217,6 +217,7 @@ T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_02,{article_def}{entity} claps his hands to i
 T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_03,{article_def}{entity} lets loose a scream to ignite {target}!,,
 T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_04,{article_def}{entity} lets loose a scream to ignite {target} with a bursting flame!,,
 T_CAST_DAMAGE_ENEMY_MINDFREAK_VANISH,{target} falls on their face!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_VANISH_PROP,{article_def}{entity} vanishes!,,
 T_CAST_STATUS_ENEMY_MINDFREAK_GROSS_01,{article_def}{entity} pulls a string from his eyeball!,,
 T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_01,{article_def}{entity} raises {target} into the sky!,,
 T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_02,{article_def}{entity} raises the entire party into the sky!,,

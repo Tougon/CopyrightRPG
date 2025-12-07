@@ -80,6 +80,10 @@ func _send_seal_inactive_message(seal : SealInstance, entity : EntityController,
 
 
 func can_seal_spell(spell : Spell, entity : EntityController) -> bool:
+	# Some Entity Behaviors may cause an attempted seal on Nothing
+	# Don't bother with these, they should never be allowed to seal.
+	if spell.spell_flags.size() <= 0 : return false;
+	
 	if BattleManager.ENEMY_SEAL_ALL_UNIQUE && entity is EnemyController :
 		if enemy_sealed_spells.has(entity) :
 			return !enemy_sealed_spells[entity].has(spell);

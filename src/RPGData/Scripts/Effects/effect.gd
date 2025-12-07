@@ -66,7 +66,7 @@ func create_effect_instance(user : EntityController, target : EntityController, 
 
 func get_effect_name(instance : EffectInstance) -> String:
 	if generic && instance != null && instance.spell_data != null:
-		return instance.spell_data.spell_name_key + " "  + effect_name;
+		return instance.spell_data.resource_path + " "  + effect_name;
 	return effect_name;
 
 
