@@ -222,6 +222,8 @@ T_CAST_STATUS_ENEMY_MINDFREAK_GROSS_01,{article_def}{entity} pulls a string from
 T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_01,{article_def}{entity} raises {target} into the sky!,,
 T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_02,{article_def}{entity} raises the entire party into the sky!,,
 T_CAST_STATUS_ENEMY_MINDFREAK_MINDFREAK,{article_def}{entity} ruptures the Earth with {pronoun3} mind!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_MINDFREAK_ACTIVATE,{t_article_def}{t_entity} believes!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_MINDFREAK_FAILED,{t_article_def}{t_entity} does not believe!,,
 T_CAST_STATUS_ENEMY_MINDFREAK_SLIGHT,{article_def}{entity} performs a slight of hand trick!,,
 
 

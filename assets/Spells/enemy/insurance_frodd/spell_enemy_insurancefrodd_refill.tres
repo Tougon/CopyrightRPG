@@ -15,6 +15,8 @@
 script = ExtResource("6_1l76y")
 target = 0
 effect = ExtResource("5_h7od6")
+use_effect_name = false
+effect_name = ""
 
 [sub_resource type="Resource" id="Resource_x8mgu"]
 script = ExtResource("3_mblvx")

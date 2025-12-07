@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=5 format=3 uid="uid://bpu8xwjkl3566"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_tvh2y"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_3fojd"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="2_jskwo"]
+
+[sub_resource type="Resource" id="Resource_voywg"]
+script = ExtResource("2_3fojd")
+target = 1
+apply = true
+deactivate = true
+
+[resource]
+script = ExtResource("2_jskwo")
+stackable = false
+effect_name = "Mindfreak Flag"
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_tvh2y")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_tvh2y")]([])
+on_activate = Array[ExtResource("1_tvh2y")]([SubResource("Resource_voywg")])
+on_failed_to_activate = Array[ExtResource("1_tvh2y")]([])
+on_apply = Array[ExtResource("1_tvh2y")]([])
+on_move_selected = Array[ExtResource("1_tvh2y")]([])
+on_move_completed = Array[ExtResource("1_tvh2y")]([])
+on_deactivate = Array[ExtResource("1_tvh2y")]([])
+on_turn_start = Array[ExtResource("1_tvh2y")]([])
+on_turn_end = Array[ExtResource("1_tvh2y")]([])
+on_stack = Array[ExtResource("1_tvh2y")]([])

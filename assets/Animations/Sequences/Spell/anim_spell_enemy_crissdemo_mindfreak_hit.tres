@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=15 format=3 uid="uid://b3llhaol5iio8"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_7aku2"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/play_sfx.gd" id="3_i805c"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="3_myooo"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="4_5du58"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="4_bf8n6"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="5_s0cio"]
+
+[sub_resource type="Resource" id="Resource_bl7e0"]
+script = ExtResource("3_myooo")
+vibrate = true
+damage_time = 0.35
+damage_delay = 0.0
+shake_duration = 0.0
+shake_decay = 0.35
+force_dodge = true
+effect_user = true
+manual_override = true
+use_fixed_damage = false
+damage_amount = 0
+percent_amount = 0.33
+negate = false
+
+[sub_resource type="Resource" id="Resource_to8v0"]
+script = ExtResource("1_7aku2")
+frame = 5
+frame_order = 5
+action = SubResource("Resource_bl7e0")
+
+[sub_resource type="Resource" id="Resource_k0vkh"]
+script = ExtResource("4_bf8n6")
+target = 0
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_tbxjl"]
+script = ExtResource("1_7aku2")
+frame = 5
+frame_order = 6
+action = SubResource("Resource_k0vkh")
+
+[sub_resource type="Resource" id="Resource_c2x0u"]
+script = ExtResource("3_i805c")
+sfx_key = "pulse"
+
+[sub_resource type="Resource" id="Resource_ch5on"]
+script = ExtResource("1_7aku2")
+frame = 5
+frame_order = 2
+action = SubResource("Resource_c2x0u")
+
+[sub_resource type="Resource" id="Resource_kt3v1"]
+script = ExtResource("4_5du58")
+
+[sub_resource type="Resource" id="Resource_owc5u"]
+script = ExtResource("1_7aku2")
+frame = 45
+frame_order = 0
+action = SubResource("Resource_kt3v1")
+
+[resource]
+script = ExtResource("5_s0cio")
+animation_name = "Mindfreak Hit"
+hide_ui_on_start = false
+animation_sequence = Array[ExtResource("1_7aku2")]([SubResource("Resource_to8v0"), SubResource("Resource_tbxjl"), SubResource("Resource_ch5on"), SubResource("Resource_owc5u")])
