@@ -88,6 +88,7 @@ use_previous = false
 pick_random = false
 retain_target = true
 reset_sealing = false
+force_sealing = false
 
 [sub_resource type="Resource" id="Resource_jgsso"]
 script = ExtResource("3_11kki")

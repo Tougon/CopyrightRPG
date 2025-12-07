@@ -103,7 +103,7 @@ func _load_entity_spell_data(entity : EntityController):
 func _load_spell_data(move : Spell):
 	if move.spell_videos != null && !_attack_to_video_map.has(move) && move.spell_videos.size() > 0:
 		
-		print(move.spell_name_key)
+		print(move.resource_path);
 		_attack_to_video_map[move] = [];
 		
 		for video_path in move.spell_videos :

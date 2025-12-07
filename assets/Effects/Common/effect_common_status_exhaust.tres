@@ -41,6 +41,7 @@ use_previous = false
 pick_random = false
 retain_target = false
 reset_sealing = true
+force_sealing = false
 
 [sub_resource type="Resource" id="Resource_vqite"]
 script = ExtResource("6_2co35")

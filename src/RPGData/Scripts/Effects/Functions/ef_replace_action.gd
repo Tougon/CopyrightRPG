@@ -7,6 +7,7 @@ class_name EFReplaceAction
 @export var pick_random : bool = false;
 @export var retain_target : bool = false;
 @export var reset_sealing : bool = true;
+@export var force_sealing : bool = false;
 
 func execute(instance : EffectInstance):
 	var entity : EntityController;
@@ -53,3 +54,6 @@ func execute(instance : EffectInstance):
 		
 		if reset_sealing:
 			entity.sealing = false;
+		
+		if force_sealing : 
+			entity.sealing = BattleScene.Instance.seal_manager.can_seal_spell(action, entity);

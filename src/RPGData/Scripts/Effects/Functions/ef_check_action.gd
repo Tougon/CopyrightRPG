@@ -7,6 +7,8 @@ class_name EFCheckAction
 @export var target_type : Spell.SpellType;
 @export var target_action : Spell;
 @export var use_current_as_target : bool = false;
+@export var use_path_as_target : bool = false;
+@export var path : String;
 @export var invert : bool = false;
 @export var default_result : bool = true;
 
@@ -27,7 +29,11 @@ func execute(instance : EffectInstance):
 		if check_action != null : 
 			instance.cast_success = check_action == action;
 		else :
-			if check_type :
+			if use_path_as_target : 
+				print(action.resource_path)
+				print(path);
+				instance.cast_success = action.resource_path == path;
+			elif check_type :
 				instance.cast_success = action.spell_type == target_type;
 	else :
 		instance.cast_success = default_result;

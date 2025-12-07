@@ -56,6 +56,7 @@ func initialize_party_data(auto : bool):
 		member.id = i;
 		if auto : member.level = 1;
 		else : member.level = 1;
+		member.level = 10;
 		member.exp = 0;
 		member.unlocked = auto;
 		member.move_list = move_list;

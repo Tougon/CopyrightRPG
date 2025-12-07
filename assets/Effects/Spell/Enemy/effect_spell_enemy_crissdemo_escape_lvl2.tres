@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=12 format=3 uid="uid://cxxfi51gwlvvq"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_nak2y"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="2_fs8jr"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_action.gd" id="3_f23yi"]
+[ext_resource type="Resource" uid="uid://tq0ie7hf0t6x" path="res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_escape_02.tres" id="4_0a78a"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_action.gd" id="5_lk080"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_execute_condition.gd" id="6_kykkk"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_relir"]
+
+[sub_resource type="Resource" id="Resource_1lnym"]
+script = ExtResource("2_fs8jr")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_hwg06"]
+script = ExtResource("3_f23yi")
+target = 0
+check_previous = false
+check_type = false
+target_type = 0
+use_current_as_target = false
+use_path_as_target = true
+path = "res://assets/Spells/enemy/criss_demo/spell_enemy_crissdemo_escape_01.tres"
+invert = false
+default_result = false
+
+[sub_resource type="Resource" id="Resource_11n28"]
+script = ExtResource("5_lk080")
+target = 0
+action = ExtResource("4_0a78a")
+use_previous = false
+pick_random = false
+retain_target = false
+reset_sealing = false
+force_sealing = true
+
+[sub_resource type="Resource" id="Resource_5qshg"]
+script = ExtResource("6_kykkk")
+check_success_type = 0
+check_success = Array[ExtResource("1_nak2y")]([SubResource("Resource_hwg06")])
+on_success = Array[ExtResource("1_nak2y")]([SubResource("Resource_11n28")])
+on_fail = Array[ExtResource("1_nak2y")]([])
+
+[resource]
+script = ExtResource("7_relir")
+stackable = false
+effect_name = "Escape Lvl 2"
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_nak2y")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_nak2y")]([])
+on_activate = Array[ExtResource("1_nak2y")]([SubResource("Resource_1lnym")])
+on_failed_to_activate = Array[ExtResource("1_nak2y")]([])
+on_apply = Array[ExtResource("1_nak2y")]([])
+on_move_selected = Array[ExtResource("1_nak2y")]([SubResource("Resource_5qshg")])
+on_move_completed = Array[ExtResource("1_nak2y")]([])
+on_deactivate = Array[ExtResource("1_nak2y")]([])
+on_turn_start = Array[ExtResource("1_nak2y")]([])
+on_turn_end = Array[ExtResource("1_nak2y")]([])
+on_stack = Array[ExtResource("1_nak2y")]([])

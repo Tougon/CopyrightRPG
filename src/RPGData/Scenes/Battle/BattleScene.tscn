@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=116 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/Seal/effect_seal_buff_sp_attack.tres" id="10_nqt30"]
 [ext_resource type="PackedScene" uid="uid://bj25wtcmfmgoc" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_ui.tscn" id="11_og6hd"]
 [ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="13_ppeub"]
+[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/Seal/effect_seal_buff_speed.tres" id="18_hsopx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/SealManager.gd" id="19_et6o3"]
 [ext_resource type="PackedScene" uid="uid://bax2rjs6ennqq" path="res://src/RPGData/Scenes/UI/Battle/player_battle_item_ui.tscn" id="20_dvxdd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_fade_ui.gd" id="20_ija8q"]
@@ -82,13 +83,13 @@ seal_effects = Array[ExtResource("7_46juf")]([ExtResource("10_nqt30")])
 script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("7_46juf")]([ExtResource("8_it4wa")])
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("13_ppeub")])
 
 [sub_resource type="Resource" id="Resource_06evc"]
 script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("7_46juf")]([ExtResource("13_ppeub")])
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("18_hsopx")])
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mf1yg"]
 shader = ExtResource("22_0arau")

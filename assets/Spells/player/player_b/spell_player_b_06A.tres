@@ -56,6 +56,7 @@ use_previous = false
 pick_random = false
 retain_target = true
 reset_sealing = true
+force_sealing = false
 
 [sub_resource type="Resource" id="Resource_848k4"]
 script = ExtResource("3_5s6cs")

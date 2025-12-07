@@ -2,12 +2,12 @@
 
 [ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="1_l0ch8"]
 
-[sub_resource type="Gradient" id="Gradient_nmy6c"]
-offsets = PackedFloat32Array(0, 0.25876, 0.644205, 0.929919)
-colors = PackedColorArray(0.172549, 0.172549, 0.172549, 1, 0.647059, 0, 0.0745098, 1, 0.6, 0.3303, 0.042, 1, 0.450225, 0.0715759, 0.115178, 1)
+[sub_resource type="Gradient" id="Gradient_r5urf"]
+offsets = PackedFloat32Array(0, 0.521368, 0.763533, 0.854701, 1)
+colors = PackedColorArray(0.490791, 0, 0.164464, 1, 0.172549, 0.172549, 0.172549, 1, 0.74, 0.135667, 0, 1, 0.81, 0.513, 0, 1, 0.490196, 0, 0.164706, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g1px0"]
-gradient = SubResource("Gradient_nmy6c")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yra1q"]
+gradient = SubResource("Gradient_r5urf")
 
 [resource]
 shader = ExtResource("1_l0ch8")
@@ -31,4 +31,4 @@ shader_parameter/time_offset = 0.0
 shader_parameter/time_scale = 1.0
 shader_parameter/use_manual_time = false
 shader_parameter/manual_time = null
-shader_parameter/palette = SubResource("GradientTexture2D_g1px0")
+shader_parameter/palette = SubResource("GradientTexture2D_yra1q")

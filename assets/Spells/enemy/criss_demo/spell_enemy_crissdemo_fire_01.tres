@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://cf3eh0y3tarlq"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_djdrm"]
+[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_y6hsc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_6kavy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_4kfmd"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_j22by"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_d612x"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="7_peiwv"]
+
+[resource]
+script = ExtResource("5_d612x")
+spell_power = 32.0
+spell_attack_type = 1
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_j22by")]([])
+check_accuracy = false
+spell_accuracy = 90.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_01"
+spell_type = 1
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 12
+spell_priority = 0
+spell_flags = Array[ExtResource("4_j22by")]([ExtResource("7_peiwv")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_y6hsc")
+spell_videos = Array[String](["res://video/spell/video_spell_criss_fire.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_fire_color.tres"])
+effects_on_hit = Array[ExtResource("1_djdrm")]([])
+effects_on_success = Array[ExtResource("1_djdrm")]([])
+properties = Array[ExtResource("3_4kfmd")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_6kavy")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_6kavy")]([])

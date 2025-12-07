@@ -36,6 +36,8 @@ check_previous = false
 check_type = true
 target_type = 1
 use_current_as_target = false
+use_path_as_target = false
+path = ""
 invert = false
 default_result = true
 
@@ -106,6 +108,8 @@ check_previous = false
 check_type = true
 target_type = 1
 use_current_as_target = false
+use_path_as_target = false
+path = ""
 invert = false
 default_result = true
 

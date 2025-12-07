@@ -32,6 +32,8 @@ T_BATTLE_DEFEAT_SCRUBBLES,{article_def}{entity} is defeated!,,
 T_BATTLE_DEFEAT_SIZZLER,{article_def}{entity} crumbles to bits!,,
 T_BATTLE_DEFEAT_STACKERS,{article_def}{entity} collapses!,,
 
+T_BATTLE_DEFEAT_MINDFREAK,{entity} admits defeat!,,
+
 T_BATTLE_FLEE_SUCCESS,The party escapes!,,
 T_BATTLE_FLEE_FAIL,Couldn't get away!,,
 T_BATTLE_FLEE_NO,Can't escape!,,
@@ -73,6 +75,8 @@ T_BATTLE_INTRO_ROTTEDPLANT_GROUP,{article_indef}{entity} and friends approach!,,
 T_BATTLE_INTRO_STACKERS_SINGLE,{article_indef}{entity} approaches!,,
 T_BATTLE_INTRO_STACKERS_PLURAL,An army of {entity} approaches!,,
 T_BATTLE_INTRO_STACKERS_GROUP,{article_indef}{entity} and friends approach!,,
+
+T_BATTLE_INTRO_MINDFREAK_SINGLE,{entity} appears before your eyes!,,
 
 T_BATTLE_MAIN_UI_ATTACK,Attack,,
 T_BATTLE_MAIN_UI_BACK,Back,,
@@ -204,6 +208,21 @@ T_CAST_STATUS_ENEMY_SLIME_DUPLICATE,{article_def}{entity} duplicates!,,
 
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_BIGHIT,{article_def}{entity} charges full throttle!,,
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_SPREAD,{article_def}{entity} makes the earth shake!,,
+
+T_CAST_DAMAGE_ENEMY_MINDFREAK_ESCAPE_01,{article_def}{entity} conjures a stampede of bulls!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_ESCAPE_02,{article_def}{entity} conjures a steamroller!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_ESCAPE_03,{article_def}{entity} conjures a squadron of steamrollers!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_01,{article_def}{entity} snaps his fingers to ignite {target}!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_02,{article_def}{entity} claps his hands to ignite {target}!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_03,{article_def}{entity} lets loose a scream to ignite {target}!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_FIRE_04,{article_def}{entity} lets loose a scream to ignite {target} with a bursting flame!,,
+T_CAST_DAMAGE_ENEMY_MINDFREAK_VANISH,{target} falls on their face!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_GROSS_01,{article_def}{entity} pulls a string from his eyeball!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_01,{article_def}{entity} raises {target} into the sky!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_LEVITATE_02,{article_def}{entity} raises the entire party into the sky!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_MINDFREAK,{article_def}{entity} ruptures the Earth with {pronoun3} mind!,,
+T_CAST_STATUS_ENEMY_MINDFREAK_SLIGHT,{article_def}{entity} performs a slight of hand trick!,,
+
 
 T_CAST_ITEM_TEMPA,{article_def}{entity} drinks water!,,
 T_CAST_STATUS_COMMON_ATOOST,{article_def}{entity} casts Atoost!,,
@@ -437,6 +456,9 @@ T_ENTITY_SIZZLER,Sizzler,,
 T_ENTITY_SIZZLER_PLURAL,Sizzlers,,
 T_ENTITY_SLIME,Slime,,
 T_ENTITY_SLIME_PLURAL,Slimes,,
+
+T_ENTITY_MINDFREAK,The Mindfreak,,
+T_ENTITY_MINDFREAK_SHORT,Mindfreak,,
 T_ENTITY_SUPERSLIME,Super Slime,,
 
 T_EQUIPMENT,Equipment,,

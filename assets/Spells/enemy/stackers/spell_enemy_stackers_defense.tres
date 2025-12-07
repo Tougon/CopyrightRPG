@@ -140,6 +140,8 @@ check_previous = true
 check_type = false
 target_type = 0
 use_current_as_target = true
+use_path_as_target = false
+path = ""
 invert = true
 default_result = false
 

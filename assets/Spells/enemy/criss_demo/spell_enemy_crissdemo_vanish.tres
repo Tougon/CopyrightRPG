@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=6 format=3 uid="uid://7vdy23dyqdmi"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_2a5fq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_hccyo"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_geuk6"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_px563"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_yja5y"]
+
+[resource]
+script = ExtResource("5_yja5y")
+spell_power = 50.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 40
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("4_px563")]([])
+check_accuracy = true
+spell_accuracy = 100.0
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = ""
+spell_type = 0
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("4_px563")]([])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("1_2a5fq")]([])
+effects_on_success = Array[ExtResource("1_2a5fq")]([])
+properties = Array[ExtResource("3_geuk6")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_hccyo")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_hccyo")]([])
