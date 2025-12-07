@@ -103,7 +103,7 @@ seal_id = Array[int]([])
 script = ExtResource("3_fjnas")
 behavior_check = Array[ExtResource("1_mkamh")]([])
 check_type = 0
-action_id = Array[int]([1, 0])
+action_id = Array[int]([1, 0, 0])
 seal_chance = Array[float]([1.0, 0.0])
 seal_id = Array[int]([0, 0])
 
