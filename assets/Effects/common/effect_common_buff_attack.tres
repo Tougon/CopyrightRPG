@@ -74,7 +74,7 @@ dialogue_key = "T_EFFECT_GENERIC_ATTACK_BOOST_TARGET_FAIL"
 
 [sub_resource type="Resource" id="Resource_fu0fp"]
 script = ExtResource("9_ecoy1")
-target = 0
+target = 1
 
 [sub_resource type="Resource" id="Resource_1mjhg"]
 script = ExtResource("10_8ta8n")

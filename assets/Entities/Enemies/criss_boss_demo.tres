@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=102 format=3 uid="uid://df5wqqjn43uqj"]
+[gd_resource type="Resource" script_class="Entity" load_steps=103 format=3 uid="uid://df5wqqjn43uqj"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_84sle"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="2_d4s2f"]
@@ -55,7 +55,7 @@ growth = SubResource("Curve_ml2vp")
 
 [sub_resource type="Resource" id="Resource_t3jda"]
 script = ExtResource("5_t3ybo")
-chance = 0.5
+chance = 0.62
 check_target = 0
 negate = false
 
@@ -65,7 +65,7 @@ behavior_check = Array[ExtResource("5_fgjxa")]([SubResource("Resource_t3jda")])
 check_type = 0
 action_id = Array[int]([2, 4])
 seal_chance = Array[float]([1.0, 1.0])
-seal_id = Array[int]([2, 3])
+seal_id = Array[int]([1, 3])
 
 [sub_resource type="Resource" id="Resource_reykg"]
 script = ExtResource("6_hoq8k")
@@ -215,8 +215,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_k7u4l"]
 script = ExtResource("2_d4s2f")
-min = 1500
-max = 1500
+min = 1400
+max = 1400
 growth = SubResource("Curve_uesc4")
 
 [sub_resource type="Curve" id="Curve_qi5jr"]
@@ -302,10 +302,15 @@ min = 1000
 max = 1000
 growth = SubResource("Curve_jnvjh")
 
+[sub_resource type="Curve" id="Curve_gag8a"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
 [sub_resource type="Resource" id="Resource_pn5u6"]
 script = ExtResource("2_d4s2f")
 min = 0
 max = 0
+growth = SubResource("Curve_gag8a")
 
 [sub_resource type="Resource" id="Resource_n2v8v"]
 script = ExtResource("5_phh4n")
