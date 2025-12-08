@@ -49,7 +49,8 @@ func determine_action(user : EntityController, allies : Array[EntityController],
 			result.action_sealing = BattleManager.seal_manager.can_seal_spell(action, user);
 			result.action_seal_id = 0;
 			
-			if result.action_sealing && seal_id.size() > 0: 
-				result.action_seal_id = seal_id.pick_random();
+			# Originally this was random. Why.
+			if result.action_sealing && seal_id < index: 
+				result.action_seal_id = seal_id[index];
 	
 	return result;
