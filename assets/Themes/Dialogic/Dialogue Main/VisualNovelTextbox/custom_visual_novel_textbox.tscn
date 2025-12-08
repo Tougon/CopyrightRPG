@@ -126,6 +126,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Anchor/AnimationParent/Sizer/Dot Matrix:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Anchor/AnimationParent/Sizer/Noise:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_6kbwc"]
 resource_name = "new_text"
@@ -256,6 +280,30 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0.5)
 }
 tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Anchor/AnimationParent/Sizer/Dot Matrix:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Anchor/AnimationParent/Sizer/Noise:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_htbgc"]
 resource_name = "textbox_pop"
@@ -371,6 +419,30 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0.2)
 }
 tracks/8/use_blend = true
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Anchor/AnimationParent/Sizer/Dot Matrix:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Anchor/AnimationParent/Sizer/Noise:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c14kh"]
 _data = {
@@ -464,16 +536,6 @@ mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_ssa84")
 metadata/_edit_layout_mode = 1
 
-[node name="Noise" type="ColorRect" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
-material = ExtResource("4_2jks3")
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Dot Matrix" type="ColorRect" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
-material = ExtResource("3_cs6lb")
-layout_mode = 2
-mouse_filter = 2
-
 [node name="DialogicNode_DialogText" type="RichTextLabel" parent="Anchor/AnimationParent/Sizer/DialogTextPanel" node_paths=PackedStringArray("textbox_root")]
 unique_name_in_owner = true
 layout_mode = 2
@@ -552,6 +614,28 @@ use_character_color = false
 
 [node name="TextBoxTransitionAudio" type="AudioStreamPlayer" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
 bus = &"SFX"
+
+[node name="Dot Matrix" type="ColorRect" parent="Anchor/AnimationParent/Sizer"]
+visible = false
+material = ExtResource("3_cs6lb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Noise" type="ColorRect" parent="Anchor/AnimationParent/Sizer"]
+visible = false
+material = ExtResource("4_2jks3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Border Root" type="Control" parent="Anchor"]
 modulate = Color(1, 1, 1, 0)

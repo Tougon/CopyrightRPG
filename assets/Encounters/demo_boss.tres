@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Encounter" load_steps=4 format=3 uid="uid://bu1frt4houra0"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="1_d843u"]
+
+[sub_resource type="Curve" id="Curve_tyevk"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ogktc"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_d843u")
+primary_enemy = 18
+odds = 1.0
+can_flee = false
+ignore_flee_mechanics = false
+min_enemies = 0
+max_enemies = 0
+enemy_count_curve = SubResource("Curve_ogktc")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+additional_enemy_curve = SubResource("Curve_tyevk")

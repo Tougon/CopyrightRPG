@@ -1,4 +1,9 @@
-join demo_boss center
-demo_boss: Prepare yourself...
-demo_boss: I will crush you with the power of [b]Earth[/b]!
-[begin_battle path="res://assets/Encounters/temp.tres"]
+Only one question...
+[b]ARE YOU READY?![/b]
+- Yes
+	join demo_boss center
+	demo_boss: Something.
+	[begin_battle path="res://assets/Encounters/demo_boss.tres" linked_dialogue="stop"]
+- No
+	[wait time="0.5"]
+	[end_timeline]

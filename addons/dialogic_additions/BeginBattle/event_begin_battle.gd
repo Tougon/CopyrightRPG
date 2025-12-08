@@ -6,6 +6,7 @@ extends DialogicEvent
 
 var encounter := "";
 var cancel_dialogue_on_defeat := true;
+var linked_dialogue_on_defeat := "";
 var delay := 0.5;
 
 ################################################################################
@@ -37,6 +38,8 @@ func _on_battle_end(result : BattleResult):
 		return;
 	
 	await EventManager.overworld_battle_fade_completed;
+	if !linked_dialogue_on_defeat.is_empty() :
+		Dialogic.start(linked_dialogue_on_defeat);
 	print("Faded in")
 	finish()
 
@@ -64,6 +67,7 @@ func get_shortcode_parameters() -> Dictionary:
 		"path"		: {"property": "encounter", 	"default": ""},
 		"cancel_dialogue"		: {"property": "cancel_dialogue_on_defeat", 	"default": true},
 		"delay"		: {"property": "delay", 	"default": 0.5},
+		"linked_dialogue"		: {"property": "linked_dialogue_on_defeat", 	"default": ""},
 	}
 
 
@@ -75,5 +79,7 @@ func build_event_editor() -> void:
 			'placeholder' 	: "None" })
 	add_body_edit('cancel_dialogue_on_defeat', ValueType.BOOL, {
 			'left_text'		: 'Cancel Dialogue on Defeat'})
+	add_body_edit('linked_dialogue_on_defeat', ValueType.SINGLELINE_TEXT, {
+			'left_text'		: 'Linked Dialogue on Defeat'})
 	add_body_edit('delay', ValueType.NUMBER, {
 			'left_text'		: 'Delay'})

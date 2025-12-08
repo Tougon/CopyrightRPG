@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=137 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="16_lo2xy"]
 [ext_resource type="FontFile" uid="uid://c3snsi3s77666" path="res://assets/Fonts/Lato/Lato-Bold.ttf" id="17_1pp5v"]
 [ext_resource type="Resource" uid="uid://bnvdca7lgydy3" path="res://assets/Tweens/Transition/fade_in.tres" id="17_nqxkx"]
+[ext_resource type="PackedScene" uid="uid://bhgf2upgu87m3" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueTrigger.tscn" id="18_0taeu"]
 [ext_resource type="Resource" uid="uid://b7evdmbcxg6wl" path="res://assets/Tweens/Transition/fade_out.tres" id="18_catc8"]
 [ext_resource type="Resource" uid="uid://c2018oj6gvq61" path="res://assets/Tweens/Transition/fade_in_instant.tres" id="19_q26bi"]
 [ext_resource type="Resource" uid="uid://b5imgyuuysj7p" path="res://assets/Tweens/Transition/fade_out_instant.tres" id="20_wvq5e"]
@@ -131,6 +132,9 @@ size = Vector2(65.9999, 62)
 font = ExtResource("17_1pp5v")
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7774"]
+size = Vector2(608, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5ogx"]
 size = Vector2(737, 459)
@@ -1128,6 +1132,14 @@ label_settings = SubResource("LabelSettings_s3cc1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Boss Trigger" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items" instance=ExtResource("18_0taeu")]
+position = Vector2(513, 2861)
+default_dialogue = "demo_boss_sequence"
+object_id = "demo_boss_trigger"
+
+[node name="CollisionShape2D" parent="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Boss Trigger/Collider" index="0"]
+shape = SubResource("RectangleShape2D_b7774")
+
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 
 [node name="Collision" type="Node2D" parent="Areas/TestArea FR/G/Environment"]
@@ -1157,7 +1169,9 @@ shape = SubResource("RectangleShape2D_hkjpb")
 [node name="Encounter Areas" type="Node2D" parent="Areas/TestArea FR/G"]
 
 [node name="TEST AREA" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
+visible = false
 position = Vector2(508, 3652)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_jcr5d")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
@@ -1169,6 +1183,7 @@ position = Vector2(0, 243)
 shape = SubResource("RectangleShape2D_r1ajn")
 
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
+visible = false
 position = Vector2(508, 4290)
 enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
@@ -1793,6 +1808,7 @@ draw_limits = true
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/SET_LEVEL_10"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/INCREASE_LEVEL"]
 [editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/DECREASE_LEVEL"]
+[editable path="Areas/TestArea FR/G/Environment/Visuals/Sorted Items/Boss Trigger"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/TEST AREA"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Low)"]
 [editable path="Areas/TestArea FR/G/Encounter Areas/EncounterArea (Mid)"]

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Encounter" load_steps=2 format=3 uid="uid://bu1frt4houra0"]
-
-[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="2_17jkg"]
-
-[resource]
-script = ExtResource("2_17jkg")
-enemy_ids = Array[int]([9])
-odds = 1.0

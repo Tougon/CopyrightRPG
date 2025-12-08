@@ -2,7 +2,7 @@
 "@path": "res://addons/dialogic/Resources/character.gd",
 "@subpath": NodePath(""),
 "_translation_id": "",
-"color": Color(0.945313, 0.785404, 0.0553894, 1),
+"color": Color(0.505537, 0.217361, 0.722656, 1),
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
@@ -10,14 +10,14 @@
 },
 "default_portrait": "Idle",
 "description": "",
-"display_name": "Super Slime",
+"display_name": "The Mindfreak",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
 "portraits": {
 "Idle": {
 "export_overrides": {
-"image": "\"res://assets/Sprites/Entities/Slime Boss/slime_n_neutral.png\""
+"image": "\"res://assets/Sprites/UI/Dialogue/Portraits/Temp Portrait 2.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),
