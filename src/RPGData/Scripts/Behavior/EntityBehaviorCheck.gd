@@ -50,7 +50,7 @@ func determine_action(user : EntityController, allies : Array[EntityController],
 			result.action_seal_id = 0;
 			
 			# Originally this was random. Why.
-			if result.action_sealing && seal_id < index: 
+			if result.action_sealing && seal_id.size() < index: 
 				result.action_seal_id = seal_id[index];
 	
 	return result;

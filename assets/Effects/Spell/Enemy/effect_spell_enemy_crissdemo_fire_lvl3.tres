@@ -39,7 +39,7 @@ target = 0
 action = ExtResource("6_buobf")
 use_previous = false
 pick_random = false
-retain_target = false
+retain_target = true
 reset_sealing = false
 force_sealing = true
 

@@ -34,12 +34,18 @@ func _on_battle_end(result : BattleResult):
 	print("Battle Done")
 	
 	if cancel_dialogue_on_defeat && !result.victory:
-		dialogic.end_timeline();
+		if !linked_dialogue_on_defeat.is_empty() :
+			print("Await")
+			await EventManager.overworld_battle_fade_completed;
+			dialogic.end_timeline();
+			await dialogic.get_tree().process_frame;
+			Dialogic.start(linked_dialogue_on_defeat);
+			print("Done")
+		else :
+			dialogic.end_timeline();
 		return;
 	
 	await EventManager.overworld_battle_fade_completed;
-	if !linked_dialogue_on_defeat.is_empty() :
-		Dialogic.start(linked_dialogue_on_defeat);
 	print("Faded in")
 	finish()
 
