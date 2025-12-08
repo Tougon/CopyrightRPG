@@ -33,6 +33,8 @@ func _on_battle_end(result : BattleResult):
 	EventManager.on_battle_end.disconnect(_on_battle_end);
 	print("Battle Done")
 	
+	Dialogic.VAR.last_battle_result = result.victory
+	
 	if cancel_dialogue_on_defeat && !result.victory:
 		if !linked_dialogue_on_defeat.is_empty() :
 			print("Await")

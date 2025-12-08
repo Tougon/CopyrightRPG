@@ -1,9 +1,31 @@
 Only one question...
 [b]ARE YOU READY?![/b]
 - Yes
+	join temp_character_1 center
+	temp_character_1: You! Why can't you let us leave!
+	leave temp_character_1
 	join demo_boss center
-	demo_boss: Something.
-	[begin_battle path="res://assets/Encounters/demo_boss.tres" linked_dialogue="stop"]
+	demo_boss: I always dreamt about, y'know, having a [color=#FFFF00]castle[/color]... a [color=#FFFF00]fortress[/color]... a [color=#FFFF00]keep[/color]... all since I was a little boy.
+	demo_boss: I think we all dream about being the [color=#FFFF00]king[/color].
+	demo_boss: For me I felt it was time to take my illusions to the next level.
+	demo_boss: Become the [color=#FFFF00]king of this castle[/color]. Make it [color=#FFFF00]vanish[/color] with my power. Reclaim my [color=#FFFF00]throne[/color].
+	leave demo_boss
+	join temp_character_1 center
+	temp_character_1: ...
+	temp_character_1: What does that mean? That has nothing to do with us!
+	leave temp_character_1
+	join demo_boss center
+	demo_boss: If you're here, in my impossible world, it means you [color=#FFFF00]beLIEve[/color]. 
+	demo_boss: To not [color=#FFFF00]beLiEve[/color]...\
+Is to not [color=#FFFF00]exist![/color]
+	demo_boss: I'll prove it in [color=#FFFF00]one continuous shot![/color]
+	[begin_battle path="res://assets/Encounters/demo_boss.tres" cancel_dialogue="false"]
+	if {last_battle_result} == true:
+		Victory.
+	elif {last_battle_result} == false:
+		Defeat.
+	[wait time="0.5"]
+	[end_timeline]
 - No
 	[wait time="0.5"]
 	[end_timeline]
