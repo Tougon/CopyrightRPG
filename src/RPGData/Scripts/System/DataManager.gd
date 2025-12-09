@@ -33,8 +33,9 @@ func initialize_data(auto : bool):
 	initialize_party_data(auto)
 	
 	if auto :
+		current_save.level_cap = 12;#BattleManager.level_cap;
+		
 		# Temporarily grant 4 copies of every move item
-		print("REMOVE THIS LATER")
 		for i in range(0, 100):
 			var item = item_database.get_item(i);
 			
@@ -54,10 +55,9 @@ func initialize_party_data(auto : bool):
 		
 		var member = PartyMemberData.new();
 		member.id = i;
+		# Level we use when testing
 		if auto : member.level = 1;
 		else : member.level = 1;
-		# Delete this
-		#member.level = 50;
 		
 		member.exp = 0;
 		member.unlocked = auto;
@@ -91,9 +91,18 @@ func initialize_party_data(auto : bool):
 func create_new_save():
 	current_save = SaveData.new();
 	current_save.player_scene = "res://src/RPGData/Scenes/TestRoom_2.tscn";
+	current_save.level_cap = 12;
 	
 	initialize_party_data(false);
 	party_data[0].unlocked = true;
+	
+	# Temporarily grant 4 copies of every move item
+	print("REMOVE THIS LATER")
+	for i in range(0, 100):
+		var item = item_database.get_item(i);
+		
+		if item is MoveItem :
+			current_save.inventory[i] = 4;
 
 
 func load_data():

@@ -28,7 +28,7 @@ func _on_battle_complete(result : BattleResult):
 					var current_exp = DataManager.party_data[player.id].exp;
 					var next_level_amt = player.override_entity.get_level_exp(level);
 					
-					while award_exp + current_exp >= next_level_amt && player.override_level < BattleManager.level_cap:
+					while award_exp + current_exp >= next_level_amt && player.override_level < min(DataManager.current_save.level_cap, BattleManager.level_cap):
 						# TODO: Level up screen/animation
 						level += 1;
 						award_exp -= (next_level_amt - current_exp);
@@ -49,6 +49,10 @@ func _on_battle_complete(result : BattleResult):
 						
 						player.hp_offset += (next_hp - prev_hp);
 						player.mp_offset += (next_mp - prev_mp);
+						
+						if level >= min(DataManager.current_save.level_cap, BattleManager.level_cap) :
+							award_exp = 0;
+							break;
 					
 					player.override_level = level;
 					player.modified_exp_amt = award_exp;

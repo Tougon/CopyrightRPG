@@ -15,7 +15,7 @@ func _execute() -> void:
 				DataManager.party_data[i].level = amt;
 				DataManager.party_data[i].exp = 0;
 		else :
-			DataManager.party_data[i].level = clamp(DataManager.party_data[i].level + amt, 1, BattleManager.level_cap);
+			DataManager.party_data[i].level = clamp(DataManager.party_data[i].level + amt, 1, min(DataManager.current_save.level_cap, BattleManager.level_cap));
 			DataManager.party_data[i].exp = 0;
 	
 	finish() # called to continue with the next event
