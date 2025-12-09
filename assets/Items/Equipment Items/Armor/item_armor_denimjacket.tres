@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://b3qwo3q7um57t"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_uxj8i"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_x1ba1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_y7y4l"]
+
+[resource]
+script = ExtResource("3_y7y4l")
+equipment_type = 1
+hp_mod = 0
+mp_mod = 0
+atk_mod = 0
+def_mod = 0
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.0
+equipment_effects = Array[ExtResource("1_uxj8i")]([])
+universal = false
+allowed_entities = Array[int]([0])
+item_name_key = "T_ITEM_ARMOR_DENIMJACKET"
+item_description_key = "T_ITEM_ARMOR_DENIMJACKET_DESC"
+item_icon_path = "res://assets/Sprites/UI/ui_icon_unknown.png"
+item_flags = Array[ExtResource("2_x1ba1")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

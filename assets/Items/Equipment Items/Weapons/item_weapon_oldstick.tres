@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=9 format=3 uid="uid://df5wkd8lgxeag"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_fo6vn"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_5uyx4"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_aybwp"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_qpoxd"]
+[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/core/spell_core_attack.tres" id="3_xo6r7"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_attack.gd" id="4_itfsa"]
+
+[sub_resource type="Resource" id="Resource_y2g3q"]
+script = ExtResource("4_itfsa")
+action = ExtResource("3_xo6r7")
+
+[sub_resource type="Resource" id="Resource_t5rys"]
+script = ExtResource("1_fo6vn")
+stackable = false
+effect_name = ""
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("2_5uyx4")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("2_5uyx4")]([])
+on_activate = Array[ExtResource("2_5uyx4")]([SubResource("Resource_y2g3q")])
+on_failed_to_activate = Array[ExtResource("2_5uyx4")]([])
+on_apply = Array[ExtResource("2_5uyx4")]([])
+on_move_selected = Array[ExtResource("2_5uyx4")]([])
+on_move_completed = Array[ExtResource("2_5uyx4")]([])
+on_deactivate = Array[ExtResource("2_5uyx4")]([])
+on_turn_start = Array[ExtResource("2_5uyx4")]([])
+on_turn_end = Array[ExtResource("2_5uyx4")]([])
+on_stack = Array[ExtResource("2_5uyx4")]([])
+
+[resource]
+script = ExtResource("3_qpoxd")
+equipment_type = 0
+hp_mod = 0
+mp_mod = 0
+atk_mod = 0
+def_mod = 0
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.0
+equipment_effects = Array[ExtResource("1_fo6vn")]([SubResource("Resource_t5rys")])
+universal = false
+allowed_entities = Array[int]([0])
+item_name_key = "T_ITEM_WEAPON_OLDSTICK"
+item_description_key = "T_ITEM_WEAPON_OLDSTICK_DESC"
+item_icon_path = "res://assets/Sprites/UI/ui_icon_unknown.png"
+item_flags = Array[ExtResource("2_aybwp")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

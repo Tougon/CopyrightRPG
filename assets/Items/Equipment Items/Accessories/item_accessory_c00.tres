@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=11 format=3 uid="uid://c7dfkblvalie1"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_mvveu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_s2x60"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_seal.gd" id="3_3xd6a"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_mr7bo"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="5_oij1m"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="6_2j3cu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="7_432oj"]
+
+[sub_resource type="Resource" id="Resource_l0pf4"]
+script = ExtResource("4_mr7bo")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("1_mvveu")]([ExtResource("5_oij1m")])
+
+[sub_resource type="Resource" id="Resource_ni03n"]
+script = ExtResource("3_3xd6a")
+seal = SubResource("Resource_l0pf4")
+
+[sub_resource type="Resource" id="Resource_66inp"]
+script = ExtResource("1_mvveu")
+stackable = false
+effect_name = ""
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("2_s2x60")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("2_s2x60")]([])
+on_activate = Array[ExtResource("2_s2x60")]([SubResource("Resource_ni03n")])
+on_failed_to_activate = Array[ExtResource("2_s2x60")]([])
+on_apply = Array[ExtResource("2_s2x60")]([])
+on_move_selected = Array[ExtResource("2_s2x60")]([])
+on_move_completed = Array[ExtResource("2_s2x60")]([])
+on_deactivate = Array[ExtResource("2_s2x60")]([])
+on_turn_start = Array[ExtResource("2_s2x60")]([])
+on_turn_end = Array[ExtResource("2_s2x60")]([])
+on_stack = Array[ExtResource("2_s2x60")]([])
+
+[resource]
+script = ExtResource("7_432oj")
+equipment_type = 2
+hp_mod = 0
+mp_mod = 0
+atk_mod = 0
+def_mod = 0
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.0
+equipment_effects = Array[ExtResource("1_mvveu")]([SubResource("Resource_66inp")])
+universal = false
+allowed_entities = Array[int]([2])
+item_name_key = "T_ITEM_ACCESSORY_C00"
+item_description_key = "T_ITEM_ACCESSORY_C00_DESC"
+item_icon_path = "res://assets/Sprites/UI/ui_icon_unknown.png"
+item_flags = Array[ExtResource("6_2j3cu")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

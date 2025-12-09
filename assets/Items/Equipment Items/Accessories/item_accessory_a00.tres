@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://d3vgnde2xo3h7"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_eo17w"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_6kikj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_esduo"]
+
+[resource]
+script = ExtResource("3_esduo")
+equipment_type = 1
+hp_mod = 0
+mp_mod = 0
+atk_mod = 0
+def_mod = 0
+mag_mod = 0
+res_mod = 0
+spd_mod = 0
+lck_mod = 0.0
+equipment_effects = Array[ExtResource("1_eo17w")]([])
+universal = false
+allowed_entities = Array[int]([1])
+item_name_key = "T_ITEM_ARMOR_BLUEVEST"
+item_description_key = "T_ITEM_ARMOR_BLUEVEST_DESC"
+item_icon_path = "res://assets/Sprites/UI/ui_icon_unknown.png"
+item_flags = Array[ExtResource("2_6kikj")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

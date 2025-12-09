@@ -60,6 +60,7 @@ func on_focus():
 func _refresh_equipment_ui():
 	# Determine a valid list of equipment
 	var valid_items : Array[EquipmentItem];
+	var entity_id = _current_player_data.id;
 	
 	var inventory = DataManager.get_equipment_items(true, _current_equipment_type);
 	
@@ -80,11 +81,17 @@ func _refresh_equipment_ui():
 				if item_id == _current_player_data.accessory_id:
 					is_valid = false;
 		
+		# Remove player specific items
+		var item_data = DataManager.item_database.get_item(item_id) as EquipmentItem;
+		if item_data != null && !item_data.universal && !item_data.allowed_entities.has(entity_id):
+			is_valid = false;
+		
 		if is_valid :
 			var item = inventory[item_id];
 			valid_items.append(item);
 	
-	if inventory.size() == 0 && _current_equipment_id == -1:
+	# As of now, we no longer want to allow selecting no item
+	if inventory.size() == 0 :#&& _current_equipment_id == -1:
 		$"BG/Item Visuals/Description".text = "";
 		$BG/None.visible = true;
 		
@@ -101,11 +108,11 @@ func _refresh_equipment_ui():
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 		$"BG/Item Visuals/Close".visible = true;
 		$"BG/Item Visuals/Close".grab_focus();
-	else :
-		if _current_equipment_id != -1:
-			valid_items.append(null);
-		$BG/None.visible = false;
-		$"BG/Item Visuals/Close".visible = false;
+	#else :
+	#	if _current_equipment_id != -1:
+	#		valid_items.append(null);
+	#	$BG/None.visible = false;
+	#	$"BG/Item Visuals/Close".visible = false;
 	
 	menu_panel.set_index(0);
 	menu_panel.set_data(valid_items);

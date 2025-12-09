@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDatabase" load_steps=22 format=3 uid="uid://dicsdl1lvm1rp"]
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=34 format=3 uid="uid://dicsdl1lvm1rp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database_entry.gd" id="1_pxlfu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database.gd" id="2_ruhu0"]
@@ -98,6 +98,66 @@ script = ExtResource("1_pxlfu")
 id = 1
 item_path = "res://assets/Items/Move Items/item_move_contactshock.tres"
 
+[sub_resource type="Resource" id="Resource_k21v0"]
+script = ExtResource("1_pxlfu")
+id = 5
+item_path = "res://assets/Items/Equipment Items/Weapons/item_weapon_oldstick.tres"
+
+[sub_resource type="Resource" id="Resource_gd6mg"]
+script = ExtResource("1_pxlfu")
+id = 20
+item_path = "res://assets/Items/Equipment Items/Weapons/item_weapon_prototypewatch.tres"
+
+[sub_resource type="Resource" id="Resource_u6uld"]
+script = ExtResource("1_pxlfu")
+id = 21
+item_path = "res://assets/Items/Equipment Items/Weapons/item_weapon_clipboard.tres"
+
+[sub_resource type="Resource" id="Resource_vvtin"]
+script = ExtResource("1_pxlfu")
+id = 22
+item_path = "res://assets/Items/Equipment Items/Weapons/item_weapon_hands.tres"
+
+[sub_resource type="Resource" id="Resource_avjkb"]
+script = ExtResource("1_pxlfu")
+id = 23
+item_path = "res://assets/Items/Equipment Items/Armor/item_armor_denimjacket.tres"
+
+[sub_resource type="Resource" id="Resource_vx1p3"]
+script = ExtResource("1_pxlfu")
+id = 24
+item_path = "res://assets/Items/Equipment Items/Armor/item_armor_bluevest.tres"
+
+[sub_resource type="Resource" id="Resource_r2ews"]
+script = ExtResource("1_pxlfu")
+id = 25
+item_path = "res://assets/Items/Equipment Items/Armor/item_armor_sportcoat.tres"
+
+[sub_resource type="Resource" id="Resource_l1xn2"]
+script = ExtResource("1_pxlfu")
+id = 26
+item_path = "res://assets/Items/Equipment Items/Armor/item_armor_letterjacket.tres"
+
+[sub_resource type="Resource" id="Resource_4ntpo"]
+script = ExtResource("1_pxlfu")
+id = 27
+item_path = "res://assets/Items/Equipment Items/Accessories/item_accessory_a00.tres"
+
+[sub_resource type="Resource" id="Resource_putae"]
+script = ExtResource("1_pxlfu")
+id = 28
+item_path = "res://assets/Items/Equipment Items/Accessories/item_accessory_b00.tres"
+
+[sub_resource type="Resource" id="Resource_jp168"]
+script = ExtResource("1_pxlfu")
+id = 29
+item_path = "res://assets/Items/Equipment Items/Accessories/item_accessory_c00.tres"
+
+[sub_resource type="Resource" id="Resource_2pta0"]
+script = ExtResource("1_pxlfu")
+id = 30
+item_path = "res://assets/Items/Equipment Items/Accessories/item_accessory_d00.tres"
+
 [resource]
 script = ExtResource("2_ruhu0")
-entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_ddi35"), SubResource("Resource_6d5lo"), SubResource("Resource_15f7p"), SubResource("Resource_kbd6t"), SubResource("Resource_kg12u"), SubResource("Resource_0710e"), SubResource("Resource_gj8rl"), SubResource("Resource_leynn"), SubResource("Resource_gbnu5"), SubResource("Resource_02mup"), SubResource("Resource_qfkom"), SubResource("Resource_grcmu"), SubResource("Resource_lhbev"), SubResource("Resource_tr288"), SubResource("Resource_0cau0"), SubResource("Resource_06lwm")])
+entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_ddi35"), SubResource("Resource_6d5lo"), SubResource("Resource_15f7p"), SubResource("Resource_kbd6t"), SubResource("Resource_kg12u"), SubResource("Resource_0710e"), SubResource("Resource_gj8rl"), SubResource("Resource_leynn"), SubResource("Resource_gbnu5"), SubResource("Resource_02mup"), SubResource("Resource_qfkom"), SubResource("Resource_grcmu"), SubResource("Resource_lhbev"), SubResource("Resource_tr288"), SubResource("Resource_0cau0"), SubResource("Resource_06lwm"), SubResource("Resource_k21v0"), SubResource("Resource_gd6mg"), SubResource("Resource_u6uld"), SubResource("Resource_vvtin"), SubResource("Resource_avjkb"), SubResource("Resource_vx1p3"), SubResource("Resource_r2ews"), SubResource("Resource_l1xn2"), SubResource("Resource_4ntpo"), SubResource("Resource_putae"), SubResource("Resource_jp168"), SubResource("Resource_2pta0")])

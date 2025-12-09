@@ -14,3 +14,5 @@ enum EquipmentType { Weapon, Armor, Accessory }
 @export var spd_mod : int;
 @export var lck_mod : float;
 @export var equipment_effects : Array[Effect];
+@export var universal : bool = true;
+@export var allowed_entities : Array[int];
