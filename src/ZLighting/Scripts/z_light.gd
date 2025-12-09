@@ -85,6 +85,8 @@ func _process(delta: float) -> void:
 
 
 func get_size() -> Vector2:
+	if shape is CircleShape2D :
+		return Vector2(max(size.x, size.y) * UNIT_SCALE, max(size.x, size.y) * UNIT_SCALE);
 	return size * UNIT_SCALE;
 
 

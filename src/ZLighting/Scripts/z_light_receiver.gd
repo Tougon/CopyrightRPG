@@ -33,6 +33,7 @@ const MAX_LIGHTS_PER_OBJECT : int = 8;
 @export var origin_offset : Vector2;
 
 @export var static_receiver : bool = true;
+@export var debug : bool = false;
 
 var _mat : ShaderMaterial;
 var _lights : Array[ZLight];
@@ -115,6 +116,10 @@ func _set_material_params() :
 			light_color.append(Color.TRANSPARENT);
 			light_energy.append(0.0);
 			light_falloff.append(Vector2.ZERO);
+	
+	if debug :
+		print(light_size);
+		print(light_falloff);
 	
 	_mat.set_shader_parameter("light_origins", light_origins);
 	_mat.set_shader_parameter("light_is_circle", light_is_circle);
