@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=139 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -57,6 +57,7 @@
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="45_ww1mj"]
 [ext_resource type="Texture2D" uid="uid://bgu42fkgqmfrh" path="res://assets/Sprites/Overworld/temp/bench_light_mask.png" id="46_atam0"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="48_vdytv"]
+[ext_resource type="Shader" path="res://assets/Shaders/simple_post_process.gdshader" id="56_kwlwe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
 texture = ExtResource("2_eurfx")
@@ -546,6 +547,17 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_8jhi8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhx8f"]
+shader = ExtResource("56_kwlwe")
+shader_parameter/brightness = 0.0
+shader_parameter/contrast = 0.95
+shader_parameter/saturation = 1.0
+shader_parameter/redVal = 1.0
+shader_parameter/greenVal = 1.0
+shader_parameter/blueVal = 1.0
+shader_parameter/tint_color = Color(1.92523e-07, 0.35277, 0.569984, 1)
+shader_parameter/tint_effect_factor = 0.5
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("9_8smr2")
 shader_parameter/blur_amount = 4.0
@@ -663,6 +675,18 @@ y_sort_enabled = true
 
 [node name="Lighting" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
 
+[node name="Neutral" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(535, 3560)
+texture = ExtResource("39_u2oxt")
+
+[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Neutral"]
+shadow_filter = 1
+texture = ExtResource("41_jj3lt")
+texture_scale = 4.88
+
 [node name="Base_Bright" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
@@ -670,12 +694,14 @@ position = Vector2(535, 3560)
 texture = ExtResource("39_u2oxt")
 
 [node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Base_Bright"]
+color = Color(0.4221, 0.529523, 0.67, 1)
+energy = 2.0
 shadow_filter = 1
 texture = ExtResource("41_jj3lt")
 texture_scale = 4.88
 
 [node name="Skylight" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-self_modulate = Color(1, 1, 1, 0.352941)
+self_modulate = Color(1, 1, 1, 0.176471)
 position = Vector2(509, 3487)
 texture = ExtResource("42_gujsv")
 
@@ -683,28 +709,28 @@ texture = ExtResource("42_gujsv")
 position = Vector2(-208, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
 position = Vector2(206, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
 position = Vector2(-208, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
 position = Vector2(206, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="Skylight2" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
-self_modulate = Color(1, 1, 1, 0.352941)
+self_modulate = Color(1, 1, 1, 0.176471)
 position = Vector2(509, 4453)
 texture = ExtResource("42_gujsv")
 
@@ -712,25 +738,25 @@ texture = ExtResource("42_gujsv")
 position = Vector2(-208, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
 position = Vector2(206, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
 position = Vector2(-208, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
 position = Vector2(206, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-energy = 0.1
+energy = 0.05
 
 [node name="Anchor Sign" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
 self_modulate = Color(0, 0.443137, 0.972549, 0.360784)
@@ -742,35 +768,35 @@ texture = ExtResource("43_p0qcr")
 [node name="ZLight" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 1.5
+energy = 1.25
 falloff = 5.0
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(-193.548, 1.69205e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 1.5
+energy = 1.25
 falloff = 5.0
 
 [node name="ZLight5" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(-367.742, 3.2149e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 1.5
+energy = 1.25
 falloff = 5.0
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(177.419, -1.55105e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 1.5
+energy = 1.25
 falloff = 5.0
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
 position = Vector2(354.839, -3.1021e-05)
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-energy = 1.5
+energy = 1.25
 falloff = 5.0
 
 [node name="Escalators" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals"]
@@ -1171,6 +1197,7 @@ shape = SubResource("RectangleShape2D_hkjpb")
 [node name="TEST AREA" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 visible = false
 position = Vector2(508, 3652)
+enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_jcr5d")])
 grace_period = 0.0
 minimum_encounter_chance = 1.0
@@ -1718,6 +1745,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.862745)
+
+[node name="Post Process" type="CanvasLayer" parent="UI"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="UI/Post Process"]
+material = SubResource("ShaderMaterial_jhx8f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Player UI" type="CanvasLayer" parent="UI"]
 
