@@ -63,23 +63,38 @@ func _refresh_equipment_ui():
 	var entity_id = _current_player_data.id;
 	
 	var inventory = DataManager.get_equipment_items(true, _current_equipment_type);
+	var current_id = -1;
+	
+	match _current_equipment_type:
+		EquipmentItem.EquipmentType.Weapon:
+			current_id = _current_player_data.weapon_id;
+		
+		EquipmentItem.EquipmentType.Armor:
+			current_id = _current_player_data.armor_id;
+		
+		EquipmentItem.EquipmentType.Accessory:
+			current_id = _current_player_data.accessory_id;
+	
+	valid_items.append(DataManager.item_database.get_item(current_id))
 	
 	# If the item is not currently selected, it is valid
-	for item_id  in inventory.keys():
+	for item_id in inventory.keys():
 		var is_valid = true;
 		
-		match _current_equipment_type:
-			EquipmentItem.EquipmentType.Weapon:
-				if item_id == _current_player_data.weapon_id:
-					is_valid = false;
+		# Used to filter out the current item
+		# I get why we had this but it feels bad. Disabling
+		#match _current_equipment_type:
+			#EquipmentItem.EquipmentType.Weapon:
+			#	if item_id == _current_player_data.weapon_id:
+			#		is_valid = false;
 			
-			EquipmentItem.EquipmentType.Armor:
-				if item_id == _current_player_data.armor_id:
-					is_valid = false;
+			#EquipmentItem.EquipmentType.Armor:
+			#	if item_id == _current_player_data.armor_id:
+			#		is_valid = false;
 			
-			EquipmentItem.EquipmentType.Accessory:
-				if item_id == _current_player_data.accessory_id:
-					is_valid = false;
+			#EquipmentItem.EquipmentType.Accessory:
+			#	if item_id == _current_player_data.accessory_id:
+			#		is_valid = false;
 		
 		# Remove player specific items
 		var item_data = DataManager.item_database.get_item(item_id) as EquipmentItem;
@@ -91,7 +106,7 @@ func _refresh_equipment_ui():
 			valid_items.append(item);
 	
 	# As of now, we no longer want to allow selecting no item
-	if inventory.size() == 0 :#&& _current_equipment_id == -1:
+	if valid_items.size() == 0 :#&& _current_equipment_id == -1:
 		$"BG/Item Visuals/Description".text = "";
 		$BG/None.visible = true;
 		
@@ -108,11 +123,11 @@ func _refresh_equipment_ui():
 		$"BG/Item Visuals/Equipment/Static".visible = true;
 		$"BG/Item Visuals/Close".visible = true;
 		$"BG/Item Visuals/Close".grab_focus();
-	#else :
+	else :
 	#	if _current_equipment_id != -1:
 	#		valid_items.append(null);
-	#	$BG/None.visible = false;
-	#	$"BG/Item Visuals/Close".visible = false;
+		$BG/None.visible = false;
+		$"BG/Item Visuals/Close".visible = false;
 	
 	menu_panel.set_index(0);
 	menu_panel.set_data(valid_items);

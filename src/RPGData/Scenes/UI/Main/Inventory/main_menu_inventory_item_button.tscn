@@ -13,7 +13,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_nqgsf"]
 font = ExtResource("3_4t4qy")
-font_size = 32
+font_size = 24
 
 [sub_resource type="Resource" id="Resource_a5tb3"]
 script = ExtResource("9_ifau0")
@@ -219,7 +219,7 @@ next_tween = ""
 offset_right = 400.0
 offset_bottom = 45.0
 theme = ExtResource("1_3kjdm")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Item"
 alignment = 0
 script = ExtResource("2_q5n7p")

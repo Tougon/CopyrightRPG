@@ -72,3 +72,8 @@ func _on_item_selected(data):
 
 func _on_cancel_pressed() -> void:
 	set_active(false);
+	AudioManager.play_sfx("main_menu_submenu_close");
+
+
+func _on_button_focus_entered() -> void:
+	AudioManager.play_sfx("main_menu_select");

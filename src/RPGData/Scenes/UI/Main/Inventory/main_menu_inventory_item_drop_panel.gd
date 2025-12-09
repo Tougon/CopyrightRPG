@@ -15,3 +15,9 @@ func on_menu_inactive():
 
 func _on_no_pressed() -> void:
 	set_active(false);
+	
+	AudioManager.play_sfx("main_menu_submenu_close");
+
+
+func _on_button_focus_entered() -> void:
+	AudioManager.play_sfx("main_menu_select");

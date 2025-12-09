@@ -48,10 +48,13 @@ func _on_item_selected(data):
 		
 		if _current_item_index != data:
 			$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+			if focused : AudioManager.play_sfx("main_menu_preview_glitch");
 		_current_item_index = data;
 	else :
 		$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = "";
 		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview".texture = null;
+	
+	if focused : AudioManager.play_sfx("main_menu_select")
 
 
 func _refresh_current_item():
@@ -67,6 +70,8 @@ func _refresh_current_item():
 	
 	if _current_item_index == -1:
 		$"Inventory Area/BG/Blocker/Display/Visuals/Item Preview/TweenPlayerUI".play_tween_name("Zap");
+		
+		if focused : AudioManager.play_sfx("main_menu_preview_glitch");
 	_current_item_index = _last_selection_index;
 
 
@@ -83,6 +88,8 @@ func _on_item_clicked(data):
 	
 	# TODO: Change text to "Equip" for equipment (if it's even done here)
 	UIManager.open_menu_name("overworld_menu_main_item_use");
+	
+	AudioManager.play_sfx("main_menu_confirm")
 
 
 # Item usage functions
@@ -91,11 +98,15 @@ func _on_use_clicked() -> void:
 	$"Inventory Area/BG/Blocker/Display/Visuals/Description".text = "";
 	UIManager.open_menu_name("overworld_menu_main_item_target");
 	_current_item_index = -1;
+	
+	AudioManager.play_sfx("main_menu_confirm")
 
 
 func _on_drop_clicked() :
 	$"Inventory Area/BG/Blocker/Display/Item Use Panel".visible = false;
 	UIManager.open_menu_name("overworld_menu_main_item_drop");
+	
+	AudioManager.play_sfx("main_menu_confirm")
 
 
 func _on_drop_confirmed() :
@@ -103,6 +114,8 @@ func _on_drop_confirmed() :
 	
 	var item_id = DataManager.item_database.get_id(_current_item);
 	DataManager.change_item_amount(item_id, -1);
+	
+	AudioManager.play_sfx("main_menu_submenu_close");
 	
 	UIManager.close_menu_name("overworld_menu_main_item_drop");
 	
