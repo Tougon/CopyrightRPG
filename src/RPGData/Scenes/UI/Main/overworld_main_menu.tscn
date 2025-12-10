@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=150 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -55,6 +55,7 @@
 [ext_resource type="Theme" uid="uid://q7x5eitlt0ra" path="res://assets/Themes/Theme_UI_ButtonBasic.tres" id="46_ff4o8"]
 [ext_resource type="Theme" uid="uid://b75asv135vvot" path="res://assets/Themes/Theme_UI_InventoryBox.tres" id="46_mlnh1"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_drop_panel.gd" id="47_txais"]
+[ext_resource type="Theme" uid="uid://bthkn0f61scro" path="res://assets/Themes/Theme_UI_Slider.tres" id="55_ejuht"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -626,6 +627,15 @@ tween_name = "Close"
 tween_resource = ExtResource("12_u23bx")
 play_on_start = false
 next_tween = ""
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1rd0c"]
+bg_color = Color(1, 0, 0.286275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suyib"]
+bg_color = Color(0.713726, 0, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ye2c"]
+bg_color = Color(1, 0, 0.286275, 1)
 
 [sub_resource type="Resource" id="Resource_b0o5m"]
 script = ExtResource("9_7mkwv")
@@ -3978,6 +3988,7 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 script = ExtResource("2_fajv7")
 
 [node name="Inventory" type="Panel" parent="Body" node_paths=PackedStringArray("menu_panel", "no_items_display", "root_menu")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -5874,6 +5885,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
+[node name="None" type="Label" parent="Body/Notepad/ColorRect"]
+material = ExtResource("16_egfar")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -15.5
+offset_right = 231.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+pivot_offset = Vector2(427, 250)
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 24
+text = "CURRENTLY UNDER CONSTRUCTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TweenPlayerUI" type="Node" parent="Body/Notepad"]
 script = ExtResource("2_fajv7")
 
@@ -5888,13 +5921,13 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(480, 528)
 script = ExtResource("21_n8v21")
-bgm_slider = NodePath("BGM Volume Slider")
-sfx_slider = NodePath("SFX Volume Slider")
+bgm_slider = NodePath("Options List/Control/BGM/BGM Volume Slider")
+sfx_slider = NodePath("Options List/Control/SFX/SFX Volume Slider")
 root_menu = NodePath("../..")
 unfocus_on_open = false
 submenu = true
-initial_selection = NodePath("BGM Volume Slider")
-all_selections = [NodePath("BGM Volume Slider"), NodePath("SFX Volume Slider")]
+initial_selection = NodePath("Options List/Control/BGM/BGM Volume Slider")
+all_selections = [NodePath("Options List/Control/BGM/BGM Volume Slider"), NodePath("Options List/Control/SFX/SFX Volume Slider")]
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_iv3es"), SubResource("Resource_jnawg")])
 
 [node name="ColorRect" type="ColorRect" parent="Body/Options"]
@@ -5909,78 +5942,115 @@ color = Color(1, 1, 1, 0)
 [node name="TweenPlayerUI" type="Node" parent="Body/Options"]
 script = ExtResource("2_fajv7")
 
-[node name="BGM Label" type="Label" parent="Body/Options"]
+[node name="Options List" type="ScrollContainer" parent="Body/Options"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -249.0
-offset_top = -129.0
-offset_right = -149.0
-offset_bottom = -106.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "BGM Volume"
+theme = ExtResource("46_mlnh1")
+follow_focus = true
+vertical_scroll_mode = 2
 
-[node name="BGM Volume Slider" type="HSlider" parent="Body/Options"]
+[node name="Control" type="VBoxContainer" parent="Body/Options/Options List"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Header" type="Label" parent="Body/Options/Options List/Control"]
+layout_mode = 2
+theme = ExtResource("4_q6orv")
+theme_override_font_sizes/font_size = 28
+text = "T_MENU_COMMON_OPTIONS_AUDIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Body/Options/Options List/Control"]
+layout_mode = 2
+
+[node name="BGM" type="Control" parent="Body/Options/Options List/Control"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Options/Options List/Control/BGM"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -114.0
-offset_right = 250.0
-offset_bottom = -66.0
+offset_left = -201.0
+offset_right = 201.0
+offset_bottom = 30.0
 grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_top = NodePath("../SFX Volume Slider")
-focus_neighbor_bottom = NodePath("../SFX Volume Slider")
+size_flags_horizontal = 3
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+text = "T_MENU_COMMON_OPTIONS_BGM"
+
+[node name="BGM Volume Slider" type="HSlider" parent="Body/Options/Options List/Control/BGM"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -48.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../../SFX/SFX Volume Slider")
+focus_neighbor_bottom = NodePath("../../SFX/SFX Volume Slider")
+theme = ExtResource("55_ejuht")
 max_value = 1.0
 step = 0.05
-tick_count = 20
-ticks_on_borders = true
+tick_count = 21
 
-[node name="SFX Label" type="Label" parent="Body/Options"]
+[node name="SFX" type="Control" parent="Body/Options/Options List/Control"]
+custom_minimum_size = Vector2(0, 65)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Body/Options/Options List/Control/SFX"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -249.0
-offset_top = -35.0
-offset_right = -149.0
-offset_bottom = -12.0
+offset_left = -201.0
+offset_right = 201.0
+offset_bottom = 30.0
 grow_horizontal = 2
-grow_vertical = 2
-text = "SFX Volume"
+size_flags_horizontal = 3
+theme = ExtResource("4_q6orv")
+theme_type_variation = &"GroupHeader"
+text = "T_MENU_COMMON_OPTIONS_SFX"
 
-[node name="SFX Volume Slider" type="HSlider" parent="Body/Options"]
+[node name="SFX Volume Slider" type="HSlider" parent="Body/Options/Options List/Control/SFX"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -250.0
-offset_top = -20.0
+offset_top = -48.0
 offset_right = 250.0
-offset_bottom = 28.0
 grow_horizontal = 2
-grow_vertical = 2
-focus_neighbor_top = NodePath("../BGM Volume Slider")
-focus_neighbor_bottom = NodePath("../BGM Volume Slider")
+grow_vertical = 0
+focus_neighbor_top = NodePath("../../BGM/BGM Volume Slider")
+focus_neighbor_bottom = NodePath("../../BGM/BGM Volume Slider")
+theme = ExtResource("55_ejuht")
 max_value = 1.0
 step = 0.05
-tick_count = 20
-ticks_on_borders = true
+tick_count = 21
 
 [node name="System" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -6025,8 +6095,137 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
-theme = ExtResource("13_ynyhx")
+theme = ExtResource("4_q6orv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1rd0c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_suyib")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ye2c")
 text = "T_MENU_COMMON_SAVE"
+
+[node name="Cursor" type="Control" parent="Body/System/Save"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft" type="TextureRect" parent="Body/System/Save/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+
+[node name="TopRight" type="TextureRect" parent="Body/System/Save/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft" type="TextureRect" parent="Body/System/Save/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 32.0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight" type="TextureRect" parent="Body/System/Save/Cursor"]
+modulate = Color(1, 0, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("32_qohhh")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="Glow" type="Control" parent="Body/System/Save/Cursor"]
+modulate = Color(1, 0, 0.286275, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopLeft2" type="TextureRect" parent="Body/System/Save/Cursor/Glow"]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+
+[node name="TopRight2" type="TextureRect" parent="Body/System/Save/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+
+[node name="BottomLeft2" type="TextureRect" parent="Body/System/Save/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_right = 64.0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_v = true
+
+[node name="BottomRight2" type="TextureRect" parent="Body/System/Save/Cursor/Glow"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("33_co7pr")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="TweenPlayerUI" type="Node" parent="Body/System/Save/Cursor"]
+script = ExtResource("2_fajv7")
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
 [node name="Delete" type="Button" parent="Body/System"]
 visible = false
@@ -6074,8 +6273,10 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/Yes" to="Body/Inventory" method="_on_drop_confirmed"]
 [connection signal="focus_entered" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No" to="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel" method="_on_button_focus_entered"]
 [connection signal="pressed" from="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel/Buttons/No" to="Body/Inventory/Inventory Area/BG/Blocker/Display/Item Drop Panel" method="_on_no_pressed"]
-[connection signal="value_changed" from="Body/Options/BGM Volume Slider" to="Body/Options" method="_on_bgm_volume_slider_value_changed"]
-[connection signal="value_changed" from="Body/Options/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]
+[connection signal="focus_entered" from="Body/Options/Options List/Control/BGM/BGM Volume Slider" to="Body/Options" method="_on_slider_focus_entered"]
+[connection signal="value_changed" from="Body/Options/Options List/Control/BGM/BGM Volume Slider" to="Body/Options" method="_on_bgm_volume_slider_value_changed"]
+[connection signal="focus_entered" from="Body/Options/Options List/Control/SFX/SFX Volume Slider" to="Body/Options" method="_on_slider_focus_entered"]
+[connection signal="value_changed" from="Body/Options/Options List/Control/SFX/SFX Volume Slider" to="Body/Options" method="_on_sfx_volume_slider_value_changed"]
 [connection signal="pressed" from="Body/System/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]
 

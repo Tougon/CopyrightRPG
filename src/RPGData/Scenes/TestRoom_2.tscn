@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=4 uid="uid://xrrmy4mipi31"]
+[gd_scene load_steps=140 format=4 uid="uid://xrrmy4mipi31"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_p0lob"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_a4cvd"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://vevt3q612r55" path="res://src/RPGData/Scenes/Overworld/Interaction/TangibleInteractable.tscn" id="21_3vjcp"]
 [ext_resource type="PackedScene" uid="uid://cfijknefgnphk" path="res://src/RPGData/Scenes/Overworld/Interaction/FloorChangeTrigger.tscn" id="22_hwsgw"]
 [ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.tscn" id="37_j44eh"]
+[ext_resource type="Material" uid="uid://bht5vfchwbwnl" path="res://assets/Materials/VideoMaterials/Misc/void_testroom2_color.tres" id="38_rnhbo"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="39_u2oxt"]
 [ext_resource type="PackedScene" uid="uid://b57cnqh0ej1fi" path="res://src/RPGData/Scenes/Overworld/Camera/camera_area.tscn" id="40_0rg3s"]
 [ext_resource type="Texture2D" uid="uid://h1jbte7sxfit" path="res://assets/Sprites/Tilemaps/mall_atrium_border_sheet.png" id="40_pwlnx"]
@@ -46,14 +47,12 @@
 [ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="42_82eq1"]
 [ext_resource type="Texture2D" uid="uid://c18kg7d7cg557" path="res://assets/Textures/Lights/sky_light.png" id="42_gujsv"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="42_ryfn6"]
-[ext_resource type="Material" uid="uid://bbjbjqi6dxca1" path="res://assets/Materials/VideoMaterials/entity_boss_test_00.tres" id="43_7fmwt"]
 [ext_resource type="Texture2D" uid="uid://bajjhwu4ec21m" path="res://assets/Sprites/Overworld/temp/test_logo_anchor.png" id="43_p0qcr"]
 [ext_resource type="PackedScene" uid="uid://co2mkuud1rhxw" path="res://src/RPGData/Scenes/Overworld/Encounters/encounter_area.tscn" id="43_swjwx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="43_y1qfp"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="44_4y3cx"]
 [ext_resource type="VideoStream" path="res://video/boss.ogv" id="44_6ki12"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="44_pt3pb"]
-[ext_resource type="Material" uid="uid://blpd02i0msjxn" path="res://assets/Materials/VideoMaterials/entity_boss_test_01.tres" id="45_b0mnu"]
 [ext_resource type="Texture2D" uid="uid://cbky407i8oahf" path="res://assets/Sprites/Overworld/temp/bench.png" id="45_l41ax"]
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="45_ww1mj"]
 [ext_resource type="Texture2D" uid="uid://bgu42fkgqmfrh" path="res://assets/Sprites/Overworld/temp/bench_light_mask.png" id="46_atam0"]
@@ -821,7 +820,7 @@ energy = 0.2
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight"]
-self_modulate = Color(1, 1, 1, 0.533333)
+self_modulate = Color(1, 1, 1, 0.756863)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_6kf63")
 
@@ -863,7 +862,7 @@ energy = 0.2
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight4"]
-self_modulate = Color(1, 1, 1, 0.533333)
+self_modulate = Color(1, 1, 1, 0.756863)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_6kf63")
 
@@ -1307,7 +1306,6 @@ shape = SubResource("RectangleShape2D_r1ajn")
 [node name="EncounterArea (Low)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 visible = false
 position = Vector2(508, 4290)
-enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 encounter_increase_rate = 0.1
 encounter_reroll_rate = 0.6
@@ -1319,7 +1317,6 @@ shape = SubResource("RectangleShape2D_hi4at")
 [node name="EncounterArea (Mid)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 visible = false
 position = Vector2(508, 3652)
-enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_vd5ei"), SubResource("Resource_rp5pn"), SubResource("Resource_o2obl"), SubResource("Resource_u5y5y"), SubResource("Resource_id5s3"), SubResource("Resource_b1hs4")])
 encounter_increase_rate = 0.1
 encounter_reroll_rate = 0.6
@@ -1331,7 +1328,6 @@ shape = SubResource("RectangleShape2D_r63lc")
 [node name="EncounterArea (Top)" parent="Areas/TestArea FR/G/Encounter Areas" instance=ExtResource("43_swjwx")]
 visible = false
 position = Vector2(508, 2944)
-enabled = false
 encounters = Array[ExtResource("44_pt3pb")]([SubResource("Resource_404dh"), SubResource("Resource_v14ed"), SubResource("Resource_pti0o"), SubResource("Resource_qckch")])
 encounter_increase_rate = 0.1
 encounter_reroll_rate = 0.6
@@ -1820,27 +1816,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.298039, 0.298039, 0.298039, 1)
 
-[node name="Video Layer" parent="UI/Void" instance=ExtResource("42_ryfn6")]
-material = ExtResource("43_7fmwt")
-mouse_filter = 2
-stream = ExtResource("44_6ki12")
-autoplay = true
-
 [node name="Color Layer" parent="UI/Void" instance=ExtResource("42_ryfn6")]
-material = ExtResource("45_b0mnu")
+material = ExtResource("38_rnhbo")
 mouse_filter = 2
 stream = ExtResource("44_6ki12")
 autoplay = true
 delay_start = true
 delay_time = 0.5
 
-[node name="Tint" type="ColorRect" parent="UI/Void"]
+[node name="Final Tint" type="ColorRect" parent="UI/Void"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.862745)
+color = Color(0, 0, 0, 0.792157)
 
 [node name="Post Process" type="CanvasLayer" parent="UI"]
 visible = false

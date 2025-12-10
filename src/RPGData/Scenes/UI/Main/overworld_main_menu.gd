@@ -13,6 +13,7 @@ func _ready():
 
 func _on_save_pressed():
 	DataManager.save_data();
+	AudioManager.play_sfx("main_menu_confirm")
 
 
 func _on_load_pressed():

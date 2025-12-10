@@ -16,6 +16,7 @@ config/name="Copyright RPG"
 run/main_scene="res://src/RPGData/Scenes/TestRoom_2.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

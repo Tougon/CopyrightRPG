@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bthkn0f61scro"]
+
+[ext_resource type="Texture2D" uid="uid://cep0rkb7h2r31" path="res://assets/Sprites/UI/MainMenu/ui_red_gradient.png" id="1_gr8ip"]
+
+[sub_resource type="Gradient" id="Gradient_puoyc"]
+colors = PackedColorArray(0.713726, 0, 0.203922, 1, 0.713726, 0, 0.203922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5yg3l"]
+gradient = SubResource("Gradient_puoyc")
+width = 4
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_8wvor"]
+colors = PackedColorArray(0.713726, 0, 0.203922, 0.8, 0.713726, 0, 0.203922, 0.8)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6mgct"]
+gradient = SubResource("Gradient_8wvor")
+width = 4
+height = 8
+
+[sub_resource type="Gradient" id="Gradient_nbece"]
+colors = PackedColorArray(1, 0, 0.286275, 1, 1, 0, 0.286275, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xposu"]
+gradient = SubResource("Gradient_nbece")
+width = 4
+height = 12
+
+[sub_resource type="Gradient" id="Gradient_wt4ka"]
+colors = PackedColorArray(0.219501, 0.219501, 0.219501, 1, 0.219608, 0.219608, 0.219608, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3wxut"]
+gradient = SubResource("Gradient_wt4ka")
+width = 2
+height = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ddixr"]
+bg_color = Color(0.713726, 0, 0.203922, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0m4fp"]
+texture = ExtResource("1_gr8ip")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_arhde"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.8)
+corner_radius_bottom_left = 4
+
+[resource]
+HSlider/icons/grabber = SubResource("GradientTexture2D_5yg3l")
+HSlider/icons/grabber_disabled = SubResource("GradientTexture2D_6mgct")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_xposu")
+HSlider/icons/tick = SubResource("GradientTexture2D_3wxut")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ddixr")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_0m4fp")
+HSlider/styles/slider = SubResource("StyleBoxFlat_arhde")

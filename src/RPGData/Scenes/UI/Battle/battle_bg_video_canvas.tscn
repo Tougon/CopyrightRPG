@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://4k3478vr4ljh"]
+[gd_scene load_steps=14 format=3 uid="uid://4k3478vr4ljh"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleBGCanvas.gd" id="1_jecyy"]
 [ext_resource type="Shader" path="res://assets/Shaders/noise.gdshader" id="2_k620y"]
@@ -8,8 +8,7 @@
 [ext_resource type="Material" uid="uid://cewdbhkldfro1" path="res://assets/Materials/VideoMaterials/attack_test_00.tres" id="5_bg8ve"]
 [ext_resource type="VideoStream" path="res://video/boss.ogv" id="5_w7ge3"]
 [ext_resource type="VideoStream" path="res://video/attack.ogv" id="6_s5ki2"]
-[ext_resource type="Material" uid="uid://fn45hg0cdp6e" path="res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_ultimate_color.tres" id="9_qimmb"]
-[ext_resource type="VideoStream" path="res://video/spell/video_spell_criss_mindfreak.ogv" id="10_qlefd"]
+[ext_resource type="Material" uid="uid://bht5vfchwbwnl" path="res://assets/Materials/VideoMaterials/Misc/void_testroom2_color.tres" id="9_8i453"]
 
 [sub_resource type="Gradient" id="Gradient_4qnt8"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
@@ -100,8 +99,8 @@ mouse_filter = 2
 stream = ExtResource("6_s5ki2")
 
 [node name="Color Layer" parent="." instance=ExtResource("3_8xmgu")]
-material = ExtResource("9_qimmb")
+material = ExtResource("9_8i453")
 mouse_filter = 2
-stream = ExtResource("10_qlefd")
+stream = ExtResource("5_w7ge3")
 delay_start = true
 delay_time = 0.5

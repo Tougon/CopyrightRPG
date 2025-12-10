@@ -74,9 +74,11 @@ func _load_scene(path : String):
 			EventManager.set_player_can_move.emit(false);
 			
 			if set_position :
+				# TODO: Needs to handle map swapping condition as well
 				if use_target_player_position : 
 					OverworldManager.player_controller.position = target_player_position;
 					use_target_player_position = false;
+				OverworldManager.game_camera.teleport_position();
 			
 			# TODO: Restore input
 			await EventManager.overworld_transition_fade_completed;
