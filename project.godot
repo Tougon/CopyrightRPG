@@ -13,10 +13,11 @@ recent_projects=["res://assets/Quests/temp.quest", "res://assets/Quests/demo.que
 [application]
 
 config/name="Copyright RPG"
-run/main_scene="res://src/RPGData/Scenes/TestRoom_2.tscn"
+run/main_scene="res://src/RPGData/Scenes/Menu/MenuMain.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
-boot_splash/show_image=false
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/Textures/splash.png"
 config/icon="res://icon.svg"
 
 [autoload]

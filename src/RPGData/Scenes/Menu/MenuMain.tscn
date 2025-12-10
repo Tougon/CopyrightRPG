@@ -89,6 +89,14 @@ next_tween = ""
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="MenuPanel" type="Panel" parent="CanvasLayer" node_paths=PackedStringArray("initial_selection", "all_selections")]
 anchors_preset = 15
 anchor_right = 1.0
@@ -109,7 +117,8 @@ offset_top = 60.0
 offset_bottom = 160.0
 grow_horizontal = 2
 bbcode_enabled = true
-text = "[center][font_size=32][b][i]TITLE[/i][/b][/font_size]"
+text = "[center][font_size=32][b][i]TITLE[/i][/b][/font_size]
+(Yeah, we're putting 0 effort into this screen for now)"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MenuPanel"]
 layout_mode = 1
@@ -139,11 +148,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
+offset_top = -92.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 bbcode_enabled = true
-text = "[center][font_size=12]©2025 TOUGON CORPORATION"
+text = "[center][font_size=12]The Character named \"Necrid\" is created and designed by NAMCO as the derivative work of
+the illustration drawn by Todd McFarlane Productions, Inc.
+The Character: © 2003 Namco Ltd. All rights reserved.
+Illustration: © 2003 by Todd McFarlane Productions, Inc. All rights reserved"
+fit_content = true
 
 [node name="TweenPlayerUI" type="Node" parent="CanvasLayer/MenuPanel"]
 script = ExtResource("2_2s2vu")
