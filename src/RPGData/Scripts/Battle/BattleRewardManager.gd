@@ -41,6 +41,7 @@ func _on_battle_complete(result : BattleResult):
 						
 						EventManager.on_dialogue_queue.emit(msg);
 						
+						
 						# Increase HP and MP based on new level
 						var prev_hp = player.override_entity.get_hp(level - 1);
 						var next_hp = player.override_entity.get_hp(level);

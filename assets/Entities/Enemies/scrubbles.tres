@@ -55,8 +55,8 @@ script = ExtResource("4_0h52y")
 behavior_check = Array[ExtResource("3_l88w3")]([])
 check_type = 0
 action_id = Array[int]([2, 1, 1])
-seal_chance = Array[float]([])
-seal_id = Array[int]([])
+seal_chance = Array[float]([0.0, 0.0, 0.0])
+seal_id = Array[int]([0, 0, 0])
 
 [sub_resource type="Resource" id="Resource_eed67"]
 script = ExtResource("5_xfam8")

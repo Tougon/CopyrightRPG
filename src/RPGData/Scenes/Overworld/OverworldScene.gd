@@ -327,8 +327,12 @@ func _on_battle_end(result : BattleResult):
 				DataManager.party_data[player.id].status = player.status;
 			
 			if player.should_award_exp :
+				# If we level up, make sure to reset EXP
+				if DataManager.party_data[player.id].level != player.override_level :
+					DataManager.party_data[player.id].exp = 0;
+				
 				DataManager.party_data[player.id].level = player.override_level;
-				DataManager.party_data[player.id].exp = player.modified_exp_amt;
+				DataManager.party_data[player.id].exp += player.modified_exp_amt;
 		
 		for id in result.player_items.keys() :
 			DataManager.change_item_amount(id, result.player_items[id]);

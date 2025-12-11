@@ -690,6 +690,20 @@ shadow_filter = 1
 texture = ExtResource("41_jj3lt")
 texture_scale = 4.88
 
+[node name="Base_Bright (Bluer)" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(535, 3560)
+texture = ExtResource("39_u2oxt")
+
+[node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Base_Bright (Bluer)"]
+color = Color(0.4221, 0.529523, 0.67, 1)
+energy = 2.0
+shadow_filter = 1
+texture = ExtResource("41_jj3lt")
+texture_scale = 4.88
+
 [node name="Base_Bright" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
@@ -697,7 +711,7 @@ position = Vector2(535, 3560)
 texture = ExtResource("39_u2oxt")
 
 [node name="PointLight2D" type="PointLight2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Base_Bright"]
-color = Color(0.4221, 0.529523, 0.67, 1)
+color = Color(0.465, 0.532167, 0.62, 1)
 energy = 2.0
 shadow_filter = 1
 texture = ExtResource("41_jj3lt")

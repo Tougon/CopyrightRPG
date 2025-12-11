@@ -33,7 +33,7 @@ func initialize_data(auto : bool):
 	initialize_party_data(auto)
 	
 	if auto :
-		current_save.level_cap = 12;#BattleManager.level_cap;
+		current_save.level_cap = BattleManager.level_cap;
 		
 		# Temporarily grant 4 copies of every move item
 		for i in range(0, 100):
@@ -56,10 +56,11 @@ func initialize_party_data(auto : bool):
 		var member = PartyMemberData.new();
 		member.id = i;
 		# Level we use when testing
-		if auto : member.level = 1;
+		if auto : member.level = 10;
 		else : member.level = 1;
 		
 		member.exp = 0;
+		if auto : member.exp = entity.get_level_exp(member.level) - 1;
 		member.unlocked = auto;
 		member.move_list = move_list;
 		member.hp_value = entity.get_hp(member.level);
@@ -96,7 +97,10 @@ func create_new_save():
 	initialize_party_data(false);
 	party_data[0].unlocked = true;
 	
-	# Temporarily grant 4 copies of every move item
+	# Temporarily unlock everyone and grant 4 copies of every move item
+	party_data[1].unlocked = true;
+	party_data[2].unlocked = true;
+	party_data[3].unlocked = true;
 	print("REMOVE THIS LATER")
 	for i in range(0, 100):
 		var item = item_database.get_item(i);
