@@ -926,7 +926,6 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Party" type="Panel" parent="Body" node_paths=PackedStringArray("next_player_node", "prev_player_node", "moveset_grid", "cursor", "root_menu", "initial_selection", "all_selections")]
-visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3027,7 +3026,6 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="Player Select Items" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6051,6 +6049,7 @@ step = 0.05
 tick_count = 21
 
 [node name="System" type="Panel" parent="Body" node_paths=PackedStringArray("root_menu", "initial_selection", "all_selections")]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15

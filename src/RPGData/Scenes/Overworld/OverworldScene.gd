@@ -315,7 +315,7 @@ func _on_battle_end(result : BattleResult):
 			var player = result.players[i];
 			
 			# Very much a temp mechanic, delete this later
-			if BattleManager.HEAL_ON_DEFEAT && !result.victory :
+			if BattleManager.HEAL_ON_DEFEAT && !result.victory && !result.fled:
 				var entity = DataManager.entity_database.get_entity(DataManager.party_data[player.id].id);
 				
 				DataManager.party_data[player.id].hp_value = entity.get_hp(DataManager.party_data[player.id].level);
