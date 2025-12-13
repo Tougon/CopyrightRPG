@@ -10,11 +10,11 @@ func on_menu_cancel():
 		UIManager.close_all_menus();
 
 
-func on_ui_aux_1():
+func on_ui_trigger_l():
 	root_menu.previous_tab();
 
 
-func on_ui_aux_2():
+func on_ui_trigger_r():
 	root_menu.next_tab();
 
 

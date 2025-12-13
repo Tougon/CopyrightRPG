@@ -364,7 +364,7 @@ func _get_last_valid_moveset_button() -> Control:
 	return last_valid;
 
 
-func on_ui_trigger_l():
+func on_ui_aux_1():
 	_set_entity_info(_current_player_index - 1);
 	
 	if UIManager.current_selection.get_parent() == moveset_grid : 
@@ -375,7 +375,7 @@ func on_ui_trigger_l():
 			last_valid.grab_focus();
 
 
-func on_ui_trigger_r():
+func on_ui_aux_2():
 	_set_entity_info(_current_player_index + 1);
 	
 	if UIManager.current_selection.get_parent() == moveset_grid : 
