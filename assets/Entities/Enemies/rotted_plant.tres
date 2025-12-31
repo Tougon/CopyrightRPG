@@ -128,8 +128,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_pvpyc"]
 script = ExtResource("2_bsbm1")
-min = 280
-max = 340
+min = 240
+max = 290
 growth = SubResource("Curve_cfcxm")
 
 [sub_resource type="Curve" id="Curve_aeh1r"]

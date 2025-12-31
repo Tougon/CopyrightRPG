@@ -169,6 +169,7 @@ func entity_init(params : BattleParams):
 		is_identified = false;
 		
 		current_behavior = current_entity.behavior;
+		skip_decision = false;
 		
 		if param.entity_sprites.size() > 0 :
 			if param.entity_sprites[sprite_group].size() > 0:

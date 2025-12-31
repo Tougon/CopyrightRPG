@@ -76,8 +76,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_oqorx"]
 script = ExtResource("4_fual1")
-min = 23
-max = 29
+min = 19
+max = 25
 growth = SubResource("Curve_4hxre")
 
 [sub_resource type="Resource" id="Resource_uorxv"]
@@ -90,8 +90,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_sh0yv"]
 script = ExtResource("4_fual1")
-min = 220
-max = 270
+min = 180
+max = 220
 growth = SubResource("Curve_j1naj")
 
 [sub_resource type="Curve" id="Curve_ewfck"]
@@ -154,8 +154,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_g3p55"]
 script = ExtResource("4_fual1")
-min = 32
-max = 50
+min = 38
+max = 46
 growth = SubResource("Curve_xaspd")
 
 [sub_resource type="Curve" id="Curve_dvus5"]
@@ -174,8 +174,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_wyai7"]
 script = ExtResource("4_fual1")
-min = 52
-max = 60
+min = 36
+max = 40
 growth = SubResource("Curve_r51j8")
 
 [resource]
