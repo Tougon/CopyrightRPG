@@ -36,11 +36,12 @@ func initialize_data(auto : bool):
 		current_save.level_cap = BattleManager.level_cap;
 		
 		# Temporarily grant 4 copies of every move item
+		# NOTE: Effectively pointless once move learning is changed
 		for i in range(0, 100):
 			var item = item_database.get_item(i);
 			
-			if item is MoveItem :
-				current_save.inventory[i] = 4;
+			#if item is MoveItem :
+			#	current_save.inventory[i] = 4;
 
 
 func initialize_party_data(auto : bool):
@@ -226,6 +227,12 @@ func get_equipment_items(use_type : bool = false, equipment_equipment_type : Equ
 func change_item_amount(id : int, amount : int):
 	if id < 0 : return;
 	
+	var item = item_database.get_item(id);
+	
+	if item is MoveItem && (item as MoveItem).only_one && current_save.inventory.has(id) :
+		print("WE ALREADY HAVE ONE OF THESE. NO.")
+		return;
+	
 	if amount > 0:
 		if !current_save.inventory.has(id):
 			current_save.inventory[id] = amount;
@@ -250,6 +257,9 @@ func get_inventory_as_array() -> Array:
 	var result : Array;
 	
 	for entry in item_database.entries :
+		if entry.item is MoveItem && (entry.item as MoveItem).only_one : 
+			continue;
+		
 		if current_save.inventory.has(entry.id) && current_save.inventory[entry.id] > 0:
 			result.append(entry.id);
 	

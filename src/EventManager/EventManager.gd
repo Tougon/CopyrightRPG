@@ -98,6 +98,8 @@ signal on_players_defeated();
 signal on_battle_completed(result : BattleResult);
 signal on_battle_end(result : BattleResult);
 
+signal learn_move_from_seal(learning_entity : EntityController, move : Spell);
+
 signal add_entity_to_battle(entity : Entity);
 
 # Battle UI Events

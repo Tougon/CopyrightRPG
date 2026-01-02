@@ -333,6 +333,10 @@ func _on_battle_end(result : BattleResult):
 				
 				DataManager.party_data[player.id].level = player.override_level;
 				DataManager.party_data[player.id].exp += player.modified_exp_amt;
+			
+			for move_id in player.learned_moves :
+				if !DataManager.party_data[player.id].move_learned.has(move_id) :
+					DataManager.party_data[player.id].move_learned.append(move_id);
 		
 		for id in result.player_items.keys() :
 			DataManager.change_item_amount(id, result.player_items[id]);

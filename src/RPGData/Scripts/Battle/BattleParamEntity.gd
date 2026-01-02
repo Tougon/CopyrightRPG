@@ -13,3 +13,4 @@ var mp_offset : int = 0;
 var should_award_exp : bool = false;
 var modified_exp_amt : int;
 var status : Array[String];
+var learned_moves : Array[int];

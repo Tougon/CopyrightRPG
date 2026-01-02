@@ -94,6 +94,9 @@ func _refresh_move_ui():
 	
 	for move_id in inventory.keys():
 		var move = inventory[move_id];
+		if move.only_one && !_current_player_data.move_learned.has(move_id) :
+			continue;
+		
 		_spell_to_item_id[move.move] = move_id;
 		
 		if !_is_move_set(move.move):
@@ -315,8 +318,10 @@ func _on_item_clicked(data):
 	if data == null : result_id = -1;
 	elif is_item : 
 		result_id = _spell_to_item_id[data];
-		# Remove item from list
-		DataManager.change_item_amount(result_id, -1);
+		# Remove item from list if necessary
+		var item = DataManager.item_database.get_item(result_id);
+		if !(item as MoveItem).only_one :
+			DataManager.change_item_amount(result_id, -1);
 	else : result_id = _get_local_move_id(data);
 	
 	var new_move_list : Array;
@@ -328,7 +333,9 @@ func _on_item_clicked(data):
 				else : new_move_list.append(str(result_id));
 			
 			if _current_player_data.move_list[i] is int && _current_player_data.move_list[i] != -1:
-				DataManager.change_item_amount(_current_player_data.move_list[i], 1);
+				var item = DataManager.item_database.get_item(_current_player_data.move_list[i]);
+				if item != null && !(item as MoveItem).only_one :
+					DataManager.change_item_amount(_current_player_data.move_list[i], 1);
 		else :
 			if int(_current_player_data.move_list[i]) != -1 :
 				new_move_list.append(_current_player_data.move_list[i]);

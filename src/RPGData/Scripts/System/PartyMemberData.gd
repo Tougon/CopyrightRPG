@@ -13,6 +13,7 @@ var weapon_id : int = -1;
 var armor_id : int = -1;
 var accessory_id : int = -1;
 var move_list : Array;
+var move_learned : Array;
 
 
 func _get_property_list() -> Array:
@@ -58,6 +59,11 @@ func _get_property_list() -> Array:
 		"type": TYPE_ARRAY,
 		"usage": PROPERTY_USAGE_STORAGE
 	})
+	ret.append({
+		"name": "Movelearned",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
 	
 	return ret;
 
@@ -81,6 +87,8 @@ func _get(property):
 			return move_list;
 		"Status":
 			return status;
+		"Movelearned":
+			return move_learned;
 
 
 func _set(property, val) -> bool:
@@ -103,6 +111,8 @@ func _set(property, val) -> bool:
 			move_list = val;
 		"Status":
 			status = val;
+		"Movelearned":
+			move_learned = val;
 	
 	notify_property_list_changed();
 	return retval;

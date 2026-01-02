@@ -37,6 +37,7 @@ var _can_flee_this_turn : bool = true;
 
 # Result caching
 var _reward_items : Array[Item];
+var _learned_moves : Dictionary;
 
 # Enemy modifiers
 var _current_num_entities : int = 1;
@@ -56,6 +57,7 @@ func _ready():
 	EventManager.on_enemy_defeated.connect(_on_enemy_defeated);
 	EventManager.on_player_item_consumed.connect(_on_player_item_consumed);
 	EventManager.add_entity_to_battle.connect(_add_entity_to_battle);
+	EventManager.learn_move_from_seal.connect(_learn_move_from_seal);
 	
 	if begin_battle_on_ready : begin_battle(null);
 
@@ -423,13 +425,6 @@ func _action_phase():
 				if hit_result.length() > 0 && !post_anim_dialogue.has(hit_result):
 					post_anim_dialogue.append(hit_result);
 		
-		if enemies.has(entity) && entity.current_action.is_learnable :
-			var move_item = DataManager.item_database.get_item_from_move(entity.current_action);
-			
-			if move_item != null :
-				if !_reward_items.has(move_item) :
-					_reward_items.append(move_item);
-		
 		for dialogue in post_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
@@ -679,6 +674,29 @@ func _get_spell_hit_messages_rand(source : EntityController, spell_cast : Array[
 		output.append(damage_msg);
 
 
+func _learn_move_from_seal(learning_entity : EntityController, move : Spell):
+	var player = learning_entity as PlayerController;
+	if player == null : return;
+	
+	if !_learned_moves.has(player.player_id) :
+		_learned_moves[player.player_id] = [];
+	
+	var move_item = DataManager.item_database.get_item_from_move(move);
+	
+	if move_item != null :
+		if !_reward_items.has(move_item) :
+			_reward_items.append(move_item);
+	
+		var move_id = DataManager.item_database.get_id(move_item);
+		
+		if !_learned_moves[player.player_id].has(move_id) && !DataManager.party_data[player.player_id].move_learned.has(move_id):
+			_learned_moves[player.player_id].append(move_id);
+			
+			var dialogue = tr("T_BATTLE_LEARN");
+			dialogue = dialogue.format({ article_def = GrammarManager.get_direct_article(learning_entity.param.entity_name), entity = learning_entity.param.entity_name, spell = tr(move.spell_name_key) });
+			EventManager.on_dialogue_queue.emit(dialogue);
+
+
 func _end_phase():
 	# Execute turn end effect functions
 	for entity in entities : 
@@ -695,6 +713,7 @@ func _end_phase():
 		if (_all_enemies_defeated()) :
 			var reward = BattleResult.new();
 			reward.victory = true;
+			reward.fled = false;
 			
 			for enemy in defeated_enemies:
 				reward.exp += enemy.entity.get_reward_exp(enemy.level);
@@ -710,6 +729,11 @@ func _end_phase():
 				result_player.hp_offset = player.current_hp;
 				result_player.mp_offset = player.current_mp
 				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
+				
+				if _learned_moves.has(result_player.id) :
+					for move in _learned_moves[result_player.id] :
+						result_player.learned_moves.append(move);
+				
 				reward.players.append(result_player);
 				
 				for effect in persistent_effects :
@@ -760,6 +784,7 @@ func _end_phase():
 		
 		var reward = BattleResult.new();
 		reward.victory = false;
+		reward.fled = false;
 		
 		EventManager.on_battle_completed.emit(reward); 
 		return;
@@ -1228,6 +1253,7 @@ func _on_destroy():
 		EventManager.on_enemy_defeated.disconnect(_on_enemy_defeated);
 		EventManager.on_player_item_consumed.disconnect(_on_player_item_consumed);
 		EventManager.add_entity_to_battle.disconnect(_add_entity_to_battle);
+		EventManager.learn_move_from_seal.disconnect(_learn_move_from_seal);
 	
 	if Instance == self:
 		Instance = null;

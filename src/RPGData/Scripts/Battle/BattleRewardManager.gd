@@ -66,6 +66,8 @@ func _on_battle_complete(result : BattleResult):
 				var item_name = tr(item.item_name_key);
 				
 				if item is MoveItem :
+					if (item as MoveItem).only_one : continue;
+					
 					item_name = item_name.replace("[NAME]", tr(item.move.spell_name_key));
 				
 				var article = GrammarManager.get_indirect_article(item_name);

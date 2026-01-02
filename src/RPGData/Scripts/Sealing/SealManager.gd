@@ -176,6 +176,10 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 						if !eff_instance.applied : eff_instance.free();
 					
 					_play_seal_effects(seal, entity, flag, false);
+					
+					# Learn spell if seal is on player's side
+					if seal.player_side && action.is_learnable :
+						EventManager.learn_move_from_seal.emit(seal.seal_entity, action);
 	
 	return has_sealed;
 
