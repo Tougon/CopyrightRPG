@@ -337,6 +337,11 @@ func _on_battle_end(result : BattleResult):
 			for move_id in player.learned_moves :
 				if !DataManager.party_data[player.id].move_learned.has(move_id) :
 					DataManager.party_data[player.id].move_learned.append(move_id);
+					
+					for j in DataManager.party_data[player.id].move_list.size() :
+						if int(DataManager.party_data[player.id].move_list[j]) == -1 :
+							DataManager.party_data[player.id].move_list[j] = move_id;
+							break;
 		
 		for id in result.player_items.keys() :
 			DataManager.change_item_amount(id, result.player_items[id]);

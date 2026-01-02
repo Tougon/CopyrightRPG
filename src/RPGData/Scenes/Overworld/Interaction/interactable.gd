@@ -10,6 +10,7 @@ class_name Interactable
 @onready var highlight_icon : InteractIcon = $"Interact Icon";
 
 var _highlighted : bool = false;
+var _icon_showing : bool = false;
 
 func _ready():
 	super._ready();
@@ -73,11 +74,19 @@ func highlight(state : bool):
 	
 	if highlight_icon != null :
 		if state : 
-			highlight_icon.tween.play_tween_name("Highlight");
-			AudioManager.play_sfx("interactable_highlight", 0.05);
+			await get_tree().create_timer(0.15).timeout;
+			if _highlighted :
+				highlight_icon.tween.play_tween_name("Highlight");
+				AudioManager.play_sfx("interactable_highlight", 0.05);
+				
+				_icon_showing = true;
 		else : 
 			highlight_icon.tween.play_tween_name("Unhighlight");
-			AudioManager.play_sfx("interactable_unhighlight", 0.05);
+			
+			if _icon_showing :
+				AudioManager.play_sfx("interactable_unhighlight", 0.05);
+			
+			_icon_showing = false;
 
 
 func interact():

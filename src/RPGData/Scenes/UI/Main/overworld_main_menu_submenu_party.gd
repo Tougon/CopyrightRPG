@@ -307,7 +307,10 @@ func _on_equipment_item_highlighted(equipment : EquipmentItem, equipment_type : 
 func set_active(state : bool):
 	if !state : cache_menu_state();
 	else :
-		if _current_player_data != null : _display_entity_stats();
+		if _current_player_data != null : 
+			_display_entity_stats();
+			_refresh_equipment_list();
+			_refresh_move_list();
 		
 	super.set_active(state);
 

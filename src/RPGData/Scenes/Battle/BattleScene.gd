@@ -692,6 +692,9 @@ func _learn_move_from_seal(learning_entity : EntityController, move : Spell):
 		if !_learned_moves[player.player_id].has(move_id) && !DataManager.party_data[player.player_id].move_learned.has(move_id):
 			_learned_moves[player.player_id].append(move_id);
 			
+			if player.move_list.size() < GameplayConstants.MAX_PLAYER_MOVE_LIST_SIZE :
+				player.move_list.append(move);
+			
 			var dialogue = tr("T_BATTLE_LEARN");
 			dialogue = dialogue.format({ article_def = GrammarManager.get_direct_article(learning_entity.param.entity_name), entity = learning_entity.param.entity_name, spell = tr(move.spell_name_key) });
 			EventManager.on_dialogue_queue.emit(dialogue);
@@ -721,32 +724,7 @@ func _end_phase():
 				enemy.free();
 			defeated_enemies.clear();
 			
-			for player in players:
-				var result_player = BattleParamEntity.new();
-				result_player.override_entity = player.current_entity;
-				result_player.override_level = player.level;
-				result_player.id = (player as PlayerController).player_id;
-				result_player.hp_offset = player.current_hp;
-				result_player.mp_offset = player.current_mp
-				result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
-				
-				if _learned_moves.has(result_player.id) :
-					for move in _learned_moves[result_player.id] :
-						result_player.learned_moves.append(move);
-				
-				reward.players.append(result_player);
-				
-				for effect in persistent_effects :
-					if player.has_effect(effect.effect_name) :
-						result_player.status.append(effect.effect_name);
-			
-			reward.player_items = player_item_delta;
-			
-			for item in _reward_items :
-				var id = DataManager.item_database.get_id(item);
-				
-				if id != -1 :
-					reward.reward_items[id] = 1;
+			_update_player_data(reward);
 			
 			EventManager.on_battle_completed.emit(reward); 
 			return;
@@ -792,6 +770,35 @@ func _end_phase():
 		if _all_enemies_defeated() : 
 			_end_phase();
 		else : _begin_turn();
+
+
+func _update_player_data(reward : BattleResult) :
+	for player in players:
+		var result_player = BattleParamEntity.new();
+		result_player.override_entity = player.current_entity;
+		result_player.override_level = player.level;
+		result_player.id = (player as PlayerController).player_id;
+		result_player.hp_offset = player.current_hp;
+		result_player.mp_offset = player.current_mp
+		result_player.should_award_exp = !player.is_defeated && player.level < BattleManager.level_cap;
+		
+		if _learned_moves.has(result_player.id) :
+			for move in _learned_moves[result_player.id] :
+				result_player.learned_moves.append(move);
+		
+		reward.players.append(result_player);
+		
+		for effect in persistent_effects :
+			if player.has_effect(effect.effect_name) :
+				result_player.status.append(effect.effect_name);
+	
+	reward.player_items = player_item_delta;
+	
+	for item in _reward_items :
+		var id = DataManager.item_database.get_id(item);
+		
+		if id != -1 :
+			reward.reward_items[id] = 1;
 
 
 # Effect functions
@@ -1026,6 +1033,8 @@ func _on_player_menu_cancel(cancel_button : bool):
 					# Should never realistically occur but w/e
 					if !enemy.is_defeated :
 						reward.remaining_enemies.append(DataManager.entity_database.get_id(enemy.current_entity))
+				
+				_update_player_data(reward);
 				
 				EventManager.on_battle_completed.emit(reward); 
 			else :
