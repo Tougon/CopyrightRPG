@@ -57,11 +57,11 @@ func initialize_party_data(auto : bool):
 		var member = PartyMemberData.new();
 		member.id = i;
 		# Level we use when testing
-		if auto : member.level = 10;
+		if auto : member.level = 1;
 		else : member.level = 1;
 		
 		member.exp = 0;
-		if auto : member.exp = entity.get_level_exp(member.level) - 1;
+		if auto : member.exp = 0#entity.get_level_exp(member.level) - 1;
 		member.unlocked = auto;
 		member.move_list = move_list;
 		member.hp_value = entity.get_hp(member.level);

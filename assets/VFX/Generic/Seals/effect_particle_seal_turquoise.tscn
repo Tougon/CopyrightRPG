@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_8ynnp"]
 
-[sub_resource type="Gradient" id="Gradient_ta0i3"]
+[sub_resource type="Gradient" id="Gradient_7ldpb"]
 offsets = PackedFloat32Array(0, 0.299451, 0.587912, 1)
-colors = PackedColorArray(0, 0.584314, 1, 0, 0.20773, 0.779131, 1, 1, 4.6013e-05, 0.539089, 0.928569, 1, 0, 0.424567, 0.736388, 0)
+colors = PackedColorArray(0, 0.996078, 0.819608, 0, 0.61, 1, 0.896, 1, 0, 0.994583, 0.820992, 1, 0, 0.996078, 0.819608, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xg7e5"]
-gradient = SubResource("Gradient_ta0i3")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lny5j"]
+gradient = SubResource("Gradient_7ldpb")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5qcgc"]
 particle_flag_disable_z = true
@@ -26,7 +26,7 @@ radial_accel_min = -350.0
 radial_accel_max = -350.0
 scale_min = 0.5
 scale_max = 0.5
-color_ramp = SubResource("GradientTexture1D_xg7e5")
+color_ramp = SubResource("GradientTexture1D_lny5j")
 
 [node name="seal" instance=ExtResource("1_8ynnp")]
 

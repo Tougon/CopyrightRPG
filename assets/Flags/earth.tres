@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://b8rhhshmwvhvo"]
-
-[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_qkbog"]
-
-[resource]
-script = ExtResource("1_qkbog")
-flag_name_key = "earth"

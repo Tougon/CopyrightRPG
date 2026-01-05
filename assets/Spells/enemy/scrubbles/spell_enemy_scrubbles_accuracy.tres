@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://d2bk37x51vudn" path="res://assets/Effects/Common/effect_common_debuff_accuracy.tres" id="4_jhsg2"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_vnkkt"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_p02xk"]
-[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="9_6itta"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_m8ikk"]
 
 [sub_resource type="Resource" id="Resource_ebf6h"]
 script = ExtResource("3_m8dju")
@@ -63,7 +63,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 12
 spell_priority = 0
-spell_flags = Array[ExtResource("4_vnkkt")]([ExtResource("9_6itta")])
+spell_flags = Array[ExtResource("4_vnkkt")]([ExtResource("9_m8ikk")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

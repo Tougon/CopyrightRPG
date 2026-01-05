@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_c0chr"]
 [ext_resource type="Resource" uid="uid://cptl0c8ad4cw7" path="res://assets/Effects/Spell/Enemy/effect_spell_enemy_cupthrow_effect.tres" id="4_qoxo8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_dyu6i"]
-[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="9_kehg7"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="9_fbt8r"]
 
 [sub_resource type="Resource" id="Resource_mrrns"]
 script = ExtResource("3_0ot75")
@@ -63,7 +63,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 0
 spell_priority = 0
-spell_flags = Array[ExtResource("4_c0chr")]([ExtResource("9_kehg7")])
+spell_flags = Array[ExtResource("4_c0chr")]([ExtResource("9_fbt8r")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

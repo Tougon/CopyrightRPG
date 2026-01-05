@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=45 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_3drj8"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="2_k8ekf"]
-[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="3_6e2tg"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="3_ro4m8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="4_lqr1n"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="5_fxx2f"]
@@ -165,7 +164,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_dlenl")
 level_exp = ExtResource("7_ywky8")
-affinity = Array[ExtResource("1_3drj8")]([ExtResource("2_k8ekf"), ExtResource("3_6e2tg")])
+affinity = Array[ExtResource("1_3drj8")]([ExtResource("2_k8ekf")])
 defense_modifiers = Array[ExtResource("8_41vao")]([])
 min_level = 1
 max_level = 99

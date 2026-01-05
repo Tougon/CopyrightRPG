@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://uf35l0vgi8mj"]
-
-[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_ap47u"]
-
-[resource]
-script = ExtResource("1_ap47u")
-flag_name_key = "water"

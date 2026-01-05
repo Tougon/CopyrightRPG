@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=10 format=3 uid="uid://cxruw607jap5m"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://cxruw607jap5m"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_63lud"]
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_ks217"]
@@ -6,8 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_21w6v"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_ntlbc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_x4t2j"]
-[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="7_j7fjd"]
-[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="8_wqqmf"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="7_l680g"]
 
 [sub_resource type="Curve" id="Curve_yxj2w"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -55,7 +54,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 9
 spell_priority = 0
-spell_flags = Array[ExtResource("4_ntlbc")]([ExtResource("7_j7fjd"), ExtResource("8_wqqmf")])
+spell_flags = Array[ExtResource("4_ntlbc")]([ExtResource("7_l680g")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://c2e22hmhxcle3"]
-
-[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_5t8ec"]
-
-[resource]
-script = ExtResource("1_5t8ec")
-flag_name_key = "defense"

@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="3_ffews"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_14b1t"]
 [ext_resource type="Resource" uid="uid://dp11ebwskyh2k" path="res://assets/Effects/Common/effect_common_debuff_sand_off.tres" id="4_ty435"]
-[ext_resource type="Resource" uid="uid://d0ihpiywg07c5" path="res://assets/Flags/air.tres" id="5_bufv3"]
+[ext_resource type="Resource" path="res://assets/Flags/air.tres" id="5_bufv3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="5_htpso"]
-[ext_resource type="Resource" uid="uid://b8rhhshmwvhvo" path="res://assets/Flags/earth.tres" id="6_b4ne4"]
+[ext_resource type="Resource" path="res://assets/Flags/earth.tres" id="6_b4ne4"]
 
 [sub_resource type="Resource" id="Resource_wc0k6"]
 script = ExtResource("3_03uhu")

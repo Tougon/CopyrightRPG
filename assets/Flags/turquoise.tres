@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_8022a")
-flag_name_key = "turquoise"
+flag_name_key = "T_FLAG_TURQUOISE"

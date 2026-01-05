@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="14_li3q2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_action.gd" id="17_wgw5r"]
 [ext_resource type="Resource" uid="uid://d4gle1lpkdheb" path="res://assets/Animations/Sequences/Spell/anim_spell_stackers_shift_def.tres" id="18_f8ms2"]
-[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="21_yarp7"]
+[ext_resource type="Resource" uid="uid://fb3rxl17pdld" path="res://assets/Flags/cyan.tres" id="21_dtfkf"]
 
 [sub_resource type="Resource" id="Resource_halij"]
 script = ExtResource("5_1sy2n")
@@ -188,7 +188,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 6
 spell_priority = 0
-spell_flags = Array[ExtResource("5_h54xa")]([ExtResource("21_yarp7")])
+spell_flags = Array[ExtResource("5_h54xa")]([ExtResource("21_dtfkf")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

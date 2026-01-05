@@ -1048,10 +1048,12 @@ grow_vertical = 0
 
 [node name="Icon Container" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group" index="0"]
 custom_minimum_size = Vector2(14, 14)
+offset_left = -187.0
 offset_top = 1.0
-offset_right = 7.0
+offset_right = -180.0
 offset_bottom = 1.0
 theme_override_constants/separation = 4
+alignment = 2
 
 [node name="Red" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="0"]
 custom_minimum_size = Vector2(14, 14)
@@ -5854,6 +5856,16 @@ flip_v = true
 [node name="TweenPlayerUI" type="Node" parent="Body/Inventory/Inventory Area/BG/Border"]
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
+
+[node name="ColorRect" type="ColorRect" parent="Body/Inventory/Inventory Area/BG"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 389.0
+offset_bottom = 393.0
+grow_horizontal = 2
+color = Color(1, 0, 0.286275, 1)
 
 [node name="TweenPlayerUI" type="Node" parent="Body/Inventory"]
 script = ExtResource("2_fajv7")

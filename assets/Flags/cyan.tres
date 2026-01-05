@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://fb3rxl17pdld"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_30b0c"]
+
+[resource]
+script = ExtResource("1_30b0c")
+flag_name_key = "T_FLAG_CYAN"

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="4_p42mn"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_pyqc1"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="7_2214w"]
-[ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="8_nhejw"]
+[ext_resource type="Resource" uid="uid://fb3rxl17pdld" path="res://assets/Flags/cyan.tres" id="8_3n2um"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="9_urbdy"]
 
 [sub_resource type="Curve" id="Curve_h8q25"]
@@ -56,7 +56,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 16
 spell_priority = 0
-spell_flags = Array[ExtResource("4_p42mn")]([ExtResource("7_2214w"), ExtResource("8_nhejw"), ExtResource("9_urbdy")])
+spell_flags = Array[ExtResource("4_p42mn")]([ExtResource("7_2214w"), ExtResource("8_3n2um"), ExtResource("9_urbdy")])
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = false
