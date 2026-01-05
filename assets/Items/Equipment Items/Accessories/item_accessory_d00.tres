@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_aie4g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_seal.gd" id="3_ohc01"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_ccjfu"]
-[ext_resource type="Resource" uid="uid://cq78s1t2kuo47" path="res://assets/Effects/Common/effect_common_buff_speed.tres" id="5_6m4dl"]
+[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/Seal/effect_seal_buff_speed.tres" id="5_65jdk"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="6_lp1li"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="7_4twbn"]
 
@@ -12,7 +12,7 @@
 script = ExtResource("4_ccjfu")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("1_lgq6q")]([ExtResource("5_6m4dl")])
+seal_effects = Array[ExtResource("1_lgq6q")]([ExtResource("5_65jdk")])
 
 [sub_resource type="Resource" id="Resource_ni03n"]
 script = ExtResource("3_ohc01")

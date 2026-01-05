@@ -1,13 +1,10 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://d0u6gmpqwd7c"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=11 format=3 uid="uid://d0u6gmpqwd7c"]
 
 [ext_resource type="Resource" uid="uid://3n2f4lh32rmw" path="res://assets/Animations/Sequences/Spell/anim_status_static.tres" id="1_cccf0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="2_5xr71"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_2sbqv"]
-[ext_resource type="Resource" path="res://assets/Flags/air.tres" id="3_wwgpf"]
 [ext_resource type="Resource" uid="uid://bup308uw78yo0" path="res://assets/Effects/Common/effect_common_status_agitation.tres" id="4_0ut0a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="4_jnf5g"]
-[ext_resource type="Resource" path="res://assets/Flags/light.tres" id="4_k7ee5"]
-[ext_resource type="Resource" path="res://assets/Flags/stun.tres" id="5_3k0y4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_an8td"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="5_ixm0u"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_ldidp"]
@@ -65,7 +62,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 18
 spell_priority = 0
-spell_flags = Array[ExtResource("7_ldidp")]([ExtResource("3_wwgpf"), ExtResource("4_k7ee5"), ExtResource("5_3k0y4")])
+spell_flags = Array[ExtResource("7_ldidp")]([])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

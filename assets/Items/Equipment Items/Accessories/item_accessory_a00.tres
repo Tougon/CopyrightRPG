@@ -1,8 +1,45 @@
-[gd_resource type="Resource" script_class="EquipmentItem" load_steps=4 format=3 uid="uid://d3vgnde2xo3h7"]
+[gd_resource type="Resource" script_class="EquipmentItem" load_steps=11 format=3 uid="uid://d3vgnde2xo3h7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="1_eo17w"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_6kikj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_dbu4m"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_esduo"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_seal.gd" id="3_x8hmu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_exv11"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="5_f8eq2"]
+
+[sub_resource type="Resource" id="Resource_ejpee"]
+script = ExtResource("4_exv11")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("1_eo17w")]([ExtResource("5_f8eq2")])
+
+[sub_resource type="Resource" id="Resource_e6rm8"]
+script = ExtResource("3_x8hmu")
+seal = SubResource("Resource_ejpee")
+
+[sub_resource type="Resource" id="Resource_q8ncx"]
+script = ExtResource("1_eo17w")
+stackable = false
+effect_name = ""
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 3
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("2_dbu4m")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("2_dbu4m")]([])
+on_activate = Array[ExtResource("2_dbu4m")]([SubResource("Resource_e6rm8")])
+on_failed_to_activate = Array[ExtResource("2_dbu4m")]([])
+on_apply = Array[ExtResource("2_dbu4m")]([])
+on_move_selected = Array[ExtResource("2_dbu4m")]([])
+on_move_completed = Array[ExtResource("2_dbu4m")]([])
+on_deactivate = Array[ExtResource("2_dbu4m")]([])
+on_turn_start = Array[ExtResource("2_dbu4m")]([])
+on_turn_end = Array[ExtResource("2_dbu4m")]([])
+on_stack = Array[ExtResource("2_dbu4m")]([])
 
 [resource]
 script = ExtResource("3_esduo")
@@ -15,7 +52,7 @@ mag_mod = 0
 res_mod = 0
 spd_mod = 0
 lck_mod = 0.0
-equipment_effects = Array[ExtResource("1_eo17w")]([])
+equipment_effects = Array[ExtResource("1_eo17w")]([SubResource("Resource_q8ncx")])
 universal = false
 allowed_entities = Array[int]([1])
 item_name_key = "T_ITEM_ARMOR_BLUEVEST"
