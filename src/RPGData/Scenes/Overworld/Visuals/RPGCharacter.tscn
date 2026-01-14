@@ -98,6 +98,9 @@ shader_parameter/light_size = null
 shader_parameter/light_color = null
 shader_parameter/light_energy = null
 shader_parameter/light_falloff = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.3
+shader_parameter/add_margins = true
 shader_parameter/falloff_mask = ExtResource("10_dtr0a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quane"]
@@ -109,8 +112,10 @@ character = SubResource("Resource_qb85u")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.498039)
-position = Vector2(0, -4)
-scale = Vector2(0.235, 0.085)
+z_index = -1
+position = Vector2(23, -24)
+scale = Vector2(0.33, 0.34)
+skew = 0.785398
 texture = ExtResource("6_kd104")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

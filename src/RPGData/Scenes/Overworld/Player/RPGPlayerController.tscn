@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c88xb0y4eiiu5" path="res://assets/Sprites/UI/Battle/targetting_arrow.png" id="3_rngrh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbqi3"]
-size = Vector2(56, 34)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_acwkl"]
+size = Vector2(56, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqi8"]
 size = Vector2(32, 96)
@@ -22,8 +22,8 @@ speed = 200.0
 upward_sight_modifier = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_jbqi3")
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_acwkl")
 
 [node name="RPGCharacter" parent="." instance=ExtResource("2_ix7x6")]
 play_audio = true

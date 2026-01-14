@@ -1040,18 +1040,16 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-offset_left = 6.0
-offset_top = -11.0
-offset_right = -81.0
-offset_bottom = 4.0
+offset_left = -232.0
+offset_top = -14.5
+offset_right = -319.0
+offset_bottom = 0.5
 grow_vertical = 0
 
 [node name="Icon Container" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group" index="0"]
 custom_minimum_size = Vector2(14, 14)
-offset_left = -187.0
-offset_top = 1.0
-offset_right = -180.0
-offset_bottom = 1.0
+offset_right = 63.0
+offset_bottom = 9.0
 theme_override_constants/separation = 4
 alignment = 2
 
@@ -1076,10 +1074,10 @@ custom_minimum_size = Vector2(14, 14)
 [node name="Purple" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="6"]
 custom_minimum_size = Vector2(14, 14)
 
-[node name="Pink" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="7"]
+[node name="Pink" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="8"]
 custom_minimum_size = Vector2(14, 14)
 
-[node name="Null" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="8"]
+[node name="Null" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="9"]
 custom_minimum_size = Vector2(14, 14)
 
 [node name="Entity Stats Group" type="VBoxContainer" parent="Body/Party/Entity Stats Area"]
@@ -2998,10 +2996,10 @@ custom_minimum_size = Vector2(10, 10)
 [node name="Purple" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="6"]
 custom_minimum_size = Vector2(10, 10)
 
-[node name="Pink" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="7"]
+[node name="Pink" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="8"]
 custom_minimum_size = Vector2(10, 10)
 
-[node name="Null" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="8"]
+[node name="Null" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="9"]
 custom_minimum_size = Vector2(10, 10)
 
 [node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]

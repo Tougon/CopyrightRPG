@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cvtwqud6keh3w"]
+[gd_scene load_steps=25 format=3 uid="uid://cvtwqud6keh3w"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/flag_icon_group.gd" id="1_rxdci"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_po6jt"]
@@ -6,9 +6,10 @@
 [ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="4_a06ok"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="5_bf800"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="6_4h17q"]
-[ext_resource type="Resource" uid="uid://x64kqx0do0fq" path="res://assets/Flags/turquoise.tres" id="7_eq78t"]
+[ext_resource type="Resource" uid="uid://fb3rxl17pdld" path="res://assets/Flags/cyan.tres" id="7_juywg"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="8_dw8yp"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="9_8wem2"]
+[ext_resource type="Resource" uid="uid://c120fjayjkcgl" path="res://assets/Flags/maroon.tres" id="10_7wamy"]
 [ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="10_hisq1"]
 [ext_resource type="Resource" uid="uid://1vrs46mcmfqy" path="res://assets/Flags/null.tres" id="11_oqa55"]
 [ext_resource type="Texture2D" uid="uid://dvmod5a4sbpwf" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_red.png" id="12_elyow"]
@@ -22,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dglmcb4kjrdh0" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_purple.png" id="18_evw3a"]
 [ext_resource type="Texture2D" uid="uid://bqjdqtp080j1t" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_pink.png" id="19_ocseq"]
 [ext_resource type="Texture2D" uid="uid://gysx4m4ijsrc" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_null.png" id="20_s3apn"]
+[ext_resource type="Texture2D" uid="uid://cbc061p8aecgg" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_maroon.png" id="22_5yf7u"]
 
 [node name="Flag Icon Group" type="Control"]
 layout_mode = 3
@@ -33,7 +35,7 @@ offset_bottom = -696.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rxdci")
-flags = Array[ExtResource("2_po6jt")]([ExtResource("3_xf6c7"), ExtResource("4_a06ok"), ExtResource("5_bf800"), ExtResource("6_4h17q"), ExtResource("7_eq78t"), ExtResource("8_dw8yp"), ExtResource("9_8wem2"), ExtResource("10_hisq1"), ExtResource("11_oqa55")])
+flags = Array[ExtResource("2_po6jt")]([ExtResource("3_xf6c7"), ExtResource("4_a06ok"), ExtResource("5_bf800"), ExtResource("6_4h17q"), ExtResource("7_juywg"), ExtResource("8_dw8yp"), ExtResource("9_8wem2"), ExtResource("10_7wamy"), ExtResource("10_hisq1"), ExtResource("11_oqa55")])
 
 [node name="Icon Container" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(24, 24)
@@ -161,6 +163,24 @@ expand_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Icon Container/Purple"]
 self_modulate = Color(0.301681, 0.00114532, 0.598629, 1)
+material = ExtResource("13_jcg61")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_mug8c")
+expand_mode = 3
+
+[node name="Maroon" type="TextureRect" parent="Icon Container"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("22_5yf7u")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Icon Container/Maroon"]
+self_modulate = Color(0.3, 0.066, 0.1635, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
