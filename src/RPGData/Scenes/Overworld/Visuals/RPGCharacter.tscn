@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://blcq1iqrvxi3o"]
+[gd_scene load_steps=33 format=3 uid="uid://blcq1iqrvxi3o"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
@@ -12,6 +12,8 @@
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="9_886d1"]
 [ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/player_main/player_main_light_mask.png" id="10_dtr0a"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="11_iuhc3"]
+[ext_resource type="Shader" path="res://assets/Shaders/2d_shadows.gdshader" id="13_2shhq"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="14_uuk4g"]
 
 [sub_resource type="Resource" id="Resource_jnirq"]
 script = ExtResource("4_ljrgu")
@@ -98,24 +100,50 @@ shader_parameter/light_size = null
 shader_parameter/light_color = null
 shader_parameter/light_energy = null
 shader_parameter/light_falloff = null
-shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
-shader_parameter/line_thickness = 0.3
+shader_parameter/line_color = Color(0.0588235, 0.0941176, 0.113725, 1)
+shader_parameter/line_thickness = 0.4
 shader_parameter/add_margins = true
 shader_parameter/falloff_mask = ExtResource("10_dtr0a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_quane"]
 size = Vector2(76, 26)
 
+[sub_resource type="Gradient" id="Gradient_lxkwh"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qwio2"]
+gradient = SubResource("Gradient_lxkwh")
+fill_from = Vector2(0.512821, 0)
+fill_to = Vector2(0.5, 0.452991)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7txx3"]
+shader = ExtResource("13_2shhq")
+shader_parameter/uv_Add = Vector2(0, -0.68)
+shader_parameter/uv_Mul = 1.2
+shader_parameter/modulate = Color(0, 0, 0, 1)
+shader_parameter/x_buffer = 2.0
+shader_parameter/y_buffer = 1.0
+shader_parameter/time = 8.5
+shader_parameter/N_dot = 16.0
+shader_parameter/height_Map = SubResource("GradientTexture2D_qwio2")
+
 [node name="RPGCharacter" type="Node2D"]
 script = ExtResource("1_g56y7")
 character = SubResource("Resource_qb85u")
 
 [node name="Shadow" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0.498039)
 z_index = -1
 position = Vector2(23, -24)
 scale = Vector2(0.33, 0.34)
 skew = 0.785398
+texture = ExtResource("6_kd104")
+
+[node name="Shadow2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.498039)
+z_index = -1
+position = Vector2(0, -7.5)
+scale = Vector2(0.33, 0.113281)
 texture = ExtResource("6_kd104")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -128,3 +156,10 @@ position = Vector2(0, -10)
 shape = SubResource("RectangleShape2D_quane")
 size = Vector2(76, 26)
 static_receiver = false
+
+[node name="Shadow Test" type="Sprite2D" parent="Sprite2D"]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_7txx3")
+texture = ExtResource("14_uuk4g")
+offset = Vector2(0, -96)
