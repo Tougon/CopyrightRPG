@@ -27,6 +27,29 @@ bool is_in_bounds(vec2 coord, vec2 center, vec2 size){
 }
 
 
+vec2 determine_falloff_direction(vec2 coord, vec2 center, vec2 size){
+	vec2 result = vec2(0.0, 0.0);
+	
+	if (coord.x < center.x - size.x){
+		result.x = -1.0;
+	}
+	
+	if (coord.x > center.x + size.x){
+		result.x = 1.0;
+	}
+	
+	if (coord.y < center.y - size.y){
+		result.y = -1.0;
+	}
+	
+	if (coord.y > center.y + size.y){
+		result.y = 1.0;
+	}
+	
+	return result;
+}
+
+
 float energy_for_coord_rect(vec2 coord, int light_index){
 	vec2 center = light_origins[light_index];
 	vec2 size = light_size[light_index] * 0.5;
@@ -43,26 +66,27 @@ float energy_for_coord_rect(vec2 coord, int light_index){
 			// Initialize values
 			float falloff = 1.0;
 			float percent = 0.0;
-			vec2 dir = normalize(coord - center);
-
+			
+			vec2 dir = determine_falloff_direction(coord, center, falloff_size);//normalize(coord - center);
+			
 			// Get the distances from the falloff point
 			vec2 pos = (coord - center) - (falloff_size * dir);
 			vec2 limit = (size * dir) - (falloff_size * dir);
-
+			
 			// Calculate percentage based on the axis
 			if (abs(dir.x) > abs(dir.y)){
 				percent = pos.x / limit.x;
 			}
-			else if (abs(dir.y) < abs(dir.x)){
+			else if (abs(dir.y) > abs(dir.x)){
 				percent = pos.y / limit.y;
 			}
 			else{
-				float percent = length(pos) / length(limit);
+				percent = max(pos.x / limit.x, pos.y / limit.y);
 			}
-
+			
 			// Invert percent
 			falloff -= abs(percent);
-
+			
 			// Clamp value, modify, and return
 			return clamp(falloff, 0, 1) * light_energy[light_index];
 		}

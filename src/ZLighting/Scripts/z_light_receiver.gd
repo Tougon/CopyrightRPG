@@ -60,7 +60,7 @@ func _ready() -> void:
 		if _sprite != null :
 			_mat = _sprite.material.duplicate() as ShaderMaterial;
 			(get_parent() as CanvasItem).material = _mat;
-			_current_pos = global_position;
+			_current_pos = get_global_transform_with_canvas().origin;
 			_set_material_params();
 
 
@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		
 		if dist > 0 :
 			_set_material_params();
-			_current_pos = global_position
+			_current_pos = get_global_transform_with_canvas().origin;
 	else :
 		_set_material_params();
 
