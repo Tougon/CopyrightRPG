@@ -100,6 +100,7 @@ shader_parameter/light_size = null
 shader_parameter/light_color = null
 shader_parameter/light_energy = null
 shader_parameter/light_falloff = null
+shader_parameter/shadow = null
 shader_parameter/line_color = Color(0.0588235, 0.0941176, 0.113725, 1)
 shader_parameter/line_thickness = 0.4
 shader_parameter/add_margins = true

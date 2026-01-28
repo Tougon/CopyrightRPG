@@ -94,6 +94,7 @@ func _set_material_params() :
 	var light_color : Array[Color];
 	var light_energy : Array[float];
 	var light_falloff : Array[Vector2];
+	var is_shadow : Array[bool];
 	
 	for i in MAX_LIGHTS_PER_OBJECT :
 		if i < _lights.size() :
@@ -109,6 +110,7 @@ func _set_material_params() :
 			light_color.append(light.color);
 			light_energy.append(light.energy);
 			light_falloff.append(light.get_falloff());
+			is_shadow.append(light.is_shadow);
 		else :
 			light_origins.append(Vector2.ZERO);
 			light_is_circle.append(false);
@@ -116,6 +118,7 @@ func _set_material_params() :
 			light_color.append(Color.TRANSPARENT);
 			light_energy.append(0.0);
 			light_falloff.append(Vector2.ZERO);
+			is_shadow.append(false);
 	
 	if debug :
 		print(light_size);
@@ -127,6 +130,8 @@ func _set_material_params() :
 	_mat.set_shader_parameter("light_color", light_color);
 	_mat.set_shader_parameter("light_energy", light_energy);
 	_mat.set_shader_parameter("light_falloff", light_falloff);
+	_mat.set_shader_parameter("shadow", is_shadow);
+	print(is_shadow)
 	
 	# Set active light count
 	_mat.set_shader_parameter("active_zlights", min(_lights.size(), MAX_LIGHTS_PER_OBJECT));

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://i3hkc37osn1d"]
+[gd_scene load_steps=65 format=4 uid="uid://i3hkc37osn1d"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ilaov"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_b4xdu"]
@@ -91,12 +91,16 @@ shader_parameter/light_size = null
 shader_parameter/light_color = null
 shader_parameter/light_energy = null
 shader_parameter/light_falloff = null
+shader_parameter/shadow = null
 shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
 shader_parameter/line_thickness = 0.3
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q5mbl"]
 size = Vector2(400, 275)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1t0g"]
+size = Vector2(127.5, 83)
 
 [sub_resource type="Curve" id="Curve_6781o"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -321,9 +325,11 @@ texture_scale = 4.88
 
 [node name="ZLight" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting" instance=ExtResource("11_aou26")]
 position = Vector2(498, 1526.16)
+is_shadow = true
 shape = SubResource("RectangleShape2D_q5mbl")
 size = Vector2(4, 2.75)
-color = Color(1, 0, 0, 1)
+color = Color(0.301105, 6.40741e-07, 4.81308e-08, 1)
+energy = 0.5
 falloff = 15.0
 
 [node name="Sprite2D2" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/ZLight"]
@@ -335,6 +341,21 @@ texture = ExtResource("32_8tu38")
 modulate = Color(0.3, 1, 0.463333, 1)
 scale = Vector2(16, 11)
 texture = ExtResource("32_8tu38")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/ZLight"]
+modulate = Color(0.990356, 0.793827, 0.762374, 1)
+position = Vector2(-18, -35)
+scale = Vector2(5.5, 5)
+texture = ExtResource("32_8tu38")
+
+[node name="ZLight2" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting" instance=ExtResource("11_aou26")]
+position = Vector2(480, 1491.16)
+is_shadow = null
+shape = SubResource("RectangleShape2D_o1t0g")
+size = Vector2(1.275, 0.83)
+color = Color(1, 0.194376, 0.144153, 1)
+energy = 2.0
+falloff = 3.895
 
 [node name="Escalators" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals"]
 y_sort_enabled = true

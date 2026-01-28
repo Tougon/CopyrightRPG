@@ -8,6 +8,8 @@ const FALLOFF_SCALE : float = 10.0;
 @onready var collider : CollisionShape2D = $CollisionShape2D;
 @onready var falloff_prev : CollisionShape2D = $FalloffPrev;
 
+@export var is_shadow : bool = false;
+
 @export var shape : Shape2D :
 	set(value):
 		if value is CircleShape2D || value is RectangleShape2D || value == null :

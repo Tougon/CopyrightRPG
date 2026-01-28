@@ -13,6 +13,7 @@ uniform vec2 light_size[8];
 uniform vec4 light_color[8] : source_color;
 uniform float light_energy[8];
 uniform vec2 light_falloff[8];
+uniform bool shadow[8];
 
 // Parameters for outlines
 uniform vec4 line_color : source_color = vec4(0.184, 0.208, 0.227, 1);
@@ -163,7 +164,12 @@ void light() {
 	{
 		float energy = energy_for_coord(coord, i);
 		if (energy > 0.0)
-			final_light_color += (light_color[i] * (energy * energy_modifier));
+			if (shadow[i] == true){
+				final_light_color -= (light_color[i] * (energy * energy_modifier));
+			}
+			else{
+				final_light_color += (light_color[i] * (energy * energy_modifier));
+			}
 	}
 
 	// Apply lighting values
