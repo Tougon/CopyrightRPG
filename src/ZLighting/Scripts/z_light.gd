@@ -5,6 +5,8 @@ class_name ZLight
 const UNIT_SCALE : float = 100.0;
 const FALLOFF_SCALE : float = 10.0;
 
+signal on_light_updated();
+
 @onready var collider : CollisionShape2D = $CollisionShape2D;
 @onready var falloff_prev : CollisionShape2D = $FalloffPrev;
 
@@ -40,14 +42,19 @@ const FALLOFF_SCALE : float = 10.0;
 @export var color : Color = Color.WHITE :
 	set(value) :
 		color = value;
-		# ZLIGHT_TBD: Runtime color changes
+		on_light_updated.emit();
+
+@export var color_pulse : Gradient;
+@export var color_pulse_speed : float = 1.0;
 
 
 @export var energy : float = 1.0 :
 	set(value) :
 		energy = value;
-		# ZLIGHT_TBD: Runtime energy changes 
+		on_light_updated.emit();
 
+@export var energy_pulse : Curve; 
+@export var energy_pulse_speed : float = 1.0;
 
 @export var falloff : float = 0.0 :
 	set(value) :
@@ -70,6 +77,10 @@ const FALLOFF_SCALE : float = 10.0;
 
 var _falloff_prev : Shape2D;
 
+var _energy_max : float;
+var _energy_time : float = 0;
+var _color_time : float = 0;
+
 
 func _ready() -> void:
 	if !Engine.is_editor_hint() :
@@ -80,10 +91,25 @@ func _ready() -> void:
 	
 	_setup_shape_size();
 	_setup_falloff_prev();
+	
+	_energy_max = energy;
 
 
 func _process(delta: float) -> void:
-	pass;
+	if !Engine.is_editor_hint() :
+		if energy_pulse != null && energy_pulse_speed > 0 :
+			_energy_time += delta * energy_pulse_speed;
+			if _energy_time > 1.0 :
+				_energy_time -= 1.0;
+			
+			energy = energy_pulse.sample(_energy_time) * _energy_max;
+		
+		if color_pulse != null && color_pulse_speed > 0 :
+			_color_time += delta * color_pulse_speed;
+			if _color_time > 1.0 :
+				_color_time -= 1.0;
+			
+			color = color_pulse.sample(_color_time);
 
 
 func get_size() -> Vector2:

@@ -139,10 +139,12 @@ func _set_material_params() :
 func _on_area_entered(area: Area2D) -> void:
 	if area is ZLight && _lights.size() < MAX_LIGHTS_PER_OBJECT:
 		_lights.append(area as ZLight);
+		(area as ZLight).on_light_updated.connect(_set_material_params);
 		_set_material_params();
 
 
 func _on_area_exited(area: Area2D) -> void:
 	if area is ZLight && _lights.has(area as ZLight):
 		_lights.erase(area as ZLight);
+		(area as ZLight).on_light_updated.disconnect(_set_material_params);
 		_set_material_params();

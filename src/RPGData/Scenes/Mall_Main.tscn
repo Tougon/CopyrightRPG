@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://i3hkc37osn1d"]
+[gd_scene load_steps=77 format=4 uid="uid://i3hkc37osn1d"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ilaov"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_b4xdu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="8_mv0vh"]
 [ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="8_uh50a"]
 [ext_resource type="Texture2D" uid="uid://b55lcyb83wev2" path="res://assets/Textures/Lights/square_full.png" id="9_e4aoj"]
+[ext_resource type="Texture2D" uid="uid://bajjhwu4ec21m" path="res://assets/Sprites/Overworld/temp/test_logo_anchor.png" id="9_fr2c1"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="11_vqje8"]
 [ext_resource type="Texture2D" uid="uid://dcut7br0bg5hf" path="res://assets/Sprites/Overworld/temp/wall_side.png" id="12_00gac"]
 [ext_resource type="Texture2D" uid="uid://rn8wqjn23kga" path="res://assets/Sprites/Overworld/temp/wall_side_large.png" id="13_ggtk1"]
@@ -86,6 +87,16 @@ texture = ExtResource("5_mhpdp")
 [sub_resource type="TileSet" id="TileSet_8o5g0"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qct0a")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbga2"]
+radius = 75.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tb4a5"]
+radius = 46.0
+
+[sub_resource type="Gradient" id="Gradient_drnmi"]
+offsets = PackedFloat32Array(0, 0.516827, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.583079, 0.000932774, 0.700865, 1, 1, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1rgu2"]
 shader = ExtResource("6_dsk7q")
@@ -339,6 +350,161 @@ shadow_filter = 1
 texture = ExtResource("9_e4aoj")
 texture_scale = 4.88
 
+[node name="Signs" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting"]
+
+[node name="Anchor Sign" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs"]
+position = Vector2(258, -1868.84)
+
+[node name="ZLight" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Anchor Sign" instance=ExtResource("8_uh50a")]
+rotation = 3.14159
+shape = SubResource("CircleShape2D_pbga2")
+size = Vector2(0.75, 0)
+color = Color(0, 0.443137, 0.972549, 1)
+color_pulse_speed = null
+energy = 1.25
+energy_pulse_speed = null
+falloff = 3.5
+
+[node name="ZLight2" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Anchor Sign" instance=ExtResource("8_uh50a")]
+position = Vector2(118, 0)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_pbga2")
+size = Vector2(0.75, 0)
+color = Color(0, 0.443137, 0.972549, 1)
+color_pulse_speed = null
+energy = 1.25
+energy_pulse_speed = null
+falloff = 3.5
+
+[node name="ZLight3" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Anchor Sign" instance=ExtResource("8_uh50a")]
+position = Vector2(229, 0)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_pbga2")
+size = Vector2(0.75, 0)
+color = Color(0, 0.443137, 0.972549, 1)
+color_pulse_speed = null
+energy = 1.25
+energy_pulse_speed = null
+falloff = 3.5
+
+[node name="ZLight4" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Anchor Sign" instance=ExtResource("8_uh50a")]
+position = Vector2(-119, 0)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_pbga2")
+size = Vector2(0.75, 0)
+color = Color(0, 0.443137, 0.972549, 1)
+color_pulse_speed = null
+energy = 1.25
+energy_pulse_speed = null
+falloff = 3.5
+
+[node name="ZLight5" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Anchor Sign" instance=ExtResource("8_uh50a")]
+position = Vector2(-234, 0)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_pbga2")
+size = Vector2(0.75, 0)
+color = Color(0, 0.443137, 0.972549, 1)
+color_pulse_speed = null
+energy = 1.25
+energy_pulse_speed = null
+falloff = 3.5
+
+[node name="Visible" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Anchor Sign"]
+self_modulate = Color(0, 0.443137, 0.972549, 0.360784)
+z_index = -1
+rotation = 3.14159
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("9_fr2c1")
+
+[node name="Side Sign" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs"]
+position = Vector2(61, -1676.84)
+rotation = -1.5708
+
+[node name="ZLight" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign" instance=ExtResource("8_uh50a")]
+rotation = 3.14159
+shape = SubResource("CircleShape2D_tb4a5")
+size = Vector2(0.46, 0)
+color = Color(0.802471, 0.12587, 0.132032, 1)
+color_pulse = SubResource("Gradient_drnmi")
+color_pulse_speed = 0.5
+energy = 0.8
+energy_pulse_speed = 0.0
+falloff = 2.3
+
+[node name="ZLight3" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign" instance=ExtResource("8_uh50a")]
+position = Vector2(-80, -3.49692e-06)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_tb4a5")
+size = Vector2(0.46, 0)
+color = Color(0.802471, 0.12587, 0.132032, 1)
+color_pulse = SubResource("Gradient_drnmi")
+color_pulse_speed = 0.5
+energy = 0.8
+energy_pulse_speed = 0.0
+falloff = 2.3
+
+[node name="ZLight2" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign" instance=ExtResource("8_uh50a")]
+position = Vector2(82, 3.58434e-06)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_tb4a5")
+size = Vector2(0.46, 0)
+color = Color(0.802471, 0.12587, 0.132032, 1)
+color_pulse = SubResource("Gradient_drnmi")
+color_pulse_speed = 0.5
+energy = 0.8
+energy_pulse_speed = 0.0
+falloff = 2.3
+
+[node name="Visible" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign"]
+self_modulate = Color(0.862138, 0.0952122, 0.368889, 0.360784)
+z_index = -1
+rotation = 3.14159
+scale = Vector2(-0.29, 0.29)
+texture = ExtResource("9_fr2c1")
+
+[node name="Side Sign2" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs"]
+position = Vector2(61, -777.84)
+rotation = -1.5708
+
+[node name="ZLight" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign2" instance=ExtResource("8_uh50a")]
+rotation = 3.14159
+shape = SubResource("CircleShape2D_tb4a5")
+size = Vector2(0.46, 0)
+color = Color(0.590877, 0.33899, 0.946554, 1)
+color_pulse_speed = null
+energy = 0.8
+energy_pulse_speed = null
+falloff = 2.3
+
+[node name="ZLight3" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign2" instance=ExtResource("8_uh50a")]
+position = Vector2(-80, -3.49692e-06)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_tb4a5")
+size = Vector2(0.46, 0)
+color = Color(0.590877, 0.33899, 0.946554, 1)
+color_pulse_speed = null
+energy = 0.8
+energy_pulse_speed = null
+falloff = 2.3
+
+[node name="ZLight2" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign2" instance=ExtResource("8_uh50a")]
+position = Vector2(82, 3.58434e-06)
+rotation = 3.14159
+shape = SubResource("CircleShape2D_tb4a5")
+size = Vector2(0.46, 0)
+color = Color(0.590877, 0.33899, 0.946554, 1)
+color_pulse_speed = null
+energy = 0.8
+energy_pulse_speed = null
+falloff = 2.3
+
+[node name="Visible" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Lighting/Signs/Side Sign2"]
+self_modulate = Color(0.444764, 0.235469, 0.844465, 0.360784)
+z_index = -1
+rotation = 3.14159
+scale = Vector2(-0.29, 0.29)
+texture = ExtResource("9_fr2c1")
+
 [node name="Escalators" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals"]
 y_sort_enabled = true
 
@@ -361,7 +527,9 @@ is_shadow = true
 shape = SubResource("RectangleShape2D_e783r")
 size = Vector2(4, 4.345)
 color = Color(0, 0, 0, 1)
+color_pulse_speed = null
 energy = 0.25
+energy_pulse_speed = null
 falloff = 3.8
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Entryways/EntryGenericFront"]
@@ -398,7 +566,9 @@ is_shadow = true
 shape = SubResource("RectangleShape2D_r5tgv")
 size = Vector2(1.03, 2.95)
 color = Color(0, 0, 0, 1)
+color_pulse_speed = null
 energy = 0.25
+energy_pulse_speed = null
 falloff = 3.8
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Entryways/EntryGenericSide"]
@@ -428,7 +598,9 @@ is_shadow = true
 shape = SubResource("RectangleShape2D_r5tgv")
 size = Vector2(1.03, 2.95)
 color = Color(0, 0, 0, 1)
+color_pulse_speed = null
 energy = 0.25
+energy_pulse_speed = null
 falloff = 3.8
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Entryways/EntryGenericSide2"]
@@ -470,7 +642,9 @@ is_shadow = true
 shape = SubResource("RectangleShape2D_e783r")
 size = Vector2(4, 4.345)
 color = Color(0, 0, 0, 1)
+color_pulse_speed = null
 energy = 0.25
+energy_pulse_speed = null
 falloff = 3.8
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Entryways/EntryGenericFrontClosed"]
@@ -513,7 +687,9 @@ is_shadow = true
 shape = SubResource("RectangleShape2D_e783r")
 size = Vector2(4, 4.345)
 color = Color(0, 0, 0, 1)
+color_pulse_speed = null
 energy = 0.25
+energy_pulse_speed = null
 falloff = 3.8
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Entryways/EntryGenericFrontClosed2"]
