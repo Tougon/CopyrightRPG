@@ -131,7 +131,6 @@ func _set_material_params() :
 	_mat.set_shader_parameter("light_energy", light_energy);
 	_mat.set_shader_parameter("light_falloff", light_falloff);
 	_mat.set_shader_parameter("shadow", is_shadow);
-	print(is_shadow)
 	
 	# Set active light count
 	_mat.set_shader_parameter("active_zlights", min(_lights.size(), MAX_LIGHTS_PER_OBJECT));
