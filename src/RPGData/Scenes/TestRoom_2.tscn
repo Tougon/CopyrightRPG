@@ -756,33 +756,25 @@ texture = ExtResource("42_gujsv")
 position = Vector2(-208, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
 position = Vector2(206, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
 position = Vector2(-208, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight" instance=ExtResource("42_82eq1")]
 position = Vector2(206, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="Skylight2" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
 self_modulate = Color(1, 1, 1, 0.176471)
@@ -793,33 +785,25 @@ texture = ExtResource("42_gujsv")
 position = Vector2(-208, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
 position = Vector2(206, -210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
 position = Vector2(-208, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Skylight2" instance=ExtResource("42_82eq1")]
 position = Vector2(206, 210)
 shape = SubResource("RectangleShape2D_fe3y1")
 size = Vector2(3.55, 3.55)
-color_pulse_speed = null
 energy = 0.05
-energy_pulse_speed = null
 
 [node name="Anchor Sign" type="Node2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting"]
 
@@ -828,9 +812,7 @@ position = Vector2(510, 3136)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-color_pulse_speed = null
 energy = 1.25
-energy_pulse_speed = null
 falloff = 5.0
 
 [node name="ZLight2" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
@@ -838,9 +820,7 @@ position = Vector2(630, 3136)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-color_pulse_speed = null
 energy = 1.25
-energy_pulse_speed = null
 falloff = 5.0
 
 [node name="ZLight5" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
@@ -848,9 +828,7 @@ position = Vector2(738, 3136)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-color_pulse_speed = null
 energy = 1.25
-energy_pulse_speed = null
 falloff = 5.0
 
 [node name="ZLight3" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
@@ -858,9 +836,7 @@ position = Vector2(400, 3136)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-color_pulse_speed = null
 energy = 1.25
-energy_pulse_speed = null
 falloff = 5.0
 
 [node name="ZLight4" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign" instance=ExtResource("42_82eq1")]
@@ -868,9 +844,7 @@ position = Vector2(290, 3136)
 rotation = 3.14159
 shape = SubResource("CircleShape2D_y1jo2")
 color = Color(0, 0.443137, 0.972549, 1)
-color_pulse_speed = null
 energy = 1.25
-energy_pulse_speed = null
 falloff = 5.0
 
 [node name="Visible" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/Anchor Sign"]
@@ -886,9 +860,7 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_sjusm")
 size = Vector2(2.5, 1)
 color = Color(0.909804, 0.831373, 0.427451, 1)
-color_pulse_speed = null
 energy = 0.2
-energy_pulse_speed = null
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight"]
@@ -902,9 +874,7 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_sjusm")
 size = Vector2(2.5, 1)
 color = Color(0.91, 0.829617, 0.4277, 1)
-color_pulse_speed = null
 energy = 0.2
-energy_pulse_speed = null
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight2"]
@@ -918,9 +888,7 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_sjusm")
 size = Vector2(2.5, 1)
 color = Color(0.91, 0.829617, 0.4277, 1)
-color_pulse_speed = null
 energy = 0.2
-energy_pulse_speed = null
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight3"]
@@ -934,9 +902,7 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_sjusm")
 size = Vector2(2.5, 1)
 color = Color(0.91, 0.829617, 0.4277, 1)
-color_pulse_speed = null
 energy = 0.2
-energy_pulse_speed = null
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight4"]
@@ -950,9 +916,7 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_sjusm")
 size = Vector2(2.5, 1)
 color = Color(0.91, 0.829617, 0.4277, 1)
-color_pulse_speed = null
 energy = 0.2
-energy_pulse_speed = null
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight5"]
@@ -966,9 +930,7 @@ rotation = 3.14159
 shape = SubResource("CircleShape2D_sjusm")
 size = Vector2(2.5, 1)
 color = Color(0.91, 0.829617, 0.4277, 1)
-color_pulse_speed = null
 energy = 0.2
-energy_pulse_speed = null
 falloff = 10.0
 
 [node name="Point Light" type="Sprite2D" parent="Areas/TestArea FR/G/Environment/Visuals/Lighting/ZLight6"]

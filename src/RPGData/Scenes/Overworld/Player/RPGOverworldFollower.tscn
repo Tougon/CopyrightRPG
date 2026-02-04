@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.gd" id="1_ys4go"]
 [ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_efbox"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmj22"]
-size = Vector2(56, 34)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_for73"]
+size = Vector2(56, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajqo8"]
 size = Vector2(56, 34)
@@ -20,10 +20,11 @@ modulate = Color(0.270588, 0.333333, 0.301961, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_nmj22")
+shape = SubResource("RectangleShape2D_for73")
 debug_color = Color(1.20327e-07, 0.647609, 0.206214, 0.42)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+modulate = Color(1, 0, 1, 1)
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_ajqo8")
 target_position = Vector2(0, 64)

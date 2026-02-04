@@ -43,6 +43,7 @@ var _is_visible : bool = true;
 func _ready() :
 	if target != null : 
 		_initialize_position();
+		add_collision_exception_with(target);
 		
 	match movement_type :
 		MovementType.Direct:
@@ -138,31 +139,38 @@ func _physics_process(delta: float) :
 							
 							new_dir = dir;
 						else :
-							new_dir = dir;
-							
-							if dir.x != 0 :
-								if target.position.y < position.y :
-									if colliding_player :
-										new_dir.y = abs(dir.x);
-									else :
-										new_dir.y = -abs(dir.x);
-								else : 
-									if colliding_player :
-										new_dir.y = -abs(dir.x);
-									else :
-										new_dir.y = abs(dir.x);
-							
-							if dir.y != 0 :
-								if target.position.x < position.x :
-									if colliding_player :
-										new_dir.x = abs(dir.y);
-									else :
-										new_dir.x = -abs(dir.y);
-								else : 
-									if colliding_player :
-										new_dir.x = -abs(dir.y);
-									else :
-										new_dir.x = abs(dir.y);
+							if _direction_locked :
+								new_dir = _override_direction;
+							else :
+								new_dir = dir;
+								
+								if dir.x != 0 :
+									if target.position.y < position.y :
+										if colliding_player :
+											new_dir.y = abs(dir.x);
+										else :
+											new_dir.y = -abs(dir.x);
+									else : 
+										if colliding_player :
+											new_dir.y = -abs(dir.x);
+										else :
+											new_dir.y = abs(dir.x);
+								
+								if dir.y != 0 :
+									if target.position.x < position.x :
+										if colliding_player :
+											new_dir.x = abs(dir.y);
+										else :
+											new_dir.x = -abs(dir.y);
+									else : 
+										if colliding_player :
+											new_dir.x = -abs(dir.y);
+										else :
+											new_dir.x = abs(dir.y);
+								
+								#_direction_locked = true;
+								_override_direction = new_dir;
+								#_remove_direction_lock(3.0);
 						
 						dir = new_dir.normalized();
 					
@@ -256,7 +264,7 @@ func _on_floor_active(floor : Floor) :
 
 
 func _check_visibility() :
-	var visible = _current_floor.is_on_tile(global_position);
+	var visible = _current_floor != null && _current_floor.is_on_tile(global_position);
 	
 	if visible != _is_visible :
 		if get_tree() == null : return;
