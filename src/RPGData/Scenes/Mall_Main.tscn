@@ -725,19 +725,19 @@ shape = SubResource("RectangleShape2D_hi4at")
 position = Vector2(478, -1666)
 run_multiplier = 1.75
 
-[node name="RPGOverworldFollower" parent="." instance=ExtResource("19_ww7pw")]
-visible = false
+[node name="RPGOverworldFollower" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_ww7pw")]
+target = NodePath("../Player Controller")
 max_distance = 200.0
 speed = 250.0
 
-[node name="RPGOverworldFollower2" parent="." instance=ExtResource("19_ww7pw")]
-visible = false
+[node name="RPGOverworldFollower2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_ww7pw")]
+target = NodePath("../Player Controller")
 max_distance = 200.0
 speed = 150.0
 run_multiplier = 2.0
 
-[node name="RPGOverworldFollower3" parent="." instance=ExtResource("19_ww7pw")]
-visible = false
+[node name="RPGOverworldFollower3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_ww7pw")]
+target = NodePath("../Player Controller")
 max_distance = 200.0
 speed = 190.0
 run_multiplier = 1.75

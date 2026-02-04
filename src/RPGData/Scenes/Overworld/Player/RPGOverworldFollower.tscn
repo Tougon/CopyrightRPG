@@ -11,6 +11,7 @@ size = Vector2(56, 34)
 
 [node name="RPGOverworldFollower" type="CharacterBody2D"]
 collision_layer = 8
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_ys4go")
 movement_type = 1
@@ -21,7 +22,12 @@ modulate = Color(0.270588, 0.333333, 0.301961, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_for73")
+disabled = true
 debug_color = Color(1.20327e-07, 0.647609, 0.206214, 0.42)
+
+[node name="NewCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(0, 11, -28, 0, 0, -11, 28, 0)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
 modulate = Color(1, 0, 1, 1)
