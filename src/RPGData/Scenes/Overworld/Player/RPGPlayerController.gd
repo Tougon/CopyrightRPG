@@ -182,6 +182,10 @@ func skid(initial : Vector2, final : Vector2):
 	update_locomotion_animation(_prev_direction, _prev_direction.length());
 
 
+func get_character_material() -> Material:
+	return _player_visual.sprite.material;
+
+
 func _on_overworld_battle_queued(encounter : Encounter):
 	_will_process = false;
 	_player_visual.set_process(false);
