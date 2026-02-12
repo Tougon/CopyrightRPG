@@ -127,7 +127,7 @@ func _on_overworld_change_area(new_area : String):
 	
 	_current_area = new_area;
 	DataManager.current_save.player_area = _current_area;
-
+	
 	game_camera.set_follow_target(null);
 	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
 	_areas[_current_area].put_camera_on_floor(_current_floor_index, game_camera, free_camera);
@@ -173,10 +173,11 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 
 
 func _overworld_player_teleport(pos : Vector2):
-	pos -= player_controller.foot_offset;
-	var delta_pos = pos - player_controller.global_position;
+	#pos -= player_controller.foot_offset;
+	#var delta_pos = pos - player_controller.global_position;
 	player_controller.global_position = pos;
 	game_camera.teleport_position()
+	print(pos);
 
 
 func _on_player_enter_floor_change_zone(enter : bool):

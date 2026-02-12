@@ -8,10 +8,10 @@ size = Vector2(64, 64)
 [node name="FloorChangeZone" type="Node2D"]
 script = ExtResource("1_o60qn")
 
-[node name="In" type="Node2D" parent="."]
+[node name="Start" type="Node2D" parent="."]
 position = Vector2(-36, 0)
 
-[node name="Out" type="Node2D" parent="."]
+[node name="End" type="Node2D" parent="."]
 position = Vector2(36, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
