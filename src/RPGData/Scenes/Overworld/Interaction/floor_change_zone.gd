@@ -20,7 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var dist_in = pos.distance_squared_to(in_point.global_position);
 	var dist_out = pos.distance_squared_to(out_point.global_position);
 	
-	EventManager.on_player_enter_floor_change_zone.emit(dist_in < dist_out);
+	EventManager.on_player_enter_floor_change_zone.emit(true);
 
 
 func _on_body_exited(body: Node2D) -> void:
@@ -35,6 +35,8 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_player_enter_floor_change_zone(enter : bool) :
 	for object in in_objects:
+		if object == null : continue;
+		
 		object.visible = enter;
 		if enter : object.process_mode = ProcessMode.PROCESS_MODE_INHERIT;
 		else : object.process_mode = ProcessMode.PROCESS_MODE_DISABLED;

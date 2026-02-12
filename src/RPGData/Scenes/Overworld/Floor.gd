@@ -34,7 +34,7 @@ func set_floor_active(active : bool):
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED;
 		physics_interpolation_mode = PhysicsInterpolationMode.PHYSICS_INTERPOLATION_MODE_OFF;
 	
-	#if lighting != null : lighting.visible = active;
+	if lighting != null : lighting.visible = active;
 
 
 func set_floor_visible(visible : bool, tween : bool = true):
