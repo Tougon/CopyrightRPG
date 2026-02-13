@@ -33,8 +33,12 @@ func _on_body_exited(body: Node2D) -> void:
 		teleport_pos = teleport_target.global_position;
 		
 		var teleport_offset =  body.global_position.y - global_position.y;
-		teleport_offset /= scale.y;
 		teleport_pos.y += teleport_offset;
+		print(body.name);
+		print(teleport_target.global_position.y);
+		print(body.global_position.y);
+		print(global_position.y);
+		print(teleport_offset);
 	
 	var dist_start = pos.distance_squared_to(start.global_position);
 	var dist_end = pos.distance_squared_to(end.global_position);
@@ -44,8 +48,12 @@ func _on_body_exited(body: Node2D) -> void:
 	else :
 		EventManager.on_overworld_change_floor.emit(start_floor, teleport, teleport_pos);
 	
+	print(body.global_position.y);
+	
 	await get_tree().process_frame;
 	_can_collide = true;
+	
+	print("!~~~~~~~~~~~~~~~~!")
 
 
 func _exit_tree():

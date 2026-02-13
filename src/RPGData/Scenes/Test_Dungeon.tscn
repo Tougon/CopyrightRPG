@@ -96,7 +96,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qct0a")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8n8a"]
-size = Vector2(40, 156)
+size = Vector2(20, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhqj"]
 size = Vector2(470, 74)
@@ -198,7 +198,7 @@ additional_enemies = Array[int]([])
 size = Vector2(2041, 641)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1d48g"]
-size = Vector2(40, 156)
+size = Vector2(20, 80)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhx8f"]
 shader = ExtResource("23_gjmjg")
@@ -384,20 +384,18 @@ offset = Vector2(-244, -138)
 
 [node name="FloorTrigger" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp" node_paths=PackedStringArray("teleport_target") instance=ExtResource("18_3o3iq")]
 z_index = 20
-position = Vector2(-313, -44)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-313, -52)
 end_floor = 1
 teleport = true
-teleport_target = NodePath("../../../../../../../2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorChangeZone/Start")
+teleport_target = NodePath("../../../../../../../2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorTrigger/Start")
 
 [node name="Start" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorTrigger" index="0"]
-position = Vector2(76, 0)
+position = Vector2(38, 0)
 
 [node name="End" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorTrigger" index="1"]
-position = Vector2(-76, 0)
+position = Vector2(-38, 0)
 
 [node name="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorTrigger/Area2D" index="0"]
-position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_n8n8a")
 
 [node name="FloorChangeZone" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp" instance=ExtResource("19_lnp3b")]
@@ -612,20 +610,18 @@ region_rect = Rect2(0, 0, 488, 128)
 
 [node name="FloorTrigger" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown" node_paths=PackedStringArray("teleport_target") instance=ExtResource("18_3o3iq")]
 z_index = 20
-position = Vector2(-158, -44)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-158, -52)
 start_floor = 1
 teleport = true
 teleport_target = NodePath("../../../../../../../1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorTrigger/Start")
 
 [node name="Start" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorTrigger" index="0"]
-position = Vector2(76, 0)
+position = Vector2(38, 0)
 
 [node name="End" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorTrigger" index="1"]
-position = Vector2(-76, 0)
+position = Vector2(-38, 0)
 
 [node name="CollisionShape2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorTrigger/Area2D" index="0"]
-position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_1d48g")
 
 [node name="FloorChangeZone" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown" instance=ExtResource("19_lnp3b")]
