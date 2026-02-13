@@ -176,8 +176,7 @@ func _overworld_player_teleport(pos : Vector2):
 	#pos -= player_controller.foot_offset;
 	#var delta_pos = pos - player_controller.global_position;
 	player_controller.global_position = pos;
-	game_camera.teleport_position()
-	print(pos);
+	game_camera.teleport_position();
 
 
 func _on_player_enter_floor_change_zone(enter : bool):
