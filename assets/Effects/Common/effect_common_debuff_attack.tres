@@ -90,6 +90,7 @@ dialogue_key = "T_EFFECT_GENERIC_ATTACK_DROP_STACK"
 script = ExtResource("12_kh28d")
 stackable = true
 effect_name = "Attack Debuff"
+include_user_in_name = true
 generic = true
 repeatable = false
 priority = 3

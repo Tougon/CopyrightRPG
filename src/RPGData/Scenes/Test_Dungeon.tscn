@@ -506,9 +506,7 @@ visible = false
 [node name="Encounter Areas" type="Node2D" parent="Areas/Mall Main/1F"]
 
 [node name="EncounterArea (Low)" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
-visible = false
-position = Vector2(508, 4290)
-enabled = false
+position = Vector2(459, -1906)
 encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_7nfh4"), SubResource("Resource_ieduf"), SubResource("Resource_shen4"), SubResource("Resource_wpion")])
 encounter_increase_rate = 0.1
 encounter_reroll_rate = 0.6
@@ -518,6 +516,7 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="2F" type="Node2D" parent="Areas/Mall Main"]
+visible = false
 position = Vector2(0, -343)
 script = ExtResource("3_csf87")
 floor_index = 1

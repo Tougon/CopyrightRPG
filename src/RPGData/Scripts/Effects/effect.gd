@@ -14,6 +14,7 @@ enum EffectCheckType { AND, OR }
 #@export var cast_success : bool = false;
 ## Used to identify instances of the effect internally
 @export var effect_name : String = "";
+@export var include_user_in_name : bool = false;
 ## Used to allow for certain effects to be applied independently while using the same name (i.e. stat buffs)
 @export var generic : bool = false;
 ## Used to allow for each instance of this effect to count separately.
@@ -66,6 +67,8 @@ func create_effect_instance(user : EntityController, target : EntityController, 
 
 func get_effect_name(instance : EffectInstance) -> String:
 	if generic && instance != null && instance.spell_data != null:
+		if include_user_in_name :
+			return instance.spell_data.resource_path + " " + instance.user_name + " " + effect_name;
 		return instance.spell_data.resource_path + " "  + effect_name;
 	return effect_name;
 

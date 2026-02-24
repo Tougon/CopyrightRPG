@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=46 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_82a6o"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://d337yxpegbtkt" path="res://assets/Spells/player/player_b/spell_player_b_06A.tres" id="10_qdyho"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_y86e6"]
 [ext_resource type="Resource" uid="uid://ceaostxq3mx7x" path="res://assets/Spells/player/player_b/spell_player_b_05.tres" id="11_j5j3k"]
+[ext_resource type="Resource" uid="uid://bcov26ff10ih1" path="res://assets/Spells/common/spell_common_ramble.tres" id="17_3nv00"]
 
 [sub_resource type="Curve" id="Curve_w4glt"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -104,9 +105,14 @@ script = ExtResource("4_xfhba")
 spell = ExtResource("8_feqgb")
 level = 50
 
+[sub_resource type="Resource" id="Resource_ig1vk"]
+script = ExtResource("4_xfhba")
+spell = ExtResource("17_3nv00")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_bv3cl")
-list = Array[ExtResource("4_xfhba")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7"), SubResource("Resource_0srua"), SubResource("Resource_s84s3"), SubResource("Resource_id7q6")])
+list = Array[ExtResource("4_xfhba")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7"), SubResource("Resource_0srua"), SubResource("Resource_s84s3"), SubResource("Resource_id7q6"), SubResource("Resource_ig1vk")])
 
 [sub_resource type="Curve" id="Curve_cg64e"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

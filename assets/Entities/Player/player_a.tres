@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=44 format=3 uid="uid://dyc1rwxffmh78"]
+[gd_resource type="Resource" script_class="Entity" load_steps=46 format=3 uid="uid://dyc1rwxffmh78"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_3drj8"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="2_k8ekf"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_v2va6"]
 [ext_resource type="Resource" uid="uid://cbcl1iw6wihe2" path="res://assets/Spells/player/player_a/spell_player_a_06.tres" id="11_agst1"]
 [ext_resource type="Resource" uid="uid://bxdb2dctqev1v" path="res://assets/Spells/player/player_a/spell_player_a_07.tres" id="12_ap78w"]
+[ext_resource type="Resource" uid="uid://bcov26ff10ih1" path="res://assets/Spells/common/spell_common_ramble.tres" id="16_a8cvu"]
 
 [sub_resource type="Curve" id="Curve_v435p"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -99,9 +100,14 @@ script = ExtResource("5_fxx2f")
 spell = ExtResource("12_ap78w")
 level = 50
 
+[sub_resource type="Resource" id="Resource_sd5p0"]
+script = ExtResource("5_fxx2f")
+spell = ExtResource("16_a8cvu")
+level = 0
+
 [sub_resource type="Resource" id="Resource_xqh42"]
 script = ExtResource("7_r454n")
-list = Array[ExtResource("5_fxx2f")]([SubResource("Resource_ott5o"), SubResource("Resource_o1ebh"), SubResource("Resource_he5kb"), SubResource("Resource_8b777"), SubResource("Resource_bdtrn"), SubResource("Resource_6r8pe"), SubResource("Resource_l0ky0")])
+list = Array[ExtResource("5_fxx2f")]([SubResource("Resource_ott5o"), SubResource("Resource_o1ebh"), SubResource("Resource_he5kb"), SubResource("Resource_8b777"), SubResource("Resource_bdtrn"), SubResource("Resource_6r8pe"), SubResource("Resource_l0ky0"), SubResource("Resource_sd5p0")])
 
 [sub_resource type="Curve" id="Curve_5kava"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
