@@ -93,6 +93,7 @@ dialogue_key = "T_EFFECT_GENERIC_SPATTACK_BOOST_STACK"
 script = ExtResource("12_jcgvb")
 stackable = true
 effect_name = "Special Attack Buff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

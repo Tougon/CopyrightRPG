@@ -90,6 +90,7 @@ dialogue_key = "T_EFFECT_GENERIC_SPEED_DROP_STACK"
 script = ExtResource("12_xdgan")
 stackable = true
 effect_name = "Speed Debuff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

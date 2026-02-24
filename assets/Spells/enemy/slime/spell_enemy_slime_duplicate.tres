@@ -32,6 +32,7 @@ dialogue_key = "T_BATTLE_ACTION_FAIL"
 script = ExtResource("3_8iegi")
 stackable = false
 effect_name = "Duplicate"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

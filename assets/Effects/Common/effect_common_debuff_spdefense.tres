@@ -90,6 +90,7 @@ dialogue_key = "T_EFFECT_GENERIC_SPDEFENSE_DROP_STACK"
 script = ExtResource("12_20qnu")
 stackable = true
 effect_name = "Resistance Debuff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

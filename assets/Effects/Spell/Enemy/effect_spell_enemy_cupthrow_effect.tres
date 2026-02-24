@@ -20,6 +20,7 @@ deactivate = true
 script = ExtResource("3_7of2e")
 stackable = false
 effect_name = "Refill"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

@@ -46,6 +46,7 @@ max_amount = 1.0
 script = ExtResource("3_cpbpp")
 stackable = false
 effect_name = "B03 Property"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

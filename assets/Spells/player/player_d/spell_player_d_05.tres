@@ -143,6 +143,7 @@ dialogue_key = "T_EFFECT_PLAYERD_05_STACK"
 script = ExtResource("3_tto2i")
 stackable = true
 effect_name = "D05"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

@@ -90,6 +90,7 @@ target = 1
 script = ExtResource("3_tlufj")
 stackable = false
 effect_name = "C07"
+include_user_in_name = false
 generic = false
 repeatable = true
 priority = 3

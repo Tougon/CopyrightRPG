@@ -34,6 +34,7 @@ dialogue_key = "T_BATTLE_ACTION_FAIL"
 script = ExtResource("3_6lcms")
 stackable = false
 effect_name = "Crapper Summon"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

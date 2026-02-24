@@ -93,6 +93,7 @@ dialogue_key = "T_EFFECT_GENERIC_DEFENSE_BOOST_STACK"
 script = ExtResource("12_jqy2h")
 stackable = true
 effect_name = "Defense Buff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

@@ -47,6 +47,7 @@ on_fail = Array[ExtResource("1_eyv2b")]([])
 script = ExtResource("7_xei46")
 stackable = false
 effect_name = "Fire Lvl 2"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

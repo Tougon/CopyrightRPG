@@ -105,6 +105,7 @@ dialogue_key = "T_EFFECT_PLAYERB_04_STACK"
 script = ExtResource("3_0aslv")
 stackable = false
 effect_name = "B04"
+include_user_in_name = false
 generic = false
 repeatable = true
 priority = 3

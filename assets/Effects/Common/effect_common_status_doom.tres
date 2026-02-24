@@ -42,6 +42,7 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_DOOM_STACK"
 script = ExtResource("7_w0u7b")
 stackable = true
 effect_name = "Doom"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 5

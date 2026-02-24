@@ -62,6 +62,7 @@ target = 1
 script = ExtResource("7_bdhwo")
 stackable = true
 effect_name = "Distracted"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 5

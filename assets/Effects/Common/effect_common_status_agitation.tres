@@ -202,6 +202,7 @@ script = ExtResource("10_xriis")
 script = ExtResource("7_eynqa")
 stackable = true
 effect_name = "Agitation"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 5

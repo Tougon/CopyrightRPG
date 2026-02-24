@@ -52,6 +52,7 @@ animation = ExtResource("10_al5d5")
 script = ExtResource("3_7ibm0")
 stackable = false
 effect_name = ""
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

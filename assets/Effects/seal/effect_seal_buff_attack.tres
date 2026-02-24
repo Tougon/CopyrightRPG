@@ -44,6 +44,7 @@ dialogue_key = "T_EFFECT_GENERIC_ATTACK_BOOST_FAIL"
 script = ExtResource("6_ev72j")
 stackable = true
 effect_name = "Attack Buff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

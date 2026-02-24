@@ -38,6 +38,7 @@ animation = ExtResource("8_mymim")
 script = ExtResource("3_yyt4e")
 stackable = false
 effect_name = ""
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

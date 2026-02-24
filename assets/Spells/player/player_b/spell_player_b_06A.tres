@@ -62,6 +62,7 @@ force_sealing = false
 script = ExtResource("3_5s6cs")
 stackable = false
 effect_name = "B06 Charge"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 9

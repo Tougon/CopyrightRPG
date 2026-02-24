@@ -23,6 +23,7 @@ apply = true
 script = ExtResource("3_37vp3")
 stackable = true
 effect_name = "Smokescreen Activate"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 9

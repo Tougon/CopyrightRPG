@@ -44,6 +44,7 @@ dialogue_key = "T_EFFECT_GENERIC_EVASION_DROP_FAIL"
 script = ExtResource("7_wjq1t")
 stackable = true
 effect_name = "Evasion Debuff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

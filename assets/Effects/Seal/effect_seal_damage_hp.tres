@@ -15,6 +15,7 @@ animation = ExtResource("3_fnkwv")
 script = ExtResource("7_hfftd")
 stackable = true
 effect_name = "HP 10"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

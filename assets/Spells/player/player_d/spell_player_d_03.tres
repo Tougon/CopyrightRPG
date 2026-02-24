@@ -24,6 +24,7 @@ animation = ExtResource("5_pholg")
 script = ExtResource("3_cf57o")
 stackable = false
 effect_name = "D03"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

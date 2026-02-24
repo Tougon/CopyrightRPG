@@ -67,6 +67,7 @@ deactivate = true
 script = ExtResource("1_ijy4m")
 stackable = false
 effect_name = "Defend"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 5

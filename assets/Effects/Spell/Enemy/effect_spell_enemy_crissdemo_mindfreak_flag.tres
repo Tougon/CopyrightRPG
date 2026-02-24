@@ -14,6 +14,7 @@ deactivate = true
 script = ExtResource("2_jskwo")
 stackable = false
 effect_name = "Mindfreak Flag"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

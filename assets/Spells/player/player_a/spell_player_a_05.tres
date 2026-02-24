@@ -35,6 +35,7 @@ effect = ExtResource("7_f5dnt")
 script = ExtResource("3_a4oot")
 stackable = false
 effect_name = ""
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

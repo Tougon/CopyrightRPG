@@ -19,6 +19,7 @@ dialogue_key = "T_EFFECT_CHOBBLIN_ATTACK_ACTIVATE"
 script = ExtResource("6_8jox3")
 stackable = false
 effect_name = "Choblin_Flavor"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

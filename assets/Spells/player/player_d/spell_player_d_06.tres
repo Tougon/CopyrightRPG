@@ -85,6 +85,7 @@ animation = ExtResource("7_vndoh")
 script = ExtResource("3_07eqx")
 stackable = false
 effect_name = "D06"
+include_user_in_name = false
 generic = false
 repeatable = true
 priority = 3

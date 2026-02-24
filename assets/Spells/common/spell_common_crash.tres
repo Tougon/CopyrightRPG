@@ -22,6 +22,7 @@ animation = ExtResource("5_3hbbb")
 script = ExtResource("3_kdf7t")
 stackable = false
 effect_name = "Crash_Recoil"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

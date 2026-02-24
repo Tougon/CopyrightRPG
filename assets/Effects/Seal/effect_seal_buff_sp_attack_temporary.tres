@@ -82,6 +82,7 @@ script = ExtResource("10_vevme")
 script = ExtResource("7_1usjy")
 stackable = true
 effect_name = "Special Attack Buff Temp"
+include_user_in_name = false
 generic = true
 repeatable = true
 priority = 3

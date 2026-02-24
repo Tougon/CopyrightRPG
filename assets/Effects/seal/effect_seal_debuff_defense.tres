@@ -44,6 +44,7 @@ dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_FAIL"
 script = ExtResource("7_qw663")
 stackable = true
 effect_name = "Defense Debuff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

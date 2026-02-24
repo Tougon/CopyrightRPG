@@ -15,6 +15,7 @@ animation = ExtResource("2_3t6k2")
 script = ExtResource("4_m6vs8")
 stackable = true
 effect_name = "MP 10"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

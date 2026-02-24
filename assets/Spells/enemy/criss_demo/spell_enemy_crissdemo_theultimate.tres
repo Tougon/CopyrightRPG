@@ -50,6 +50,7 @@ animation = ExtResource("10_16s8f")
 script = ExtResource("3_0rfkv")
 stackable = false
 effect_name = "Grand Canyon 2"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

@@ -47,6 +47,7 @@ on_fail = Array[ExtResource("1_nak2y")]([])
 script = ExtResource("7_relir")
 stackable = false
 effect_name = "Escape Lvl 2"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

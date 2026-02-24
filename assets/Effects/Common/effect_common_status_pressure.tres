@@ -95,6 +95,7 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_PRESSURE_STACK"
 script = ExtResource("16_snoal")
 stackable = true
 effect_name = "Pressure"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 6

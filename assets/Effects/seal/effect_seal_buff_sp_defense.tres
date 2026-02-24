@@ -31,6 +31,7 @@ deactivation_strings = Array[String]([])
 script = ExtResource("6_xjy3b")
 stackable = true
 effect_name = "Special Defense Buff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

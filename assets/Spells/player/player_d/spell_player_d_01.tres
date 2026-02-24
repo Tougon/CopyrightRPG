@@ -93,6 +93,7 @@ dialogue_key = "T_EFFECT_PLAYERD_01_STACK"
 script = ExtResource("3_qdin7")
 stackable = true
 effect_name = "D01"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

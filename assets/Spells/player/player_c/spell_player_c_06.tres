@@ -23,6 +23,7 @@ apply = true
 script = ExtResource("7_ke2hd")
 stackable = true
 effect_name = "C06 Activate"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 9

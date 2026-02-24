@@ -44,6 +44,7 @@ dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_FAIL"
 script = ExtResource("6_njt44")
 stackable = true
 effect_name = "Speed Buff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

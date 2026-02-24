@@ -63,6 +63,7 @@ target = 1
 script = ExtResource("12_ytryr")
 stackable = true
 effect_name = "Stun"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 9

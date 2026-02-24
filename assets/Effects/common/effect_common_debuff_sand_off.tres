@@ -90,6 +90,7 @@ dialogue_key = "T_EFFECT_GENERIC_DEFENSE_DROP_STACK"
 script = ExtResource("12_c1l1d")
 stackable = true
 effect_name = "Sand Off Debuff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

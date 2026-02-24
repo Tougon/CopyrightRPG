@@ -90,6 +90,7 @@ dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_STACK"
 script = ExtResource("12_p6a6n")
 stackable = true
 effect_name = "Speed Buff"
+include_user_in_name = false
 generic = true
 repeatable = false
 priority = 3

@@ -26,6 +26,7 @@ animation = ExtResource("7_wkot1")
 script = ExtResource("4_vkf81")
 stackable = false
 effect_name = "slice_flavor"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

@@ -58,6 +58,7 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_EXHAUST_STACK"
 script = ExtResource("7_o4x18")
 stackable = true
 effect_name = "Exhaust"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 5

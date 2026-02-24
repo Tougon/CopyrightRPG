@@ -22,6 +22,7 @@ effect_name = ""
 script = ExtResource("3_mblvx")
 stackable = false
 effect_name = ""
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

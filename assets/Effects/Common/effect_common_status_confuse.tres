@@ -120,6 +120,7 @@ dialogue_key = "T_EFFECT_GENERIC_STATUS_CONFUSE_STACK"
 script = ExtResource("12_5gkyq")
 stackable = true
 effect_name = "Confuse"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 7

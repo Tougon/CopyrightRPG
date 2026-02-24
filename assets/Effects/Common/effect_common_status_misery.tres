@@ -38,6 +38,7 @@ animation = ExtResource("6_2nipw")
 script = ExtResource("14_imft4")
 stackable = true
 effect_name = "Misery"
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 5
