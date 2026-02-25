@@ -175,15 +175,28 @@ func _on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2)
 func _overworld_player_teleport(pos : Vector2):
 	#pos -= player_controller.foot_offset;
 	#var delta_pos = pos - player_controller.global_position;
+	var follow_offset = Vector2.ZERO;
+	
+	if pos.y > player_controller.global_position.y :
+		follow_offset.y = -420;
+	else :
+		follow_offset.y = 170;
+	
+	game_camera.follow_offset = follow_offset;
+	
+	var camera_tween = get_tree().create_tween();
+	camera_tween.set_parallel(true);
+	camera_tween.tween_property(game_camera, "follow_offset", Vector2(0, -80), OverworldManager.FLOOR_TRANSITION_TIME * 2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
+	
 	player_controller.global_position = pos;
 	
-	game_camera.global_position = player_controller.camera_offset.global_position;
+	#game_camera.global_position = player_controller.camera_offset.global_position;
 	game_camera.teleport_position();
 	
 	await get_tree().process_frame;
 	
 	game_camera.teleport_position();
-	game_camera.global_position = player_controller.camera_offset.global_position;
+	#game_camera.global_position = player_controller.camera_offset.global_position;
 
 
 func _on_player_enter_floor_change_zone(enter : bool):

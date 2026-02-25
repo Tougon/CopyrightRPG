@@ -288,7 +288,7 @@ ease = 2
 
 [node name="TestRoom2" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera", "canvas_modulate", "background_void")]
 script = ExtResource("1_ekr5d")
-player_controller = NodePath("Areas/Mall Main/1F/Environment/Visuals/Player Controller")
+player_controller = NodePath("Player Controller")
 game_camera = NodePath("Game PhantomCamera")
 free_camera = NodePath("Free PhantomCamera")
 canvas_modulate = NodePath("UI/CanvasModulate")
@@ -464,7 +464,7 @@ visible = false
 position = Vector2(587, -2159.84)
 script = ExtResource("16_isyop")
 offset = Vector2(0, 64)
-target_nodes = [NodePath("../../Player Controller")]
+target_nodes = [NodePath("../../../../../../../Player Controller")]
 reflections = [NodePath("Reflection/Sprite2D")]
 
 [node name="Visual" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Mirror"]
@@ -486,19 +486,6 @@ scale = Vector2(0.615, 1)
 texture = ExtResource("18_v1pyq")
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals"]
-
-[node name="Player Controller" parent="Areas/Mall Main/1F/Environment/Visuals" groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(272, -1989)
-run_multiplier = 1.75
-
-[node name="PointLight2D" type="PointLight2D" parent="Areas/Mall Main/1F/Environment/Visuals/Player Controller"]
-visible = false
-scale = Vector2(6.16445, 5.74769)
-color = Color(0.465, 0.532167, 0.62, 1)
-energy = 2.0
-shadow_filter = 1
-texture = ExtResource("19_rauev")
-texture_scale = 0.16
 
 [node name="Collision" type="Node2D" parent="Areas/Mall Main/1F/Environment"]
 visible = false
@@ -731,22 +718,35 @@ encounter_reroll_rate = 0.6
 position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
+[node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
+position = Vector2(272, -1989)
+run_multiplier = 1.75
+
+[node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
+visible = false
+scale = Vector2(6.16445, 5.74769)
+color = Color(0.465, 0.532167, 0.62, 1)
+energy = 2.0
+shadow_filter = 1
+texture = ExtResource("19_rauev")
+texture_scale = 0.16
+
 [node name="RPGOverworldFollower" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_lcl66")]
 visible = false
-target = NodePath("../Areas/Mall Main/1F/Environment/Visuals/Player Controller")
+target = NodePath("../Player Controller")
 max_distance = 200.0
 speed = 250.0
 
 [node name="RPGOverworldFollower2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_lcl66")]
 visible = false
-target = NodePath("../Areas/Mall Main/1F/Environment/Visuals/Player Controller")
+target = NodePath("../Player Controller")
 max_distance = 200.0
 speed = 150.0
 run_multiplier = 2.0
 
 [node name="RPGOverworldFollower3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("19_lcl66")]
 visible = false
-target = NodePath("../Areas/Mall Main/1F/Environment/Visuals/Player Controller")
+target = NodePath("../Player Controller")
 max_distance = 200.0
 speed = 190.0
 run_multiplier = 1.75
@@ -849,7 +849,7 @@ position = Vector2(272, -2069)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
-follow_target = NodePath("../Areas/Mall Main/1F/Environment/Visuals/Player Controller")
+follow_target = NodePath("../Player Controller")
 tween_resource = SubResource("Resource_6ugjw")
 tween_on_load = false
 follow_offset = Vector2(0, -80)
