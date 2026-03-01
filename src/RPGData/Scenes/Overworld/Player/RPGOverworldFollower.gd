@@ -53,14 +53,15 @@ func _ready() :
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
 	EventManager.on_overworld_player_reparented.connect(_on_player_reparented);
+	EventManager.on_overworld_player_teleported.connect(_on_player_teleported);
 	EventManager.on_overworld_floor_active.connect(_on_floor_active);
 
 
 func _process(_delta: float) -> void:	
-	_player_visual.global_position = _physics_body_trans_last.interpolate_with(
-		_physics_body_trans_current,
-		Engine.get_physics_interpolation_fraction()
-	).origin
+	#_player_visual.global_position = _physics_body_trans_last.interpolate_with(
+	#	_physics_body_trans_current,
+	#	Engine.get_physics_interpolation_fraction()
+	#).origin
 	
 	_check_visibility();
 
@@ -257,6 +258,10 @@ func _on_player_reparented(parent : Node2D) :
 	self.reparent(parent);
 
 
+func _on_player_teleported(delta : Vector2) :
+	self.global_position += delta;
+
+
 func _on_floor_active(floor : Floor) :
 	if floor != null : 
 		_current_floor = floor;
@@ -291,3 +296,4 @@ func _exit_tree():
 		if EventManager != null :
 			EventManager.on_overworld_player_reparented.disconnect(_on_player_reparented);
 			EventManager.on_overworld_floor_active.disconnect(_on_floor_active);
+			EventManager.on_overworld_player_teleported.disconnect(_on_player_teleported);

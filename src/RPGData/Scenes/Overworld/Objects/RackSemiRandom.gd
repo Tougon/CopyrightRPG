@@ -6,7 +6,8 @@ extends Node2D
 @export var items : Array[Sprite2D];
 @export var textures : Array[Texture2D];
 @export var colors : Array[Color];
-@export_range(1, 10) var visibility_chance : int = 2;
+
+@export_range(1, 10) var visibility_chance : int = 2; 
 
 func _ready() :
 	if items.size() == 0 || colors.size() == 0 :
@@ -18,10 +19,11 @@ func _ready() :
 	for item in items :
 		
 		if item != null :
-			var random = rand_from_seed(current)[0];
+			current = rand_from_seed(current)[0];
+			item.visible = current % visibility_chance != 0;
 			
-			item.visible = random % visibility_chance == 0;
-			item.texture = textures[random % textures.size()];
-			item.modulate = colors[random % colors.size()];
+			current = rand_from_seed(current)[0];
+			item.texture = textures[current % textures.size()];
 			
-			current = random;
+			current = rand_from_seed(current)[0];
+			item.modulate = colors[current % colors.size()];

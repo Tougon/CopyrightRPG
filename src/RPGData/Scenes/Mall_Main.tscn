@@ -727,20 +727,17 @@ run_multiplier = 1.75
 
 [node name="RPGOverworldFollower" parent="." instance=ExtResource("19_ww7pw")]
 visible = false
-target = NodePath("")
 max_distance = 200.0
 speed = 250.0
 
 [node name="RPGOverworldFollower2" parent="." instance=ExtResource("19_ww7pw")]
 visible = false
-target = NodePath("")
 max_distance = 200.0
 speed = 150.0
 run_multiplier = 2.0
 
 [node name="RPGOverworldFollower3" parent="." instance=ExtResource("19_ww7pw")]
 visible = false
-target = NodePath("")
 max_distance = 200.0
 speed = 190.0
 run_multiplier = 1.75

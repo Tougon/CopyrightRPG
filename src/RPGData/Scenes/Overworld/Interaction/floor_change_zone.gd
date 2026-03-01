@@ -20,6 +20,8 @@ func _process(delta: float) -> void:
 			
 			var offset = end_point.global_position.y - start_point.global_position.y;
 			body.position.y = percent * offset;
+			
+			
 
 
 func _get_position_percentage(body : Node2D) -> float:
@@ -46,6 +48,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body is RPGPlayerController :
 		in_bounds.append(body._player_visual)
+	if body is RPGOverworldFollower :
+		in_bounds.append(body._player_visual)
 	
 	var pos = body.global_position;
 	
@@ -58,6 +62,10 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body is RPGPlayerController :
 		if body._player_visual != null :
+			in_bounds.erase(body._player_visual);
+			body._player_visual.position.y = 0;
+	if body is RPGOverworldFollower :
+		if body._player_visual != null : 
 			in_bounds.erase(body._player_visual);
 			body._player_visual.position.y = 0;
 

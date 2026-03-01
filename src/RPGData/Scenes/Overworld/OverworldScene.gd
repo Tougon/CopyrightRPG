@@ -188,7 +188,11 @@ func _overworld_player_teleport(pos : Vector2):
 	camera_tween.set_parallel(true);
 	camera_tween.tween_property(game_camera, "follow_offset", Vector2(0, -80), OverworldManager.FLOOR_TRANSITION_TIME * 2).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT);
 	
+	# Teleport
+	var delta_pos = pos - player_controller.global_position;
 	player_controller.global_position = pos;
+	
+	EventManager.on_overworld_player_teleported.emit(delta_pos);
 	
 	#game_camera.global_position = player_controller.camera_offset.global_position;
 	game_camera.teleport_position();
