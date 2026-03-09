@@ -1,0 +1,15 @@
+[remap]
+
+importer="quest_importer"
+type="Resource"
+uid="uid://bbahaa6rxukhm"
+path="res://.godot/imported/jcp.quest-5e27fe81cd2b615d6e2553b603983da6.tres"
+
+[deps]
+
+source_file="res://assets/Quests/jcp.quest"
+dest_files=["res://.godot/imported/jcp.quest-5e27fe81cd2b615d6e2553b603983da6.tres"]
+
+[params]
+
+defaults=true

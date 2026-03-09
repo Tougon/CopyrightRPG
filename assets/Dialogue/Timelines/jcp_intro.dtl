@@ -1,0 +1,14 @@
+[begin_quest quest="JCP" resource="JCP_Main"]
+[fade post="1.0" inst="true"]
+[set_camera_target id="jcp_intro_camera_point"]
+[wait time="0.5"]
+[fade in="true"]
+join temp_character_1 center
+temp_character_1: Help!
+[progress_quest quest="JCP_Main"]
+[clear time="0.5" step="false"]
+[fade]
+[set_camera_target id="player"]
+[wait time="0.5"]
+[fade in="true"]
+[end_timeline]

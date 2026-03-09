@@ -29,13 +29,17 @@ func check():
 			return negate;
 		
 		CheckType.COMPLETE:
-			if quest_instance.size() <= 0 : return false;
+			if quest_instance.size() <= 0 : 
+				if negate : return true;
+				else : return false;
 			
 			if negate : return !QuestManager.is_quest_complete(quest_name);
 			else : return QuestManager.is_quest_complete(quest_name);
 		
 		CheckType.FAILED:
-			if quest_instance.size() <= 0 : return false;
+			if quest_instance.size() <= 0 : 
+				if negate : return true;
+				else : return false;
 			
 			if negate : return !QuestManager.is_quest_failed(quest_name);
 			else : return QuestManager.is_quest_failed(quest_name);

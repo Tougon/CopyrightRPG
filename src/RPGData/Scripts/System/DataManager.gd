@@ -92,7 +92,7 @@ func initialize_party_data(auto : bool):
 
 func create_new_save():
 	current_save = SaveData.new();
-	current_save.player_scene = "res://src/RPGData/Scenes/TestRoom_2.tscn";
+	current_save.player_scene = "res://src/RPGData/Scenes/Test_Dungeon.tscn";
 	current_save.level_cap = 12;
 	
 	initialize_party_data(false);

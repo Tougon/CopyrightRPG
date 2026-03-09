@@ -12,7 +12,7 @@ func _execute() -> void:
 	OverworldManager.free_camera.set_priority(roundi(camera_priority));
 	
 	if object_id.to_lower() == "player":
-		OverworldManager.free_camera.follow_target = OverworldManager.player_controller;
+		OverworldManager.free_camera.follow_target = OverworldManager.player_controller.camera_offset;
 	else:
 		var obj = CutsceneObjectManager.get_object(object_id);
 		
