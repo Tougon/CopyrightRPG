@@ -148,8 +148,8 @@ size = Vector2(68, 394)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv05q"]
 size = Vector2(68, 394)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_14tnw"]
-size = Vector2(400, 100)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lixmh"]
+size = Vector2(700, 100)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_11r66"]
 shader = ExtResource("10_fxf7h")
@@ -661,20 +661,20 @@ shape = SubResource("RectangleShape2D_yv05q")
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Entryways"]
 material = SubResource("ShaderMaterial_q7y2t")
-position = Vector2(-1, 379)
-scale = Vector2(1.765, 0.783)
+position = Vector2(-1, 394)
 offset = Vector2(0, -282)
 
 [node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Entryways/Shadow" instance=ExtResource("8_dmqvf")]
 position = Vector2(0, -22.9885)
 is_shadow = true
-shape = SubResource("RectangleShape2D_14tnw")
-size = Vector2(4, 1)
+shape = SubResource("RectangleShape2D_lixmh")
+size = Vector2(7, 1)
 color = Color(0, 0, 0, 1)
 energy = 0.25
 falloff = 3.59
 
 [node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Entryways/Shadow"]
+visible = false
 modulate = Color(1, 1, 1, 0.313726)
 z_index = -1
 material = SubResource("CanvasItemMaterial_1npi4")
@@ -3870,6 +3870,7 @@ scale = Vector2(0.615, 1)
 texture = ExtResource("18_v1pyq")
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals"]
+process_mode = 4
 
 [node name="Intro" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers"]
 

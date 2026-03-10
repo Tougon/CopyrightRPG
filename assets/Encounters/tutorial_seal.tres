@@ -12,7 +12,7 @@ point_count = 2
 
 [resource]
 script = ExtResource("1_vlc1k")
-primary_enemy = 5
+primary_enemy = 19
 odds = 1.0
 can_flee = false
 ignore_flee_mechanics = false

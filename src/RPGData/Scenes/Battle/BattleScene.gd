@@ -38,6 +38,7 @@ var _can_flee_this_turn : bool = true;
 # Result caching
 var _reward_items : Array[Item];
 var _learned_moves : Dictionary;
+var _learned_this_turn : bool = false;
 
 # Enemy modifiers
 var _current_num_entities : int = 1;
@@ -312,6 +313,7 @@ func _action_phase():
 	while turn_order.size() > 0:
 		var entity = turn_order[0]
 		EventManager.on_entity_move.emit(entity);
+		_learned_this_turn = false;
 		
 		if entity.is_defeated || _all_players_defeated() || _all_enemies_defeated():
 			turn_order.remove_at(0);
@@ -640,6 +642,22 @@ func _action_phase():
 		
 		turn_order.remove_at(0);
 		turn_order.sort_custom(_compare_speed);
+		
+		if _tutorial == Encounter.Tutorial.SEALING && _learned_this_turn :
+			_tutorial = Encounter.Tutorial.NONE;
+			
+			players[0].tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_1_00"));
+			await EventManager.on_sequence_queue_empty;
+			
+			players[1].tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_1_01"));
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_1_02"));
+			await EventManager.on_sequence_queue_empty;
 	
 	await get_tree().process_frame;
 	_end_phase();
@@ -743,6 +761,8 @@ func _learn_move_from_seal(learning_entity : EntityController, move : Spell):
 			var dialogue = tr("T_BATTLE_LEARN");
 			dialogue = dialogue.format({ article_def = GrammarManager.get_direct_article(learning_entity.param.entity_name), entity = learning_entity.param.entity_name, spell = tr(move.spell_name_key) });
 			EventManager.on_dialogue_queue.emit(dialogue);
+			
+			_learned_this_turn = true;
 
 
 func _end_phase():

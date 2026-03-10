@@ -19,10 +19,11 @@ func get_effect(luck : float = 1) -> Effect:
 			else :
 				current += (effect.chance);
 		else :
-			if luck != 0 : 
-				current += (effect.chance / luck);
-			else :
-				current += (effect.chance);
+			#if luck != 0 : 
+			
+			#	current += (effect.chance / luck);
+			#else :
+			current += (effect.chance);
 		
 		if random <= current:
 			return effect.effect;
