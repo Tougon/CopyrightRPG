@@ -5,6 +5,7 @@ var players : Array[BattleParamEntity]
 var enemies : Array[Entity]
 var can_flee : bool = true;
 var panic_battle : bool = false;
+var tutorial : Encounter.Tutorial;
 
 func destroy():
 	for player in players:

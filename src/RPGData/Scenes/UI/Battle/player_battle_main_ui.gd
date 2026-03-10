@@ -9,6 +9,7 @@ extends MenuPanel
 @export var eva_display : PlayerStatStageDisplay;
 
 var current_entity : EntityController;
+var _first : bool;
 
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +40,7 @@ func on_tween_end_active(tween_name : String):
 
 func _set_active_entity(entity : EntityController, is_first : bool):
 	current_entity = entity;
+	_first = is_first;
 	
 	atk_display.set_stat_display_value(current_entity.atk_stage);
 	def_display.set_stat_display_value(current_entity.def_stage);
@@ -74,6 +76,21 @@ func on_focus():
 	
 	$"BG Area/Player Options/ScrollContainer/GridContainer/Item".disabled = !current_entity.has_any_items();
 	$"BG Area/Player Options/ScrollContainer".ensure_control_visible(initial_selection);
+	
+	# Tutorial Functions
+	match BattleScene.Instance._tutorial:
+		Encounter.Tutorial.SEALING:
+			if BattleScene.Instance.turn_number == 1 :
+				if _first :
+					initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Skills";
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Attack".disabled = true;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Defend".disabled = true;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Skills".disabled = false;
+				else :
+					initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Attack".disabled = false;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Defend".disabled = false;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Skills".disabled = false;
 
 
 func _show_hide_status(show : bool):

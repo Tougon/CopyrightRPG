@@ -6,7 +6,7 @@
 join temp_character_1 center
 temp_character_1: Help!
 [progress_quest quest="JCP_Main"]
-[clear time="0.5" step="false"]
+[custom_clear]
 [fade]
 [set_camera_target id="player"]
 [wait time="0.5"]

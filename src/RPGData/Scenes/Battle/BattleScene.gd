@@ -42,6 +42,9 @@ var _learned_moves : Dictionary;
 # Enemy modifiers
 var _current_num_entities : int = 1;
 
+var _tutorial : Encounter.Tutorial;
+
+
 func _ready():
 	Instance = self;
 	
@@ -79,6 +82,7 @@ func begin_battle(params : BattleParams):
 	player_item_delta.clear();
 	
 	_can_flee = params.can_flee;
+	_tutorial = params.tutorial;
 	
 	for i in range(BattleManager.MAX_ENEMY_COUNT, params.enemies.size()):
 		_reserve_enemies.append(params.enemies[i]);
@@ -109,13 +113,54 @@ func begin_battle(params : BattleParams):
 	await EventManager.battle_fade_completed;
 	
 	# Print the opening dialogue
-	EventManager.on_dialogue_queue.emit(_get_intro_dialogue(enemies));
-	if _panic_battle : EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_NO"));
-	await EventManager.on_sequence_queue_empty;
-	
-	# Move the player controllers into view
-	EventManager.set_player_group_state.emit(true);
-	await get_tree().create_timer(0.5).timeout
+	match _tutorial :
+		Encounter.Tutorial.NONE:
+			EventManager.on_dialogue_queue.emit(_get_intro_dialogue(enemies));
+			if _panic_battle : EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_NO"));
+			await EventManager.on_sequence_queue_empty;
+			
+			# Move the player controllers into view
+			EventManager.set_player_group_state.emit(true);
+			await get_tree().create_timer(0.5).timeout
+		
+		Encounter.Tutorial.BATTLE:
+			EventManager.on_dialogue_queue.emit(_get_intro_dialogue(enemies));
+			if _panic_battle : EventManager.on_dialogue_queue.emit(tr("T_BATTLE_FLEE_NO"));
+			await EventManager.on_sequence_queue_empty;
+			
+			# Move the player controllers into view
+			EventManager.set_player_group_state.emit(true);
+			await get_tree().create_timer(0.5).timeout
+		
+		Encounter.Tutorial.SEALING:
+			# Move the player controllers into view
+			EventManager.set_player_group_state.emit(true);
+			await get_tree().create_timer(0.5).timeout
+			
+			players[0].tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_0_00"));
+			await EventManager.on_sequence_queue_empty;
+			
+			players[1].tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_0_01"));
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_0_02"));
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_0_03"));
+			await EventManager.on_sequence_queue_empty;
+			
+			players[0].tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_0_04"));
+			await EventManager.on_sequence_queue_empty;
+			
+			players[1].tween.play_tween_name("Entity Ready Up");
+			await get_tree().create_timer(0.2).timeout
+			await get_tree().process_frame;
+			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_0_05"));
 	
 	# Begin the turn
 	_begin_turn();

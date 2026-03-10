@@ -719,5 +719,15 @@ T_TEST_FAIL_4,4: {article_def}{entity} failed to do a thing to {t_article_def}{t
 T_TEST_INACTIVE,{article_def}{entity} is no longer active.,,
 T_TEST_INACTIVE_TARGET,{t_article_def}{t_entity} is no longer active.,,
 
+T_TUTORIAL_SEALING_0_00,"Rats, not again!",,
+T_TUTORIAL_SEALING_0_01,"[color=FFFF00]A[/color], remember how that joker stopped our attacks?",,
+T_TUTORIAL_SEALING_0_02,"I analyzed what he was doing - always on the job - and it's just a cheap trick.",,
+T_TUTORIAL_SEALING_0_03,"What would you say this guy's like?",,
+T_TUTORIAL_SEALING_0_04,"Huh? I guess I'd say he's a bit [color=FFFF00]ODD[/color] looking.",,
+T_TUTORIAL_SEALING_0_05,"Right, focus your mind on an [color=FFFF00]ODD[/color] attack.",,
+
+T_TUTORIAL_SEALING_1_00,"What the?!",,
+T_TUTORIAL_SEALING_1_01,"Exactly as I thought.",,
+
 T_YES,Yes,,
 T_NO,No,,

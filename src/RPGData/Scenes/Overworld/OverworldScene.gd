@@ -255,6 +255,7 @@ func _on_overworld_battle_queued(encounter : Encounter):
 	# Perpare battle parameters
 	var params = BattleParams.new();
 	params.can_flee = encounter.can_flee;
+	params.tutorial = encounter.tutorial;
 	
 	var enemies = encounter.get_encounter_enemies();
 	

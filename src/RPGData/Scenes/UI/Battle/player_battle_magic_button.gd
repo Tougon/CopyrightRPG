@@ -56,6 +56,12 @@ func set_sealing(_sealing : bool):
 		
 		text_label.refresh_text_state();
 		mp_label.refresh_text_state();
+	
+	# Tutorial functions
+	match BattleScene.Instance._tutorial:
+		Encounter.Tutorial.SEALING:
+			if BattleScene.Instance.turn_number == 1 && entity != null && entity.player_id == 0 :
+				disabled = !sealing;
 
 
 func _on_pressed():

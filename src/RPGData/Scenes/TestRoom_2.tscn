@@ -185,6 +185,7 @@ enemy_count_curve = SubResource("Curve_m7hcq")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_sbu6h")
+tutorial = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1ajn"]
 size = Vector2(2041, 2062)
@@ -209,6 +210,7 @@ enemy_count_curve = SubResource("Curve_in7mb")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_6781o")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_jsgub"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -225,6 +227,7 @@ max_enemies = 0
 enemy_count_curve = SubResource("Curve_jsgub")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_rhbyi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -241,6 +244,7 @@ max_enemies = 2
 enemy_count_curve = SubResource("Curve_rhbyi")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_e4f7d"]
 _data = [Vector2(0, 0), 0.0, 2.43244, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -257,6 +261,7 @@ max_enemies = 2
 enemy_count_curve = SubResource("Curve_e4f7d")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hi4at"]
 size = Vector2(2041, 641)
@@ -273,6 +278,7 @@ enemy_count_curve = SubResource("Curve_m7hcq")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_sbu6h")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_t0lam"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -294,6 +300,7 @@ enemy_count_curve = SubResource("Curve_eppv3")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([9, 10])
 additional_enemy_curve = SubResource("Curve_t0lam")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_h2vr7"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -315,6 +322,7 @@ enemy_count_curve = SubResource("Curve_t3jh2")
 required_enemies = Array[int]([9])
 additional_enemies = Array[int]([9, 10])
 additional_enemy_curve = SubResource("Curve_h2vr7")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_syyvl"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -336,6 +344,7 @@ enemy_count_curve = SubResource("Curve_2ixay")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([6])
 additional_enemy_curve = SubResource("Curve_syyvl")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_xh8ds"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -357,6 +366,7 @@ enemy_count_curve = SubResource("Curve_kyt1b")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([12, 13])
 additional_enemy_curve = SubResource("Curve_xh8ds")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_pyc8h"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -378,6 +388,7 @@ enemy_count_curve = SubResource("Curve_4auex")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([12, 13])
 additional_enemy_curve = SubResource("Curve_pyc8h")
+tutorial = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r63lc"]
 size = Vector2(2041, 636)
@@ -402,6 +413,7 @@ enemy_count_curve = SubResource("Curve_fx2qu")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_mgbly")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_wwedi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -423,6 +435,7 @@ enemy_count_curve = SubResource("Curve_s57i0")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([12, 13, 15])
 additional_enemy_curve = SubResource("Curve_wwedi")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_qlru4"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -444,6 +457,7 @@ enemy_count_curve = SubResource("Curve_u7wnp")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_qlru4")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_tx265"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -465,6 +479,7 @@ enemy_count_curve = SubResource("Curve_3x51j")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([16, 16, 17])
 additional_enemy_curve = SubResource("Curve_tx265")
+tutorial = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_52jsb"]
 size = Vector2(2041, 643)
@@ -492,6 +507,7 @@ enemy_count_curve = SubResource("Curve_oi8ft")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_k520c")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_t6oxb"]
 _data = [Vector2(0, 0.5), 0.0, 0.0, 0, 1, Vector2(1, 0.5), 0.0, 0.0, 1, 0]
@@ -513,6 +529,7 @@ enemy_count_curve = SubResource("Curve_i1rnu")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_t6oxb")
+tutorial = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jhi8"]
 texture = ExtResource("2_eurfx")

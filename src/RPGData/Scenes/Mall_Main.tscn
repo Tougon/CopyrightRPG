@@ -159,6 +159,7 @@ enemy_count_curve = SubResource("Curve_in7mb")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_6781o")
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_jsgub"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -175,6 +176,7 @@ max_enemies = 0
 enemy_count_curve = SubResource("Curve_jsgub")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_rhbyi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -191,6 +193,7 @@ max_enemies = 2
 enemy_count_curve = SubResource("Curve_rhbyi")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="Curve" id="Curve_e4f7d"]
 _data = [Vector2(0, 0), 0.0, 2.43244, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -207,6 +210,7 @@ max_enemies = 2
 enemy_count_curve = SubResource("Curve_e4f7d")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hi4at"]
 size = Vector2(2041, 641)

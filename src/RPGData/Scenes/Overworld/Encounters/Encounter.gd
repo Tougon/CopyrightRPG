@@ -1,6 +1,8 @@
 extends Resource
 class_name Encounter;
 
+enum Tutorial { NONE, BATTLE, SEALING }
+
 @export var primary_enemy : int;
 @export_range(0, 1) var odds : float;
 @export var can_flee : bool = true;
@@ -13,6 +15,8 @@ class_name Encounter;
 @export var required_enemies : Array[int];
 @export var additional_enemies : Array[int];
 @export var additional_enemy_curve : Curve;
+
+@export var tutorial : Tutorial;
 
 
 func get_encounter_enemies() -> Array[int] :
