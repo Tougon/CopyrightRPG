@@ -13,6 +13,7 @@ var _can_collide : bool = true;
 
 func _on_body_entered(body : Node2D) -> void:
 	if !_can_collide || !can_process() || !instant : return;
+	if !(body is RPGPlayerController) : return;
 	if body is RPGPlayerController && body._exiting : return;
 	
 	var teleport_pos = global_position;
@@ -23,6 +24,7 @@ func _on_body_entered(body : Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if !_can_collide || !can_process() || instant : return;
+	if !(body is RPGPlayerController) : return;
 	if body is RPGPlayerController && body._exiting : return;
 	
 	_can_collide = false;
