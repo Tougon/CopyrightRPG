@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=130 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -252,6 +252,63 @@ active_conditions = Array[ExtResource("33_m4814")]([SubResource("Resource_05gx2"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ytvc"]
 size = Vector2(118, 574)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7uk3"]
+size = Vector2(127, 822)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8cmm"]
+size = Vector2(3445, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpypn"]
+size = Vector2(2184, 630)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8sva"]
+size = Vector2(396, 697)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h81s"]
+size = Vector2(359, 1336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0dny"]
+size = Vector2(395, 739)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab2xd"]
+size = Vector2(2176, 1462)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyin4"]
+size = Vector2(564, 2117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57htm"]
+size = Vector2(1733, 1122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8j7l"]
+size = Vector2(1733, 1122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgc5j"]
+size = Vector2(473, 186)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kb7ir"]
+size = Vector2(473, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw5by"]
+size = Vector2(744, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5tk4"]
+size = Vector2(2213, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_416av"]
+size = Vector2(3805, 380)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l61ev"]
+size = Vector2(1260, 1305)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n87pb"]
+size = Vector2(1692, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6j74"]
+size = Vector2(80, 1121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3nie"]
+size = Vector2(625, 711)
 
 [sub_resource type="Curve" id="Curve_6781o"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -616,6 +673,74 @@ z_index = 1
 [node name="StaticBody2D" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/Collision"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/Collision/StaticBody2D"]
+polygon = PackedVector2Array(-476, 0, -476, -104, 0, -104, 0, -84, -470, -84, -470, -20, 0, -20, 0, 0)
+
+[node name="EscalatorUp2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators"]
+y_sort_enabled = true
+position = Vector2(-279, -2018)
+scale = Vector2(-1, 1)
+
+[node name="Visual" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2"]
+y_sort_enabled = true
+
+[node name="Front" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Visual"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Visual/Front"]
+texture = ExtResource("9_1nhbp")
+offset = Vector2(-244, -234)
+
+[node name="Stairs" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Visual"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Visual/Stairs"]
+position = Vector2(0, -96)
+texture = ExtResource("17_sjn2x")
+offset = Vector2(-244, -138)
+
+[node name="Rail" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Visual"]
+y_sort_enabled = true
+
+[node name="Bottom" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Visual/Rail"]
+position = Vector2(0, -96)
+texture = ExtResource("18_emcwo")
+offset = Vector2(-244, -138)
+
+[node name="FloorTrigger" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2" node_paths=PackedStringArray("teleport_target") instance=ExtResource("18_3o3iq")]
+z_index = 20
+position = Vector2(-313, -52)
+end_floor = 1
+teleport = true
+teleport_target = NodePath("../../../../../../../2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorTrigger/Start")
+
+[node name="Start" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger" index="0"]
+position = Vector2(38, 0)
+
+[node name="End" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger" index="1"]
+position = Vector2(-38, 0)
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_n8n8a")
+
+[node name="FloorChangeZone" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2" instance=ExtResource("19_lnp3b")]
+position = Vector2(-32, -54)
+
+[node name="Start" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorChangeZone" index="0"]
+position = Vector2(-36, 33)
+
+[node name="End" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorChangeZone" index="1"]
+position = Vector2(-350, -286)
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorChangeZone/Area2D" index="0"]
+position = Vector2(-203, -5)
+shape = SubResource("RectangleShape2D_1bhqj")
+
+[node name="Collision" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2"]
+z_index = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/Collision/StaticBody2D"]
 polygon = PackedVector2Array(-476, 0, -476, -104, 0, -104, 0, -84, -470, -84, -470, -20, 0, -20, 0, 0)
 
 [node name="Entryways" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items"]
@@ -3845,7 +3970,7 @@ shape = SubResource("RectangleShape2D_lw5pa")
 
 [node name="Mirror" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("target_nodes", "reflections")]
 visible = false
-position = Vector2(587, -2159.84)
+position = Vector2(-297, -349)
 script = ExtResource("16_isyop")
 offset = Vector2(0, 64)
 target_nodes = [NodePath("../../../../../../../Player Controller")]
@@ -3853,20 +3978,21 @@ reflections = [NodePath("Reflection/Sprite2D")]
 
 [node name="Visual" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Mirror"]
 position = Vector2(0, -64)
+scale = Vector2(2.415, 1)
 
 [node name="Reflection" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Mirror"]
 clip_children = 2
 position = Vector2(0, -64)
-scale = Vector2(-10, 8)
+scale = Vector2(-10, 20)
 texture = ExtResource("12_ec4gi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Mirror/Reflection"]
-scale = Vector2(0.1, 0.125)
+scale = Vector2(0.1, 0.05)
 texture = ExtResource("16_87msd")
 
 [node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Mirror"]
 position = Vector2(0, -64)
-scale = Vector2(0.615, 1)
+scale = Vector2(1.15, 2.34)
 texture = ExtResource("18_v1pyq")
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals"]
@@ -3909,7 +4035,122 @@ object_id = "TutorialTrigger"
 shape = SubResource("RectangleShape2D_8ytvc")
 
 [node name="Collision" type="Node2D" parent="Areas/Mall Main/1F/Environment"]
-visible = false
+
+[node name="Temp" type="Node2D" parent="Areas/Mall Main/1F/Environment/Collision"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D"]
+position = Vector2(-1656.5, -43)
+shape = SubResource("RectangleShape2D_j7uk3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D2"]
+position = Vector2(2.5, -485.5)
+shape = SubResource("RectangleShape2D_n8cmm")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D3"]
+position = Vector2(2426, -1413)
+shape = SubResource("RectangleShape2D_lpypn")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D4"]
+position = Vector2(1532, -819.5)
+shape = SubResource("RectangleShape2D_k8sva")
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D5"]
+position = Vector2(3335.5, -176)
+shape = SubResource("RectangleShape2D_8h81s")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D6"]
+position = Vector2(1531.5, -2011.5)
+shape = SubResource("RectangleShape2D_b0dny")
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D7"]
+position = Vector2(2422, -3098)
+shape = SubResource("RectangleShape2D_ab2xd")
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D8"]
+position = Vector2(607, -3375.5)
+shape = SubResource("RectangleShape2D_wyin4")
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D9"]
+position = Vector2(506.5, -1205)
+shape = SubResource("RectangleShape2D_57htm")
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D10"]
+position = Vector2(506.5, -1205)
+shape = SubResource("RectangleShape2D_e8j7l")
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D11"]
+position = Vector2(-40.5, -1828)
+shape = SubResource("RectangleShape2D_lgc5j")
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D12"]
+position = Vector2(-40.5, -2314)
+shape = SubResource("RectangleShape2D_kb7ir")
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D13"]
+position = Vector2(-12, -2499)
+shape = SubResource("RectangleShape2D_uw5by")
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D14"]
+position = Vector2(-539.5, -2804)
+shape = SubResource("RectangleShape2D_l5tk4")
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D15"]
+position = Vector2(-2255.5, -1570)
+shape = SubResource("RectangleShape2D_416av")
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D16"]
+position = Vector2(-2760, -3116.5)
+shape = SubResource("RectangleShape2D_l61ev")
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D17"]
+position = Vector2(-1871, -3669)
+shape = SubResource("RectangleShape2D_n87pb")
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D18"]
+position = Vector2(-345, -3891.5)
+shape = SubResource("RectangleShape2D_p6j74")
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D19"]
+position = Vector2(-1334.5, -3405.5)
+shape = SubResource("RectangleShape2D_t3nie")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/Mall Main/1F"]
 
@@ -4054,6 +4295,81 @@ z_index = 1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/Collision/StaticBody2D"]
 polygon = PackedVector2Array(-476, 0, -476, -104, 0, -104, 0, -84, -470, -84, -470, -20, 0, -20, 0, 0)
 
+[node name="EscalatorDown2" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators"]
+y_sort_enabled = true
+position = Vector2(197, -2017)
+
+[node name="Visual" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2"]
+y_sort_enabled = true
+position = Vector2(-477, 0)
+scale = Vector2(-1, 1)
+
+[node name="Front" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Visual"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Visual/Front"]
+texture = ExtResource("9_1nhbp")
+offset = Vector2(-244, -64)
+region_enabled = true
+region_rect = Rect2(0, 0, 488, 129)
+
+[node name="Stairs" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Visual"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Visual/Stairs"]
+position = Vector2(0, -96)
+texture = ExtResource("17_sjn2x")
+offset = Vector2(-244, 32)
+region_enabled = true
+region_rect = Rect2(0, 0, 488, 128)
+
+[node name="Rail" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Visual"]
+y_sort_enabled = true
+
+[node name="Bottom" type="Sprite2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Visual/Rail"]
+position = Vector2(0, -96)
+texture = ExtResource("18_emcwo")
+offset = Vector2(-244, 32)
+region_enabled = true
+region_rect = Rect2(0, 0, 488, 128)
+
+[node name="FloorTrigger" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2" node_paths=PackedStringArray("teleport_target") instance=ExtResource("18_3o3iq")]
+z_index = 20
+position = Vector2(-158, -52)
+start_floor = 1
+teleport = true
+teleport_target = NodePath("../../../../../../../1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger/Start")
+
+[node name="Start" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorTrigger" index="0"]
+position = Vector2(38, 0)
+
+[node name="End" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorTrigger" index="1"]
+position = Vector2(-38, 0)
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorTrigger/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_1d48g")
+
+[node name="FloorChangeZone" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2" instance=ExtResource("19_lnp3b")]
+position = Vector2(-32, -54)
+
+[node name="Start" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorChangeZone" index="0"]
+position = Vector2(-36, 33)
+
+[node name="End" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorChangeZone" index="1"]
+position = Vector2(-350, 341)
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorChangeZone/Area2D" index="0"]
+position = Vector2(-203, -5)
+shape = SubResource("RectangleShape2D_1bhqj")
+
+[node name="Collision" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2"]
+z_index = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/Collision/StaticBody2D"]
+polygon = PackedVector2Array(-476, 0, -476, -104, 0, -104, 0, -84, -470, -84, -470, -20, 0, -20, 0, 0)
+
 [node name="Entryways" type="Node2D" parent="Areas/Mall Main/2F/Environment/Visuals/Sorted Items"]
 y_sort_enabled = true
 
@@ -4140,7 +4456,6 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(0, 280)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -4255,7 +4570,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, 200)
+position = Vector2(0, -80)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -4268,7 +4583,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(0, 200)
+position = Vector2(0, -80)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
@@ -4295,9 +4610,13 @@ draw_limits = true
 
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorTrigger"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorChangeZone"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorChangeZone"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Intro/IntroTrigger"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial/TutorialTrigger"]
 [editable path="Areas/Mall Main/1F/Encounter Areas/EncounterArea (Low)"]
 [editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorTrigger"]
 [editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorChangeZone"]
+[editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorTrigger"]
+[editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorChangeZone"]
 [editable path="Areas/Mall Main/2F/Encounter Areas/EncounterArea (Low)"]
