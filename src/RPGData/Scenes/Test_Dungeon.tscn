@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=151 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -38,13 +38,20 @@
 [ext_resource type="VideoStream" path="res://video/boss.ogv" id="22_63365"]
 [ext_resource type="Shader" path="res://assets/Shaders/simple_post_process.gdshader" id="23_gjmjg"]
 [ext_resource type="PackedScene" uid="uid://drqpg4ss303dj" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.tscn" id="24_7k6yk"]
-[ext_resource type="Texture2D" uid="uid://dsra10ebllpt3" path="res://assets/Sprites/Overworld/jcp/pants_a_side.png" id="24_pheoi"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/overworld_fade_ui.gd" id="25_i7awl"]
 [ext_resource type="PackedScene" uid="uid://kli822acdl5m" path="res://addons/camera-effects/blur.tscn" id="26_euf6u"]
 [ext_resource type="Shader" path="res://addons/camera-effects/blur.gdshader" id="27_07aef"]
+[ext_resource type="Texture2D" uid="uid://dp32hrkgldqqw" path="res://assets/Sprites/Overworld/jcp/register_mask.png" id="27_8st7j"]
+[ext_resource type="Texture2D" uid="uid://ehbnjskaovq3" path="res://assets/Sprites/Overworld/jcp/register.png" id="27_55b6k"]
 [ext_resource type="PackedScene" uid="uid://cf1adbox8xy7e" path="res://addons/camera-effects/grain_noise.tscn" id="28_07ip4"]
+[ext_resource type="Texture2D" uid="uid://r3bxcswu3bkv" path="res://assets/Sprites/Overworld/common/security_mask.png" id="28_nw4mq"]
+[ext_resource type="Texture2D" uid="uid://d3imwed2yatey" path="res://assets/Sprites/Overworld/jcp/platform_mask.png" id="28_ssm8i"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="29_7n00j"]
+[ext_resource type="Texture2D" uid="uid://x0wu77g4vtn" path="res://assets/Sprites/Overworld/common/security.png" id="29_22l6v"]
+[ext_resource type="Texture2D" uid="uid://bnb24k28y3y1f" path="res://assets/Sprites/Overworld/jcp/platform.png" id="29_swrq1"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="30_bx0ms"]
+[ext_resource type="Texture2D" uid="uid://dgr2f2ly2ilge" path="res://assets/Sprites/Overworld/common/guard_pole.png" id="30_lhqgq"]
+[ext_resource type="Texture2D" uid="uid://dsmr6kogsn6to" path="res://assets/Sprites/Overworld/jcp/manequin.png" id="30_n3dwd"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="30_pvc07"]
 [ext_resource type="PackedScene" uid="uid://bhgf2upgu87m3" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueTrigger.tscn" id="31_nwt8f"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="31_ojes2"]
@@ -53,6 +60,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="33_m4814"]
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="33_wj12t"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="34_1iqkb"]
+[ext_resource type="Texture2D" uid="uid://d02dppeve2otn" path="res://assets/Sprites/Overworld/common/pillar.png" id="34_2wfvn"]
 [ext_resource type="Resource" uid="uid://bnvdca7lgydy3" path="res://assets/Tweens/Transition/fade_in.tres" id="35_mmu6m"]
 [ext_resource type="Resource" uid="uid://b7evdmbcxg6wl" path="res://assets/Tweens/Transition/fade_out.tres" id="36_dvx48"]
 [ext_resource type="Resource" uid="uid://c2018oj6gvq61" path="res://assets/Tweens/Transition/fade_in_instant.tres" id="37_88vpl"]
@@ -115,12 +123,6 @@ blend_mode = 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_sls5h"]
 radius = 320.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8n8a"]
-size = Vector2(20, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhqj"]
-size = Vector2(470, 74)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7y2t"]
 shader = ExtResource("10_fxf7h")
 shader_parameter/origin = null
@@ -136,42 +138,26 @@ shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
 shader_parameter/line_thickness = 0.3
 shader_parameter/add_margins = true
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_47top"]
-size = Vector2(400, 436)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lixmh"]
+size = Vector2(700, 100)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1npi4"]
 blend_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8n8a"]
+size = Vector2(20, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bhqj"]
+size = Vector2(470, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47top"]
+size = Vector2(400, 436)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bho7s"]
 size = Vector2(68, 394)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv05q"]
 size = Vector2(68, 394)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lixmh"]
-size = Vector2(700, 100)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_11r66"]
-shader = ExtResource("10_fxf7h")
-shader_parameter/origin = null
-shader_parameter/active_zlights = 0
-shader_parameter/light_origins = null
-shader_parameter/light_is_circle = null
-shader_parameter/light_size = null
-shader_parameter/light_color = null
-shader_parameter/light_energy = null
-shader_parameter/light_falloff = null
-shader_parameter/shadow = null
-shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
-shader_parameter/line_thickness = 0.0
-shader_parameter/add_margins = false
-shader_parameter/falloff_mask = ExtResource("18_5yve6")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j54f"]
-size = Vector2(99.735, 29.12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cywo8"]
-size = Vector2(105, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r1ft6"]
 shader = ExtResource("10_fxf7h")
@@ -210,6 +196,119 @@ shader_parameter/falloff_mask = ExtResource("18_8mytk")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5pa"]
 size = Vector2(124, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11r66"]
+shader = ExtResource("10_fxf7h")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("18_5yve6")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j54f"]
+size = Vector2(99.735, 29.12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cywo8"]
+size = Vector2(105, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x524e"]
+shader = ExtResource("10_fxf7h")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("27_8st7j")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a72nh"]
+size = Vector2(384, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_we25e"]
+shader = ExtResource("10_fxf7h")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("28_nw4mq")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxliy"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntipd"]
+size = Vector2(64, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo6oa"]
+size = Vector2(38, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s42ul"]
+size = Vector2(37, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utolv"]
+shader = ExtResource("10_fxf7h")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("28_ssm8i")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7evjt"]
+size = Vector2(256, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkg4o"]
+size = Vector2(258, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oou6c"]
+shader = ExtResource("10_fxf7h")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("19_s5og8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1kun"]
+size = Vector2(84, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1g6rg"]
+size = Vector2(64, 64)
 
 [sub_resource type="Resource" id="Resource_in4h8"]
 script = ExtResource("33_m4814")
@@ -257,7 +356,7 @@ size = Vector2(118, 574)
 size = Vector2(127, 822)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8cmm"]
-size = Vector2(3445, 131)
+size = Vector2(3445, 167)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lpypn"]
 size = Vector2(2184, 630)
@@ -539,6 +638,7 @@ process_mode = 4
 visible = false
 
 [node name="Spot Light" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+visible = false
 position = Vector2(0, 130)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light"]
@@ -555,6 +655,7 @@ energy = 0.2
 falloff = 25.0
 
 [node name="Spot Light2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+visible = false
 position = Vector2(-556, 130)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light2"]
@@ -571,6 +672,7 @@ energy = 0.2
 falloff = 25.0
 
 [node name="Spot Light3" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+visible = false
 position = Vector2(-1092, 130)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light3"]
@@ -601,6 +703,28 @@ size = Vector2(3.2, 0)
 color = Color(0.88, 0.71984, 0.4224, 0.2)
 energy = 2.25
 falloff = 25.0
+
+[node name="Entry Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting"]
+material = SubResource("ShaderMaterial_q7y2t")
+position = Vector2(-1, 394)
+offset = Vector2(0, -282)
+
+[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Entry Shadow" instance=ExtResource("8_dmqvf")]
+position = Vector2(0, -22.9885)
+is_shadow = true
+shape = SubResource("RectangleShape2D_lixmh")
+size = Vector2(7, 1)
+color = Color(0, 0, 0, 1)
+energy = 0.25
+falloff = 3.59
+
+[node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Entry Shadow"]
+modulate = Color(1, 1, 1, 0.313726)
+z_index = -1
+material = SubResource("CanvasItemMaterial_1npi4")
+position = Vector2(-1.69972, -33.2056)
+scale = Vector2(40.495, 5.1)
+texture = ExtResource("12_ec4gi")
 
 [node name="Sorted Items" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals"]
 y_sort_enabled = true
@@ -784,56 +908,11 @@ position = Vector2(0, 32)
 position = Vector2(215, -219)
 shape = SubResource("RectangleShape2D_yv05q")
 
-[node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Entryways"]
-material = SubResource("ShaderMaterial_q7y2t")
-position = Vector2(-1, 394)
-offset = Vector2(0, -282)
-
-[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Entryways/Shadow" instance=ExtResource("8_dmqvf")]
-position = Vector2(0, -22.9885)
-is_shadow = true
-shape = SubResource("RectangleShape2D_lixmh")
-size = Vector2(7, 1)
-color = Color(0, 0, 0, 1)
-energy = 0.25
-falloff = 3.59
-
-[node name="Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Entryways/Shadow"]
-visible = false
-modulate = Color(1, 1, 1, 0.313726)
-z_index = -1
-material = SubResource("CanvasItemMaterial_1npi4")
-position = Vector2(-1.69972, -33.2056)
-scale = Vector2(24.5, 5.1)
-texture = ExtResource("12_ec4gi")
-
 [node name="Props" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items"]
 y_sort_enabled = true
 
-[node name="Box" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
-position = Vector2(-233, -443)
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
-material = SubResource("ShaderMaterial_11r66")
-position = Vector2(0, -33)
-texture = ExtResource("19_v46jp")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1.715, 31.785)
-shape = SubResource("RectangleShape2D_2j54f")
-size = Vector2(99.735, 29.12)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
-position = Vector2(0, 10)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box/Collider"]
-position = Vector2(-1.5, -11)
-shape = SubResource("RectangleShape2D_cywo8")
-
 [node name="Rack_Side" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-458, -271)
+position = Vector2(-407, 32)
 script = ExtResource("18_wlnwg")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("20_h7hmv")])
@@ -931,7 +1010,7 @@ position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_lw5pa")
 
 [node name="Rack_Side2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-620, -271)
+position = Vector2(-410, 153)
 script = ExtResource("18_wlnwg")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("20_h7hmv")])
@@ -1029,7 +1108,7 @@ position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_lw5pa")
 
 [node name="Rack_Side3" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-782, -271)
+position = Vector2(-413, 256)
 script = ExtResource("18_wlnwg")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("20_h7hmv")])
@@ -1127,7 +1206,7 @@ position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_lw5pa")
 
 [node name="Rack_Side4" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-944, -271)
+position = Vector2(414, 32)
 script = ExtResource("18_wlnwg")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("20_h7hmv")])
@@ -1225,7 +1304,7 @@ position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_lw5pa")
 
 [node name="Rack_Side5" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1106, -271)
+position = Vector2(411, 153)
 script = ExtResource("18_wlnwg")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("20_h7hmv")])
@@ -1323,7 +1402,7 @@ position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_lw5pa")
 
 [node name="Rack_Side6" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1268, -271)
+position = Vector2(408, 256)
 script = ExtResource("18_wlnwg")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("20_h7hmv")])
@@ -1420,2553 +1499,349 @@ collision_layer = 3
 position = Vector2(1, -6)
 shape = SubResource("RectangleShape2D_lw5pa")
 
-[node name="Rack_Side7" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1430, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Box" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
+position = Vector2(-21, -594)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
+material = SubResource("ShaderMaterial_11r66")
+position = Vector2(0, -33)
+texture = ExtResource("19_v46jp")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(1.715, 31.785)
+shape = SubResource("RectangleShape2D_2j54f")
+size = Vector2(99.735, 29.12)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
+position = Vector2(0, 10)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side7/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box/Collider"]
+position = Vector2(-1.5, -11)
+shape = SubResource("RectangleShape2D_cywo8")
 
-[node name="Rack_Side8" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1592, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Register" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(1, -400)
+scale = Vector2(1, 0.75)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Register"]
+material = SubResource("ShaderMaterial_x524e")
+position = Vector2(0, -112)
+texture = ExtResource("27_55b6k")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Register/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 65)
+shape = SubResource("RectangleShape2D_a72nh")
+size = Vector2(384, 128)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Register"]
+position = Vector2(-21, -183)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side8/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Register/Collider"]
+polygon = PackedVector2Array(-107, -57, -171, -57, -172, 199, 213, 199, 213, -57, 147, -57, 147, 7, -107, 7)
 
-[node name="Rack_Side9" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-458, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Tape" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+self_modulate = Color(0.729412, 0, 0, 1)
+position = Vector2(-281, -472)
+scale = Vector2(7.52, 0.8)
+texture = ExtResource("12_ec4gi")
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Tape"]
+scale = Vector2(-0.125, 0.125)
+texture = ExtResource("18_v1pyq")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="GuardPole1" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(-223, -384)
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole1"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -48)
+texture = ExtResource("30_lhqgq")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole1/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_oxliy")
+size = Vector2(64, 16)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole1"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side9/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole1/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_ntipd")
 
-[node name="Rack_Side10" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-620, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="GuardPole2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(-338, -384)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole2"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -48)
+texture = ExtResource("30_lhqgq")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole2/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_oxliy")
+size = Vector2(64, 16)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole2"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side10/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole2/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_ntipd")
 
-[node name="Rack_Side11" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-782, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Tape2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+self_modulate = Color(0.729412, 0, 0, 1)
+position = Vector2(261.16, -472)
+scale = Vector2(7.52, 0.8)
+texture = ExtResource("12_ec4gi")
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Tape2"]
+scale = Vector2(-0.125, 0.125)
+texture = ExtResource("18_v1pyq")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="GuardPole3" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(319.16, -384)
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole3"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -48)
+texture = ExtResource("30_lhqgq")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole3/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_oxliy")
+size = Vector2(64, 16)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole3"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side11/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole3/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_ntipd")
 
-[node name="Rack_Side12" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-944, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="GuardPole4" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(204.16, -384)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole4"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -48)
+texture = ExtResource("30_lhqgq")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole4/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_oxliy")
+size = Vector2(64, 16)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole4"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side12/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/GuardPole4/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_ntipd")
 
-[node name="Rack_Side13" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1106, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Security1" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(-222, 340)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security1"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -80)
+texture = ExtResource("29_22l6v")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security1/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 65)
+shape = SubResource("RectangleShape2D_fo6oa")
+size = Vector2(38, 32)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security1"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side13/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security1/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_s42ul")
 
-[node name="Rack_Side14" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1268, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Security2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(-31, 340)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security2"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -80)
+texture = ExtResource("29_22l6v")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security2/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 65)
+shape = SubResource("RectangleShape2D_fo6oa")
+size = Vector2(38, 32)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security2"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side14/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security2/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_s42ul")
 
-[node name="Rack_Side15" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1430, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Security3" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(31, 340)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security3"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -80)
+texture = ExtResource("29_22l6v")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security3/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 65)
+shape = SubResource("RectangleShape2D_fo6oa")
+size = Vector2(38, 32)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security3"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side15/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security3/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_s42ul")
 
-[node name="Rack_Side16" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-1592, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("20_h7hmv")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+[node name="Security4" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(226, 340)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security4"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -80)
+texture = ExtResource("29_22l6v")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security4/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 65)
+shape = SubResource("RectangleShape2D_fo6oa")
+size = Vector2(38, 32)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security4"]
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side16/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Security4/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_s42ul")
 
-[node name="Rack_Side17" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2187, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
+[node name="Platform" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+position = Vector2(1, -124)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform"]
+material = SubResource("ShaderMaterial_utolv")
+position = Vector2(0, 10)
+texture = ExtResource("29_swrq1")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform/Sprite2D" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_7evjt")
+size = Vector2(256, 32)
 static_receiver = false
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform"]
+position = Vector2(0, 25)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side17/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform/Collider"]
+shape = SubResource("RectangleShape2D_pkg4o")
 
-[node name="Rack_Side18" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2349, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
+[node name="Mannequin" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform"]
+material = SubResource("ShaderMaterial_oou6c")
+position = Vector2(-57, -5)
+texture = ExtResource("30_n3dwd")
+offset = Vector2(0, -84)
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform/Mannequin" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t1kun")
+size = Vector2(84, 20)
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
+[node name="Mannequin2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform"]
+material = SubResource("ShaderMaterial_oou6c")
+position = Vector2(60, -5)
+texture = ExtResource("30_n3dwd")
+offset = Vector2(0, -84)
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Platform/Mannequin2" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t1kun")
+size = Vector2(84, 20)
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
+[node name="Pillar1" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes", "reflections")]
+position = Vector2(-376, -280)
+script = ExtResource("16_isyop")
+offset = Vector2(0, -84)
+target_nodes = [NodePath("../../../../../../../../Player Controller")]
+reflections = [NodePath("Reflection/Sprite2D")]
 
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Visual" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar1"]
+modulate = Color(0.7938, 0.81, 0.81, 1)
+texture = ExtResource("34_2wfvn")
+offset = Vector2(0, -224)
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
+[node name="Reflection" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar1"]
+clip_children = 2
+position = Vector2(0, -192)
+scale = Vector2(-3.4, 23.4)
+texture = ExtResource("12_ec4gi")
 
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar1/Reflection"]
+scale = Vector2(0.294, 0.043)
+texture = ExtResource("16_87msd")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar1"]
+position = Vector2(0, -190)
+scale = Vector2(0.46, 2.96)
+texture = ExtResource("18_v1pyq")
 
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar1"]
+position = Vector2(0, -32)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side18/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar1/Collider"]
+shape = SubResource("RectangleShape2D_1g6rg")
 
-[node name="Rack_Side19" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2511, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
+[node name="Pillar2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes", "reflections")]
+position = Vector2(374, -280)
+script = ExtResource("16_isyop")
+offset = Vector2(0, -84)
+target_nodes = [NodePath("../../../../../../../../Player Controller")]
+reflections = [NodePath("Reflection/Sprite2D")]
 
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Visual" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar2"]
+modulate = Color(0.7938, 0.81, 0.81, 1)
+texture = ExtResource("34_2wfvn")
+offset = Vector2(0, -224)
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
+[node name="Reflection" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar2"]
+clip_children = 2
+position = Vector2(0, -192)
+scale = Vector2(-3.4, 23.4)
+texture = ExtResource("12_ec4gi")
 
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar2/Reflection"]
+scale = Vector2(0.294, 0.043)
+texture = ExtResource("16_87msd")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar2"]
+position = Vector2(0, -190)
+scale = Vector2(0.46, 2.96)
+texture = ExtResource("18_v1pyq")
 
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19"]
-position = Vector2(0, -5)
+[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar2"]
+position = Vector2(0, -32)
 collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side19/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side20" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2673, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side20/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side21" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2835, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side21/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side22" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2997, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side22/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side23" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-3159, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side23/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side24" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-3321, -271)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side24/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side25" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2187, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side25/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side26" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2349, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side26/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side27" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2511, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side27/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side28" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2673, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side28/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side29" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2835, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side29/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side30" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-2997, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side30/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side31" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-3159, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side31/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
-
-[node name="Rack_Side32" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("items")]
-position = Vector2(-3321, -433)
-script = ExtResource("18_wlnwg")
-items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
-textures = Array[Texture2D]([ExtResource("24_pheoi")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.231373, 0.517647, 0.717647, 1), Color(0.120303, 0.326284, 0.529778, 1), Color(0.78, 0.6942, 0.5226, 1), Color(0.27, 0.208575, 0.0945, 1), Color(0.62, 0.3596, 0.4464, 1)])
-
-[node name="Item1" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-47, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Item1" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item2" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-31, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Item2" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item3" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(-15, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Item3" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_q7jps")
-position = Vector2(0, -78)
-texture = ExtResource("17_8bixw")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item4" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(18, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Item4" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item5" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(34, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Item5" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Item6" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-material = SubResource("ShaderMaterial_r1ft6")
-position = Vector2(50, 15)
-texture = ExtResource("20_h7hmv")
-offset = Vector2(0, -96)
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Item6" instance=ExtResource("18_mdkp4")]
-position = Vector2(1, -7)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32"]
-position = Vector2(0, -5)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack_Side32/Collider"]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_lw5pa")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pillar2/Collider"]
+shape = SubResource("RectangleShape2D_1g6rg")
 
 [node name="Mirror" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("target_nodes", "reflections")]
 visible = false
@@ -4037,6 +1912,7 @@ shape = SubResource("RectangleShape2D_8ytvc")
 [node name="Collision" type="Node2D" parent="Areas/Mall Main/1F/Environment"]
 
 [node name="Temp" type="Node2D" parent="Areas/Mall Main/1F/Environment/Collision"]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
 
@@ -4047,7 +1923,7 @@ shape = SubResource("RectangleShape2D_j7uk3")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D2"]
-position = Vector2(2.5, -485.5)
+position = Vector2(2.5, -467.5)
 shape = SubResource("RectangleShape2D_n8cmm")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
@@ -4456,6 +2332,7 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
+position = Vector2(0, 214)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -4570,7 +2447,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, -80)
+position = Vector2(0, 134)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -4583,7 +2460,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(0, -80)
+position = Vector2(0, 134)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
