@@ -1,87 +1,47 @@
-[gd_scene load_steps=33 format=3 uid="uid://blcq1iqrvxi3o"]
+[gd_scene load_steps=25 format=3 uid="uid://blcq1iqrvxi3o"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
-[ext_resource type="Resource" uid="uid://1dj4k34vderk" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_New.tres" id="2_bbgsx"]
+[ext_resource type="Resource" uid="uid://1dj4k34vderk" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_N.tres" id="2_bbgsx"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_data.gd" id="2_jv2ym"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="3_0qmwc"]
+[ext_resource type="Resource" uid="uid://b80hejghbakrm" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_E.tres" id="2_psijd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_group.gd" id="4_0t1r4"]
-[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="4_ljrgu"]
-[ext_resource type="Texture2D" uid="uid://6u0cxgfxr404" path="res://assets/Sprites/Overworld/player_main/sketch_shade_back.png" id="5_387h1"]
+[ext_resource type="Resource" uid="uid://dy3daxkowpbo5" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_S.tres" id="5_3aaod"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="6_kd104"]
+[ext_resource type="Resource" uid="uid://ca0kl2ka5kt1d" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_W.tres" id="8_y7ofm"]
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="9_886d1"]
 [ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/player_main/player_main_light_mask.png" id="10_dtr0a"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="11_iuhc3"]
 [ext_resource type="Shader" path="res://assets/Shaders/2d_shadows.gdshader" id="13_2shhq"]
 [ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="14_uuk4g"]
 
-[sub_resource type="Resource" id="Resource_jnirq"]
-script = ExtResource("4_ljrgu")
-frame_sprite = ExtResource("5_387h1")
-frame_time = 0.1
-sfx_key = ""
-
-[sub_resource type="Resource" id="Resource_wvmvj"]
-script = ExtResource("3_0qmwc")
-sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_jnirq")])
-
 [sub_resource type="Resource" id="Resource_yglfv"]
 script = ExtResource("4_0t1r4")
-north = SubResource("Resource_wvmvj")
-east = ExtResource("2_bbgsx")
-south = ExtResource("2_bbgsx")
-west = ExtResource("2_bbgsx")
-
-[sub_resource type="Resource" id="Resource_3b6rm"]
-script = ExtResource("4_ljrgu")
-frame_sprite = ExtResource("5_387h1")
-frame_time = 0.1
-sfx_key = ""
-
-[sub_resource type="Resource" id="Resource_eu1cv"]
-script = ExtResource("3_0qmwc")
-sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_3b6rm")])
+north = ExtResource("2_bbgsx")
+east = ExtResource("2_psijd")
+south = ExtResource("5_3aaod")
+west = ExtResource("8_y7ofm")
 
 [sub_resource type="Resource" id="Resource_lo5eu"]
 script = ExtResource("4_0t1r4")
-north = SubResource("Resource_eu1cv")
-east = ExtResource("2_bbgsx")
-south = ExtResource("2_bbgsx")
-west = ExtResource("2_bbgsx")
-
-[sub_resource type="Resource" id="Resource_h6vgw"]
-script = ExtResource("4_ljrgu")
-frame_sprite = ExtResource("5_387h1")
-frame_time = 0.1
-sfx_key = ""
-
-[sub_resource type="Resource" id="Resource_cu5pi"]
-script = ExtResource("3_0qmwc")
-sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_h6vgw")])
+north = ExtResource("2_bbgsx")
+east = ExtResource("2_psijd")
+south = ExtResource("5_3aaod")
+west = ExtResource("8_y7ofm")
 
 [sub_resource type="Resource" id="Resource_4y3gd"]
 script = ExtResource("4_0t1r4")
-north = SubResource("Resource_cu5pi")
-east = ExtResource("2_bbgsx")
-south = ExtResource("2_bbgsx")
-west = ExtResource("2_bbgsx")
-
-[sub_resource type="Resource" id="Resource_onr2y"]
-script = ExtResource("4_ljrgu")
-frame_sprite = ExtResource("5_387h1")
-frame_time = 0.1
-sfx_key = ""
-
-[sub_resource type="Resource" id="Resource_f32oq"]
-script = ExtResource("3_0qmwc")
-sequence = Array[ExtResource("4_ljrgu")]([SubResource("Resource_onr2y")])
+north = ExtResource("2_bbgsx")
+east = ExtResource("2_psijd")
+south = ExtResource("5_3aaod")
+west = ExtResource("8_y7ofm")
 
 [sub_resource type="Resource" id="Resource_tc00q"]
 script = ExtResource("4_0t1r4")
-north = SubResource("Resource_f32oq")
-east = ExtResource("2_bbgsx")
-south = ExtResource("2_bbgsx")
-west = ExtResource("2_bbgsx")
+north = ExtResource("2_bbgsx")
+east = ExtResource("2_psijd")
+south = ExtResource("5_3aaod")
+west = ExtResource("8_y7ofm")
 
 [sub_resource type="Resource" id="Resource_qb85u"]
 script = ExtResource("2_jv2ym")

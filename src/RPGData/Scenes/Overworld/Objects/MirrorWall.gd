@@ -16,6 +16,7 @@ func _ready() -> void:
 			var reflection = reflections[i];
 			
 			if node is RPGPlayerController :
+				reflection.texture = (node as RPGPlayerController)._player_visual.get_reflection_sprite();
 				reflection.material = node.get_character_material();
 
 
@@ -31,6 +32,5 @@ func _process(delta: float) -> void:
 			
 			reflection.modulate.a = 1.0 - (abs(y_dist) * opacity_factor);
 			
-			# TODO: Change reflection sprite based on direction
-			
-			# TODO: Copy ZLight parameters...oh god...
+			if node is RPGPlayerController :
+				reflection.texture = (node as RPGPlayerController)._player_visual.get_reflection_sprite();

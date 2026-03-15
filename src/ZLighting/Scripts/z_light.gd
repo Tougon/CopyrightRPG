@@ -56,6 +56,9 @@ signal on_light_updated();
 @export var energy_pulse : Curve; 
 @export var energy_pulse_speed : float = 1.0;
 
+@export var glow : Sprite2D;
+var _glow_opacity : float;
+
 @export var falloff : float = 0.0 :
 	set(value) :
 		if value < 0 : value = 0;
@@ -93,6 +96,9 @@ func _ready() -> void:
 	_setup_falloff_prev();
 	
 	_energy_max = energy;
+	
+	if glow != null :
+		_glow_opacity = glow.modulate.a;
 
 
 func _process(delta: float) -> void:
@@ -103,6 +109,9 @@ func _process(delta: float) -> void:
 				_energy_time -= 1.0;
 			
 			energy = energy_pulse.sample(_energy_time) * _energy_max;
+			
+			if glow != null :
+				glow.modulate.a = energy_pulse.sample(_energy_time) * _glow_opacity;
 		
 		if color_pulse != null && color_pulse_speed > 0 :
 			_color_time += delta * color_pulse_speed;

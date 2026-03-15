@@ -9,6 +9,7 @@ enum AnimationState { NONE, IDLE, WALK, RUN };
 @export var character : RPGCharacterData;
 @export var play_audio : bool = false;
 
+var _current_anim_group : RPGCharacterAnimationGroup;
 var _current_anim : RPGCharacterAnimation;
 var _current_state : AnimationState;
 var _previous_direction : Vector2 = Vector2(0, 0);
@@ -81,6 +82,17 @@ func set_state(new_state : AnimationState):
 	_update_anim();
 
 
+func get_reflection_sprite() -> Texture2D:
+	var reflect_dir = _direction;
+	reflect_dir *= -1;
+	
+	var reflect_prev_dir = _direction;
+	reflect_prev_dir *= -1;
+	
+	var anim = _current_anim_group.get_anim(reflect_dir, reflect_prev_dir);
+	return anim.sequence[_current_frame].frame_sprite;
+
+
 func _update_anim():
 	var anim_group : RPGCharacterAnimationGroup;
 	
@@ -94,6 +106,7 @@ func _update_anim():
 	
 	if anim_group == null : return;
 	
+	_current_anim_group = anim_group;
 	var anim = anim_group.get_anim(_direction, _previous_direction);
 	
 	if anim != _current_anim:
@@ -109,6 +122,8 @@ func play_one_shot(anim_name : String):
 			anim_group = character.slide;
 	
 	if anim_group == null : return;
+	
+	_current_anim_group = anim_group;
 	
 	_current_frame = 0;
 	_current_frame_time = 0;

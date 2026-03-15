@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RPGCharacterAnimation" load_steps=5 format=3 uid="uid://1dj4k34vderk"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="1_pgi7m"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="2_jcwxb"]
+[ext_resource type="Texture2D" uid="uid://6u0cxgfxr404" path="res://assets/Sprites/Overworld/player_main/sketch_shade_back.png" id="3_0ramv"]
+
+[sub_resource type="Resource" id="Resource_or18l"]
+script = ExtResource("2_jcwxb")
+frame_sprite = ExtResource("3_0ramv")
+frame_time = 0.1
+sfx_key = ""
+
+[resource]
+script = ExtResource("1_pgi7m")
+sequence = Array[ExtResource("2_jcwxb")]([SubResource("Resource_or18l")])
