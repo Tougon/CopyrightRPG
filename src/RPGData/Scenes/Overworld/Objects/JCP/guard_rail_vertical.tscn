@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6k60ygmmbpwb"]
+
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_xy06o"]
+[ext_resource type="Texture2D" uid="uid://r3bxcswu3bkv" path="res://assets/Sprites/Overworld/common/security_mask.png" id="2_3503e"]
+[ext_resource type="Texture2D" uid="uid://dgr2f2ly2ilge" path="res://assets/Sprites/Overworld/common/guard_pole.png" id="3_v2nc3"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_nbre7"]
+[ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="5_n5ysf"]
+[ext_resource type="Texture2D" uid="uid://b720qcsataei1" path="res://assets/Sprites/Overworld/temp/sketch.png" id="6_btbk7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_we25e"]
+shader = ExtResource("1_xy06o")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("2_3503e")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxliy"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfq06"]
+size = Vector2(64, 30)
+
+[node name="Guard Rail5" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-1764, 320)
+
+[node name="GuardPole" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="GuardPole"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -48)
+texture = ExtResource("3_v2nc3")
+
+[node name="ZLightReceiver" parent="GuardPole/Sprite2D" instance=ExtResource("4_nbre7")]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_oxliy")
+size = Vector2(64, 16)
+static_receiver = false
+
+[node name="Collider" type="StaticBody2D" parent="GuardPole"]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuardPole/Collider"]
+position = Vector2(-0.5, -16)
+shape = SubResource("RectangleShape2D_jfq06")
+
+[node name="Tape" type="Sprite2D" parent="."]
+self_modulate = Color(0.729412, 0, 0, 1)
+position = Vector2(-7.27596e-12, -4.00001)
+scale = Vector2(0.35, 9.57)
+texture = ExtResource("5_n5ysf")
+offset = Vector2(0, -7.63)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tape"]
+scale = Vector2(-0.125, 0.125)
+texture = ExtResource("6_btbk7")

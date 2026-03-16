@@ -1,0 +1,120 @@
+[gd_scene load_steps=11 format=3 uid="uid://chvwtgkw0h4gi"]
+
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_1jqpw"]
+[ext_resource type="Texture2D" uid="uid://r3bxcswu3bkv" path="res://assets/Sprites/Overworld/common/security_mask.png" id="2_8l2wk"]
+[ext_resource type="Texture2D" uid="uid://c0j71xv0fj56l" path="res://assets/Sprites/Overworld/common/banner_floor.png" id="3_bk1mp"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_h3fil"]
+[ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="5_f0t04"]
+[ext_resource type="Texture2D" uid="uid://b720qcsataei1" path="res://assets/Sprites/Overworld/temp/sketch.png" id="6_r0dty"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="7_3wx7g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2027q"]
+shader = ExtResource("1_1jqpw")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("2_8l2wk")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qaqbl"]
+size = Vector2(92, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1s866"]
+size = Vector2(91, 19)
+
+[node name="Sign2" type="Node2D"]
+position = Vector2(-252, 156)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2027q")
+position = Vector2(0, -61)
+texture = ExtResource("3_bk1mp")
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("4_h3fil")]
+position = Vector2(2, 52)
+shape = SubResource("RectangleShape2D_qaqbl")
+size = Vector2(92, 16)
+static_receiver = false
+
+[node name="Banner" type="Sprite2D" parent="Sprite2D"]
+self_modulate = Color(1, 0.870588, 0, 1)
+show_behind_parent = true
+position = Vector2(1.5, -6)
+scale = Vector2(5.5, 6)
+texture = ExtResource("5_f0t04")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Banner"]
+position = Vector2(0.0909096, -0.0833334)
+scale = Vector2(0.127841, 0.123698)
+texture = ExtResource("6_r0dty")
+
+[node name="Label" type="RichTextLabel" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -53.0
+offset_right = -82.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = -8
+theme_override_fonts/normal_font = ExtResource("7_3wx7g")
+bbcode_enabled = true
+text = "
+[outline_color=#000000][color=#000000][center][font_size=14]EVERYTHING"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Label2" type="RichTextLabel" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -40.0
+offset_right = -82.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.7)
+theme_override_constants/line_separation = -8
+theme_override_fonts/normal_font = ExtResource("7_3wx7g")
+bbcode_enabled = true
+text = "
+[outline_color=#000000][color=#000000][center][font_size=30]MUST"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Label3" type="RichTextLabel" parent="Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -31.0
+offset_right = -82.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.3)
+theme_override_constants/line_separation = -8
+theme_override_fonts/normal_font = ExtResource("7_3wx7g")
+bbcode_enabled = true
+text = "
+[outline_color=#000000][color=#000000][center][font_size=52]GO!"
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(1.5, -10.5)
+shape = SubResource("RectangleShape2D_1s866")

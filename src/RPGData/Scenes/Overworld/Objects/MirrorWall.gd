@@ -25,12 +25,16 @@ func _process(delta: float) -> void:
 		var node = target_nodes[i];
 		
 		if node != null && i < reflections.size():
-			var y_dist = node.global_position.y - global_position.y;
 			
-			var reflection = reflections[i];
-			reflection.global_position = Vector2(node.global_position.x, global_position.y - y_dist) + offset;
-			
-			reflection.modulate.a = 1.0 - (abs(y_dist) * opacity_factor);
-			
-			if node is RPGPlayerController :
-				reflection.texture = (node as RPGPlayerController)._player_visual.get_reflection_sprite();
+			if node.global_position.y < global_position.y :
+				reflections[i].modulate.a = 0.0;
+			else :
+				var y_dist = node.global_position.y - global_position.y;
+				
+				var reflection = reflections[i];
+				reflection.global_position = Vector2(node.global_position.x, global_position.y - y_dist) + offset;
+				
+				reflection.modulate.a = 1.0 - (abs(y_dist) * opacity_factor);
+				
+				if node is RPGPlayerController :
+					reflection.texture = (node as RPGPlayerController)._player_visual.get_reflection_sprite();

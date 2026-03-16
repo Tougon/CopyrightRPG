@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://c72pj1p8l6lif"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/MirrorWall.gd" id="1_2yuwk"]
+[ext_resource type="Texture2D" uid="uid://d02dppeve2otn" path="res://assets/Sprites/Overworld/common/pillar.png" id="2_u2tn1"]
+[ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_n60iv"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="4_bh5bc"]
+[ext_resource type="Texture2D" uid="uid://b720qcsataei1" path="res://assets/Sprites/Overworld/temp/sketch.png" id="5_420se"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1g6rg"]
+size = Vector2(64, 64)
+
+[node name="Reflective Pillar" type="Node2D" node_paths=PackedStringArray("target_nodes", "reflections")]
+position = Vector2(-376, -280)
+script = ExtResource("1_2yuwk")
+offset = Vector2(0, -84)
+target_nodes = [NodePath("")]
+reflections = [NodePath("Reflection/Sprite2D")]
+
+[node name="Visual" type="Sprite2D" parent="."]
+modulate = Color(0.7938, 0.81, 0.81, 1)
+texture = ExtResource("2_u2tn1")
+offset = Vector2(0, -224)
+
+[node name="Reflection" type="Sprite2D" parent="."]
+clip_children = 2
+position = Vector2(0, -192)
+scale = Vector2(-3.4, 23.4)
+texture = ExtResource("3_n60iv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Reflection"]
+scale = Vector2(0.294, 0.043)
+texture = ExtResource("4_bh5bc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -190)
+scale = Vector2(0.46, 2.96)
+texture = ExtResource("5_420se")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+position = Vector2(0, -32)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("RectangleShape2D_1g6rg")

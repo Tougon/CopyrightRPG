@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://btffgrgd7gjek"]
+
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_f37fr"]
+[ext_resource type="Texture2D" uid="uid://d3imwed2yatey" path="res://assets/Sprites/Overworld/jcp/platform_mask.png" id="2_2adij"]
+[ext_resource type="Texture2D" uid="uid://bnb24k28y3y1f" path="res://assets/Sprites/Overworld/jcp/platform.png" id="3_1w6kn"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_yw3w6"]
+[ext_resource type="Texture2D" uid="uid://cfs1tmu2t0u6s" path="res://assets/Sprites/Overworld/common/all_light_mask.png" id="5_gnk1g"]
+[ext_resource type="Texture2D" uid="uid://dsmr6kogsn6to" path="res://assets/Sprites/Overworld/jcp/manequin.png" id="6_ka3lm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_utolv"]
+shader = ExtResource("1_f37fr")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("2_2adij")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7evjt"]
+size = Vector2(256, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkg4o"]
+size = Vector2(258, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oou6c"]
+shader = ExtResource("1_f37fr")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("5_gnk1g")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1kun"]
+size = Vector2(84, 20)
+
+[node name="Platform" type="Node2D"]
+position = Vector2(1, -124)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_utolv")
+position = Vector2(0, 10)
+texture = ExtResource("3_1w6kn")
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("4_yw3w6")]
+position = Vector2(0, 31)
+shape = SubResource("RectangleShape2D_7evjt")
+size = Vector2(256, 32)
+static_receiver = false
+
+[node name="Collider" type="StaticBody2D" parent="."]
+position = Vector2(0, 25)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("RectangleShape2D_pkg4o")
+
+[node name="Mannequin" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oou6c")
+position = Vector2(-57, -5)
+texture = ExtResource("6_ka3lm")
+offset = Vector2(0, -84)
+
+[node name="ZLightReceiver" parent="Mannequin" instance=ExtResource("4_yw3w6")]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t1kun")
+size = Vector2(84, 20)
+
+[node name="Mannequin2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_oou6c")
+position = Vector2(60, -5)
+texture = ExtResource("6_ka3lm")
+offset = Vector2(0, -84)
+
+[node name="ZLightReceiver" parent="Mannequin2" instance=ExtResource("4_yw3w6")]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t1kun")
+size = Vector2(84, 20)

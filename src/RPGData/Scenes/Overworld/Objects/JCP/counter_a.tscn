@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca2gwprjkvgo2"]
+
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_cp2c1"]
+[ext_resource type="Texture2D" uid="uid://dp32hrkgldqqw" path="res://assets/Sprites/Overworld/jcp/register_mask.png" id="2_tm7sa"]
+[ext_resource type="Texture2D" uid="uid://ehbnjskaovq3" path="res://assets/Sprites/Overworld/jcp/register.png" id="3_dgkcn"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_drsry"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x524e"]
+shader = ExtResource("1_cp2c1")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("2_tm7sa")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a72nh"]
+size = Vector2(384, 128)
+
+[node name="Register" type="Node2D"]
+position = Vector2(1, -400)
+scale = Vector2(1, 0.75)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_x524e")
+position = Vector2(0, -112)
+texture = ExtResource("3_dgkcn")
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("4_drsry")]
+position = Vector2(0, 65)
+shape = SubResource("RectangleShape2D_a72nh")
+size = Vector2(384, 128)
+static_receiver = false
+
+[node name="Collider" type="StaticBody2D" parent="."]
+position = Vector2(-21, -183)
+collision_layer = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider"]
+polygon = PackedVector2Array(-107, -57, -171, -57, -172, 199, 213, 199, 213, -57, 147, -57, 147, 7, -107, 7)
