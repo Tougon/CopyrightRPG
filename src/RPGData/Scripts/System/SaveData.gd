@@ -11,6 +11,8 @@ var inventory : Dictionary;
 var flee_group_chance : float;
 var flee_group : Array;
 
+var pickups : Array;
+
 var level_cap : int;
 
 
@@ -71,6 +73,12 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_STORAGE
 	})
 	
+	ret.append({
+		"name": "Pickups",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
 	return ret;
 
 
@@ -95,6 +103,8 @@ func _get(property):
 			return inventory;
 		"Level Cap":
 			return level_cap;
+		"Pickups":
+			return pickups;
 
 
 func _set(property, val) -> bool:
@@ -127,6 +137,9 @@ func _set(property, val) -> bool:
 			notify_property_list_changed();
 		"Level Cap":
 			level_cap = val;
+			notify_property_list_changed();
+		"Pickups":
+			pickups = val;
 			notify_property_list_changed();
 	
 	return retval;

@@ -1,0 +1,3 @@
+Found {item_name}!
+set {award_item} = true
+[custom_clear]

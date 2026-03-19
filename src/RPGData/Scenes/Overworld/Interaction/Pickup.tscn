@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh340x56imdb2"]
+
+[ext_resource type="PackedScene" uid="uid://vevt3q612r55" path="res://src/RPGData/Scenes/Overworld/Interaction/TangibleInteractable.tscn" id="1_73eko"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/pickup.gd" id="2_hsguh"]
+[ext_resource type="Texture2D" uid="uid://skaolv2u08hq" path="res://assets/Sprites/Overworld/common/box.png" id="3_tn5y4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y178"]
+size = Vector2(100, 80)
+
+[node name="Interactable" instance=ExtResource("1_73eko")]
+script = ExtResource("2_hsguh")
+item_ids = Array[int]([])
+randomize = false
+repeatable = false
+empty_dialogue = "generic_pickup_empty"
+
+[node name="Shadow" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_tn5y4")
+
+[node name="CollisionShape2D" parent="Collider" index="0"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_8y178")
+
+[node name="Interact Icon" parent="." index="3"]
+position = Vector2(0, -65)

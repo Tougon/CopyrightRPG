@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=130 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="18_mdkp4"]
 [ext_resource type="PackedScene" uid="uid://ckiigsfb8s0n0" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/rack_a.tscn" id="18_rr7f4"]
 [ext_resource type="Texture2D" uid="uid://b720qcsataei1" path="res://assets/Sprites/Overworld/temp/sketch.png" id="18_v1pyq"]
+[ext_resource type="PackedScene" uid="uid://bh340x56imdb2" path="res://src/RPGData/Scenes/Overworld/Interaction/Pickup.tscn" id="19_8hmlt"]
 [ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="19_lcl66"]
 [ext_resource type="PackedScene" uid="uid://byovx364bc3gr" path="res://src/RPGData/Scenes/Overworld/Interaction/FloorChangeZone.tscn" id="19_lnp3b"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="19_rauev"]
@@ -841,9 +842,16 @@ position = Vector2(402, 160)
 [node name="Rack A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(402, 288)
 
+[node name="Interactable" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("19_8hmlt")]
+position = Vector2(-1218, -111)
+item_ids = Array[int]([3])
+empty_dialogue = "generic_pickup_empty"
+default_dialogue = "generic_pickup"
+object_id = "box_00"
+
 [node name="Box" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
 visible = false
-position = Vector2(-21, -594)
+position = Vector2(-1218, -111)
 
 [node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
 material = SubResource("ShaderMaterial_11r66")
