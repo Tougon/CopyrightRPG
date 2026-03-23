@@ -186,6 +186,8 @@ func _on_csv_dir_selected(path : String):
 		file.store_csv_line(csv_header.split(","));
 		
 		for entity in entity_list:
+			if !entity.export_csv : continue;
+			
 			var entity_name = TranslationServer.get_translation_object("en").get_message(entity.name_key);
 			var csv_output = entity.name_key + "," + entity_name + "," + str(entity.min_level) + "," + str(entity.max_level) + "," + str(entity.hp.min) + "," + str(entity.hp.max) + "," + str(entity.mp.min) + "," + str(entity.mp.max) + "," + str(entity.atk.min) + "," + str(entity.atk.max) + "," + str(entity.def.min) + "," + str(entity.def.max) + "," + str(entity.sp_atk.min) + "," + str(entity.sp_atk.max) + "," + str(entity.sp_def.min) + "," + str(entity.sp_def.max) + "," + str(entity.spd.min) + "," + str(entity.spd.max) + ",";
 			

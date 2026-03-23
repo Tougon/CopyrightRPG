@@ -130,6 +130,9 @@ func get_reward_exp(level : int) -> int:
 @export var behavior : EntityBehaviorObject;
 @export var seal_effect_list : Array[SealEffectGroup];
 
+@export_group("Utility")
+@export var export_csv : bool = true;
+
 
 func create_entity_params(level : int) -> EntityParams:
 	var param = EntityParams.new();

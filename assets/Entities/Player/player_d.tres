@@ -180,3 +180,4 @@ entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/Entity/
 entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_xqh42")
 seal_effect_list = Array[ExtResource("10_4i7b2")]([])
+export_csv = true

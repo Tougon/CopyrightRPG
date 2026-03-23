@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=19 format=3 uid="uid://tgg3hg8oljnm"]
+
+[ext_resource type="Resource" uid="uid://c1yvqg3xp3v7d" path="res://assets/Animations/Sequences/Spell/anim_spell_defend.tres" id="1_jcohc"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_qwh48"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_0k2ac"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="4_dh8se"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_apply_remove.gd" id="5_x6wwp"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_stat_modifier.gd" id="6_kdrfs"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_ie30s"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="8_s7kqy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="9_7xgbh"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="10_au73i"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="11_r7dqy"]
+
+[sub_resource type="Resource" id="Resource_q3vou"]
+script = ExtResource("5_x6wwp")
+target = 0
+apply = true
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_00eq3"]
+script = ExtResource("6_kdrfs")
+target = 0
+apply = true
+stat = 1
+amount = 3.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_rcybr"]
+script = ExtResource("6_kdrfs")
+target = 0
+apply = false
+stat = 1
+amount = 1.0
+use_num_targets = false
+min_amount = 0.0
+max_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_hyoc8"]
+script = ExtResource("5_x6wwp")
+target = 0
+apply = false
+deactivate = true
+
+[sub_resource type="Resource" id="Resource_lbp5n"]
+script = ExtResource("7_ie30s")
+stackable = false
+effect_name = "Defend"
+include_user_in_name = false
+generic = false
+repeatable = false
+priority = 5
+turn_limit = 1
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("4_dh8se")]([])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("4_dh8se")]([])
+on_activate = Array[ExtResource("4_dh8se")]([SubResource("Resource_q3vou")])
+on_failed_to_activate = Array[ExtResource("4_dh8se")]([])
+on_apply = Array[ExtResource("4_dh8se")]([SubResource("Resource_00eq3")])
+on_move_selected = Array[ExtResource("4_dh8se")]([])
+on_move_completed = Array[ExtResource("4_dh8se")]([])
+on_deactivate = Array[ExtResource("4_dh8se")]([SubResource("Resource_rcybr")])
+on_turn_start = Array[ExtResource("4_dh8se")]([])
+on_turn_end = Array[ExtResource("4_dh8se")]([SubResource("Resource_hyoc8")])
+on_stack = Array[ExtResource("4_dh8se")]([])
+
+[sub_resource type="Resource" id="Resource_mwms7"]
+script = ExtResource("3_0k2ac")
+chance = 1.0
+effect = SubResource("Resource_lbp5n")
+use_luck = false
+
+[sub_resource type="Resource" id="Resource_na0my"]
+script = ExtResource("2_qwh48")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("3_0k2ac")]([SubResource("Resource_mwms7")])
+
+[resource]
+script = ExtResource("9_7xgbh")
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_DAMAGE_ENEMY_CRAWLBOARD_DEFEND"
+spell_type = 0
+spell_target = 4
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 10
+spell_priority = 5
+spell_flags = Array[ExtResource("10_au73i")]([ExtResource("11_r7dqy")])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+animation_sequence = ExtResource("1_jcohc")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+effects_on_hit = Array[ExtResource("2_qwh48")]([])
+effects_on_success = Array[ExtResource("2_qwh48")]([SubResource("Resource_na0my")])
+properties = Array[ExtResource("7_ie30s")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("8_s7kqy")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("8_s7kqy")]([])

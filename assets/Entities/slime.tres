@@ -274,3 +274,4 @@ entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_lg1m0")
 behavior = SubResource("Resource_hf446")
 seal_effect_list = Array[ExtResource("13_a88bw")]([SubResource("Resource_bapgx")])
+export_csv = true

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=70 format=3 uid="uid://cv65c7cujmx6h"]
+[gd_resource type="Resource" script_class="Entity" load_steps=73 format=3 uid="uid://cv65c7cujmx6h"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_usdnu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_trhxq"]
@@ -33,9 +33,27 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_fby24"]
 script = ExtResource("3_64qxn")
-min = 15
-max = 21
+min = 10
+max = 12
 growth = SubResource("Curve_7puij")
+
+[sub_resource type="Resource" id="Resource_yh60t"]
+script = ExtResource("5_dvk31")
+check_target = 0
+negate = false
+
+[sub_resource type="Resource" id="Resource_83dif"]
+script = ExtResource("6_84a3l")
+behavior_check = Array[ExtResource("5_dvk31")]([SubResource("Resource_yh60t")])
+check_type = 0
+action_id = Array[int]([4, 4, 1, 2])
+seal_chance = Array[float]([1.0, 1.0, 0.0, 0.0])
+seal_id = Array[int]([0, 0, 0, 0])
+
+[sub_resource type="Resource" id="Resource_uj4x1"]
+script = ExtResource("4_x70uk")
+behavior_checks = Array[ExtResource("6_84a3l")]([SubResource("Resource_83dif")])
+active_condition = Array[ExtResource("5_dvk31")]([])
 
 [sub_resource type="Resource" id="Resource_37mdo"]
 script = ExtResource("7_ylfbd")
@@ -63,8 +81,8 @@ negate = false
 script = ExtResource("6_84a3l")
 behavior_check = Array[ExtResource("5_dvk31")]([SubResource("Resource_37mdo"), SubResource("Resource_s5flo")])
 check_type = 0
-action_id = Array[int]([0, 4])
-seal_chance = Array[float]([0.0, 1.0])
+action_id = Array[int]([0, 0])
+seal_chance = Array[float]([0.0, 0.0])
 seal_id = Array[int]([0, 0])
 
 [sub_resource type="Resource" id="Resource_7tuiw"]
@@ -118,7 +136,7 @@ negate = false
 script = ExtResource("6_84a3l")
 behavior_check = Array[ExtResource("5_dvk31")]([SubResource("Resource_60q5q"), SubResource("Resource_6t6ji")])
 check_type = 0
-action_id = Array[int]([0, 3, 3, 3])
+action_id = Array[int]([0, 4, 3, 3, 3])
 seal_chance = Array[float]([])
 seal_id = Array[int]([])
 
@@ -153,6 +171,7 @@ active_condition = Array[ExtResource("5_dvk31")]([])
 
 [sub_resource type="Resource" id="Resource_vfwvd"]
 script = ExtResource("3_0l4ic")
+first_turn_behavior = SubResource("Resource_uj4x1")
 turn_behavior = Array[ExtResource("4_x70uk")]([SubResource("Resource_i4ld0")])
 
 [sub_resource type="Curve" id="Curve_pebh2"]
@@ -161,8 +180,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_u7rdw"]
 script = ExtResource("3_64qxn")
-min = 18
-max = 24
+min = 13
+max = 16
 growth = SubResource("Curve_pebh2")
 
 [sub_resource type="Resource" id="Resource_hv7x6"]
@@ -264,8 +283,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_10lm0"]
 script = ExtResource("3_64qxn")
-min = 18
-max = 24
+min = 14
+max = 17
 growth = SubResource("Curve_eyoes")
 
 [sub_resource type="Curve" id="Curve_bm8xm"]
@@ -274,8 +293,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_xapyd"]
 script = ExtResource("3_64qxn")
-min = 18
-max = 24
+min = 13
+max = 16
 growth = SubResource("Curve_bm8xm")
 
 [sub_resource type="Curve" id="Curve_hlih0"]
@@ -328,3 +347,4 @@ entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_dthar")
 behavior = SubResource("Resource_vfwvd")
 seal_effect_list = Array[ExtResource("4_38eje")]([SubResource("Resource_67mf5")])
+export_csv = true

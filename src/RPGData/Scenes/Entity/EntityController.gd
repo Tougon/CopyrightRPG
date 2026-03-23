@@ -253,7 +253,7 @@ func select_action():
 			var result = behavior.get_result(self, allies, enemies);
 			
 			if result.action_success:
-				current_action = move_list[clamp(result.action_id, 0, move_list.size())];
+				current_action = move_list[clamp(result.action_id, 0, move_list.size() - 1)];
 				sealing = result.action_sealing;
 				_set_seal_id(result.action_seal_id);
 				

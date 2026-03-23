@@ -345,3 +345,4 @@ entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_4fsad")
 behavior = SubResource("Resource_vm118")
 seal_effect_list = Array[ExtResource("4_kv2tv")]([SubResource("Resource_hykpc")])
+export_csv = true

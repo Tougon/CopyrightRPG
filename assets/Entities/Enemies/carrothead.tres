@@ -236,3 +236,4 @@ entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_rvfcc")
 behavior = SubResource("Resource_jr01p")
 seal_effect_list = Array[ExtResource("5_3du1p")]([SubResource("Resource_24rsd")])
+export_csv = true
