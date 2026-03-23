@@ -1085,6 +1085,7 @@ func _on_player_menu_cancel(cancel_button : bool):
 		AudioManager.play_sfx("battle_menu_cancel", 0.1);
 	# Only execute flee operations if the button was pressed
 	elif !cancel_button :
+		_can_flee = true;
 		if _can_flee:
 			if _can_flee_this_turn : 
 				current_player_index = -1;

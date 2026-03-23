@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=63 format=3 uid="uid://cauy0q3462jvi"]
+[gd_resource type="Resource" script_class="Entity" load_steps=58 format=3 uid="uid://cauy0q3462jvi"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_p3cat"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="2_1ihsh"]
@@ -10,18 +10,17 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckTarget.gd" id="4_gxk4x"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="4_ofybs"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="5_3jw2l"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckTargetUsingMove.gd" id="5_w5m7c"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehavior.gd" id="5_xfam8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorObject.gd" id="6_b432l"]
 [ext_resource type="Resource" uid="uid://hn57jfota0lt" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_accuracy.tres" id="6_qwmr3"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="7_47c1g"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_p0ehi"]
-[ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckMP.gd" id="8_r2r0k"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="9_o8g2b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="10_u7xl7"]
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="10_y5u6p"]
 [ext_resource type="Resource" uid="uid://c1lyjwvn6kcxd" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_attack.tres" id="11_qbskd"]
 [ext_resource type="Resource" uid="uid://cxruw607jap5m" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_multiattack.tres" id="12_kdhoa"]
-[ext_resource type="Resource" uid="uid://upxqelffyaqj" path="res://assets/Spells/common/spell_common_weardown.tres" id="16_gfuuj"]
 
 [sub_resource type="Curve" id="Curve_gylps"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -29,22 +28,30 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_ldbd6"]
 script = ExtResource("3_bfbhk")
-min = 15
-max = 17
+min = 12
+max = 15
 growth = SubResource("Curve_gylps")
 
-[sub_resource type="Resource" id="Resource_lh1uu"]
+[sub_resource type="Resource" id="Resource_1x0u5"]
 script = ExtResource("4_gxk4x")
 target_id = 11
-default_state = false
+default_state = true
 use_self = false
 check_all = false
 check_target = 1
 negate = true
 
+[sub_resource type="Resource" id="Resource_788do"]
+script = ExtResource("5_w5m7c")
+default_state = true
+check_all = false
+move = ExtResource("6_qwmr3")
+check_target = 1
+negate = true
+
 [sub_resource type="Resource" id="Resource_yabty"]
 script = ExtResource("4_0h52y")
-behavior_check = Array[ExtResource("3_l88w3")]([SubResource("Resource_lh1uu")])
+behavior_check = Array[ExtResource("3_l88w3")]([SubResource("Resource_1x0u5"), SubResource("Resource_788do")])
 check_type = 0
 action_id = Array[int]([0, 0, 0, 1])
 seal_chance = Array[float]([1.0, 1.0, 1.0, 0.0])
@@ -63,39 +70,6 @@ script = ExtResource("5_xfam8")
 behavior_checks = Array[ExtResource("4_0h52y")]([SubResource("Resource_yabty"), SubResource("Resource_34b3m")])
 active_condition = Array[ExtResource("3_l88w3")]([])
 
-[sub_resource type="Curve" id="Curve_wlk2r"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_v78we"]
-script = ExtResource("7_47c1g")
-move_id = 2
-check_player_side = true
-chance_if_sealed = 1.0
-weigh_seal_count = false
-caution_threshold = 0
-weight = SubResource("Curve_wlk2r")
-result_if_zero = false
-check_target = 2
-negate = false
-
-[sub_resource type="Resource" id="Resource_1800c"]
-script = ExtResource("8_r2r0k")
-check_type = 0
-move_id = 3
-mp_amount = 0
-mp_percent = 0.0
-check_target = 0
-negate = false
-
-[sub_resource type="Resource" id="Resource_thr7m"]
-script = ExtResource("4_0h52y")
-behavior_check = Array[ExtResource("3_l88w3")]([SubResource("Resource_v78we"), SubResource("Resource_1800c")])
-check_type = 0
-action_id = Array[int]([3, 3, 1])
-seal_chance = Array[float]([1.0, 1.0, 0.0])
-seal_id = Array[int]([0, 0, 0])
-
 [sub_resource type="Curve" id="Curve_mdyuf"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
@@ -104,7 +78,7 @@ point_count = 2
 script = ExtResource("7_47c1g")
 move_id = 2
 check_player_side = true
-chance_if_sealed = 1.0
+chance_if_sealed = 0.8
 weigh_seal_count = false
 caution_threshold = 0
 weight = SubResource("Curve_mdyuf")
@@ -130,7 +104,7 @@ seal_id = Array[int]([0, 0, 0, 0])
 
 [sub_resource type="Resource" id="Resource_b7xa3"]
 script = ExtResource("5_xfam8")
-behavior_checks = Array[ExtResource("4_0h52y")]([SubResource("Resource_thr7m"), SubResource("Resource_cbfts"), SubResource("Resource_gjval")])
+behavior_checks = Array[ExtResource("4_0h52y")]([SubResource("Resource_cbfts"), SubResource("Resource_gjval")])
 active_condition = Array[ExtResource("3_l88w3")]([])
 
 [sub_resource type="Resource" id="Resource_wdx8o"]
@@ -144,8 +118,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_jnlh2"]
 script = ExtResource("3_bfbhk")
-min = 14
-max = 16
+min = 9
+max = 12
 growth = SubResource("Curve_ic17k")
 
 [sub_resource type="Resource" id="Resource_fp08g"]
@@ -191,14 +165,9 @@ script = ExtResource("5_3jw2l")
 spell = ExtResource("12_kdhoa")
 level = 0
 
-[sub_resource type="Resource" id="Resource_a3olt"]
-script = ExtResource("5_3jw2l")
-spell = ExtResource("16_gfuuj")
-level = 0
-
 [sub_resource type="Resource" id="Resource_aflc3"]
 script = ExtResource("7_p0ehi")
-list = Array[ExtResource("5_3jw2l")]([SubResource("Resource_fxjwu"), SubResource("Resource_ml6gi"), SubResource("Resource_swfkm"), SubResource("Resource_a3olt")])
+list = Array[ExtResource("5_3jw2l")]([SubResource("Resource_fxjwu"), SubResource("Resource_ml6gi"), SubResource("Resource_swfkm")])
 
 [sub_resource type="Curve" id="Curve_hv4yl"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -232,8 +201,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_iae17"]
 script = ExtResource("3_bfbhk")
-min = 15
-max = 17
+min = 12
+max = 15
 growth = SubResource("Curve_8dwuk")
 
 [sub_resource type="Curve" id="Curve_qmyn4"]
@@ -242,8 +211,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_kcatw"]
 script = ExtResource("3_bfbhk")
-min = 14
-max = 16
+min = 9
+max = 12
 growth = SubResource("Curve_qmyn4")
 
 [sub_resource type="Curve" id="Curve_ti0pb"]

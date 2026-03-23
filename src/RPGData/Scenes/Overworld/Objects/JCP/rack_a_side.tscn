@@ -44,14 +44,14 @@ shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("6_cngk5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5pa"]
-size = Vector2(124, 20)
+size = Vector2(134, 20)
 
 [node name="Rack A" type="Node2D" node_paths=PackedStringArray("items")]
 position = Vector2(-407, 32)
 script = ExtResource("1_3trrq")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6")]
 textures = Array[Texture2D]([ExtResource("2_jdbpp")])
-colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1)])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1)])
 
 [node name="Item1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_r1ft6")
