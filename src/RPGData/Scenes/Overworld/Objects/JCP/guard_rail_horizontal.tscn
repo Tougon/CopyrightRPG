@@ -62,3 +62,7 @@ texture = ExtResource("5_m4148")
 [node name="Sprite2D" type="Sprite2D" parent="Tape"]
 scale = Vector2(-0.125, 0.125)
 texture = ExtResource("6_bcsm2")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-42, -97)
+rect = Rect2(-10, -10, 200, 120)

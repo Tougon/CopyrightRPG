@@ -63,3 +63,7 @@ offset = Vector2(0, -7.63)
 [node name="Sprite2D" type="Sprite2D" parent="Tape"]
 scale = Vector2(-0.125, 0.125)
 texture = ExtResource("6_btbk7")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-33, -156)
+rect = Rect2(-10, -10, 80, 180)

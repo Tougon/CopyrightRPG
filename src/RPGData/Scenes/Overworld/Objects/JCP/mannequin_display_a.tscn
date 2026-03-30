@@ -90,3 +90,7 @@ offset = Vector2(0, -84)
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_t1kun")
 size = Vector2(84, 20)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-187, -228)
+rect = Rect2(-10, -10, 400, 400)

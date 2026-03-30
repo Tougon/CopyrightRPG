@@ -47,3 +47,5 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
 position = Vector2(-0.5, -16)
 shape = SubResource("RectangleShape2D_s42ul")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

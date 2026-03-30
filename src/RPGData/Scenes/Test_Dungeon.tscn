@@ -1039,8 +1039,6 @@ position = Vector2(215, -219)
 shape = SubResource("RectangleShape2D_yv05q")
 
 [node name="Props" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items"]
-process_mode = 4
-visible = false
 y_sort_enabled = true
 
 [node name="Rack A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]

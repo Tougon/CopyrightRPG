@@ -26,3 +26,7 @@ shape = SubResource("RectangleShape2D_8y178")
 
 [node name="Interact Icon" parent="." index="3"]
 position = Vector2(0, -65)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." index="4"]
+position = Vector2(-50, -44)
+rect = Rect2(-10, -10, 120, 120)
