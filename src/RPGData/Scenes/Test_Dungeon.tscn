@@ -1,4 +1,4 @@
-[gd_scene load_steps=143 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=150 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -64,6 +64,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="39_nf88m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="40_qkxqu"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="41_4gik6"]
+[ext_resource type="PackedScene" uid="uid://c2i840geeggtt" path="res://addons/FPSCounter/FPSCounter.tscn" id="49_cyut6"]
 [ext_resource type="PackedScene" uid="uid://8jbg8nthbg7y" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/table_a_side.tscn" id="65_feh83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kix4h"]
@@ -287,37 +288,15 @@ size = Vector2(80, 1121)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3nie"]
 size = Vector2(625, 711)
 
-[sub_resource type="Curve" id="Curve_uxxh0"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_cri0k"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_owapj"]
-script = ExtResource("17_4k6pv")
-primary_enemy = 20
-odds = 1.0
-can_flee = true
-ignore_flee_mechanics = false
-min_enemies = 1
-max_enemies = 2
-enemy_count_curve = SubResource("Curve_cri0k")
-required_enemies = Array[int]([])
-additional_enemies = Array[int]([])
-additional_enemy_curve = SubResource("Curve_uxxh0")
-tutorial = 0
-
 [sub_resource type="Curve" id="Curve_6781o"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_in7mb"]
-_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_ft3k3"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_7nfh4"]
+[sub_resource type="Resource" id="Resource_5m487"]
 script = ExtResource("17_4k6pv")
 primary_enemy = 4
 odds = 0.3
@@ -325,7 +304,7 @@ can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 1
 max_enemies = 2
-enemy_count_curve = SubResource("Curve_in7mb")
+enemy_count_curve = SubResource("Curve_ft3k3")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_6781o")
@@ -339,18 +318,40 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_je02x"]
+[sub_resource type="Resource" id="Resource_1f3ht"]
 script = ExtResource("17_4k6pv")
 primary_enemy = 6
 odds = 0.3
 can_flee = true
 ignore_flee_mechanics = false
 min_enemies = 1
-max_enemies = 2
+max_enemies = 1
 enemy_count_curve = SubResource("Curve_gcxwy")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_6hdst")
+tutorial = 0
+
+[sub_resource type="Curve" id="Curve_uxxh0"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_cri0k"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_b426m"]
+script = ExtResource("17_4k6pv")
+primary_enemy = 20
+odds = 0.3
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 1
+enemy_count_curve = SubResource("Curve_cri0k")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+additional_enemy_curve = SubResource("Curve_uxxh0")
 tutorial = 0
 
 [sub_resource type="Curve" id="Curve_tpd5i"]
@@ -375,8 +376,59 @@ additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_tpd5i")
 tutorial = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ahscu"]
-size = Vector2(5965, 941)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uugv"]
+size = Vector2(5960, 990)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xne02"]
+size = Vector2(2603, 1234)
+
+[sub_resource type="Resource" id="Resource_7nfh4"]
+script = ExtResource("17_4k6pv")
+primary_enemy = 4
+odds = 0.3
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_ft3k3")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([4, 6, 20])
+additional_enemy_curve = SubResource("Curve_6781o")
+tutorial = 0
+
+[sub_resource type="Resource" id="Resource_je02x"]
+script = ExtResource("17_4k6pv")
+primary_enemy = 6
+odds = 0.3
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_gcxwy")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([4, 6, 20])
+additional_enemy_curve = SubResource("Curve_6hdst")
+tutorial = 0
+
+[sub_resource type="Resource" id="Resource_owapj"]
+script = ExtResource("17_4k6pv")
+primary_enemy = 20
+odds = 0.3
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 2
+enemy_count_curve = SubResource("Curve_cri0k")
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([4, 6, 20])
+additional_enemy_curve = SubResource("Curve_uxxh0")
+tutorial = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga83u"]
+size = Vector2(3366, 2782)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wugww"]
+size = Vector2(649, 783)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1d48g"]
 size = Vector2(20, 80)
@@ -987,12 +1039,11 @@ position = Vector2(215, -219)
 shape = SubResource("RectangleShape2D_yv05q")
 
 [node name="Props" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items"]
+process_mode = 4
+visible = false
 y_sort_enabled = true
 
 [node name="Rack A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-
-[node name="Rack A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-407, 299)
 
 [node name="Rack A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(-571, 32)
@@ -1004,7 +1055,7 @@ position = Vector2(-791, 181)
 position = Vector2(-955, 181)
 
 [node name="Rack A17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1302, 32)
+position = Vector2(-1110, 32)
 
 [node name="Rack A18" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(-1466, 32)
@@ -1013,10 +1064,10 @@ position = Vector2(-1466, 32)
 position = Vector2(-1630, 32)
 
 [node name="Rack A23" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1302, 150)
+position = Vector2(-1302, 181)
 
 [node name="Rack A24" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1466, 150)
+position = Vector2(-1466, 181)
 
 [node name="Rack A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(402, 32)
@@ -1026,6 +1077,90 @@ position = Vector2(402, 160)
 
 [node name="Rack A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(402, 288)
+
+[node name="Rack A53" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1056, 160)
+
+[node name="Rack A57" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1056, 288)
+
+[node name="Rack A48" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(810, 32)
+
+[node name="Rack A49" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(810, 160)
+
+[node name="Rack A50" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(810, 288)
+
+[node name="Rack A60" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1293, 32)
+
+[node name="Rack A64" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1293, 160)
+
+[node name="Rack A70" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1293, 288)
+
+[node name="Rack A46" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(600, 249)
+
+[node name="Rack A47" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(600, 106)
+
+[node name="Rack A75" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2369, 32)
+
+[node name="Rack A80" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2369, 160)
+
+[node name="Rack A83" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2369, 288)
+
+[node name="Rack A84" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2159, 249)
+
+[node name="Rack A85" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2159, 106)
+
+[node name="Rack A86" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2807, 32)
+
+[node name="Rack A87" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2807, 160)
+
+[node name="Rack A88" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2807, 288)
+
+[node name="Rack A89" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2597, 249)
+
+[node name="Rack A90" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(2597, 106)
+
+[node name="Rack A91" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(3029, 249)
+
+[node name="Rack A92" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(3029, 106)
+
+[node name="Rack A76" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1720, 160)
+
+[node name="Rack A77" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1720, 288)
+
+[node name="Rack A81" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1944, 160)
+
+[node name="Rack A82" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1944, 288)
+
+[node name="Rack A78" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1510, 249)
+
+[node name="Rack A79" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1510, 106)
 
 [node name="Pickup_Water" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("19_8hmlt")]
 position = Vector2(-1634, 100)
@@ -1086,6 +1221,30 @@ position = Vector2(-1439, -402)
 [node name="Rack A14" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(-1601, -402)
 
+[node name="Rack A66" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-479, -573)
+
+[node name="Rack A68" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-798, -573)
+
+[node name="Rack A71" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1280, -573)
+
+[node name="Rack A73" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1601, -573)
+
+[node name="Rack A67" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-479, -705)
+
+[node name="Rack A69" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-798, -705)
+
+[node name="Rack A72" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1280, -705)
+
+[node name="Rack A74" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1601, -705)
+
 [node name="Rack A29" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(1629, -402)
 
@@ -1109,6 +1268,42 @@ position = Vector2(669, -402)
 
 [node name="Rack A36" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(507, -402)
+
+[node name="Rack A45" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -574)
+
+[node name="Rack A51" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -574)
+
+[node name="Rack A52" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -750)
+
+[node name="Rack A54" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1148, -750)
+
+[node name="Rack A55" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(988, -750)
+
+[node name="Rack A56" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(828, -750)
+
+[node name="Rack A58" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -750)
+
+[node name="Rack A59" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -943)
+
+[node name="Rack A61" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(1148, -943)
+
+[node name="Rack A62" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(988, -943)
+
+[node name="Rack A63" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(828, -943)
+
+[node name="Rack A65" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -943)
 
 [node name="Counter" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("22_um2ad")]
 
@@ -1215,7 +1410,7 @@ visible = false
 position = Vector2(-1764, -1)
 
 [node name="Rack A15" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-385, 134)
+position = Vector2(-385, 179)
 
 [node name="Rack A20" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
 position = Vector2(-1068, 143)
@@ -1227,31 +1422,61 @@ position = Vector2(-1551, 290)
 position = Vector2(-1649, 290)
 
 [node name="Rack A16" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-385, 259)
+position = Vector2(-385, 304)
 
 [node name="Rack A27" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-483, 134)
+position = Vector2(-483, 179)
 
 [node name="Rack A28" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-483, 259)
+position = Vector2(-483, 304)
+
+[node name="Rack A37" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(3201, 176)
+
+[node name="Rack A38" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(3201, 276)
+
+[node name="Rack A39" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -489)
+
+[node name="Rack A40" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -671)
+
+[node name="Rack A41" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -851)
+
+[node name="Rack A42" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -1033)
+
+[node name="Rack A43" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -1196)
+
+[node name="Rack A44" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -1378)
 
 [node name="Table A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
 position = Vector2(-771, 62)
 
 [node name="Table A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(-1110, 62)
+position = Vector2(-1287, 62)
 
 [node name="Table A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
 position = Vector2(-771, -264)
 
 [node name="Table A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(-1110, -264)
+position = Vector2(-1279, -264)
 
 [node name="Table A5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
 position = Vector2(1229, -264)
 
 [node name="Table A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
 position = Vector2(890, -264)
+
+[node name="Table A7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+position = Vector2(1064, 54)
+
+[node name="Table A8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+position = Vector2(1846, 54)
 
 [node name="Guard Rail17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
 position = Vector2(3190, 40)
@@ -1462,11 +1687,51 @@ shape = SubResource("RectangleShape2D_t3nie")
 
 [node name="EncounterArea_00" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
-encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_owapj"), SubResource("Resource_7nfh4"), SubResource("Resource_je02x"), SubResource("Resource_pltni")])
+enabled = false
+encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_5m487"), SubResource("Resource_1f3ht"), SubResource("Resource_b426m"), SubResource("Resource_pltni")])
+grace_period = 1.0
+minimum_encounter_chance = 0.02
+encounter_increase_rate = 0.04
 
 [node name="CollisionShape2D" parent="Areas/Mall Main/1F/Encounter Areas/EncounterArea_00/Area2D" index="0"]
-position = Vector2(1930.5, 464.5)
-shape = SubResource("RectangleShape2D_ahscu")
+position = Vector2(1933, 489)
+shape = SubResource("RectangleShape2D_0uugv")
+
+[node name="EncounterArea_01" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
+position = Vector2(-702, -488)
+enabled = false
+encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_5m487"), SubResource("Resource_1f3ht"), SubResource("Resource_b426m"), SubResource("Resource_pltni")])
+grace_period = 1.0
+minimum_encounter_chance = 0.02
+encounter_increase_rate = 0.04
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/1F/Encounter Areas/EncounterArea_01/Area2D" index="0"]
+position = Vector2(3611.5, -623)
+shape = SubResource("RectangleShape2D_xne02")
+
+[node name="EncounterArea_02" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
+position = Vector2(-702, -488)
+enabled = false
+encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_7nfh4"), SubResource("Resource_je02x"), SubResource("Resource_owapj"), SubResource("Resource_pltni")])
+grace_period = 1.0
+minimum_encounter_chance = 0.02
+encounter_increase_rate = 0.04
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/1F/Encounter Areas/EncounterArea_02/Area2D" index="0"]
+position = Vector2(3230, -2631)
+shape = SubResource("RectangleShape2D_ga83u")
+
+[node name="EncounterArea_03" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
+position = Vector2(-702, -488)
+enabled = false
+encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_7nfh4"), SubResource("Resource_je02x"), SubResource("Resource_owapj"), SubResource("Resource_pltni")])
+grace_period = 1.0
+minimum_encounter_chance = 0.02
+encounter_increase_rate = 0.04
+
+[node name="CollisionShape2D" parent="Areas/Mall Main/1F/Encounter Areas/EncounterArea_03/Area2D" index="0"]
+position = Vector2(1222.5, -1631.5)
+shape = SubResource("RectangleShape2D_wugww")
 
 [node name="2F" type="Node2D" parent="Areas/Mall Main"]
 visible = false
@@ -1835,6 +2100,8 @@ grow_vertical = 2
 [node name="OverworldMainMenu" parent="UI/Player UI" instance=ExtResource("24_7k6yk")]
 visible = false
 
+[node name="FpsCounter" parent="UI/Player UI" instance=ExtResource("49_cyut6")]
+
 [node name="BG Fade Canvas" type="CanvasLayer" parent="UI" node_paths=PackedStringArray("fade_sequence")]
 layer = 5
 visible = false
@@ -1923,6 +2190,9 @@ draw_limits = true
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Intro/IntroTrigger"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial/TutorialTrigger"]
 [editable path="Areas/Mall Main/1F/Encounter Areas/EncounterArea_00"]
+[editable path="Areas/Mall Main/1F/Encounter Areas/EncounterArea_01"]
+[editable path="Areas/Mall Main/1F/Encounter Areas/EncounterArea_02"]
+[editable path="Areas/Mall Main/1F/Encounter Areas/EncounterArea_03"]
 [editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorTrigger"]
 [editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown/FloorChangeZone"]
 [editable path="Areas/Mall Main/2F/Environment/Visuals/Sorted Items/Escalators/EscalatorDown2/FloorTrigger"]

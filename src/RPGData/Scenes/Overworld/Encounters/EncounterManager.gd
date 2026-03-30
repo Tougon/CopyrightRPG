@@ -31,6 +31,9 @@ func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : f
 	else :
 		OverworldManager.encounter_time += delta;
 		
+		# NOTE: Running effectively reduces encounter rate for no drawback
+		# Should this stay? It almost works thematically
+		
 		if OverworldManager.encounter_time >= encounter_reroll_rate:
 			encounter_chance = randf();
 			OverworldManager.encounter_time = 0;

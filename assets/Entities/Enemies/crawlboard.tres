@@ -137,10 +137,10 @@ growth = SubResource("Curve_t53cl")
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_hfqw5"]
+[sub_resource type="Resource" id="Resource_jbdj6"]
 script = ExtResource("2_hcyu2")
-min = 20
-max = 28
+min = 26
+max = 42
 growth = SubResource("Curve_t3dcb")
 
 [sub_resource type="Resource" id="Resource_rawo3"]
@@ -204,7 +204,7 @@ defense_modifiers = Array[ExtResource("2_blmbh")]([])
 min_level = 1
 max_level = 3
 level_curve = SubResource("Curve_i2vne")
-reward_exp = SubResource("Resource_hfqw5")
+reward_exp = SubResource("Resource_jbdj6")
 entity_sprites = Array[ExtResource("3_8o6s1")]([SubResource("Resource_nh54w")])
 battle_intro_key = "T_BATTLE_INTRO_GENERIC"
 battle_defeat_key = "T_BATTLE_DEFEAT_GENERIC"
