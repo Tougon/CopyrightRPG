@@ -9,6 +9,8 @@ enum AnimationState { NONE, IDLE, WALK, RUN };
 @export var character : RPGCharacterData;
 @export var play_audio : bool = false;
 
+var _sprite_offset : Vector2;
+
 var _current_anim_group : RPGCharacterAnimationGroup;
 var _current_anim : RPGCharacterAnimation;
 var _current_state : AnimationState;
@@ -29,6 +31,8 @@ var _reparenting : bool = false;
 
 func _ready():
 	super._ready();
+	
+	_sprite_offset = sprite.offset;
 	
 	set_state(AnimationState.IDLE);
 	set_direction(_direction);
@@ -62,6 +66,7 @@ func _update_sprite():
 			_playing_one_shot = false;
 	
 	sprite.texture = _current_anim.sequence[_current_frame].frame_sprite;
+	sprite.offset = _sprite_offset + _current_anim.sequence[_current_frame].offset;
 	
 	if play_audio && !_current_anim.sequence[_current_frame].sfx_key.is_empty() :
 		AudioManager.play_sfx(_current_anim.sequence[_current_frame].sfx_key, 0.25);
@@ -82,7 +87,8 @@ func set_state(new_state : AnimationState):
 	_update_anim();
 
 
-func get_reflection_sprite() -> Texture2D:
+func get_reflection_frame() -> RPGCharacterAnimationFrame:
+	# TODO: This does not make use of offset, please fix
 	var reflect_dir = _direction;
 	reflect_dir *= -1;
 	
@@ -90,7 +96,10 @@ func get_reflection_sprite() -> Texture2D:
 	reflect_prev_dir *= -1;
 	
 	var anim = _current_anim_group.get_anim(reflect_dir, reflect_prev_dir);
-	return anim.sequence[_current_frame].frame_sprite;
+	
+	if _current_frame >= anim.sequence.size() :
+		return anim.sequence[anim.sequence.size() - 1];
+	return anim.sequence[_current_frame];
 
 
 func _update_anim():

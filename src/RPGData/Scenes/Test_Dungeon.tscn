@@ -781,7 +781,7 @@ glow = NodePath("../Sprite")
 falloff = 10.0
 
 [node name="Spot Light9" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
-position = Vector2(-1439, 91)
+position = Vector2(-1632, 102)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light9"]
 modulate = Color(1, 0.905882, 0.74902, 0.215686)
@@ -1105,6 +1105,39 @@ position = Vector2(600, 249)
 
 [node name="Rack A47" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(600, 106)
+
+[node name="Rack A93" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1966, 32)
+
+[node name="Rack A94" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1966, 160)
+
+[node name="Rack A95" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1966, 288)
+
+[node name="Rack A98" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2394, 32)
+
+[node name="Rack A99" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2394, 160)
+
+[node name="Rack A100" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2394, 288)
+
+[node name="Rack A101" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2109, -549)
+
+[node name="Rack A104" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2109, -670)
+
+[node name="Rack A102" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2109, -421)
+
+[node name="Rack A96" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2176, 249)
+
+[node name="Rack A97" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2176, 106)
 
 [node name="Rack A75" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
 position = Vector2(2369, 32)
@@ -1455,6 +1488,9 @@ position = Vector2(1661, -1378)
 [node name="Table A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
 position = Vector2(-771, 62)
 
+[node name="Table A9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+position = Vector2(-2107, -270)
+
 [node name="Table A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
 position = Vector2(-1287, 62)
 
@@ -1564,6 +1600,7 @@ object_id = "TutorialTrigger"
 shape = SubResource("RectangleShape2D_8ytvc")
 
 [node name="Collision" type="Node2D" parent="Areas/Mall Main/1F/Environment"]
+process_mode = 4
 
 [node name="Temp" type="Node2D" parent="Areas/Mall Main/1F/Environment/Collision"]
 
@@ -2021,7 +2058,7 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(0, 214)
+position = Vector2(-14, -4038)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -2138,7 +2175,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, 134)
+position = Vector2(-14, -4118)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2151,7 +2188,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(0, 134)
+position = Vector2(-14, -4118)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5

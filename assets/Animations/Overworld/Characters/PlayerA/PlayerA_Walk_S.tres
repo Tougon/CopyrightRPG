@@ -1,49 +1,72 @@
-[gd_resource type="Resource" script_class="RPGCharacterAnimation" load_steps=14 format=3 uid="uid://6o5j8h7xjldb"]
+[gd_resource type="Resource" script_class="RPGCharacterAnimation" load_steps=19 format=3 uid="uid://6o5j8h7xjldb"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="1_r5rbm"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="2_qkp2o"]
-[ext_resource type="Texture2D" uid="uid://lrtvsaa3to61" path="res://assets/Sprites/Overworld/player_main/player_main_01.png" id="3_sp5d5"]
-[ext_resource type="Texture2D" uid="uid://dqji3oyj5084s" path="res://assets/Sprites/Overworld/player_main/player_main_02.png" id="4_nnuj0"]
-[ext_resource type="Texture2D" uid="uid://ba10mnyui4wcs" path="res://assets/Sprites/Overworld/player_main/player_main_00.png" id="5_4wojb"]
-[ext_resource type="Texture2D" uid="uid://kiyan0y36m2v" path="res://assets/Sprites/Overworld/player_main/player_main_03.png" id="6_percf"]
-[ext_resource type="Texture2D" uid="uid://begxfe4ctaihc" path="res://assets/Sprites/Overworld/player_main/player_main_04.png" id="7_10dx3"]
+[ext_resource type="Texture2D" uid="uid://eml6u537g4xw" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w1.png" id="3_xinbh"]
+[ext_resource type="Texture2D" uid="uid://dkimduim3jgjd" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w2.png" id="4_guhva"]
+[ext_resource type="Texture2D" uid="uid://xxhsxu02du81" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w3.png" id="5_0yqd8"]
+[ext_resource type="Texture2D" uid="uid://yrf4iwex5mc5" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w4.png" id="6_j8o4i"]
+[ext_resource type="Texture2D" uid="uid://c07ewbtls0kr7" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w5.png" id="7_0wpvi"]
+[ext_resource type="Texture2D" uid="uid://bw0tk8hdtvk8k" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w6.png" id="8_3xf0t"]
+[ext_resource type="Texture2D" uid="uid://bs8gfln2xpdd" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w7.png" id="9_61vme"]
+[ext_resource type="Texture2D" uid="uid://beyqskikmwwyk" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w8.png" id="10_4s6hb"]
 
 [sub_resource type="Resource" id="Resource_mg5aq"]
 script = ExtResource("2_qkp2o")
-frame_sprite = ExtResource("3_sp5d5")
+frame_sprite = ExtResource("3_xinbh")
 frame_time = 0.12
 sfx_key = ""
+offset = Vector2(0, -2)
 
 [sub_resource type="Resource" id="Resource_xsxpr"]
 script = ExtResource("2_qkp2o")
-frame_sprite = ExtResource("4_nnuj0")
+frame_sprite = ExtResource("4_guhva")
 frame_time = 0.12
 sfx_key = "step_walk_common"
+offset = Vector2(0, -5)
 
 [sub_resource type="Resource" id="Resource_ijn4b"]
 script = ExtResource("2_qkp2o")
-frame_sprite = ExtResource("5_4wojb")
+frame_sprite = ExtResource("5_0yqd8")
 frame_time = 0.12
 sfx_key = ""
+offset = Vector2(0, -8)
 
 [sub_resource type="Resource" id="Resource_6vnw6"]
 script = ExtResource("2_qkp2o")
-frame_sprite = ExtResource("6_percf")
+frame_sprite = ExtResource("6_j8o4i")
 frame_time = 0.12
 sfx_key = ""
+offset = Vector2(0, -5)
 
 [sub_resource type="Resource" id="Resource_r523f"]
 script = ExtResource("2_qkp2o")
-frame_sprite = ExtResource("7_10dx3")
+frame_sprite = ExtResource("7_0wpvi")
 frame_time = 0.12
-sfx_key = "step_walk_common"
+sfx_key = ""
+offset = Vector2(0, -2)
 
 [sub_resource type="Resource" id="Resource_f1vob"]
 script = ExtResource("2_qkp2o")
-frame_sprite = ExtResource("5_4wojb")
+frame_sprite = ExtResource("8_3xf0t")
+frame_time = 0.12
+sfx_key = "step_walk_common"
+offset = Vector2(0, -5)
+
+[sub_resource type="Resource" id="Resource_xscxc"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("9_61vme")
 frame_time = 0.12
 sfx_key = ""
+offset = Vector2(0, -8)
+
+[sub_resource type="Resource" id="Resource_uevpx"]
+script = ExtResource("2_qkp2o")
+frame_sprite = ExtResource("10_4s6hb")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -5)
 
 [resource]
 script = ExtResource("1_r5rbm")
-sequence = Array[ExtResource("2_qkp2o")]([SubResource("Resource_mg5aq"), SubResource("Resource_xsxpr"), SubResource("Resource_ijn4b"), SubResource("Resource_6vnw6"), SubResource("Resource_r523f"), SubResource("Resource_f1vob")])
+sequence = Array[ExtResource("2_qkp2o")]([SubResource("Resource_mg5aq"), SubResource("Resource_xsxpr"), SubResource("Resource_ijn4b"), SubResource("Resource_6vnw6"), SubResource("Resource_r523f"), SubResource("Resource_f1vob"), SubResource("Resource_xscxc"), SubResource("Resource_uevpx")])
