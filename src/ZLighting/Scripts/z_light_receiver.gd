@@ -49,7 +49,7 @@ func _setup_shape_size() :
 
 
 func _ready() -> void:
-	process_mode == ProcessMode.PROCESS_MODE_INHERIT;
+	#process_mode == ProcessMode.PROCESS_MODE_INHERIT;
 	
 	collider.shape = shape;
 	
@@ -66,6 +66,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if Engine.is_editor_hint() : return;
+	
+	if (!get_parent().can_process()):
+		return;
 	
 	if !static_receiver :
 		var dist = _current_pos.distance_squared_to(global_position);
@@ -137,14 +140,22 @@ func _set_material_params() :
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if debug :
+		print("ENTERING: " + area.name)
 	if area is ZLight && _lights.size() < MAX_LIGHTS_PER_OBJECT:
+		if debug :
+			print("ENTERING 2: " + area.name)
 		_lights.append(area as ZLight);
 		(area as ZLight).on_light_updated.connect(_set_material_params);
 		_set_material_params();
 
 
 func _on_area_exited(area: Area2D) -> void:
+	if debug :
+		print("EXITING: " + area.name)
 	if area is ZLight && _lights.has(area as ZLight):
+		if debug :
+			print("EXITING 2: " + area.name)
 		_lights.erase(area as ZLight);
 		(area as ZLight).on_light_updated.disconnect(_set_material_params);
 		_set_material_params();

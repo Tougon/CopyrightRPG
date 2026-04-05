@@ -9,6 +9,7 @@ script = ExtResource("2_7jcu0")
 frame_sprite = ExtResource("3_smv1r")
 frame_time = 0.1
 sfx_key = ""
+offset = Vector2(0, 0)
 
 [resource]
 script = ExtResource("1_e8yo8")

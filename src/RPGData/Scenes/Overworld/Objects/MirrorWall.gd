@@ -39,4 +39,6 @@ func _process(delta: float) -> void:
 				reflection.modulate.a = 1.0 - (abs(y_dist) * opacity_factor);
 				
 				if node is RPGPlayerController :
-					reflection.texture = (node as RPGPlayerController)._player_visual.get_reflection_sprite();
+					var frame = (node as RPGPlayerController)._player_visual.get_reflection_frame();
+					reflection.texture = frame.frame_sprite;
+					reflection.offset = frame.offset;
