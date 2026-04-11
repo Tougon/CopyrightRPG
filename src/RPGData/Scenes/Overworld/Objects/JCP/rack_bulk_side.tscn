@@ -1,0 +1,271 @@
+[gd_scene load_steps=13 format=3 uid="uid://pga3qh24e62"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/RackSemiRandom.gd" id="1_8xhp0"]
+[ext_resource type="Texture2D" uid="uid://bq3ck4ly3kq4s" path="res://assets/Sprites/Overworld/jcp/shirt_a_side.png" id="2_4ike7"]
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="3_0mdt0"]
+[ext_resource type="Texture2D" uid="uid://c1coowwrf8dkl" path="res://assets/Sprites/Overworld/jcp/rack_bulk_side_mask.png" id="4_l8pal"]
+[ext_resource type="Texture2D" uid="uid://ctt7tmq71ssrm" path="res://assets/Sprites/Overworld/jcp/rack_bulk_side.png" id="5_i6imn"]
+[ext_resource type="Texture2D" uid="uid://cfs1tmu2t0u6s" path="res://assets/Sprites/Overworld/common/all_light_mask.png" id="6_tcqpt"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="7_k4w1a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tjib3"]
+shader = ExtResource("3_0mdt0")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("6_tcqpt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63qlb"]
+size = Vector2(89.16, 20.05)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7xru"]
+shader = ExtResource("3_0mdt0")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.3
+shader_parameter/add_margins = true
+shader_parameter/falloff_mask = ExtResource("4_l8pal")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snlwc"]
+size = Vector2(64, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfsvn"]
+size = Vector2(64, 256)
+
+[node name="Rack Bulk Side" type="Node2D" node_paths=PackedStringArray("items")]
+y_sort_enabled = true
+script = ExtResource("1_8xhp0")
+items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5"), NodePath("Item6"), NodePath("Item7"), NodePath("Item8"), NodePath("Item9"), NodePath("Item10"), NodePath("Item11"), NodePath("Item12"), NodePath("Item13"), NodePath("Item14"), NodePath("Item15"), NodePath("Item16")]
+textures = Array[Texture2D]([ExtResource("2_4ike7")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1)])
+
+[node name="Item1" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -12)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item1" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -26)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item2" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item3" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -39)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item3" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item4" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -50)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item4" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item5" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -155.805)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item5" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item6" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -169.805)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item6" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item7" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -182.805)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item7" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item8" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -193.805)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -41.195)
+
+[node name="ZLightReceiver" parent="Item8" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item9" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -2)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item9" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item10" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -17)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item10" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item11" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -30)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item11" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item12" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -45)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item12" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item13" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -174)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item13" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item14" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -189)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item14" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item15" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -202)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item15" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Item16" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjib3")
+position = Vector2(-24, -217)
+texture = ExtResource("2_4ike7")
+offset = Vector2(0, -160)
+
+[node name="ZLightReceiver" parent="Item16" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -8)
+shape = SubResource("RectangleShape2D_63qlb")
+size = Vector2(89.16, 20.05)
+static_receiver = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_p7xru")
+texture = ExtResource("5_i6imn")
+offset = Vector2(0, -256)
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("7_k4w1a")]
+position = Vector2(1, -130)
+shape = SubResource("RectangleShape2D_snlwc")
+size = Vector2(64, 256)
+static_receiver = false
+
+[node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(0, -137)
+shape = SubResource("RectangleShape2D_hfsvn")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-29, -529)
+rect = Rect2(-10, -10, 80, 576)

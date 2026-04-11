@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=154 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="17_4k6pv"]
 [ext_resource type="Texture2D" uid="uid://cydnlm5sxwioh" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_steps.png" id="17_sjn2x"]
 [ext_resource type="PackedScene" uid="uid://cfijknefgnphk" path="res://src/RPGData/Scenes/Overworld/Interaction/FloorChangeTrigger.tscn" id="18_3o3iq"]
-[ext_resource type="Texture2D" uid="uid://b6rp5gwohp6p5" path="res://assets/Sprites/Overworld/common/box_mask.png" id="18_5yve6"]
 [ext_resource type="PackedScene" uid="uid://cviyt63wxucnc" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.tscn" id="18_22gld"]
 [ext_resource type="Texture2D" uid="uid://d1su25pl3vxm8" path="res://assets/Sprites/Overworld/temp/Escalator/escalator_back.png" id="18_emcwo"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="18_mdkp4"]
@@ -29,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://dkrbdy7uuagi1" path="res://src/RPGData/Scenes/Overworld/Player/RPGOverworldFollower.tscn" id="19_lcl66"]
 [ext_resource type="PackedScene" uid="uid://byovx364bc3gr" path="res://src/RPGData/Scenes/Overworld/Interaction/FloorChangeZone.tscn" id="19_lnp3b"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="19_rauev"]
-[ext_resource type="Texture2D" uid="uid://skaolv2u08hq" path="res://assets/Sprites/Overworld/common/box.png" id="19_v46jp"]
 [ext_resource type="PackedScene" uid="uid://d3k0ig02qtnal" path="res://src/VideoPlayer/video_player.tscn" id="20_ulxmc"]
 [ext_resource type="Material" uid="uid://bht5vfchwbwnl" path="res://assets/Materials/VideoMaterials/Misc/void_testroom2_color.tres" id="21_3d0kr"]
 [ext_resource type="VideoStream" path="res://video/boss.ogv" id="22_63365"]
@@ -60,8 +58,11 @@
 [ext_resource type="Resource" uid="uid://3x7d3hmrjvfl" path="res://assets/Tweens/Transition/erode_out.tres" id="33_wj12t"]
 [ext_resource type="Resource" uid="uid://b3nq8tur3bu0g" path="res://assets/Tweens/Transition/erode_complete.tres" id="34_1iqkb"]
 [ext_resource type="Texture2D" uid="uid://dtg7pc4k5ceo2" path="res://assets/Sprites/Overworld/ads/ad_1.png" id="34_olvbx"]
+[ext_resource type="PackedScene" uid="uid://pga3qh24e62" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/rack_bulk_side.tscn" id="35_0gshv"]
+[ext_resource type="PackedScene" uid="uid://b77aqmfr07o2b" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/counter_b.tscn" id="35_bs3cm"]
 [ext_resource type="Resource" uid="uid://bnvdca7lgydy3" path="res://assets/Tweens/Transition/fade_in.tres" id="35_mmu6m"]
 [ext_resource type="Resource" uid="uid://b7evdmbcxg6wl" path="res://assets/Tweens/Transition/fade_out.tres" id="36_dvx48"]
+[ext_resource type="Texture2D" uid="uid://dsra10ebllpt3" path="res://assets/Sprites/Overworld/jcp/pants_a_side.png" id="36_myi42"]
 [ext_resource type="Resource" uid="uid://c2018oj6gvq61" path="res://assets/Tweens/Transition/fade_in_instant.tres" id="37_88vpl"]
 [ext_resource type="Resource" uid="uid://b5imgyuuysj7p" path="res://assets/Tweens/Transition/fade_out_instant.tres" id="38_ylxpi"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="39_nf88m"]
@@ -134,6 +135,9 @@ point_count = 7
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e8ac"]
 radius = 251.5
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3i1g"]
+size = Vector2(300, 300)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7y2t"]
 shader = ExtResource("10_fxf7h")
 shader_parameter/origin = null
@@ -169,28 +173,6 @@ size = Vector2(68, 394)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yv05q"]
 size = Vector2(68, 394)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_11r66"]
-shader = ExtResource("10_fxf7h")
-shader_parameter/origin = null
-shader_parameter/active_zlights = 0
-shader_parameter/light_origins = null
-shader_parameter/light_is_circle = null
-shader_parameter/light_size = null
-shader_parameter/light_color = null
-shader_parameter/light_energy = null
-shader_parameter/light_falloff = null
-shader_parameter/shadow = null
-shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
-shader_parameter/line_thickness = 0.0
-shader_parameter/add_margins = false
-shader_parameter/falloff_mask = ExtResource("18_5yve6")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j54f"]
-size = Vector2(99.735, 29.12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cywo8"]
-size = Vector2(105, 30)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w1lkk"]
 shader = ExtResource("10_fxf7h")
@@ -265,7 +247,7 @@ size = Vector2(2184, 630)
 size = Vector2(396, 697)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8h81s"]
-size = Vector2(359, 1336)
+size = Vector2(339, 802)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0dny"]
 size = Vector2(395, 739)
@@ -711,6 +693,7 @@ falloff = 25.0
 
 [node name="Spot Light4" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
 process_mode = 4
+visible = false
 position = Vector2(0, -106)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light4"]
@@ -766,7 +749,7 @@ glow = NodePath("../Sprite")
 falloff = 25.0
 
 [node name="Spot Light7" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
-position = Vector2(-979, 91)
+position = Vector2(-1025, 91)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light7"]
 modulate = Color(1, 0.905882, 0.74902, 0.215686)
@@ -802,7 +785,7 @@ glow = NodePath("../Sprite")
 falloff = 10.0
 
 [node name="Spot Light9" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
-position = Vector2(-1632, 102)
+position = Vector2(-1518, 102)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light9"]
 modulate = Color(1, 0.905882, 0.74902, 0.215686)
@@ -854,6 +837,28 @@ energy = 0.45
 energy_pulse_speed = 0.2
 glow = NodePath("../Sprite")
 falloff = 10.0
+
+[node name="Spot Light12" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+position = Vector2(3317, -2291)
+
+[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light12" instance=ExtResource("8_dmqvf")]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_q3i1g")
+size = Vector2(3, 3)
+color = Color(0.88, 0, 0, 0.2)
+energy = 4.5
+energy_pulse_speed = 0.2
+
+[node name="Spot Light13" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+position = Vector2(3317, -1989)
+
+[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light13" instance=ExtResource("8_dmqvf")]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_q3i1g")
+size = Vector2(3, 3)
+color = Color(0, 0.161333, 0.88, 0.2)
+energy = 4.5
+energy_pulse_speed = 0.2
 
 [node name="Entry Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting"]
 material = SubResource("ShaderMaterial_q7y2t")
@@ -1062,597 +1067,874 @@ shape = SubResource("RectangleShape2D_yv05q")
 [node name="Props" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items"]
 y_sort_enabled = true
 
-[node name="Rack A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
+[node name="Entryway" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
 
-[node name="Rack A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-571, 32)
+[node name="Counter" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("22_um2ad")]
 
-[node name="Rack A21" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-791, 181)
+[node name="Guard Rail" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
 
-[node name="Rack A22" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-955, 181)
-
-[node name="Rack A17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1110, 32)
-
-[node name="Rack A18" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1466, 32)
-
-[node name="Rack A19" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1630, 32)
-
-[node name="Rack A23" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1302, 181)
-
-[node name="Rack A24" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1466, 181)
-
-[node name="Rack A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(402, 32)
-
-[node name="Rack A5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(402, 160)
-
-[node name="Rack A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(402, 288)
-
-[node name="Rack A53" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1056, 160)
-
-[node name="Rack A57" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1056, 288)
-
-[node name="Rack A48" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(810, 32)
-
-[node name="Rack A49" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(810, 160)
-
-[node name="Rack A50" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(810, 288)
-
-[node name="Rack A60" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1293, 32)
-
-[node name="Rack A64" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1293, 160)
-
-[node name="Rack A70" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1293, 288)
-
-[node name="Rack A46" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(600, 249)
-
-[node name="Rack A47" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(600, 106)
-
-[node name="Rack A93" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1966, 32)
-
-[node name="Rack A94" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1966, 160)
-
-[node name="Rack A95" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1966, 288)
-
-[node name="Rack A98" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2394, 32)
-
-[node name="Rack A99" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2394, 160)
-
-[node name="Rack A100" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2394, 288)
-
-[node name="Rack A101" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2183, -549)
-
-[node name="Rack A104" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2183, -670)
-
-[node name="Rack A102" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2183, -421)
-
-[node name="Rack A96" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2176, 249)
-
-[node name="Rack A97" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-2176, 106)
-
-[node name="Rack A75" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2369, 32)
-
-[node name="Rack A80" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2369, 160)
-
-[node name="Rack A83" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2369, 288)
-
-[node name="Rack A84" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2159, 249)
-
-[node name="Rack A85" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2159, 106)
-
-[node name="Rack A86" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2807, 32)
-
-[node name="Rack A87" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2807, 160)
-
-[node name="Rack A88" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2807, 288)
-
-[node name="Rack A89" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2597, 249)
-
-[node name="Rack A90" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(2597, 106)
-
-[node name="Rack A91" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(3029, 249)
-
-[node name="Rack A92" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(3029, 106)
-
-[node name="Rack A76" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1720, 160)
-
-[node name="Rack A77" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1720, 288)
-
-[node name="Rack A81" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1944, 160)
-
-[node name="Rack A82" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1944, 288)
-
-[node name="Rack A78" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1510, 249)
-
-[node name="Rack A79" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1510, 106)
-
-[node name="Pickup_Water" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("19_8hmlt")]
-position = Vector2(-1634, 100)
-item_ids = Array[int]([3])
-default_dialogue = "generic_pickup"
-object_id = "box_00"
-
-[node name="Pickup_Water2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("19_8hmlt")]
-position = Vector2(3838, 100)
-item_ids = Array[int]([3])
-default_dialogue = "generic_pickup"
-object_id = "box_01"
-
-[node name="Box" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
-visible = false
-position = Vector2(-1377, 419)
-
-[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
-material = SubResource("ShaderMaterial_11r66")
-position = Vector2(0, -33)
-texture = ExtResource("19_v46jp")
-
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box/Sprite2D" instance=ExtResource("18_mdkp4")]
-position = Vector2(1.715, 31.785)
-shape = SubResource("RectangleShape2D_2j54f")
-size = Vector2(99.735, 29.12)
-static_receiver = false
-
-[node name="Collider" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box"]
-position = Vector2(0, 10)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Box/Collider"]
-position = Vector2(-1.5, -11)
-shape = SubResource("RectangleShape2D_cywo8")
-
-[node name="Rack A7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-479, -402)
-
-[node name="Rack A8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-639, -402)
-
-[node name="Rack A9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-798, -402)
-
-[node name="Rack A10" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-960, -402)
-
-[node name="Rack A11" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1120, -402)
-
-[node name="Rack A12" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1280, -402)
-
-[node name="Rack A13" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1439, -402)
-
-[node name="Rack A14" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1601, -402)
-
-[node name="Rack A66" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-479, -573)
-
-[node name="Rack A68" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-798, -573)
-
-[node name="Rack A71" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1280, -573)
-
-[node name="Rack A73" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1601, -573)
-
-[node name="Rack A67" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-479, -705)
-
-[node name="Rack A69" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-798, -705)
-
-[node name="Rack A72" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1280, -705)
-
-[node name="Rack A74" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(-1601, -705)
-
-[node name="Rack A29" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1629, -402)
-
-[node name="Rack A30" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1469, -402)
-
-[node name="Rack A31" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1310, -402)
-
-[node name="Rack A32" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1148, -402)
-
-[node name="Rack A33" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(988, -402)
-
-[node name="Rack A34" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(828, -402)
-
-[node name="Rack A35" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(669, -402)
-
-[node name="Rack A36" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(507, -402)
-
-[node name="Rack A45" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1469, -574)
-
-[node name="Rack A51" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(507, -574)
-
-[node name="Rack A52" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1469, -750)
-
-[node name="Rack A54" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1148, -750)
-
-[node name="Rack A55" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(988, -750)
-
-[node name="Rack A56" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(828, -750)
-
-[node name="Rack A58" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(507, -750)
-
-[node name="Rack A59" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1469, -943)
-
-[node name="Rack A61" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(1148, -943)
-
-[node name="Rack A62" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(988, -943)
-
-[node name="Rack A63" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(828, -943)
-
-[node name="Rack A65" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("18_rr7f4")]
-position = Vector2(507, -943)
-
-[node name="Counter" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("22_um2ad")]
-
-[node name="Guard Rail" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
-
-[node name="Guard Rail2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
+[node name="Guard Rail2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
 position = Vector2(-218, -384)
 
-[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail2" index="1"]
+[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail2" index="1"]
 visible = false
 
-[node name="Guard Rail3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
+[node name="Guard Rail3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
 position = Vector2(213, -384)
 
-[node name="Guard Rail4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
+[node name="Guard Rail4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
 position = Vector2(333, -384)
 
-[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail4" index="1"]
+[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail4" index="1"]
 visible = false
 
-[node name="Guard Rail23" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
-position = Vector2(1739, -1099)
+[node name="Reflective Pillar" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
 
-[node name="Guard Rail24" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
-position = Vector2(1857, -1099)
-
-[node name="Guard Rail25" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("23_p7qm1")]
-position = Vector2(1973, -1099)
-
-[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail25" index="1"]
-visible = false
-
-[node name="Security A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("26_x1482")]
-
-[node name="Security A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("26_x1482")]
-position = Vector2(-32, 340)
-
-[node name="Security A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("26_x1482")]
-position = Vector2(32, 340)
-
-[node name="Security A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("26_x1482")]
-position = Vector2(222, 340)
-
-[node name="Platform" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("27_oppdy")]
-
-[node name="Reflective Pillar" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
-
-[node name="Reflective Pillar3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
-position = Vector2(-1669, -280)
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
-
-[node name="Reflective Pillar4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
-position = Vector2(-2030, -280)
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
-
-[node name="Reflective Pillar2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+[node name="Reflective Pillar2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
 position = Vector2(372, -280)
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
 
-[node name="Reflective Pillar5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
-position = Vector2(1676, -280)
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
+[node name="Platform" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("27_oppdy")]
 
-[node name="Reflective Pillar6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
-position = Vector2(2032, -280)
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
+[node name="Sign2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("29_gr0hn")]
 
-[node name="Reflective Pillar7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
-position = Vector2(3463, -280)
-target_nodes = [NodePath("../../../../../../../../Player Controller")]
-
-[node name="Sign2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("29_gr0hn")]
-
-[node name="Sign3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("29_gr0hn")]
+[node name="Sign3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("29_gr0hn")]
 position = Vector2(256, 119)
 
-[node name="Banner" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Sign3/Sprite2D" index="1"]
+[node name="Banner" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Sign3/Sprite2D" index="1"]
 self_modulate = Color(1, 0.0980392, 0, 1)
 
-[node name="Label" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Sign3/Sprite2D" index="2"]
+[node name="Label" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Sign3/Sprite2D" index="2"]
 visible = false
 text = ""
 
-[node name="Label2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Sign3/Sprite2D" index="3"]
+[node name="Label2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Sign3/Sprite2D" index="3"]
 offset_top = -45.0
 offset_bottom = -80.0
 text = "
 [outline_size=3][outline_color=#000000][color=#FFFFFF][center][font_size=24]EXCEPT"
 
-[node name="Label3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Sign3/Sprite2D" index="4"]
+[node name="Label3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Sign3/Sprite2D" index="4"]
 scale = Vector2(1, 1.6)
 text = "
 [outline_size=3][outline_color=#000000][color=#FFFFFF][center][font_size=38]YOU!"
 
-[node name="Guard Rail5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
+[node name="Security A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
 
-[node name="Guard Rail6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, 256)
+[node name="Security A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
+position = Vector2(-32, 340)
 
-[node name="Guard Rail7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, 192)
+[node name="Security A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
+position = Vector2(32, 340)
 
-[node name="Guard Rail8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, 128)
+[node name="Security A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
+position = Vector2(222, 340)
 
-[node name="Guard Rail9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, 63)
+[node name="Rack A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
 
-[node name="Guard Rail11" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -65)
+[node name="Rack A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
+position = Vector2(402, 32)
 
-[node name="Guard Rail12" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -129)
+[node name="Rack A5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
+position = Vector2(402, 160)
 
-[node name="Guard Rail13" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -193)
+[node name="Rack A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
+position = Vector2(402, 288)
 
-[node name="Guard Rail14" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -257)
-
-[node name="Guard Rail15" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -322)
-
-[node name="Guard Rail16" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -384)
-
-[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail16" index="1"]
-visible = false
-
-[node name="Guard Rail10" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(-1764, -1)
-
-[node name="Rack A15" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+[node name="Rack A15" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("30_rt6ja")]
 position = Vector2(-385, 179)
 
-[node name="Rack A20" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-1068, 143)
-
-[node name="Rack A25" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-1551, 290)
-
-[node name="Rack A26" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-1649, 290)
-
-[node name="Rack A16" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
+[node name="Rack A16" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("30_rt6ja")]
 position = Vector2(-385, 304)
 
-[node name="Rack A27" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-483, 179)
+[node name="Pickup1Maze" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
 
-[node name="Rack A28" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(-483, 304)
+[node name="Pickup_Water" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("19_8hmlt")]
+position = Vector2(-1634, 100)
+item_ids = Array[int]([3])
+default_dialogue = "generic_pickup"
+object_id = "box_00"
 
-[node name="Rack A37" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(3201, 176)
-
-[node name="Rack A38" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(3201, 276)
-
-[node name="Rack A39" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(1661, -489)
-
-[node name="Rack A40" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(1661, -671)
-
-[node name="Rack A41" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(1661, -851)
-
-[node name="Rack A42" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(1661, -1033)
-
-[node name="Rack A43" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(1661, -1196)
-
-[node name="Rack A44" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("30_rt6ja")]
-position = Vector2(1661, -1378)
-
-[node name="Table A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+[node name="Table A" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("65_feh83")]
 position = Vector2(-771, 62)
 
-[node name="Table A9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(-2181, -270)
-
-[node name="Table A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+[node name="Table A2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("65_feh83")]
 position = Vector2(-1287, 62)
 
-[node name="Table A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+[node name="Rack A18" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1466, 32)
+
+[node name="Rack A19" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1630, 32)
+
+[node name="Rack A25" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("30_rt6ja")]
+position = Vector2(-1551, 290)
+
+[node name="Rack A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-571, 32)
+
+[node name="Rack A21" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-791, 181)
+
+[node name="Rack A22" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-955, 181)
+
+[node name="Rack A17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1110, 32)
+
+[node name="Rack A23" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1302, 181)
+
+[node name="Rack A24" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1466, 181)
+
+[node name="Rack A20" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("30_rt6ja")]
+position = Vector2(-1068, 143)
+
+[node name="Rack A26" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("30_rt6ja")]
+position = Vector2(-1649, 290)
+
+[node name="Rack A27" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("30_rt6ja")]
+position = Vector2(-483, 179)
+
+[node name="Rack A28" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("30_rt6ja")]
+position = Vector2(-483, 304)
+
+[node name="Discount Dept 1" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Reflective Pillar3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(-1669, -280)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Table A3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("65_feh83")]
 position = Vector2(-771, -264)
 
-[node name="Table A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
+[node name="Table A4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("65_feh83")]
 position = Vector2(-1279, -264)
 
-[node name="Table A5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(1229, -264)
+[node name="Rack A7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-479, -402)
 
-[node name="Table A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(890, -264)
+[node name="Rack A8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-639, -402)
 
-[node name="Table A7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(1064, 54)
+[node name="Rack A9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-798, -402)
 
-[node name="Table A8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("65_feh83")]
-position = Vector2(1846, 54)
+[node name="Rack A10" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-960, -402)
 
-[node name="Guard Rail17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(3190, 40)
+[node name="Rack A11" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1120, -402)
 
-[node name="Guard Rail18" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(3190, -27)
+[node name="Rack A12" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1280, -402)
 
-[node name="Guard Rail19" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(3190, -91)
+[node name="Rack A13" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1439, -402)
 
-[node name="Guard Rail20" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(3190, -155)
+[node name="Rack A14" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1601, -402)
 
-[node name="Guard Rail21" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(3190, -219)
+[node name="Rack A66" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-479, -573)
 
-[node name="Guard Rail22" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("28_kx2t1")]
-position = Vector2(3190, -281)
+[node name="Rack A68" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-798, -573)
 
-[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail22" index="1"]
+[node name="Rack A71" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1280, -573)
+
+[node name="Rack A73" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1601, -573)
+
+[node name="Rack A67" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-479, -705)
+
+[node name="Rack A69" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-798, -705)
+
+[node name="Rack A72" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1280, -705)
+
+[node name="Rack A74" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1601, -705)
+
+[node name="Entryway W OOB" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Reflective Pillar4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(-2030, -280)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Table A9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("65_feh83")]
+position = Vector2(-2181, -270)
+
+[node name="Rack A93" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1966, 32)
+
+[node name="Rack A94" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1966, 160)
+
+[node name="Rack A95" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-1966, 288)
+
+[node name="Rack A98" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2394, 32)
+
+[node name="Rack A99" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2394, 160)
+
+[node name="Rack A100" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2394, 288)
+
+[node name="Rack A101" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2183, -549)
+
+[node name="Rack A104" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2183, -670)
+
+[node name="Rack A102" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2183, -421)
+
+[node name="Rack A96" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2176, 249)
+
+[node name="Rack A97" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("18_rr7f4")]
+position = Vector2(-2176, 106)
+
+[node name="Guard Rail5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+
+[node name="Guard Rail6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, 256)
+
+[node name="Guard Rail7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, 192)
+
+[node name="Guard Rail8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, 128)
+
+[node name="Guard Rail9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, 63)
+
+[node name="Guard Rail13" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -193)
+
+[node name="Guard Rail14" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -257)
+
+[node name="Guard Rail15" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -322)
+
+[node name="Guard Rail10" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -1)
+
+[node name="Guard Rail11" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -65)
+
+[node name="Guard Rail12" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -129)
+
+[node name="Guard Rail16" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" instance=ExtResource("28_kx2t1")]
+position = Vector2(-1764, -384)
+
+[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB/Guard Rail16" index="1"]
 visible = false
 
-[node name="Rack Bulk Front" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("32_bwm8q")]
+[node name="Discount Dept 2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Reflective Pillar5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(1676, -280)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Table A5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("65_feh83")]
+position = Vector2(1229, -264)
+
+[node name="Table A6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("65_feh83")]
+position = Vector2(890, -264)
+
+[node name="Rack A29" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1629, -402)
+
+[node name="Rack A30" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -402)
+
+[node name="Rack A31" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1310, -402)
+
+[node name="Rack A32" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1148, -402)
+
+[node name="Rack A33" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(988, -402)
+
+[node name="Rack A35" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(669, -402)
+
+[node name="Rack A36" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -402)
+
+[node name="Rack A45" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -574)
+
+[node name="Rack A51" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -574)
+
+[node name="Rack A52" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -750)
+
+[node name="Rack A54" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1148, -750)
+
+[node name="Rack A55" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(988, -750)
+
+[node name="Rack A56" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(828, -750)
+
+[node name="Rack A58" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -750)
+
+[node name="Rack A59" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1469, -943)
+
+[node name="Rack A61" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(1148, -943)
+
+[node name="Rack A62" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(988, -943)
+
+[node name="Rack A63" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(828, -943)
+
+[node name="Rack A65" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(507, -943)
+
+[node name="Rack A34" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("18_rr7f4")]
+position = Vector2(828, -402)
+
+[node name="Rack A39" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -489)
+
+[node name="Rack A40" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -671)
+
+[node name="Rack A41" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -851)
+
+[node name="Rack A42" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -1033)
+
+[node name="Rack A43" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -1196)
+
+[node name="Rack A44" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("30_rt6ja")]
+position = Vector2(1661, -1378)
+
+[node name="Guard Rail23" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("23_p7qm1")]
+position = Vector2(1739, -1099)
+
+[node name="Guard Rail24" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("23_p7qm1")]
+position = Vector2(1857, -1099)
+
+[node name="Guard Rail25" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" instance=ExtResource("23_p7qm1")]
+position = Vector2(1973, -1099)
+
+[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2/Guard Rail25" index="1"]
+visible = false
+
+[node name="Discount Dept 3" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Rack Bulk Side" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("35_0gshv")]
+position = Vector2(3158, 329)
+
+[node name="Table A7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("65_feh83")]
+position = Vector2(1841, 54)
+
+[node name="Rack A49" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(810, 160)
+
+[node name="Rack A50" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(810, 288)
+
+[node name="Rack A46" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(600, 249)
+
+[node name="Rack A47" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(600, 106)
+
+[node name="Rack A53" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1056, 160)
+
+[node name="Rack A57" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1056, 288)
+
+[node name="Rack A48" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(810, 32)
+
+[node name="Rack A60" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1293, 32)
+
+[node name="Rack A64" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1293, 160)
+
+[node name="Rack A70" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1293, 288)
+
+[node name="Rack A75" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2369, 32)
+
+[node name="Rack A80" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2369, 160)
+
+[node name="Rack A83" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2369, 288)
+
+[node name="Rack A84" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2159, 249)
+
+[node name="Rack A85" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2159, 106)
+
+[node name="Rack A86" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2807, 32)
+
+[node name="Rack A87" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2807, 160)
+
+[node name="Rack A88" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2807, 288)
+
+[node name="Rack A89" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2597, 249)
+
+[node name="Rack A90" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(2597, 106)
+
+[node name="Rack A76" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1720, 160)
+
+[node name="Rack A77" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1720, 288)
+
+[node name="Rack A81" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1944, 160)
+
+[node name="Rack A82" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1944, 288)
+
+[node name="Rack A78" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1510, 249)
+
+[node name="Rack A79" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("18_rr7f4")]
+position = Vector2(1510, 106)
+
+[node name="Guard Rail17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("28_kx2t1")]
+position = Vector2(3190, 40)
+
+[node name="Guard Rail18" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("28_kx2t1")]
+position = Vector2(3190, -27)
+
+[node name="Guard Rail19" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("28_kx2t1")]
+position = Vector2(3190, -91)
+
+[node name="Guard Rail20" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("28_kx2t1")]
+position = Vector2(3190, -155)
+
+[node name="Guard Rail21" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("28_kx2t1")]
+position = Vector2(3190, -219)
+
+[node name="Guard Rail22" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("28_kx2t1")]
+position = Vector2(3190, -281)
+
+[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3/Guard Rail22" index="1"]
+visible = false
+
+[node name="Fancy Shirts" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Reflective Pillar6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(2032, -280)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Reflective Pillar7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(3463, -280)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Reflective Pillar8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(3463, -1645)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Reflective Pillar9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+position = Vector2(2032, -1645)
+target_nodes = [NodePath("../../../../../../../../../Player Controller")]
+
+[node name="Rack Bulk Front" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
 position = Vector2(2235, -303)
 
-[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front"]
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front"]
 material = SubResource("ShaderMaterial_w1lkk")
 position = Vector2(60, -189)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("33_g6a8t")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front/Ad" instance=ExtResource("18_mdkp4")]
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front/Ad" instance=ExtResource("18_mdkp4")]
 position = Vector2(0, 340)
 shape = SubResource("RectangleShape2D_6bf6o")
 size = Vector2(256, 64)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front/Ad"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front/Ad"]
 position = Vector2(-140, -158)
 rect = Rect2(-10, -10, 300, 350)
 
-[node name="Rack Bulk Front2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("32_bwm8q")]
+[node name="Rack Bulk Front2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
 position = Vector2(2489, -303)
 
-[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front2"]
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front2"]
 material = SubResource("ShaderMaterial_w1lkk")
 position = Vector2(-60, -189)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("34_olvbx")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front2/Ad" instance=ExtResource("18_mdkp4")]
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front2/Ad" instance=ExtResource("18_mdkp4")]
 position = Vector2(0, 340)
 shape = SubResource("RectangleShape2D_6bf6o")
 size = Vector2(256, 64)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front2/Ad"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front2/Ad"]
 position = Vector2(-140, -158)
 rect = Rect2(-10, -10, 300, 350)
 
-[node name="Rack Bulk Front3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("32_bwm8q")]
-position = Vector2(3014, -303)
+[node name="Rack Bulk Front11" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2235, -1822)
 
-[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front3"]
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front11"]
 material = SubResource("ShaderMaterial_w1lkk")
 position = Vector2(60, -189)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("33_g6a8t")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front3/Ad" instance=ExtResource("18_mdkp4")]
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front11/Ad" instance=ExtResource("18_mdkp4")]
 position = Vector2(0, 340)
 shape = SubResource("RectangleShape2D_6bf6o")
 size = Vector2(256, 64)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front3/Ad"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front11/Ad"]
 position = Vector2(-140, -158)
 rect = Rect2(-10, -10, 300, 350)
 
-[node name="Rack Bulk Front4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props" instance=ExtResource("32_bwm8q")]
-position = Vector2(3268, -303)
+[node name="Rack Bulk Front13" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2876, -1822)
 
-[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front4"]
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front13"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_g6a8t")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front13/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front13/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front12" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2489, -1822)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front12"]
 material = SubResource("ShaderMaterial_w1lkk")
 position = Vector2(-60, -189)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("34_olvbx")
 
-[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front4/Ad" instance=ExtResource("18_mdkp4")]
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front12/Ad" instance=ExtResource("18_mdkp4")]
 position = Vector2(0, 340)
 shape = SubResource("RectangleShape2D_6bf6o")
 size = Vector2(256, 64)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Rack Bulk Front4/Ad"]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front12/Ad"]
 position = Vector2(-140, -158)
 rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(3014, -303)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front3"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_g6a8t")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front3/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front3/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(3268, -303)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front4"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(-60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_olvbx")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front4/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front4/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2116, -1098)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front5"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_g6a8t")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front5/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front5/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2370, -1098)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front6"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(-60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_olvbx")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front6/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front6/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2624, -1098)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front7"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_g6a8t")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front7/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front7/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(2878, -1098)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front8"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(-60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_olvbx")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front8/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front8/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(3127, -1098)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front9"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_g6a8t")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front9/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front9/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Front10" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("32_bwm8q")]
+position = Vector2(3381, -1098)
+
+[node name="Ad" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front10"]
+material = SubResource("ShaderMaterial_w1lkk")
+position = Vector2(-60, -189)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_olvbx")
+
+[node name="ZLightReceiver" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front10/Ad" instance=ExtResource("18_mdkp4")]
+position = Vector2(0, 340)
+shape = SubResource("RectangleShape2D_6bf6o")
+size = Vector2(256, 64)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Rack Bulk Front10/Ad"]
+position = Vector2(-140, -158)
+rect = Rect2(-10, -10, 300, 350)
+
+[node name="Rack Bulk Side3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("35_0gshv")]
+position = Vector2(2917, -362)
+
+[node name="Rack Bulk Side4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("35_0gshv")]
+position = Vector2(2980, -362)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Rack Bulk Side7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("35_0gshv")]
+position = Vector2(2021, -1157)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Rack Bulk Side5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("35_0gshv")]
+position = Vector2(2524, -362)
+
+[node name="Rack Bulk Side6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("35_0gshv")]
+position = Vector2(2587, -362)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Table A10" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(2247, -759)
+
+[node name="Table A11" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(2247, -820)
+
+[node name="Table A14" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(2685, -1533)
+
+[node name="Table A15" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(2685, -1594)
+
+[node name="Table A16" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(2283, -1533)
+
+[node name="Table A17" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(2283, -1594)
+
+[node name="Table A18" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(3116, -1533)
+
+[node name="Table A19" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(3116, -1594)
+
+[node name="Table A12" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(3256, -743)
+
+[node name="Table A13" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("65_feh83")]
+position = Vector2(3256, -804)
+
+[node name="Guard Rail26" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("28_kx2t1")]
+position = Vector2(3462, 14)
+
+[node name="Guard Rail27" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("28_kx2t1")]
+position = Vector2(3462, -53)
+
+[node name="Guard Rail28" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("28_kx2t1")]
+position = Vector2(3462, -117)
+
+[node name="Guard Rail29" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("28_kx2t1")]
+position = Vector2(3462, -181)
+
+[node name="Guard Rail30" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" instance=ExtResource("28_kx2t1")]
+position = Vector2(3462, -245)
+
+[node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Guard Rail30" index="1"]
+visible = false
+
+[node name="Fancy Pants" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Pickup_Water2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("19_8hmlt")]
+position = Vector2(3762, 133)
+item_ids = Array[int]([3])
+default_dialogue = "generic_pickup"
+object_id = "box_01"
+
+[node name="Rack Bulk Side2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("35_0gshv")]
+position = Vector2(3222, 329)
+rotation = 3.14159
+scale = Vector2(1, -1)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack Bulk Side7" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("35_0gshv")]
+position = Vector2(4068, 329)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack Bulk Side8" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("35_0gshv")]
+position = Vector2(4068, 73)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack Bulk Side9" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("35_0gshv")]
+position = Vector2(4068, -183)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack A91" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("30_rt6ja")]
+position = Vector2(3447, 151)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack A92" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("30_rt6ja")]
+position = Vector2(3447, 298)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack A103" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("18_rr7f4")]
+position = Vector2(3861, 288)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Rack A105" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("18_rr7f4")]
+position = Vector2(3642, 288)
+textures = Array[Texture2D]([ExtResource("36_myi42")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
+
+[node name="Entryway E" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
+[node name="Counter" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway E" instance=ExtResource("35_bs3cm")]
+position = Vector2(3326, -1857)
+scale = Vector2(1, 1)
 
 [node name="Mirror" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("target_nodes", "reflections")]
 visible = false
@@ -1703,15 +1985,15 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_ph1gq")
 
 [node name="Tutorial" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers"]
-position = Vector2(-1828, 0)
+visible = false
 
 [node name="Camera Point" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial"]
-position = Vector2(0, 32)
+position = Vector2(-1433, 32)
 script = ExtResource("30_pvc07")
 object_id = "jcp_tutorial_camera_point"
 
 [node name="TutorialTrigger" parent="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial" instance=ExtResource("31_nwt8f")]
-position = Vector2(310, 34)
+position = Vector2(-1564, 34)
 default_active_state = false
 additional_active_state = Array[ExtResource("32_x7skg")]([SubResource("Resource_wfmm5")])
 default_dialogue = "jcp_tutorial"
@@ -1751,7 +2033,7 @@ shape = SubResource("RectangleShape2D_k8sva")
 [node name="StaticBody2D5" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp/StaticBody2D5"]
-position = Vector2(3335.5, -176)
+position = Vector2(3325.5, 91)
 shape = SubResource("RectangleShape2D_8h81s")
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="Areas/Mall Main/1F/Environment/Collision/Temp"]
@@ -1839,6 +2121,7 @@ position = Vector2(-1334.5, -3405.5)
 shape = SubResource("RectangleShape2D_t3nie")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/Mall Main/1F"]
+visible = false
 
 [node name="EncounterArea_00" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
@@ -2178,7 +2461,7 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(0, 183)
+position = Vector2(3707, -1902)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -2295,7 +2578,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, 103)
+position = Vector2(3707, -1982)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2308,7 +2591,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(0, 103)
+position = Vector2(3707, -1982)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
@@ -2337,12 +2620,13 @@ draw_limits = true
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorChangeZone"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorChangeZone"]
-[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail2"]
-[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail4"]
-[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail25"]
-[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Sign3"]
-[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail16"]
-[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Guard Rail22"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail2"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail4"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Sign3"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB/Guard Rail16"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2/Guard Rail25"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3/Guard Rail22"]
+[editable path="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts/Guard Rail30"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Intro/IntroTrigger"]
 [editable path="Areas/Mall Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial/TutorialTrigger"]
 [editable path="Areas/Mall Main/1F/Encounter Areas/EncounterArea_00"]

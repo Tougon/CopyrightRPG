@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ehbnjskaovq3"
-path="res://.godot/imported/register.png-f73e9505c8b283e0e2584c430b111f9c.ctex"
+uid="uid://c1coowwrf8dkl"
+path="res://.godot/imported/rack_bulk_side_mask.png-157e9d54fd78bc14c04454d1c15c4761.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Overworld/jcp/register.png"
-dest_files=["res://.godot/imported/register.png-f73e9505c8b283e0e2584c430b111f9c.ctex"]
+source_file="res://assets/Sprites/Overworld/jcp/rack_bulk_side_mask.png"
+dest_files=["res://.godot/imported/rack_bulk_side_mask.png-157e9d54fd78bc14c04454d1c15c4761.ctex"]
 
 [params]
 

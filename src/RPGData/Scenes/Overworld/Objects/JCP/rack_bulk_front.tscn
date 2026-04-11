@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdoykk7gi1cmy"]
+[gd_scene load_steps=13 format=3 uid="uid://bdoykk7gi1cmy"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/RackSemiRandom.gd" id="1_nu06q"]
 [ext_resource type="Texture2D" uid="uid://cbrlo4rowue64" path="res://assets/Sprites/Overworld/jcp/rack_bulk_front.png" id="2_hwctf"]
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="3_rkqby"]
 [ext_resource type="Texture2D" uid="uid://cfs1tmu2t0u6s" path="res://assets/Sprites/Overworld/common/all_light_mask.png" id="4_lj7jf"]
+[ext_resource type="Texture2D" uid="uid://b36vbym7x8l6x" path="res://assets/Sprites/Overworld/jcp/rack_bulk_front_mask.png" id="4_p1ori"]
 [ext_resource type="Texture2D" uid="uid://bq3ck4ly3kq4s" path="res://assets/Sprites/Overworld/jcp/shirt_a_side.png" id="5_gotek"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="6_08hod"]
 
@@ -21,6 +22,7 @@ shader_parameter/shadow = null
 shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
 shader_parameter/line_thickness = 0.3
 shader_parameter/add_margins = true
+shader_parameter/falloff_mask = ExtResource("4_p1ori")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tjib3"]
 shader = ExtResource("3_rkqby")
