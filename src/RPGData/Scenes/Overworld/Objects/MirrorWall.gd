@@ -1,12 +1,16 @@
 extends Node2D
 
 @export var offset := Vector2.ZERO;
+@export var reflection_limit : float = 5.0;
 @export_range(0, 0.1) var opacity_factor : float = 0.005;
 @export var target_nodes : Array[Node2D];
 @export var reflections : Array[Node2D];
 
 
 func _ready() -> void:
+	for reflection in reflections :
+		reflection.modulate.a = 0.0;
+	
 	await get_tree().process_frame;
 	
 	for i in target_nodes.size() :
@@ -17,9 +21,12 @@ func _ready() -> void:
 			
 			if node is RPGPlayerController :
 				var frame = (node as RPGPlayerController)._player_visual.get_reflection_frame();
+				reflection.global_position = node.global_position;
 				reflection.texture = frame.frame_sprite;
 				reflection.offset = frame.offset;
 				reflection.material = node.get_character_material();
+			
+			reflection.modulate.a = 0.0;
 
 
 func _process(delta: float) -> void:
@@ -28,7 +35,7 @@ func _process(delta: float) -> void:
 		
 		if node != null && i < reflections.size():
 			
-			if node.global_position.y < global_position.y :
+			if node.global_position.y - reflection_limit  < global_position.y :
 				reflections[i].modulate.a = 0.0;
 			else :
 				var y_dist = node.global_position.y - global_position.y;

@@ -24,7 +24,7 @@ shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("2_2adij")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7evjt"]
-size = Vector2(256, 32)
+size = Vector2(256, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkg4o"]
 size = Vector2(258, 64)
@@ -57,9 +57,10 @@ position = Vector2(0, 10)
 texture = ExtResource("3_1w6kn")
 
 [node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("4_yw3w6")]
-position = Vector2(0, 31)
+position = Vector2(0, 15)
 shape = SubResource("RectangleShape2D_7evjt")
-size = Vector2(256, 32)
+size = Vector2(256, 64)
+origin_offset = Vector2(0, 31)
 static_receiver = false
 
 [node name="Collider" type="StaticBody2D" parent="."]
@@ -76,7 +77,7 @@ texture = ExtResource("6_ka3lm")
 offset = Vector2(0, -84)
 
 [node name="ZLightReceiver" parent="Mannequin" instance=ExtResource("4_yw3w6")]
-position = Vector2(0, 4)
+position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_t1kun")
 size = Vector2(84, 20)
 
@@ -87,7 +88,7 @@ texture = ExtResource("6_ka3lm")
 offset = Vector2(0, -84)
 
 [node name="ZLightReceiver" parent="Mannequin2" instance=ExtResource("4_yw3w6")]
-position = Vector2(0, 4)
+position = Vector2(0, 36)
 shape = SubResource("RectangleShape2D_t1kun")
 size = Vector2(84, 20)
 

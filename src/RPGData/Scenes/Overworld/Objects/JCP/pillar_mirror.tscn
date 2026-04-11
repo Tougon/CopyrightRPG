@@ -13,7 +13,7 @@ size = Vector2(64, 64)
 position = Vector2(-376, -280)
 script = ExtResource("1_2yuwk")
 offset = Vector2(0, -84)
-target_nodes = [NodePath("")]
+target_nodes = [null]
 reflections = [NodePath("Reflection/Sprite2D")]
 
 [node name="Visual" type="Sprite2D" parent="."]

@@ -256,6 +256,7 @@ static_receiver = false
 position = Vector2(1, 126)
 shape = SubResource("RectangleShape2D_d0x8m")
 size = Vector2(256, 64)
+origin_offset = Vector2(0, 32)
 static_receiver = false
 
 [node name="Collider" type="StaticBody2D" parent="."]

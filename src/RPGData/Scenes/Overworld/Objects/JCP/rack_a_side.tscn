@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckiigsfb8s0n0"]
+[gd_scene load_steps=13 format=3 uid="uid://ckiigsfb8s0n0"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/RackSemiRandom.gd" id="1_3trrq"]
 [ext_resource type="Texture2D" uid="uid://bq3ck4ly3kq4s" path="res://assets/Sprites/Overworld/jcp/shirt_a_side.png" id="2_jdbpp"]
@@ -42,6 +42,9 @@ shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
 shader_parameter/line_thickness = 0.0
 shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("6_cngk5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dci3j"]
+size = Vector2(89.16, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw5pa"]
 size = Vector2(134, 20)
@@ -95,9 +98,10 @@ position = Vector2(0, -78)
 texture = ExtResource("7_6wr24")
 
 [node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("5_jqhm7")]
-position = Vector2(1, 67)
-shape = SubResource("RectangleShape2D_frwvb")
-size = Vector2(89.16, 20.05)
+position = Vector2(0, 63)
+shape = SubResource("RectangleShape2D_dci3j")
+size = Vector2(89.16, 25)
+origin_offset = Vector2(0, 12)
 static_receiver = false
 
 [node name="Item4" type="Sprite2D" parent="."]

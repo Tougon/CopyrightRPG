@@ -12,3 +12,4 @@ script = ExtResource("1_jc3p3")
 debug_color = Color(0.95, 0, 0.0158331, 0.419608)
 
 [node name="FalloffPrev" type="CollisionShape2D" parent="."]
+debug_color = Color(1, 1, 1, 0.42)

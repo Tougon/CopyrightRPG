@@ -22,6 +22,9 @@ uniform bool add_margins = true;
 
 varying vec4 vertex_color; 
 
+// The maximum size an item can be on the Y axis
+const float MAX_HEIGHT = 512.0;
+
 
 bool is_in_bounds(vec2 coord, vec2 center, vec2 size){
 	return coord.x >= center.x - size.x && coord.x <= center.x + size.x && coord.y >= center.y - size.y && coord.y <= center.y + size.y;
@@ -131,17 +134,29 @@ float energy_for_coord(vec2 coord, int light_index){
 }
 
 
-void light() {
-	bool falloff_y = false;
-	vec4 falloff_tex = texture(falloff_mask, UV);
+float get_height_percent(vec4 height_map){
+	if (height_map.a < 0.1)
+		return 0.0;
+	
+	return (height_map.x + height_map.y + height_map.z) / 3.0;
+}
 
-	if (falloff_tex == vec4(1.0, 1.0, 1.0, 1.0)){
-		falloff_y = true;
+
+void light() {
+	bool start_origin = false;
+	float height_y = 0.0;
+	vec4 falloff_tex = texture(falloff_mask, UV);
+	
+	height_y = (get_height_percent(falloff_tex) * MAX_HEIGHT);
+	if (height_y < 0.01){
+		start_origin = true;
 	}
 
 	vec2 coord = FRAGCOORD.xy;
-	if (!falloff_y)
+	if (start_origin)
 		coord.y = origin.y;
+	else
+		coord.y += height_y; //- 16.0;//(height_y - origin.y);
 
 	// Calculate light energy modifiers based on total light count
 	float total_light_energy = LIGHT_ENERGY;

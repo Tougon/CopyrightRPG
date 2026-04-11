@@ -1,8 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh340x56imdb2"]
+[gd_scene load_steps=10 format=3 uid="uid://bh340x56imdb2"]
 
 [ext_resource type="PackedScene" uid="uid://vevt3q612r55" path="res://src/RPGData/Scenes/Overworld/Interaction/TangibleInteractable.tscn" id="1_73eko"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/pickup.gd" id="2_hsguh"]
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="3_3hu60"]
 [ext_resource type="Texture2D" uid="uid://skaolv2u08hq" path="res://assets/Sprites/Overworld/common/box.png" id="3_tn5y4"]
+[ext_resource type="Texture2D" uid="uid://b6rp5gwohp6p5" path="res://assets/Sprites/Overworld/common/box_mask.png" id="4_2gmvi"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="6_ylxxd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcv6j"]
+shader = ExtResource("3_3hu60")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.3
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("4_2gmvi")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4vdl"]
+size = Vector2(102, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8y178"]
 size = Vector2(100, 80)
@@ -18,7 +40,15 @@ empty_dialogue = "generic_pickup_empty"
 visible = false
 
 [node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_jcv6j")
 texture = ExtResource("3_tn5y4")
+
+[node name="ZLightReceiver" parent="Sprite2D" index="0" instance=ExtResource("6_ylxxd")]
+position = Vector2(0, 38)
+shape = SubResource("RectangleShape2D_h4vdl")
+size = Vector2(102, 20)
+origin_offset = Vector2(0, 10)
+static_receiver = false
 
 [node name="CollisionShape2D" parent="Collider" index="0"]
 position = Vector2(0, 10)

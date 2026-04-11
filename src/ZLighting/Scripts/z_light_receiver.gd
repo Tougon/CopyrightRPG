@@ -123,10 +123,6 @@ func _set_material_params() :
 			light_falloff.append(Vector2.ZERO);
 			is_shadow.append(false);
 	
-	if debug :
-		print(light_size);
-		print(light_falloff);
-	
 	_mat.set_shader_parameter("light_origins", light_origins);
 	_mat.set_shader_parameter("light_is_circle", light_is_circle);
 	_mat.set_shader_parameter("light_size", light_size);

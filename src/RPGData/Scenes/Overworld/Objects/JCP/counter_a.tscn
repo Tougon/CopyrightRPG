@@ -22,7 +22,7 @@ shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("2_tm7sa")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a72nh"]
-size = Vector2(384, 128)
+size = Vector2(384, 96)
 
 [node name="Register" type="Node2D"]
 position = Vector2(1, -400)
@@ -30,13 +30,14 @@ scale = Vector2(1, 0.75)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_x524e")
-position = Vector2(0, -112)
+position = Vector2(0, -98)
 texture = ExtResource("3_dgkcn")
 
 [node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("4_drsry")]
-position = Vector2(0, 65)
+position = Vector2(0, 48.6667)
 shape = SubResource("RectangleShape2D_a72nh")
-size = Vector2(384, 128)
+size = Vector2(384, 96)
+origin_offset = Vector2(0, 48)
 static_receiver = false
 
 [node name="Collider" type="StaticBody2D" parent="."]
@@ -44,7 +45,7 @@ position = Vector2(-21, -183)
 collision_layer = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider"]
-polygon = PackedVector2Array(-107, -57, -171, -57, -172, 199, 213, 199, 213, -57, 147, -57, 147, 7, -107, 7)
+polygon = PackedVector2Array(-107, -10.3333, -171, -10.3333, -172, 181.667, 213, 181.667, 213, -9, 147, -9, 147, 37.6667, -107, 36.3334)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-233, -257.333)

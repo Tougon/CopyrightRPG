@@ -22,7 +22,7 @@ shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("2_qtbuf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo6oa"]
-size = Vector2(38, 32)
+size = Vector2(38, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s42ul"]
 size = Vector2(37, 30)
@@ -36,9 +36,10 @@ position = Vector2(0, -80)
 texture = ExtResource("3_lgli6")
 
 [node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("4_u0hi4")]
-position = Vector2(0, 65)
+position = Vector2(0, 68)
 shape = SubResource("RectangleShape2D_fo6oa")
-size = Vector2(38, 32)
+size = Vector2(38, 24)
+origin_offset = Vector2(0, 12)
 static_receiver = false
 
 [node name="Collider" type="StaticBody2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=155 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -135,8 +135,11 @@ point_count = 7
 [sub_resource type="CircleShape2D" id="CircleShape2D_2e8ac"]
 radius = 251.5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q3i1g"]
-size = Vector2(300, 300)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xo5k"]
+size = Vector2(400, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0fj0"]
+size = Vector2(438, 65)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7y2t"]
 shader = ExtResource("10_fxf7h")
@@ -730,6 +733,7 @@ energy_pulse_speed = 0.2
 falloff = 25.0
 
 [node name="Spot Light6" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+process_mode = 4
 position = Vector2(0, -104)
 
 [node name="Sprite" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light6"]
@@ -838,27 +842,37 @@ energy_pulse_speed = 0.2
 glow = NodePath("../Sprite")
 falloff = 10.0
 
-[node name="Spot Light12" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
-position = Vector2(3317, -2291)
+[node name="Suspiria B" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+position = Vector2(1, -398)
 
-[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light12" instance=ExtResource("8_dmqvf")]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_q3i1g")
-size = Vector2(3, 3)
-color = Color(0.88, 0, 0, 0.2)
-energy = 4.5
-energy_pulse_speed = 0.2
-
-[node name="Spot Light13" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
-position = Vector2(3317, -1989)
-
-[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Spot Light13" instance=ExtResource("8_dmqvf")]
-position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_q3i1g")
-size = Vector2(3, 3)
+[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Suspiria B" instance=ExtResource("8_dmqvf")]
+shape = SubResource("RectangleShape2D_4xo5k")
+size = Vector2(4, 0.99)
 color = Color(0, 0.161333, 0.88, 0.2)
 energy = 4.5
-energy_pulse_speed = 0.2
+energy_pulse_speed = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Suspiria B"]
+modulate = Color(0, 0.160784, 0.878431, 1)
+scale = Vector2(25, 6.3)
+texture = ExtResource("12_ec4gi")
+
+[node name="Suspiria R" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights"]
+position = Vector2(1, -482)
+
+[node name="ZLight" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Suspiria R" instance=ExtResource("8_dmqvf")]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_h0fj0")
+size = Vector2(4.38, 0.65)
+color = Color(0.88, 0, 0, 0.2)
+energy = 4.5
+energy_pulse_speed = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting/Spot Lights/Suspiria R"]
+modulate = Color(0.878431, 0, 0, 1)
+position = Vector2(0, 2)
+scale = Vector2(27.345, 4.055)
+texture = ExtResource("12_ec4gi")
 
 [node name="Entry Shadow" type="Sprite2D" parent="Areas/Mall Main/1F/Environment/Visuals/Lighting"]
 material = SubResource("ShaderMaterial_q7y2t")
@@ -1071,6 +1085,8 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Counter" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("22_um2ad")]
+position = Vector2(1, -384)
+scale = Vector2(1, 1)
 
 [node name="Guard Rail" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
 
@@ -1090,6 +1106,7 @@ position = Vector2(333, -384)
 visible = false
 
 [node name="Reflective Pillar" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
+offset = Vector2(0, -96)
 target_nodes = [NodePath("../../../../../../../../../Player Controller")]
 
 [node name="Reflective Pillar2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
@@ -1150,6 +1167,7 @@ position = Vector2(-385, 179)
 position = Vector2(-385, 304)
 
 [node name="Pickup1Maze" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Pickup_Water" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Pickup1Maze" instance=ExtResource("19_8hmlt")]
@@ -1204,6 +1222,7 @@ position = Vector2(-483, 179)
 position = Vector2(-483, 304)
 
 [node name="Discount Dept 1" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Reflective Pillar3" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 1" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
@@ -1265,6 +1284,7 @@ position = Vector2(-1280, -705)
 position = Vector2(-1601, -705)
 
 [node name="Entryway W OOB" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Reflective Pillar4" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
@@ -1346,6 +1366,7 @@ position = Vector2(-1764, -384)
 visible = false
 
 [node name="Discount Dept 2" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Reflective Pillar5" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 2" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
@@ -1449,6 +1470,7 @@ position = Vector2(1973, -1099)
 visible = false
 
 [node name="Discount Dept 3" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Rack Bulk Side" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Discount Dept 3" instance=ExtResource("35_0gshv")]
@@ -1557,6 +1579,7 @@ position = Vector2(3190, -281)
 visible = false
 
 [node name="Fancy Shirts" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Reflective Pillar6" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Shirts" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
@@ -1879,6 +1902,7 @@ position = Vector2(3462, -245)
 visible = false
 
 [node name="Fancy Pants" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Pickup_Water2" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Fancy Pants" instance=ExtResource("19_8hmlt")]
@@ -1930,6 +1954,7 @@ textures = Array[Texture2D]([ExtResource("36_myi42")])
 colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1), Color(0.74, 0.674387, 0.4588, 1), Color(0.4, 0.267, 0.172, 1)])
 
 [node name="Entryway E" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+visible = false
 y_sort_enabled = true
 
 [node name="Counter" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway E" instance=ExtResource("35_bs3cm")]
@@ -2003,6 +2028,8 @@ object_id = "TutorialTrigger"
 shape = SubResource("RectangleShape2D_8ytvc")
 
 [node name="Collision" type="Node2D" parent="Areas/Mall Main/1F/Environment"]
+process_mode = 4
+visible = false
 
 [node name="Temp" type="Node2D" parent="Areas/Mall Main/1F/Environment/Collision"]
 
@@ -2461,7 +2488,7 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(3707, -1902)
+position = Vector2(-2, -281)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -2578,7 +2605,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(3707, -1982)
+position = Vector2(-2, -361)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2591,7 +2618,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(3707, -1982)
+position = Vector2(-2, -361)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
