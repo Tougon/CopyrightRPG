@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://b77aqmfr07o2b"]
+[gd_scene load_steps=11 format=3 uid="uid://b77aqmfr07o2b"]
 
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_t543y"]
 [ext_resource type="Texture2D" uid="uid://gfmkef1c62lk" path="res://assets/Sprites/Overworld/jcp/register_side_mask.png" id="2_sh85t"]
 [ext_resource type="Texture2D" uid="uid://cixqqgqfrqf7n" path="res://assets/Sprites/Overworld/jcp/register_side.png" id="3_dtsgp"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_7gl66"]
+[ext_resource type="Texture2D" uid="uid://ft3h01eumbvq" path="res://assets/Sprites/Overworld/jcp/register_side_rear_mask.png" id="5_s66jh"]
+[ext_resource type="Texture2D" uid="uid://cs8c78ne0v5ml" path="res://assets/Sprites/Overworld/jcp/register_side_rear.png" id="6_4f4yn"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3uxo0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xk7tr"]
 shader = ExtResource("1_t543y")
 shader_parameter/origin = null
 shader_parameter/active_zlights = 0
@@ -22,7 +24,26 @@ shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("2_sh85t")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fnhgf"]
-size = Vector2(128, 384)
+size = Vector2(98, 384)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gepds"]
+shader = ExtResource("1_t543y")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("5_s66jh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wiy4a"]
+size = Vector2(48, 64)
 
 [node name="Register" type="Node2D"]
 y_sort_enabled = true
@@ -30,51 +51,38 @@ position = Vector2(1, -400)
 scale = Vector2(1, 0.75)
 
 [node name="Front" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_3uxo0")
+material = SubResource("ShaderMaterial_xk7tr")
 texture = ExtResource("3_dtsgp")
-offset = Vector2(0, -159)
-region_enabled = true
+offset = Vector2(0, -240)
 region_rect = Rect2(0, 197, 132, 319)
 
 [node name="ZLightReceiver" parent="Front" instance=ExtResource("4_7gl66")]
-position = Vector2(0, -189.333)
+position = Vector2(0, -190.667)
 shape = SubResource("RectangleShape2D_fnhgf")
-size = Vector2(128, 384)
+size = Vector2(98, 384)
+origin_offset = Vector2(0, 192)
 static_receiver = false
 
-[node name="Rear_1" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_3uxo0")
-texture = ExtResource("3_dtsgp")
-offset = Vector2(33, -417)
-region_enabled = true
-region_rect = Rect2(66, 0, 66, 197)
+[node name="Rear" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gepds")
+position = Vector2(-25.5, -318)
+texture = ExtResource("6_4f4yn")
+offset = Vector2(0, -82)
+region_rect = Rect2(0, 197, 132, 319)
 
-[node name="ZLightReceiver" parent="Rear_1" instance=ExtResource("4_7gl66")]
-position = Vector2(0, -189.333)
-shape = SubResource("RectangleShape2D_fnhgf")
-size = Vector2(128, 384)
-static_receiver = false
-
-[node name="Rear_2" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_3uxo0")
-position = Vector2(0, -321)
-texture = ExtResource("3_dtsgp")
-offset = Vector2(-33, -96)
-region_enabled = true
-region_rect = Rect2(0, 0, 66, 197)
-
-[node name="ZLightReceiver" parent="Rear_2" instance=ExtResource("4_7gl66")]
-position = Vector2(0, 130.333)
-shape = SubResource("RectangleShape2D_fnhgf")
-size = Vector2(128, 384)
+[node name="ZLightReceiver" parent="Rear" instance=ExtResource("4_7gl66")]
+position = Vector2(0.5, -32.6666)
+shape = SubResource("RectangleShape2D_wiy4a")
+size = Vector2(48, 64)
+origin_offset = Vector2(0, 32)
 static_receiver = false
 
 [node name="Collider" type="StaticBody2D" parent="."]
-position = Vector2(-21, -329.333)
+position = Vector2(-20, -329.333)
 collision_layer = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider"]
-polygon = PackedVector2Array(-43, 264.333, -43, 328.333, 88, 328.333, 88, 264.333, 86, -55.667, -42, -55.667, -43, 8.33337, 21, 8.33337, 21.155, 264.333)
+polygon = PackedVector2Array(-30, 264.333, -30, 328.333, 67, 328.333, 67, -55.667, -29, -55.667, -29, 7.99969, 19, 8, 19, 264.333)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-82, -521.333)
