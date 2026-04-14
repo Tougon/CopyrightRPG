@@ -2170,7 +2170,6 @@ visible = false
 
 [node name="EncounterArea_00" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
-enabled = false
 encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_5m487"), SubResource("Resource_1f3ht"), SubResource("Resource_b426m"), SubResource("Resource_pltni")])
 grace_period = 1.0
 minimum_encounter_chance = 0.02
@@ -2182,7 +2181,6 @@ shape = SubResource("RectangleShape2D_0uugv")
 
 [node name="EncounterArea_01" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
-enabled = false
 encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_5m487"), SubResource("Resource_1f3ht"), SubResource("Resource_b426m"), SubResource("Resource_pltni")])
 grace_period = 1.0
 minimum_encounter_chance = 0.02
@@ -2194,7 +2192,6 @@ shape = SubResource("RectangleShape2D_xne02")
 
 [node name="EncounterArea_02" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
-enabled = false
 encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_7nfh4"), SubResource("Resource_je02x"), SubResource("Resource_owapj"), SubResource("Resource_pltni")])
 grace_period = 1.0
 minimum_encounter_chance = 0.02
@@ -2206,7 +2203,6 @@ shape = SubResource("RectangleShape2D_ga83u")
 
 [node name="EncounterArea_03" parent="Areas/Mall Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
-enabled = false
 encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_7nfh4"), SubResource("Resource_je02x"), SubResource("Resource_owapj"), SubResource("Resource_pltni")])
 grace_period = 1.0
 minimum_encounter_chance = 0.02
@@ -2506,7 +2502,7 @@ position = Vector2(0, 314.5)
 shape = SubResource("RectangleShape2D_hi4at")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(3609, -2010)
+position = Vector2(0, 102)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -2623,7 +2619,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(3609, -2090)
+position = Vector2(0, 22)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2636,7 +2632,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(3609, -2090)
+position = Vector2(0, 22)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
