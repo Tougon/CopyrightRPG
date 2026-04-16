@@ -657,6 +657,7 @@ func _action_phase():
 			await get_tree().process_frame;
 			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_1_01"));
 			EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_1_02"));
+			#EventManager.on_dialogue_queue.emit(tr("T_TUTORIAL_SEALING_1_03"));
 			await EventManager.on_sequence_queue_empty;
 	
 	await get_tree().process_frame;

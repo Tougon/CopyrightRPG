@@ -1981,6 +1981,9 @@ position = Vector2(2045, -2372)
 [node name="Tape" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props/Entryway E/Guard Rail41" index="1"]
 visible = false
 
+[node name="Escalator Area" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items/Props"]
+y_sort_enabled = true
+
 [node name="Mirror" type="Node2D" parent="Areas/Mall Main/1F/Environment/Visuals/Sorted Items" node_paths=PackedStringArray("target_nodes", "reflections")]
 visible = false
 position = Vector2(-297, -349)
