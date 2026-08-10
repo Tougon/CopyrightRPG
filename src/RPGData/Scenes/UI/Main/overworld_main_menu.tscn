@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=153 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -56,6 +56,7 @@
 [ext_resource type="Theme" uid="uid://b75asv135vvot" path="res://assets/Themes/Theme_UI_InventoryBox.tres" id="46_mlnh1"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_drop_panel.gd" id="47_txais"]
 [ext_resource type="Theme" uid="uid://bthkn0f61scro" path="res://assets/Themes/Theme_UI_Slider.tres" id="55_ejuht"]
+[ext_resource type="Texture2D" uid="uid://47pal57libj7" path="res://assets/Sprites/UI/MainMenu/ui_menumain_border.png" id="57_8u8yy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a7w6f"]
 shader = ExtResource("2_x4i24")
@@ -697,9 +698,24 @@ relative = false
 "Vector2 Value" = Vector2(1, 1)
 "From Vector2" = Vector2(0.8, 0.8)
 
+[sub_resource type="Resource" id="Resource_jrdvl"]
+script = ExtResource("9_7mkwv")
+target = "Border"
+property_name = "scale"
+material_property = false
+duration = 0.5
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(1, 1)
+"From Vector2" = Vector2(1.2, 1.2)
+
 [sub_resource type="Resource" id="Resource_ig1wf"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv"), SubResource("Resource_i0m8o"), SubResource("Resource_lyvhg")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv"), SubResource("Resource_i0m8o"), SubResource("Resource_lyvhg"), SubResource("Resource_jrdvl")])
 
 [sub_resource type="Resource" id="Resource_d1135"]
 script = ExtResource("7_2gsnx")
@@ -772,9 +788,24 @@ relative = false
 "Vector2 Value" = Vector2(0.8, 0.8)
 "From Vector2" = Vector2(1, 1)
 
+[sub_resource type="Resource" id="Resource_5p4ms"]
+script = ExtResource("9_7mkwv")
+target = "Border"
+property_name = "scale"
+material_property = false
+duration = 0.5
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 3
+"Vector2 Value" = Vector2(1.2, 1.2)
+"From Vector2" = Vector2(1, 1)
+
 [sub_resource type="Resource" id="Resource_psnsu"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5"), SubResource("Resource_pecf3"), SubResource("Resource_n8u5n")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5"), SubResource("Resource_pecf3"), SubResource("Resource_n8u5n"), SubResource("Resource_5p4ms")])
 
 [sub_resource type="Resource" id="Resource_bdl6l"]
 script = ExtResource("7_2gsnx")
@@ -6255,6 +6286,20 @@ focus_neighbor_top = NodePath("../Save")
 focus_neighbor_bottom = NodePath("../Save")
 theme = ExtResource("13_ynyhx")
 text = "T_MENU_COMMON_DELETE"
+
+[node name="Border" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 360)
+texture = ExtResource("57_8u8yy")
+patch_margin_left = 26
+patch_margin_top = 26
+patch_margin_right = 26
+patch_margin_bottom = 26
 
 [node name="TweenPlayerUI" type="Node" parent="."]
 script = ExtResource("2_fajv7")
