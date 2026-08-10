@@ -4,6 +4,8 @@ class_name RPGPlayerController
 @export var speed : float = 250.0;
 @export_range(1,10) var run_multiplier : float = 1.5;
 @export_range(0.1, 1) var skid_duration : float = 0.25;
+@export var skid_deceleration : Curve;
+@export_range(0, 1) var skid_endlag : float = 0.25;
 @export_range(0, 2) var upward_sight_modifier : float = 1.0;
 
 const COLLISION_DETECTION_RANGE : float  = 64.0;
@@ -18,6 +20,7 @@ var _can_move : bool = true;
 var _in_dialogue : bool = false;
 var _reparenting : bool = false;
 var _exiting : bool = false;
+var _running_time : float = 0.0;
 
 @onready var player_fade_offset: Node2D = $FadeOffset
 @onready var camera_offset : Node2D = $RPGCharacter/CameraOffset
@@ -127,7 +130,12 @@ func _get_movement_vector() -> Vector2:
 
 func move(direction : Vector2, delta : float):
 	velocity = direction * speed;
-	if Input.is_action_pressed("run") : velocity *= run_multiplier;
+	var running = Input.is_action_pressed("run");
+	
+	if running : 
+		velocity *= run_multiplier;
+		_running_time += delta;
+	
 	var orig_pos = position;
 	
 	move_and_slide();
@@ -135,16 +143,30 @@ func move(direction : Vector2, delta : float):
 	var delta_pos = position - orig_pos;
 	
 	if delta_pos.length() > 0 && !_in_dialogue: 
-		EventManager.on_overworld_player_moved.emit(direction, velocity, delta);
+		EventManager.on_overworld_player_moved.emit(direction, velocity, delta, running, false);
 	
 	if direction.length_squared() != 0:
 		direction_facing = direction;
 	
-	if (Input.is_action_just_released("run") || (Input.is_action_pressed("run") && _prev_direction != direction)) && _prev_direction.length_squared() > 0:
+	var apply_run_endlag = false;
+	
+	if (Input.is_action_just_released("run") || (running && _prev_direction != direction)) && _prev_direction.length_squared() > 0:
+		var can_skid = true;
+		
+		# If we stop running and we've been running for long enough, skid
+		if (Input.is_action_just_released("run")):
+			can_skid = false;
+			if _running_time >= 0.35 :
+				skid(_prev_direction * speed * run_multiplier, Vector2.ZERO, skid_duration, true, true, true);
+			else :
+				apply_run_endlag = true;
+		
 		var angle_dif = abs(rad_to_deg(_prev_direction.angle_to(direction)))
 		# We have to use 91 here due to bizarre rounding errors
-		if angle_dif == 0 || angle_dif > 91 : 
-			skid(_prev_direction * speed * run_multiplier, _prev_direction * speed);
+		if (angle_dif == 0 || angle_dif > 91) && can_skid: 
+			skid(_prev_direction * speed * run_multiplier, Vector2.ZERO, skid_duration, true, true, true);
+	
+	if !running : _running_time = 0.0;
 	
 	if _prev_direction != direction: 
 		_prev_direction = direction;
@@ -152,6 +174,10 @@ func move(direction : Vector2, delta : float):
 	# Animation update if not sliding
 	if _can_move : 
 		update_locomotion_animation(direction, delta_pos.length_squared());
+	
+	if apply_run_endlag :
+		skid(_prev_direction * speed * run_multiplier, Vector2.ZERO, 0.2, false, false, false);
+		await get_tree().create_timer(0.05).timeout;
 
 
 func update_locomotion_animation(direction : Vector2, delta : float):
@@ -162,23 +188,36 @@ func update_locomotion_animation(direction : Vector2, delta : float):
 	else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
 
 
-func skid(initial : Vector2, final : Vector2):
+func skid(initial : Vector2, final : Vector2, duration : float, end_delay : bool, play_anim : bool, use_curve : bool):
 	var direction = initial.normalized();
 	var orig_velocity = initial;
 	var time = 0;
 	_can_move = false;
 	
-	_player_visual.play_one_shot("slide");
+	if play_anim :
+		_player_visual.play_one_shot("slide");
 	
-	while (time < skid_duration && skid_duration > 0 && !_in_dialogue):
-		velocity = lerp(orig_velocity, final, time / skid_duration);
+	while (time < duration && duration > 0 && !_in_dialogue):
+		var skid_time = 1.0 - (time / duration);
+		
+		if use_curve :
+			skid_time = skid_deceleration.sample((time / duration));
+		
+		velocity = lerp(orig_velocity, final, 1.0 - skid_time);
+		
 		move_and_slide();
-		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity, get_physics_process_delta_time());
+		
+		if !_in_dialogue: EventManager.on_overworld_player_moved.emit(direction, velocity, get_physics_process_delta_time(), false, true);
 		time += get_physics_process_delta_time();
+		
 		await get_tree().physics_frame;
+	
+	if (end_delay) :
+		await get_tree().create_timer(skid_endlag).timeout;
 	
 	_prev_direction = _get_movement_vector();
 	_can_move = true;
+	_running_time = 0.0;
 	update_locomotion_animation(_prev_direction, _prev_direction.length());
 
 

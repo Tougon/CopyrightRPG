@@ -70,7 +70,8 @@ func set_focus(state : bool):
 			tween_player.play_tween_name("Focus");
 		else :
 			if delay_selection_until_focus :
-				initial_selection.grab_focus();
+				if initial_selection != null :
+					initial_selection.grab_focus();
 		
 		on_focus();
 	
@@ -104,7 +105,9 @@ func set_focus(state : bool):
 func _on_focus_anim_complete(tween_name : String):
 	_is_tweening_focus = false;
 	tween_player.tween_ended.disconnect(_on_focus_anim_complete);
-	initial_selection.grab_focus();
+	
+	if initial_selection != null :
+		initial_selection.grab_focus();
 
 
 func on_focus():

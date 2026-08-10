@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cviyt63wxucnc"]
+[gd_scene load_steps=9 format=3 uid="uid://cviyt63wxucnc"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerController.gd" id="1_1wsnh"]
 [ext_resource type="PackedScene" uid="uid://blcq1iqrvxi3o" path="res://src/RPGData/Scenes/Overworld/Visuals/RPGCharacter.tscn" id="2_ix7x6"]
 [ext_resource type="Texture2D" uid="uid://c88xb0y4eiiu5" path="res://assets/Sprites/UI/Battle/targetting_arrow.png" id="3_rngrh"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Player/RPGPlayerInteractArea.gd" id="4_ex8ft"]
+
+[sub_resource type="Curve" id="Curve_6guf5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0.75), -1.10302, -2.08198, 0, 0, Vector2(1, 0), -5.17309, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o4oep"]
 size = Vector2(56, 22)
@@ -19,6 +23,9 @@ collision_layer = 5
 motion_mode = 1
 script = ExtResource("1_1wsnh")
 speed = 200.0
+skid_duration = 0.65
+skid_deceleration = SubResource("Curve_6guf5")
+skid_endlag = 0.1
 upward_sight_modifier = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

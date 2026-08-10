@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://blcq1iqrvxi3o"]
+[gd_scene load_steps=26 format=3 uid="uid://blcq1iqrvxi3o"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character.gd" id="1_g56y7"]
-[ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="2_8e0y2"]
 [ext_resource type="Resource" uid="uid://1dj4k34vderk" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_N.tres" id="2_bbgsx"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_data.gd" id="2_jv2ym"]
 [ext_resource type="Resource" uid="uid://b80hejghbakrm" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_E.tres" id="2_psijd"]
@@ -64,7 +63,7 @@ shader_parameter/light_energy = null
 shader_parameter/light_falloff = null
 shader_parameter/shadow = null
 shader_parameter/line_color = Color(0.0588235, 0.0941176, 0.113725, 1)
-shader_parameter/line_thickness = 0.4
+shader_parameter/line_thickness = 0.0
 shader_parameter/add_margins = true
 shader_parameter/falloff_mask = ExtResource("10_dtr0a")
 
@@ -111,7 +110,7 @@ texture = ExtResource("6_kd104")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n7grm")
-texture = ExtResource("2_8e0y2")
+texture = ExtResource("14_uuk4g")
 offset = Vector2(0, -96)
 
 [node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("11_iuhc3")]

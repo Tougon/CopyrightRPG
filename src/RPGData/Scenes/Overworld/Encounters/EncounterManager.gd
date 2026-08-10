@@ -5,6 +5,7 @@ class_name EncounterManager
 @export var encounters : Array[Encounter];
 # TODO: Perhaps we may make these const at some point?
 @export var grace_period : float = 1.5;
+@export_range(0, 10) var run_encounter_modifier : float = 1.15;
 @export_range(0, 1) var minimum_encounter_chance : float = 0.05;
 @export_range(0, 1) var encounter_increase_rate : float = 0.05;
 @export_range(0, 10) var encounter_reroll_rate : float = 1.0;
@@ -23,16 +24,16 @@ func _ready():
 	_reset_encounter_variables(null);
 
 
-func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float):
-	if !enabled || !active || !process_encounters: return;
+func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float, run : bool, skid : bool):
+	if !enabled || !active || !process_encounters || skid : return;
 	
 	if OverworldManager.encounter_wait_time < grace_period : 
 		OverworldManager.encounter_wait_time  += delta;
 	else :
-		OverworldManager.encounter_time += delta;
+		var amt = delta;
+		if run : amt *= run_encounter_modifier;
 		
-		# NOTE: Running effectively reduces encounter rate for no drawback
-		# Should this stay? It almost works thematically
+		OverworldManager.encounter_time += amt;
 		
 		if OverworldManager.encounter_time >= encounter_reroll_rate:
 			encounter_chance = randf();
@@ -43,7 +44,7 @@ func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : f
 			EventManager.on_battle_queue.emit(encounter);
 			process_encounters = false;
 		else:
-			current_chance += (encounter_increase_rate * delta);
+			current_chance += (encounter_increase_rate * amt);
 
 
 func _on_battle_end(result : BattleResult):

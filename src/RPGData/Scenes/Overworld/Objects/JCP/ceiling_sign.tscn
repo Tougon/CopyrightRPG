@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://63ituwbkn22v"]
+
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_ik0b6"]
+[ext_resource type="Texture2D" uid="uid://r3bxcswu3bkv" path="res://assets/Sprites/Overworld/common/security_mask.png" id="2_daeja"]
+[ext_resource type="Texture2D" uid="uid://dhsc0igruq3qq" path="res://assets/Sprites/Overworld/jcp/ceiling_sign_blank.png" id="3_midxd"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_cmkrb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_we25e"]
+shader = ExtResource("1_ik0b6")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("2_daeja")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y58rh"]
+size = Vector2(384, 16)
+
+[node name="Ceiling Sign" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sign" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Sign"]
+material = SubResource("ShaderMaterial_we25e")
+position = Vector2(0, -48)
+texture = ExtResource("3_midxd")
+offset = Vector2(0, -320)
+
+[node name="ZLightReceiver" parent="Sign/Sprite2D" instance=ExtResource("4_cmkrb")]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_y58rh")
+size = Vector2(384, 16)
+static_receiver = false
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-189, -407)
+rect = Rect2(-10, -10, 400, 120)

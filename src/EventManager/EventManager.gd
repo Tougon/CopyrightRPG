@@ -23,7 +23,7 @@ signal on_dialogue_queue(dialogue : String);
 signal on_message_queue(message : String);
 
 # Global Overworld Events
-signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float);
+signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float, run : bool, skid : bool);
 signal on_overworld_player_reparented(parent : Node2D);
 signal on_overworld_player_teleported(delta : Vector2);
 signal on_overworld_change_area(new_area : String);

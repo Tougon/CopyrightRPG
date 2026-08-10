@@ -451,3 +451,10 @@ func _exit_tree():
 	QuestManager.quest_completed.disconnect(quest_complete)
 	Dialogic.timeline_started.disconnect(_on_dialogue_begin);
 	Dialogic.timeline_ended.disconnect(_on_dialogue_end);
+
+
+
+# TODO: DELETE LATER
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("debug_space") :
+		$"UI/Post Process".visible = !$"UI/Post Process".visible;

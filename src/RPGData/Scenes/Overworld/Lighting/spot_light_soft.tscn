@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvjhxq6wieycm"]
+
+[ext_resource type="Texture2D" uid="uid://bp4lh1ur5p0nb" path="res://assets/Textures/Lights/point_light.png" id="1_qj1u8"]
+[ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="2_w6b4k"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_te3vh"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2e8ac"]
+radius = 251.5
+
+[sub_resource type="Curve" id="Curve_yjstt"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 1, 0]
+point_count = 3
+
+[node name="Spot Light Soft" type="Node2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.905882, 0.74902, 0.215686)
+material = SubResource("CanvasItemMaterial_te3vh")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_qj1u8")
+
+[node name="ZLight" parent="." node_paths=PackedStringArray("glow") instance=ExtResource("2_w6b4k")]
+shape = SubResource("CircleShape2D_2e8ac")
+size = Vector2(2.515, 0)
+color = Color(0.88, 0.71984, 0.4224, 0.2)
+energy = 0.45
+energy_pulse = SubResource("Curve_yjstt")
+energy_pulse_speed = 20.0
+glow = NodePath("../Sprite")
+falloff = 7.0

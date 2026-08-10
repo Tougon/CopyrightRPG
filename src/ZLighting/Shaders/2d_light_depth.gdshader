@@ -20,7 +20,7 @@ uniform vec4 line_color : source_color = vec4(0.184, 0.208, 0.227, 1);
 uniform float line_thickness : hint_range(0, 20) = 0.3;
 uniform bool add_margins = true;
 
-varying vec4 vertex_color; 
+varying vec4 vertex_color;
 
 // The maximum size an item can be on the Y axis
 const float MAX_HEIGHT = 512.0;
@@ -33,23 +33,23 @@ bool is_in_bounds(vec2 coord, vec2 center, vec2 size){
 
 vec2 determine_falloff_direction(vec2 coord, vec2 center, vec2 size){
 	vec2 result = vec2(0.0, 0.0);
-	
+
 	if (coord.x < center.x - size.x){
 		result.x = -1.0;
 	}
-	
+
 	if (coord.x > center.x + size.x){
 		result.x = 1.0;
 	}
-	
+
 	if (coord.y < center.y - size.y){
 		result.y = -1.0;
 	}
-	
+
 	if (coord.y > center.y + size.y){
 		result.y = 1.0;
 	}
-	
+
 	return result;
 }
 
@@ -70,13 +70,13 @@ float energy_for_coord_rect(vec2 coord, int light_index){
 			// Initialize values
 			float falloff = 1.0;
 			float percent = 0.0;
-			
+
 			vec2 dir = determine_falloff_direction(coord, center, falloff_size);//normalize(coord - center);
-			
+
 			// Get the distances from the falloff point
 			vec2 pos = (coord - center) - (falloff_size * dir);
 			vec2 limit = (size * dir) - (falloff_size * dir);
-			
+
 			// Calculate percentage based on the axis
 			if (abs(dir.x) > abs(dir.y)){
 				percent = pos.x / limit.x;
@@ -87,10 +87,10 @@ float energy_for_coord_rect(vec2 coord, int light_index){
 			else{
 				percent = max(pos.x / limit.x, pos.y / limit.y);
 			}
-			
+
 			// Invert percent
 			falloff -= abs(percent);
-			
+
 			// Clamp value, modify, and return
 			return clamp(falloff, 0, 1) * light_energy[light_index];
 		}
@@ -137,7 +137,7 @@ float energy_for_coord(vec2 coord, int light_index){
 float get_height_percent(vec4 height_map){
 	if (height_map.a < 0.1)
 		return 0.0;
-	
+
 	return (height_map.x + height_map.y + height_map.z) / 3.0;
 }
 
@@ -146,7 +146,7 @@ void light() {
 	bool start_origin = false;
 	float height_y = 0.0;
 	vec4 falloff_tex = texture(falloff_mask, UV);
-	
+
 	height_y = (get_height_percent(falloff_tex) * MAX_HEIGHT);
 	if (height_y < 0.01){
 		start_origin = true;
@@ -200,12 +200,12 @@ void vertex() {
 
 void fragment() {
 	vec2 uv = UV;
-    
+
     if (add_margins) {
         vec2 texture_pixel_size = vec2(1.0) / (vec2(1.0) / TEXTURE_PIXEL_SIZE + vec2(line_thickness * 2.0));
-        
+
         uv = (uv - texture_pixel_size * line_thickness) * TEXTURE_PIXEL_SIZE / texture_pixel_size;
-        
+
         if (uv != clamp(uv, vec2(0.0), vec2(1.0))) {
             COLOR.a = 0.0;
         } else {
@@ -214,9 +214,9 @@ void fragment() {
     } else {
         COLOR = texture(TEXTURE, uv);
     }
-    
+
     vec2 size = TEXTURE_PIXEL_SIZE * line_thickness;
-    
+
     if (line_thickness < 0.1) {
         vec4 color = texture(TEXTURE, uv);
         COLOR = color;
@@ -234,10 +234,10 @@ void fragment() {
         outline += texture(TEXTURE, uv + vec2(size.x * 0.866, -size.y * 0.5)).a;
         outline += texture(TEXTURE, uv + vec2(size.x * 0.5, -size.y * 0.866)).a;
         outline = min(outline, 1.0);
-        
+
         vec4 color = texture(TEXTURE, uv);
         COLOR = mix(color, line_color, outline - color.a);
     }
-	
+
 	COLOR *= vertex_color;
 }

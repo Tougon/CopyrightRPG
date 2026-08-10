@@ -45,7 +45,8 @@ position = Vector2(-21, -183)
 collision_layer = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collider"]
-polygon = PackedVector2Array(-107, -10.3333, -171, -10.3333, -172, 181.667, 213, 181.667, 213, -9, 147, -9, 147, 37.6667, -107, 36.3334)
+position = Vector2(0, 100.333)
+polygon = PackedVector2Array(-107, -10.3333, -171, -10.3333, -171, 83, 213, 83, 213, -9, 147, -9, 147, 37, -107, 37)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-233, -257.333)
