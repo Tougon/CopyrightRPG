@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=155 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -711,11 +711,26 @@ relative = false
 "Use From" = true
 "Value Type" = 3
 "Vector2 Value" = Vector2(1, 1)
-"From Vector2" = Vector2(1.2, 1.2)
+"From Vector2" = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_jlhum"]
+script = ExtResource("9_7mkwv")
+target = "Border"
+property_name = "modulate"
+material_property = false
+duration = 0.3
+delay = 0.0
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+"From Color" = Color(1, 1, 1, 0)
 
 [sub_resource type="Resource" id="Resource_ig1wf"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv"), SubResource("Resource_i0m8o"), SubResource("Resource_lyvhg"), SubResource("Resource_jrdvl")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_b0o5m"), SubResource("Resource_tv1mv"), SubResource("Resource_i0m8o"), SubResource("Resource_lyvhg"), SubResource("Resource_jrdvl"), SubResource("Resource_jlhum")])
 
 [sub_resource type="Resource" id="Resource_d1135"]
 script = ExtResource("7_2gsnx")
@@ -800,12 +815,27 @@ ease = 1
 relative = false
 "Use From" = true
 "Value Type" = 3
-"Vector2 Value" = Vector2(1.2, 1.2)
+"Vector2 Value" = Vector2(0, 0)
 "From Vector2" = Vector2(1, 1)
+
+[sub_resource type="Resource" id="Resource_c4equ"]
+script = ExtResource("9_7mkwv")
+target = "Border"
+property_name = "modulate"
+material_property = false
+duration = 0.3
+delay = 0.2
+transition = 5
+ease = 1
+relative = false
+"Use From" = true
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 0)
+"From Color" = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_psnsu"]
 script = ExtResource("8_5bptp")
-frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5"), SubResource("Resource_pecf3"), SubResource("Resource_n8u5n"), SubResource("Resource_5p4ms")])
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_ixc86"), SubResource("Resource_ou1q5"), SubResource("Resource_pecf3"), SubResource("Resource_n8u5n"), SubResource("Resource_5p4ms"), SubResource("Resource_c4equ")])
 
 [sub_resource type="Resource" id="Resource_bdl6l"]
 script = ExtResource("7_2gsnx")
