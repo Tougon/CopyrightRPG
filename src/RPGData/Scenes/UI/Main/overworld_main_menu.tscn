@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=177 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cdlgmr2btwog1" path="res://assets/Textures/dirt.png" id="5_xpgnr"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource_instance.gd" id="6_i4er7"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="7_2gsnx"]
-[ext_resource type="Resource" uid="uid://bswvqsme1b5di" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusEntered.tres" id="7_k53x4"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="8_5bptp"]
 [ext_resource type="Resource" uid="uid://2maq8tdqt2px" path="res://assets/Tweens/UI/Main/UI_Main_HeaderButton_FocusExit.tres" id="8_e10re"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="9_7mkwv"]
@@ -89,10 +88,89 @@ shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
+[sub_resource type="Resource" id="Resource_vlph8"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "pivot_offset"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(47.5, 17)
+
+[sub_resource type="Resource" id="Resource_ct3lh"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "rotation_degrees"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.0
+
+[sub_resource type="Resource" id="Resource_ychr2"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "scale"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(1.25, 1.25)
+
+[sub_resource type="Resource" id="Resource_her81"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "modulate"
+material_property = false
+duration = 0.15
+delay = 0.0
+transition = 2
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 5
+"Color Value" = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_d4bna"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "shader_parameter/overlay_radius"
+material_property = true
+duration = 0.7
+delay = 0.0
+transition = 4
+ease = 1
+relative = false
+"Use From" = false
+"Value Type" = 1
+"Float Value" = 0.5
+
+[sub_resource type="Resource" id="Resource_smnos"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_vlph8"), SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_her81"), SubResource("Resource_d4bna")])
+
+[sub_resource type="Resource" id="Resource_1uarj"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_smnos")])
+
 [sub_resource type="Resource" id="Resource_i8lkg"]
 script = ExtResource("6_i4er7")
 tween_name = "Focus Entered"
-tween_resource = ExtResource("7_k53x4")
+tween_resource = SubResource("Resource_1uarj")
 play_on_start = false
 next_tween = ""
 
@@ -111,6 +189,36 @@ shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
+[sub_resource type="Resource" id="Resource_bax15"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "pivot_offset"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(81, 17)
+
+[sub_resource type="Resource" id="Resource_choxp"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_bax15"), SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_her81"), SubResource("Resource_d4bna")])
+
+[sub_resource type="Resource" id="Resource_pirc3"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_choxp")])
+
+[sub_resource type="Resource" id="Resource_a6t68"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_pirc3")
+play_on_start = false
+next_tween = ""
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_am32w"]
 shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
@@ -118,6 +226,36 @@ shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="Resource" id="Resource_2ovof"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "pivot_offset"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(66.5, 17)
+
+[sub_resource type="Resource" id="Resource_75g20"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_2ovof"), SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_her81"), SubResource("Resource_d4bna")])
+
+[sub_resource type="Resource" id="Resource_clx2w"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_75g20")])
+
+[sub_resource type="Resource" id="Resource_kwjgt"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_clx2w")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0oy30"]
 shader = ExtResource("4_xq5bg")
@@ -127,6 +265,36 @@ shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
 
+[sub_resource type="Resource" id="Resource_gad5p"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "pivot_offset"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(62, 17)
+
+[sub_resource type="Resource" id="Resource_kqpol"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_gad5p"), SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_her81"), SubResource("Resource_d4bna")])
+
+[sub_resource type="Resource" id="Resource_xltwv"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_kqpol")])
+
+[sub_resource type="Resource" id="Resource_8pte7"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_xltwv")
+play_on_start = false
+next_tween = ""
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j8u8k"]
 shader = ExtResource("4_xq5bg")
 shader_parameter/overlay_texture_offset = null
@@ -134,6 +302,36 @@ shader_parameter/overlay_texture_tiling = Vector2(1, 1)
 shader_parameter/overlay_texture_amount = 1.0
 shader_parameter/overlay_radius = -0.75
 shader_parameter/overlay_texture = ExtResource("5_xpgnr")
+
+[sub_resource type="Resource" id="Resource_pwpmd"]
+script = ExtResource("9_7mkwv")
+target = ""
+property_name = "pivot_offset"
+material_property = false
+duration = 0.0
+delay = 0.0
+transition = 0
+ease = 0
+relative = false
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(58.5, 17)
+
+[sub_resource type="Resource" id="Resource_mq3qr"]
+script = ExtResource("8_5bptp")
+frames = Array[ExtResource("9_7mkwv")]([SubResource("Resource_pwpmd"), SubResource("Resource_ct3lh"), SubResource("Resource_ychr2"), SubResource("Resource_her81"), SubResource("Resource_d4bna")])
+
+[sub_resource type="Resource" id="Resource_ok44c"]
+script = ExtResource("7_2gsnx")
+tween_name = "Focus Entered"
+sequence = Array[ExtResource("8_5bptp")]([SubResource("Resource_mq3qr")])
+
+[sub_resource type="Resource" id="Resource_a7xj4"]
+script = ExtResource("6_i4er7")
+tween_name = "Focus Entered"
+tween_resource = SubResource("Resource_ok44c")
+play_on_start = false
+next_tween = ""
 
 [sub_resource type="Resource" id="Resource_mlp1p"]
 script = ExtResource("6_i4er7")
@@ -896,15 +1094,16 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.03
 anchor_right = 0.97
-offset_right = 16.0
+offset_left = 21.2
+offset_right = -21.2
 offset_bottom = 72.0
 theme_override_constants/v_separation = 8
-columns = 5
+columns = 9
 
 [node name="Party" type="Button" parent="Header/Options Headers/GridContainer"]
 material = SubResource("ShaderMaterial_dpxoc")
+custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
@@ -916,10 +1115,15 @@ clip_text = true
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
 
-[node name="Inventory" type="Button" parent="Header/Options Headers/GridContainer"]
-material = SubResource("ShaderMaterial_cudql")
+[node name="Spacer" type="Control" parent="Header/Options Headers/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Inventory" type="Button" parent="Header/Options Headers/GridContainer"]
+material = SubResource("ShaderMaterial_cudql")
+custom_minimum_size = Vector2(162, 0)
+layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
@@ -929,12 +1133,17 @@ clip_text = true
 
 [node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Inventory"]
 script = ExtResource("2_fajv7")
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_a6t68"), SubResource("Resource_381eq")])
+
+[node name="Spacer2" type="Control" parent="Header/Options Headers/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Notepad" type="Button" parent="Header/Options Headers/GridContainer"]
 material = SubResource("ShaderMaterial_am32w")
+custom_minimum_size = Vector2(133, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
@@ -944,12 +1153,17 @@ clip_text = true
 
 [node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Notepad"]
 script = ExtResource("2_fajv7")
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_kwjgt"), SubResource("Resource_381eq")])
+
+[node name="Spacer3" type="Control" parent="Header/Options Headers/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Options" type="Button" parent="Header/Options Headers/GridContainer"]
 material = SubResource("ShaderMaterial_0oy30")
+custom_minimum_size = Vector2(124, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
@@ -959,12 +1173,17 @@ clip_text = true
 
 [node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/Options"]
 script = ExtResource("2_fajv7")
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_8pte7"), SubResource("Resource_381eq")])
+
+[node name="Spacer4" type="Control" parent="Header/Options Headers/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="System" type="Button" parent="Header/Options Headers/GridContainer"]
 material = SubResource("ShaderMaterial_j8u8k")
+custom_minimum_size = Vector2(117, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme = ExtResource("4_q6orv")
@@ -974,7 +1193,7 @@ clip_text = true
 
 [node name="TweenPlayerUI" type="Node" parent="Header/Options Headers/GridContainer/System"]
 script = ExtResource("2_fajv7")
-sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_i8lkg"), SubResource("Resource_381eq")])
+sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_a7xj4"), SubResource("Resource_381eq")])
 
 [node name="Body" type="ColorRect" parent="."]
 layout_mode = 1
