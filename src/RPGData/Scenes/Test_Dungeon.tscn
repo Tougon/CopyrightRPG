@@ -301,11 +301,11 @@ size = Vector2(1588, 990)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jhx8f"]
 shader = ExtResource("51_ssbp8")
 shader_parameter/desaturate_amount = 0.0
-shader_parameter/contrast_level = 2.4
-shader_parameter/desaturate_minimum = 0.5
+shader_parameter/contrast_level = 4.0
+shader_parameter/desaturate_minimum = 0.6
 shader_parameter/black_white_level = 0.55
-shader_parameter/final_amount = 0.275
-shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/final_amount = 0.2
+shader_parameter/tint_color = Color(0.380392, 0.733333, 1, 1)
 shader_parameter/tint_amount = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
@@ -427,14 +427,15 @@ y_sort_enabled = true
 [node name="Lighting" type="Node2D" parent="Areas/Main/1F/Environment/Visuals"]
 z_index = -1
 
-[node name="Base_Bright" type="Sprite2D" parent="Areas/Main/1F/Environment/Visuals/Lighting"]
+[node name="Base_Bright (Outdoors)" type="Sprite2D" parent="Areas/Main/1F/Environment/Visuals/Lighting"]
+process_mode = 4
 visible = false
 self_modulate = Color(1, 1, 1, 0)
 z_index = 5
 position = Vector2(535, 3560)
 texture = ExtResource("6_80ace")
 
-[node name="Base Light" type="PointLight2D" parent="Areas/Main/1F/Environment/Visuals/Lighting/Base_Bright"]
+[node name="Base Light" type="PointLight2D" parent="Areas/Main/1F/Environment/Visuals/Lighting/Base_Bright (Outdoors)"]
 position = Vector2(-261.998, 1447.66)
 scale = Vector2(6.16445, 5.74769)
 color = Color(0.465, 0.532167, 0.62, 1)
@@ -443,7 +444,7 @@ shadow_filter = 1
 texture = ExtResource("7_jvspb")
 texture_scale = 4.88
 
-[node name="Adjustment Tint" type="PointLight2D" parent="Areas/Main/1F/Environment/Visuals/Lighting/Base_Bright"]
+[node name="Adjustment Tint" type="PointLight2D" parent="Areas/Main/1F/Environment/Visuals/Lighting/Base_Bright (Outdoors)"]
 position = Vector2(-261.998, 1447.66)
 scale = Vector2(6.16445, 5.74769)
 color = Color(0.619608, 0.533333, 0, 0.0705882)
@@ -452,52 +453,29 @@ shadow_filter = 1
 texture = ExtResource("7_jvspb")
 texture_scale = 4.88
 
+[node name="Base_Bright" type="Sprite2D" parent="Areas/Main/1F/Environment/Visuals/Lighting"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 5
+position = Vector2(535, 3560)
+texture = ExtResource("6_80ace")
+
+[node name="Base Light" type="PointLight2D" parent="Areas/Main/1F/Environment/Visuals/Lighting/Base_Bright"]
+position = Vector2(-261.998, 1447.66)
+scale = Vector2(6.16445, 5.74769)
+shadow_filter = 1
+texture = ExtResource("7_jvspb")
+texture_scale = 4.88
+
 [node name="Spot Lights" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Lighting"]
-visible = false
 
 [node name="Industrial Light" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
 position = Vector2(611, -160)
 
-[node name="Industrial Light2" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
-position = Vector2(1122, -160)
-
-[node name="Industrial Light3" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
-position = Vector2(1628, -160)
-
-[node name="Industrial Light4" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
-position = Vector2(2145, -160)
-
-[node name="Industrial Light5" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
-position = Vector2(2145, -674)
-
-[node name="Industrial Light6" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
-position = Vector2(2145, -1184)
-
-[node name="Industrial Light7" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("8_vbbn7")]
-position = Vector2(2145, -1697)
-
-[node name="Point Light" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(679, -399)
-
-[node name="Point Light2" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(589, -399)
-
-[node name="Point Light3" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(1707, -399)
-
-[node name="Point Light4" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(1617, -399)
-
-[node name="Point Light5" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(62, -157)
-
 [node name="Point Light6" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(-61, -157)
-
-[node name="Point Light7" parent="Areas/Main/1F/Environment/Visuals/Lighting/Spot Lights" instance=ExtResource("9_8nmwh")]
-position = Vector2(1158, -467)
+position = Vector2(-54, -158)
 
 [node name="Entry Shadow" type="Sprite2D" parent="Areas/Main/1F/Environment/Visuals/Lighting"]
+process_mode = 4
 visible = false
 material = SubResource("ShaderMaterial_q7y2t")
 position = Vector2(-1, 394)
@@ -1901,6 +1879,7 @@ shape = SubResource("RectangleShape2D_vi42o")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/Main/1F"]
 process_mode = 4
+visible = false
 
 [node name="EncounterArea_00" parent="Areas/Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
@@ -1915,7 +1894,7 @@ position = Vector2(1894, 489)
 shape = SubResource("RectangleShape2D_tajap")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
-position = Vector2(0, 100)
+position = Vector2(0, 41)
 run_multiplier = 1.75
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -1977,7 +1956,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.792157)
 
 [node name="Post Process" type="CanvasLayer" parent="UI"]
-visible = false
 
 [node name="Desaturate" type="ColorRect" parent="UI/Post Process"]
 visible = false
@@ -2034,7 +2012,6 @@ script = ExtResource("30_bx0ms")
 sequence_list = Array[ExtResource("31_ojes2")]([SubResource("Resource_1vddh"), SubResource("Resource_8srpl"), SubResource("Resource_kd3c1"), SubResource("Resource_ynn0l"), SubResource("Resource_qagoa"), SubResource("Resource_sdbl4"), SubResource("Resource_eblq6")])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="UI"]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="----------" type="Node" parent="."]
@@ -2042,7 +2019,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, 20)
+position = Vector2(0, -39)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2055,7 +2032,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(0, 20)
+position = Vector2(0, -39)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5
