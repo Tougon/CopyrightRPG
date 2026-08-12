@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://63ituwbkn22v"]
+[gd_scene load_steps=8 format=3 uid="uid://63ituwbkn22v"]
 
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_ik0b6"]
 [ext_resource type="Texture2D" uid="uid://r3bxcswu3bkv" path="res://assets/Sprites/Overworld/common/security_mask.png" id="2_daeja"]
 [ext_resource type="Texture2D" uid="uid://dhsc0igruq3qq" path="res://assets/Sprites/Overworld/jcp/ceiling_sign_blank.png" id="3_midxd"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="4_cmkrb"]
+[ext_resource type="FontFile" uid="uid://cc4xli25271fd" path="res://addons/dialogic/Example Assets/Fonts/Roboto-Bold.ttf" id="5_wgi0t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_we25e"]
 shader = ExtResource("1_ik0b6")
@@ -33,13 +34,31 @@ y_sort_enabled = true
 material = SubResource("ShaderMaterial_we25e")
 position = Vector2(0, -48)
 texture = ExtResource("3_midxd")
-offset = Vector2(0, -320)
+offset = Vector2(0, -256)
 
 [node name="ZLightReceiver" parent="Sign/Sprite2D" instance=ExtResource("4_cmkrb")]
 position = Vector2(0, 56)
 shape = SubResource("RectangleShape2D_y58rh")
 size = Vector2(384, 16)
 static_receiver = false
+
+[node name="Label" type="RichTextLabel" parent="Sign/Sprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -256.0
+offset_right = -215.0
+offset_bottom = -291.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = -8
+theme_override_fonts/normal_font = ExtResource("5_wgi0t")
+bbcode_enabled = true
+text = "
+[outline_color=#888800][color=#FFFFFF][center][font_size=48]information"
+scroll_active = false
+shortcut_keys_enabled = false
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 position = Vector2(-189, -407)

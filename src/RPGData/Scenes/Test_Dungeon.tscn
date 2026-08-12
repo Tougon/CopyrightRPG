@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=119 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -47,7 +47,6 @@
 [ext_resource type="PackedScene" uid="uid://b6k60ygmmbpwb" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/guard_rail_vertical.tscn" id="28_kx2t1"]
 [ext_resource type="Shader" path="res://assets/Shaders/erosion_screen.gdshader" id="29_7n00j"]
 [ext_resource type="PackedScene" uid="uid://chvwtgkw0h4gi" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/sign_a.tscn" id="29_gr0hn"]
-[ext_resource type="PackedScene" uid="uid://b2dx6evd0053r" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/rack_bulk_back.tscn" id="29_vipbg"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="30_bx0ms"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="30_pvc07"]
 [ext_resource type="PackedScene" uid="uid://dd7pvdkuqr3yb" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/rack_a_front.tscn" id="30_rt6ja"]
@@ -120,7 +119,7 @@ shader_parameter/line_thickness = 0.3
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lixmh"]
-size = Vector2(1550, 1550)
+size = Vector2(700, 100)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1npi4"]
 blend_mode = 2
@@ -493,6 +492,7 @@ scale = Vector2(40.495, 5.1)
 texture = ExtResource("12_ec4gi")
 
 [node name="Boundary Shadow" parent="Areas/Main/1F/Environment/Visuals/Lighting" instance=ExtResource("13_scqar")]
+visible = false
 
 [node name="Sorted Items" type="Node2D" parent="Areas/Main/1F/Environment/Visuals"]
 y_sort_enabled = true
@@ -677,8 +677,6 @@ position = Vector2(215, -219)
 shape = SubResource("RectangleShape2D_yv05q")
 
 [node name="Props" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Sorted Items"]
-process_mode = 4
-visible = false
 y_sort_enabled = true
 
 [node name="Entryway" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props"]
@@ -687,44 +685,6 @@ y_sort_enabled = true
 [node name="Counter" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("22_um2ad")]
 position = Vector2(1, -384)
 scale = Vector2(1, 1)
-
-[node name="Guard Rail" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
-visible = false
-
-[node name="Guard Rail2" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
-visible = false
-position = Vector2(-218, -384)
-
-[node name="Tape" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail2" index="1"]
-visible = false
-
-[node name="Guard Rail3" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
-visible = false
-position = Vector2(213, -384)
-
-[node name="Guard Rail4" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
-visible = false
-position = Vector2(333, -632)
-
-[node name="Guard Rail9" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("23_p7qm1")]
-visible = false
-position = Vector2(454, -632)
-
-[node name="Guard Rail5" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("28_kx2t1")]
-visible = false
-position = Vector2(333, -384)
-
-[node name="Guard Rail6" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("28_kx2t1")]
-visible = false
-position = Vector2(333, -446)
-
-[node name="Guard Rail7" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("28_kx2t1")]
-visible = false
-position = Vector2(333, -507)
-
-[node name="Guard Rail8" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("28_kx2t1")]
-visible = false
-position = Vector2(333, -570)
 
 [node name="Reflective Pillar" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" node_paths=PackedStringArray("target_nodes") instance=ExtResource("28_e701m")]
 position = Vector2(-376, -334)
@@ -762,56 +722,13 @@ text = "
 [outline_size=3][outline_color=#000000][color=#FFFFFF][center][font_size=38]YOU!"
 
 [node name="Security A" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
+position = Vector2(-147, 340)
 
 [node name="Security A2" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
-position = Vector2(-32, 340)
-
-[node name="Security A3" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
-position = Vector2(32, 340)
-
-[node name="Security A4" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("26_x1482")]
-position = Vector2(222, 340)
+position = Vector2(148, 340)
 
 [node name="Ceiling Sign" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("24_4hwqu")]
 position = Vector2(0, -398)
-
-[node name="Rack A" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
-process_mode = 4
-visible = false
-
-[node name="Rack A4" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
-process_mode = 4
-visible = false
-position = Vector2(402, 32)
-
-[node name="Rack A5" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
-process_mode = 4
-visible = false
-position = Vector2(402, 160)
-
-[node name="Rack A6" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("18_rr7f4")]
-process_mode = 4
-visible = false
-position = Vector2(402, 288)
-
-[node name="Rack A15" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("30_rt6ja")]
-process_mode = 4
-visible = false
-position = Vector2(-385, 179)
-
-[node name="Rack A16" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("30_rt6ja")]
-process_mode = 4
-visible = false
-position = Vector2(-385, 304)
-
-[node name="Rack A2" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("30_rt6ja")]
-position = Vector2(523, 111)
-
-[node name="Rack Bulk Back" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("29_vipbg")]
-position = Vector2(608, 322)
-
-[node name="Rack Bulk Side" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway" instance=ExtResource("35_0gshv")]
-position = Vector2(764, 323.225)
 
 [node name="Department 1" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Sorted Items/Props"]
 visible = false
@@ -2033,9 +1950,6 @@ draw_limits = true
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp/FloorChangeZone"]
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorTrigger"]
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Escalators/EscalatorUp2/FloorChangeZone"]
-[editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail2"]
-[editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail4"]
-[editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Guard Rail9"]
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway/Sign3"]
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Department 1/Sign4"]
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway W OOB/Guard Rail16"]
