@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd7pvdkuqr3yb"]
+[gd_scene load_steps=14 format=3 uid="uid://dd7pvdkuqr3yb"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/RackSemiRandom.gd" id="1_4n3en"]
 [ext_resource type="Texture2D" uid="uid://bq3ck4ly3kq4s" path="res://assets/Sprites/Overworld/jcp/shirt_a_side.png" id="2_k6moa"]
@@ -24,6 +24,9 @@ shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
 shader_parameter/line_thickness = 0.0
 shader_parameter/add_margins = false
 shader_parameter/falloff_mask = ExtResource("4_pqv16")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_641k5"]
+size = Vector2(37.345, 20.05)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frwvb"]
 size = Vector2(89.16, 20.05)
@@ -54,11 +57,18 @@ items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item
 textures = Array[Texture2D]([ExtResource("2_k6moa")])
 colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1)])
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.424738, 0.406428, 0.553305, 1)
-position = Vector2(-3, -148)
-scale = Vector2(0.4, 2.475)
+[node name="Pole" type="Sprite2D" parent="."]
+modulate = Color(0.309804, 0.294118, 0.415686, 1)
+material = SubResource("ShaderMaterial_r1ft6")
+position = Vector2(-3, -141)
+scale = Vector2(0.525, 3.34)
 texture = ExtResource("3_mquw4")
+
+[node name="ZLightReceiver" parent="Pole" instance=ExtResource("5_4issl")]
+position = Vector2(1, 43.1138)
+shape = SubResource("RectangleShape2D_641k5")
+size = Vector2(37.345, 20.05)
+static_receiver = false
 
 [node name="Item1" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_r1ft6")
@@ -83,12 +93,6 @@ shape = SubResource("RectangleShape2D_frwvb")
 size = Vector2(89.16, 20.05)
 static_receiver = false
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-modulate = Color(0.424738, 0.406428, 0.553305, 1)
-position = Vector2(-3, -147)
-scale = Vector2(0.4, 0.915)
-texture = ExtResource("3_mquw4")
-
 [node name="Item3" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_r1ft6")
 position = Vector2(0, 8)
@@ -112,12 +116,6 @@ shape = SubResource("RectangleShape2D_frwvb")
 size = Vector2(89.16, 20.05)
 static_receiver = false
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0.424738, 0.406428, 0.553305, 1)
-position = Vector2(-3, -122)
-scale = Vector2(0.4, 2.475)
-texture = ExtResource("3_mquw4")
-
 [node name="Item4" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_r1ft6")
 position = Vector2(0, 15)
@@ -129,12 +127,6 @@ position = Vector2(1, -7)
 shape = SubResource("RectangleShape2D_frwvb")
 size = Vector2(89.16, 20.05)
 static_receiver = false
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-modulate = Color(0.424738, 0.406428, 0.553305, 1)
-position = Vector2(-3, -122)
-scale = Vector2(0.4, 1.045)
-texture = ExtResource("3_mquw4")
 
 [node name="Item5" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_r1ft6")
