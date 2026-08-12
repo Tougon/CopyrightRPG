@@ -44,6 +44,7 @@ directories/dch_directory={
 "temp_character_1": "res://assets/Dialogue/Characters/temp_character_1.dch"
 }
 directories/dtl_directory={
+"blocked_light": "res://assets/Dialogue/Timelines/generic/blocked_light.dtl",
 "common_bench_rest": "res://assets/Dialogue/Timelines/common_bench_rest.dtl",
 "demo_boss_sequence": "res://assets/Dialogue/Timelines/demo/demo_boss_sequence.dtl",
 "demo_decrease_lvl_1": "res://assets/Dialogue/Timelines/demo_decrease_lvl_1.dtl",
