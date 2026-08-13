@@ -38,6 +38,7 @@ material = SubResource("ShaderMaterial_q7y2t")
 offset = Vector2(0, -282)
 
 [node name="ZLight" parent="." instance=ExtResource("2_e1qhb")]
+visible = false
 position = Vector2(-48, 0)
 is_shadow = true
 shape = SubResource("RectangleShape2D_lixmh")
@@ -56,7 +57,7 @@ texture = ExtResource("3_48s15")
 z_index = -1
 material = SubResource("CanvasItemMaterial_1npi4")
 position = Vector2(-64, 0)
-scale = Vector2(8, 8)
+scale = Vector2(10.255, 8)
 texture = ExtResource("4_va7m3")
 offset = Vector2(-8, 0)
 
