@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2a2rqc3t626s"]
+[gd_scene load_steps=11 format=3 uid="uid://d2a2rqc3t626s"]
 
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_dbt44"]
 [ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="2_e1qhb"]
 [ext_resource type="Texture2D" uid="uid://bmib7wwf347lg" path="res://assets/Sprites/Overworld/common/shadow_boundary_wall.png" id="3_48s15"]
 [ext_resource type="PackedScene" uid="uid://bhgf2upgu87m3" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueTrigger.tscn" id="4_o2bfq"]
+[ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="4_va7m3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q7y2t"]
 shader = ExtResource("1_dbt44")
@@ -21,56 +22,56 @@ shader_parameter/line_thickness = 0.3
 shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lixmh"]
-size = Vector2(1550, 1550)
+size = Vector2(322.5, 356.5)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1npi4"]
 blend_mode = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_frc7r"]
-size = Vector2(64, 2050)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhoqi"]
+size = Vector2(64, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4vjqd"]
-size = Vector2(100, 2050)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ll2k"]
+size = Vector2(100, 256)
 
 [node name="Boundary Shadow" type="Sprite2D"]
 material = SubResource("ShaderMaterial_q7y2t")
-position = Vector2(-660, -89)
 offset = Vector2(0, -282)
 
 [node name="ZLight" parent="." instance=ExtResource("2_e1qhb")]
-visible = false
-position = Vector2(-690, -22.9885)
+position = Vector2(-48, 0)
 is_shadow = true
 shape = SubResource("RectangleShape2D_lixmh")
-size = Vector2(15.5, 15.5)
+size = Vector2(3.225, 3.565)
 color = Color(0, 0, 0, 1)
-falloff = 70.0
+falloff = 10.0
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1
 material = SubResource("CanvasItemMaterial_1npi4")
-scale = Vector2(6.5, 16)
+position = Vector2(64, 0)
+scale = Vector2(1, 2)
 texture = ExtResource("3_48s15")
 
-[node name="Shadow Back" type="Sprite2D" parent="."]
+[node name="Shadow Back" type="Sprite2D" parent="Shadow"]
 z_index = -1
 material = SubResource("CanvasItemMaterial_1npi4")
-position = Vector2(-723, 0)
-scale = Vector2(-6.5, 16)
-texture = ExtResource("3_48s15")
+position = Vector2(-64, 0)
+scale = Vector2(8, 8)
+texture = ExtResource("4_va7m3")
+offset = Vector2(-8, 0)
 
 [node name="Collider" type="StaticBody2D" parent="."]
-position = Vector2(-256, 0)
+position = Vector2(37, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
-shape = SubResource("RectangleShape2D_frc7r")
+shape = SubResource("RectangleShape2D_fhoqi")
 
 [node name="DialogueTrigger" parent="." instance=ExtResource("4_o2bfq")]
-position = Vector2(-251, 0)
+position = Vector2(21, 0)
 default_dialogue = "blocked_light"
 
 [node name="CollisionShape2D" parent="DialogueTrigger/Collider" index="0"]
-shape = SubResource("RectangleShape2D_4vjqd")
+shape = SubResource("RectangleShape2D_8ll2k")
 
 [editable path="DialogueTrigger"]
