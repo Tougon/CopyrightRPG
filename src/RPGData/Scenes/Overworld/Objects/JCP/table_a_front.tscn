@@ -1,0 +1,170 @@
+[gd_scene load_steps=16 format=3 uid="uid://dyh5x31562rmk"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/RackSemiRandom.gd" id="1_3vpac"]
+[ext_resource type="Texture2D" uid="uid://dnc6672nc4eci" path="res://assets/Sprites/Overworld/jcp/shirt_b_1.png" id="2_ery8o"]
+[ext_resource type="Texture2D" uid="uid://c6ukk2f6ig6ll" path="res://assets/Sprites/Overworld/jcp/shirt_b_2.png" id="3_2mtj7"]
+[ext_resource type="Texture2D" uid="uid://byninnsquoeeb" path="res://assets/Sprites/Overworld/jcp/shirt_b_3.png" id="4_myhgw"]
+[ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="5_sdg3g"]
+[ext_resource type="Texture2D" uid="uid://b236u6nc0h5g4" path="res://assets/Sprites/Overworld/jcp/table_a_front_mask.png" id="6_xoelt"]
+[ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="8_pkm2t"]
+[ext_resource type="Texture2D" uid="uid://cct8sxfapkg4v" path="res://assets/Sprites/Overworld/jcp/table_a_side.png" id="9_th5dy"]
+[ext_resource type="Texture2D" uid="uid://cfs1tmu2t0u6s" path="res://assets/Sprites/Overworld/common/all_light_mask.png" id="10_cjaun"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bb220"]
+shader = ExtResource("5_sdg3g")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("10_cjaun")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3uhi"]
+size = Vector2(64, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88adb"]
+shader = ExtResource("5_sdg3g")
+shader_parameter/origin = null
+shader_parameter/active_zlights = 0
+shader_parameter/light_origins = null
+shader_parameter/light_is_circle = null
+shader_parameter/light_size = null
+shader_parameter/light_color = null
+shader_parameter/light_energy = null
+shader_parameter/light_falloff = null
+shader_parameter/shadow = null
+shader_parameter/line_color = Color(0.184, 0.208, 0.227, 1)
+shader_parameter/line_thickness = 0.0
+shader_parameter/add_margins = false
+shader_parameter/falloff_mask = ExtResource("6_xoelt")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08gax"]
+size = Vector2(60, 180)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_damsv"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ue7r6"]
+size = Vector2(86, 180)
+
+[node name="Table A" type="Node2D" node_paths=PackedStringArray("items")]
+y_sort_enabled = true
+position = Vector2(-407, 32)
+script = ExtResource("1_3vpac")
+items = [NodePath("Sprite2D/Item1"), NodePath("Sprite2D/Item2"), NodePath("Sprite2D/Item3"), NodePath("Item4"), NodePath("")]
+textures = Array[Texture2D]([ExtResource("2_ery8o"), ExtResource("3_2mtj7"), ExtResource("4_myhgw")])
+colors = Array[Color]([Color(0.187176, 0.187176, 0.187176, 1), Color(0.239683, 0.590287, 0.48279, 1), Color(0.219291, 0.490439, 0.763925, 1), Color(0.47546, 0.474413, 0.84858, 1), Color(0.583441, 0.748152, 0.345181, 1), Color(0.73, 0.4234, 0.5256, 1), Color(0.808998, 0.808998, 0.808998, 1), Color(0.942823, 0.942823, 0.942823, 1), Color(0, 0.619608, 0.905882, 1)])
+
+[node name="Item4" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bb220")
+position = Vector2(27, -15)
+rotation = 1.5708
+scale = Vector2(1, -1)
+texture = ExtResource("2_ery8o")
+offset = Vector2(-120, 0)
+region_enabled = true
+region_rect = Rect2(0, 59, 64, 37)
+
+[node name="ZLightReceiver" parent="Item4" instance=ExtResource("8_pkm2t")]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_m3uhi")
+size = Vector2(64, 32)
+origin_offset = Vector2(0, 16)
+static_receiver = false
+
+[node name="Item5" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bb220")
+position = Vector2(27, -97)
+rotation = 1.5708
+scale = Vector2(1, -1)
+texture = ExtResource("2_ery8o")
+offset = Vector2(-120, 0)
+region_enabled = true
+region_rect = Rect2(0, 59, 64, 37)
+
+[node name="ZLightReceiver" parent="Item5" instance=ExtResource("8_pkm2t")]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_m3uhi")
+size = Vector2(64, 32)
+origin_offset = Vector2(0, 16)
+static_receiver = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_88adb")
+position = Vector2(0, -2)
+texture = ExtResource("9_th5dy")
+offset = Vector2(0, -134)
+
+[node name="ZLightReceiver" parent="Sprite2D" instance=ExtResource("8_pkm2t")]
+position = Vector2(1, 47)
+shape = SubResource("RectangleShape2D_08gax")
+size = Vector2(60, 180)
+origin_offset = Vector2(0, -47)
+static_receiver = false
+
+[node name="Item1" type="Sprite2D" parent="Sprite2D"]
+material = SubResource("ShaderMaterial_bb220")
+position = Vector2(-16, 1)
+rotation = 1.5708
+scale = Vector2(1, -1)
+texture = ExtResource("2_ery8o")
+offset = Vector2(-122, 0)
+region_rect = Rect2(0, 59, 64, 37)
+
+[node name="ZLightReceiver" parent="Sprite2D/Item1" instance=ExtResource("8_pkm2t")]
+position = Vector2(-31, 15)
+shape = SubResource("RectangleShape2D_damsv")
+size = Vector2(64, 64)
+origin_offset = Vector2(0, 16)
+static_receiver = false
+
+[node name="Item2" type="Sprite2D" parent="Sprite2D"]
+material = SubResource("ShaderMaterial_bb220")
+position = Vector2(-16, -57)
+rotation = 1.5708
+scale = Vector2(1, -1)
+texture = ExtResource("2_ery8o")
+offset = Vector2(-122, 0)
+region_rect = Rect2(0, 59, 64, 37)
+
+[node name="ZLightReceiver" parent="Sprite2D/Item2" instance=ExtResource("8_pkm2t")]
+position = Vector2(-31, 15)
+shape = SubResource("RectangleShape2D_damsv")
+size = Vector2(64, 64)
+origin_offset = Vector2(0, 16)
+static_receiver = false
+
+[node name="Item3" type="Sprite2D" parent="Sprite2D"]
+material = SubResource("ShaderMaterial_bb220")
+position = Vector2(-16, -116)
+rotation = 1.5708
+scale = Vector2(1, -1)
+texture = ExtResource("2_ery8o")
+offset = Vector2(-122, 0)
+region_rect = Rect2(0, 59, 64, 37)
+
+[node name="ZLightReceiver" parent="Sprite2D/Item3" instance=ExtResource("8_pkm2t")]
+position = Vector2(-31, 15)
+shape = SubResource("RectangleShape2D_damsv")
+size = Vector2(64, 64)
+origin_offset = Vector2(0, 16)
+static_receiver = false
+
+[node name="Collider" type="StaticBody2D" parent="."]
+position = Vector2(0, -59)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_ue7r6")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(-47, -274)
+rect = Rect2(-10, -10, 120, 300)

@@ -284,3 +284,7 @@ tips/show_jitter_tips=false
 [physics]
 
 common/physics_interpolation=true
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.69, 0.69, 0.69, 1)

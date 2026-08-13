@@ -75,7 +75,7 @@ size = Vector2(64, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wxjw"]
 size = Vector2(176, 61)
 
-[node name="Table A" type="Node2D" node_paths=PackedStringArray("items")]
+[node name="Table A2" type="Node2D" node_paths=PackedStringArray("items")]
 position = Vector2(-407, 32)
 script = ExtResource("1_f767m")
 items = [NodePath("Item1"), NodePath("Item2"), NodePath("Item3"), NodePath("Item4"), NodePath("Item5")]
