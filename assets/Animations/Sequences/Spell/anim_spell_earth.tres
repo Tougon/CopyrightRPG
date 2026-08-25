@@ -15,6 +15,7 @@
 script = ExtResource("7_khidy")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_earth.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, -40)
 effect_layer = 2

@@ -294,6 +294,7 @@ action = SubResource("Resource_ajdtm")
 script = ExtResource("13_hj7so")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_fire.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, -60)
 effect_layer = 5

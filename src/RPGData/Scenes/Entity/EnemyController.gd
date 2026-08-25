@@ -28,7 +28,7 @@ func entity_init(params : BattleParams):
 		
 		seal_effect_list = current_entity.seal_effect_list;
 		
-		entity_ui.position = get_sprite_bottom_offset();
+		entity_ui.position = get_sprite_ui_offset();
 	
 	super.entity_init(params)
 	await get_tree().process_frame;

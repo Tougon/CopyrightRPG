@@ -83,6 +83,7 @@ action = SubResource("Resource_x7akk")
 script = ExtResource("6_kdqtu")
 effect_scene_path = ""
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(50, 0)
 effect_layer = 0

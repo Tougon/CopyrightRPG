@@ -130,6 +130,7 @@ action = SubResource("Resource_qumjk")
 script = ExtResource("6_e7x10")
 effect_scene_path = "res://assets/VFX/Spells/Status/effect_status_zap.tscn"
 relative = 0
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, 0)
 effect_layer = 5

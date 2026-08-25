@@ -39,7 +39,7 @@ func _on_player_group_state_changed(active : bool):
 		tween.tween_property(sprite, "position", Vector2.ZERO, 0.4 + variance);
 		tween.set_ease(Tween.EASE_OUT);
 		tween.set_trans(Tween.TRANS_QUART);
-		tween.tween_property(sprite, "scale", Vector2.ONE, 0.4 + variance).from(Vector2(1.2,1.2));
+		tween.tween_property(sprite, "scale", current_entity.scale, 0.4 + variance).from(Vector2(1.2,1.2));
 		tween.set_ease(Tween.EASE_OUT);
 		tween.set_trans(Tween.TRANS_QUART);
 	else:

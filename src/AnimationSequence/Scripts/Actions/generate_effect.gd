@@ -2,8 +2,11 @@ extends AnimationSequenceAction
 
 class_name ASAGenerateEffect
 
+enum Alignment { CENTER, TOP, BOTTOM }
+
 @export_file("*.tscn") var effect_scene_path: String;
 @export var relative : AnimationSequenceAction.Target;
+@export var alignment : Alignment;
 @export var effect_index : int;
 @export var effect_position : Vector2;
 @export var effect_layer : int;
@@ -64,6 +67,14 @@ func execute(sequence : AnimationSequence):
 		else : 
 			position.x = entity.global_position.x + effect_position.x;
 			position.y = entity.global_position.y + effect_position.y;
+		
+		if entity is EntityController :
+			
+			match alignment:
+				Alignment.TOP:
+					position += (entity as EntityController).get_sprite_top_offset();
+				Alignment.CENTER:
+					position += (entity as EntityController).get_sprite_mid_offset();
 		
 		if child :
 			entity.add_child(effect);

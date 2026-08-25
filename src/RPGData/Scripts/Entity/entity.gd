@@ -116,7 +116,10 @@ func get_reward_exp(level : int) -> int:
 @export var dodge_anim : AnimationSequenceObject;
 @export var defeat_anim : AnimationSequenceObject;
 @export var head_offset : Vector2;
+@export var center_offset : Vector2;
 @export var foot_offset : Vector2;
+@export var ui_offset : Vector2;
+@export var scale : Vector2 = Vector2(0.75, 0.75);
 @export var entity_bgm_key: String;
 @export_file("*.ogv") var entity_video: String;
 @export_file("*.tres") var entity_video_material: String;

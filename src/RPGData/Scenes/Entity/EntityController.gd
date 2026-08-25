@@ -179,6 +179,8 @@ func entity_init(params : BattleParams):
 		
 		sprite.visible = true;
 		sprite.position = Vector2.ZERO;
+		sprite.scale = current_entity.scale;
+		sprite.offset = get_sprite_bottom_offset();
 		
 		entity_ui.set_specific_entity_info(self);
 		
@@ -890,9 +892,23 @@ func get_sprite_top_offset() -> Vector2:
 	return Vector2.ZERO;
 
 
+func get_sprite_mid_offset() -> Vector2:
+	if current_entity != null :
+		return current_entity.center_offset;
+	
+	return Vector2.ZERO;
+
+
 func get_sprite_bottom_offset() -> Vector2:
 	if current_entity != null :
 		return current_entity.foot_offset;
+	
+	return Vector2.ZERO;
+
+
+func get_sprite_ui_offset() -> Vector2:
+	if current_entity != null :
+		return current_entity.ui_offset;
 	
 	return Vector2.ZERO;
 

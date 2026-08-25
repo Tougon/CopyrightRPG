@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cc36s4fth3blt"]
+
+[ext_resource type="Shader" path="res://assets/Shaders/bleach_bypass.gdshader" id="1_cor7x"]
+
+[resource]
+shader = ExtResource("1_cor7x")
+shader_parameter/desaturate_amount = 0.0
+shader_parameter/contrast_level = 4.0
+shader_parameter/desaturate_minimum = 0.6
+shader_parameter/black_white_level = 0.55
+shader_parameter/final_amount = 0.25
+shader_parameter/tint_color = Color(0.380392, 0.733333, 1, 1)
+shader_parameter/tint_amount = 0.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=111 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -73,7 +73,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="40_qkxqu"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="41_4gik6"]
 [ext_resource type="PackedScene" uid="uid://c2i840geeggtt" path="res://addons/FPSCounter/FPSCounter.tscn" id="49_cyut6"]
-[ext_resource type="Shader" path="res://assets/Shaders/bleach_bypass.gdshader" id="51_ssbp8"]
+[ext_resource type="Material" uid="uid://cc36s4fth3blt" path="res://assets/Materials/PostProcess/BleachBypassPresetB.tres" id="56_ruio5"]
 [ext_resource type="PackedScene" uid="uid://8jbg8nthbg7y" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/table_a_side.tscn" id="65_feh83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lubrl"]
@@ -215,92 +215,16 @@ primary_enemy = 4
 odds = 0.3
 can_flee = true
 ignore_flee_mechanics = false
-min_enemies = 1
-max_enemies = 2
+min_enemies = 0
+max_enemies = 0
 enemy_count_curve = SubResource("Curve_ft3k3")
 required_enemies = Array[int]([])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_6781o")
 tutorial = 0
 
-[sub_resource type="Curve" id="Curve_6hdst"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_gcxwy"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_1f3ht"]
-script = ExtResource("17_4k6pv")
-primary_enemy = 6
-odds = 0.3
-can_flee = true
-ignore_flee_mechanics = false
-min_enemies = 1
-max_enemies = 1
-enemy_count_curve = SubResource("Curve_gcxwy")
-required_enemies = Array[int]([])
-additional_enemies = Array[int]([])
-additional_enemy_curve = SubResource("Curve_6hdst")
-tutorial = 0
-
-[sub_resource type="Curve" id="Curve_uxxh0"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_cri0k"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_b426m"]
-script = ExtResource("17_4k6pv")
-primary_enemy = 20
-odds = 0.3
-can_flee = true
-ignore_flee_mechanics = false
-min_enemies = 1
-max_enemies = 1
-enemy_count_curve = SubResource("Curve_cri0k")
-required_enemies = Array[int]([])
-additional_enemies = Array[int]([])
-additional_enemy_curve = SubResource("Curve_uxxh0")
-tutorial = 0
-
-[sub_resource type="Curve" id="Curve_tpd5i"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_ktn5m"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Resource" id="Resource_pltni"]
-script = ExtResource("17_4k6pv")
-primary_enemy = 5
-odds = 0.1
-can_flee = true
-ignore_flee_mechanics = false
-min_enemies = 0
-max_enemies = 0
-enemy_count_curve = SubResource("Curve_ktn5m")
-required_enemies = Array[int]([])
-additional_enemies = Array[int]([])
-additional_enemy_curve = SubResource("Curve_tpd5i")
-tutorial = 0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tajap"]
 size = Vector2(1588, 990)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhx8f"]
-shader = ExtResource("51_ssbp8")
-shader_parameter/desaturate_amount = 0.0
-shader_parameter/contrast_level = 4.0
-shader_parameter/desaturate_minimum = 0.6
-shader_parameter/black_white_level = 0.55
-shader_parameter/final_amount = 0.25
-shader_parameter/tint_color = Color(0.380392, 0.733333, 1, 1)
-shader_parameter/tint_amount = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("27_07aef")
@@ -378,6 +302,7 @@ transition = 0
 ease = 2
 
 [node name="TestRoom2" type="Node2D" node_paths=PackedStringArray("player_controller", "game_camera", "free_camera", "canvas_modulate", "background_void")]
+position = Vector2(-2394, 267)
 script = ExtResource("1_ekr5d")
 player_controller = NodePath("Player Controller")
 game_camera = NodePath("Game PhantomCamera")
@@ -537,7 +462,7 @@ position = Vector2(0, -640)
 scale = Vector2(2, 2)
 
 [node name="Shadow Bounds3" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Lighting"]
-position = Vector2(2775, -76)
+position = Vector2(2820, -76)
 rotation = 3.14159
 
 [node name="Shadow Group 1" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Lighting/Shadow Bounds3"]
@@ -2193,12 +2118,10 @@ object_id = "TutorialTrigger"
 shape = SubResource("RectangleShape2D_8ytvc")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/Main/1F"]
-process_mode = 4
-visible = false
 
 [node name="EncounterArea_00" parent="Areas/Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)
-encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_5m487"), SubResource("Resource_1f3ht"), SubResource("Resource_b426m"), SubResource("Resource_pltni")])
+encounters = Array[ExtResource("17_4k6pv")]([SubResource("Resource_5m487")])
 grace_period = 1.0
 run_encounter_modifier = 1.25
 minimum_encounter_chance = 0.02
@@ -2209,6 +2132,7 @@ position = Vector2(1894, 489)
 shape = SubResource("RectangleShape2D_tajap")
 
 [node name="Player Controller" parent="." groups=["Player"] instance=ExtResource("18_22gld")]
+position = Vector2(0, 124)
 run_multiplier = 1.675
 
 [node name="PointLight2D" type="PointLight2D" parent="Player Controller"]
@@ -2275,7 +2199,7 @@ color = Color(0, 0, 0, 0.792157)
 
 [node name="Desaturate" type="ColorRect" parent="UI/Post Process"]
 visible = false
-material = SubResource("ShaderMaterial_jhx8f")
+material = ExtResource("56_ruio5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2283,7 +2207,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Bleach Bypass" type="ColorRect" parent="UI/Post Process"]
-material = SubResource("ShaderMaterial_jhx8f")
+material = ExtResource("56_ruio5")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2335,7 +2259,7 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, -80)
+position = Vector2(0, 44)
 process_callback = 0
 position_smoothing_speed = 500.0
 editor_draw_limits = true
@@ -2348,7 +2272,7 @@ script = ExtResource("39_nf88m")
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
 z_index = 200
-position = Vector2(0, -80)
+position = Vector2(-2394, 311)
 script = ExtResource("40_qkxqu")
 priority = 1
 follow_mode = 5

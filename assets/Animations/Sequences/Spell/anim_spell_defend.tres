@@ -14,6 +14,7 @@
 script = ExtResource("1_nhj8r")
 effect_scene_path = "res://assets/VFX/Generic/effect_spell_defend_0.tscn"
 relative = 0
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, 0)
 effect_layer = 0
