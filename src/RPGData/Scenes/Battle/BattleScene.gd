@@ -455,7 +455,21 @@ func _action_phase():
 		for dialogue in pre_anim_dialogue:
 			EventManager.on_dialogue_queue.emit(dialogue);
 		
+		if entity.current_action.show_spell_cast_ui :
+			dialogue_canvas.panel.position.y += 82.0;
+			AudioManager.play_sfx("battle_menu_confirm", 0.0);
+			EventManager.battle_action_show.emit(entity.current_action, true);
+		
+		# I don't like this! There's kind of no other way to detect when the animation starts though so...
+		await EventManager.on_sequence_queue_empty;
+		
 		if play_animation :
+			# Remove UI
+			EventManager.battle_action_show.emit(entity.current_action, false);
+			
+			if entity.current_action.show_spell_cast_ui :
+				dialogue_canvas.panel.position.y -= 82.0;
+			
 			var animation_seq = AnimationSequence.new(get_tree(), entity.current_action.animation_sequence, entity, entity.current_target, spell_cast);
 			EventManager.on_sequence_queue.emit(animation_seq);
 		

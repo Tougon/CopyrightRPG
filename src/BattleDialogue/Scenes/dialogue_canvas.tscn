@@ -4,8 +4,9 @@
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="2_r4wnr"]
 [ext_resource type="PackedScene" uid="uid://df0ck33smiwi4" path="res://src/BattleDialogue/Scenes/dialogue_canvas_next_icon.tscn" id="3_qfgiv"]
 
-[node name="Dialogue Canvas" type="CanvasLayer" node_paths=PackedStringArray("text_label", "helper_label")]
+[node name="Dialogue Canvas" type="CanvasLayer" node_paths=PackedStringArray("panel", "text_label", "helper_label")]
 script = ExtResource("1_wjw1k")
+panel = NodePath("Panel")
 text_label = NodePath("Panel/VBoxContainer/RichTextLabel")
 helper_label = NodePath("Panel/HelperLabel")
 character_pause = 0.05

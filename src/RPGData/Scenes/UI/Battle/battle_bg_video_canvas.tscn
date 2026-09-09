@@ -30,6 +30,7 @@ shader_parameter/scrolling_speed = 0.08
 shader_parameter/enable_palette_cycling = false
 shader_parameter/enable_scan_lines = false
 shader_parameter/scan_line_mod = 2
+shader_parameter/always_show_scan_lines = false
 shader_parameter/palette_speed = 0.1
 shader_parameter/enable_pixelate = false
 shader_parameter/pixel_size = 96

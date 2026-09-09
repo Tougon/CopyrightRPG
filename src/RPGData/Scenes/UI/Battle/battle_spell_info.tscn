@@ -1,0 +1,123 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1kmt1g2kapqv"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_spell_info.gd" id="1_ncpvv"]
+[ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="1_qcjng"]
+[ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="2_2ew8g"]
+[ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="3_nc8kv"]
+[ext_resource type="PackedScene" uid="uid://cvtwqud6keh3w" path="res://src/RPGData/Scenes/UI/flag_icon_group.tscn" id="3_seoiu"]
+[ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="4_4kxr2"]
+
+[node name="Spell Display" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ncpvv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.901961)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 120.0
+offset_top = 20.0
+offset_right = -120.0
+offset_bottom = 84.0
+grow_horizontal = 2
+color = Color(0.2, 0.427451, 0.545098, 1)
+
+[node name="Container" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Padding" type="Control" parent="ColorRect/Container"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+
+[node name="Kind Icon Root" type="Control" parent="ColorRect/Container"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="Move Name" type="Label" parent="ColorRect/Container"]
+material = ExtResource("1_qcjng")
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_2ew8g")
+theme_override_font_sizes/font_size = 36
+text = "MOVE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Flag Icon Group" parent="ColorRect/Container" instance=ExtResource("3_seoiu")]
+custom_minimum_size = Vector2(150, 64)
+layout_mode = 2
+
+[node name="Icon Container" parent="ColorRect/Container/Flag Icon Group" index="0"]
+custom_minimum_size = Vector2(14, 14)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -18.0
+offset_right = 576.0
+offset_bottom = 18.0
+theme_override_constants/separation = 4
+
+[node name="Red" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="0"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Orange" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="1"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Yellow" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="2"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Green" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="3"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Turquoise" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="4"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Blue" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="5"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Purple" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="6"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Pink" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="8"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Null" parent="ColorRect/Container/Flag Icon Group/Icon Container" index="9"]
+custom_minimum_size = Vector2(14, 14)
+
+[node name="Padding2" type="Control" parent="ColorRect/Container"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+
+[node name="Noise" type="ColorRect" parent="ColorRect"]
+material = ExtResource("3_nc8kv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Dot Matrix" type="ColorRect" parent="ColorRect"]
+material = ExtResource("4_4kxr2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[editable path="ColorRect/Container/Flag Icon Group"]

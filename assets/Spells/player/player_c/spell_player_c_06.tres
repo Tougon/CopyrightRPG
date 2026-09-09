@@ -70,6 +70,7 @@ spell_flags = Array[ExtResource("10_dmhgu")]([ExtResource("11_6nrop"), ExtResour
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_008hs")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

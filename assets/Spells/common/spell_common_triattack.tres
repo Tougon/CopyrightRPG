@@ -60,6 +60,7 @@ spell_flags = Array[ExtResource("4_p42mn")]([ExtResource("7_2214w"), ExtResource
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = false
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_v1mll")
 spell_videos = Array[String](["res://video/spell/video_spell_triattack.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_triattack.tres"])

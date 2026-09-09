@@ -85,6 +85,7 @@ action = SubResource("Resource_vbnhx")
 script = ExtResource("5_g1vem")
 group = -1
 index = 2
+layer_mod = 0
 target = 0
 effect_index = 0
 
@@ -131,6 +132,7 @@ action = SubResource("Resource_18k2c")
 script = ExtResource("5_g1vem")
 group = -1
 index = 0
+layer_mod = 0
 target = 0
 effect_index = 0
 

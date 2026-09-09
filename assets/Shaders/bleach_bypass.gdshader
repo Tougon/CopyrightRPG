@@ -15,7 +15,7 @@ uniform float tint_amount : hint_range(0.0, 1.0) = 0.0;
 //---------------------------------------------
 void fragment() {
 	vec4 c = texture(SCREEN_TEXTURE, SCREEN_UV);
-	
+
 	float lum = dot(c.rgb, vec3(0.299, 0.587, 0.114));
 	vec3 desat = mix(vec3(lum), c.rgb, desaturate_amount);
 	desat = (desat - black_white_level) * contrast_level + desaturate_minimum;

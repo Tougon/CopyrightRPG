@@ -97,6 +97,7 @@ spell_flags = Array[ExtResource("5_dndq8")]([ExtResource("15_2mt54"), ExtResourc
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_gogns")
 spell_videos = Array[String](["res://video/spell/video_spell_criss_mindfreak.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_ultimate_color.tres"])

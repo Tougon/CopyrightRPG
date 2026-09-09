@@ -13,7 +13,7 @@ recent_projects=["res://assets/Quests/jcp.quest", "res://assets/Quests/temp.ques
 [application]
 
 config/name="Copyright RPG"
-run/main_scene="res://src/RPGData/Scenes/Menu/MenuMain.tscn"
+run/main_scene="res://src/RPGData/Scenes/Test_Dungeon.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)

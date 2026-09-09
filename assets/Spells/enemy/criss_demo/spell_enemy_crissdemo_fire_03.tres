@@ -53,6 +53,7 @@ spell_flags = Array[ExtResource("5_nt4uk")]([ExtResource("7_8idlf")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_n3jw3")
 spell_videos = Array[String](["res://video/spell/video_spell_criss_fire.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_fire_color.tres"])

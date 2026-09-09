@@ -11,6 +11,7 @@
 script = ExtResource("2_36dbv")
 group = -1
 index = 3
+layer_mod = 0
 target = 0
 effect_index = 0
 
@@ -41,6 +42,7 @@ action = SubResource("Resource_io85r")
 script = ExtResource("2_36dbv")
 group = 1
 index = 0
+layer_mod = 0
 target = 0
 effect_index = 0
 

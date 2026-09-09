@@ -38,6 +38,7 @@ spell_flags = Array[ExtResource("5_apvw0")]([ExtResource("9_hy8rw"), ExtResource
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_jh0a3")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

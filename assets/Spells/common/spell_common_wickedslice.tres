@@ -91,6 +91,7 @@ spell_flags = Array[ExtResource("9_oxdy5")]([ExtResource("11_aqi7q"), ExtResourc
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_ju35w")
 spell_videos = Array[String](["res://video/spell/video_spell_wickedslice.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_wickedslash.tres"])

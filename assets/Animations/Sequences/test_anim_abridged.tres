@@ -75,6 +75,7 @@ action = SubResource("Resource_jvan8")
 script = ExtResource("7_ohypa")
 group = -1
 index = 2
+layer_mod = 1
 target = 0
 effect_index = 0
 
@@ -121,6 +122,7 @@ action = SubResource("Resource_18k2c")
 script = ExtResource("7_ohypa")
 group = -1
 index = 0
+layer_mod = -1
 target = 0
 effect_index = 0
 

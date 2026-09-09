@@ -54,6 +54,7 @@ spell_flags = Array[ExtResource("4_20qyn")]([ExtResource("7_sbu6p"), ExtResource
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_55d5j")
 spell_videos = Array[String](["res://video/spell/video_spell_endlesssizzle.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_spicyrush.tres"])

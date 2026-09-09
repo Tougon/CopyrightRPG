@@ -107,6 +107,7 @@ signal add_entity_to_battle(entity : Entity);
 signal hide_entity_ui();
 signal battle_fade_start(fade_in : bool);
 signal battle_fade_completed(fade_in : bool);
+signal battle_action_show(action : Spell, visible : bool);
 
 
 # Leaving this intact but given the dictionary might as well not exist, I'm not sure we need.

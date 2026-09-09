@@ -95,6 +95,7 @@ spell_flags = Array[ExtResource("4_debpk")]([ExtResource("7_sshtt"), ExtResource
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_8h1wo")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

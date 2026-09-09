@@ -99,6 +99,7 @@ spell_flags = Array[ExtResource("9_nhgcn")]([ExtResource("11_3rj7t")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_itx8e")
 spell_videos = Array[String](["res://video/spell/video_spell_criss_steamroller.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_crissdemo_escape_color.tres"])

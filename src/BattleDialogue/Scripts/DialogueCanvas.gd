@@ -10,6 +10,7 @@ signal on_set_dialogue_end_pos(pos : Vector2);
 enum PrintType { CHARACTER, WORD, SYLLABLE }
 
 @export_group("References")
+@export var panel : Panel;
 @export var text_label : RichTextLabel;
 @export var helper_label : RichTextLabel;
 @export_group("Appearance")
@@ -275,6 +276,7 @@ func _print_by_word(text : String):
 		var offset = Vector2(line_length + horizontal_padding, (text_pos.y * row_index) + (line_separation * row_index));
 		offset.x += (text_label.get_parent().position.x);
 		offset.y -= vertical_padding;
+		offset.y += panel.position.y;
 		on_set_dialogue_end_pos.emit(offset);
 		
 		if n < splits.size() - 1 && !finish_print && pause_time > 0:
@@ -408,6 +410,7 @@ func _row_display_delay(row : String):
 			var offset = Vector2(text_pos.x + horizontal_padding, (text_pos.y * row_index) + (line_separation * row_index));
 			offset.x += (text_label.get_parent().position.x);
 			offset.y -= vertical_padding;
+			offset.y += panel.position.y;
 			on_set_dialogue_end_pos.emit(offset);
 	
 	if current_rows == 0:

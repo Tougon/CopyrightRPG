@@ -4,6 +4,7 @@ class_name ASAChangeSprite
 
 @export var group : int = -1;
 @export var index : int;
+@export var layer_mod : int;
 @export var target : AnimationSequenceAction.Target;
 @export var effect_index : int;
 
@@ -28,4 +29,5 @@ func execute(sequence : AnimationSequence):
 				controller.sprite_group = group;
 		
 		if index < controller.param.entity_sprites[controller.sprite_group].size() :
+			controller.sprite.z_index += layer_mod;
 			controller.sprite.texture = controller.param.entity_sprites[controller.sprite_group][index];

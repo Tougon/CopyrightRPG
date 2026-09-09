@@ -370,6 +370,9 @@ func apply_damage(val : int, crit : bool, vibrate : bool, hit : bool = true, dam
 	if damage_delay > 0:
 		await get_tree().create_timer(damage_delay).timeout;
 	
+	# Maybe?
+	#EventManager.battle_action_show.emit(null, false);
+	
 	if dodge_anim_sequence != null :
 		dodge_anim_sequence.kill();
 	

@@ -23,11 +23,13 @@ enum SpellTarget { SingleEnemy, RandomEnemy, RandomEnemyPerHit, AllEnemy, Self, 
 @export var spell_cost : int;
 @export var spell_priority : int;
 @export var spell_flags : Array[TFlag]
+@export var spell_kind : TFlag
 @export var ignore_seals : bool = false;
 @export var is_learnable : bool = false;
 @export var will_save_as_prev : bool = true;
 
 @export_subgroup("Spell Animation")
+@export var show_spell_cast_ui : bool = false;
 @export var animation_sequence : AnimationSequenceObject;
 @export_file("*.ogv") var spell_videos: Array[String];
 @export_file("*.tres") var spell_video_materials: Array[String];

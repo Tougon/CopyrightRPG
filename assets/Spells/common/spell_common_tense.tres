@@ -38,6 +38,7 @@ spell_flags = Array[ExtResource("5_gv3lt")]([ExtResource("9_hk3nk"), ExtResource
 ignore_seals = false
 is_learnable = true
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_8fe7s")
 spell_videos = Array[String](["res://video/spell/video_spell_reinforce.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Spells/spell_tense.tres"])

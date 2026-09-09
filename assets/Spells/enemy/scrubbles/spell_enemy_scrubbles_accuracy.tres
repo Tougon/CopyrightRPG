@@ -67,6 +67,7 @@ spell_flags = Array[ExtResource("4_vnkkt")]([ExtResource("9_avjoh")])
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_1gdei")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])

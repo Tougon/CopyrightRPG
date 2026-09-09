@@ -20,6 +20,7 @@ uniform float scrolling_speed = 0.08;
 uniform bool enable_palette_cycling = false;
 uniform bool enable_scan_lines = true;
 uniform int scan_line_mod = 2;
+uniform bool always_show_scan_lines = false;
 uniform sampler2D palette;
 uniform float palette_speed = 0.1;
 uniform bool enable_pixelate = false;
@@ -76,4 +77,9 @@ void fragment()
 	int scan_line = int(UV.y * screen_height) % scan_line_mod;
 
 	if (enable_scan_lines && scan_line == 0) COLOR = mix(vec4(0.0), COLOR, 0.95);
+	if (always_show_scan_lines && scan_line == 0)
+	{
+		COLOR = mix(vec4(0.0), COLOR, 0.5);
+		COLOR.a = 0.25;
+	}
 }

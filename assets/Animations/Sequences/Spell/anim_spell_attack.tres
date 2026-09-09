@@ -90,6 +90,7 @@ action = SubResource("Resource_vbnhx")
 script = ExtResource("8_gycvc")
 group = -1
 index = 2
+layer_mod = 0
 target = 0
 effect_index = 0
 
@@ -156,6 +157,7 @@ action = SubResource("Resource_n472o")
 script = ExtResource("8_gycvc")
 group = -1
 index = 0
+layer_mod = 0
 target = 0
 effect_index = 0
 

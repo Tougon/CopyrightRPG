@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=127 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d3q7hew02l55r" path="res://src/RPGData/Scenes/UI/Battle/player_battle_main_ui.tscn" id="6_uymxx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_46juf"]
 [ext_resource type="Resource" uid="uid://cxaydqux6r557" path="res://assets/Tweens/Transition/iris_in.tres" id="7_yuhhm"]
+[ext_resource type="Shader" path="res://addons/eb_shader/EBShader.gdshader" id="8_37cpk"]
 [ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="8_it4wa"]
 [ext_resource type="PackedScene" uid="uid://cthe7pior4ql6" path="res://src/RPGData/Scenes/UI/Battle/player_battle_target_ui.tscn" id="8_q7178"]
 [ext_resource type="PackedScene" uid="uid://5pmy3t235yyd" path="res://src/BattleDialogue/Scenes/dialogue_canvas.tscn" id="9_4k33p"]
@@ -34,6 +35,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_fade_ui.gd" id="20_ija8q"]
 [ext_resource type="Shader" path="res://assets/Shaders/chromatic_aberration.gdshader" id="22_0arau"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/damage_effect_canvas.gd" id="22_5fosr"]
+[ext_resource type="PackedScene" uid="uid://b1kmt1g2kapqv" path="res://src/RPGData/Scenes/UI/Battle/battle_spell_info.tscn" id="24_ea11n"]
 [ext_resource type="Resource" uid="uid://7ahtxfao7d4d" path="res://assets/Tweens/Transition/iris_out.tres" id="27_xi51v"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Battle/BattleRewardManager.gd" id="29_6pl1e"]
 [ext_resource type="Shader" path="res://assets/Shaders/vhs_distort.gdshader" id="30_r1nti"]
@@ -70,6 +72,38 @@
 [ext_resource type="Resource" uid="uid://c120fjayjkcgl" path="res://assets/Flags/maroon.tres" id="65_jl75g"]
 [ext_resource type="PackedScene" uid="uid://cpn2gfqfweh4o" path="res://assets/VFX/Generic/Seals/effect_particle_seal_turquoise.tscn" id="66_3ecny"]
 [ext_resource type="PackedScene" uid="uid://d21f7wvrspn0w" path="res://assets/VFX/Generic/Seals/effect_particle_seal_maroon.tscn" id="66_geplr"]
+
+[sub_resource type="Gradient" id="Gradient_ioy0f"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j8y5h"]
+gradient = SubResource("Gradient_ioy0f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8gjt"]
+shader = ExtResource("8_37cpk")
+shader_parameter/screen_height = 720.0
+shader_parameter/amplitude = 0.075
+shader_parameter/frequency = 10.0
+shader_parameter/speed = 2.0
+shader_parameter/amplitude_vertical = 0.0
+shader_parameter/frequency_vertical = 0.0
+shader_parameter/speed_vertical = 0.0
+shader_parameter/scroll_direction = Vector2(0, 0)
+shader_parameter/scrolling_speed = 0.08
+shader_parameter/enable_palette_cycling = true
+shader_parameter/enable_scan_lines = true
+shader_parameter/scan_line_mod = 4
+shader_parameter/always_show_scan_lines = true
+shader_parameter/palette_speed = 0.1
+shader_parameter/enable_pixelate = false
+shader_parameter/pixel_size = 96
+shader_parameter/transition = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/time_scale = 1.0
+shader_parameter/use_manual_time = false
+shader_parameter/manual_time = null
+shader_parameter/palette = SubResource("GradientTexture1D_j8y5h")
 
 [sub_resource type="Resource" id="Resource_4qtjs"]
 script = ExtResource("6_2gp2x")
@@ -539,38 +573,39 @@ y_sort_enabled = true
 
 [node name="E1" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
-enemy_index = null
 current_entity = null
-use_override_direction = null
-override_direction = null
 
 [node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 1
 current_entity = null
-use_override_direction = null
-override_direction = null
 
 [node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 2
 current_entity = null
-use_override_direction = null
-override_direction = null
 
 [node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 3
 current_entity = null
-use_override_direction = null
-override_direction = null
 
 [node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 4
 current_entity = null
-use_override_direction = null
-override_direction = null
+
+[node name="Scanlines" type="Node" parent="Entities"]
+
+[node name="SOLID" type="ColorRect" parent="Entities/Scanlines"]
+z_index = -2
+material = SubResource("ShaderMaterial_t8gjt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Video Effects Layer" type="Node" parent="Entities"]
 
@@ -650,6 +685,8 @@ delay_selection_until_focus = true
 
 [node name="Player Item Menu" parent="UI/Player UI" instance=ExtResource("20_dvxdd")]
 delay_selection_until_focus = true
+
+[node name="Spell Display" parent="UI/Player UI" instance=ExtResource("24_ea11n")]
 
 [node name="Dialogue Canvas" parent="UI" instance=ExtResource("9_4k33p")]
 offset = Vector2(0, 20)
