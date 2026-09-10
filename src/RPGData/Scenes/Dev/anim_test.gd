@@ -46,20 +46,28 @@ func _ready() -> void:
 		elif controller is EnemyController :
 			enemies.append(controller);
 	
-	await get_tree().create_timer(1.0).timeout
+	EventManager.on_battle_begin.emit(fake_battle);
+	
+	await get_tree().create_timer(2.0).timeout
 	play_animation();
 
 
 func play_animation():
 	player.current_action = animation;
 	
+	# Restore MP and HP to prevent silly fail states
+	player.modify_mp(999);
+	
+	for enemy in enemies:
+		enemy.apply_damage(-9999, false, false, true, 0, 0, 0, 0.35, false);
+	
 	var spell_cast : Array[SpellCast];
 	if target_ally : 
 		player.enemies = [ ally ];
-		player.current_action.cast(player, player.enemies);
+		spell_cast = player.current_action.cast(player, player.enemies);
 	else : 
 		player.enemies = enemies;
-		player.current_action.cast(player, player.enemies);
+		spell_cast = player.current_action.cast(player, player.enemies);
 	
 	# Rig the damage roll to do 1 damage (this is so we can debug UI timing)
 	for cast in spell_cast:
@@ -88,11 +96,5 @@ func play_animation():
 	
 	await EventManager.on_sequence_queue_empty;
 	
-	# Restore MP and HP to prevent silly fail states
-	player.modify_mp(999);
-	
-	for enemy in enemies:
-		enemy.apply_damage(-9999, false, false, true, 0, 0, 0, 0.35, false);
-	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(2.0).timeout
 	play_animation();

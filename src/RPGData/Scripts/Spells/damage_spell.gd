@@ -106,8 +106,10 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 			entity_name = user.param.entity_name;
 			generic = user.param.entity_generic;
 		
-		var formatted_result = BattleScene.Instance.format_dialogue(hit_result, entity_name, user.current_entity, target.param.entity_name, target.current_entity);
-		cast.add_hit_result(formatted_result);
+		if BattleScene.Instance != null :
+			var formatted_result = BattleScene.Instance.format_dialogue(hit_result, entity_name, user.current_entity, target.param.entity_name, target.current_entity);
+			cast.add_hit_result(formatted_result);
+		
 	else : cast.add_hit_result("");
 	
 	return result;

@@ -4,6 +4,7 @@ class_name PlayerController
 enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 
 @export var player_id : int;
+@export var bypass_player_id : bool;
 @export var default_attack_action : Spell;
 @export var default_defend_action : Spell;
 @export var default_seal_effect : SealEffectGroup;
@@ -25,6 +26,8 @@ func _ready():
 
 func _on_battle_begin(params : BattleParams):
 	super._on_battle_begin(params);
+	
+	if bypass_player_id : return;
 	
 	modulate = Color.WHITE;
 	sprite.position = _get_sprite_start_position();
@@ -60,16 +63,23 @@ func entity_init(params : BattleParams):
 	
 	if params != null:
 		# If player is null, they are locked. Do not use this entity.
-		if params.players[player_id] == null : 
+		if params.players[player_id] == null && !bypass_player_id: 
 			visible = false;
 			return;
 		
-		level = params.players[player_id].override_level;
-		hp_mod = params.players[player_id].hp_offset;
-		mp_mod = params.players[player_id].mp_offset;
-		status = params.players[player_id].status;
+		if !bypass_player_id : 
+			level = params.players[player_id].override_level;
+			hp_mod = params.players[player_id].hp_offset;
+			mp_mod = params.players[player_id].mp_offset;
+			status = params.players[player_id].status;
+		else :
+			level = 5;
+			hp_mod = 999;
+			mp_mod = 999;
 	else:
-		level = 30;
+		level = 5;
+		hp_mod = 999;
+		mp_mod = 999;
 	
 	current_entity = params.players[player_id].override_entity;
 	super.entity_init(params);
@@ -86,8 +96,8 @@ func entity_init(params : BattleParams):
 	if accessory != null && accessory is EquipmentItem && (accessory as EquipmentItem).equipment_type == EquipmentItem.EquipmentType.Accessory :
 		_apply_equipment(accessory);
 	
-	current_hp = hp_mod;
-	current_mp = mp_mod;
+	current_hp = clamp(hp_mod, 0, max_hp);
+	current_mp = clamp(mp_mod, 0, max_mp);
 	is_defeated = current_hp <= 0;
 	sprite.visible = !is_defeated;
 	

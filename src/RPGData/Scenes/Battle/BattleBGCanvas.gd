@@ -101,8 +101,10 @@ func _load_entity_spell_data(entity : EntityController):
 
 
 func _load_spell_data(move : Spell):
+	# Should never happen under normal circumstances but is damaging the test scene
+	if move == null : return;
+	
 	if move.spell_videos != null && !_attack_to_video_map.has(move) && move.spell_videos.size() > 0:
-		
 		print(move.resource_path);
 		_attack_to_video_map[move] = [];
 		

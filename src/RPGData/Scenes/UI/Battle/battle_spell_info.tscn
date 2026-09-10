@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1kmt1g2kapqv"]
+[gd_scene load_steps=8 format=3 uid="uid://b1kmt1g2kapqv"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_spell_info.gd" id="1_ncpvv"]
 [ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="1_qcjng"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="3_nc8kv"]
 [ext_resource type="PackedScene" uid="uid://cvtwqud6keh3w" path="res://src/RPGData/Scenes/UI/flag_icon_group.tscn" id="3_seoiu"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="4_4kxr2"]
+[ext_resource type="Texture2D" uid="uid://bamsk7m3j10v3" path="res://assets/Sprites/UI/Battle/ui_battle_corner_border.png" id="7_2bile"]
 
 [node name="Spell Display" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -119,5 +120,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2bile")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [editable path="ColorRect/Container/Flag Icon Group"]
