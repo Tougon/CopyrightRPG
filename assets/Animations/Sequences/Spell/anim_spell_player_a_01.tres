@@ -1,0 +1,204 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=43 format=3 uid="uid://c8adpumx2unhq"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_xya6e"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="2_1spms"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/play_sfx.gd" id="3_xp7kq"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/set_target_index.gd" id="4_v33ms"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/generate_effect.gd" id="5_eahuo"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_sprite.gd" id="6_rde7f"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="7_886gj"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_7kf2j"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="9_xlont"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="10_l24i4"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="11_dlwwf"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="12_twqur"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="13_ek7sp"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="14_n0qum"]
+
+[sub_resource type="Resource" id="Resource_6vi4x"]
+script = ExtResource("13_ek7sp")
+reset_bg = false
+index = 0
+mode = 0
+use_palette = true
+palette_fade_time = 0.2
+
+[sub_resource type="Resource" id="Resource_j7i3k"]
+script = ExtResource("1_xya6e")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_6vi4x")
+
+[sub_resource type="Resource" id="Resource_jrssm"]
+script = ExtResource("6_rde7f")
+group = -1
+index = 2
+layer_mod = 0
+target = 0
+effect_index = 0
+
+[sub_resource type="Resource" id="Resource_a0bpd"]
+script = ExtResource("1_xya6e")
+frame = 47
+frame_order = 1
+action = SubResource("Resource_jrssm")
+
+[sub_resource type="Resource" id="Resource_026vw"]
+script = ExtResource("3_xp7kq")
+sfx_key = "whoosh_high"
+
+[sub_resource type="Resource" id="Resource_3uho1"]
+script = ExtResource("1_xya6e")
+frame = 47
+frame_order = 12
+action = SubResource("Resource_026vw")
+
+[sub_resource type="Resource" id="Resource_vbnhx"]
+script = ExtResource("5_eahuo")
+effect_scene_path = ""
+relative = 1
+alignment = 0
+effect_index = 0
+effect_position = Vector2(50, 0)
+effect_layer = 0
+effect_rotation = 0.0
+effect_scale = Vector2(1, 1)
+child = false
+pos_match_sequence_dir = true
+rot_match_sequence_dir = false
+scl_match_sequence_dir_x = false
+scl_match_sequence_dir_y = false
+effect_variance = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_khlsu"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 0
+action = SubResource("Resource_vbnhx")
+
+[sub_resource type="Resource" id="Resource_jywrx"]
+script = ExtResource("2_1spms")
+num_loops = -1
+loop_targets = true
+
+[sub_resource type="Resource" id="Resource_gsb1u"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 0
+action = SubResource("Resource_jywrx")
+
+[sub_resource type="Resource" id="Resource_m00y6"]
+script = ExtResource("4_v33ms")
+index = 0
+set_to_loop = true
+
+[sub_resource type="Resource" id="Resource_nsmpw"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 5
+action = SubResource("Resource_m00y6")
+
+[sub_resource type="Resource" id="Resource_asoi5"]
+script = ExtResource("7_886gj")
+vibrate = true
+damage_time = 0.35
+damage_delay = 0.0
+shake_duration = 0.0
+shake_decay = 0.35
+force_dodge = true
+effect_user = false
+manual_override = false
+use_fixed_damage = true
+damage_amount = 0
+percent_amount = 0.0
+mp_damage = false
+negate = false
+
+[sub_resource type="Resource" id="Resource_q3dud"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 6
+action = SubResource("Resource_asoi5")
+
+[sub_resource type="Resource" id="Resource_04e4n"]
+script = ExtResource("11_dlwwf")
+check_hit_instead = true
+
+[sub_resource type="Resource" id="Resource_6ybxq"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 7
+action = SubResource("Resource_04e4n")
+
+[sub_resource type="Resource" id="Resource_18k2c"]
+script = ExtResource("8_7kf2j")
+target = 1
+ui_type = 0
+
+[sub_resource type="Resource" id="Resource_atue2"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 8
+action = SubResource("Resource_18k2c")
+
+[sub_resource type="Resource" id="Resource_2r6vi"]
+script = ExtResource("12_twqur")
+check_hit_instead = true
+
+[sub_resource type="Resource" id="Resource_cu6s3"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 9
+action = SubResource("Resource_2r6vi")
+
+[sub_resource type="Resource" id="Resource_ne1jy"]
+script = ExtResource("9_xlont")
+
+[sub_resource type="Resource" id="Resource_xc5jk"]
+script = ExtResource("1_xya6e")
+frame = 48
+frame_order = 15
+action = SubResource("Resource_ne1jy")
+
+[sub_resource type="Resource" id="Resource_fahfa"]
+script = ExtResource("6_rde7f")
+group = -1
+index = 0
+layer_mod = 0
+target = 0
+effect_index = 0
+
+[sub_resource type="Resource" id="Resource_indbo"]
+script = ExtResource("1_xya6e")
+frame = 58
+frame_order = 0
+action = SubResource("Resource_fahfa")
+
+[sub_resource type="Resource" id="Resource_ha0f0"]
+script = ExtResource("13_ek7sp")
+reset_bg = true
+index = 0
+mode = 0
+use_palette = false
+palette_fade_time = 1.0
+
+[sub_resource type="Resource" id="Resource_h2px6"]
+script = ExtResource("1_xya6e")
+frame = 63
+frame_order = 0
+action = SubResource("Resource_ha0f0")
+
+[sub_resource type="Resource" id="Resource_mj1pb"]
+script = ExtResource("10_l24i4")
+
+[sub_resource type="Resource" id="Resource_iwrrj"]
+script = ExtResource("1_xya6e")
+frame = 80
+frame_order = 0
+action = SubResource("Resource_mj1pb")
+
+[resource]
+script = ExtResource("14_n0qum")
+animation_name = "Beat"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_xya6e")]([SubResource("Resource_j7i3k"), SubResource("Resource_a0bpd"), SubResource("Resource_3uho1"), SubResource("Resource_khlsu"), SubResource("Resource_gsb1u"), SubResource("Resource_nsmpw"), SubResource("Resource_q3dud"), SubResource("Resource_6ybxq"), SubResource("Resource_atue2"), SubResource("Resource_cu6s3"), SubResource("Resource_xc5jk"), SubResource("Resource_indbo"), SubResource("Resource_h2px6"), SubResource("Resource_iwrrj")])

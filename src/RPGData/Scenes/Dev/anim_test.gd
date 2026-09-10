@@ -5,10 +5,13 @@ extends Node2D
 @export var dummy_enemy : Entity
 @export var entity_controllers : Array[EntityController];
 @export var target_ally : bool = false;
+@export var test_attack : bool = false;
 
 var player : PlayerController;
 var ally : PlayerController;
 var enemies : Array[EntityController];
+
+var is_attacking : bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -49,10 +52,21 @@ func _ready() -> void:
 	EventManager.on_battle_begin.emit(fake_battle);
 	
 	await get_tree().create_timer(2.0).timeout
-	play_animation();
+	
+	if test_attack : 
+		play_animation();
+
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		if !test_attack && !is_attacking :
+			play_animation();
+		
+		test_attack = !test_attack;
 
 
 func play_animation():
+	is_attacking = true;
 	player.current_action = animation;
 	
 	# Restore MP and HP to prevent silly fail states
@@ -96,5 +110,9 @@ func play_animation():
 	
 	await EventManager.on_sequence_queue_empty;
 	
+	is_attacking = false;
+	
 	await get_tree().create_timer(2.0).timeout
-	play_animation();
+	
+	if test_attack :
+		play_animation();
