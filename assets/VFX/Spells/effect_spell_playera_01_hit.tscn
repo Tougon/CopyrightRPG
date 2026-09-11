@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1i8nw8bgwdxc"]
+[gd_scene load_steps=10 format=3 uid="uid://c1i8nw8bgwdxc"]
 
 [ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_rb7t7"]
 [ext_resource type="Texture2D" uid="uid://c8y72drd2mh5p" path="res://assets/Sprites/Effects/Spells/vfx_playera_01_note.png" id="2_3yr6p"]
@@ -10,24 +10,40 @@ colors = PackedColorArray(1, 0, 0, 0, 1, 0.47, 0.47, 1, 1, 0.8985, 0.13, 1, 0, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xg7e5"]
 gradient = SubResource("Gradient_ta0i3")
 
+[sub_resource type="Curve" id="Curve_id4lp"]
+_data = [Vector2(0, 1), 0.0, -0.280231, 0, 0, Vector2(1, 0), -2.46001, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cpbmj"]
+curve = SubResource("Curve_id4lp")
+
+[sub_resource type="Curve" id="Curve_scnav"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.15634, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rx8v2"]
+curve = SubResource("Curve_scnav")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xdyf1"]
 particle_flag_disable_z = true
 emission_shape_scale = Vector3(3, 3, 3)
-angular_velocity_min = 720.0
-angular_velocity_max = 720.0
-radial_velocity_min = -150.0
-radial_velocity_max = -150.0
+angle_min = -9.99999
+angle_max = 10.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+radial_velocity_min = 600.0
+radial_velocity_max = 600.0
+radial_velocity_curve = SubResource("CurveTexture_cpbmj")
 gravity = Vector3(0, 0, 0)
-radial_accel_min = -350.0
-radial_accel_max = -350.0
-scale_min = 1.75
+scale_min = 1.5
 scale_max = 1.75
+scale_curve = SubResource("CurveTexture_rx8v2")
 color_ramp = SubResource("GradientTexture1D_xg7e5")
 
 [node name="seal" instance=ExtResource("1_rb7t7")]
 
 [node name="GPUParticles2D" parent="." index="0"]
-amount = 5
+amount = 8
 process_material = SubResource("ParticleProcessMaterial_xdyf1")
 texture = ExtResource("2_3yr6p")
 lifetime = 0.5
