@@ -12,6 +12,7 @@ var ally : PlayerController;
 var enemies : Array[EntityController];
 
 var is_attacking : bool = false;
+var hit : bool = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,6 +51,7 @@ func _ready() -> void:
 			enemies.append(controller);
 	
 	EventManager.on_battle_begin.emit(fake_battle);
+	EventManager.load_aux_audio.emit(animation.spell_sfx);
 	
 	await get_tree().create_timer(2.0).timeout
 	
@@ -60,6 +62,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		if !test_attack && !is_attacking :
+			hit = true;
 			play_animation();
 		
 		test_attack = !test_attack;
@@ -88,12 +91,18 @@ func play_animation():
 		cast.success = true;
 		
 		for i in cast.damage.size():
-			cast.damage[i] = 1;
+			if self.hit : 
+				cast.damage[i] = 1;
+			else :
+				cast.damage[i] = 0;
 		
-		cast.total_damage = 1 * cast.damage.size();
+		if self.hit : 
+			cast.total_damage = 1 * cast.damage.size();
+		else :
+			cast.total_damage = 0;
 		
 		for i in cast.hits.size():
-			cast.hits[i] = true;
+			cast.hits[i] = self.hit;
 		
 		cast.critical = false;
 		for i in cast.critical_hits.size():
@@ -111,8 +120,9 @@ func play_animation():
 	await EventManager.on_sequence_queue_empty;
 	
 	is_attacking = false;
+	self.hit = !hit;
 	
 	await get_tree().create_timer(2.0).timeout
 	
-	if test_attack :
+	if test_attack && !is_attacking:
 		play_animation();

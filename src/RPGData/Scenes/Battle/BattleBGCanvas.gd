@@ -40,6 +40,7 @@ func _ready() -> void:
 	EventManager.set_effect_bg.connect(_set_effect_bg);
 	EventManager.register_player.connect(_load_entity_spell_data);
 	EventManager.register_enemy.connect(_load_entity_spell_data);
+	EventManager.modify_bg.connect(_modify_bg);
 	
 	if start_static : _set_static(true);
 	else : 
@@ -132,6 +133,7 @@ func _set_player_bg(entity : Entity):
 
 func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float):
 	if spell == null && _current_spell != null: 
+		attack_layer.paused = false;
 		attack_layer.stop();
 		attack_layer.visible = false;
 		attack_layer.stream = null;
@@ -201,6 +203,10 @@ func _set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool
 	return
 
 
+func _modify_bg(pause : bool):
+	attack_layer.paused = pause;
+
+
 func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, load_type : LoadType, aux : Resource):
 	var vid = load_video(vid_path);
 	#var mat1 = load_material(mat1_path);
@@ -260,3 +266,4 @@ func _on_destroy():
 		EventManager.set_effect_bg.disconnect(_set_effect_bg);
 		EventManager.register_player.disconnect(_load_entity_spell_data);
 		EventManager.register_enemy.disconnect(_load_entity_spell_data);
+		EventManager.modify_bg.disconnect(_modify_bg);

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://b0u0k150tx86x"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://b0u0k150tx86x"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_6tyop"]
 [ext_resource type="Resource" uid="uid://c8adpumx2unhq" path="res://assets/Animations/Sequences/Spell/anim_spell_player_a_01.tres" id="1_u1es7"]
@@ -8,6 +8,22 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_myvgc"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="7_sx6cj"]
 [ext_resource type="Resource" uid="uid://ddtp6nm4covq4" path="res://assets/Flags/t_kind_sound.tres" id="8_q2pqt"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="9_vdyw6"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="10_wps5p"]
+
+[sub_resource type="Resource" id="Resource_sv8at"]
+script = ExtResource("9_vdyw6")
+item_id = "spell_hihat_open"
+item_path = "res://assets/Audio/SFX/Spell/spell_hihat_open.ogg"
+
+[sub_resource type="Resource" id="Resource_xht8o"]
+script = ExtResource("9_vdyw6")
+item_id = "spell_stickclack"
+item_path = "res://assets/Audio/SFX/Spell/spell_stickclack.ogg"
+
+[sub_resource type="Resource" id="Resource_etwfw"]
+script = ExtResource("10_wps5p")
+entries = Array[ExtResource("9_vdyw6")]([SubResource("Resource_sv8at"), SubResource("Resource_xht8o")])
 
 [resource]
 script = ExtResource("4_cjjk7")
@@ -59,6 +75,7 @@ show_spell_cast_ui = true
 animation_sequence = ExtResource("1_u1es7")
 spell_videos = Array[String](["res://video/spell/video_spell_beat.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playera_00.tres"])
+spell_sfx = SubResource("Resource_etwfw")
 effects_on_hit = Array[ExtResource("1_6tyop")]([])
 effects_on_success = Array[ExtResource("1_6tyop")]([])
 properties = Array[ExtResource("3_1rqva")]([])
