@@ -229,7 +229,7 @@ func _play_seal_effect(flag : SealVFX, target : EntityController) -> Node :
 	var vfx_instance = flag.vfx.instantiate() as EntityBase;
 	target.get_tree().root.add_child(vfx_instance);
 	
-	vfx_instance.global_position = target.global_position;
+	vfx_instance.global_position = target.global_position + target.get_sprite_mid_offset();
 	vfx_instance.reset_physics_interpolation();
 	
 	return vfx_instance;
