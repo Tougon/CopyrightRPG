@@ -5,6 +5,7 @@ class_name FlagIconGroup
 @onready var icon_root : Control = $"Icon Container";
 
 var _icons : Array[TextureRect];
+var min_icon_size : Vector2;
 
 func _ready():
 	for icon in icon_root.get_children() :
@@ -17,8 +18,10 @@ func _ready():
 
 
 func display_flags(flags_to_display : Array[TFlag]):
+	
 	for i in flags.size():
 		_icons[i].visible = flags_to_display.has(flags[i]);
+		#_icons[i].size 
 
 
 func clear_flags():

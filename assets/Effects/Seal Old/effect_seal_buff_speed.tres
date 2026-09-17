@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="Effect" load_steps=12 format=3 uid="uid://lqnse6aud00j"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="1_t1ufu"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_stat_stage.gd" id="2_k6hs5"]
+[ext_resource type="Resource" uid="uid://bbab6mfd06u03" path="res://assets/Animations/Sequences/Common/anim_common_stat_raise.tres" id="3_h1vhm"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_hybrid.gd" id="4_qr5g8"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_stat_stage.gd" id="5_kwmjw"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="6_gt0bi"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="7_ltfhr"]
+
+[sub_resource type="Resource" id="Resource_jsj2g"]
+script = ExtResource("2_k6hs5")
+target = 0
+stat = 4
+check_mode = 2
+stage = 0
+max = true
+min = false
+use_stage = false
+use_modifiers = false
+
+[sub_resource type="Resource" id="Resource_7rh7j"]
+script = ExtResource("4_qr5g8")
+dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_SEAL_ACTIVATE"
+target = 0
+animation = ExtResource("3_h1vhm")
+
+[sub_resource type="Resource" id="Resource_blxbe"]
+script = ExtResource("5_kwmjw")
+target = 0
+stat = 4
+amount = 1
+use_stage = false
+use_modifiers = false
+cache_stat = false
+activation_strings = Array[String]([])
+deactivation_strings = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_tgpjx"]
+script = ExtResource("6_gt0bi")
+dialogue_key = "T_EFFECT_GENERIC_SPEED_BOOST_FAIL"
+
+[resource]
+script = ExtResource("7_ltfhr")
+stackable = true
+effect_name = "Speed Buff"
+include_user_in_name = false
+generic = true
+repeatable = false
+priority = 3
+turn_limit = 0
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("1_t1ufu")]([SubResource("Resource_jsj2g")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("1_t1ufu")]([])
+on_activate = Array[ExtResource("1_t1ufu")]([SubResource("Resource_7rh7j"), SubResource("Resource_blxbe")])
+on_failed_to_activate = Array[ExtResource("1_t1ufu")]([SubResource("Resource_tgpjx")])
+on_apply = Array[ExtResource("1_t1ufu")]([])
+on_move_selected = Array[ExtResource("1_t1ufu")]([])
+on_move_completed = Array[ExtResource("1_t1ufu")]([])
+on_deactivate = Array[ExtResource("1_t1ufu")]([])
+on_turn_start = Array[ExtResource("1_t1ufu")]([])
+on_turn_end = Array[ExtResource("1_t1ufu")]([])
+on_stack = Array[ExtResource("1_t1ufu")]([])

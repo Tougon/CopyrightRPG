@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="7_dyjfl"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="8_0a0a0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckAttackHighest.gd" id="8_t822v"]
-[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/Seal/effect_seal_buff_speed.tres" id="9_vm30x"]
+[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/Seal Old/effect_seal_buff_speed.tres" id="9_vm30x"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSealTarget.gd" id="9_ycbwx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="11_a5um8"]
 [ext_resource type="Resource" uid="uid://csj46yq40t0hm" path="res://assets/Spells/enemy/lazr/spell_enemy_lazr_attack_phys.tres" id="12_juusd"]

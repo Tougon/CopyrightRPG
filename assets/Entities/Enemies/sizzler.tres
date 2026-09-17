@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://ce2e3d8jwl20e" path="res://assets/Spells/common/spell_common_spicypunch.tres" id="11_rflxu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="12_6mi8y"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="15_rmjbv"]
-[ext_resource type="Resource" uid="uid://1ugywv0lvghg" path="res://assets/Effects/Seal/effect_seal_debuff_sp_defense.tres" id="16_ueka5"]
+[ext_resource type="Resource" uid="uid://1ugywv0lvghg" path="res://assets/Effects/Seal Old/effect_seal_debuff_sp_defense.tres" id="16_ueka5"]
 
 [sub_resource type="Curve" id="Curve_bevcu"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

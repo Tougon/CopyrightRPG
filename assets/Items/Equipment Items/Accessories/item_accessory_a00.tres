@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_esduo"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_seal.gd" id="3_x8hmu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_exv11"]
-[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="5_f8eq2"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal Old/effect_seal_buff_attack.tres" id="5_f8eq2"]
 
 [sub_resource type="Resource" id="Resource_ejpee"]
 script = ExtResource("4_exv11")

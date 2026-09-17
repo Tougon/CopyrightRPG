@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://4xlqt0swy2qq" path="res://assets/Spells/enemy/eye/spell_enemy_eye_lash.tres" id="12_umq2c"]
 [ext_resource type="Resource" uid="uid://qdkh8kbrn4yt" path="res://assets/Spells/common/spell_common_inferno.tres" id="13_7fy5u"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="20_s5fmr"]
-[ext_resource type="Resource" uid="uid://1ugywv0lvghg" path="res://assets/Effects/Seal/effect_seal_debuff_sp_defense.tres" id="21_3h1ax"]
+[ext_resource type="Resource" uid="uid://1ugywv0lvghg" path="res://assets/Effects/Seal Old/effect_seal_debuff_sp_defense.tres" id="21_3h1ax"]
 
 [sub_resource type="Curve" id="Curve_fj28q"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://di8qosr8vtymb"]
 
-[ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_0qedo"]
+[ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_i4k7i"]
 
 [sub_resource type="Gradient" id="Gradient_ta0i3"]
 offsets = PackedFloat32Array(0, 0.299451, 0.587912, 1)
@@ -28,7 +28,7 @@ scale_min = 0.5
 scale_max = 0.5
 color_ramp = SubResource("GradientTexture1D_xg7e5")
 
-[node name="seal" instance=ExtResource("1_0qedo")]
+[node name="seal" instance=ExtResource("1_i4k7i")]
 
 [node name="GPUParticles2D" parent="." index="0"]
 amount = 150

@@ -23,9 +23,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckDefenseLowest.gd" id="10_ejp4q"]
 [ext_resource type="Resource" uid="uid://ceqilhx4o2xap" path="res://assets/Spells/common/spell_common_triattack.tres" id="11_wtyw2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="21_o3bea"]
-[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="22_chfho"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="23_knfde"]
-[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/Seal/effect_seal_buff_speed.tres" id="24_knfmf"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal Old/effect_seal_buff_attack.tres" id="22_chfho"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal Old/effect_seal_buff_defense.tres" id="23_knfde"]
+[ext_resource type="Resource" uid="uid://lqnse6aud00j" path="res://assets/Effects/Seal Old/effect_seal_buff_speed.tres" id="24_knfmf"]
 
 [sub_resource type="Curve" id="Curve_0o7oy"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

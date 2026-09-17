@@ -1,7 +1,7 @@
 extends Node
 class_name SealManager
 
-@export var seal_vfx : Array[SealVFX];
+@export var seal_vfx : Array[SealData];
 
 const SEAL_TURN_COUNT : int = 4;
 const MAX_SEALS_PER_SIDE : int = 4;
@@ -93,10 +93,24 @@ func can_seal_spell(spell : Spell, entity : EntityController) -> bool:
 	return !sealed_spells.has(spell);
 
 
-func create_seal_instance(entity : EntityController, spell : Spell, effect : SealEffectGroup, player_side : bool):
-	if effect == null : return;
+func _get_seal_effect_group(spell : Spell) -> SealEffectGroup:
+	if spell.spell_flags.size() < 1 : return null;
 	
+	var primary_flag = spell.spell_flags[0];
+	
+	for seal in seal_vfx:
+		if seal.flag == primary_flag :
+			return seal.effect;
+	
+	return null;
+
+
+func create_seal_instance(entity : EntityController, spell : Spell, player_side : bool):
 	var turn_count : int = SEAL_TURN_COUNT;
+	
+	var effect = _get_seal_effect_group(spell);
+	
+	if (effect == null) : return;
 	
 	# We need to add an extra turn because otherwise the turn it's active counts
 	# This effectively means 3 turns is 2.
@@ -114,8 +128,9 @@ func create_seal_instance(entity : EntityController, spell : Spell, effect : Sea
 	else :
 		sealed_spells.append(spell);
 	
-	#EventManager.set_player_bg.emit(entity);
-	_play_seal_effects(seal_inst, entity);
+	for flag in spell.spell_flags :
+		_play_seal_effects(seal_inst, entity, flag);
+		await get_tree().create_timer(0.3).timeout;
 
 
 func check_for_seal(entity : EntityController, player_side : bool, override_flags : Array[TFlag]) -> bool:
@@ -124,6 +139,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 	# Realistically should never be null but w/e, safety check
 	if action == null || (action != null && action.ignore_seals) : return false;
 	var has_sealed = false;
+	var has_learned = false;
 	
 	for seal in seal_instances:
 		if seal.player_side == player_side : continue;
@@ -131,13 +147,14 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 		# Check if entity's seals are active
 		if !seal.seal_entity.seals_active : continue;
 		
-		# NOTE: This will double effects up and do a violation per flag.
 		var flags = action.spell_flags.duplicate();
 		
 		if override_flags != null :
 			flags = override_flags;
 		
 		for flag in flags:
+			# NOTE: This will double effects up and do a violation per flag. 
+			# If we don't want this, pull it out of the loop.
 			var sealed = false;
 			
 			if seal.seal_source.spell_flags.has(flag):
@@ -145,28 +162,9 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 				if !sealed : 
 					has_sealed = true;
 					sealed = true;
-					var seal_msg = tr("T_BATTLE_ACTION_SEAL_ACTIVATE");
 					
-					if seal.seal_entity.current_entity.generic && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] <= 1:
-						seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
-					else:
-						seal_msg = seal_msg.format({ article_def = "", entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
+					_play_seal_message(seal, entity);
 					
-					if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity] <= 1:
-						seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
-					else: 
-						seal_msg = seal_msg.format({ t_article_def = "", t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
-					
-					var action_name = "";
-					if seal.seal_source.spell_name_key.is_empty() || (BattleManager.ENEMY_SEAL_FORCE_GENERIC_NAME && seal.seal_entity is EnemyController):
-						action_name = tr("T_SPELL_GENERIC_PRONOUN");
-						action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(seal.seal_entity.param.entity_gender, 3) })
-					else :
-						action_name = tr(seal.seal_source.spell_name_key);
-					
-					seal_msg = seal_msg.format({ action = action_name });
-					EventManager.on_dialogue_queue.emit(seal_msg);
-				
 					for eff in seal.seal_effect.seal_effects:
 						var eff_instance = eff.create_effect_instance(seal.seal_entity, entity, null);
 						# May be vestigal with how seals work now
@@ -175,13 +173,38 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 						if eff_instance.cast_success : eff_instance.on_activate();
 						if !eff_instance.applied : eff_instance.free();
 					
-					_play_seal_effects(seal, entity, flag, false);
+					_play_seal_effects(seal, seal.seal_entity, flag, false);
 					
 					# Learn spell if seal is on player's side
 					if seal.player_side && action.is_learnable :
 						EventManager.learn_move_from_seal.emit(seal.seal_entity, action);
+						has_learned = true;
 	
 	return has_sealed;
+
+
+func _play_seal_message(seal : SealInstance, entity : EntityController) :
+	var seal_msg = tr("T_BATTLE_ACTION_SEAL_ACTIVATE");
+	
+	if seal.seal_entity.current_entity.generic && BattleScene.Instance.enemy_type_count[seal.seal_entity.current_entity] <= 1:
+		seal_msg = seal_msg.format({ article_def = GrammarManager.get_direct_article(seal.seal_entity.param.entity_name), entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
+	else:
+		seal_msg = seal_msg.format({ article_def = "", entity = "[color=FFFF00]" + seal.seal_entity.param.entity_name + "[/color]" });
+	
+	if entity.current_entity.generic && BattleScene.Instance.enemy_type_count[entity.current_entity] <= 1:
+		seal_msg = seal_msg.format({ t_article_def = GrammarManager.get_direct_article(entity.param.entity_name), t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
+	else: 
+		seal_msg = seal_msg.format({ t_article_def = "", t_entity = "[color=FFFF00]" + entity.param.entity_name + "[/color]" });
+	
+	var action_name = "";
+	if seal.seal_source.spell_name_key.is_empty() || (BattleManager.ENEMY_SEAL_FORCE_GENERIC_NAME && seal.seal_entity is EnemyController):
+		action_name = tr("T_SPELL_GENERIC_PRONOUN");
+		action_name = action_name.format({ pronoun3 = GrammarManager.get_pronoun(seal.seal_entity.param.entity_gender, 3) })
+	else :
+		action_name = tr(seal.seal_source.spell_name_key);
+	
+	seal_msg = seal_msg.format({ action = action_name, t_action = "" });
+	EventManager.on_dialogue_queue.emit(seal_msg);
 
 
 func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
@@ -207,15 +230,19 @@ func get_player_seal_count() -> int:
 	return seal_count;
 
 
-func _play_seal_effects(seal : SealInstance, target : EntityController, show_only : TFlag = null, creating : bool = true) :
+func _play_seal_effects(seal : SealInstance, target : EntityController, show_only : TFlag = null, creating : bool = true, activate : bool = true) :
 	var vfx : Array[Node];
 	
 	for flag in seal_vfx:
 		if seal.seal_source.spell_flags.has(flag.flag) && (show_only == null || (show_only != null && flag.flag == show_only)):
-			vfx.append(_play_seal_effect(flag, target));
+			vfx.append(_play_seal_effect(flag, target, activate));
 			
-			if creating : AudioManager.play_sfx("seal_active");
-			else : AudioManager.play_sfx("seal_proc");
+			if !activate :
+				print("Expire SFX");
+				AudioManager.play_sfx("seal_proc");
+			else :
+				if creating : AudioManager.play_sfx("seal_active");
+				else : AudioManager.play_sfx("seal_proc");
 			
 			await get_tree().create_timer(0.3).timeout;
 	
@@ -225,8 +252,13 @@ func _play_seal_effects(seal : SealInstance, target : EntityController, show_onl
 		vfx_instance.queue_free();
 
 
-func _play_seal_effect(flag : SealVFX, target : EntityController) -> Node :
-	var vfx_instance = flag.vfx.instantiate() as EntityBase;
+func _play_seal_effect(flag : SealData, target : EntityController, activate : bool = true) -> Node :
+	var vfx_scene : PackedScene;
+	
+	if (activate) : vfx_scene = flag.vfx;
+	else : vfx_scene = flag.expire_vfx;
+	
+	var vfx_instance = vfx_scene.instantiate() as EntityBase;
 	target.get_tree().root.add_child(vfx_instance);
 	
 	vfx_instance.global_position = target.global_position + target.get_sprite_mid_offset();
@@ -245,8 +277,13 @@ func _on_entity_turn_end(entity : EntityController) :
 		if seal_instances[i].seal_entity == entity:
 			seal_instances[i].seal_turn_count -= 1;
 			
-			if seal_instances[i].seal_turn_count <= 0:
+			if seal_instances[i].seal_turn_count < 0:
 				_send_seal_inactive_message(seal_instances[i], entity);
+				
+				for flag in seal_instances[i].seal_source.spell_flags :
+					_play_seal_effects(seal_instances[i], entity, flag, false, false);
+					await get_tree().create_timer(0.3).timeout;
+				
 				seal_instances[i].free();
 				seal_instances.remove_at(i);
 				i -= 1;

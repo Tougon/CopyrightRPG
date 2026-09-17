@@ -16,7 +16,7 @@
 [ext_resource type="Resource" uid="uid://cd58kfgj4v3gx" path="res://assets/Spells/enemy/crawlboard/spell_enemy_crawlboard_attack_00.tres" id="7_iyb27"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="8_4cobb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="11_ytd4o"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="12_igeq7"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal Old/effect_seal_buff_defense.tres" id="12_igeq7"]
 [ext_resource type="Resource" uid="uid://tgg3hg8oljnm" path="res://assets/Spells/enemy/crawlboard/spell_enemy_crawlboard_defend_00.tres" id="12_lvfny"]
 [ext_resource type="Resource" uid="uid://bfqwi2ythavd5" path="res://assets/Spells/enemy/crawlboard/spell_enemy_crawlboard_attack_01.tres" id="14_a1tmg"]
 

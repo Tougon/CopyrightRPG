@@ -300,7 +300,7 @@ func _action_phase():
 		if entity.sealing && BattleManager.seal_before_attacking:
 			if seal_manager.can_seal_spell(entity.current_action, entity):
 				# Create the seal
-				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
+				seal_manager.create_seal_instance(entity, entity.current_action, players.has(entity))
 				
 				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
 				seal_msg = seal_msg.format({action = tr(entity.current_action.spell_name_key)});
@@ -322,6 +322,9 @@ func _action_phase():
 		if entity.current_action == null :
 			EventManager.on_entity_turn_end.emit(entity);
 			turn_order.remove_at(0);
+			
+			if sequencer.is_sequence_playing_or_queued() :
+				await EventManager.on_sequence_queue_empty;
 			continue;
 		
 		if !(_all_players_defeated() || _all_enemies_defeated()) :
@@ -596,9 +599,9 @@ func _action_phase():
 		EventManager.hide_entity_ui.emit();
 		
 		if entity.sealing && !BattleManager.seal_before_attacking && !_all_players_defeated():
-			if seal_manager.can_seal_spell(entity.current_action, entity) && entity.seal_effect != null:
+			if seal_manager.can_seal_spell(entity.current_action, entity) :
 				# Create the seal
-				seal_manager.create_seal_instance(entity, entity.current_action, entity.seal_effect, players.has(entity))
+				seal_manager.create_seal_instance(entity, entity.current_action, players.has(entity))
 				
 				var seal_msg = format_dialogue(tr("T_BATTLE_ACTION_SEAL_ACTIVE"), entity.param.entity_name, entity.current_entity);
 				
@@ -624,6 +627,9 @@ func _action_phase():
 		# Don't process normal end turn calls if the battle has ended
 		if !(_all_players_defeated() || _all_enemies_defeated()) :
 			EventManager.on_entity_turn_end.emit(entity);
+			
+			if sequencer.is_sequence_playing_or_queued() :
+				await EventManager.on_sequence_queue_empty;
 		
 		# Required in case any entity has been defeated from an effect
 		if !_spawning :

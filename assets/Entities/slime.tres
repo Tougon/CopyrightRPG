@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=61 format=3 uid="uid://djwxcq2chyp3s"]
+[gd_resource type="Resource" script_class="Entity" load_steps=58 format=3 uid="uid://djwxcq2chyp3s"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="1_44x03"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="1_fc75y"]
@@ -14,15 +14,12 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckRandom.gd" id="8_s3wuk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStat.gd" id="9_n0rge"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntityStatFloat.gd" id="10_5xb1c"]
-[ext_resource type="Resource" uid="uid://crsawpip2wg8e" path="res://assets/Spells/enemy/slime/spell_enemy_slime_attack_00.tres" id="10_7x3rp"]
-[ext_resource type="Resource" uid="uid://b3ygwa43ry22k" path="res://assets/Spells/enemy/slime/spell_enemy_slime_idle_00.tres" id="11_3b4ex"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="12_4r68o"]
 [ext_resource type="Resource" uid="uid://bf6u1jm87fjkr" path="res://assets/Spells/common/spell_common_crash.tres" id="12_sordl"]
-[ext_resource type="Resource" uid="uid://co4y1vwe1ayoc" path="res://assets/Spells/enemy/slime/spell_enemy_slime_duplicate.tres" id="13_0cdny"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="13_a88bw"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="16_rv22r"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="18_4i5li"]
-[ext_resource type="Resource" uid="uid://dfx8p8gvjvv85" path="res://assets/Effects/Seal/effect_seal_debuff_evasion.tres" id="20_qiuos"]
+[ext_resource type="Resource" uid="uid://dfx8p8gvjvv85" path="res://assets/Effects/Seal Old/effect_seal_debuff_evasion.tres" id="20_qiuos"]
 
 [sub_resource type="Curve" id="Curve_fslmg"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -156,7 +153,7 @@ growth = SubResource("Curve_3ihce")
 
 [sub_resource type="Resource" id="Resource_l1vsj"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("10_7x3rp")
+spell = ExtResource("12_sordl")
 level = 0
 
 [sub_resource type="Resource" id="Resource_akqwo"]
@@ -166,12 +163,12 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_hotbu"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("13_0cdny")
+spell = ExtResource("12_sordl")
 level = 0
 
 [sub_resource type="Resource" id="Resource_xrhrx"]
 script = ExtResource("1_fc75y")
-spell = ExtResource("11_3b4ex")
+spell = ExtResource("12_sordl")
 level = 0
 
 [sub_resource type="Resource" id="Resource_lg1m0"]

@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_p0ehi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="9_o8g2b"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="10_u7xl7"]
-[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="10_y5u6p"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal Old/effect_seal_buff_attack.tres" id="10_y5u6p"]
 [ext_resource type="Resource" uid="uid://c1lyjwvn6kcxd" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_attack.tres" id="11_qbskd"]
 [ext_resource type="Resource" uid="uid://cxruw607jap5m" path="res://assets/Spells/enemy/scrubbles/spell_enemy_scrubbles_multiattack.tres" id="12_kdhoa"]
 

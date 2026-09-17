@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_s2x60"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_seal.gd" id="3_3xd6a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="4_mr7bo"]
-[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal/effect_seal_buff_defense.tres" id="5_oij1m"]
+[ext_resource type="Resource" uid="uid://88yyhghtehqo" path="res://assets/Effects/Seal Old/effect_seal_buff_defense.tres" id="5_oij1m"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="6_2j3cu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="7_432oj"]
 

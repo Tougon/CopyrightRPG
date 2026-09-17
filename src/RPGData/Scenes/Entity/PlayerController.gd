@@ -7,10 +7,12 @@ enum ActionType { ATTACK, DEFEND, SPELL, ITEM }
 @export var bypass_player_id : bool;
 @export var default_attack_action : Spell;
 @export var default_defend_action : Spell;
+# TODO: Deprecated
 @export var default_seal_effect : SealEffectGroup;
 
 var attack_action : Spell;
 var defend_action : Spell;
+# TODO: Deprecated
 var seal_effect : SealEffectGroup;
 var prev_action_type : ActionType;
 

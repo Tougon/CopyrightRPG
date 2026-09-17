@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://es6dwluohltj" path="res://assets/Spells/enemy/rotted_plant/spell_enemy_rottedplant_attack.tres" id="14_kyeuj"]
 [ext_resource type="Resource" uid="uid://c6gg4hlbxpjex" path="res://assets/Spells/common/spell_common_tense.tres" id="17_0f2gi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="18_p0j8m"]
-[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal/effect_seal_buff_attack.tres" id="19_0fgoj"]
+[ext_resource type="Resource" uid="uid://bvsnsoh5fj4sb" path="res://assets/Effects/Seal Old/effect_seal_buff_attack.tres" id="19_0fgoj"]
 
 [sub_resource type="Curve" id="Curve_wevfx"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

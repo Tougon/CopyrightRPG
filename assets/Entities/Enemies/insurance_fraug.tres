@@ -25,7 +25,7 @@
 [ext_resource type="Resource" uid="uid://c2n82bt3b6dpp" path="res://assets/Spells/enemy/insurance_frodd/spell_enemy_insurancefrodd_refill.tres" id="16_2go2c"]
 [ext_resource type="Resource" uid="uid://bcov26ff10ih1" path="res://assets/Spells/common/spell_common_ramble.tres" id="20_uxqgj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="21_o70t5"]
-[ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/Seal/effect_seal_buff_sp_attack.tres" id="26_ucq1d"]
+[ext_resource type="Resource" uid="uid://b5cgei7bqqkjv" path="res://assets/Effects/Seal Old/effect_seal_buff_sp_attack.tres" id="26_ucq1d"]
 
 [sub_resource type="Curve" id="Curve_7puij"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

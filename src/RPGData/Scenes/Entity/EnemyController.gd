@@ -1,6 +1,7 @@
 extends EntityController
 class_name EnemyController
 
+# TODO: Deprecated
 var seal_effect : SealEffectGroup;
 var seal_effect_list : Array[SealEffectGroup];
 @export var enemy_index : int;

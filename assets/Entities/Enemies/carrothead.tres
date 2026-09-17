@@ -19,7 +19,7 @@
 [ext_resource type="Resource" uid="uid://drbk3xia7c0cn" path="res://assets/Spells/enemy/carrothead/spell_enemy_carrothead_flex.tres" id="15_ct8cr"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="15_e6uqk"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="18_m5bss"]
-[ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/Seal/effect_seal_debuff_defense.tres" id="19_1h526"]
+[ext_resource type="Resource" uid="uid://cq8yipq74havs" path="res://assets/Effects/Seal Old/effect_seal_debuff_defense.tres" id="19_1h526"]
 
 [sub_resource type="Curve" id="Curve_o3p40"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]

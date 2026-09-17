@@ -13,7 +13,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/EntityBehaviorCheck.gd" id="6_rucxs"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Behavior/BehaviorChecks/BehaviorCheckSeal.gd" id="7_lfj4y"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="8_c8xjk"]
-[ext_resource type="Resource" uid="uid://dhgurk814tx7g" path="res://assets/Effects/Seal/effect_seal_debuff_attack.tres" id="9_tn0hv"]
+[ext_resource type="Resource" uid="uid://dhgurk814tx7g" path="res://assets/Effects/Seal Old/effect_seal_debuff_attack.tres" id="9_tn0hv"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="11_onr2f"]
 [ext_resource type="Resource" uid="uid://cl3tdictosiwg" path="res://assets/Spells/enemy/flextra/spell_enemy_flextra_attack.tres" id="12_3x4jp"]
 [ext_resource type="Resource" uid="uid://dwqqe3fys42x0" path="res://assets/Spells/common/spell_common_boast.tres" id="13_g86us"]
