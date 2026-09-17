@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=129 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -54,20 +54,27 @@
 [ext_resource type="Resource" uid="uid://dnnktgjcqwttk" path="res://assets/Tweens/Transition/distort_in_blades.tres" id="45_h4gce"]
 [ext_resource type="PackedScene" uid="uid://ccapvm3bs1fan" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_red.tscn" id="45_yfjyn"]
 [ext_resource type="PackedScene" uid="uid://di8qosr8vtymb" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_yellow.tscn" id="47_4vmaq"]
+[ext_resource type="PackedScene" uid="uid://b4clvxqfeh4hh" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_purple.tscn" id="47_hxiia"]
 [ext_resource type="PackedScene" uid="uid://dvhagctlq66n1" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_blue.tscn" id="49_5i3qx"]
+[ext_resource type="PackedScene" uid="uid://dmkv7vb5u75a5" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_green.tscn" id="50_1o6bn"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="51_o1brv"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="53_f7d30"]
+[ext_resource type="PackedScene" uid="uid://detlmwgqnuihh" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_red.tscn" id="53_o5y4i"]
 [ext_resource type="PackedScene" uid="uid://c11121oox8238" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_yellow.tscn" id="54_cu12o"]
 [ext_resource type="Resource" uid="uid://bx1jd62sal2fw" path="res://assets/Effects/Seal/effect_seal_buff_speed.tres" id="55_0mrgk"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="55_p3gk4"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="57_kcr5s"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="59_enxdd"]
+[ext_resource type="PackedScene" uid="uid://bb1oaw3sbdjub" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_blue.tscn" id="60_gwytu"]
 [ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="61_ujiyb"]
 [ext_resource type="PackedScene" uid="uid://22h7swvo5kep" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_pink.tscn" id="62_3iu2h"]
+[ext_resource type="PackedScene" uid="uid://cs7p1v3a8tnvu" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_pink.tscn" id="63_7bqbf"]
 [ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="63_l3byj"]
 [ext_resource type="PackedScene" uid="uid://cblwnmkdp8vxt" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_orange.tscn" id="64_0d4nb"]
 [ext_resource type="Resource" uid="uid://c120fjayjkcgl" path="res://assets/Flags/maroon.tres" id="65_jl75g"]
 [ext_resource type="PackedScene" uid="uid://d21f7wvrspn0w" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_maroon.tscn" id="66_geplr"]
+[ext_resource type="PackedScene" uid="uid://c1ot28pl4vv8j" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_orange.tscn" id="66_nae4y"]
+[ext_resource type="PackedScene" uid="uid://8mdnfbycq7tk" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_maroon.tscn" id="69_y0dob"]
 
 [sub_resource type="Gradient" id="Gradient_ioy0f"]
 offsets = PackedFloat32Array(0)
@@ -399,18 +406,28 @@ next_tween = ""
 script = ExtResource("37_d6s3e")
 flag = ExtResource("51_o1brv")
 vfx = ExtResource("41_roo10")
+expire_vfx = ExtResource("47_hxiia")
 wildcard = false
+
+[sub_resource type="Resource" id="Resource_n53cl"]
+script = ExtResource("6_2gp2x")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("55_0mrgk")])
 
 [sub_resource type="Resource" id="Resource_wx4r8"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("53_f7d30")
 vfx = ExtResource("43_ocmnn")
+expire_vfx = ExtResource("50_1o6bn")
+effect = SubResource("Resource_n53cl")
 wildcard = false
 
 [sub_resource type="Resource" id="Resource_ucos2"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("55_p3gk4")
 vfx = ExtResource("45_yfjyn")
+expire_vfx = ExtResource("53_o5y4i")
 wildcard = false
 
 [sub_resource type="Resource" id="Resource_x2mri"]
@@ -431,24 +448,28 @@ wildcard = false
 script = ExtResource("37_d6s3e")
 flag = ExtResource("59_enxdd")
 vfx = ExtResource("49_5i3qx")
+expire_vfx = ExtResource("60_gwytu")
 wildcard = false
 
 [sub_resource type="Resource" id="Resource_lv00o"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("61_ujiyb")
 vfx = ExtResource("62_3iu2h")
+expire_vfx = ExtResource("63_7bqbf")
 wildcard = false
 
 [sub_resource type="Resource" id="Resource_tc6v0"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("63_l3byj")
 vfx = ExtResource("64_0d4nb")
+expire_vfx = ExtResource("66_nae4y")
 wildcard = false
 
 [sub_resource type="Resource" id="Resource_6uqsj"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("65_jl75g")
 vfx = ExtResource("66_geplr")
+expire_vfx = ExtResource("69_y0dob")
 wildcard = false
 
 [sub_resource type="Resource" id="Resource_krv0w"]

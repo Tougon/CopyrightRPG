@@ -258,6 +258,9 @@ func _play_seal_effect(flag : SealData, target : EntityController, activate : bo
 	if (activate) : vfx_scene = flag.vfx;
 	else : vfx_scene = flag.expire_vfx;
 	
+	# Dunno how or why a failsafe was missing
+	if (vfx_scene == null) : return;
+	
 	var vfx_instance = vfx_scene.instantiate() as EntityBase;
 	target.get_tree().root.add_child(vfx_instance);
 	

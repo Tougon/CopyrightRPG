@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://b0u0k150tx86x"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=16 format=3 uid="uid://b0u0k150tx86x"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_6tyop"]
 [ext_resource type="Resource" uid="uid://c8adpumx2unhq" path="res://assets/Animations/Sequences/Spell/anim_spell_player_a_01.tres" id="1_u1es7"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_cjjk7"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_myvgc"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="7_sx6cj"]
+[ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="8_k8isj"]
 [ext_resource type="Resource" uid="uid://ddtp6nm4covq4" path="res://assets/Flags/t_kind_sound.tres" id="8_q2pqt"]
+[ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="9_v1y8a"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="9_vdyw6"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="10_wps5p"]
 
@@ -66,7 +68,7 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 8
 spell_priority = 0
-spell_flags = Array[ExtResource("5_myvgc")]([ExtResource("7_sx6cj")])
+spell_flags = Array[ExtResource("5_myvgc")]([ExtResource("7_sx6cj"), ExtResource("8_k8isj"), ExtResource("9_v1y8a")])
 spell_kind = ExtResource("8_q2pqt")
 ignore_seals = false
 is_learnable = false
