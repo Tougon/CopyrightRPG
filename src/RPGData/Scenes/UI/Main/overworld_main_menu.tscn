@@ -1320,45 +1320,15 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-offset_left = -232.0
-offset_top = -14.5
-offset_right = -319.0
-offset_bottom = 0.5
+offset_left = -180.0
+offset_top = -9.0
+offset_right = -267.0
+offset_bottom = 6.0
 grow_vertical = 0
+resize_icons = false
 
 [node name="Icon Container" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group" index="0"]
-custom_minimum_size = Vector2(14, 14)
-offset_right = 63.0
-offset_bottom = 9.0
-theme_override_constants/separation = 4
 alignment = 2
-
-[node name="Red" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="0"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Orange" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="1"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Yellow" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="2"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Green" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="3"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Turquoise" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="4"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Blue" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="5"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Purple" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="6"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Pink" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="8"]
-custom_minimum_size = Vector2(14, 14)
-
-[node name="Null" parent="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group/Icon Container" index="9"]
-custom_minimum_size = Vector2(14, 14)
 
 [node name="Entity Stats Group" type="VBoxContainer" parent="Body/Party/Entity Stats Area"]
 custom_minimum_size = Vector2(0, 20)
@@ -3241,46 +3211,12 @@ stretch_mode = 5
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-offset_left = 79.0
-offset_top = -21.0
-offset_right = -8.0
-offset_bottom = -6.0
+offset_left = 60.0
+offset_top = -20.0
+offset_right = 67.0
+offset_bottom = 4.0
 grow_vertical = 0
-
-[node name="Icon Container" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group" index="0"]
-custom_minimum_size = Vector2(10, 10)
-offset_left = -18.0
-offset_top = 3.0
-offset_right = 30.0
-offset_bottom = -1.0
-theme_override_constants/separation = 4
-
-[node name="Red" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="0"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Orange" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="1"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Yellow" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="2"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Green" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="3"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Turquoise" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="4"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Blue" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="5"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Purple" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="6"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Pink" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="8"]
-custom_minimum_size = Vector2(10, 10)
-
-[node name="Null" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group/Icon Container" index="9"]
-custom_minimum_size = Vector2(10, 10)
+scale = Vector2(0.6, 0.6)
 
 [node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 material = ExtResource("16_egfar")
@@ -6585,4 +6521,3 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 [connection signal="pressed" from="Body/System/Delete" to="." method="_on_delete_pressed"]
 
 [editable path="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group"]
-[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Flag Icon Group"]

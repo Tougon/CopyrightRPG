@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cvtwqud6keh3w"]
+[gd_scene load_steps=23 format=3 uid="uid://cvtwqud6keh3w"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/flag_icon_group.gd" id="1_rxdci"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_po6jt"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://pw1omolq0wgh" path="res://assets/Flags/orange.tres" id="4_a06ok"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="5_bf800"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="6_4h17q"]
-[ext_resource type="Resource" uid="uid://fb3rxl17pdld" path="res://assets/Flags/cyan.tres" id="7_juywg"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="8_dw8yp"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="9_8wem2"]
 [ext_resource type="Resource" uid="uid://c120fjayjkcgl" path="res://assets/Flags/maroon.tres" id="10_7wamy"]
@@ -18,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://rotyjjwl4jtt" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_border.png" id="14_mug8c"]
 [ext_resource type="Texture2D" uid="uid://bsxswmm487nmn" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_yellow.png" id="14_uu0yb"]
 [ext_resource type="Texture2D" uid="uid://c7bgnd3og6we8" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_green.png" id="15_1fqjc"]
-[ext_resource type="Texture2D" uid="uid://d30gbfhra6v6k" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_turqouise.png" id="16_fepp1"]
 [ext_resource type="Texture2D" uid="uid://b70v4w8183ft1" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_blue.png" id="17_lqo6y"]
 [ext_resource type="Texture2D" uid="uid://dglmcb4kjrdh0" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_purple.png" id="18_evw3a"]
 [ext_resource type="Texture2D" uid="uid://bqjdqtp080j1t" path="res://assets/Sprites/UI/FlagIcons/ui_flagicon_pink.png" id="19_ocseq"]
@@ -35,7 +33,7 @@ offset_bottom = -696.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rxdci")
-flags = Array[ExtResource("2_po6jt")]([ExtResource("3_xf6c7"), ExtResource("4_a06ok"), ExtResource("5_bf800"), ExtResource("6_4h17q"), ExtResource("7_juywg"), ExtResource("8_dw8yp"), ExtResource("9_8wem2"), ExtResource("10_7wamy"), ExtResource("10_hisq1"), ExtResource("11_oqa55")])
+flags = Array[ExtResource("2_po6jt")]([ExtResource("3_xf6c7"), ExtResource("4_a06ok"), ExtResource("5_bf800"), ExtResource("6_4h17q"), ExtResource("8_dw8yp"), ExtResource("9_8wem2"), ExtResource("10_7wamy"), ExtResource("10_hisq1"), ExtResource("11_oqa55")])
 
 [node name="Icon Container" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(24, 24)
@@ -50,10 +48,20 @@ theme_override_constants/separation = 0
 [node name="Red" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Red"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("12_elyow")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Red"]
+[node name="Border" type="TextureRect" parent="Icon Container/Red/Icon"]
 self_modulate = Color(0.47696, 0.0593969, 0.0673112, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
@@ -68,11 +76,21 @@ expand_mode = 3
 [node name="Orange" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Orange"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("13_f7g75")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Orange"]
-self_modulate = Color(0.638429, 0.233676, 0, 1)
+[node name="Border" type="TextureRect" parent="Icon Container/Orange/Icon"]
+self_modulate = Color(0.639216, 0.235294, 0, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
@@ -86,11 +104,21 @@ expand_mode = 3
 [node name="Yellow" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Yellow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("14_uu0yb")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Yellow"]
-self_modulate = Color(0.581394, 0.457466, 1.92523e-07, 1)
+[node name="Border" type="TextureRect" parent="Icon Container/Yellow/Icon"]
+self_modulate = Color(0.580392, 0.458824, 0, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
@@ -104,29 +132,21 @@ expand_mode = 3
 [node name="Green" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-texture = ExtResource("15_1fqjc")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Green"]
-self_modulate = Color(0.105882, 0.466667, 0, 1)
-material = ExtResource("13_jcg61")
+[node name="Icon" type="TextureRect" parent="Icon Container/Green"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_mug8c")
-expand_mode = 3
-
-[node name="Turquoise" type="TextureRect" parent="Icon Container"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("16_fepp1")
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("15_1fqjc")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Turquoise"]
-self_modulate = Color(0, 0.577629, 0.372306, 1)
+[node name="Border" type="TextureRect" parent="Icon Container/Green/Icon"]
+self_modulate = Color(0.105882, 0.466667, 0, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
@@ -140,11 +160,21 @@ expand_mode = 3
 [node name="Blue" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Blue"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("17_lqo6y")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Blue"]
-self_modulate = Color(0.0016066, 0.288953, 0.984077, 1)
+[node name="Border" type="TextureRect" parent="Icon Container/Blue/Icon"]
+self_modulate = Color(0, 0.290196, 0.984314, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
@@ -158,11 +188,21 @@ expand_mode = 3
 [node name="Purple" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Purple"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("18_evw3a")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Purple"]
-self_modulate = Color(0.301681, 0.00114532, 0.598629, 1)
+[node name="Border" type="TextureRect" parent="Icon Container/Purple/Icon"]
+self_modulate = Color(0.301961, 0, 0.6, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
@@ -176,11 +216,21 @@ expand_mode = 3
 [node name="Maroon" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Maroon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("22_5yf7u")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Maroon"]
-self_modulate = Color(0.3, 0.066, 0.1635, 1)
+[node name="Border" type="TextureRect" parent="Icon Container/Maroon/Icon"]
+self_modulate = Color(0.301961, 0.0666667, 0.164706, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
 anchors_preset = 15
@@ -194,10 +244,20 @@ expand_mode = 3
 [node name="Pink" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Pink"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("19_ocseq")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Pink"]
+[node name="Border" type="TextureRect" parent="Icon Container/Pink/Icon"]
 self_modulate = Color(1, 0.224956, 0.551906, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
@@ -212,10 +272,20 @@ expand_mode = 3
 [node name="Null" type="TextureRect" parent="Icon Container"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
+expand_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Icon Container/Null"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(12, 12)
 texture = ExtResource("20_s3apn")
 expand_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Icon Container/Null"]
+[node name="Border" type="TextureRect" parent="Icon Container/Null/Icon"]
 self_modulate = Color(0.446777, 0.446777, 0.446777, 1)
 material = ExtResource("13_jcg61")
 layout_mode = 1
