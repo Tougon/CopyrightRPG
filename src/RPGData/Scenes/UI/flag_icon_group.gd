@@ -6,7 +6,6 @@ class_name FlagIconGroup
 @export var resize_icons : bool = true;
 
 var _icons : Array[TextureRect];
-var _icon_default_size : Vector2;
 
 func _ready():
 	for icon in icon_root.get_children() :
@@ -14,8 +13,6 @@ func _ready():
 		
 		if i != null :
 			_icons.append(i);
-		
-		_icon_default_size = i.custom_minimum_size;
 	
 	set_sealing(false);
 
@@ -29,12 +26,13 @@ func display_flags(flags_to_display : Array[TFlag]):
 			_icons[i].get_parent().move_child(_icons[i], index);
 			
 			if index == 0 && resize_icons:
-				_icons[i].get_child(0).size = _icon_default_size * 1.25;
-				_icons[i].get_child(0).position = ((_icon_default_size * 1.25) - _icon_default_size) / -2.0;
-				_icons[i].get_child(0).position.x -= 2.0;
+				_icons[i].get_child(0).scale = Vector2.ONE * 1.25;
+				_icons[i].get_child(0).position.x = -3;
+				_icons[i].get_child(0).position.y = -2;
 			else :
-				_icons[i].get_child(0).size = _icon_default_size;
-				_icons[i].get_child(0).position = Vector2.ZERO;
+				_icons[i].get_child(0).scale = Vector2.ONE;
+				_icons[i].get_child(0).position.x = 0;
+				_icons[i].get_child(0).position.y = 0;
 
 
 func clear_flags():

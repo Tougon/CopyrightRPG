@@ -461,14 +461,14 @@ func _action_phase():
 		if entity.current_action.show_spell_cast_ui :
 			dialogue_canvas.panel.position.y += 82.0;
 			AudioManager.play_sfx("battle_menu_confirm", 0.0);
-			EventManager.battle_action_show.emit(entity.current_action, true);
+			EventManager.battle_action_show.emit(entity.current_action, entity.sealing, true);
 		
 		# I don't like this! There's kind of no other way to detect when the animation starts though so...
 		await EventManager.on_sequence_queue_empty;
 		
 		if play_animation :
 			# Remove UI
-			EventManager.battle_action_show.emit(entity.current_action, false);
+			EventManager.battle_action_show.emit(entity.current_action, false, false);
 			
 			if entity.current_action.show_spell_cast_ui :
 				dialogue_canvas.panel.position.y -= 82.0;

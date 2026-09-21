@@ -9,12 +9,14 @@ func _ready() -> void:
 	self.visible = false;
 
 
-func _on_battle_action_show(action : Spell, visible : bool):
+func _on_battle_action_show(action : Spell, sealing : bool, visible : bool):
 	self.visible = visible;
 	
-	if action != null :
+	if visible && action != null :
 		$"ColorRect/Container/Move Name".text = tr(action.spell_name_key).to_upper();
+		
 		$"ColorRect/Container/Flag Icon Group".display_flags(action.spell_flags);
+		$"ColorRect/Container/Flag Icon Group".set_sealing(sealing);
 
 
 func _on_destroy():
