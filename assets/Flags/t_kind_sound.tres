@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="TFlag" load_steps=2 format=3 uid="uid://ddtp6nm4covq4"]
-
-[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_kwgyx"]
-
-[resource]
-script = ExtResource("1_kwgyx")
-flag_name_key = "T_KIND_SOUND"

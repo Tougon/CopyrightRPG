@@ -218,7 +218,7 @@ func _damage_loop(power : float, user : EntityController, target : EntityControl
 	
 	# One time attack boost if flags overlap affinity
 	for flag in user.current_entity.affinity:
-		if flags.has(flag):
+		if flags.has(flag) || flag == spell_kind :
 			print("AFFINITY")
 			damage *= AFFINITY_BONUS;
 			break;

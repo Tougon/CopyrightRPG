@@ -131,6 +131,9 @@ func create_seal_instance(entity : EntityController, spell : Spell, player_side 
 	for flag in spell.spell_flags :
 		_play_seal_effects(seal_inst, entity, flag);
 		await get_tree().create_timer(0.3).timeout;
+	
+	_play_seal_effects(seal_inst, entity, spell.spell_kind);
+	await get_tree().create_timer(0.3).timeout;
 
 
 func check_for_seal(entity : EntityController, player_side : bool, override_flags : Array[TFlag]) -> bool:
@@ -152,26 +155,40 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 		if override_flags != null :
 			flags = override_flags;
 		
+		# Add the kind in so we don't need to duplicate code.
+		# We cannot move the code in loop.
+		flags.append(action.spell_kind);
+		
 		for flag in flags:
 			# NOTE: This will double effects up and do a violation per flag. 
 			# If we don't want this, pull it out of the loop.
 			var sealed = false;
 			
-			if seal.seal_source.spell_flags.has(flag):
+			if seal.seal_source.spell_flags.has(flag) || seal.seal_source.spell_kind == flag :
 				
-				if !sealed : 
+				var kind_overlap = seal.seal_source.spell_kind == flag;
+				
+				if !sealed || kind_overlap : 
 					has_sealed = true;
 					sealed = true;
 					
 					_play_seal_message(seal, entity);
 					
-					for eff in seal.seal_effect.seal_effects:
+					# Get primary flag
+					var effects = _get_primary_seal_effect(flags);
+					
+					if effects == null : continue;
+					
+					for eff in effects.seal_effects: #seal.seal_effect.seal_effects:
 						var eff_instance = eff.create_effect_instance(seal.seal_entity, entity, null);
 						# May be vestigal with how seals work now
 						eff_instance.spell_override = seal.seal_source;
 						eff_instance.check_success();
 						if eff_instance.cast_success : eff_instance.on_activate();
 						if !eff_instance.applied : eff_instance.free();
+						
+						if kind_overlap :
+							eff_instance.turn_limit = roundi((eff.turn_limit) / 2.0)
 					
 					_play_seal_effects(seal, seal.seal_entity, flag, false);
 					
@@ -181,6 +198,17 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 						has_learned = true;
 	
 	return has_sealed;
+
+
+func _get_primary_seal_effect(flags : Array[TFlag]) -> SealEffectGroup:
+	if flags.size() > 0 :
+		var primary = flags[0];
+		
+		for flag in seal_vfx:
+			if flag.flag == primary :
+				return flag.effect;
+	
+	return null;
 
 
 func _play_seal_message(seal : SealInstance, entity : EntityController) :
@@ -216,6 +244,9 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 		for flag in spell.spell_flags:
 			if seal.seal_source.spell_flags.has(flag):
 				seal_count += 1;
+		
+		if seal.seal_source.spell_kind == spell.spell_kind :
+			seal_count += 1;
 	
 	return seal_count;
 
@@ -234,7 +265,7 @@ func _play_seal_effects(seal : SealInstance, target : EntityController, show_onl
 	var vfx : Array[Node];
 	
 	for flag in seal_vfx:
-		if seal.seal_source.spell_flags.has(flag.flag) && (show_only == null || (show_only != null && flag.flag == show_only)):
+		if (seal.seal_source.spell_flags.has(flag.flag) || seal.seal_source.spell_kind == flag.flag) && (show_only == null || (show_only != null && flag.flag == show_only)):
 			vfx.append(_play_seal_effect(flag, target, activate));
 			
 			if !activate :
@@ -286,6 +317,9 @@ func _on_entity_turn_end(entity : EntityController) :
 				for flag in seal_instances[i].seal_source.spell_flags :
 					_play_seal_effects(seal_instances[i], entity, flag, false, false);
 					await get_tree().create_timer(0.3).timeout;
+				
+				_play_seal_effects(seal_instances[i], entity, seal_instances[i].seal_source.spell_kind, false, false);
+				await get_tree().create_timer(0.3).timeout;
 				
 				seal_instances[i].free();
 				seal_instances.remove_at(i);

@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_myvgc"]
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="7_sx6cj"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="8_k8isj"]
-[ext_resource type="Resource" uid="uid://ddtp6nm4covq4" path="res://assets/Flags/t_kind_sound.tres" id="8_q2pqt"]
 [ext_resource type="Resource" uid="uid://c82cssitmfaga" path="res://assets/Flags/purple.tres" id="9_v1y8a"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="9_vdyw6"]
+[ext_resource type="Resource" uid="uid://b7vpopug3jtn1" path="res://assets/Flags/art.tres" id="10_qdvx0"]
 [ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="10_wps5p"]
 
 [sub_resource type="Resource" id="Resource_sv8at"]
@@ -69,7 +69,7 @@ target_defeated_entities = false
 spell_cost = 8
 spell_priority = 0
 spell_flags = Array[ExtResource("5_myvgc")]([ExtResource("7_sx6cj"), ExtResource("8_k8isj"), ExtResource("9_v1y8a")])
-spell_kind = ExtResource("8_q2pqt")
+spell_kind = ExtResource("10_qdvx0")
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=134 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -75,6 +75,9 @@
 [ext_resource type="PackedScene" uid="uid://d21f7wvrspn0w" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_maroon.tscn" id="66_geplr"]
 [ext_resource type="PackedScene" uid="uid://c1ot28pl4vv8j" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_orange.tscn" id="66_nae4y"]
 [ext_resource type="PackedScene" uid="uid://8mdnfbycq7tk" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_maroon.tscn" id="69_y0dob"]
+[ext_resource type="PackedScene" uid="uid://dlqaw5g2ms1wl" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_white.tscn" id="72_s80p0"]
+[ext_resource type="Resource" uid="uid://b7vpopug3jtn1" path="res://assets/Flags/art.tres" id="73_3h820"]
+[ext_resource type="PackedScene" uid="uid://n8pfd82khfr2" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_white.tscn" id="74_v7rfv"]
 
 [sub_resource type="Gradient" id="Gradient_ioy0f"]
 offsets = PackedFloat32Array(0)
@@ -472,6 +475,20 @@ vfx = ExtResource("66_geplr")
 expire_vfx = ExtResource("69_y0dob")
 wildcard = false
 
+[sub_resource type="Resource" id="Resource_i5khm"]
+script = ExtResource("6_2gp2x")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("7_46juf")]([ExtResource("55_0mrgk")])
+
+[sub_resource type="Resource" id="Resource_7t5hq"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("73_3h820")
+vfx = ExtResource("74_v7rfv")
+expire_vfx = ExtResource("72_s80p0")
+effect = SubResource("Resource_i5khm")
+wildcard = true
+
 [sub_resource type="Resource" id="Resource_krv0w"]
 script = ExtResource("34_hseuq")
 duration = 0.0
@@ -806,7 +823,7 @@ sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_kcgk4"), Su
 
 [node name="SealManager" type="Node" parent="Core"]
 script = ExtResource("19_et6o3")
-seal_vfx = Array[ExtResource("37_d6s3e")]([SubResource("Resource_o4qmr"), SubResource("Resource_wx4r8"), SubResource("Resource_ucos2"), SubResource("Resource_3tgv6"), SubResource("Resource_bhtgu"), SubResource("Resource_lv00o"), SubResource("Resource_tc6v0"), SubResource("Resource_6uqsj")])
+seal_vfx = Array[ExtResource("37_d6s3e")]([SubResource("Resource_o4qmr"), SubResource("Resource_wx4r8"), SubResource("Resource_ucos2"), SubResource("Resource_3tgv6"), SubResource("Resource_bhtgu"), SubResource("Resource_lv00o"), SubResource("Resource_tc6v0"), SubResource("Resource_6uqsj"), SubResource("Resource_7t5hq")])
 
 [node name="BattleRewardManager" type="Node" parent="Core"]
 script = ExtResource("29_6pl1e")
