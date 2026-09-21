@@ -30,7 +30,7 @@ func display_flags(flags_to_display : Array[TFlag]):
 			
 			if index == 0 && resize_icons:
 				_icons[i].get_child(0).size = _icon_default_size * 1.25;
-				_icons[i].get_child(0).position = (_icons[i].get_child(0).size - _icon_default_size) / -2.0;
+				_icons[i].get_child(0).position = ((_icon_default_size * 1.25) - _icon_default_size) / -2.0;
 				_icons[i].get_child(0).position.x -= 2.0;
 			else :
 				_icons[i].get_child(0).size = _icon_default_size;

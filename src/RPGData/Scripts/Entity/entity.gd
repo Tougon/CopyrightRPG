@@ -91,6 +91,7 @@ func get_level_exp(level : int) -> int:
 
 @export_group("Modifiers")
 @export var affinity : Array[TFlag];
+@export var anti_affinity : Array[TFlag];
 @export var defense_modifiers : Array[FlagModifier];
 @export var min_level : int = 50;
 @export var max_level : int = 50 :

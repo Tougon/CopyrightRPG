@@ -3,7 +3,8 @@ extends Spell
 class_name DamageSpell
 
 const ACCURACY_BONUS : int = 10;
-const AFFINITY_BONUS : float = 1.25;
+const AFFINITY_BONUS : float = 1.15;
+const BANE_PENALTY : float = 0.8;
 const BASE_STAT : float = 50;
 
 enum SpellHitType { Physical, Special }
@@ -216,12 +217,16 @@ func _damage_loop(power : float, user : EntityController, target : EntityControl
 		for f in def_mods_post:
 			damage /= f;
 	
+	print("Damage before affinity: " + str(damage))
+	
 	# One time attack boost if flags overlap affinity
 	for flag in user.current_entity.affinity:
 		if flags.has(flag) || flag == spell_kind :
-			print("AFFINITY")
 			damage *= AFFINITY_BONUS;
-			break;
+	
+	for flag in user.current_entity.anti_affinity:
+		if flags.has(flag) || flag == spell_kind :
+			damage *= BANE_PENALTY;
 	
 	print("Full Damage: " + str(damage))
 	damage *= randf_range(0.85, 1.0);
