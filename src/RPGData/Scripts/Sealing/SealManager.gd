@@ -175,7 +175,7 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 					_play_seal_message(seal, entity);
 					
 					# Get primary flag
-					var effects = _get_primary_seal_effect(flags);
+					var effects = _get_primary_seal_effect(seal.seal_source.spell_flags);
 					
 					if effects == null : continue;
 					
