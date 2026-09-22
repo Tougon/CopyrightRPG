@@ -378,6 +378,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_bswcr")
 affinity = Array[ExtResource("1_tw4ns")]([])
+anti_affinity = Array[ExtResource("1_tw4ns")]([])
 defense_modifiers = Array[ExtResource("2_40bxm")]([])
 min_level = 8
 max_level = 10

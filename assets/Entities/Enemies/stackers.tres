@@ -350,6 +350,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_f4n2q")
 affinity = Array[ExtResource("1_ygu5r")]([])
+anti_affinity = Array[ExtResource("1_ygu5r")]([])
 defense_modifiers = Array[ExtResource("2_xmxpj")]([])
 min_level = 1
 max_level = 3

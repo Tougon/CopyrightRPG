@@ -255,6 +255,7 @@ base_crit_resist_modifier = 1.0
 base_accuracy_modifier = 1.0
 base_dodge_modifier = 1.0
 affinity = Array[ExtResource("1_75r3f")]([])
+anti_affinity = Array[ExtResource("1_75r3f")]([])
 defense_modifiers = Array[ExtResource("2_jrwqj")]([])
 min_level = 5
 max_level = 7

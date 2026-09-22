@@ -200,6 +200,7 @@ base_accuracy_modifier = 1.0
 base_dodge_modifier = 0.5
 luck = SubResource("Resource_kqn25")
 affinity = Array[ExtResource("1_qvoed")]([])
+anti_affinity = Array[ExtResource("1_qvoed")]([])
 defense_modifiers = Array[ExtResource("2_blmbh")]([])
 min_level = 1
 max_level = 3

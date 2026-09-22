@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=184 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -46,8 +46,15 @@
 [ext_resource type="PackedScene" uid="uid://l2sxt0pgfsn2" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_ability_carousel_item.tscn" id="38_0mnh2"]
 [ext_resource type="Material" uid="uid://b3jaiekyx8xfo" path="res://assets/Materials/UI/ui_item_hologram.tres" id="38_n3232"]
 [ext_resource type="Theme" uid="uid://cgxm5m2kfekjr" path="res://assets/Themes/Theme_SystemFont.tres" id="39_5w6ca"]
+[ext_resource type="Texture2D" uid="uid://ypl4tr524rhb" path="res://assets/Sprites/UI/Status/ui_kind_art.png" id="39_46wyp"]
+[ext_resource type="Texture2D" uid="uid://evpokfa6d82g" path="res://assets/Sprites/UI/Status/icon_move_direct.png" id="39_kw5t0"]
+[ext_resource type="Texture2D" uid="uid://bh33e1upy6q10" path="res://assets/Sprites/UI/Status/ui_kind_science.png" id="40_cfwvm"]
+[ext_resource type="Texture2D" uid="uid://st6hbvinex3" path="res://assets/Sprites/UI/Status/icon_move_indirect.png" id="40_mf2um"]
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="40_n1ghd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Party/overworld_main_menu_player_move_target_menu.gd" id="40_pmy5f"]
+[ext_resource type="Texture2D" uid="uid://1f5na2ohgcl3" path="res://assets/Sprites/UI/Status/ui_kind_logic.png" id="41_7yeat"]
+[ext_resource type="Texture2D" uid="uid://wujiebr3gdte" path="res://assets/Sprites/UI/Status/icon_move_status.png" id="41_saf7q"]
+[ext_resource type="Texture2D" uid="uid://crnp0iakuj63t" path="res://assets/Sprites/UI/Status/ui_kind_action.png" id="42_1sj1w"]
 [ext_resource type="Texture2D" uid="uid://bauyt3p8ov45m" path="res://assets/Sprites/Entities/slime.png" id="44_prdk6"]
 [ext_resource type="Script" path="res://src/UIComponents/Scenes/underlay_bar.gd" id="45_nu1oo"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_use_panel.gd" id="45_uyhcd"]
@@ -2853,6 +2860,8 @@ offset_bottom = -98.0
 grow_vertical = 0
 script = ExtResource("23_kuxur")
 menu_panel = NodePath("BG/Move Select Items/RadialCarousel")
+move_kind_icons = Array[Texture]([ExtResource("39_46wyp"), ExtResource("40_cfwvm"), ExtResource("41_7yeat"), ExtResource("42_1sj1w")])
+move_hit_type_icons = Array[Texture]([ExtResource("39_kw5t0"), ExtResource("40_mf2um"), ExtResource("41_saf7q")])
 menu_name = "overworld_menu_main_move_select"
 
 [node name="BG" type="NinePatchRect" parent="Body/Party/Entity Move Select Area"]
@@ -3107,6 +3116,17 @@ theme_override_font_sizes/font_size = 20
 text = "Move Name"
 horizontal_alignment = 1
 
+[node name="Flag Icon Group" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals" instance=ExtResource("22_gs7bb")]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_left = 144.0
+offset_top = -18.0
+offset_right = 151.0
+offset_bottom = 6.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+
 [node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
@@ -3131,7 +3151,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 23.0
 offset_top = -23.0
+offset_right = 23.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -3140,6 +3162,31 @@ theme_type_variation = &"GroupHeader"
 theme_override_font_sizes/font_size = 16
 text = "999 MP"
 vertical_alignment = 1
+
+[node name="Move Kind" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 123.0
+offset_top = -20.0
+offset_right = 139.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = ExtResource("39_46wyp")
+expand_mode = 3
+
+[node name="Hit Type" type="TextureRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 16.0
+offset_bottom = -4.0
+grow_vertical = 0
+texture = ExtResource("39_kw5t0")
+expand_mode = 3
 
 [node name="Close" type="Button" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 layout_mode = 1
@@ -3170,9 +3217,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 119.0
+offset_left = -86.0
 offset_top = -23.0
-offset_right = 13.0
+offset_right = -192.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -3206,17 +3253,6 @@ grow_vertical = 2
 texture = ExtResource("40_n1ghd")
 expand_mode = 5
 stretch_mode = 5
-
-[node name="Flag Icon Group" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals" instance=ExtResource("22_gs7bb")]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-offset_left = 60.0
-offset_top = -20.0
-offset_right = 67.0
-offset_bottom = 4.0
-grow_vertical = 0
-scale = Vector2(0.6, 0.6)
 
 [node name="None" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items"]
 material = ExtResource("16_egfar")

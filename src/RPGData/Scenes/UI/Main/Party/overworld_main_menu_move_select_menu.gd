@@ -1,6 +1,8 @@
 extends MenuPanel
 
 @export var menu_panel : RadialCarousel;
+@export var move_kind_icons : Array[Texture];
+@export var move_hit_type_icons : Array[Texture];
 
 var _target_index : int;
 var _current_spell : Spell;
@@ -54,6 +56,8 @@ func on_focus():
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
 		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
+		$"BG/Move Select Items/Move Visuals/Move Kind".texture = null;
+		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
 		$"BG/Move Select Items/None".visible = true;
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".visible = true;
@@ -120,6 +124,8 @@ func _refresh_move_ui():
 		$"BG/Move Select Items/Move Visuals/Close".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".grab_focus();
 		$"BG/Move Select Items/Move Visuals/Use".visible = false;
+		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
+		$"BG/Move Select Items/Move Visuals/Move Kind".texture = null;
 	else :
 		$"BG/Move Select Items/None".visible = false;
 		$"BG/Move Select Items/Move Visuals/Close".visible = false;
@@ -173,6 +179,24 @@ func _on_item_selected(data):
 		else :
 			$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		
+		var kind = (data as Spell).spell_kind;
+		
+		if kind != null :
+			if kind.flag_name_key.contains("art") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[0];
+			elif kind.flag_name_key.contains("science") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[1];
+			elif kind.flag_name_key.contains("logic") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[2];
+			elif kind.flag_name_key.contains("action") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[3];
+		
+		if data is DamageSpell :
+			if (data as DamageSpell).negate :
+				$"BG/Move Select Items/Move Visuals/Hit Type".texture = move_hit_type_icons[2];
+			elif (data as DamageSpell).spell_attack_type == DamageSpell.SpellHitType.Physical :
+				$"BG/Move Select Items/Move Visuals/Hit Type".texture = move_hit_type_icons[0];
+			else:
+				$"BG/Move Select Items/Move Visuals/Hit Type".texture = move_hit_type_icons[1];
+		else:
+			$"BG/Move Select Items/Move Visuals/Hit Type".texture = move_hit_type_icons[2];
+		
 		_can_use_spell = _current_spell.can_use_overworld && _current_player_data.mp_value >= _current_spell.spell_cost;
 	
 	else :
@@ -181,6 +205,8 @@ func _on_item_selected(data):
 		$"BG/Move Select Items/Move Visuals/Cost".text = "-";
 		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
+		$"BG/Move Select Items/Move Visuals/Move Kind".texture = null;
+		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
 	
 	$"BG/Move Select Items/Move Visuals/Use".visible = _can_use_spell;
 
