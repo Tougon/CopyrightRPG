@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1kmt1g2kapqv"]
+[gd_scene load_steps=12 format=3 uid="uid://b1kmt1g2kapqv"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/battle_spell_info.gd" id="1_ncpvv"]
 [ext_resource type="Material" uid="uid://bick3fv0fx5jl" path="res://assets/Materials/UI/ui_text_blur.tres" id="1_qcjng"]
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="2_2ew8g"]
+[ext_resource type="Texture2D" uid="uid://ypl4tr524rhb" path="res://assets/Sprites/UI/Status/ui_kind_art.png" id="2_y4gev"]
 [ext_resource type="Material" uid="uid://but4guybxnt87" path="res://assets/Materials/UI/ui_noise_overlay.tres" id="3_nc8kv"]
+[ext_resource type="Texture2D" uid="uid://bh33e1upy6q10" path="res://assets/Sprites/UI/Status/ui_kind_science.png" id="3_puv35"]
 [ext_resource type="PackedScene" uid="uid://cvtwqud6keh3w" path="res://src/RPGData/Scenes/UI/flag_icon_group.tscn" id="3_seoiu"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="4_4kxr2"]
+[ext_resource type="Texture2D" uid="uid://1f5na2ohgcl3" path="res://assets/Sprites/UI/Status/ui_kind_logic.png" id="4_atotp"]
+[ext_resource type="Texture2D" uid="uid://crnp0iakuj63t" path="res://assets/Sprites/UI/Status/ui_kind_action.png" id="5_vjcqo"]
 [ext_resource type="Texture2D" uid="uid://bamsk7m3j10v3" path="res://assets/Sprites/UI/Battle/ui_battle_corner_border.png" id="7_2bile"]
 
 [node name="Spell Display" type="Panel"]
@@ -16,6 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ncpvv")
+move_kind_icons = Array[Texture]([ExtResource("2_y4gev"), ExtResource("3_puv35"), ExtResource("4_atotp"), ExtResource("5_vjcqo")])
 
 [node name="ColorRect" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0.901961)
@@ -46,14 +51,30 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="Kind" type="TextureRect" parent="ColorRect/Container/Kind Icon Root"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_y4gev")
+expand_mode = 3
+
 [node name="Move Name" type="Label" parent="ColorRect/Container"]
 material = ExtResource("1_qcjng")
 custom_minimum_size = Vector2(290, 0)
 layout_mode = 2
 size_flags_vertical = 1
 theme = ExtResource("2_2ew8g")
-theme_override_font_sizes/font_size = 36
-text = "MOVE"
+theme_override_font_sizes/font_size = 34
+text = "MOVE NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 

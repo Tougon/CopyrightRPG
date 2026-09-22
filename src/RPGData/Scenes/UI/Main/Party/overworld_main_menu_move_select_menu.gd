@@ -55,8 +55,8 @@ func on_focus():
 	else :
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
-		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
-		$"BG/Move Select Items/Move Visuals/Move Kind".texture = null;
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group".clear_flags();
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = null;
 		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
 		$"BG/Move Select Items/None".visible = true;
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
@@ -115,17 +115,17 @@ func _refresh_move_ui():
 	menu_panel.set_data(valid_moves);
 	
 	if valid_moves.size() == 0:
-		$"BG/Move Select Items/Move Visuals/Vid/Name".text = "";
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Name".text = "";
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
-		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group".clear_flags();
 		$"BG/Move Select Items/None".visible = true;
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".visible = true;
 		$"BG/Move Select Items/Move Visuals/Close".grab_focus();
 		$"BG/Move Select Items/Move Visuals/Use".visible = false;
 		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
-		$"BG/Move Select Items/Move Visuals/Move Kind".texture = null;
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = null;
 	else :
 		$"BG/Move Select Items/None".visible = false;
 		$"BG/Move Select Items/Move Visuals/Close".visible = false;
@@ -169,10 +169,10 @@ func _on_item_selected(data):
 	_can_use_spell = false;
 	
 	if data != null  && data is Spell:
-		$"BG/Move Select Items/Move Visuals/Vid/Name".text = tr(data.spell_name_key);
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Name".text = tr(data.spell_name_key);
 		$"BG/Move Select Items/Move Visuals/Description".text = tr(data.spell_description_key);
 		$"BG/Move Select Items/Move Visuals/Cost".text = tr("T_MP_COST").format({cost = data.spell_cost});
-		$"BG/Move Select Items/Move Visuals/Flag Icon Group".display_flags(data.spell_flags);
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group".display_flags(data.spell_flags);
 		
 		if data.spell_videos.size() > 0 :
 			_load_spell_data(data as Spell)
@@ -182,10 +182,10 @@ func _on_item_selected(data):
 		var kind = (data as Spell).spell_kind;
 		
 		if kind != null :
-			if kind.flag_name_key.contains("art") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[0];
-			elif kind.flag_name_key.contains("science") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[1];
-			elif kind.flag_name_key.contains("logic") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[2];
-			elif kind.flag_name_key.contains("action") : $"BG/Move Select Items/Move Visuals/Move Kind".texture = move_kind_icons[3];
+			if kind.flag_name_key.contains("art") : $"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = move_kind_icons[0];
+			elif kind.flag_name_key.contains("science") : $"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = move_kind_icons[1];
+			elif kind.flag_name_key.contains("logic") : $"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = move_kind_icons[2];
+			elif kind.flag_name_key.contains("action") : $"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = move_kind_icons[3];
 		
 		if data is DamageSpell :
 			if (data as DamageSpell).negate :
@@ -200,12 +200,12 @@ func _on_item_selected(data):
 		_can_use_spell = _current_spell.can_use_overworld && _current_player_data.mp_value >= _current_spell.spell_cost;
 	
 	else :
-		$"BG/Move Select Items/Move Visuals/Vid/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Cost".text = "-";
-		$"BG/Move Select Items/Move Visuals/Flag Icon Group".clear_flags();
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group".clear_flags();
 		$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
-		$"BG/Move Select Items/Move Visuals/Move Kind".texture = null;
+		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Kind Root/Move Kind".texture = null;
 		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
 	
 	$"BG/Move Select Items/Move Visuals/Use".visible = _can_use_spell;
