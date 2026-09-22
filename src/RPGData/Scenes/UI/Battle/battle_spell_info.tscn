@@ -83,10 +83,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Icon Container" parent="ColorRect/Container/Flag Icon Group" index="0"]
+offset_left = -248.0
 offset_top = 18.0
-offset_right = 109.0
+offset_right = -139.0
 offset_bottom = -22.0
 scale = Vector2(1.25, 1.25)
+alignment = 2
 
 [node name="Padding2" type="Control" parent="ColorRect/Container"]
 custom_minimum_size = Vector2(36, 0)

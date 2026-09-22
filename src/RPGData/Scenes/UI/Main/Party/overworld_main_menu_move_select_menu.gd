@@ -3,6 +3,7 @@ extends MenuPanel
 @export var menu_panel : RadialCarousel;
 @export var move_kind_icons : Array[Texture];
 @export var move_hit_type_icons : Array[Texture];
+@export var transition_palette : GradientTexture2D;
 
 var _target_index : int;
 var _current_spell : Spell;
@@ -252,15 +253,27 @@ func _load_spell_data(move : Spell):
 
 func _animation_loop():
 	_use_manual_time = false;
+	var _first_action = true;
+	
 	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = false;
+	
+	var vplayer = $"BG/Move Select Items/Move Visuals/Vid";
+	var previous = transition_palette;
+	vplayer.material.set_shader_parameter("transition", 0.0);
+	vplayer.material.set_shader_parameter("transition_palette", previous);
 	
 	while _current_animation != null:
 		for action in _current_animation.animation_sequence:
 			if action.frame == _current_frame:
 				if action.action is ASAChangeBackground:
-					_process_bg_action(action.action);
+					_process_bg_action(action.action, _first_action);
+					_first_action = false;
+				elif action.action is ASAModifyBackground :
+					_modify_bg(action.action);
 				elif action.action is ASATerminateAnimation:
 					_current_frame = 0;
+					_first_action = true;
+					await get_tree().create_timer(1.0).timeout
 		
 		await get_tree().process_frame;
 		
@@ -272,31 +285,56 @@ func _animation_loop():
 			$"BG/Move Select Items/Move Visuals/Vid".material.set_shader_parameter("manual_time", _manual_time)
 
 
-func _process_bg_action(action : ASAChangeBackground):
+func _modify_bg(action : ASAModifyBackground):
+	if action == null : return;
+	
+	var vplayer = $"BG/Move Select Items/Move Visuals/Vid";
+	vplayer.paused = action.pause;
+
+
+func _process_bg_action(action : ASAChangeBackground, first_action : bool):
 	if action == null : return;
 	
 	if !action.reset_bg : 
 		match action.mode:
 			ASAChangeBackground.BGChangeMode.BOTH :
 				_change_video(action.index);
-				_change_material(action.index, !action.use_palette, action.palette_fade_time);
+				_change_material(action.index, !action.use_palette, action.palette_fade_time, first_action);
 			ASAChangeBackground.BGChangeMode.VIDEO_ONLY :
 				_change_video(action.index);
 			ASAChangeBackground.BGChangeMode.MATERIAL_ONLY :
-				_change_material(action.index, !action.use_palette, action.palette_fade_time);
+				_change_material(action.index, !action.use_palette, action.palette_fade_time, first_action);
+	else :
+		var vplayer = $"BG/Move Select Items/Move Visuals/Vid";
+		var previous = vplayer.material.get_shader_parameter("palette");
+		previous = transition_palette;
+		
+		var fade_tween = get_tree().create_tween();
+		fade_tween.set_parallel(true);
+		
+		var property = fade_tween.tween_property(vplayer.material as ShaderMaterial, "shader_parameter/transition", 0.0, action.palette_fade_time);
+		
+		if property != null : 
+			property.set_trans(Tween.TRANS_QUART)
+			property.set_ease(Tween.EASE_OUT)
 
 
 func _change_video(index : int):
 	if index >= 0 && index < _videos.size():
 		$"BG/Move Select Items/Move Visuals/Vid".stream = _videos[index];
 		$"BG/Move Select Items/Move Visuals/Vid".play_video_at(0);
+		$"BG/Move Select Items/Move Visuals/Vid".paused = false;
 
 
-func _change_material(index : int, use_entity_palette : bool, palette_transition_duration : float):
+func _change_material(index : int, use_entity_palette : bool, palette_transition_duration : float, first_action : bool):
 	if index >= 0 && index < _materials.size():
 		var vplayer = $"BG/Move Select Items/Move Visuals/Vid";
 		var previous = vplayer.material.get_shader_parameter("palette");
-		vplayer.material = _materials[index];
+		
+		if first_action : 
+			previous = transition_palette;
+		
+		vplayer.material = _materials[index].duplicate();
 		vplayer.material.set_shader_parameter("transition", 0.0);
 		
 		if use_entity_palette :
