@@ -65,12 +65,12 @@ action = SubResource("Resource_m00y6")
 
 [sub_resource type="Resource" id="Resource_vbnhx"]
 script = ExtResource("6_kdqtu")
-effect_scene_path = "res://assets/VFX/Generic/EffectGeneric.tscn"
+effect_scene_path = "res://assets/VFX/Spells/effect_spell_playera_01_hit.tscn"
 relative = 1
 alignment = 0
 effect_index = 0
 effect_position = Vector2(5, 0)
-effect_layer = 2
+effect_layer = 5
 effect_rotation = 0.0
 effect_scale = Vector2(2, 2)
 child = false
