@@ -100,6 +100,7 @@ action = SubResource("Resource_x7akk")
 script = ExtResource("7_j2ajl")
 effect_scene_path = "res://assets/VFX/Generic/EffectGeneric.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(5, 0)
 effect_layer = 2
@@ -122,6 +123,7 @@ action = SubResource("Resource_vbnhx")
 script = ExtResource("8_r6glq")
 group = -1
 index = 2
+layer_mod = 0
 target = 0
 effect_index = 0
 
@@ -220,6 +222,7 @@ action = SubResource("Resource_8miv5")
 script = ExtResource("8_r6glq")
 group = -1
 index = 0
+layer_mod = 0
 target = 0
 effect_index = 0
 

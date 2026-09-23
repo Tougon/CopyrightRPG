@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=50 format=3 uid="uid://f33mxcf8k8fx"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=45 format=3 uid="uid://f33mxcf8k8fx"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="1_42ti6"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="1_chofk"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_effect.gd" id="7_iuwjk"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="8_8vu1s"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_sprite.gd" id="8_gycvc"]
-[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="9_2d2tc"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="9_w7h8s"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="10_2yh0r"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="12_ddyc1"]
@@ -26,20 +25,6 @@ script = ExtResource("2_st50u")
 frame = 1
 frame_order = 5
 action = SubResource("Resource_5quh4")
-
-[sub_resource type="Resource" id="Resource_60cch"]
-script = ExtResource("9_2d2tc")
-reset_bg = false
-index = 0
-mode = 2
-use_palette = true
-palette_fade_time = 0.0
-
-[sub_resource type="Resource" id="Resource_fhloc"]
-script = ExtResource("2_st50u")
-frame = 8
-frame_order = 3
-action = SubResource("Resource_60cch")
 
 [sub_resource type="Resource" id="Resource_jywrx"]
 script = ExtResource("1_chofk")
@@ -65,7 +50,7 @@ action = SubResource("Resource_m00y6")
 
 [sub_resource type="Resource" id="Resource_vbnhx"]
 script = ExtResource("6_kdqtu")
-effect_scene_path = "res://assets/VFX/Spells/effect_spell_playera_01_hit.tscn"
+effect_scene_path = "res://assets/VFX/Generic/EffectGeneric.tscn"
 relative = 1
 alignment = 0
 effect_index = 0
@@ -195,20 +180,6 @@ frame = 28
 frame_order = 0
 action = SubResource("Resource_6n31k")
 
-[sub_resource type="Resource" id="Resource_dcvad"]
-script = ExtResource("9_2d2tc")
-reset_bg = true
-index = 0
-mode = 0
-use_palette = false
-palette_fade_time = 1.0
-
-[sub_resource type="Resource" id="Resource_3jdo4"]
-script = ExtResource("2_st50u")
-frame = 20
-frame_order = 4
-action = SubResource("Resource_dcvad")
-
 [sub_resource type="Resource" id="Resource_mj1pb"]
 script = ExtResource("3_gvvo3")
 
@@ -220,7 +191,7 @@ action = SubResource("Resource_mj1pb")
 
 [sub_resource type="Resource" id="Resource_ciudy"]
 script = ExtResource("14_0i14j")
-sfx_key = "shout"
+sfx_key = "whoosh_high"
 
 [sub_resource type="Resource" id="Resource_nkosv"]
 script = ExtResource("2_st50u")
@@ -232,4 +203,4 @@ action = SubResource("Resource_ciudy")
 script = ExtResource("1_42ti6")
 animation_name = "Attack"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_fhloc"), SubResource("Resource_gsb1u"), SubResource("Resource_nsmpw"), SubResource("Resource_khlsu"), SubResource("Resource_a0bpd"), SubResource("Resource_q3dud"), SubResource("Resource_325ns"), SubResource("Resource_atue2"), SubResource("Resource_fb6rk"), SubResource("Resource_indbo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_vucge"), SubResource("Resource_3jdo4"), SubResource("Resource_iwrrj"), SubResource("Resource_nkosv")])
+animation_sequence = Array[ExtResource("2_st50u")]([SubResource("Resource_3jtwj"), SubResource("Resource_gsb1u"), SubResource("Resource_nsmpw"), SubResource("Resource_khlsu"), SubResource("Resource_a0bpd"), SubResource("Resource_q3dud"), SubResource("Resource_325ns"), SubResource("Resource_atue2"), SubResource("Resource_fb6rk"), SubResource("Resource_indbo"), SubResource("Resource_6ya30"), SubResource("Resource_xc5jk"), SubResource("Resource_vucge"), SubResource("Resource_iwrrj"), SubResource("Resource_nkosv")])
