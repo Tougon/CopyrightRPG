@@ -23,7 +23,11 @@ func execute(sequence : AnimationSequence):
 		if (!sequence.target[sequence.target_index].is_defeated || override_defeated):
 			entity = sequence.target[sequence.target_index];
 	elif target == Target.EFFECT && effect_index < sequence.effects.size():
-		entity = sequence.effects[effect_index];
+		var ind = effect_index;
+		if ind == -1 : 
+			ind = sequence.loops[sequence.loops.size() - 1].num_iterations;
+		
+		entity = sequence.effects[ind];
 	
 	if entity == null : return;
 	

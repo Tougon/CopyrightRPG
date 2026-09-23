@@ -1,12 +1,29 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=8 format=3 uid="uid://dfcemb2bstofd"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://dfcemb2bstofd"]
 
-[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_6yvk0"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_14xrn"]
+[ext_resource type="Resource" uid="uid://c2ju2dn2dgobh" path="res://assets/Animations/Sequences/Spell/anim_spell_player_b_02.tres" id="1_vo7tj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_8vdsh"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_maisc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="4_o4apy"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_6ylst"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="7_ebgn0"]
+[ext_resource type="Resource" uid="uid://08j81fkfp4wl" path="res://assets/Flags/science.tres" id="8_isif8"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="9_gqpi5"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="10_tg6px"]
+
+[sub_resource type="Resource" id="Resource_5jlk5"]
+script = ExtResource("9_gqpi5")
+item_id = "highlight"
+item_path = "res://assets/Audio/SFX/Spell/spell_highlight_beep.ogg"
+
+[sub_resource type="Resource" id="Resource_dsirl"]
+script = ExtResource("9_gqpi5")
+item_id = "electric_burst"
+item_path = "res://assets/Audio/SFX/Spell/spell_eletrical_burst.ogg"
+
+[sub_resource type="Resource" id="Resource_oc4er"]
+script = ExtResource("10_tg6px")
+entries = Array[ExtResource("9_gqpi5")]([SubResource("Resource_5jlk5"), SubResource("Resource_dsirl")])
 
 [resource]
 script = ExtResource("4_o4apy")
@@ -50,13 +67,15 @@ target_defeated_entities = false
 spell_cost = 12
 spell_priority = 0
 spell_flags = Array[ExtResource("5_6ylst")]([ExtResource("7_ebgn0")])
+spell_kind = ExtResource("8_isif8")
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
 show_spell_cast_ui = true
-animation_sequence = ExtResource("1_6yvk0")
+animation_sequence = ExtResource("1_vo7tj")
 spell_videos = Array[String](["res://video/spell/video_spell_topsecret.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playerb_00.tres"])
+spell_sfx = SubResource("Resource_oc4er")
 effects_on_hit = Array[ExtResource("1_14xrn")]([])
 effects_on_success = Array[ExtResource("1_14xrn")]([])
 properties = Array[ExtResource("3_maisc")]([])
