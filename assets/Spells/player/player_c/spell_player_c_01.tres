@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=13 format=3 uid="uid://24judeqcy264"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://24judeqcy264"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_lqc5a"]
 [ext_resource type="Resource" uid="uid://qs8h4iwovgly" path="res://assets/Animations/Sequences/Spell/anim_spell_player_c_01.tres" id="1_ndf0c"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/sof_check_hp.gd" id="5_8q7dl"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_wfr14"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="10_c8cur"]
+[ext_resource type="Resource" uid="uid://2r8pc02sljdw" path="res://assets/Flags/logic.tres" id="10_gfefi"]
 
 [sub_resource type="Resource" id="Resource_mr7tw"]
 script = ExtResource("4_0iibj")
@@ -72,6 +73,7 @@ target_defeated_entities = false
 spell_cost = 10
 spell_priority = 0
 spell_flags = Array[ExtResource("4_62t02")]([ExtResource("10_c8cur")])
+spell_kind = ExtResource("10_gfefi")
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

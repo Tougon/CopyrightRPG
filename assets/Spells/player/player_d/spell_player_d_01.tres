@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=34 format=3 uid="uid://c7c5rw2e2syjj"]
+[gd_resource type="Resource" script_class="Spell" load_steps=35 format=3 uid="uid://c7c5rw2e2syjj"]
 
-[ext_resource type="Resource" uid="uid://bysxyd0ponbvm" path="res://assets/Animations/Sequences/test_anim_learnable_abridged.tres" id="1_f62k4"]
+[ext_resource type="Resource" uid="uid://bu3xmlm37tvn5" path="res://assets/Animations/Sequences/Spell/anim_spell_player_d_01.tres" id="1_4ykrx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_wbtxl"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_55ker"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_l4lmd"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_active.gd" id="13_7208f"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="14_vaejf"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="18_sdc5c"]
+[ext_resource type="Resource" uid="uid://nqfhikjvrftp" path="res://assets/Flags/action.tres" id="20_lw1sg"]
 
 [sub_resource type="Resource" id="Resource_iivt3"]
 script = ExtResource("5_i40jj")
@@ -137,11 +138,12 @@ target_defeated_entities = false
 spell_cost = 6
 spell_priority = 0
 spell_flags = Array[ExtResource("5_4fj2f")]([ExtResource("18_sdc5c")])
+spell_kind = ExtResource("20_lw1sg")
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
 show_spell_cast_ui = true
-animation_sequence = ExtResource("1_f62k4")
+animation_sequence = ExtResource("1_4ykrx")
 spell_videos = Array[String](["res://video/spell/video_spell_toss.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playerd_00.tres"])
 effects_on_hit = Array[ExtResource("1_wbtxl")]([SubResource("Resource_73aei")])
