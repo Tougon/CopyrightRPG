@@ -24,10 +24,14 @@ func execute(sequence : AnimationSequence):
 			entity = sequence.target[sequence.target_index];
 	elif target == Target.EFFECT && effect_index < sequence.effects.size():
 		var ind = effect_index;
+		
 		if ind == -1 : 
 			ind = sequence.loops[sequence.loops.size() - 1].num_iterations;
+		if ind == -2 :
+			ind = sequence.effects.size() - 1;
 		
-		entity = sequence.effects[ind];
+		if ind < sequence.effects.size() :
+			entity = sequence.effects[ind];
 	
 	if entity == null : return;
 	

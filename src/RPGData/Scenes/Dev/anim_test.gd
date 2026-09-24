@@ -53,6 +53,8 @@ func _ready() -> void:
 	EventManager.on_battle_begin.emit(fake_battle);
 	EventManager.load_aux_audio.emit(animation.spell_sfx);
 	
+	$"Background/BG Video Canvas"._load_spell_data(animation);
+	
 	await get_tree().create_timer(2.0).timeout
 	
 	if test_attack : 
@@ -95,11 +97,17 @@ func play_animation():
 				cast.damage[i] = 1;
 			else :
 				cast.damage[i] = 0;
+			
+			if animation is DamageSpell && animation.negate :
+				cast.damage[i] *= -1;
 		
 		if self.hit : 
 			cast.total_damage = 1 * cast.damage.size();
 		else :
 			cast.total_damage = 0;
+		
+		if animation is DamageSpell && animation.negate :
+			cast.total_damage *= -1
 		
 		for i in cast.hits.size():
 			cast.hits[i] = self.hit;

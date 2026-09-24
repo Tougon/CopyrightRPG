@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://btg21xx7i848u"]
+
+[ext_resource type="PackedScene" uid="uid://bicxs6b5o24lc" path="res://src/RPGData/Scenes/Entity/EntityBase.tscn" id="1_fyxi5"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntitySprite.gd" id="2_iehbh"]
+[ext_resource type="Material" uid="uid://dsqap206ajugs" path="res://assets/Materials/EntityMaterial.tres" id="3_3tv8p"]
+[ext_resource type="Texture2D" uid="uid://dga3d6p0jvg1e" path="res://assets/Sprites/Effects/Spells/check.png" id="4_k56i5"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="5_v2ogb"]
+
+[node name="EntityBase" instance=ExtResource("1_fyxi5")]
+script = ExtResource("2_iehbh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+material = ExtResource("3_3tv8p")
+texture = ExtResource("4_k56i5")
+
+[node name="TweenPlayer" type="Node" parent="." index="1"]
+script = ExtResource("5_v2ogb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
