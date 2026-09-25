@@ -5,6 +5,7 @@ class_name DialogueTrigger
 @export var additional_active_state : Array[ActiveCheckGroup];
 @export var default_dialogue : String = "temp";
 @export var additional_dialogue : Array[DialogueCheckGroup];
+var initialized = false;
 
 
 func _ready():
@@ -19,9 +20,14 @@ func _ready():
 	DataManager.on_data_loaded.connect(_update_active_state)
 	
 	_update_active_state();
+	
+	initialized = true;
 
 
 func _exit_tree():
+	if QuestManager == null : return;
+	if initialized == false : return;
+	
 	QuestManager.new_quest_added.disconnect(_on_add_quest)
 	QuestManager.step_updated.disconnect(_on_update_step)
 	QuestManager.step_complete.disconnect(_on_update_step)
@@ -29,6 +35,8 @@ func _exit_tree():
 	QuestManager.quest_completed.disconnect(_on_quest_complete)
 	QuestManager.quest_failed.disconnect(_on_quest_failed)
 	DataManager.on_data_loaded.disconnect(_update_active_state)
+	
+	initialized = false;
 
 
 func _on_add_quest(quest_name):

@@ -51,6 +51,8 @@ var effects : Array[EntityBase];
 
 var loops : Array[AnimationSequenceLoop];
 
+var tweens : Array[Tween];
+
 
 func _init(in_tree : SceneTree, obj : AnimationSequenceObject, u : EntityController, t : Array[EntityController], s : Array[SpellCast]):
 	target = t;
@@ -168,6 +170,12 @@ func kill():
 
 
 func sequence_end():
+	for tween in tweens :
+		if tween != null : 
+			tween.kill();
+	
+	tweens.clear();
+	
 	while effects.size() > 0:
 		effects[0].queue_free();
 		effects.remove_at(0);
@@ -180,6 +188,7 @@ func sequence_end():
 	if user_sprite != null : 
 		user_sprite.modulate = user_color;
 		user_sprite.position = user_sprite_position;
+	
 	user.mat.set_shader_parameter("overlay_color_amount", user_amount);
 	user.mat.set_shader_parameter("alpha_amount", 0);
 	
@@ -195,6 +204,8 @@ func sequence_end():
 		if !target[i].is_defeated :
 			target[i].mat.set_shader_parameter("overlay_color_amount", target_amount[i]);
 			target[i].mat.set_shader_parameter("alpha_amount", 0);
+	
+	EventManager.set_spell_bg.emit(null, 0, true, true, true, 0);
 	
 	for frame in aso.animation_sequence:
 		frame.action.cooldown();
@@ -219,3 +230,9 @@ func call_sequence_function(action : AnimationSequenceAction):
 		return;
 	
 	action.execute(self);
+
+
+func create_tween() -> Tween:
+	var tween = tree.create_tween();
+	tweens.append(tween);
+	return tween;

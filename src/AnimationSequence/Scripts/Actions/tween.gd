@@ -43,7 +43,7 @@ func execute(sequence : AnimationSequence):
 		if tween.material_property:
 			tween_target = tween_target.material;
 	
-	var current_tween = sequence.tree.create_tween();
+	var current_tween = sequence.create_tween();
 	current_tween.set_parallel(true);
 	
 	var value = tween.get_value();

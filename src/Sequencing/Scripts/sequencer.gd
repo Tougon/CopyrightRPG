@@ -2,6 +2,8 @@ extends Control
 
 class_name Sequencer
 
+@export var listen_for_events : bool = true;
+
 var current_sequence: Sequence;
 var sequence_queue: Array[Sequence];
 
@@ -9,6 +11,8 @@ static var block_sequence : bool;
 
 # Called when the node enters the scene tree for the first time.
 func _enter_tree():
+	if !listen_for_events : return;
+	
 	EventManager.on_sequence_queue.connect(_on_sequence_queue);
 	EventManager.on_sequence_queue_first.connect(_on_sequence_queue_first);
 
@@ -47,15 +51,28 @@ func _on_sequence_ended():
 		sequence_queue.erase(sequence);
 		_play_sequence(sequence);
 	else:
-		EventManager.on_sequence_queue_empty.emit();
+		if listen_for_events :
+			EventManager.on_sequence_queue_empty.emit();
 	
 	await get_tree().process_frame;
 	await get_tree().process_frame;
-	prev_sequence.free();
+	if prev_sequence != null :
+		prev_sequence.free();
 
 
 func is_sequence_playing_or_queued() -> bool:
 	return sequence_queue.size() > 0 || current_sequence != null;
+
+
+func terminate_all() :
+	var prev_sequence = current_sequence;
+	if prev_sequence != null : prev_sequence.kill();
+	
+	sequence_queue.clear();
+	
+	await get_tree().process_frame;
+	await get_tree().process_frame;
+	if prev_sequence != null : prev_sequence.free();
 
 
 func _unhandled_input(event):
@@ -67,6 +84,8 @@ func _unhandled_input(event):
 
 
 func _exit_tree():
+	if !listen_for_events : return;
+	
 	if EventManager != null:
 		EventManager.on_sequence_queue.disconnect(_on_sequence_queue);
 		EventManager.on_sequence_queue_first.disconnect(_on_sequence_queue_first);

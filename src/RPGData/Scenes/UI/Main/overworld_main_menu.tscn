@@ -2855,7 +2855,7 @@ flip_v = true
 script = ExtResource("2_fajv7")
 sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_alla3")])
 
-[node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel")]
+[node name="Entity Move Select Area" type="Panel" parent="Body/Party" node_paths=PackedStringArray("menu_panel", "anim_player")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -2870,6 +2870,7 @@ menu_panel = NodePath("BG/Move Select Items/RadialCarousel")
 move_kind_icons = Array[Texture]([ExtResource("39_46wyp"), ExtResource("40_cfwvm"), ExtResource("41_7yeat"), ExtResource("42_1sj1w")])
 move_hit_type_icons = Array[Texture]([ExtResource("39_kw5t0"), ExtResource("40_mf2um"), ExtResource("41_saf7q")])
 transition_palette = SubResource("GradientTexture2D_w4hw7")
+anim_player = NodePath("")
 menu_name = "overworld_menu_main_move_select"
 
 [node name="BG" type="NinePatchRect" parent="Body/Party/Entity Move Select Area"]
@@ -3177,6 +3178,24 @@ scale = Vector2(0.5, 0.5)
 [node name="Icon Container" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group" index="0"]
 alignment = 2
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = 812.0
+offset_bottom = 616.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.145, 0.145)
+
+[node name="SubViewport" type="SubViewport" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(960, 720)
+render_target_update_mode = 0
+
 [node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 custom_minimum_size = Vector2(156, 0)
 layout_mode = 1
@@ -3315,6 +3334,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="Player Select Items" type="Control" parent="Body/Party/Entity Move Select Area/BG"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

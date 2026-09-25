@@ -4,6 +4,7 @@ extends MenuPanel
 @export var move_kind_icons : Array[Texture];
 @export var move_hit_type_icons : Array[Texture];
 @export var transition_palette : GradientTexture2D;
+@export var anim_player : TAnimationPlayer;
 
 var _target_index : int;
 var _current_spell : Spell;
@@ -179,6 +180,8 @@ func _on_item_selected(data):
 			_load_spell_data(data as Spell)
 		else :
 			$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
+		#if anim_player.animation != data :
+		#	anim_player.initialize_animation(data as Spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
 		
 		var kind = (data as Spell).spell_kind;
 		

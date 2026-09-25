@@ -54,6 +54,8 @@ manual_override = false
 use_fixed_damage = true
 damage_amount = 0
 percent_amount = 0.0
+mp_damage = false
+negate = false
 
 [sub_resource type="Resource" id="Resource_ik65d"]
 script = ExtResource("3_ssbr4")
@@ -261,6 +263,7 @@ action = SubResource("Resource_ts88u")
 script = ExtResource("2_t2a03")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_lightning.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, -85)
 effect_layer = 2

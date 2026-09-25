@@ -1,43 +1,64 @@
 extends Node2D
 
+class_name TAnimationPlayer;
+
 @export var animation : Spell;
 @export var dummy_player : Entity
 @export var dummy_enemy : Entity
 @export var entity_controllers : Array[EntityController];
-@export var target_ally : bool = false;
-@export var test_attack : bool = false;
+@export var isolated_scene : bool = true;
 
 var player : PlayerController;
 var ally : PlayerController;
 var enemies : Array[EntityController];
 
+var test_attack : bool = false;
+var target_ally : bool = false;
 var is_attacking : bool = false;
 var hit : bool = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if !isolated_scene : return;
+	
+	initialize_animation(animation, dummy_player, dummy_player, dummy_enemy);
+
+
+func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity, new_target : Entity) :
+	animation = action;
+	player = null;
+	ally = null;
+	enemies.clear();
+	
 	var fake_battle = BattleParams.new();
 	
 	var player_data = BattleParamEntity.new();
 	player_data.id = 0;
 	player_data.override_level = 1;
-	player_data.override_entity = dummy_player;
+	player_data.override_entity = new_player;
 	
 	fake_battle.players.append(player_data)
 	
-	var ally_data = BattleParamEntity.new();
-	ally_data.id = 1;
-	ally_data.override_level = 1;
-	ally_data.override_entity = dummy_player;
+	# Need support for multiple allies, add this when it's working, test with CHECK PLUS
+	if _add_single_ally() :
+		var ally_data = BattleParamEntity.new();
+		ally_data.id = 1;
+		ally_data.override_level = 1;
+		ally_data.override_entity = new_ally;
+		
+		fake_battle.players.append(ally_data);
+		
+		target_ally = true;
+	else :
+		target_ally = false;
 	
-	fake_battle.players.append(ally_data)
 	
-	# Add 5 copies of the entity to the fake data
+	# Number of enemies to add depends on move type
+	#if _add_single_enemy() :
 	fake_battle.enemies.append(dummy_enemy);
-	fake_battle.enemies.append(dummy_enemy);
-	fake_battle.enemies.append(dummy_enemy);
-	fake_battle.enemies.append(dummy_enemy);
-	fake_battle.enemies.append(dummy_enemy);
+	if _add_multiple_enemy() :
+		fake_battle.enemies.append(dummy_enemy);
+		fake_battle.enemies.append(dummy_enemy);
 	
 	for controller in entity_controllers:
 		controller.entity_init(fake_battle);
@@ -50,24 +71,64 @@ func _ready() -> void:
 		elif controller is EnemyController :
 			enemies.append(controller);
 	
+	# Uncouple this Please.
 	EventManager.on_battle_begin.emit(fake_battle);
-	EventManager.load_aux_audio.emit(animation.spell_sfx);
+	
+	# Don't play the audio when called elsewhere
+	if isolated_scene :
+		EventManager.load_aux_audio.emit(animation.spell_sfx);
 	
 	$"Background/BG Video Canvas"._load_spell_data(animation);
 	
-	await get_tree().create_timer(2.0).timeout
+	# Maybe we want this to hide loads?
+	await get_tree().create_timer(1.0).timeout
+	
+	if !isolated_scene : test_attack = true;
 	
 	if test_attack : 
+		# NOTE: we'll need to add a force kill option.
 		play_animation();
 
 
+func _add_single_ally() -> bool :
+	if animation.spell_target == Spell.SpellTarget.SingleParty :
+		return true;
+	else : return false;
+
+
+func _add_multiple_ally() -> bool :
+	if animation.spell_target == Spell.SpellTarget.All || animation.spell_target == Spell.SpellTarget.AllParty :
+		return true;
+	else : return false;
+
+
+func _add_single_enemy() -> bool :
+	if animation.spell_target == Spell.SpellTarget.SingleEnemy :
+		return true;
+	else : return false;
+
+
+func _add_multiple_enemy() -> bool :
+	if animation.spell_target == Spell.SpellTarget.RandomEnemy || animation.spell_target == Spell.SpellTarget.RandomEnemyPerHit || animation.spell_target == Spell.SpellTarget.AllEnemy || animation.spell_target == Spell.SpellTarget.All :
+		return true;
+	else : return false;
+
+
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if isolated_scene && Input.is_action_just_pressed("pause"):
 		if !test_attack && !is_attacking :
 			hit = true;
 			play_animation();
 		
 		test_attack = !test_attack;
+		
+		if !test_attack :
+			stop_animation();
+
+
+func stop_animation():
+	test_attack = false;
+	$Core/Sequencer.terminate_all();
 
 
 func play_animation():
@@ -80,6 +141,7 @@ func play_animation():
 	for enemy in enemies:
 		enemy.apply_damage(-9999, false, false, true, 0, 0, 0, 0.35, false);
 	
+	# Cast the spell
 	var spell_cast : Array[SpellCast];
 	if target_ally : 
 		player.enemies = [ ally ];
@@ -120,17 +182,19 @@ func play_animation():
 	
 	if target_ally : 
 		var animation_seq = AnimationSequence.new(get_tree(), animation.animation_sequence, player, [ally], spell_cast);
-		EventManager.on_sequence_queue.emit(animation_seq);
+		$Core/Sequencer._on_sequence_queue(animation_seq);
+		await animation_seq.sequence_ended;
 	else : 
 		var animation_seq = AnimationSequence.new(get_tree(), animation.animation_sequence, player, enemies, spell_cast);
-		EventManager.on_sequence_queue.emit(animation_seq);
-	
-	await EventManager.on_sequence_queue_empty;
+		$Core/Sequencer._on_sequence_queue(animation_seq);
+		await animation_seq.sequence_ended;
 	
 	is_attacking = false;
-	self.hit = !hit;
 	
-	await get_tree().create_timer(2.0).timeout
+	if isolated_scene :
+		self.hit = !hit;
 	
-	if test_attack && !is_attacking:
+	await get_tree().create_timer(1.0).timeout
+	
+	if (test_attack && !is_attacking) :
 		play_animation();
