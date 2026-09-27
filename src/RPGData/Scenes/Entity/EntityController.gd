@@ -10,6 +10,7 @@ class_name EntityController
 @export var default_defeat_anim : AnimationSequenceObject;
 
 @onready var entity_ui : EntityControllerUI = $"Entity Info Battle";
+@export var battle_event_subscribe : bool = true;
 
 var move_list : Array[Spell];
 # Dictionary of Item, int that determines quantity of items
@@ -97,9 +98,10 @@ func _ready():
 	if level == 0 : 
 		level = 50;
 	
-	EventManager.on_battle_begin.connect(_on_battle_begin);
-	EventManager.on_turn_begin.connect(_on_turn_begin);
-	EventManager.on_battle_end.connect(_on_battle_end);
+	if battle_event_subscribe : 
+		EventManager.on_battle_begin.connect(_on_battle_begin);
+		EventManager.on_turn_begin.connect(_on_turn_begin);
+		EventManager.on_battle_end.connect(_on_battle_end);
 
 
 func entity_init(params : BattleParams):

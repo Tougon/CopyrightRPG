@@ -72,7 +72,9 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 			enemies.append(controller);
 	
 	# Uncouple this Please.
-	EventManager.on_battle_begin.emit(fake_battle);
+	$"Background/BG Video Canvas"._on_battle_begin(fake_battle)
+	for controller in entity_controllers :
+		controller._on_battle_begin(fake_battle);
 	
 	# Don't play the audio when called elsewhere
 	if isolated_scene :
@@ -129,6 +131,9 @@ func _process(_delta: float) -> void:
 func stop_animation():
 	test_attack = false;
 	$Core/Sequencer.terminate_all();
+	
+	if !isolated_scene :
+		animation = null;
 
 
 func play_animation():

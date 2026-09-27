@@ -1,4 +1,4 @@
-[gd_scene load_steps=187 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=188 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -62,6 +62,7 @@
 [ext_resource type="Theme" uid="uid://b75asv135vvot" path="res://assets/Themes/Theme_UI_InventoryBox.tres" id="46_mlnh1"]
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="47_crvdl"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_drop_panel.gd" id="47_txais"]
+[ext_resource type="PackedScene" uid="uid://7qsl1jry533n" path="res://src/RPGData/Scenes/Dev/AnimTest.tscn" id="49_f8vu0"]
 [ext_resource type="Theme" uid="uid://bthkn0f61scro" path="res://assets/Themes/Theme_UI_Slider.tres" id="55_ejuht"]
 [ext_resource type="Texture2D" uid="uid://47pal57libj7" path="res://assets/Sprites/UI/MainMenu/ui_menumain_border.png" id="57_8u8yy"]
 
@@ -2870,7 +2871,7 @@ menu_panel = NodePath("BG/Move Select Items/RadialCarousel")
 move_kind_icons = Array[Texture]([ExtResource("39_46wyp"), ExtResource("40_cfwvm"), ExtResource("41_7yeat"), ExtResource("42_1sj1w")])
 move_hit_type_icons = Array[Texture]([ExtResource("39_kw5t0"), ExtResource("40_mf2um"), ExtResource("41_saf7q")])
 transition_palette = SubResource("GradientTexture2D_w4hw7")
-anim_player = NodePath("")
+anim_player = NodePath("BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test")
 menu_name = "overworld_menu_main_move_select"
 
 [node name="BG" type="NinePatchRect" parent="Body/Party/Entity Move Select Area"]
@@ -3179,7 +3180,6 @@ scale = Vector2(0.5, 0.5)
 alignment = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3194,7 +3194,11 @@ scale = Vector2(0.145, 0.145)
 [node name="SubViewport" type="SubViewport" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(960, 720)
-render_target_update_mode = 0
+render_target_update_mode = 4
+
+[node name="Animation Test" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport" instance=ExtResource("49_f8vu0")]
+animation = null
+isolated_scene = false
 
 [node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 custom_minimum_size = Vector2(156, 0)

@@ -658,26 +658,31 @@ y_sort_enabled = true
 [node name="E1" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 current_entity = null
+battle_event_subscribe = true
 
 [node name="E2" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 1
 current_entity = null
+battle_event_subscribe = true
 
 [node name="E3" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 2
 current_entity = null
+battle_event_subscribe = true
 
 [node name="E4" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 3
 current_entity = null
+battle_event_subscribe = true
 
 [node name="E5" parent="Entities/Enemies/Sorting" instance=ExtResource("5_c337l")]
 position = Vector2(473, 314)
 enemy_index = 4
 current_entity = null
+battle_event_subscribe = true
 
 [node name="Scanlines" type="Node" parent="Entities"]
 
@@ -724,6 +729,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_4qtjs")
 current_entity = null
+battle_event_subscribe = true
 
 [node name="P2" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 z_index = -1
@@ -735,6 +741,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_f6t8p")
 current_entity = null
+battle_event_subscribe = true
 
 [node name="P3" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 z_index = -1
@@ -746,6 +753,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_epnwn")
 current_entity = null
+battle_event_subscribe = true
 
 [node name="P4" parent="Entities/Players" instance=ExtResource("4_al1wb")]
 z_index = -1
@@ -757,6 +765,7 @@ default_attack_action = ExtResource("4_wv7ke")
 default_defend_action = ExtResource("5_7dvw6")
 default_seal_effect = SubResource("Resource_06evc")
 current_entity = null
+battle_event_subscribe = true
 
 [node name="UI" type="Node" parent="."]
 

@@ -13,6 +13,7 @@ enum LoadType { ENTITY, ATTACK }
 @export var effect_layer_default_mat : Material;
 @export var start_static : bool = true;
 @export var test_attack_layer : bool = false;
+@export var battle_event_subscribe : bool = true;
 
 # Cached video and material instances
 var _video_main : VideoStream;
@@ -34,7 +35,8 @@ var _attack_time = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventManager.on_battle_begin.connect(_on_battle_begin);
+	if battle_event_subscribe :
+		EventManager.on_battle_begin.connect(_on_battle_begin);
 	#EventManager.set_player_bg.connect(_set_player_bg);
 	EventManager.set_spell_bg.connect(_set_spell_bg);
 	EventManager.set_effect_bg.connect(_set_effect_bg);
@@ -93,6 +95,7 @@ func _on_battle_begin(params : BattleParams):
 
 
 func _load_entity_spell_data(entity : EntityController):
+	if get_tree() == null : return;
 	if entity is PlayerController:
 		_load_spell_data(entity.attack_action);
 		_load_spell_data(entity.defend_action);
@@ -132,7 +135,9 @@ func _set_player_bg(entity : Entity):
 
 
 func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float):
-	if spell == null && _current_spell != null: 
+	if get_tree() == null : return;
+	
+	if process_mode != PROCESS_MODE_DISABLED && spell == null && _current_spell != null: 
 		attack_layer.paused = false;
 		attack_layer.stop();
 		attack_layer.visible = false;
@@ -176,6 +181,7 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 				attack_layer.material.set_shader_parameter("transition_palette", _material_color_inst.get_shader_parameter("palette"));
 				#attack_layer.material.set_shader_parameter("palette", color_layer.material.get_shader_parameter("palette"));
 				
+				var tree = get_tree();
 				var tween = get_tree().create_tween();
 				tween.set_parallel(true);
 		
@@ -200,10 +206,12 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 
 
 func _set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float, set_transparent : bool):
+	if get_tree() == null : return;
 	return
 
 
 func _modify_bg(pause : bool):
+	if get_tree() == null : return;
 	attack_layer.paused = pause;
 
 

@@ -127,7 +127,9 @@ func entity_init(params : BattleParams):
 		move_list = params.players[player_id].override_move_list;
 	
 	await get_tree().process_frame;
-	EventManager.register_player.emit(self);
+	
+	if battle_event_subscribe :
+		EventManager.register_player.emit(self);
 	
 	await get_tree().create_timer(1.0).timeout
 	#TweenExtensions.shake_position_2d($Sprite2D, 0.28, 35, Vector2(50, 0), Tween.TRANS_QUAD, Tween.EASE_IN_OUT, 0.35);
@@ -205,14 +207,16 @@ func _on_player_items_changed(items : Dictionary, delta : Item):
 func on_damage(crit : bool):
 	super.on_damage(crit);
 	
-	AudioManager.play_sfx("player_impact")
-	EventManager.on_player_take_damage.emit(is_defeated, crit, current_action == defend_action);
+	if battle_event_subscribe :
+		AudioManager.play_sfx("player_impact")
+		EventManager.on_player_take_damage.emit(is_defeated, crit, current_action == defend_action);
 
 
 func on_heal():
 	super.on_heal();
 	
-	AudioManager.play_sfx("heal")
+	if battle_event_subscribe :
+		AudioManager.play_sfx("heal")
 
 
 func _on_defeat_complete():

@@ -69,6 +69,7 @@ func on_focus():
 func on_menu_inactive():
 	super.on_menu_inactive();
 	_current_animation = null;
+	anim_player.stop_animation();
 
 
 func _refresh_move_ui():
@@ -176,12 +177,14 @@ func _on_item_selected(data):
 		$"BG/Move Select Items/Move Visuals/Cost".text = tr("T_MP_COST").format({cost = data.spell_cost});
 		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group".display_flags(data.spell_flags);
 		
-		if data.spell_videos.size() > 0 :
-			_load_spell_data(data as Spell)
-		else :
-			$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
-		#if anim_player.animation != data :
-		#	anim_player.initialize_animation(data as Spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
+		#if data.spell_videos.size() > 0 :
+		#	_load_spell_data(data as Spell)
+		#else :
+		#	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
+		
+		if anim_player.animation != data :
+			anim_player.stop_animation();
+			anim_player.initialize_animation(data as Spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
 		
 		var kind = (data as Spell).spell_kind;
 		

@@ -34,7 +34,7 @@ func entity_init(params : BattleParams):
 	super.entity_init(params)
 	await get_tree().process_frame;
 	
-	if params != null :
+	if params != null && battle_event_subscribe :
 		EventManager.register_enemy.emit(self);
 
 
@@ -66,7 +66,8 @@ func _set_seal_id(id : int):
 func on_damage(crit : bool):
 	super.on_damage(crit);
 	
-	AudioManager.play_sfx("enemy_impact")
+	if battle_event_subscribe :
+		AudioManager.play_sfx("enemy_impact")
 
 
 func _on_defeat_complete():
