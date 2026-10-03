@@ -17,6 +17,8 @@ var target_ally : bool = false;
 var is_attacking : bool = false;
 var hit : bool = true;
 
+var help : int;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if !isolated_scene : return;
@@ -83,13 +85,14 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 	$"Background/BG Video Canvas"._load_spell_data(animation);
 	
 	# Maybe we want this to hide loads?
-	await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(1.0).timeout
 	
 	if !isolated_scene : test_attack = true;
 	
 	if test_attack : 
 		# NOTE: we'll need to add a force kill option.
-		play_animation();
+		play_animation(help);
+		help += 1;
 
 
 func _add_single_ally() -> bool :
@@ -120,7 +123,7 @@ func _process(_delta: float) -> void:
 	if isolated_scene && Input.is_action_just_pressed("pause"):
 		if !test_attack && !is_attacking :
 			hit = true;
-			play_animation();
+			play_animation(help);
 		
 		test_attack = !test_attack;
 		
@@ -136,7 +139,10 @@ func stop_animation():
 		animation = null;
 
 
-func play_animation():
+func play_animation(iteration : int):
+	if animation == null :
+		return;
+	
 	is_attacking = true;
 	player.current_action = animation;
 	
@@ -199,7 +205,16 @@ func play_animation():
 	if isolated_scene :
 		self.hit = !hit;
 	
-	await get_tree().create_timer(1.0).timeout
-	
 	if (test_attack && !is_attacking) :
-		play_animation();
+		var timer = 0.0;
+		
+		while timer < 1.0 :
+			await get_tree().process_frame;
+			
+			if animation == null : 
+				break;
+			
+			timer += get_process_delta_time();
+		
+		if animation != null :
+			play_animation(iteration);

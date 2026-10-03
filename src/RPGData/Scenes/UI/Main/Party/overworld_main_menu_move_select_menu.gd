@@ -118,6 +118,7 @@ func _refresh_move_ui():
 	menu_panel.set_data(valid_moves);
 	
 	if valid_moves.size() == 0:
+		$"BG/Move Select Items/Move Visuals/Vid/SubViewportContainer".visible = false;
 		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Name".text = "";
 		$"BG/Move Select Items/Move Visuals/Description".text = "";
 		$"BG/Move Select Items/Move Visuals/Cost".text = "";
@@ -182,9 +183,9 @@ func _on_item_selected(data):
 		#else :
 		#	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		
-		if anim_player.animation != data :
-			anim_player.stop_animation();
-			anim_player.initialize_animation(data as Spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
+		if anim_player.animation != (data as Spell) :
+			$"BG/Move Select Items/Move Visuals/Vid/SubViewportContainer".visible = true;
+			_play_spell_animation(data as Spell);
 		
 		var kind = (data as Spell).spell_kind;
 		
@@ -207,6 +208,7 @@ func _on_item_selected(data):
 		_can_use_spell = _current_spell.can_use_overworld && _current_player_data.mp_value >= _current_spell.spell_cost;
 	
 	else :
+		$"BG/Move Select Items/Move Visuals/Vid/SubViewportContainer".visible = false;
 		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Cost".text = "-";
@@ -216,6 +218,11 @@ func _on_item_selected(data):
 		$"BG/Move Select Items/Move Visuals/Hit Type".texture = null;
 	
 	$"BG/Move Select Items/Move Visuals/Use".visible = _can_use_spell;
+
+
+func _play_spell_animation(spell : Spell):
+	anim_player.stop_animation();
+	anim_player.initialize_animation(spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
 
 
 func _load_spell_data(move : Spell):

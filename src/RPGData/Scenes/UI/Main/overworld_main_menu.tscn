@@ -3075,6 +3075,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Underlay" type="ColorRect" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -3115,6 +3116,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = -7.8
+offset_bottom = 0.400002
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -3199,6 +3203,21 @@ render_target_update_mode = 4
 [node name="Animation Test" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport" instance=ExtResource("49_f8vu0")]
 animation = null
 isolated_scene = false
+
+[node name="Entity Info Battle" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Players/P1" index="3"]
+visible = false
+
+[node name="Entity Info Battle" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Players/P2" index="3"]
+visible = false
+
+[node name="Entity Info Battle" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Enemies/E1" index="3"]
+visible = false
+
+[node name="Entity Info Battle" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Enemies/E2" index="3"]
+visible = false
+
+[node name="Entity Info Battle" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Enemies/E3" index="3"]
+visible = false
 
 [node name="Description" type="Label" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals"]
 custom_minimum_size = Vector2(156, 0)
@@ -6619,3 +6638,9 @@ sequence_list = Array[ExtResource("6_i4er7")]([SubResource("Resource_vu4gh"), Su
 
 [editable path="Body/Party/Entity Stats Area/Entity Portrait Group/Flag Icon Group"]
 [editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Flag Root/Flag Icon Group"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Players/P1"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Players/P2"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Enemies/E1"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Enemies/E2"]
+[editable path="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Enemies/E3"]
