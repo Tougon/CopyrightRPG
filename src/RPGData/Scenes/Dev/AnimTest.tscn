@@ -36,6 +36,7 @@ battle_event_subscribe = false
 [node name="P2" parent="Entities/Players" instance=ExtResource("3_3d4mq")]
 y_sort_enabled = false
 position = Vector2(219, 662)
+player_id = 1
 bypass_player_id = true
 current_entity = ExtResource("7_6u0l0")
 battle_event_subscribe = false

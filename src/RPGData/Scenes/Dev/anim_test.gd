@@ -17,8 +17,6 @@ var target_ally : bool = false;
 var is_attacking : bool = false;
 var hit : bool = true;
 
-var help : int;
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if !isolated_scene : return;
@@ -26,12 +24,7 @@ func _ready() -> void:
 	initialize_animation(animation, dummy_player, dummy_player, dummy_enemy);
 
 
-var fuck = 0;
-
 func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity, new_target : Entity) :
-	print("ITERATION: " + str(fuck));
-	fuck += 1;
-	
 	animation = action;
 	player = null;
 	ally = null;
@@ -57,6 +50,7 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 		
 		target_ally = true;
 	else :
+		fake_battle.players.append(null);
 		target_ally = false;
 	
 	
@@ -74,14 +68,24 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 			if player == null : 
 				player = controller;
 			else : 
+				if !(_add_single_ally() || _add_multiple_ally()) :
+					controller.visible = false;
+				else :
+					controller.visible = true;
 				ally = controller;
+		
 		elif controller is EnemyController :
-			enemies.append(controller);
+			if (_add_single_enemy() && enemies.size() == 0) || _add_multiple_enemy() :
+				enemies.append(controller);
+				controller.visible = true;
+			else :
+				controller.visible = false;
 	
 	# Uncouple this Please.
 	$"Background/BG Video Canvas"._on_battle_begin(fake_battle)
 	for controller in entity_controllers :
-		controller._on_battle_begin(fake_battle);
+		if controller.visible :
+			controller._on_battle_begin(fake_battle);
 	
 	# Don't play the audio when called elsewhere
 	if isolated_scene :
@@ -95,8 +99,7 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 	if !isolated_scene : test_attack = true;
 	
 	if test_attack : 
-		play_animation(help);
-		help += 1;
+		play_animation();
 
 
 func _add_single_ally() -> bool :
@@ -127,7 +130,7 @@ func _process(_delta: float) -> void:
 	if isolated_scene && Input.is_action_just_pressed("pause"):
 		if !test_attack && !is_attacking :
 			hit = true;
-			play_animation(help);
+			play_animation();
 		
 		test_attack = !test_attack;
 		
@@ -143,7 +146,7 @@ func stop_animation():
 		animation = null;
 
 
-func play_animation(iteration : int):
+func play_animation():
 	if animation == null :
 		return;
 	
@@ -221,4 +224,4 @@ func play_animation(iteration : int):
 			timer += get_process_delta_time();
 		
 		if animation != null :
-			play_animation(iteration);
+			play_animation();

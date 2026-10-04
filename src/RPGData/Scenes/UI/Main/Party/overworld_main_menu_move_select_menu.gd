@@ -221,7 +221,11 @@ func _on_item_selected(data):
 
 
 func _play_spell_animation(spell : Spell):
-	anim_player.initialize_animation(spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
+	var player = _current_player_entity;
+	var ally_indexes = [ 0, 1, 2, 3 ];
+	ally_indexes.erase(DataManager.entity_database.get_id(player))
+	
+	anim_player.initialize_animation(spell, player, DataManager.entity_database.get_entity(ally_indexes.pick_random()), anim_player.dummy_enemy);
 
 
 func _load_spell_data(move : Spell):

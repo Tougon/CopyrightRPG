@@ -65,7 +65,7 @@ func entity_init(params : BattleParams):
 	
 	if params != null:
 		# If player is null, they are locked. Do not use this entity.
-		if params.players[player_id] == null && !bypass_player_id: 
+		if (params.players.size() < player_id || params.players[player_id] == null) && !bypass_player_id: 
 			visible = false;
 			return;
 		
@@ -82,6 +82,10 @@ func entity_init(params : BattleParams):
 		level = 5;
 		hp_mod = 999;
 		mp_mod = 999;
+	
+	# Should never occur but added for safety.
+	if (params.players[player_id] == null) :
+		return;
 	
 	current_entity = params.players[player_id].override_entity;
 	super.entity_init(params);
