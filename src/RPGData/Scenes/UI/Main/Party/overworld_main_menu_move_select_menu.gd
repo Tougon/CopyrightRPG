@@ -114,8 +114,8 @@ func _refresh_move_ui():
 	if _get_num_moves_set() > 1 && current_selection != null :
 		valid_moves.append(null);
 	
-	menu_panel.set_index(0);
 	menu_panel.set_data(valid_moves);
+	menu_panel.set_index(0);
 	
 	if valid_moves.size() == 0:
 		$"BG/Move Select Items/Move Visuals/Vid/SubViewportContainer".visible = false;
@@ -221,7 +221,6 @@ func _on_item_selected(data):
 
 
 func _play_spell_animation(spell : Spell):
-	anim_player.stop_animation();
 	anim_player.initialize_animation(spell, anim_player.dummy_player, anim_player.dummy_player, anim_player.dummy_enemy);
 
 

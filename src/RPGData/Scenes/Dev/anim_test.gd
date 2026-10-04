@@ -26,7 +26,12 @@ func _ready() -> void:
 	initialize_animation(animation, dummy_player, dummy_player, dummy_enemy);
 
 
+var fuck = 0;
+
 func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity, new_target : Entity) :
+	print("ITERATION: " + str(fuck));
+	fuck += 1;
+	
 	animation = action;
 	player = null;
 	ally = null;
@@ -84,13 +89,12 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 	
 	$"Background/BG Video Canvas"._load_spell_data(animation);
 	
-	# Maybe we want this to hide loads?
+	# TODO: Await load
 	#await get_tree().create_timer(1.0).timeout
 	
 	if !isolated_scene : test_attack = true;
 	
 	if test_attack : 
-		# NOTE: we'll need to add a force kill option.
 		play_animation(help);
 		help += 1;
 
