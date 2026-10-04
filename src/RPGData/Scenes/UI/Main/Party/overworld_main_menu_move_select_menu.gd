@@ -21,6 +21,7 @@ var _use_manual_time : bool = false;
 var _manual_time : float = 0.0;
 
 var _can_use_spell : bool = false;
+var _update_animation : bool = true;
 
 # TODO: Move order customization
 func _ready():
@@ -114,7 +115,10 @@ func _refresh_move_ui():
 	if _get_num_moves_set() > 1 && current_selection != null :
 		valid_moves.append(null);
 	
+	_update_animation = false;
 	menu_panel.set_data(valid_moves);
+	_update_animation = true;
+	
 	menu_panel.set_index(0);
 	
 	if valid_moves.size() == 0:
@@ -183,7 +187,7 @@ func _on_item_selected(data):
 		#else :
 		#	$"BG/Move Select Items/Move Visuals/Vid/Static".visible = true;
 		
-		if anim_player.animation != (data as Spell) :
+		if _update_animation && anim_player.animation != (data as Spell) :
 			$"BG/Move Select Items/Move Visuals/Vid/SubViewportContainer".visible = true;
 			_play_spell_animation(data as Spell);
 		
@@ -208,6 +212,7 @@ func _on_item_selected(data):
 		_can_use_spell = _current_spell.can_use_overworld && _current_player_data.mp_value >= _current_spell.spell_cost;
 	
 	else :
+		anim_player.stop_animation();
 		$"BG/Move Select Items/Move Visuals/Vid/SubViewportContainer".visible = false;
 		$"BG/Move Select Items/Move Visuals/Vid/HBoxContainer/Name".text = tr("T_SPELL_STATUS_COMMON_NONE");
 		$"BG/Move Select Items/Move Visuals/Description".text = tr("T_DESCRIPTION_SPELL_STATUS_COMMON_NONE");
@@ -388,6 +393,7 @@ func load_material(path : String) -> Material:
 
 
 func _on_scroll():
+	anim_player.stop_animation();
 	AudioManager.play_sfx("main_menu_radial_select");
 
 
