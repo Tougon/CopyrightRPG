@@ -38,6 +38,7 @@ action = SubResource("Resource_el7ah")
 script = ExtResource("2_temx2")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_air_s.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, -25)
 effect_layer = 1
@@ -69,6 +70,7 @@ manual_override = false
 use_fixed_damage = true
 damage_amount = 0
 percent_amount = 0.0
+mp_damage = false
 negate = false
 
 [sub_resource type="Resource" id="Resource_v7itg"]
@@ -185,6 +187,7 @@ action = SubResource("Resource_3l5pu")
 script = ExtResource("2_temx2")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_air_charge.tscn"
 relative = 0
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, 0)
 effect_layer = 0

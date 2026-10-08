@@ -1,0 +1,129 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwvgp3mehxmgj"]
+
+[ext_resource type="Script" path="res://addons/DamageCalculator/DamageCalculatorEntity.gd" id="1_qq4ch"]
+
+[node name="Entity" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qq4ch")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Entity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Entity Select" type="OptionButton" parent="."]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 2
+text = "Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level Slider" type="HSlider" parent="."]
+layout_mode = 2
+min_value = 1.0
+max_value = 99.0
+value = 1.0
+ticks_on_borders = true
+
+[node name="Stats" type="Label" parent="."]
+layout_mode = 2
+text = "Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(0, 110)
+layout_mode = 2
+columns = 2
+
+[node name="HP" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "HP:"
+vertical_alignment = 1
+
+[node name="MP" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MP:"
+vertical_alignment = 1
+
+[node name="ATK" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ATK: "
+vertical_alignment = 1
+
+[node name="DEF" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DEF:"
+vertical_alignment = 1
+
+[node name="MAG" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAG:"
+vertical_alignment = 1
+
+[node name="RES" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RES:"
+vertical_alignment = 1
+
+[node name="SPD" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SPD:"
+vertical_alignment = 1
+
+[node name="LCK" type="Label" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LCK:"
+vertical_alignment = 1
+
+[node name="EXP" type="Label" parent="."]
+layout_mode = 2
+text = "EXP
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Aux Stat 1" type="Label" parent="."]
+layout_mode = 2
+text = "Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Aux Stat Slider 1" type="HSlider" parent="."]
+layout_mode = 2
+min_value = -6.0
+max_value = 6.0
+ticks_on_borders = true
+
+[node name="Aux Stat 2" type="Label" parent="."]
+layout_mode = 2
+text = "Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Aux Stat Slider 2" type="HSlider" parent="."]
+layout_mode = 2
+min_value = -6.0
+max_value = 6.0
+ticks_on_borders = true
+
+[connection signal="item_selected" from="Entity Select" to="." method="_on_entity_select_item_selected"]
+[connection signal="value_changed" from="Level Slider" to="." method="_on_level_slider_changed"]
+[connection signal="value_changed" from="Aux Stat Slider 1" to="." method="_on_aux_stat_slider_1_value_changed"]
+[connection signal="value_changed" from="Aux Stat Slider 2" to="." method="_on_aux_stat_slider_2_value_changed"]

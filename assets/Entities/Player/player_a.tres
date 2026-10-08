@@ -74,17 +74,17 @@ level = 0
 [sub_resource type="Resource" id="Resource_o1ebh"]
 script = ExtResource("5_fxx2f")
 spell = ExtResource("12_fheyq")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_he5kb"]
 script = ExtResource("5_fxx2f")
 spell = ExtResource("13_bg3ak")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_8b777"]
 script = ExtResource("5_fxx2f")
 spell = ExtResource("14_eblm6")
-level = 0
+level = 50
 
 [sub_resource type="Resource" id="Resource_bdtrn"]
 script = ExtResource("5_fxx2f")

@@ -120,7 +120,7 @@ func entity_init(params : BattleParams):
 		
 		param = current_entity.create_entity_params(level);
 		
-		print(param.entity_name + ", Lvl " + str(level) + ", HP: " + str(param.entity_hp) + ", MP: " + str(param.entity_mp) + ", Atk: " + str(param.entity_atk) + ", Def: " + str(param.entity_def) + ", SpAtk: " + str(param.entity_sp_atk) + ", SpDef: " + str(param.entity_sp_def) + ", Spd: " + str(param.entity_spd) + ", Lck: " + str(param.entity_luck));
+		print(param.entity_name + ", Lvl " + str(level) + ", HP: " + str(param.entity_hp) + ", MP: " + str(param.entity_mp) + ", Atk: " + str(param.entity_atk) + ", Def: " + str(param.entity_def) + ", Mag: " + str(param.entity_sp_atk) + ", Res: " + str(param.entity_sp_def) + ", Spd: " + str(param.entity_spd) + ", Lck: " + str(param.entity_luck));
 		
 		# Reset stats
 		max_hp = param.entity_hp;

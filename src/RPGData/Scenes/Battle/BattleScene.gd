@@ -1009,19 +1009,20 @@ func _on_enemy_register(entity : EntityController):
 	print("BEFORE MOD: " + str(entity.param.entity_sp_atk));
 	print("BEFORE MOD: " + str(entity.param.entity_sp_def));
 	
-	for i in _current_num_entities - 1 :
-		entity.max_hp /= BattleManager.ENEMY_STAT_DIVISOR;
-		entity.param.entity_atk /= BattleManager.ENEMY_STAT_DIVISOR;
-		entity.param.entity_def /= BattleManager.ENEMY_STAT_DIVISOR;
-		entity.param.entity_sp_atk /= BattleManager.ENEMY_STAT_DIVISOR;
-		entity.param.entity_sp_def /= BattleManager.ENEMY_STAT_DIVISOR;
-	
-	entity.param.entity_hp = entity.max_hp;
-	
-	print("AFTER MOD: " + str(entity.param.entity_atk));
-	print("AFTER MOD: " + str(entity.param.entity_def));
-	print("AFTER MOD: " + str(entity.param.entity_sp_atk));
-	print("AFTER MOD: " + str(entity.param.entity_sp_def));
+	if BattleManager.ENEMY_STAT_REDUCTION :
+		for i in _current_num_entities - 1 :
+			entity.max_hp /= BattleManager.ENEMY_STAT_DIVISOR;
+			entity.param.entity_atk /= BattleManager.ENEMY_STAT_DIVISOR;
+			entity.param.entity_def /= BattleManager.ENEMY_STAT_DIVISOR;
+			entity.param.entity_sp_atk /= BattleManager.ENEMY_STAT_DIVISOR;
+			entity.param.entity_sp_def /= BattleManager.ENEMY_STAT_DIVISOR;
+		
+		entity.param.entity_hp = entity.max_hp;
+		
+		print("AFTER MOD: " + str(entity.param.entity_atk));
+		print("AFTER MOD: " + str(entity.param.entity_def));
+		print("AFTER MOD: " + str(entity.param.entity_sp_atk));
+		print("AFTER MOD: " + str(entity.param.entity_sp_def));
 
 
 func _adjust_enemy_name(entity : EntityController):

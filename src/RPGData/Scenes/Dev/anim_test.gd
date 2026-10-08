@@ -91,10 +91,9 @@ func initialize_animation(action : Spell, new_player : Entity, new_ally : Entity
 	if isolated_scene :
 		EventManager.load_aux_audio.emit(animation.spell_sfx);
 	
+	# TODO: Await load? Async Load? Something needs to be done here
+	# Very visible lag spike occurs.
 	$"Background/BG Video Canvas"._load_spell_data(animation);
-	
-	# TODO: Await load
-	#await get_tree().create_timer(1.0).timeout
 	
 	if !isolated_scene : test_attack = true;
 	

@@ -116,6 +116,98 @@ func check_spell_hit(cast : SpellCast, user : EntityController, target : EntityC
 	return result;
 
 
+# Runs damage calculations and returns the minimum, maximum, and average damage output
+# For varied multi-hits, min and max take into account number of hits
+func simulate_damage(user : Entity, target : Entity, user_level : int, target_level : int, user_atk : float, user_mag : float, target_def : float, target_res : float) -> Array[int] :
+	var result : Array[int];
+	
+	var min_num_hits = min_number_of_hits;
+	var max_num_hits = max_number_of_hits;
+	if min_num_hits > max_num_hits : min_num_hits = max_num_hits;
+	
+	var avg_num_hits = roundi((min_num_hits + max_num_hits) / 2.0);
+	
+	result.append(_simulate_damage_roll(user, target, user_level, target_level, min_num_hits, user_atk, user_mag, target_def, target_res, 0.85, false));
+	result.append(_simulate_damage_roll(user, target, user_level, target_level, avg_num_hits, user_atk, user_mag, target_def, target_res, 0.925, false));
+	result.append(_simulate_damage_roll(user, target, user_level, target_level, max_num_hits, user_atk, user_mag, target_def, target_res, 1.0, false));
+	result.append(_simulate_damage_roll(user, target, user_level, target_level, min_num_hits, user_atk, user_mag, target_def, target_res, 0.85, true));
+	result.append(_simulate_damage_roll(user, target, user_level, target_level, avg_num_hits, user_atk, user_mag, target_def, target_res, 0.925, true));
+	result.append(_simulate_damage_roll(user, target, user_level, target_level, max_num_hits, user_atk, user_mag, target_def, target_res, 1.0, true));
+	
+	return result;
+
+
+func _simulate_damage_roll(user : Entity, target : Entity, user_level : int, target_level : int, num_hits : int, user_atk : float, user_mag : float, target_def : float, target_res : float, damage_roll_amt : float, crit : bool) -> int :
+	var damage = 0;
+	
+	var user_param = user.create_entity_params(user_level);
+	var target_param = target.create_entity_params(target_level);
+	
+	for i in num_hits :
+		var atk_type = spell_attack_type;
+		
+		if use_multihit_attack_type && multihit_attack_type != null && i < multihit_attack_type.size():
+			atk_type = multihit_attack_type[i];
+		
+		var def_type = spell_attack_type;
+		if vary_defense_type : def_type = spell_defense_type;
+		
+		var power : float = spell_power;
+		var crit_chance : int = critical_chance;
+		
+		if can_critical && crit:
+			critical_chance = 1;
+		
+		var d = damage_roll(power, atk_type, def_type, user_level, user_param, user_atk, user_mag, target_level, target_param, target_param.entity_hp, target_def, target_res, false, []);
+		
+		if can_critical && crit :
+			critical_chance = crit_chance
+		
+		# Deals damage using a percentage of the target's current HP
+		# Will never defeat an enemy except in very exceptional situations
+		if fixed_damage && percent_damage :
+			damage += roundi(d);
+			continue;
+		# Deals damage using a percentage of the target's maximum HP
+		# Use sparingly or for heals
+		elif percent_damage : 
+			damage += roundi(d);
+			continue;
+		# Deals direct damage using the fixed damage amount
+		elif fixed_damage : 
+			damage += roundi(d);
+			continue;
+		
+		var flags = spell_flags.duplicate();
+		
+		if randomize_flag_per_hit :
+			var random = randomized_flags.pick_random();
+			flags = [random];
+		
+		for flag in flags:
+			for modifier in target.defense_modifiers :
+				if modifier.flag == flag :
+					d *= modifier.modifier;
+		
+		# One time attack boost if flags overlap affinity
+		for flag in user.affinity:
+			if flags.has(flag) || flag == spell_kind :
+				d *= AFFINITY_BONUS;
+		
+		for flag in user.anti_affinity:
+			if flags.has(flag) || flag == spell_kind :
+				d *= BANE_PENALTY;
+		
+		d *= damage_roll_amt;
+		
+		if can_critical && crit : d *= 1.5
+		
+		damage += roundi(d);
+	
+	
+	return damage;
+
+
 func calculate_damage(user : EntityController, target : EntityController, cast : SpellCast):
 	var num_hits = min_number_of_hits;
 	

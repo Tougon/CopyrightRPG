@@ -25,8 +25,12 @@ func get_current(level : int) -> float:
 	# Level 1 is the minimum so it needs to be counted as 0
 	level -= 1;
 	
-	if level > BattleManager.level_cap: level = BattleManager.level_cap;
+	var level_cap = 99;
+	
+	if BattleManager != null : level_cap = BattleManager.level_cap;
+	
+	if level > level_cap: level = level_cap;
 	if level < 0 : level = 0;
 	
-	var percent = (level as float) / (BattleManager.level_cap as float);
+	var percent = (level as float) / (level_cap as float);
 	return (lerp(min, max, growth.sample(percent)));

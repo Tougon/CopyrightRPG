@@ -186,6 +186,7 @@ manual_override = false
 use_fixed_damage = true
 damage_amount = 0
 percent_amount = 0.0
+mp_damage = false
 negate = false
 
 [sub_resource type="Resource" id="Resource_x538y"]
@@ -238,6 +239,7 @@ action = SubResource("Resource_xsu06")
 script = ExtResource("2_6so8d")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_ice_s.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, -60)
 effect_layer = 5
@@ -258,7 +260,9 @@ action = SubResource("Resource_iuej5")
 
 [sub_resource type="Resource" id="Resource_vitke"]
 script = ExtResource("14_bfodd")
+group = -1
 index = 2
+layer_mod = 0
 target = 0
 effect_index = 0
 
@@ -270,7 +274,9 @@ action = SubResource("Resource_vitke")
 
 [sub_resource type="Resource" id="Resource_0qjxh"]
 script = ExtResource("14_bfodd")
+group = -1
 index = 0
+layer_mod = 0
 target = 0
 effect_index = 0
 

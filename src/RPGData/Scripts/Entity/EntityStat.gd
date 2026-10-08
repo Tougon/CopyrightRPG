@@ -27,9 +27,13 @@ func get_current(level : int, max_level : int) -> int:
 	# Max needs to be subtracted as well or caps will never be hit
 	max_level -= 1;
 	
-	if max_level > BattleManager.level_cap: max_level = BattleManager.level_cap;
+	var level_cap = 99;
+	
+	if BattleManager != null : level_cap = BattleManager.level_cap;
+	
+	if max_level > level_cap: max_level = level_cap;
 	if max_level == 0 : max_level = 1;
-	if level > BattleManager.level_cap: level = BattleManager.level_cap;
+	if level > level_cap: level = level_cap;
 	if level < 0 : level = 0;
 	
 	var percent = (level as float) / (max_level as float);

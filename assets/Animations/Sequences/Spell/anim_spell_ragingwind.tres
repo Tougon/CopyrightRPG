@@ -23,6 +23,7 @@ action = SubResource("Resource_t8bkv")
 script = ExtResource("2_0asyo")
 effect_scene_path = "res://assets/VFX/Spells/Damage/effect_spell_raging_wind.tscn"
 relative = 1
+alignment = 0
 effect_index = 0
 effect_position = Vector2(0, -25)
 effect_layer = 1
@@ -54,6 +55,7 @@ manual_override = false
 use_fixed_damage = true
 damage_amount = 0
 percent_amount = 0.0
+mp_damage = false
 negate = false
 
 [sub_resource type="Resource" id="Resource_v7itg"]
