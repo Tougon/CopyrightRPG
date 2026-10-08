@@ -8,6 +8,8 @@ class_name DamageCalculator;
 var entity_list : Array[Entity];
 var spell_list : Array[DamageSpell];
 
+var editor : EditorInterface;
+
 func _ready():
 	print("Initializing damage calculator...")
 	_refresh_view();
@@ -20,6 +22,9 @@ func set_editor(editor : EditorInterface):
 
 func _refresh_view():
 	var valid_entities : Array[Entity];
+	
+	spell_list.clear();
+	entity_list.clear();
 	
 	$"Entity/ScrollContainer/VBoxContainer/Move Select".clear();
 	_check_path_for_spells("res://assets/Spells/");

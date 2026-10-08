@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=48 format=3 uid="uid://cuq4qm0mplqgp"]
+[gd_resource type="Resource" script_class="Entity" load_steps=41 format=3 uid="uid://cuq4qm0mplqgp"]
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_82a6o"]
 [ext_resource type="Resource" uid="uid://825i0xeqmh8m" path="res://assets/Flags/blue.tres" id="2_aonv8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="4_pcrvo"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell_level.gd" id="4_xfhba"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/flag_modifier.gd" id="5_0sdrg"]
+[ext_resource type="Curve" uid="uid://doliogweh4neo" path="res://assets/Entities/Curves/stat_level_curve.tres" id="5_y6376"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/EntitySpriteGroup.gd" id="6_utwji"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Entity/move_list.gd" id="7_bv3cl"]
 [ext_resource type="Resource" uid="uid://crtd1x3v2fi4u" path="res://assets/Entities/Player/exp_curve.tres" id="7_iiqun"]
@@ -22,49 +23,33 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_y86e6"]
 [ext_resource type="Resource" uid="uid://ceaostxq3mx7x" path="res://assets/Spells/player/player_b/spell_player_b_05.tres" id="11_j5j3k"]
 
-[sub_resource type="Curve" id="Curve_w4glt"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
 [sub_resource type="Resource" id="Resource_nx3bb"]
 script = ExtResource("2_ay3jb")
 min = 16
 max = 246
-growth = SubResource("Curve_w4glt")
-
-[sub_resource type="Curve" id="Curve_8fb0c"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_mel65"]
 script = ExtResource("2_ay3jb")
 min = 17
 max = 258
-growth = SubResource("Curve_8fb0c")
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_0wcvm"]
 script = ExtResource("6_utwji")
 sprites = Array[String](["res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/Entities/PlayerB/player_tech_neutral.png", "res://assets/Sprites/UI/Status/temp_portrait_b_full.png"])
 
-[sub_resource type="Curve" id="Curve_61aun"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
 [sub_resource type="Resource" id="Resource_0tkgf"]
 script = ExtResource("2_ay3jb")
 min = 50
 max = 534
-growth = SubResource("Curve_61aun")
-
-[sub_resource type="Curve" id="Curve_bfk5e"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_ghury"]
 script = ExtResource("3_7fs00")
 min = 0.7
 max = 1.1
-growth = SubResource("Curve_bfk5e")
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_egsue"]
 script = ExtResource("4_xfhba")
@@ -110,45 +95,29 @@ level = 50
 script = ExtResource("7_bv3cl")
 list = Array[ExtResource("4_xfhba")]([SubResource("Resource_egsue"), SubResource("Resource_fc1ry"), SubResource("Resource_fehpc"), SubResource("Resource_1h1lf"), SubResource("Resource_3sii7"), SubResource("Resource_0srua"), SubResource("Resource_s84s3"), SubResource("Resource_id7q6")])
 
-[sub_resource type="Curve" id="Curve_cg64e"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
 [sub_resource type="Resource" id="Resource_7lb3s"]
 script = ExtResource("2_ay3jb")
 min = 60
 max = 512
-growth = SubResource("Curve_cg64e")
-
-[sub_resource type="Curve" id="Curve_xxp8h"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_lh4ws"]
 script = ExtResource("2_ay3jb")
 min = 26
 max = 386
-growth = SubResource("Curve_xxp8h")
-
-[sub_resource type="Curve" id="Curve_1liai"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_ayqxh"]
 script = ExtResource("2_ay3jb")
 min = 20
 max = 342
-growth = SubResource("Curve_1liai")
-
-[sub_resource type="Curve" id="Curve_ddd2l"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
+growth = ExtResource("5_y6376")
 
 [sub_resource type="Resource" id="Resource_fyc1p"]
 script = ExtResource("2_ay3jb")
 min = 20
 max = 352
-growth = SubResource("Curve_ddd2l")
+growth = ExtResource("5_y6376")
 
 [resource]
 script = ExtResource("9_vkdbv")

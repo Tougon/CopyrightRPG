@@ -63,12 +63,14 @@ vertical_alignment = 1
 [node name="Move Select" type="OptionButton" parent="Entity/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 selected = 0
-item_count = 3
+item_count = 4
 popup/item_0/text = "Attack"
 popup/item_1/text = "Beat"
 popup/item_1/id = 1
-popup/item_2/text = "Check Plus"
+popup/item_2/text = "TOP SECRET"
 popup/item_2/id = 2
+popup/item_3/text = "Check Plus"
+popup/item_3/id = 3
 
 [node name="Spacer2" type="Control" parent="Entity/ScrollContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

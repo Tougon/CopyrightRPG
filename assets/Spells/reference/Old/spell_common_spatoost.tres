@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=13 format=3 uid="uid://cf0sbyy40032e"]
+[gd_resource type="Resource" script_class="Spell" load_steps=11 format=3 uid="uid://cf0sbyy40032e"]
 
 [ext_resource type="Resource" uid="uid://gkfjngwxt7wo" path="res://assets/Animations/Sequences/Spell/anim_spell_status_common_atoost.tres" id="1_o40m7"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_572mj"]
@@ -7,8 +7,6 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="5_exaps"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="5_org0a"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="5_tuewv"]
-[ext_resource type="Resource" uid="uid://bq4s1h4f0i85v" path="res://assets/Flags/light.tres" id="6_7wkrr"]
-[ext_resource type="Resource" uid="uid://b8u43886g26bp" path="res://assets/Flags/magic.tres" id="7_f12q0"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="7_sp01t"]
 
 [sub_resource type="Resource" id="Resource_yjdi2"]
@@ -34,8 +32,11 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 15
 spell_priority = 0
-spell_flags = Array[ExtResource("7_sp01t")]([ExtResource("6_7wkrr"), ExtResource("7_f12q0")])
+spell_flags = Array[ExtResource("7_sp01t")]([])
 ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+show_spell_cast_ui = false
 animation_sequence = ExtResource("1_o40m7")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])
@@ -46,3 +47,4 @@ can_use_overworld = false
 overworld_check = Array[ExtResource("5_tuewv")]([])
 overworld_check_type = 0
 overworld_action = Array[ExtResource("5_tuewv")]([])
+final = false
