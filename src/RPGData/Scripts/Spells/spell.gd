@@ -53,6 +53,9 @@ enum SpellCheckType { AND, OR }
 @export var overworld_check_type : SpellCheckType;
 @export var overworld_action : Array[SpellOverworldFunction];
 
+@export_subgroup("Dev Only")
+@export var final : bool;
+
 
 # Returns an instance of this spell using the spell data to calculate everything
 func cast(user : EntityController, targets : Array[EntityController]):

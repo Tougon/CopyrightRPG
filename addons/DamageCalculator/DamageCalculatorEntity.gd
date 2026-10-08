@@ -21,7 +21,11 @@ func initialize(source : DamageCalculator, entities : Array[Entity]) :
 	$"Entity Select".clear();
 	
 	for entity in entity_list :
+		if !entity.final : continue;
+		
 		var entity_name = TranslationServer.get_translation_object("en").get_message(entity.name_key);
+		if entity_name.is_empty() : entity_name = entity.resource_name;
+		
 		$"Entity Select".add_item(entity_name);
 	
 	if current_index < entity_list.size() && current_index != -1:

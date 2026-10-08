@@ -26,8 +26,10 @@ func _refresh_view():
 	
 	for spell in spell_list :
 		if spell != null : 
+			if !spell.final : continue;
+			
 			var spell_name = TranslationServer.get_translation_object("en").get_message(spell.spell_name_key);
-			if spell_name.is_empty() : spell_name = spell.spell_name_key;
+			if spell_name.is_empty() : spell_name = spell.resource_name;
 			
 			$"Entity/ScrollContainer/VBoxContainer/Move Select".add_item(spell_name);
 	
@@ -60,14 +62,32 @@ func update_display(move : Spell) :
 	var def_mod = max(2.0, 2.0 + defender.current_aux_stat_1) / max(2.0, 2.0 - defender.current_aux_stat_1);
 	var res_mod = max(2.0, 2.0 + defender.current_aux_stat_2) / max(2.0, 2.0 - defender.current_aux_stat_2);
 	
+	var target_param = target.create_entity_params(defender.current_level);
+	
 	var damage_roll = move.simulate_damage(user, target, attacker.current_level, defender.current_level, atk_mod, mag_mod, def_mod, res_mod);
 	
-	if damage_roll.size() > 1 :
+	if damage_roll.size() > 0 :
 		$"Entity/ScrollContainer/VBoxContainer/Damage Amt/Min".text = "Min: " + str(damage_roll[0]);
-	if damage_roll.size() > 2 :
+		$Entity/ScrollContainer/VBoxContainer/Threshold/Min.text = "@Min: " + str(_get_number_of_hits(damage_roll[0], target_param.entity_hp)) + " Hit(s)";
+		
+		if damage_roll.size() > 3 :
+			$"Entity/ScrollContainer/VBoxContainer/Damage Amt/Min".text += " (Crit: " + str(damage_roll[3]) + ")"
+	if damage_roll.size() > 1 :
 		$"Entity/ScrollContainer/VBoxContainer/Damage Amt/Average".text = "Avg: " + str(damage_roll[1]);
-	if damage_roll.size() > 3 :
+		$Entity/ScrollContainer/VBoxContainer/Threshold/Average.text = "@Avg: " + str(_get_number_of_hits(damage_roll[1], target_param.entity_hp)) + " Hit(s)";
+		
+		if damage_roll.size() > 4 :
+			$"Entity/ScrollContainer/VBoxContainer/Damage Amt/Average".text += " (Crit: " + str(damage_roll[4]) + ")"
+	if damage_roll.size() > 2 :
 		$"Entity/ScrollContainer/VBoxContainer/Damage Amt/Max".text = "Max: " + str(damage_roll[2]);
+		$Entity/ScrollContainer/VBoxContainer/Threshold/Max.text = "@Max: " + str(_get_number_of_hits(damage_roll[2], target_param.entity_hp)) + " Hit(s)";
+		
+		if damage_roll.size() > 5 :
+			$"Entity/ScrollContainer/VBoxContainer/Damage Amt/Max".text += " (Crit: " + str(damage_roll[5]) + ")"
+
+
+func _get_number_of_hits(damage : int, max_hp : int) -> int :
+	return ceili((max_hp as float) / (damage as float))
 
 
 func _check_path_for_entities(path : String):
@@ -115,6 +135,7 @@ func _add_entity(file_name : String):
 						var loaded = ResourceLoader.load(file_name);
 						
 						if loaded is Entity:
+							if !(loaded as Entity).final : continue;
 							entity_list.append(loaded as Entity);
 							return;
 
@@ -164,6 +185,7 @@ func _add_spell(file_name : String):
 						var loaded = ResourceLoader.load(file_name);
 						
 						if loaded is DamageSpell:
+							if !(loaded as DamageSpell).final : continue;
 							spell_list.append(loaded as DamageSpell);
 							return;
 

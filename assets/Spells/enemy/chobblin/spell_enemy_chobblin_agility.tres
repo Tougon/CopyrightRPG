@@ -119,3 +119,4 @@ can_use_overworld = false
 overworld_check = Array[ExtResource("2_0dq8t")]([])
 overworld_check_type = 0
 overworld_action = Array[ExtResource("2_0dq8t")]([])
+final = false

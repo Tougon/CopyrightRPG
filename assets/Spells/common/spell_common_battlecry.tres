@@ -51,3 +51,4 @@ can_use_overworld = false
 overworld_check = Array[ExtResource("2_smqsg")]([])
 overworld_check_type = 0
 overworld_action = Array[ExtResource("2_smqsg")]([])
+final = false

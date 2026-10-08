@@ -133,8 +133,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("9_n0rge")
-min = 105
-max = 115
+min = 180
+max = 206
 growth = SubResource("Curve_7i6bh")
 
 [sub_resource type="Curve" id="Curve_k6ron"]
@@ -276,3 +276,4 @@ move_list = SubResource("Resource_lg1m0")
 behavior = SubResource("Resource_hf446")
 seal_effect_list = Array[ExtResource("13_a88bw")]([SubResource("Resource_bapgx")])
 export_csv = true
+final = true

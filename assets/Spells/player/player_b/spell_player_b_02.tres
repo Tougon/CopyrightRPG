@@ -26,6 +26,7 @@ script = ExtResource("10_tg6px")
 entries = Array[ExtResource("9_gqpi5")]([SubResource("Resource_5jlk5"), SubResource("Resource_dsirl")])
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("4_o4apy")
 spell_power = 40.0
 spell_attack_type = 1
@@ -83,3 +84,4 @@ can_use_overworld = false
 overworld_check = Array[ExtResource("2_8vdsh")]([])
 overworld_check_type = 0
 overworld_action = Array[ExtResource("2_8vdsh")]([])
+final = true

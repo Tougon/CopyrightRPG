@@ -224,3 +224,4 @@ move_list = SubResource("Resource_f2ync")
 behavior = SubResource("Resource_u8c1x")
 seal_effect_list = Array[ExtResource("5_f0dpe")]([SubResource("Resource_rawo3")])
 export_csv = true
+final = false

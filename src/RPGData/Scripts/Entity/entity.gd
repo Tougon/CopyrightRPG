@@ -137,6 +137,9 @@ func get_reward_exp(level : int) -> int:
 @export_group("Utility")
 @export var export_csv : bool = true;
 
+@export_group("Dev Only")
+@export var final : bool;
+
 
 func create_entity_params(level : int) -> EntityParams:
 	var param = EntityParams.new();

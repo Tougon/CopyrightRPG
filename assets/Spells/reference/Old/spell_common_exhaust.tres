@@ -77,3 +77,4 @@ can_use_overworld = false
 overworld_check = Array[ExtResource("5_2imqb")]([])
 overworld_check_type = 0
 overworld_action = Array[ExtResource("5_2imqb")]([])
+final = false

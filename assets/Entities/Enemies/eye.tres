@@ -279,3 +279,4 @@ move_list = SubResource("Resource_epyqh")
 behavior = SubResource("Resource_lx80b")
 seal_effect_list = Array[ExtResource("5_cd2cr")]([SubResource("Resource_nm5m2")])
 export_csv = true
+final = false
