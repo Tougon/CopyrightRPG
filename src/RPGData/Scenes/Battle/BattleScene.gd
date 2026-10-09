@@ -17,6 +17,7 @@ var enemies : Array[EntityController];
 var enemy_type_count : Dictionary;
 
 var turn_number : int;
+var times_spawned_extra : int;
 var current_player_index : int;
 
 var defeated_enemies : Array[DefeatedEntity];
@@ -84,6 +85,8 @@ func begin_battle(params : BattleParams):
 	
 	_can_flee = params.can_flee;
 	_tutorial = params.tutorial;
+	
+	times_spawned_extra = 0;
 	
 	for i in range(BattleManager.MAX_ENEMY_COUNT, params.enemies.size()):
 		_reserve_enemies.append(params.enemies[i]);

@@ -383,6 +383,7 @@ func _on_battle_end(result : BattleResult):
 					var step = QuestManager.player_quests[id].next_id
 					QuestManager.progress_quest(id, step, "enemy", result.enemies.size())
 					
+					
 					for enemy in result.enemies:
 						QuestManager.progress_quest(id, step, enemy, 1)
 	

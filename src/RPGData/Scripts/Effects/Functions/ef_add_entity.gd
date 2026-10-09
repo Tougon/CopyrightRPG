@@ -12,3 +12,4 @@ func execute(instance : EffectInstance):
 	
 	if new_entity != null :
 		EventManager.add_entity_to_battle.emit(new_entity);
+		BattleScene.Instance.times_spawned_extra += 1;

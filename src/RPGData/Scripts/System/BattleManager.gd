@@ -15,6 +15,8 @@ const ENEMY_SEAL_FORCE_GENERIC_NAME : bool = true;
 const ENEMY_STAT_REDUCTION : bool = false;
 const ENEMY_STAT_DIVISOR : float = 1.07;
 
+const DUPLICATION_FAILURE_RATE : float = 0.8;
+
 # Temporary mechanics
 const HEAL_ON_DEFEAT : bool = true;
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=20 format=3 uid="uid://co4y1vwe1ayoc"]
+[gd_resource type="Resource" script_class="Spell" load_steps=22 format=3 uid="uid://co4y1vwe1ayoc"]
 
 [ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_6r2lq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_l3f2b"]
@@ -10,15 +10,19 @@
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_086i2"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_num_entities.gd" id="5_mr6l4"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_add_entity.gd" id="5_oxoi0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_can_add_entities.gd" id="6_m3u7o"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="7_3v5b2"]
 [ext_resource type="Resource" uid="uid://c120fjayjkcgl" path="res://assets/Flags/maroon.tres" id="12_ev6ao"]
-[ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="13_d86j3"]
+[ext_resource type="Resource" uid="uid://nqfhikjvrftp" path="res://assets/Flags/action.tres" id="13_xx77c"]
 
 [sub_resource type="Resource" id="Resource_56a1h"]
 script = ExtResource("5_mr6l4")
 target_number = 5
 check_target = 1
 check_mode = 2
+
+[sub_resource type="Resource" id="Resource_4pcdg"]
+script = ExtResource("6_m3u7o")
 
 [sub_resource type="Resource" id="Resource_b05dw"]
 script = ExtResource("5_oxoi0")
@@ -39,7 +43,7 @@ priority = 3
 turn_limit = 3
 effect_type = 0
 check_success_type = 0
-check_success = Array[ExtResource("4_yb2xl")]([SubResource("Resource_56a1h")])
+check_success = Array[ExtResource("4_yb2xl")]([SubResource("Resource_56a1h"), SubResource("Resource_4pcdg")])
 check_remain_active_type = 0
 check_remain_active = Array[ExtResource("4_yb2xl")]([])
 on_activate = Array[ExtResource("4_yb2xl")]([SubResource("Resource_b05dw")])
@@ -66,7 +70,7 @@ effect_set = Array[ExtResource("3_l3ufg")]([SubResource("Resource_0dx3x")])
 
 [resource]
 script = ExtResource("4_jsbh3")
-spell_name_key = ""
+spell_name_key = "T_SPELL_STATUS_ENEMY_SLIME_DUPLICATE"
 spell_description_key = ""
 spell_cast_message_key = "T_CAST_STATUS_ENEMY_SLIME_DUPLICATE"
 spell_type = 0
@@ -75,11 +79,12 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 18
 spell_priority = 0
-spell_flags = Array[ExtResource("5_086i2")]([ExtResource("12_ev6ao"), ExtResource("13_d86j3")])
+spell_flags = Array[ExtResource("5_086i2")]([ExtResource("12_ev6ao")])
+spell_kind = ExtResource("13_xx77c")
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
-show_spell_cast_ui = false
+show_spell_cast_ui = true
 animation_sequence = ExtResource("1_6r2lq")
 spell_videos = Array[String]([])
 spell_video_materials = Array[String]([])
@@ -90,4 +95,4 @@ can_use_overworld = false
 overworld_check = Array[ExtResource("2_r24x6")]([])
 overworld_check_type = 0
 overworld_action = Array[ExtResource("2_r24x6")]([])
-final = false
+final = true
