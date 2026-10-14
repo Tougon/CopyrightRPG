@@ -30,7 +30,7 @@ turns = 3
 [sub_resource type="Resource" id="Resource_xlnrp"]
 script = ExtResource("6_wm6a0")
 target = 1
-stat = 11
+stat = 0
 check_mode = 2
 stage = 0
 max = true
@@ -47,7 +47,7 @@ deactivate = true
 [sub_resource type="Resource" id="Resource_ixsl3"]
 script = ExtResource("8_3tn8x")
 target = 1
-stat = 9
+stat = 0
 amount = 1
 use_stage = false
 use_modifiers = false
@@ -64,7 +64,7 @@ animation = ExtResource("9_fow87")
 [sub_resource type="Resource" id="Resource_yu8mn"]
 script = ExtResource("8_3tn8x")
 target = 1
-stat = 9
+stat = 0
 amount = -1
 use_stage = false
 use_modifiers = false
