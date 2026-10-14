@@ -68,6 +68,12 @@ func execute(sequence : AnimationSequence):
 			value.x *= sequence.direction_x;
 			value.y *= sequence.direction_y;
 	
+	# Specific exceptions required to deal with object scale
+	if tween.property_name == "scale" && entity is EntityController :
+		if value is Vector2:
+			value.x *= (entity as EntityController).current_entity.scale.x;
+			value.y *= (entity as EntityController).current_entity.scale.y;
+	
 	var property = current_tween.tween_property(tween_target, tween.property_name, value, tween.duration);
 	
 	if property == null:
