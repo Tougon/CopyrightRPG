@@ -31,9 +31,14 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Damage Spell"
 
+[node name="Show Only Final" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+text = "Show Only Final"
+
 [node name="Button" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "Create Spell"
 
+[connection signal="toggled" from="VBoxContainer/Show Only Final" to="." method="_on_show_only_final_toggled"]
 [connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_create_button_pressed"]

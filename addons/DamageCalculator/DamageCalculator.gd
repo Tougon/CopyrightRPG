@@ -34,7 +34,7 @@ func _refresh_view():
 			if !spell.final : continue;
 			
 			var spell_name = TranslationServer.get_translation_object("en").get_message(spell.spell_name_key);
-			if spell_name.is_empty() : spell_name = spell.resource_name;
+			if spell_name.is_empty() || spell.spell_name_key.is_empty() : spell_name = spell.resource_name;
 			
 			$"Entity/ScrollContainer/VBoxContainer/Move Select".add_item(spell_name);
 	

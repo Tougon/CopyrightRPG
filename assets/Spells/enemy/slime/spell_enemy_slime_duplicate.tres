@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=22 format=3 uid="uid://co4y1vwe1ayoc"]
+[gd_resource type="Resource" script_class="Spell" load_steps=27 format=3 uid="uid://co4y1vwe1ayoc"]
 
-[ext_resource type="Resource" uid="uid://de4m0gaf7hq21" path="res://assets/Animations/Sequences/Spell/anim_spell_nothing.tres" id="1_6r2lq"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_l3f2b"]
+[ext_resource type="Resource" uid="uid://q4mkjcup40ei" path="res://assets/Animations/Sequences/Spell/anim_spell_duplicate.tres" id="1_s5faa"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_r24x6"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_8iegi"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="3_l3ufg"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="7_3v5b2"]
 [ext_resource type="Resource" uid="uid://c120fjayjkcgl" path="res://assets/Flags/maroon.tres" id="12_ev6ao"]
 [ext_resource type="Resource" uid="uid://nqfhikjvrftp" path="res://assets/Flags/action.tres" id="13_xx77c"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="15_8bq4k"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="16_wcbnw"]
 
 [sub_resource type="Resource" id="Resource_56a1h"]
 script = ExtResource("5_mr6l4")
@@ -68,6 +70,20 @@ chance = 1.0
 use_luck = false
 effect_set = Array[ExtResource("3_l3ufg")]([SubResource("Resource_0dx3x")])
 
+[sub_resource type="Resource" id="Resource_rpilm"]
+script = ExtResource("15_8bq4k")
+item_id = "squash"
+item_path = "res://assets/Audio/SFX/Spell/spell_squash.ogg"
+
+[sub_resource type="Resource" id="Resource_prxws"]
+script = ExtResource("15_8bq4k")
+item_id = "squish"
+item_path = "res://assets/Audio/SFX/Spell/spell_squish.ogg"
+
+[sub_resource type="Resource" id="Resource_mqdfb"]
+script = ExtResource("16_wcbnw")
+entries = Array[ExtResource("15_8bq4k")]([SubResource("Resource_rpilm"), SubResource("Resource_prxws")])
+
 [resource]
 script = ExtResource("4_jsbh3")
 spell_name_key = "T_SPELL_STATUS_ENEMY_SLIME_DUPLICATE"
@@ -85,9 +101,10 @@ ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
 show_spell_cast_ui = true
-animation_sequence = ExtResource("1_6r2lq")
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
+animation_sequence = ExtResource("1_s5faa")
+spell_videos = Array[String](["res://video/spell/video_spell_duplicate.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/foul_00.tres"])
+spell_sfx = SubResource("Resource_mqdfb")
 effects_on_hit = Array[ExtResource("1_l3f2b")]([])
 effects_on_success = Array[ExtResource("1_l3f2b")]([SubResource("Resource_ysog6")])
 properties = Array[ExtResource("3_8iegi")]([])

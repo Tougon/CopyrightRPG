@@ -165,3 +165,11 @@ func _add_spell(file_name : String):
 							spell_list.append(loaded as Spell);
 							spell_to_path[(loaded as Spell)] = file_name;
 							return;
+
+
+func _on_show_only_final_toggled(toggled_on: bool) -> void:
+	for spell in spell_list :
+		if toggled_on :
+			spell_to_list_item[spell].visible = spell.final;
+		else :
+			spell_to_list_item[spell].visible = true;

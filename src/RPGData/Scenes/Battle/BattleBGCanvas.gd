@@ -138,10 +138,10 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 	if get_tree() == null : return;
 	
 	if process_mode != PROCESS_MODE_DISABLED && spell == null && _current_spell != null: 
-		attack_layer.paused = false;
 		attack_layer.stop();
 		attack_layer.visible = false;
 		attack_layer.stream = null;
+		attack_layer.paused = false;
 		_current_spell = null;
 		
 		color_layer.visible = true;
@@ -203,6 +203,8 @@ func _set_spell_bg(spell : Spell, index : int, change_video : bool, change_mater
 			_current_spell = spell;
 			_is_attacking = true;
 			_attack_time = 0;
+		else:
+			print("Spell is null, will never return a BG");
 
 
 func _set_effect_bg(layer : int, spell : Spell, index : int, change_video : bool, change_material : bool, use_entity_palette : bool, palette_transition_duration : float, set_transparent : bool):

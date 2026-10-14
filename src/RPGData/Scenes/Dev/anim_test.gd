@@ -162,9 +162,15 @@ func play_animation():
 	var spell_cast : Array[SpellCast];
 	if target_ally : 
 		player.enemies = [ ally ];
+		if player.enemies.size() == 0 :
+			player.enemies = [ player ];
+		
 		spell_cast = player.current_action.cast(player, player.enemies);
 	else : 
 		player.enemies = enemies;
+		if player.enemies.size() == 0 :
+			player.enemies = [ player ];
+		
 		spell_cast = player.current_action.cast(player, player.enemies);
 	
 	# Rig the damage roll to do 1 damage (this is so we can debug UI timing)

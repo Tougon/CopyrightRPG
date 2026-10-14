@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_en65d"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/move_item.gd" id="2_7ofgw"]
-[ext_resource type="Resource" uid="uid://djjyorwnnprod" path="res://assets/Spells/reference/Old/spell_common_earth.tres" id="2_aa685"]
+[ext_resource type="Resource" uid="uid://ce2e3d8jwl20e" path="res://assets/Spells/common/spell_common_spicypunch.tres" id="2_7psq5"]
 
 [resource]
 script = ExtResource("2_7ofgw")
-move = ExtResource("2_aa685")
+move = ExtResource("2_7psq5")
+only_one = true
 item_name_key = "T_ITEM_NAME_TEMPB"
 item_description_key = "T_ITEM_DESCRIPTION_TEMP"
 item_icon_path = ""
