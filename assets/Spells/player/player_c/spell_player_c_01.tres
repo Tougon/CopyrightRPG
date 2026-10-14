@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=14 format=3 uid="uid://24judeqcy264"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=18 format=3 uid="uid://24judeqcy264"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_lqc5a"]
 [ext_resource type="Resource" uid="uid://qs8h4iwovgly" path="res://assets/Animations/Sequences/Spell/anim_spell_player_c_01.tres" id="1_ndf0c"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="5_wfr14"]
 [ext_resource type="Resource" uid="uid://ml3fqm3ugwms" path="res://assets/Flags/green.tres" id="10_c8cur"]
 [ext_resource type="Resource" uid="uid://2r8pc02sljdw" path="res://assets/Flags/logic.tres" id="10_gfefi"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="11_5myub"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="12_3krg5"]
 
 [sub_resource type="Resource" id="Resource_mr7tw"]
 script = ExtResource("4_0iibj")
@@ -30,6 +32,15 @@ check_mode = 2
 percent_amount = 1.0
 use_amount = false
 hp_amount = 0
+
+[sub_resource type="Resource" id="Resource_x5fga"]
+script = ExtResource("11_5myub")
+item_id = "stamp"
+item_path = "res://assets/Audio/SFX/Spell/spell_office_stamp.ogg"
+
+[sub_resource type="Resource" id="Resource_fannm"]
+script = ExtResource("12_3krg5")
+entries = Array[ExtResource("11_5myub")]([SubResource("Resource_x5fga")])
 
 [resource]
 script = ExtResource("5_wfr14")
@@ -81,6 +92,7 @@ show_spell_cast_ui = true
 animation_sequence = ExtResource("1_ndf0c")
 spell_videos = Array[String](["res://video/spell/video_spell_checkplus.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playerc_00.tres"])
+spell_sfx = SubResource("Resource_fannm")
 effects_on_hit = Array[ExtResource("1_lqc5a")]([])
 effects_on_success = Array[ExtResource("1_lqc5a")]([])
 properties = Array[ExtResource("3_fxvr8")]([])

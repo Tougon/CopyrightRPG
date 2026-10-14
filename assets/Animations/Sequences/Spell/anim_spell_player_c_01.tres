@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=65 format=3 uid="uid://qs8h4iwovgly"]
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=68 format=3 uid="uid://qs8h4iwovgly"]
 
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_t5rlh"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_loop.gd" id="2_7ouuv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/apply_damage.gd" id="6_3ywja"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/update_ui.gd" id="7_6d1k3"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_loop.gd" id="8_j82ra"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/play_sfx.gd" id="9_1mq4c"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="9_5sxgp"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="10_ugnsh"]
 [ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="11_r0ypm"]
@@ -278,6 +279,16 @@ frame = 62
 frame_order = 10
 action = SubResource("Resource_e5onc")
 
+[sub_resource type="Resource" id="Resource_xjdqt"]
+script = ExtResource("9_1mq4c")
+sfx_key = "stamp"
+
+[sub_resource type="Resource" id="Resource_l722e"]
+script = ExtResource("1_t5rlh")
+frame = 62
+frame_order = 11
+action = SubResource("Resource_xjdqt")
+
 [sub_resource type="Resource" id="Resource_hj4te"]
 script = ExtResource("4_yk43u")
 effect_scene_path = "res://assets/VFX/Spells/effect_spell_playerc_01_check.tscn"
@@ -389,4 +400,4 @@ action = SubResource("Resource_mj1pb")
 script = ExtResource("14_okuml")
 animation_name = "Check Plus"
 hide_ui_on_start = true
-animation_sequence = Array[ExtResource("1_t5rlh")]([SubResource("Resource_32kgj"), SubResource("Resource_a0bpd"), SubResource("Resource_indbo"), SubResource("Resource_xq4u8"), SubResource("Resource_6iwky"), SubResource("Resource_rgue0"), SubResource("Resource_kjoxk"), SubResource("Resource_1m3hv"), SubResource("Resource_08le8"), SubResource("Resource_b3cqj"), SubResource("Resource_mjrnq"), SubResource("Resource_8ph7f"), SubResource("Resource_cw5sb"), SubResource("Resource_u6enn"), SubResource("Resource_048jr"), SubResource("Resource_ghngk"), SubResource("Resource_fecj7"), SubResource("Resource_axpqo"), SubResource("Resource_jlyyh"), SubResource("Resource_iwcco"), SubResource("Resource_78nss"), SubResource("Resource_iwrrj")])
+animation_sequence = Array[ExtResource("1_t5rlh")]([SubResource("Resource_32kgj"), SubResource("Resource_a0bpd"), SubResource("Resource_indbo"), SubResource("Resource_xq4u8"), SubResource("Resource_6iwky"), SubResource("Resource_rgue0"), SubResource("Resource_kjoxk"), SubResource("Resource_1m3hv"), SubResource("Resource_08le8"), SubResource("Resource_b3cqj"), SubResource("Resource_mjrnq"), SubResource("Resource_8ph7f"), SubResource("Resource_cw5sb"), SubResource("Resource_u6enn"), SubResource("Resource_048jr"), SubResource("Resource_ghngk"), SubResource("Resource_fecj7"), SubResource("Resource_l722e"), SubResource("Resource_axpqo"), SubResource("Resource_jlyyh"), SubResource("Resource_iwcco"), SubResource("Resource_78nss"), SubResource("Resource_iwrrj")])
