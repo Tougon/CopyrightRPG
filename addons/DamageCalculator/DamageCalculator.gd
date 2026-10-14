@@ -33,8 +33,13 @@ func _refresh_view():
 		if spell != null : 
 			if !spell.final : continue;
 			
-			var spell_name = TranslationServer.get_translation_object("en").get_message(spell.spell_name_key);
-			if spell_name.is_empty() || spell.spell_name_key.is_empty() : spell_name = spell.resource_name;
+			var spell_name = "";
+			
+			if spell.spell_name_key == null || spell.spell_name_key.is_empty() || spell.spell_name_key.length() == 0:
+				spell_name = str(spell.resource_path.get_file()).replace("spell_enemy_", "");
+			else :
+				TranslationServer.reload_pseudolocalization()
+				spell_name = TranslationServer.get_translation_object("en").get_message(spell.spell_name_key);
 			
 			$"Entity/ScrollContainer/VBoxContainer/Move Select".add_item(spell_name);
 	

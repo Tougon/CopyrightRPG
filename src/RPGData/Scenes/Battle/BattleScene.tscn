@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://ddi8dyt27p6u7"]
+[gd_scene load_steps=162 format=3 uid="uid://ddi8dyt27p6u7"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Battle/BattleScene.gd" id="1_nawhs"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_qgvky"]
@@ -83,8 +83,17 @@
 [ext_resource type="Resource" uid="uid://bcqj8mkvra2h7" path="res://assets/Effects/Seal/effect_seal_debuff_resistance.tres" id="71_acn8k"]
 [ext_resource type="PackedScene" uid="uid://dlqaw5g2ms1wl" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_white.tscn" id="72_s80p0"]
 [ext_resource type="Resource" uid="uid://b7vpopug3jtn1" path="res://assets/Flags/art.tres" id="73_3h820"]
-[ext_resource type="PackedScene" uid="uid://n8pfd82khfr2" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_white.tscn" id="74_v7rfv"]
 [ext_resource type="Resource" uid="uid://brvsxpnri8pvd" path="res://assets/Effects/Seal/effect_seal_debuff_speed.tres" id="75_6wfh6"]
+[ext_resource type="PackedScene" uid="uid://dddh5om5m1aof" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_art.tscn" id="81_2a2tq"]
+[ext_resource type="PackedScene" uid="uid://cvayy5qbawrw5" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_science.tscn" id="82_8w5as"]
+[ext_resource type="Resource" uid="uid://08j81fkfp4wl" path="res://assets/Flags/science.tres" id="83_nen4c"]
+[ext_resource type="PackedScene" uid="uid://cxf32a3uieovr" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_science.tscn" id="84_883v0"]
+[ext_resource type="PackedScene" uid="uid://bpqgymjuopyaf" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_logic.tscn" id="85_bg66f"]
+[ext_resource type="Resource" uid="uid://2r8pc02sljdw" path="res://assets/Flags/logic.tres" id="86_yk7c6"]
+[ext_resource type="PackedScene" uid="uid://bdnaclqn7lsjn" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_logic.tscn" id="87_g1j3u"]
+[ext_resource type="PackedScene" uid="uid://dojkxyrrnw8dp" path="res://assets/VFX/Generic/Seals/effect_particle_seal_expire_action.tscn" id="88_sob6k"]
+[ext_resource type="Resource" uid="uid://nqfhikjvrftp" path="res://assets/Flags/action.tres" id="89_1uqpt"]
+[ext_resource type="PackedScene" uid="uid://be5kkww4cwcja" path="res://assets/VFX/Generic/Seals/effect_particle_seal_activate_action.tscn" id="90_83thh"]
 
 [sub_resource type="Gradient" id="Gradient_ioy0f"]
 offsets = PackedFloat32Array(0)
@@ -528,14 +537,56 @@ wildcard = false
 script = ExtResource("6_2gp2x")
 override_turn_count = false
 turn_count = 1
-seal_effects = Array[ExtResource("7_46juf")]([ExtResource("55_0mrgk")])
+seal_effects = Array[ExtResource("7_46juf")]([])
 
 [sub_resource type="Resource" id="Resource_7t5hq"]
 script = ExtResource("37_d6s3e")
 flag = ExtResource("73_3h820")
-vfx = ExtResource("74_v7rfv")
+vfx = ExtResource("81_2a2tq")
 expire_vfx = ExtResource("72_s80p0")
 effect = SubResource("Resource_i5khm")
+wildcard = true
+
+[sub_resource type="Resource" id="Resource_g6s6a"]
+script = ExtResource("6_2gp2x")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("7_46juf")]([])
+
+[sub_resource type="Resource" id="Resource_fk64x"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("83_nen4c")
+vfx = ExtResource("84_883v0")
+expire_vfx = ExtResource("82_8w5as")
+effect = SubResource("Resource_g6s6a")
+wildcard = true
+
+[sub_resource type="Resource" id="Resource_sjjqs"]
+script = ExtResource("6_2gp2x")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("7_46juf")]([])
+
+[sub_resource type="Resource" id="Resource_64tlq"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("86_yk7c6")
+vfx = ExtResource("87_g1j3u")
+expire_vfx = ExtResource("85_bg66f")
+effect = SubResource("Resource_sjjqs")
+wildcard = true
+
+[sub_resource type="Resource" id="Resource_2jgjq"]
+script = ExtResource("6_2gp2x")
+override_turn_count = false
+turn_count = 1
+seal_effects = Array[ExtResource("7_46juf")]([])
+
+[sub_resource type="Resource" id="Resource_jalg7"]
+script = ExtResource("37_d6s3e")
+flag = ExtResource("89_1uqpt")
+vfx = ExtResource("90_83thh")
+expire_vfx = ExtResource("88_sob6k")
+effect = SubResource("Resource_2jgjq")
 wildcard = true
 
 [sub_resource type="Resource" id="Resource_krv0w"]
@@ -881,7 +932,7 @@ sequence_list = Array[ExtResource("6_6cut8")]([SubResource("Resource_kcgk4"), Su
 
 [node name="SealManager" type="Node" parent="Core"]
 script = ExtResource("19_et6o3")
-seal_vfx = Array[ExtResource("37_d6s3e")]([SubResource("Resource_ucos2"), SubResource("Resource_3tgv6"), SubResource("Resource_wx4r8"), SubResource("Resource_bhtgu"), SubResource("Resource_tc6v0"), SubResource("Resource_lv00o"), SubResource("Resource_o4qmr"), SubResource("Resource_6uqsj"), SubResource("Resource_7t5hq")])
+seal_vfx = Array[ExtResource("37_d6s3e")]([SubResource("Resource_ucos2"), SubResource("Resource_3tgv6"), SubResource("Resource_wx4r8"), SubResource("Resource_bhtgu"), SubResource("Resource_tc6v0"), SubResource("Resource_lv00o"), SubResource("Resource_o4qmr"), SubResource("Resource_6uqsj"), SubResource("Resource_7t5hq"), SubResource("Resource_fk64x"), SubResource("Resource_64tlq"), SubResource("Resource_jalg7")])
 
 [node name="BattleRewardManager" type="Node" parent="Core"]
 script = ExtResource("29_6pl1e")
