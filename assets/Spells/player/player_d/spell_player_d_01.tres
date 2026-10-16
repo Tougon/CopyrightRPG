@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=35 format=3 uid="uid://c7c5rw2e2syjj"]
+[gd_resource type="Resource" script_class="Spell" load_steps=41 format=3 uid="uid://c7c5rw2e2syjj"]
 
 [ext_resource type="Resource" uid="uid://bu3xmlm37tvn5" path="res://assets/Animations/Sequences/Spell/anim_spell_player_d_01.tres" id="1_4ykrx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_wbtxl"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_reset_turn.gd" id="14_vaejf"]
 [ext_resource type="Resource" uid="uid://dv2ldm6duvb8t" path="res://assets/Flags/red.tres" id="18_sdc5c"]
 [ext_resource type="Resource" uid="uid://nqfhikjvrftp" path="res://assets/Flags/action.tres" id="20_lw1sg"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="21_r32ja"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="22_gkwom"]
 
 [sub_resource type="Resource" id="Resource_iivt3"]
 script = ExtResource("5_i40jj")
@@ -126,6 +128,25 @@ chance = 1.0
 use_luck = false
 effect_set = Array[ExtResource("3_l4lmd")]([SubResource("Resource_bj4pn")])
 
+[sub_resource type="Resource" id="Resource_7nmmm"]
+script = ExtResource("21_r32ja")
+item_id = "throw"
+item_path = "res://assets/Audio/SFX/Spell/spell_bounce_a.ogg"
+
+[sub_resource type="Resource" id="Resource_wnhv5"]
+script = ExtResource("21_r32ja")
+item_id = "catch"
+item_path = "res://assets/Audio/SFX/Spell/spell_catch_ball.ogg"
+
+[sub_resource type="Resource" id="Resource_11y3q"]
+script = ExtResource("21_r32ja")
+item_id = "power_boost"
+item_path = "res://assets/Audio/SFX/Spell/spell_power_boost.ogg"
+
+[sub_resource type="Resource" id="Resource_mecly"]
+script = ExtResource("22_gkwom")
+entries = Array[ExtResource("21_r32ja")]([SubResource("Resource_7nmmm"), SubResource("Resource_wnhv5"), SubResource("Resource_11y3q")])
+
 [resource]
 script = ExtResource("4_k0rql")
 spell_name_key = "T_SPELL_PLAYERD_01"
@@ -146,6 +167,7 @@ show_spell_cast_ui = true
 animation_sequence = ExtResource("1_4ykrx")
 spell_videos = Array[String](["res://video/spell/video_spell_toss.ogv"])
 spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playerd_00.tres"])
+spell_sfx = SubResource("Resource_mecly")
 effects_on_hit = Array[ExtResource("1_wbtxl")]([SubResource("Resource_73aei")])
 effects_on_success = Array[ExtResource("1_wbtxl")]([])
 properties = Array[ExtResource("3_qdin7")]([])

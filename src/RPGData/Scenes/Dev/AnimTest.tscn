@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://7qsl1jry533n"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Dev/anim_test.gd" id="1_85p7n"]
-[ext_resource type="Resource" uid="uid://24judeqcy264" path="res://assets/Spells/player/player_c/spell_player_c_01.tres" id="2_hvcue"]
+[ext_resource type="Resource" uid="uid://c7c5rw2e2syjj" path="res://assets/Spells/player/player_d/spell_player_d_01.tres" id="2_44cdi"]
 [ext_resource type="PackedScene" uid="uid://4k3478vr4ljh" path="res://src/RPGData/Scenes/UI/Battle/battle_bg_video_canvas.tscn" id="2_vcsph"]
 [ext_resource type="PackedScene" uid="uid://ca6d0l8ch43v4" path="res://src/RPGData/Scenes/Entity/PlayerController.tscn" id="3_3d4mq"]
 [ext_resource type="Resource" uid="uid://8i7hybweexe0" path="res://assets/Entities/Player/player_c.tres" id="3_ecwdg"]
@@ -13,7 +13,7 @@
 [node name="Animation Test" type="Node2D" node_paths=PackedStringArray("entity_controllers")]
 position = Vector2(0, 40)
 script = ExtResource("1_85p7n")
-animation = ExtResource("2_hvcue")
+animation = ExtResource("2_44cdi")
 dummy_player = ExtResource("3_ecwdg")
 dummy_enemy = ExtResource("4_j0j3p")
 entity_controllers = [NodePath("Entities/Players/P1"), NodePath("Entities/Enemies/E1"), NodePath("Entities/Enemies/E2"), NodePath("Entities/Enemies/E3"), NodePath("Entities/Players/P2")]
