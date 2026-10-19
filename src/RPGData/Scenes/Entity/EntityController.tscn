@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_u887t"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Entity/EntityController.gd" id="2_cc50b"]
-[ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/slime.tres" id="3_d0a8t"]
+[ext_resource type="Resource" uid="uid://djwxcq2chyp3s" path="res://assets/Entities/Enemies/slime.tres" id="3_d0a8t"]
 [ext_resource type="Resource" uid="uid://ccrswqdtjja0y" path="res://assets/Animations/Sequences/Common/anim_common_dodge.tres" id="4_gkqeo"]
 [ext_resource type="Script" path="res://src/ClickableSprite/ClickableSprite2D.gd" id="4_l5njq"]
 [ext_resource type="Resource" uid="uid://hsj4yrvafyg6" path="res://assets/Animations/Sequences/Common/anim_common_defeat.tres" id="4_wvte6"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxjc5agoy8am1"
-path="res://.godot/imported/slime_earth_n_neutral.png-f227de12aaba372f0349e5c39d850e8b.ctex"
+uid="uid://bjx0wrgey13ye"
+path="res://.godot/imported/fume_neutral.png-93efe2023fa793cd0508e2ef8a332896.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Entities/Slime Earth/slime_earth_n_neutral.png"
-dest_files=["res://.godot/imported/slime_earth_n_neutral.png-f227de12aaba372f0349e5c39d850e8b.ctex"]
+source_file="res://assets/Sprites/Entities/Fume/fume_neutral.png"
+dest_files=["res://.godot/imported/fume_neutral.png-93efe2023fa793cd0508e2ef8a332896.ctex"]
 
 [params]
 

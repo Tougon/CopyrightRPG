@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=3 uid="uid://drqpg4ss303dj"]
+[gd_scene load_steps=189 format=3 uid="uid://drqpg4ss303dj"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/overworld_main_menu.gd" id="1_ywfua"]
 [ext_resource type="Script" path="res://addons/toui/src/tween_player_ui.gd" id="2_fajv7"]
@@ -63,6 +63,7 @@
 [ext_resource type="Material" uid="uid://e6glciclsn3r" path="res://assets/Materials/UI/ui_dotmatrix_overlay.tres" id="47_crvdl"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/Inventory/main_menu_inventory_item_drop_panel.gd" id="47_txais"]
 [ext_resource type="PackedScene" uid="uid://7qsl1jry533n" path="res://src/RPGData/Scenes/Dev/AnimTest.tscn" id="49_f8vu0"]
+[ext_resource type="Resource" uid="uid://bk524bgt05rbw" path="res://assets/Entities/dummy_slime.tres" id="50_sqq0e"]
 [ext_resource type="Theme" uid="uid://bthkn0f61scro" path="res://assets/Themes/Theme_UI_Slider.tres" id="55_ejuht"]
 [ext_resource type="Texture2D" uid="uid://47pal57libj7" path="res://assets/Sprites/UI/MainMenu/ui_menumain_border.png" id="57_8u8yy"]
 
@@ -3202,6 +3203,7 @@ render_target_update_mode = 4
 
 [node name="Animation Test" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport" instance=ExtResource("49_f8vu0")]
 animation = null
+dummy_enemy = ExtResource("50_sqq0e")
 isolated_scene = false
 
 [node name="Entity Info Battle" parent="Body/Party/Entity Move Select Area/BG/Move Select Items/Move Visuals/Vid/SubViewportContainer/SubViewport/Animation Test/Entities/Players/P1" index="3"]
