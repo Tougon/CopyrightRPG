@@ -211,7 +211,7 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_5m487"]
 script = ExtResource("17_4k6pv")
-primary_enemy = 5
+primary_enemy = 4
 odds = 1.0
 can_flee = true
 ignore_flee_mechanics = false

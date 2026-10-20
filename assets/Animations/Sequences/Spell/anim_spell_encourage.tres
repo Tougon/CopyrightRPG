@@ -1,0 +1,155 @@
+[gd_resource type="Resource" script_class="AnimationSequenceObject" load_steps=28 format=3 uid="uid://cew5u3n3brexp"]
+
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_frame.gd" id="1_pgooy"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/change_background.gd" id="2_3xpg7"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/shake.gd" id="3_avkho"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/tween.gd" id="5_iv3re"]
+[ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="6_20ld7"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/terminate_animation.gd" id="9_shlp7"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/begin_on_success.gd" id="10_m6fgn"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/Actions/end_on_success.gd" id="11_g3h1r"]
+[ext_resource type="Script" path="res://src/AnimationSequence/Scripts/animation_sequence_object.gd" id="14_j4v5c"]
+
+[sub_resource type="Resource" id="Resource_7y4ed"]
+script = ExtResource("2_3xpg7")
+reset_bg = false
+index = 0
+mode = 0
+use_palette = true
+palette_fade_time = 0.1
+
+[sub_resource type="Resource" id="Resource_0e3ch"]
+script = ExtResource("1_pgooy")
+frame = 1
+frame_order = 0
+action = SubResource("Resource_7y4ed")
+
+[sub_resource type="Resource" id="Resource_5eru2"]
+script = ExtResource("3_avkho")
+target = 0
+effect_index = 0
+duration = 0.25
+vibration_speed = 50.0
+strength = Vector2(15, 0)
+transition_type = 4
+ease_type = 2
+decay_factor = 0.5
+
+[sub_resource type="Resource" id="Resource_x8ftg"]
+script = ExtResource("1_pgooy")
+frame = 12
+frame_order = 0
+action = SubResource("Resource_5eru2")
+
+[sub_resource type="Resource" id="Resource_4ugq7"]
+script = ExtResource("10_m6fgn")
+check_hit_instead = false
+
+[sub_resource type="Resource" id="Resource_maha3"]
+script = ExtResource("1_pgooy")
+frame = 55
+frame_order = 0
+action = SubResource("Resource_4ugq7")
+
+[sub_resource type="Resource" id="Resource_wntbl"]
+script = ExtResource("6_20ld7")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.25
+delay = 0.0
+transition = 4
+ease = 1
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, -50)
+
+[sub_resource type="Resource" id="Resource_apevd"]
+script = ExtResource("5_iv3re")
+use_directionality = false
+target = 1
+effect_index = 0
+tween = SubResource("Resource_wntbl")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_tvt42"]
+script = ExtResource("1_pgooy")
+frame = 55
+frame_order = 1
+action = SubResource("Resource_apevd")
+
+[sub_resource type="Resource" id="Resource_78x7b"]
+script = ExtResource("6_20ld7")
+target = "Sprite2D"
+property_name = "position"
+material_property = false
+duration = 0.25
+delay = 0.26
+transition = 4
+ease = 0
+relative = true
+"Use From" = false
+"Value Type" = 3
+"Vector2 Value" = Vector2(0, 50)
+
+[sub_resource type="Resource" id="Resource_gn0bf"]
+script = ExtResource("5_iv3re")
+use_directionality = false
+target = 1
+effect_index = 0
+tween = SubResource("Resource_78x7b")
+override_defeated = false
+relative_to_object = false
+relative_object_type = 0
+relative_effect_index = 0
+relative_amount = 1.0
+
+[sub_resource type="Resource" id="Resource_cexpw"]
+script = ExtResource("1_pgooy")
+frame = 55
+frame_order = 2
+action = SubResource("Resource_gn0bf")
+
+[sub_resource type="Resource" id="Resource_xy0yd"]
+script = ExtResource("11_g3h1r")
+check_hit_instead = false
+
+[sub_resource type="Resource" id="Resource_i5p5f"]
+script = ExtResource("1_pgooy")
+frame = 56
+frame_order = 0
+action = SubResource("Resource_xy0yd")
+
+[sub_resource type="Resource" id="Resource_k6glm"]
+script = ExtResource("2_3xpg7")
+reset_bg = true
+index = 0
+mode = 0
+use_palette = true
+palette_fade_time = 0.2
+
+[sub_resource type="Resource" id="Resource_85olx"]
+script = ExtResource("1_pgooy")
+frame = 80
+frame_order = 0
+action = SubResource("Resource_k6glm")
+
+[sub_resource type="Resource" id="Resource_7gswb"]
+script = ExtResource("9_shlp7")
+
+[sub_resource type="Resource" id="Resource_1xq16"]
+script = ExtResource("1_pgooy")
+frame = 96
+frame_order = 0
+action = SubResource("Resource_7gswb")
+
+[resource]
+script = ExtResource("14_j4v5c")
+animation_name = "Encourage"
+hide_ui_on_start = true
+animation_sequence = Array[ExtResource("1_pgooy")]([SubResource("Resource_0e3ch"), SubResource("Resource_x8ftg"), SubResource("Resource_maha3"), SubResource("Resource_tvt42"), SubResource("Resource_cexpw"), SubResource("Resource_i5p5f"), SubResource("Resource_85olx"), SubResource("Resource_1xq16")])

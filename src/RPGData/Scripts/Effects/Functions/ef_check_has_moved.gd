@@ -13,6 +13,11 @@ func execute(instance : EffectInstance):
 	
 	if entity.is_defeated :
 		instance.cast_success = false;
+		return;
+	
+	if BattleScene.Instance == null || BattleScene.Instance.turn_order == null :
+		instance.cast_success = false;
+		return;
 	
 	if negate : 
 		instance.cast_success = BattleScene.Instance.turn_order.has(entity);
