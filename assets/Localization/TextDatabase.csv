@@ -214,7 +214,7 @@ T_CAST_STATUS_ENEMY_SLIME_DUPLICATE,{article_def}{entity} duplicates!,,
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_BIGHIT,{article_def}{entity} charges full throttle!,,
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_SPREAD,{article_def}{entity} makes the earth shake!,,
 
-T_CAST_DAMAGE_ENEMY_FUME_ATTACK,{article_def}{entity} releases fumes!,,
+T_CAST_DAMAGE_ENEMY_FUME_ATTACK,{article_def}{entity} does a thing!,,
 T_CAST_DAMAGE_ENEMY_FUME_SPREAD,{article_def}{entity} engulfs the party in a cloud of fumes!,,
 
 T_CAST_DAMAGE_ENEMY_MINDFREAK_ESCAPE_01,{article_def}{entity} conjures a stampede of bulls!,,

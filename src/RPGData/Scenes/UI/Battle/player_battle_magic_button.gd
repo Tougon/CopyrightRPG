@@ -7,6 +7,9 @@ var sealing : bool;
 @onready var text_label : Label = $"Label";
 @onready var mp_label : Label = $"MP Label";
 @onready var flag_group : FlagIconGroup = $"Flag Icon Group";
+@onready var kind_icon : TextureRect = $"Kind";
+
+@export var move_kind_icons : Array[Texture2D];
 
 var _cost : int;
 
@@ -19,6 +22,14 @@ func init_button(_action : Spell, _entity : EntityController):
 	text_label.text = action.spell_name_key;
 	mp_label.text = str(_action.spell_cost) + tr("T_MP");
 	flag_group.display_flags(action.spell_flags);
+	
+	var kind = action.spell_kind;
+	
+	if kind != null :
+		if kind.flag_name_key.contains("art") : kind_icon.texture = move_kind_icons[0];
+		elif kind.flag_name_key.contains("science") : kind_icon.texture = move_kind_icons[1];
+		elif kind.flag_name_key.contains("logic") : kind_icon.texture = move_kind_icons[2];
+		elif kind.flag_name_key.contains("action") : kind_icon.texture = move_kind_icons[3];
 	
 	theme_type_variation = "Button";
 	sealing = false;

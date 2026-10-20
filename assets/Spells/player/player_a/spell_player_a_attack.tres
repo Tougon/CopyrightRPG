@@ -12,7 +12,7 @@
 [sub_resource type="Resource" id="Resource_sgkp1"]
 script = ExtResource("7_g6imi")
 item_id = "swing_a"
-item_path = "res://assets/Audio/SFX/Spell/spell_hihat_open.ogg"
+item_path = "res://assets/Audio/SFX/Spell/spell_stickclack.ogg"
 
 [sub_resource type="Resource" id="Resource_8tgd0"]
 script = ExtResource("8_hyq7f")

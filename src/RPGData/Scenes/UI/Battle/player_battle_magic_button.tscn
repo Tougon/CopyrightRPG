@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5tiyavs087su"]
+[gd_scene load_steps=10 format=3 uid="uid://b5tiyavs087su"]
 
 [ext_resource type="Theme" uid="uid://ujjia2gxvnn6" path="res://assets/Themes/Theme_NewsTicker.tres" id="1_5kehl"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Battle/player_battle_magic_button.gd" id="2_4etfd"]
 [ext_resource type="Material" uid="uid://bi4v6dqdvd5ha" path="res://assets/Materials/UI/ui_text_blur_small.tres" id="3_lblmd"]
+[ext_resource type="Texture2D" uid="uid://bh33e1upy6q10" path="res://assets/Sprites/UI/Status/ui_kind_science.png" id="4_uh6nf"]
 [ext_resource type="Script" path="res://src/UIComponents/ButtonLabel.gd" id="4_w303o"]
+[ext_resource type="Texture2D" uid="uid://1f5na2ohgcl3" path="res://assets/Sprites/UI/Status/ui_kind_logic.png" id="5_lssnh"]
 [ext_resource type="PackedScene" uid="uid://cvtwqud6keh3w" path="res://src/RPGData/Scenes/UI/flag_icon_group.tscn" id="5_r5xwg"]
+[ext_resource type="Texture2D" uid="uid://crnp0iakuj63t" path="res://assets/Sprites/UI/Status/ui_kind_action.png" id="6_abe7a"]
+[ext_resource type="Texture2D" uid="uid://ypl4tr524rhb" path="res://assets/Sprites/UI/Status/ui_kind_art.png" id="6_d81w0"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(296, 60)
@@ -14,6 +18,7 @@ theme = ExtResource("1_5kehl")
 theme_override_font_sizes/font_size = 24
 clip_text = true
 script = ExtResource("2_4etfd")
+move_kind_icons = Array[Texture2D]([ExtResource("6_d81w0"), ExtResource("4_uh6nf"), ExtResource("5_lssnh"), ExtResource("6_abe7a")])
 
 [node name="Label" type="Label" parent="."]
 material = ExtResource("3_lblmd")
@@ -60,12 +65,25 @@ override_pressed = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
-offset_left = 21.0
+offset_left = 41.0
 offset_top = -23.0
-offset_right = -66.0
+offset_right = -46.0
 offset_bottom = -5.0
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
+
+[node name="Kind" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -26.0
+offset_right = 34.0
+offset_bottom = -8.0
+grow_vertical = 0
+texture = ExtResource("6_d81w0")
+expand_mode = 1
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
