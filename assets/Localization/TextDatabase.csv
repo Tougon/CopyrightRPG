@@ -215,7 +215,7 @@ T_CAST_DAMAGE_ENEMY_SUPERSLIME_BIGHIT,{article_def}{entity} charges full throttl
 T_CAST_DAMAGE_ENEMY_SUPERSLIME_SPREAD,{article_def}{entity} makes the earth shake!,,
 
 T_CAST_DAMAGE_ENEMY_FUME_ATTACK,{article_def}{entity} releases fumes!,,
-T_CAST_DAMAGE_ENEMY_FUME_SPREAD,{article_def}{entity} engulfs the party!,,
+T_CAST_DAMAGE_ENEMY_FUME_SPREAD,{article_def}{entity} engulfs the party in a cloud of fumes!,,
 
 T_CAST_DAMAGE_ENEMY_MINDFREAK_ESCAPE_01,{article_def}{entity} conjures a stampede of bulls!,,
 T_CAST_DAMAGE_ENEMY_MINDFREAK_ESCAPE_02,{article_def}{entity} conjures a steamroller!,,
@@ -527,15 +527,6 @@ T_ITEM_DESCRIPTION_TEMP,Placeholder description. Need something to test fonts an
 T_ITEM_DESCRIPTION_DROP_CONFIRM,Are you sure?,,
 T_ITEM_DESCRIPTION_USE_ITEM,Who will use this item?,,
 T_ITEM_DESCRIPTION_NO_EFFECT,It won't have any effect.,,
-
-T_ITEM_ACCESSORY_A00,Treasured Token,,
-T_ITEM_ACCESSORY_A00_DESC,"A token that reminds you of the strength to smash anything in your path.",,
-T_ITEM_ACCESSORY_B00,Treasured Token,,
-T_ITEM_ACCESSORY_B00_DESC,"A token that reminds you of the inner magic within your soul.",,
-T_ITEM_ACCESSORY_C00,Treasured Token,,
-T_ITEM_ACCESSORY_C00_DESC,"A token that reminds you of the will to stand up to anything.",,
-T_ITEM_ACCESSORY_D00,Treasured Token,,
-T_ITEM_ACCESSORY_D00_DESC,"A token that reminds you of the speed to keep moving onward.",,
 
 T_ITEM_ARMOR_BLUEVEST,Blue Vest,,
 T_ITEM_ARMOR_BLUEVEST_DESC,"Business casual appropriate clothing. Offers minimal protection.",,

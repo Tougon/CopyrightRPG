@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b42b65hpv41b8"]
 
 [ext_resource type="PackedScene" uid="uid://cog3vibpn621y" path="res://src/RPGData/Scenes/Entity/EntitySprite.tscn" id="1_whvu5"]
-[ext_resource type="Texture2D" uid="uid://5aryfr6w2cee" path="res://assets/Sprites/Effects/Generic/slash.png" id="2_weqn5"]
+[ext_resource type="Texture2D" uid="uid://bwwlbp1jktsps" path="res://assets/Sprites/Effects/Generic/impact.png" id="2_wbx76"]
 
 [sub_resource type="Animation" id="Animation_fe8a7"]
 resource_name = "slash"
@@ -28,8 +28,8 @@ _data = {
 [node name="EffectBase" instance=ExtResource("1_whvu5")]
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_weqn5")
-hframes = 6
+texture = ExtResource("2_wbx76")
+hframes = 5
 frame = 4
 
 [node name="AnimationPlayer" parent="." index="2"]
