@@ -147,6 +147,7 @@ T_CAST_STATUS_COMMON_RAMBLE,{article_def}{entity} begins lecturing!,,
 T_CAST_STATUS_COMMON_SPITPOISON,{article_def}{entity} insults {target}!,,
 T_CAST_STATUS_COMMON_TENSE,{article_def}{entity} tenses up!,,
 T_CAST_STATUS_COMMON_WEARDOWN,{article_def}{entity} lets their mind wander!,,
+T_CAST_STATUS_COMMON_ENCOURAGE,{article_def}{entity} encourages {target}!,,
 
 T_CAST_GENERIC_PARTYWIPE,{article_def}{entity} wipes the party!,,
 
@@ -453,6 +454,9 @@ T_EFFECT_CHOBBLIN_ATTACK_ACTIVATE,[color=FFFF00]It's Super Effective![/color],,
 T_EFFECT_ROTTEDPLANT_BIND_ACTIVATE,{t_article_def}{t_entity}'s movement is restricted!,,
 T_EFFECT_ROTTEDPLANT_BIND_DEACTIVATE,{article_def}{entity} releases {t_article_def}{t_entity}!,,
 
+T_EFFECT_ENCOURAGE_SUCCESS,{t_article_def}{t_entity} feels motivated!,,
+T_EFFECT_ENCOURAGE_FAILURE,{t_article_def}{t_entity} is unmoved!,,
+
 T_ENTITY_ALL,All,,
 T_ENTITY_CABLESNAKE,Cablesnake,,
 T_ENTITY_CABLESNAKE_PLURAL,Cablesnakes,,
@@ -626,6 +630,9 @@ T_SPELL_GENERIC_WEARDOWN,Stare Down,,
 T_SPELL_GENERIC_WEARDOWN_DESC,"Stare into space, catching a target off guard and lowering their attack power.",,
 T_SPELL_GENERIC_WICKEDSLASH,Wicked Slash,,
 T_SPELL_GENERIC_WICKEDSLASH_DESC,Strike a pose and unleash your secret technique. Has a high chance to deal critical damage.,,
+
+T_SPELL_GENERIC_ENCOURAGE,Encourage,,
+T_SPELL_GENERIC_ENCOURAGE_DESC,"Do your best to boost an ally's spirits. Has a chance of making them move next, ignoring speed.",,
 
 T_SPELL_PLAYERA_01,Beat,,
 T_SPELL_PLAYERA_01_DESC,Clack your sticks to create a simple repetitive rhythm. Can deal high damage but tends to miss.,,

@@ -60,6 +60,9 @@ var is_identified : bool = false;
 var can_heal : bool = true;
 var can_cast : bool = true;
 
+var override_priority : bool = false;
+var override_priority_value : int = 0;
+
 var turn_number : int;
 
 var current_hp : int;
@@ -834,8 +837,14 @@ static func compare_speed (a : EntityController, b : EntityController) -> bool:
 	if a.current_action != null:
 		priority_a = a.current_action.spell_priority;
 	
+	if a.override_priority :
+		priority_a = a.override_priority_value;
+	
 	if b.current_action != null:
 		priority_b = b.current_action.spell_priority;
+	
+	if b.override_priority :
+		priority_b = b.override_priority_value;
 	
 	if priority_a > priority_b:
 		return true;

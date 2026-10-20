@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemDatabase" load_steps=15 format=3 uid="uid://dicsdl1lvm1rp"]
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=16 format=3 uid="uid://dicsdl1lvm1rp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database_entry.gd" id="1_pxlfu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database.gd" id="2_ruhu0"]
@@ -63,6 +63,11 @@ script = ExtResource("1_pxlfu")
 id = 30
 item_path = "res://assets/Items/Equipment Items/Accessories/item_accessory_d00.tres"
 
+[sub_resource type="Resource" id="Resource_rte77"]
+script = ExtResource("1_pxlfu")
+id = 0
+item_path = "res://assets/Items/Move Items/item_move_encourage.tres"
+
 [resource]
 script = ExtResource("2_ruhu0")
-entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_k21v0"), SubResource("Resource_gd6mg"), SubResource("Resource_u6uld"), SubResource("Resource_vvtin"), SubResource("Resource_avjkb"), SubResource("Resource_vx1p3"), SubResource("Resource_r2ews"), SubResource("Resource_l1xn2"), SubResource("Resource_4ntpo"), SubResource("Resource_putae"), SubResource("Resource_jp168"), SubResource("Resource_2pta0")])
+entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_k21v0"), SubResource("Resource_gd6mg"), SubResource("Resource_u6uld"), SubResource("Resource_vvtin"), SubResource("Resource_avjkb"), SubResource("Resource_vx1p3"), SubResource("Resource_r2ews"), SubResource("Resource_l1xn2"), SubResource("Resource_4ntpo"), SubResource("Resource_putae"), SubResource("Resource_jp168"), SubResource("Resource_2pta0"), SubResource("Resource_rte77")])

@@ -18,8 +18,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Sealing/seal_effect_group.gd" id="10_v2va6"]
 [ext_resource type="Resource" uid="uid://cbcl1iw6wihe2" path="res://assets/Spells/player/player_a/spell_player_a_06.tres" id="11_agst1"]
 [ext_resource type="Resource" uid="uid://bxdb2dctqev1v" path="res://assets/Spells/player/player_a/spell_player_a_07.tres" id="12_ap78w"]
-[ext_resource type="Resource" uid="uid://dfcemb2bstofd" path="res://assets/Spells/player/player_b/spell_player_b_02.tres" id="12_fheyq"]
 [ext_resource type="Resource" uid="uid://24judeqcy264" path="res://assets/Spells/player/player_c/spell_player_c_01.tres" id="13_bg3ak"]
+[ext_resource type="Resource" uid="uid://4cofuq7e56bv" path="res://assets/Spells/common/spell_common_encourage.tres" id="13_g7bwh"]
 [ext_resource type="Resource" uid="uid://c7c5rw2e2syjj" path="res://assets/Spells/player/player_d/spell_player_d_01.tres" id="14_eblm6"]
 
 [sub_resource type="Resource" id="Resource_4w176"]
@@ -57,7 +57,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_o1ebh"]
 script = ExtResource("5_fxx2f")
-spell = ExtResource("12_fheyq")
+spell = ExtResource("13_g7bwh")
 level = 50
 
 [sub_resource type="Resource" id="Resource_he5kb"]

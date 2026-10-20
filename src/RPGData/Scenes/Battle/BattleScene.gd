@@ -19,6 +19,7 @@ var enemy_type_count : Dictionary;
 var turn_number : int;
 var times_spawned_extra : int;
 var current_player_index : int;
+var turn_order : Array[EntityController];
 
 var defeated_enemies : Array[DefeatedEntity];
 var player_item_delta : Dictionary;
@@ -194,6 +195,7 @@ func _begin_turn():
 		entity.allies.clear();
 		entity.enemies.clear();
 		entity.turn_number += 1;
+		entity.override_priority = false;
 		entity.is_ready = false;
 		entity.reset_action();
 		entity.turn_seed = randf();
@@ -279,7 +281,7 @@ func _decision_phase():
 
 func _action_phase():
 	EventManager.set_player_bg.emit(_default_entity);
-	var turn_order : Array[EntityController];
+	turn_order.clear();
 	
 	for entity in entities:
 		entity.action_replaced = false;

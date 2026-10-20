@@ -41,14 +41,15 @@ negate = true
 [sub_resource type="Resource" id="Resource_81s62"]
 script = ExtResource("7_mfplj")
 move_id = 1
-check_player_side = true
-chance_if_sealed = 1.0
-weigh_seal_count = false
-caution_threshold = 0
+check_player_side = null
+ignore_kind = null
+chance_if_sealed = null
+weigh_seal_count = null
+caution_threshold = null
 weight = SubResource("Curve_7fdgr")
 result_if_zero = false
-check_target = 0
-negate = false
+check_target = null
+negate = null
 
 [sub_resource type="Resource" id="Resource_4c8t3"]
 script = ExtResource("6_mo1jm")

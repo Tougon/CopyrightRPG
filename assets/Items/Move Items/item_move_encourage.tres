@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MoveItem" load_steps=4 format=3 uid="uid://cttdcqsie8n1v"]
+
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="1_7elk2"]
+[ext_resource type="Resource" uid="uid://4cofuq7e56bv" path="res://assets/Spells/common/spell_common_encourage.tres" id="2_f4ot1"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Items/move_item.gd" id="3_7t3md"]
+
+[resource]
+script = ExtResource("3_7t3md")
+move = ExtResource("2_f4ot1")
+only_one = true
+item_name_key = ""
+item_description_key = ""
+item_icon_path = ""
+item_flags = Array[ExtResource("1_7elk2")]([])
+item_cost = 0
+item_sellable = false
+item_sell_amount = 0

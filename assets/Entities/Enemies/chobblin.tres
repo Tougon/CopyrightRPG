@@ -57,6 +57,7 @@ negate = false
 script = ExtResource("9_57mpx")
 move_id = 5
 check_player_side = true
+ignore_kind = false
 chance_if_sealed = 1.0
 weigh_seal_count = false
 caution_threshold = 0

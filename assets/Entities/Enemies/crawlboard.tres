@@ -34,6 +34,7 @@ growth = SubResource("Curve_fuvhy")
 script = ExtResource("7_8xmvi")
 move_id = 0
 check_player_side = true
+ignore_kind = false
 chance_if_sealed = 1.0
 weigh_seal_count = false
 caution_threshold = 0

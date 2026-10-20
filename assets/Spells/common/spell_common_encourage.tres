@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=21 format=3 uid="uid://4cofuq7e56bv"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="1_7p80x"]
+[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_vt5dy"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="2_0g4nq"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_chance.gd" id="2_335u5"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="3_7strh"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="3_0887i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_check_has_moved.gd" id="4_pnicj"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/spell.gd" id="4_r4827"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_send_dialogue.gd" id="5_gs8j0"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_kqqve"]
+[ext_resource type="Resource" uid="uid://cthcghibu3qe4" path="res://assets/Flags/yellow.tres" id="6_lm87n"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_change_priority.gd" id="6_wb0ur"]
+[ext_resource type="Resource" uid="uid://2r8pc02sljdw" path="res://assets/Flags/logic.tres" id="7_fhaos"]
+
+[sub_resource type="Resource" id="Resource_ailvn"]
+script = ExtResource("4_pnicj")
+target = 1
+negate = true
+
+[sub_resource type="Resource" id="Resource_08mms"]
+script = ExtResource("5_gs8j0")
+dialogue_key = "T_EFFECT_ENCOURAGE_SUCCESS"
+
+[sub_resource type="Resource" id="Resource_gpgqg"]
+script = ExtResource("6_wb0ur")
+target = 1
+amount = 5
+
+[sub_resource type="Resource" id="Resource_rt8io"]
+script = ExtResource("5_gs8j0")
+dialogue_key = "T_EFFECT_ENCOURAGE_FAILURE"
+
+[sub_resource type="Resource" id="Resource_0mtcg"]
+script = ExtResource("3_0887i")
+stackable = false
+effect_name = "Encourage"
+include_user_in_name = false
+generic = false
+repeatable = false
+priority = 3
+turn_limit = 1
+effect_type = 0
+check_success_type = 0
+check_success = Array[ExtResource("3_7strh")]([SubResource("Resource_ailvn")])
+check_remain_active_type = 0
+check_remain_active = Array[ExtResource("3_7strh")]([])
+on_activate = Array[ExtResource("3_7strh")]([SubResource("Resource_08mms"), SubResource("Resource_gpgqg")])
+on_failed_to_activate = Array[ExtResource("3_7strh")]([SubResource("Resource_rt8io")])
+on_apply = Array[ExtResource("3_7strh")]([])
+on_move_selected = Array[ExtResource("3_7strh")]([])
+on_move_completed = Array[ExtResource("3_7strh")]([])
+on_deactivate = Array[ExtResource("3_7strh")]([])
+on_turn_start = Array[ExtResource("3_7strh")]([])
+on_turn_end = Array[ExtResource("3_7strh")]([])
+on_stack = Array[ExtResource("3_7strh")]([])
+
+[sub_resource type="Resource" id="Resource_1wwvf"]
+script = ExtResource("2_335u5")
+chance = 0.5
+effect = SubResource("Resource_0mtcg")
+use_luck = true
+
+[sub_resource type="Resource" id="Resource_rga7u"]
+script = ExtResource("1_7p80x")
+chance = 1.0
+use_luck = false
+effect_set = Array[ExtResource("2_335u5")]([SubResource("Resource_1wwvf")])
+
+[resource]
+script = ExtResource("4_r4827")
+spell_name_key = "T_SPELL_GENERIC_ENCOURAGE"
+spell_description_key = "T_SPELL_GENERIC_ENCOURAGE_DESC"
+spell_cast_message_key = "T_CAST_STATUS_COMMON_ENCOURAGE"
+spell_type = 3
+spell_target = 5
+ignore_self = true
+target_defeated_entities = false
+spell_cost = 6
+spell_priority = 0
+spell_flags = Array[ExtResource("5_kqqve")]([ExtResource("6_lm87n")])
+spell_kind = ExtResource("7_fhaos")
+ignore_seals = false
+is_learnable = true
+will_save_as_prev = true
+show_spell_cast_ui = true
+animation_sequence = ExtResource("1_vt5dy")
+spell_videos = Array[String](["res://video/spell/video_spell_encourage.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/Entity/Player/entity_playera_00.tres"])
+effects_on_hit = Array[ExtResource("1_7p80x")]([SubResource("Resource_rga7u")])
+effects_on_success = Array[ExtResource("1_7p80x")]([])
+properties = Array[ExtResource("3_0887i")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("2_0g4nq")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("2_0g4nq")]([])
+final = true

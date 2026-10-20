@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://ds4st0kbjsnl3"]
 
-[ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_s8bgb"]
+[ext_resource type="Resource" uid="uid://djqe8wytw8h5h" path="res://assets/Animations/Sequences/Spell/anim_spell_fume_spread.tres" id="1_5wdmj"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_sn4yc"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_a2ow8"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_vwvk3"]
@@ -56,9 +56,9 @@ ignore_seals = false
 is_learnable = false
 will_save_as_prev = true
 show_spell_cast_ui = false
-animation_sequence = ExtResource("1_s8bgb")
-spell_videos = Array[String]([])
-spell_video_materials = Array[String]([])
+animation_sequence = ExtResource("1_5wdmj")
+spell_videos = Array[String](["res://video/spell/video_spell_fume_spread.ogv"])
+spell_video_materials = Array[String](["res://assets/Materials/VideoMaterials/lovely_00.tres"])
 effects_on_hit = Array[ExtResource("2_sn4yc")]([])
 effects_on_success = Array[ExtResource("2_sn4yc")]([])
 properties = Array[ExtResource("4_vwvk3")]([])
