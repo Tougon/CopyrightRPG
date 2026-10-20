@@ -4,17 +4,18 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_function.gd" id="2_avnst"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="2_m68ru"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/equipment_item.gd" id="3_38d7y"]
-[ext_resource type="Resource" uid="uid://dbd0m0jyiphjx" path="res://assets/Spells/core/spell_core_attack.tres" id="3_ogy2f"]
+[ext_resource type="Resource" uid="uid://db2ai7xe0au47" path="res://assets/Spells/player/player_b/spell_player_b_attack.tres" id="3_my3cx"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/Functions/ef_replace_default_attack.gd" id="4_xx5le"]
 
 [sub_resource type="Resource" id="Resource_h8l25"]
 script = ExtResource("4_xx5le")
-action = ExtResource("3_ogy2f")
+action = ExtResource("3_my3cx")
 
 [sub_resource type="Resource" id="Resource_yb4fb"]
 script = ExtResource("1_wtmjo")
 stackable = false
 effect_name = ""
+include_user_in_name = false
 generic = false
 repeatable = false
 priority = 3

@@ -51,7 +51,7 @@ func _load_aux_audio(group : AudioGroup):
 	for item in audio_bank.keys():
 		if _aux_audio_bank.has(item) :
 			if _aux_audio_bank[item] != audio_bank[item]:
-				print("ERROR: Duplicate key " + str(item) + ". Loading of value in " + group.name + " skipped.")
+				print("ERROR: Duplicate key " + str(item) + ". Loading of value skipped.")
 			continue;
 		
 		_aux_audio_bank[item] = audio_bank[item];

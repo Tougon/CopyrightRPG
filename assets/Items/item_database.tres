@@ -1,102 +1,7 @@
-[gd_resource type="Resource" script_class="ItemDatabase" load_steps=34 format=3 uid="uid://dicsdl1lvm1rp"]
+[gd_resource type="Resource" script_class="ItemDatabase" load_steps=15 format=3 uid="uid://dicsdl1lvm1rp"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database_entry.gd" id="1_pxlfu"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Items/item_database.gd" id="2_ruhu0"]
-
-[sub_resource type="Resource" id="Resource_ib77x"]
-script = ExtResource("1_pxlfu")
-id = 2
-item_path = "res://assets/Items/test item d.tres"
-
-[sub_resource type="Resource" id="Resource_t1kap"]
-script = ExtResource("1_pxlfu")
-id = 3
-item_path = "res://assets/Items/test item a.tres"
-
-[sub_resource type="Resource" id="Resource_mojte"]
-script = ExtResource("1_pxlfu")
-id = 4
-item_path = "res://assets/Items/test item h.tres"
-
-[sub_resource type="Resource" id="Resource_ddi35"]
-script = ExtResource("1_pxlfu")
-id = 8
-item_path = "res://assets/Items/test item e.tres"
-
-[sub_resource type="Resource" id="Resource_6d5lo"]
-script = ExtResource("1_pxlfu")
-id = 6
-item_path = "res://assets/Items/test item c.tres"
-
-[sub_resource type="Resource" id="Resource_15f7p"]
-script = ExtResource("1_pxlfu")
-id = 7
-item_path = "res://assets/Items/Move Items/item_move_crash.tres"
-
-[sub_resource type="Resource" id="Resource_kbd6t"]
-script = ExtResource("1_pxlfu")
-id = 9
-item_path = "res://assets/Items/Move Items/item_move_ramble.tres"
-
-[sub_resource type="Resource" id="Resource_kg12u"]
-script = ExtResource("1_pxlfu")
-id = 10
-item_path = "res://assets/Items/Move Items/item_move_triattack.tres"
-
-[sub_resource type="Resource" id="Resource_0710e"]
-script = ExtResource("1_pxlfu")
-id = 11
-item_path = "res://assets/Items/Move Items/item_move_tense.tres"
-
-[sub_resource type="Resource" id="Resource_gj8rl"]
-script = ExtResource("1_pxlfu")
-id = 12
-item_path = "res://assets/Items/Move Items/item_move_wickedslice.tres"
-
-[sub_resource type="Resource" id="Resource_leynn"]
-script = ExtResource("1_pxlfu")
-id = 13
-item_path = "res://assets/Items/Move Items/item_move_inferno.tres"
-
-[sub_resource type="Resource" id="Resource_gbnu5"]
-script = ExtResource("1_pxlfu")
-id = 14
-item_path = "res://assets/Items/Move Items/item_move_weardown.tres"
-
-[sub_resource type="Resource" id="Resource_02mup"]
-script = ExtResource("1_pxlfu")
-id = 15
-item_path = "res://assets/Items/Move Items/item_move_spitpoison.tres"
-
-[sub_resource type="Resource" id="Resource_qfkom"]
-script = ExtResource("1_pxlfu")
-id = 16
-item_path = "res://assets/Items/Move Items/item_move_spicypunch.tres"
-
-[sub_resource type="Resource" id="Resource_grcmu"]
-script = ExtResource("1_pxlfu")
-id = 17
-item_path = "res://assets/Items/Move Items/item_move_trickhole.tres"
-
-[sub_resource type="Resource" id="Resource_lhbev"]
-script = ExtResource("1_pxlfu")
-id = 18
-item_path = "res://assets/Items/Move Items/item_move_boast.tres"
-
-[sub_resource type="Resource" id="Resource_tr288"]
-script = ExtResource("1_pxlfu")
-id = 19
-item_path = "res://assets/Items/Move Items/item_move_battlecry.tres"
-
-[sub_resource type="Resource" id="Resource_0cau0"]
-script = ExtResource("1_pxlfu")
-id = 0
-item_path = "res://assets/Items/Move Items/item_move_flashingslash.tres"
-
-[sub_resource type="Resource" id="Resource_06lwm"]
-script = ExtResource("1_pxlfu")
-id = 1
-item_path = "res://assets/Items/Move Items/item_move_contactshock.tres"
 
 [sub_resource type="Resource" id="Resource_k21v0"]
 script = ExtResource("1_pxlfu")
@@ -160,4 +65,4 @@ item_path = "res://assets/Items/Equipment Items/Accessories/item_accessory_d00.t
 
 [resource]
 script = ExtResource("2_ruhu0")
-entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_ib77x"), SubResource("Resource_t1kap"), SubResource("Resource_mojte"), SubResource("Resource_ddi35"), SubResource("Resource_6d5lo"), SubResource("Resource_15f7p"), SubResource("Resource_kbd6t"), SubResource("Resource_kg12u"), SubResource("Resource_0710e"), SubResource("Resource_gj8rl"), SubResource("Resource_leynn"), SubResource("Resource_gbnu5"), SubResource("Resource_02mup"), SubResource("Resource_qfkom"), SubResource("Resource_grcmu"), SubResource("Resource_lhbev"), SubResource("Resource_tr288"), SubResource("Resource_0cau0"), SubResource("Resource_06lwm"), SubResource("Resource_k21v0"), SubResource("Resource_gd6mg"), SubResource("Resource_u6uld"), SubResource("Resource_vvtin"), SubResource("Resource_avjkb"), SubResource("Resource_vx1p3"), SubResource("Resource_r2ews"), SubResource("Resource_l1xn2"), SubResource("Resource_4ntpo"), SubResource("Resource_putae"), SubResource("Resource_jp168"), SubResource("Resource_2pta0")])
+entries = Array[ExtResource("1_pxlfu")]([SubResource("Resource_k21v0"), SubResource("Resource_gd6mg"), SubResource("Resource_u6uld"), SubResource("Resource_vvtin"), SubResource("Resource_avjkb"), SubResource("Resource_vx1p3"), SubResource("Resource_r2ews"), SubResource("Resource_l1xn2"), SubResource("Resource_4ntpo"), SubResource("Resource_putae"), SubResource("Resource_jp168"), SubResource("Resource_2pta0")])

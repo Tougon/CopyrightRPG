@@ -71,19 +71,15 @@ func initialize_party_data(auto : bool):
 		if i == 0 :
 			member.weapon_id = 5;
 			member.armor_id = 23;
-			member.accessory_id = 27;
 		elif i == 1 :
 			member.weapon_id = 20;
 			member.armor_id = 24;
-			member.accessory_id = 28;
 		elif i == 2 :
 			member.weapon_id = 21;
 			member.armor_id = 25;
-			member.accessory_id = 29;
 		elif i == 3 :
 			member.weapon_id = 22;
 			member.armor_id = 26;
-			member.accessory_id = 30;
 		
 		party_data.append(member);
 

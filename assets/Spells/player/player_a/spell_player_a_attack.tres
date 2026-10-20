@@ -1,0 +1,78 @@
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=11 format=3 uid="uid://x5ys585hnsfq"]
+
+[ext_resource type="Resource" uid="uid://d2pbig1c8pdid" path="res://assets/Animations/Sequences/Spell/anim_spell_player_a_attack.tres" id="1_q5ail"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_gn4ay"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/Functions/spell_overworld_function.gd" id="3_dcg1i"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_krmfs"]
+[ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_i7cq0"]
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="6_c6bw7"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroupEntry.gd" id="7_g6imi"]
+[ext_resource type="Script" path="res://src/AudioManager/AudioGroup.gd" id="8_hyq7f"]
+
+[sub_resource type="Resource" id="Resource_sgkp1"]
+script = ExtResource("7_g6imi")
+item_id = "swing_a"
+item_path = "res://assets/Audio/SFX/Spell/spell_hihat_open.ogg"
+
+[sub_resource type="Resource" id="Resource_8tgd0"]
+script = ExtResource("8_hyq7f")
+entries = Array[ExtResource("7_g6imi")]([SubResource("Resource_sgkp1")])
+
+[resource]
+script = ExtResource("6_c6bw7")
+spell_power = 40.0
+spell_attack_type = 0
+vary_defense_type = false
+spell_defense_type = 0
+ignore_target_defense = false
+ignore_attack_modifiers = false
+ignore_defense_modifiers = false
+ignore_attack_stage = false
+ignore_defense_stage = false
+fixed_damage = false
+fixed_damage_amt = 1
+percent_damage = false
+percent_damage_amt = 0.5
+negate = false
+vary_hit_count = false
+min_number_of_hits = 1
+max_number_of_hits = 1
+use_multihit_attack_type = false
+multihit_attack_type = Array[int]([])
+randomize_flag_per_hit = false
+randomized_flags = Array[ExtResource("5_i7cq0")]([])
+check_accuracy = true
+spell_accuracy = 87.5
+check_accuracy_per_hit = false
+spell_accuracy_per_hit = 100.0
+force_dodge_text = false
+force_miss_text = false
+force_miss_plural_text = false
+can_critical = true
+critical_chance = 16
+spell_name_key = ""
+spell_description_key = ""
+spell_cast_message_key = "T_CAST_GENERIC_ATTACK"
+spell_type = 1
+spell_target = 0
+ignore_self = false
+target_defeated_entities = false
+spell_cost = 0
+spell_priority = 0
+spell_flags = Array[ExtResource("5_i7cq0")]([])
+ignore_seals = false
+is_learnable = false
+will_save_as_prev = true
+show_spell_cast_ui = false
+animation_sequence = ExtResource("1_q5ail")
+spell_videos = Array[String]([])
+spell_video_materials = Array[String]([])
+spell_sfx = SubResource("Resource_8tgd0")
+effects_on_hit = Array[ExtResource("2_gn4ay")]([])
+effects_on_success = Array[ExtResource("2_gn4ay")]([])
+properties = Array[ExtResource("4_krmfs")]([])
+can_use_overworld = false
+overworld_check = Array[ExtResource("3_dcg1i")]([])
+overworld_check_type = 0
+overworld_action = Array[ExtResource("3_dcg1i")]([])
+final = true

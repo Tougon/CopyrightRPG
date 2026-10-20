@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://jsbgoxui220c"]
+
+[ext_resource type="PackedScene" uid="uid://ca3lsqum5e1l5" path="res://assets/VFX/Generic/effect_particle_generic.tscn" id="1_dqqi1"]
+[ext_resource type="Texture2D" uid="uid://c8y72drd2mh5p" path="res://assets/Sprites/Effects/Spells/vfx_playera_01_note.png" id="2_ciig1"]
+
+[sub_resource type="Gradient" id="Gradient_35c5f"]
+offsets = PackedFloat32Array(0, 0.299451, 0.587912, 1)
+colors = PackedColorArray(1, 0, 0, 0, 1, 0.47, 0.47, 1, 1, 0.8985, 0.13, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f6lv0"]
+gradient = SubResource("Gradient_35c5f")
+
+[sub_resource type="Curve" id="Curve_k8gyx"]
+_data = [Vector2(0, 1), 0.0, -0.280231, 0, 0, Vector2(1, 0), -2.46001, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8nbxg"]
+curve = SubResource("Curve_k8gyx")
+
+[sub_resource type="Curve" id="Curve_tj6xm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.15634, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7ds70"]
+curve = SubResource("Curve_tj6xm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fti0y"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(3, 3, 3)
+angle_min = -9.99999
+angle_max = 10.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+radial_velocity_min = 600.0
+radial_velocity_max = 600.0
+radial_velocity_curve = SubResource("CurveTexture_8nbxg")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_7ds70")
+color_ramp = SubResource("GradientTexture1D_f6lv0")
+
+[node name="seal" instance=ExtResource("1_dqqi1")]
+
+[node name="GPUParticles2D" parent="." index="0"]
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_fti0y")
+texture = ExtResource("2_ciig1")
+lifetime = 0.3
+explosiveness = 0.75

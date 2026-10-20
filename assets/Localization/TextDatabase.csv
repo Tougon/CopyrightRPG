@@ -546,8 +546,8 @@ T_ITEM_ARMOR_LETTERJACKET_DESC,"I swear I had nothing else to wear today. Offers
 T_ITEM_ARMOR_SPORTCOAT,Sport Coat,,
 T_ITEM_ARMOR_SPORTCOAT_DESC,"A nice looking coat for a modest budget. Offers minimal protection.",,
 
-T_ITEM_WEAPON_CLIPBOARD,Clipboard,,
-T_ITEM_WEAPON_CLIPBOARD_DESC,"Standard issue clipboard. More likely to shatter than be an effective weapon.",,
+T_ITEM_WEAPON_CLIPBOARD,Marker,,
+T_ITEM_WEAPON_CLIPBOARD_DESC,"Long used whiteboard marker. About as effective for drawing as it is for fighting.",,
 T_ITEM_WEAPON_HANDS,Bare Hands,,
 T_ITEM_WEAPON_HANDS_DESC,"Why carry anything at all? A good whack to the face should suffice, right?",,
 T_ITEM_WEAPON_OLDSTICK,Old Sticks,,

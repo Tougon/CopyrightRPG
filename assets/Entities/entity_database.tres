@@ -25,7 +25,7 @@ playable = true
 
 [sub_resource type="Resource" id="Resource_7bvvg"]
 script = ExtResource("1_veja8")
-entity_path = "res://assets/Entities/slime.tres"
+entity_path = "res://assets/Entities/Enemies/slime.tres"
 playable = false
 
 [sub_resource type="Resource" id="Resource_bqqaw"]
