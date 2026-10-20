@@ -239,7 +239,7 @@ func _play_seal_message(seal : SealInstance, entity : EntityController) :
 	EventManager.on_dialogue_queue.emit(seal_msg);
 
 
-func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
+func get_seal_overlap_count(spell : Spell, player_side : bool, use_kind : bool = true) -> int:
 	var seal_count = 0;
 	
 	for seal in seal_instances:
@@ -249,7 +249,7 @@ func get_seal_overlap_count(spell : Spell, player_side : bool) -> int:
 			if seal.seal_source.spell_flags.has(flag):
 				seal_count += 1;
 		
-		if seal.seal_source.spell_kind == spell.spell_kind :
+		if use_kind && seal.seal_source.spell_kind == spell.spell_kind :
 			seal_count += 1;
 	
 	return seal_count;

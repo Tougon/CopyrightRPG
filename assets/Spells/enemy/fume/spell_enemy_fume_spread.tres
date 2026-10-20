@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DamageSpell" load_steps=7 format=3 uid="uid://ds4st0kbjsnl3"]
+[gd_resource type="Resource" script_class="DamageSpell" load_steps=9 format=3 uid="uid://ds4st0kbjsnl3"]
 
 [ext_resource type="Resource" uid="uid://dh2gaxxwdeghy" path="res://assets/Animations/Sequences/test_anim_abridged.tres" id="1_s8bgb"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect_set_chance.gd" id="2_sn4yc"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Effects/effect.gd" id="4_vwvk3"]
 [ext_resource type="Script" path="res://addons/tflags/scripts/tflag.gd" id="5_mra3h"]
 [ext_resource type="Script" path="res://src/RPGData/Scripts/Spells/damage_spell.gd" id="6_qhvvn"]
+[ext_resource type="Resource" uid="uid://dvwkjsqutcbto" path="res://assets/Flags/pink.tres" id="7_baemk"]
+[ext_resource type="Resource" uid="uid://b7vpopug3jtn1" path="res://assets/Flags/art.tres" id="8_4db3s"]
 
 [resource]
 script = ExtResource("6_qhvvn")
@@ -31,7 +33,7 @@ multihit_attack_type = Array[int]([])
 randomize_flag_per_hit = false
 randomized_flags = Array[ExtResource("5_mra3h")]([])
 check_accuracy = true
-spell_accuracy = 95.0
+spell_accuracy = 90.0
 check_accuracy_per_hit = false
 spell_accuracy_per_hit = 100.0
 force_dodge_text = false
@@ -48,7 +50,8 @@ ignore_self = false
 target_defeated_entities = false
 spell_cost = 0
 spell_priority = -1
-spell_flags = Array[ExtResource("5_mra3h")]([])
+spell_flags = Array[ExtResource("5_mra3h")]([ExtResource("7_baemk")])
+spell_kind = ExtResource("8_4db3s")
 ignore_seals = false
 is_learnable = false
 will_save_as_prev = true

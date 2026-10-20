@@ -4,6 +4,7 @@ class_name BehaviorCheckSeal
 
 @export var move_id : int;
 @export var check_player_side : bool = true;
+@export var ignore_kind : bool = false;
 @export_range(0, 1) var chance_if_sealed : float = 1.0;
 @export var weigh_seal_count : bool = false;
 @export_range(0, 9) var caution_threshold : int = 0;
@@ -18,7 +19,7 @@ func check(user : EntityController, allies : Array[EntityController], targets : 
 	
 	var seal_count = 0;
 	
-	if move_id >= 0 : seal_count = BattleScene.Instance.seal_manager.get_seal_overlap_count(user.move_list[move_id], check_player_side);
+	if move_id >= 0 : seal_count = BattleScene.Instance.seal_manager.get_seal_overlap_count(user.move_list[move_id], check_player_side, !ignore_kind);
 	else : seal_count = BattleScene.Instance.seal_manager.get_player_seal_count();
 	
 	if seal_count == 0 : return result_if_zero;
