@@ -75,7 +75,6 @@ func on_focus():
 		initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
 	
 	$"BG Area/Player Options/ScrollContainer/GridContainer/Item".disabled = !current_entity.has_any_items();
-	$"BG Area/Player Options/ScrollContainer".ensure_control_visible(initial_selection);
 	
 	# Tutorial Functions
 	match BattleScene.Instance._tutorial:
@@ -86,11 +85,26 @@ func on_focus():
 					$"BG Area/Player Options/ScrollContainer/GridContainer/Attack".disabled = true;
 					$"BG Area/Player Options/ScrollContainer/GridContainer/Defend".disabled = true;
 					$"BG Area/Player Options/ScrollContainer/GridContainer/Skills".disabled = false;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Status".disabled = true;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Item".disabled = true;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Escape".disabled = true;
 				else :
 					initial_selection = $"BG Area/Player Options/ScrollContainer/GridContainer/Attack";
 					$"BG Area/Player Options/ScrollContainer/GridContainer/Attack".disabled = false;
 					$"BG Area/Player Options/ScrollContainer/GridContainer/Defend".disabled = false;
 					$"BG Area/Player Options/ScrollContainer/GridContainer/Skills".disabled = false;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Status".disabled = false;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Item".disabled = false;
+					$"BG Area/Player Options/ScrollContainer/GridContainer/Escape".disabled = false;
+				
+				$"BG Area/Player Options/ScrollContainer/GridContainer/Attack/Label".refresh_text_state()
+				$"BG Area/Player Options/ScrollContainer/GridContainer/Defend/Label".refresh_text_state()
+				$"BG Area/Player Options/ScrollContainer/GridContainer/Skills/Label".refresh_text_state()
+				$"BG Area/Player Options/ScrollContainer/GridContainer/Status/Label".refresh_text_state()
+				$"BG Area/Player Options/ScrollContainer/GridContainer/Item/Label".refresh_text_state()
+				$"BG Area/Player Options/ScrollContainer/GridContainer/Escape/Label".refresh_text_state()
+	
+	$"BG Area/Player Options/ScrollContainer".ensure_control_visible(initial_selection);
 
 
 func _show_hide_status(show : bool):

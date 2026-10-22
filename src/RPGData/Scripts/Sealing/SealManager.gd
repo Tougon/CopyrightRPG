@@ -197,9 +197,9 @@ func check_for_seal(entity : EntityController, player_side : bool, override_flag
 					if seal.player_side && action.is_learnable :
 						EventManager.learn_move_from_seal.emit(seal.seal_entity, action);
 						has_learned = true;
-		
-		if BattleScene.Instance.sequencer.is_sequence_playing_or_queued() :
-			await EventManager.on_sequence_queue_empty;
+					
+					if BattleScene.Instance.sequencer.is_sequence_playing_or_queued() :
+						await EventManager.on_sequence_queue_empty;
 	
 	return has_sealed;
 

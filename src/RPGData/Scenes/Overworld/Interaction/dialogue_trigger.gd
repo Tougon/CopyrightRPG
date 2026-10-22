@@ -98,4 +98,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if !(body is RPGPlayerController) : return;
 	if Dialogic.current_timeline != null: return
 	
+	body.reset_locomotion_animation();
+	
 	Dialogic.start(_get_interact_dialogue())

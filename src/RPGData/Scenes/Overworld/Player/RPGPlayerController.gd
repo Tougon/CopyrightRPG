@@ -188,6 +188,11 @@ func update_locomotion_animation(direction : Vector2, delta : float):
 	else : _player_visual.set_state(RPGCharacter.AnimationState.IDLE);
 
 
+func reset_locomotion_animation():
+	_in_dialogue = true;
+	_player_visual.set_state(RPGCharacter.AnimationState.IDLE);
+
+
 func skid(initial : Vector2, final : Vector2, duration : float, end_delay : bool, play_anim : bool, use_curve : bool):
 	var direction = initial.normalized();
 	var orig_velocity = initial;

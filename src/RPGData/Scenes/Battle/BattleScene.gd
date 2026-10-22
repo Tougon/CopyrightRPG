@@ -46,6 +46,7 @@ var _learned_this_turn : bool = false;
 var _current_num_entities : int = 1;
 
 var _tutorial : Encounter.Tutorial;
+var is_tutorial_battle : bool = false;
 
 
 func _ready():
@@ -86,6 +87,8 @@ func begin_battle(params : BattleParams):
 	
 	_can_flee = params.can_flee;
 	_tutorial = params.tutorial;
+	
+	is_tutorial_battle = params.tutorial != Encounter.Tutorial.NONE;
 	
 	times_spawned_extra = 0;
 	
@@ -1112,8 +1115,6 @@ func _on_player_menu_cancel(cancel_button : bool):
 		AudioManager.play_sfx("battle_menu_cancel", 0.1);
 	# Only execute flee operations if the button was pressed
 	elif !cancel_button :
-		_can_flee = true;
-		_can_flee_this_turn = true;
 		if _can_flee:
 			if _can_flee_this_turn : 
 				current_player_index = -1;

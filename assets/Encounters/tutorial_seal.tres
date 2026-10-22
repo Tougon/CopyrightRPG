@@ -12,14 +12,14 @@ point_count = 2
 
 [resource]
 script = ExtResource("1_vlc1k")
-primary_enemy = 19
+primary_enemy = 5
 odds = 1.0
 can_flee = false
 ignore_flee_mechanics = false
 min_enemies = 0
 max_enemies = 0
 enemy_count_curve = SubResource("Curve_ogktc")
-required_enemies = Array[int]([])
+required_enemies = Array[int]([4])
 additional_enemies = Array[int]([])
 additional_enemy_curve = SubResource("Curve_tyevk")
 tutorial = 2

@@ -25,6 +25,9 @@ func entity_init(params : BattleParams):
 			if current_entity.min_level == 1 && _apply_pity_mods():
 				max_level = 2;
 		
+		if params.tutorial == Encounter.Tutorial.SEALING:
+			max_level = 1;
+		
 		level = roundi(lerpf(current_entity.min_level as float, max_level as float, level_relative));
 		
 		seal_effect_list = current_entity.seal_effect_list;

@@ -188,9 +188,9 @@ size = Vector2(632, 100)
 script = ExtResource("33_m4814")
 quest_name = "JCP_Main"
 check_type = 0
-use_step = true
-step_name = "Seal Tutorial"
-negate = false
+use_step = false
+step_name = ""
+negate = true
 
 [sub_resource type="Resource" id="Resource_wfmm5"]
 script = ExtResource("32_x7skg")
@@ -199,7 +199,7 @@ check_type = 0
 active_conditions = Array[ExtResource("33_m4814")]([SubResource("Resource_05gx2")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ytvc"]
-size = Vector2(118, 574)
+size = Vector2(462, 96)
 
 [sub_resource type="Curve" id="Curve_6781o"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -2079,9 +2079,10 @@ scale = Vector2(1.15, 2.34)
 texture = ExtResource("18_v1pyq")
 
 [node name="Cutscene Helpers" type="Node2D" parent="Areas/Main/1F/Environment/Visuals"]
-process_mode = 4
 
 [node name="Intro" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers"]
+process_mode = 4
+position = Vector2(0, 708)
 
 [node name="Camera Point" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Intro"]
 position = Vector2(0, 96)
@@ -2100,21 +2101,21 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_ph1gq")
 
 [node name="Tutorial" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers"]
-visible = false
 
 [node name="Camera Point" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial"]
-position = Vector2(-1433, 32)
+position = Vector2(4, 32)
 script = ExtResource("30_pvc07")
 object_id = "jcp_tutorial_camera_point"
 
 [node name="TutorialTrigger" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial" instance=ExtResource("31_nwt8f")]
-position = Vector2(-1564, 34)
+position = Vector2(-6, 269)
 default_active_state = false
 additional_active_state = Array[ExtResource("32_x7skg")]([SubResource("Resource_wfmm5")])
 default_dialogue = "jcp_tutorial"
 object_id = "TutorialTrigger"
 
 [node name="CollisionShape2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial/TutorialTrigger/Collider" index="0"]
+position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_8ytvc")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/Main/1F"]
