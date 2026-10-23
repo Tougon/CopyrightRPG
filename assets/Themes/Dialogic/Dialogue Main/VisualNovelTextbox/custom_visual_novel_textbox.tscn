@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dga05dkupahji"]
+[gd_scene load_steps=29 format=3 uid="uid://dga05dkupahji"]
 
 [ext_resource type="Script" path="res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/vn_textbox_layer.gd" id="1_bpydr"]
 [ext_resource type="AudioStream" uid="uid://b5tjtg0km6wf0" path="res://assets/Audio/SFX/text_box_close.ogg" id="2_4m7nh"]
@@ -13,9 +13,15 @@
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="4_ma5mw"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_next_indicator.gd" id="5_40a50"]
 [ext_resource type="Script" path="res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/autoadvance_indicator.gd" id="6_07xym"]
-[ext_resource type="Texture2D" uid="uid://b0rpqfg4fhebk" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/next.svg" id="6_uch03"]
+[ext_resource type="FontFile" uid="uid://c2ysv76oi1ssa" path="res://assets/Fonts/SometypeMono/SometypeMono-Medium.ttf" id="6_btuh0"]
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="7_bi7sh"]
+[ext_resource type="FontFile" uid="uid://d31ksbbfcgxmp" path="res://assets/Fonts/SometypeMono/SometypeMono-Regular.ttf" id="7_i20sn"]
+[ext_resource type="FontFile" uid="uid://kyugw8ojbyq7" path="res://assets/Fonts/SometypeMono/SometypeMono-Italic.ttf" id="8_46w64"]
+[ext_resource type="AudioStream" uid="uid://oe8jbmpqs4l6" path="res://assets/Audio/SFX/battle_text_print.ogg" id="8_d85wx"]
+[ext_resource type="FontFile" uid="uid://d3r00o1ww02u" path="res://assets/Fonts/SometypeMono/SometypeMono-BoldItalic.ttf" id="9_4sx7u"]
 [ext_resource type="StyleBox" uid="uid://m7gyepkysu83" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_name_label_panel.tres" id="9_yg8ig"]
+[ext_resource type="FontFile" uid="uid://dm8kuq1rngj1g" path="res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf" id="10_eu1fg"]
+[ext_resource type="Texture2D" uid="uid://c0juavri2o14u" path="res://assets/Sprites/UI/Dialogue/ui_dialogue_cursor.png" id="10_glgwm"]
 
 [sub_resource type="Animation" id="Animation_au0a2"]
 length = 0.001
@@ -463,7 +469,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bpydr")
-text_size = 28
+text_use_global_size = false
+text_size = 24
+text_use_global_font = false
+normal_font = "res://assets/Fonts/SometypeMono/SometypeMono-Medium.ttf"
+bold_font = "res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf"
+italics_font = "res://assets/Fonts/SometypeMono/SometypeMono-MediumItalic.ttf"
+bold_italics_font = "res://assets/Fonts/SometypeMono/SometypeMono-BoldItalic.ttf"
 box_panel = "res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/vn_textbox_custom_panel.tres"
 box_color_use_global = false
 box_color_custom = Color(1, 1, 1, 1)
@@ -477,6 +489,10 @@ name_label_box_modulate = Color(0, 0, 0, 1)
 name_label_box_offset = Vector2(-10, -25)
 next_indicator_animation = 1
 autoadvance_progressbar = false
+typing_sounds_sounds_folder = "res://assets/Audio/SFX/Dialogue"
+typing_sounds_every_nths_character = 3
+typing_sounds_pitch_variance = 0.1
+typing_sounds_volume = -4.0
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -541,6 +557,11 @@ unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
 theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_btuh0")
+theme_override_fonts/mono_font = ExtResource("7_i20sn")
+theme_override_fonts/italics_font = ExtResource("8_46w64")
+theme_override_fonts/bold_italics_font = ExtResource("9_4sx7u")
+theme_override_fonts/bold_font = ExtResource("10_eu1fg")
 theme_override_font_sizes/bold_italics_font_size = 15
 theme_override_font_sizes/italics_font_size = 15
 theme_override_font_sizes/normal_font_size = 15
@@ -555,7 +576,7 @@ textbox_root = NodePath("..")
 unique_name_in_owner = true
 bus = &"SFX"
 script = ExtResource("4_ma5mw")
-play_every_character = 0
+sounds = Array[AudioStream]([ExtResource("8_d85wx")])
 
 [node name="NextIndicator" type="Control" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
 unique_name_in_owner = true
@@ -565,7 +586,8 @@ size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("5_40a50")
 show_on_questions = true
-texture = ExtResource("6_uch03")
+animation = 1
+texture = ExtResource("10_glgwm")
 metadata/_edit_layout_mode = 1
 
 [node name="AutoAdvanceProgressbar" type="ProgressBar" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
@@ -590,9 +612,9 @@ mouse_filter = 2
 unique_name_in_owner = true
 self_modulate = Color(0.00784314, 0.00784314, 0.00784314, 0.843137)
 layout_mode = 1
-offset_top = -50.0
-offset_right = 9.0
-offset_bottom = -25.0
+offset_top = -200.0
+offset_right = 29.0
+offset_bottom = -168.0
 scale = Vector2(1.00136e-05, 1)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_yg8ig")
@@ -645,8 +667,6 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 302.0
-offset_right = 302.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -657,9 +677,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 216.0
+offset_left = -444.0
 offset_top = -261.0
-offset_right = 344.0
+offset_right = -316.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2

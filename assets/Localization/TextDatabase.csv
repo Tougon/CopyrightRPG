@@ -767,6 +767,8 @@ T_TUTORIAL_SEALING_0_05,"Right then, [color=FFFF00]focus your mind[/color] on an
 T_TUTORIAL_SEALING_1_00,"What the?!",,
 T_TUTORIAL_SEALING_1_01,"Exactly as I thought.",,
 T_TUTORIAL_SEALING_1_02,"Seems it will do us good to make use of the twisted rules of this place.",,
+T_TUTORIAL_SEALING_1_03,"How amazing, we got another wizard in our midst.",,
+T_TUTORIAL_SEALING_1_04,"I already knew this, you forgot to mention that it doesn't always work.",,
 
 T_YES,Yes,,
 T_NO,No,,

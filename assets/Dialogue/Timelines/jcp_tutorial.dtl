@@ -5,7 +5,7 @@
 [progress_quest quest="JCP_Main"]
 [fade in="true"]
 join temp_character_1 center
-temp_character_1: Help!
+temp_character_1: Help! I'm trying to see if text is printing correctly! We're just gonna flood the dialogue box with info for now. Delete this later!
 [begin_battle path="res://assets/Encounters/tutorial_seal.tres"]
 [progress_quest quest="JCP_Main"]
 Test.

@@ -85,5 +85,5 @@ func play_animation(current_animation: int, time:float) -> void:
 			tween.set_ease(Tween.EASE_IN_OUT)
 			tween.set_loops()
 
-			tween.tween_property(self, 'modulate:a', 0, time*0.3)
-			tween.tween_property(self, 'modulate:a', 1, time*0.3)
+			tween.tween_property(self, 'visible', false, time)
+			tween.tween_property(self, 'visible', true, time)
