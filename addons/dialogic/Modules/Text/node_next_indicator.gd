@@ -48,6 +48,7 @@ func _ready() -> void:
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		icon.size = texture_size
 		icon.position = -icon.size
+		icon.self_modulate = Color.TRANSPARENT;
 		add_child(icon)
 		texture_rect = icon
 
@@ -87,3 +88,4 @@ func play_animation(current_animation: int, time:float) -> void:
 
 			tween.tween_property(self, 'visible', false, time)
 			tween.tween_property(self, 'visible', true, time)
+			self.self_modulate = Color.TRANSPARENT;

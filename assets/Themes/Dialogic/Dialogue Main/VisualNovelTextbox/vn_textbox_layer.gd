@@ -252,6 +252,7 @@ func _apply_indicator_settings() -> void:
 		next_indicator.show_on_questions = next_indicator_show_on_questions
 		next_indicator.show_on_autoadvance = next_indicator_show_on_autoadvance
 		next_indicator.texture_size = next_indicator_size
+		next_indicator.self_modulate = Color.TRANSPARENT;
 
 
 ## Applies all sound settings to the scene.

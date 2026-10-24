@@ -470,7 +470,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bpydr")
 text_use_global_size = false
-text_size = 24
+text_size = 23
 text_use_global_font = false
 normal_font = "res://assets/Fonts/SometypeMono/SometypeMono-Medium.ttf"
 bold_font = "res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf"
@@ -482,17 +482,22 @@ box_color_custom = Color(1, 1, 1, 1)
 box_size = Vector2(740, 166)
 box_margin_bottom = 50
 box_animation_in = 1
-name_label_use_character_color = false
+name_label_use_global_color = false
 name_label_custom_color = Color(0.894922, 0.894922, 0.894922, 1)
-name_label_box_panel = "res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/vn_textbox_name_label_panel.tres"
-name_label_box_modulate = Color(0, 0, 0, 1)
-name_label_box_offset = Vector2(-10, -25)
+name_label_use_global_font = false
+name_label_font = "res://assets/Fonts/Galaxy Monkey/galaxymonkey.ttf"
+name_label_use_global_font_size = false
+name_label_custom_font_size = 20
+name_label_box_panel = "res://assets/Themes/Dialogic/Dialogue Main/VisualNovelTextbox/textbox_name_label_9slice.tres"
+name_label_box_use_global_color = false
+name_label_box_modulate = Color(1, 1, 1, 0)
+name_label_box_offset = Vector2(64, 17)
 next_indicator_animation = 1
 autoadvance_progressbar = false
 typing_sounds_sounds_folder = "res://assets/Audio/SFX/Dialogue"
 typing_sounds_every_nths_character = 3
 typing_sounds_pitch_variance = 0.1
-typing_sounds_volume = -4.0
+typing_sounds_volume = 0.0
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -580,6 +585,7 @@ sounds = Array[AudioStream]([ExtResource("8_d85wx")])
 
 [node name="NextIndicator" type="Control" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
 unique_name_in_owner = true
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -589,6 +595,20 @@ show_on_questions = true
 animation = 1
 texture = ExtResource("10_glgwm")
 metadata/_edit_layout_mode = 1
+
+[node name="Cursor Real" type="TextureRect" parent="Anchor/AnimationParent/Sizer/DialogTextPanel/NextIndicator"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -32.0
+offset_right = 60.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_glgwm")
 
 [node name="AutoAdvanceProgressbar" type="ProgressBar" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
 unique_name_in_owner = true
@@ -611,11 +631,11 @@ mouse_filter = 2
 [node name="NameLabelPanel" type="PanelContainer" parent="Anchor/AnimationParent/Sizer/DialogTextPanel/NameLabelHolder"]
 unique_name_in_owner = true
 self_modulate = Color(0.00784314, 0.00784314, 0.00784314, 0.843137)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 offset_top = -200.0
-offset_right = 29.0
+offset_right = 123.0
 offset_bottom = -168.0
-scale = Vector2(1.00136e-05, 1)
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("9_yg8ig")
 metadata/_edit_layout_mode = 1
@@ -627,12 +647,12 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = SubResource("FontVariation_v8y64")
-theme_override_font_sizes/font_size = 15
-text = "S"
+text = "Criss the Angel"
+vertical_alignment = 1
+text_overrun_behavior = 1
+uppercase = true
 script = ExtResource("7_bi7sh")
-animate_visibility = true
 name_label_root = NodePath("..")
-use_character_color = false
 
 [node name="TextBoxTransitionAudio" type="AudioStreamPlayer" parent="Anchor/AnimationParent/Sizer/DialogTextPanel"]
 bus = &"SFX"

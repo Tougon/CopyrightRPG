@@ -178,8 +178,15 @@ func update_name_label(character:DialogicCharacter):
 		if character:
 			if !'use_character_color' in name_label or name_label.use_character_color:
 				name_label.self_modulate = character.color
+				name_label.scale = Vector2(0.0, 1.0);
+				
+				var tween = get_tree().create_tween();
+				tween.set_parallel(true);
+				tween.tween_property(name_label, "self_modulate", Color.WHITE, 0.7).set_ease(Tween.EASE_OUT)
+				tween.tween_property(name_label, "scale", Vector2.ONE, 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 		else:
 			name_label.self_modulate = Color(1,1,1,1)
+			name_label.scale = Vector2(0.0, 1.0);
 
 
 func update_typing_sound_mood(mood:Dictionary = {}) -> void:
@@ -210,6 +217,7 @@ func hide_textbox(instant:=false) -> void:
 	var emitted := instant
 	for name_label in get_tree().get_nodes_in_group('dialogic_name_label'):
 		name_label.text = ""
+		name_label.scale = Vector2(0.0, 1.0);
 	if !emitted and !get_tree().get_nodes_in_group('dialogic_dialog_text').is_empty() and get_tree().get_nodes_in_group('dialogic_dialog_text')[0].textbox_root.visible:
 		animation_textbox_hide.emit()
 		if dialogic.Animations.is_animating():

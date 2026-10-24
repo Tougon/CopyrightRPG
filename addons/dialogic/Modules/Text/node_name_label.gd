@@ -13,7 +13,9 @@ func _ready() -> void:
 	add_to_group('dialogic_name_label')
 	if hide_when_empty:
 		if animate_visibility : name_label_root.scale = Vector2(0,1);
-		else : name_label_root.visible = false
+		else : 
+			name_label_root.visible = false;
+			#name_label_root.scale = Vector2(0,1);
 	text = ""
 
 

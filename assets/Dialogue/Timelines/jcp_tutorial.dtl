@@ -4,8 +4,9 @@
 [wait time="0.5"]
 [progress_quest quest="JCP_Main"]
 [fade in="true"]
+demo_boss: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi...
 join temp_character_1 center
-temp_character_1: Help! I'm trying to see if text is printing correctly! We're just gonna flood the dialogue box with info for now. Delete this later!
+temp_character_1: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
 [begin_battle path="res://assets/Encounters/tutorial_seal.tres"]
 [progress_quest quest="JCP_Main"]
 Test.
