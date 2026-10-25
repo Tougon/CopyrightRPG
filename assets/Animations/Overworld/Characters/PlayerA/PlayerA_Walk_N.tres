@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="RPGCharacterAnimation" load_steps=19 format=3 uid="uid://hbpju8mmcfco"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="1_kia6g"]
+[ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="2_2sqp1"]
+[ext_resource type="Texture2D" uid="uid://bx8qnwfambix1" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_00.png" id="3_xk6in"]
+[ext_resource type="Texture2D" uid="uid://ddmoquthfv1lg" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_01.png" id="4_fs3i8"]
+[ext_resource type="Texture2D" uid="uid://gpqf5ng7pm4h" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_02.png" id="5_1416l"]
+[ext_resource type="Texture2D" uid="uid://biri0vhvt4trv" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_03.png" id="6_ammai"]
+[ext_resource type="Texture2D" uid="uid://bjnryhbpm65h7" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_04.png" id="7_s78m7"]
+[ext_resource type="Texture2D" uid="uid://b2yamvclyx7rs" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_05.png" id="8_nl0wx"]
+[ext_resource type="Texture2D" uid="uid://ckodwgphuvwgn" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_06.png" id="9_okvoc"]
+[ext_resource type="Texture2D" uid="uid://bf26wo2cyp60v" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_back_07.png" id="10_utwyh"]
+
+[sub_resource type="Resource" id="Resource_mg5aq"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("3_xk6in")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -2)
+
+[sub_resource type="Resource" id="Resource_xsxpr"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("4_fs3i8")
+frame_time = 0.12
+sfx_key = "step_walk_common"
+offset = Vector2(0, -5)
+
+[sub_resource type="Resource" id="Resource_ijn4b"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("5_1416l")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -8)
+
+[sub_resource type="Resource" id="Resource_6vnw6"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("6_ammai")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -5)
+
+[sub_resource type="Resource" id="Resource_r523f"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("7_s78m7")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -2)
+
+[sub_resource type="Resource" id="Resource_f1vob"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("8_nl0wx")
+frame_time = 0.12
+sfx_key = "step_walk_common"
+offset = Vector2(0, -5)
+
+[sub_resource type="Resource" id="Resource_xscxc"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("9_okvoc")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -8)
+
+[sub_resource type="Resource" id="Resource_uevpx"]
+script = ExtResource("2_2sqp1")
+frame_sprite = ExtResource("10_utwyh")
+frame_time = 0.12
+sfx_key = ""
+offset = Vector2(0, -5)
+
+[resource]
+script = ExtResource("1_kia6g")
+sequence = Array[ExtResource("2_2sqp1")]([SubResource("Resource_mg5aq"), SubResource("Resource_xsxpr"), SubResource("Resource_ijn4b"), SubResource("Resource_6vnw6"), SubResource("Resource_r523f"), SubResource("Resource_f1vob"), SubResource("Resource_xscxc"), SubResource("Resource_uevpx")])
