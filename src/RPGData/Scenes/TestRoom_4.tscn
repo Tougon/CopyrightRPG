@@ -37,10 +37,10 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="23_kd2pp"]
 [ext_resource type="PackedScene" uid="uid://db2kardnnx3w3" path="res://src/RPGData/Scenes/Overworld/Interaction/IntangibleInteractable.tscn" id="24_vkibq"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="25_2uk2l"]
-[ext_resource type="Texture2D" uid="uid://bp6swawq4moni" path="res://assets/Sprites/Overworld/player_main/shaded_only.png" id="27_qxvdb"]
-[ext_resource type="Texture2D" uid="uid://dbwv4wp5cxqpb" path="res://assets/Sprites/Overworld/player_main/sketch_only.png" id="28_1odem"]
-[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="29_aeg5s"]
-[ext_resource type="Texture2D" uid="uid://hkr2xkwh7de0" path="res://assets/Sprites/Overworld/player_main/none.png" id="30_c3b1v"]
+[ext_resource type="Texture2D" uid="uid://bp6swawq4moni" path="res://assets/Sprites/Overworld/Player A/shaded_only.png" id="27_qxvdb"]
+[ext_resource type="Texture2D" uid="uid://dbwv4wp5cxqpb" path="res://assets/Sprites/Overworld/Player A/sketch_only.png" id="28_1odem"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_front.png" id="29_aeg5s"]
+[ext_resource type="Texture2D" uid="uid://hkr2xkwh7de0" path="res://assets/Sprites/Overworld/Player A/none.png" id="30_c3b1v"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="31_nncd6"]
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="32_tg7n6"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="33_45och"]
@@ -777,11 +777,9 @@ position = Vector2(122, 61)
 [node name="End" parent="Areas/Ref/G/Environment/Visuals/Escalators/EscalatorUp/FloorTrigger" index="1"]
 position = Vector2(-124, -51)
 
-[node name="FloorChangeZone" parent="Areas/Ref/G/Environment/Visuals/Escalators/EscalatorUp" node_paths=PackedStringArray("in_objects", "out_objects") instance=ExtResource("16_3pyc7")]
+[node name="FloorChangeZone" parent="Areas/Ref/G/Environment/Visuals/Escalators/EscalatorUp" instance=ExtResource("16_3pyc7")]
 position = Vector2(10, 2)
 scale = Vector2(0.1, 0.8)
-in_objects = [NodePath("../InCollision"), NodePath("../FloorTrigger"), NodePath("../InVisual")]
-out_objects = [NodePath("../OutCollision"), NodePath("../OutVisual")]
 
 [node name="InCollision" type="Node2D" parent="Areas/Ref/G/Environment/Visuals/Escalators/EscalatorUp"]
 z_index = 1
@@ -1207,12 +1205,10 @@ position = Vector2(122, 61)
 [node name="End" parent="Areas/Ref/1F/Environment/Visuals/Escalators/EscalatorDown/FloorTrigger" index="1"]
 position = Vector2(-124, -51)
 
-[node name="FloorChangeZone" parent="Areas/Ref/1F/Environment/Visuals/Escalators/EscalatorDown" node_paths=PackedStringArray("in_objects", "out_objects") instance=ExtResource("16_3pyc7")]
+[node name="FloorChangeZone" parent="Areas/Ref/1F/Environment/Visuals/Escalators/EscalatorDown" instance=ExtResource("16_3pyc7")]
 position = Vector2(-218.5, -84)
 rotation = 3.14159
 scale = Vector2(0.1, 0.8)
-in_objects = [NodePath("../InCollision"), NodePath("../FloorTrigger"), NodePath("../../../FalseTiles")]
-out_objects = [NodePath("../OutCollision")]
 
 [node name="InCollision" type="Node2D" parent="Areas/Ref/1F/Environment/Visuals/Escalators/EscalatorDown"]
 
@@ -1959,12 +1955,12 @@ color = Color(0.332738, 0.519136, 0.749071, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(607, 46)
+position = Vector2(800, 534)
 process_callback = 0
-limit_left = -64
-limit_top = -384
-limit_right = 1280
-limit_bottom = 3200
+limit_left = 0
+limit_top = -352
+limit_right = 1216
+limit_bottom = 656
 position_smoothing_speed = 500.0
 editor_draw_limits = true
 
@@ -1975,7 +1971,7 @@ script = ExtResource("42_1yuub")
 
 [node name="Game PhantomCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(607, 46)
+position = Vector2(800, 534)
 script = ExtResource("43_y1qfp")
 priority = 1
 follow_mode = 5

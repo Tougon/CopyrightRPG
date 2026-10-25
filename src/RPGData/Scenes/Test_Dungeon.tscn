@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dbfwy2g3wkrwx" path="res://assets/Sprites/Overworld/temp/wall_open.png" id="11_7dt2e"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="12_ec4gi"]
 [ext_resource type="PackedScene" uid="uid://d2a2rqc3t626s" path="res://src/RPGData/Scenes/Overworld/Common/boundary_shadow.tscn" id="13_scqar"]
-[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="16_87msd"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_front.png" id="16_87msd"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/MirrorWall.gd" id="16_isyop"]
 [ext_resource type="PackedScene" uid="uid://co2mkuud1rhxw" path="res://src/RPGData/Scenes/Overworld/Encounters/encounter_area.tscn" id="16_ix7mn"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Encounters/Encounter.gd" id="17_4k6pv"]

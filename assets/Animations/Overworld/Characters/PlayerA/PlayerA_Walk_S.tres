@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="1_r5rbm"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="2_qkp2o"]
-[ext_resource type="Texture2D" uid="uid://eml6u537g4xw" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w1.png" id="3_xinbh"]
-[ext_resource type="Texture2D" uid="uid://dkimduim3jgjd" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w2.png" id="4_guhva"]
-[ext_resource type="Texture2D" uid="uid://xxhsxu02du81" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w3.png" id="5_0yqd8"]
-[ext_resource type="Texture2D" uid="uid://yrf4iwex5mc5" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w4.png" id="6_j8o4i"]
-[ext_resource type="Texture2D" uid="uid://c07ewbtls0kr7" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w5.png" id="7_0wpvi"]
-[ext_resource type="Texture2D" uid="uid://bw0tk8hdtvk8k" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w6.png" id="8_3xf0t"]
-[ext_resource type="Texture2D" uid="uid://bs8gfln2xpdd" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w7.png" id="9_61vme"]
-[ext_resource type="Texture2D" uid="uid://beyqskikmwwyk" path="res://assets/Sprites/Overworld/player_main/Walk (Neutral)/Copy of w8.png" id="10_4s6hb"]
+[ext_resource type="Texture2D" uid="uid://eml6u537g4xw" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_00.png" id="3_xinbh"]
+[ext_resource type="Texture2D" uid="uid://dkimduim3jgjd" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_01.png" id="4_guhva"]
+[ext_resource type="Texture2D" uid="uid://xxhsxu02du81" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_02.png" id="5_0yqd8"]
+[ext_resource type="Texture2D" uid="uid://yrf4iwex5mc5" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_03.png" id="6_j8o4i"]
+[ext_resource type="Texture2D" uid="uid://c07ewbtls0kr7" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_04.png" id="7_0wpvi"]
+[ext_resource type="Texture2D" uid="uid://bw0tk8hdtvk8k" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_05.png" id="8_3xf0t"]
+[ext_resource type="Texture2D" uid="uid://bs8gfln2xpdd" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_06.png" id="9_61vme"]
+[ext_resource type="Texture2D" uid="uid://beyqskikmwwyk" path="res://assets/Sprites/Overworld/Player A/Walk/a_walk_front_07.png" id="10_4s6hb"]
 
 [sub_resource type="Resource" id="Resource_mg5aq"]
 script = ExtResource("2_qkp2o")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://60c4d5i3t1dl"]
 
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="1_bgh64"]
-[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="2_6fxnb"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_front.png" id="2_6fxnb"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="2_beq74"]
 [ext_resource type="PackedScene" uid="uid://805y8gv2t51e" path="res://src/ZLighting/Scenes/ZLight.tscn" id="3_48vpc"]
 [ext_resource type="Texture2D" uid="uid://bgu42fkgqmfrh" path="res://assets/Sprites/Overworld/temp/bench_light_mask.png" id="5_ionkl"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cbky407i8oahf" path="res://assets/Sprites/Overworld/temp/bench.png" id="6_66u7y"]
 [ext_resource type="Texture2D" uid="uid://b55lcyb83wev2" path="res://assets/Textures/Lights/square_full.png" id="6_bbjom"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="7_uuh6j"]
-[ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/player_main/player_main_light_mask.png" id="10_awm7t"]
+[ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/Player A/player_main_light_mask.png" id="10_awm7t"]
 [ext_resource type="Texture2D" uid="uid://ds2dao027t5dj" path="res://assets/Sprites/Overworld/THE CULPRIT_small.png" id="11_any1e"]
 [ext_resource type="Texture2D" uid="uid://c18kg7d7cg557" path="res://assets/Textures/Lights/sky_light.png" id="12_mc18x"]
 

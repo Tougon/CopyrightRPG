@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Objects/MirrorWall.gd" id="1_2yuwk"]
 [ext_resource type="Texture2D" uid="uid://d02dppeve2otn" path="res://assets/Sprites/Overworld/common/pillar.png" id="2_u2tn1"]
 [ext_resource type="Texture2D" uid="uid://c4o1k7krgkam4" path="res://assets/UIGeneric/white.png" id="3_n60iv"]
-[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="4_bh5bc"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_front.png" id="4_bh5bc"]
 [ext_resource type="Texture2D" uid="uid://b720qcsataei1" path="res://assets/Sprites/Overworld/temp/sketch.png" id="5_420se"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g6rg"]

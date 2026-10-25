@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://djwraurjnsebu"]
+[gd_scene load_steps=73 format=4 uid="uid://djwraurjnsebu"]
 
 [ext_resource type="Texture2D" uid="uid://csdqrx8u1jkw0" path="res://assets/Sprites/Tilemaps/temp_tilemap.png" id="1_cvjr8"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_kiva8"]
@@ -26,19 +26,18 @@
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/ActiveCheckGroup.gd" id="20_ybg78"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/DialogueCheckGroup.gd" id="21_6y80r"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Interaction/QuestCheck.gd" id="22_g6foi"]
-[ext_resource type="Texture2D" uid="uid://dl5diybtryreg" path="res://assets/Sprites/Overworld/player_main/2514.png" id="24_otr7g"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="24_tm1wa"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="25_p4i8l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="26_goqi0"]
-[ext_resource type="Texture2D" uid="uid://bp6swawq4moni" path="res://assets/Sprites/Overworld/player_main/shaded_only.png" id="27_24ju5"]
+[ext_resource type="Texture2D" uid="uid://bp6swawq4moni" path="res://assets/Sprites/Overworld/Player A/shaded_only.png" id="27_24ju5"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_player.gd" id="27_aqp1h"]
-[ext_resource type="Texture2D" uid="uid://dbwv4wp5cxqpb" path="res://assets/Sprites/Overworld/player_main/sketch_only.png" id="28_4xtc6"]
+[ext_resource type="Texture2D" uid="uid://dbwv4wp5cxqpb" path="res://assets/Sprites/Overworld/Player A/sketch_only.png" id="28_4xtc6"]
 [ext_resource type="Script" path="res://src/CutsceneInterface/cutscene_object.gd" id="28_6btiu"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_resource.gd" id="28_mltki"]
 [ext_resource type="Texture2D" uid="uid://cdctt3sxv0ujw" path="res://assets/Sprites/Effects/Generic/shield_0.png" id="29_63qe4"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_group.gd" id="29_l7h75"]
-[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="29_tluc3"]
-[ext_resource type="Texture2D" uid="uid://hkr2xkwh7de0" path="res://assets/Sprites/Overworld/player_main/none.png" id="30_gh24y"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_front.png" id="29_tluc3"]
+[ext_resource type="Texture2D" uid="uid://hkr2xkwh7de0" path="res://assets/Sprites/Overworld/Player A/none.png" id="30_gh24y"]
 [ext_resource type="Script" path="res://addons/totween/src/tween_frame.gd" id="30_t6yj7"]
 [ext_resource type="Texture2D" uid="uid://nkbiikaeih7v" path="res://assets/UIGeneric/circle_feathered.png" id="32_14mn0"]
 [ext_resource type="Texture2D" uid="uid://bec2si5lxib46" path="res://assets/Textures/Lights/circle.png" id="32_ufq1w"]
@@ -562,18 +561,39 @@ sources/2 = SubResource("TileSetAtlasSource_haj4c")
 
 [sub_resource type="Resource" id="Resource_1tfly"]
 script = ExtResource("5_utklg")
-enemy_ids = Array[int]([4])
+primary_enemy = 0
 odds = 0.9
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 3
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="Resource" id="Resource_s1unj"]
 script = ExtResource("5_utklg")
-enemy_ids = Array[int]([4])
+primary_enemy = 0
 odds = 0.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 3
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="Resource" id="Resource_tkqyn"]
 script = ExtResource("5_utklg")
-enemy_ids = Array[int]([5, 5])
+primary_enemy = 0
 odds = 1.0
+can_flee = true
+ignore_flee_mechanics = false
+min_enemies = 1
+max_enemies = 3
+required_enemies = Array[int]([])
+additional_enemies = Array[int]([])
+tutorial = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dyxed"]
 shader = ExtResource("6_1u0pu")
@@ -846,12 +866,6 @@ object_id = "temp_cutscene_giver"
 visible = false
 position = Vector2(608, -122)
 default_dialogue = "demo_boss_sequence"
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/Sorted Items"]
-visible = false
-position = Vector2(606, 376)
-scale = Vector2(5, 5)
-texture = ExtResource("24_otr7g")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Environment/Sorted Items"]
 position = Vector2(832, -122)

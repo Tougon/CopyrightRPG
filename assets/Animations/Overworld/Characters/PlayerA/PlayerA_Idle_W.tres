@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation.gd" id="1_hf1oa"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/Visuals/rpg_character_animation_frame.gd" id="2_tcd8g"]
-[ext_resource type="Texture2D" uid="uid://bginbe75jnue7" path="res://assets/Sprites/Overworld/player_main/sketch_shade_left.png" id="3_s2cqu"]
+[ext_resource type="Texture2D" uid="uid://bginbe75jnue7" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_left.png" id="3_s2cqu"]
 
 [sub_resource type="Resource" id="Resource_or18l"]
 script = ExtResource("2_tcd8g")

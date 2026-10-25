@@ -11,10 +11,10 @@
 [ext_resource type="Resource" uid="uid://6o5j8h7xjldb" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Walk_S.tres" id="8_bnsw5"]
 [ext_resource type="Resource" uid="uid://ca0kl2ka5kt1d" path="res://assets/Animations/Overworld/Characters/PlayerA/PlayerA_Idle_W.tres" id="8_y7ofm"]
 [ext_resource type="Shader" path="res://src/ZLighting/Shaders/2d_light_depth.gdshader" id="9_886d1"]
-[ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/player_main/player_main_light_mask.png" id="10_dtr0a"]
+[ext_resource type="Texture2D" uid="uid://d23og0qgj3a58" path="res://assets/Sprites/Overworld/Player A/player_main_light_mask.png" id="10_dtr0a"]
 [ext_resource type="PackedScene" uid="uid://1fr52nplx0as" path="res://src/ZLighting/Scenes/ZLightReceiver.tscn" id="11_iuhc3"]
 [ext_resource type="Shader" path="res://assets/Shaders/2d_shadows.gdshader" id="13_2shhq"]
-[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/player_main/sketch_shade.png" id="14_uuk4g"]
+[ext_resource type="Texture2D" uid="uid://jck3ih57yvok" path="res://assets/Sprites/Overworld/Player A/Idle/a_idle_front.png" id="14_uuk4g"]
 
 [sub_resource type="Resource" id="Resource_yglfv"]
 script = ExtResource("4_0t1r4")
