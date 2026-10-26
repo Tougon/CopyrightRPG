@@ -14,6 +14,12 @@ class_name Floor
 
 @export var use_floor_as_bounds : bool = true;
 
+var _override_step_sound : String = "";
+
+
+func _ready() -> void:
+	EventManager.play_impact_sfx.connect(_play_impact_sfx);
+
 
 # Active refers specifically to collision
 func set_floor_active(active : bool):
@@ -86,3 +92,20 @@ func is_on_tile(pos : Vector2) -> bool:
 	var tile_data = tile_map_floor.get_cell_tile_data(map_pos);
 	
 	return tile_data != null;
+
+
+func _play_impact_sfx(pos : Vector2) :
+	if (process_mode == ProcessMode.PROCESS_MODE_DISABLED) : return;
+	
+	var map_pos = tile_map_floor.local_to_map(tile_map_floor.to_local(pos));
+	var tile_data = tile_map_floor.get_cell_tile_data(map_pos);
+	
+	if (tile_data != null) :
+		var tile_sfx_id = tile_data.get_custom_data("SFX ID") as int;
+		var tile_sfx = AudioManager.floor_sfx_map.get_floor_sfx(tile_sfx_id);
+		AudioManager.play_sfx(tile_sfx, 0.2);
+
+
+func _exit_tree():
+	if EventManager != null :
+		EventManager.play_impact_sfx.disconnect(_play_impact_sfx);

@@ -90,6 +90,8 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_ca3if"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "SFX ID"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_lubrl")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qct0a"]
@@ -2119,6 +2121,7 @@ position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_8ytvc")
 
 [node name="Encounter Areas" type="Node2D" parent="Areas/Main/1F"]
+process_mode = 4
 
 [node name="EncounterArea_00" parent="Areas/Main/1F/Encounter Areas" instance=ExtResource("16_ix7mn")]
 position = Vector2(-702, -488)

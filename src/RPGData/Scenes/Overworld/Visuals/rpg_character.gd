@@ -68,8 +68,11 @@ func _update_sprite():
 	sprite.texture = _current_anim.sequence[_current_frame].frame_sprite;
 	sprite.offset = _sprite_offset + _current_anim.sequence[_current_frame].offset;
 	
-	if play_audio && !_current_anim.sequence[_current_frame].sfx_key.is_empty() :
-		AudioManager.play_sfx(_current_anim.sequence[_current_frame].sfx_key, 0.25);
+	if play_audio :
+		if !_current_anim.sequence[_current_frame].sfx_key.is_empty() :
+			AudioManager.play_sfx(_current_anim.sequence[_current_frame].sfx_key, 0.15);
+		if _current_anim.sequence[_current_frame].impact_sfx :
+			EventManager.play_impact_sfx.emit(global_position);
 
 
 func set_direction(new_direction : Vector2):

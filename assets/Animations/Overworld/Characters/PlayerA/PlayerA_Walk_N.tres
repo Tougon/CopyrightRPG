@@ -16,13 +16,15 @@ script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("3_xk6in")
 frame_time = 0.12
 sfx_key = ""
+impact_sfx = false
 offset = Vector2(0, -2)
 
 [sub_resource type="Resource" id="Resource_xsxpr"]
 script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("4_fs3i8")
 frame_time = 0.12
-sfx_key = "step_walk_common"
+sfx_key = ""
+impact_sfx = true
 offset = Vector2(0, -5)
 
 [sub_resource type="Resource" id="Resource_ijn4b"]
@@ -30,6 +32,7 @@ script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("5_1416l")
 frame_time = 0.12
 sfx_key = ""
+impact_sfx = false
 offset = Vector2(0, -8)
 
 [sub_resource type="Resource" id="Resource_6vnw6"]
@@ -37,6 +40,7 @@ script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("6_ammai")
 frame_time = 0.12
 sfx_key = ""
+impact_sfx = false
 offset = Vector2(0, -5)
 
 [sub_resource type="Resource" id="Resource_r523f"]
@@ -44,13 +48,15 @@ script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("7_s78m7")
 frame_time = 0.12
 sfx_key = ""
+impact_sfx = false
 offset = Vector2(0, -2)
 
 [sub_resource type="Resource" id="Resource_f1vob"]
 script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("8_nl0wx")
 frame_time = 0.12
-sfx_key = "step_walk_common"
+sfx_key = ""
+impact_sfx = true
 offset = Vector2(0, -5)
 
 [sub_resource type="Resource" id="Resource_xscxc"]
@@ -58,6 +64,7 @@ script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("9_okvoc")
 frame_time = 0.12
 sfx_key = ""
+impact_sfx = false
 offset = Vector2(0, -8)
 
 [sub_resource type="Resource" id="Resource_uevpx"]
@@ -65,6 +72,7 @@ script = ExtResource("2_2sqp1")
 frame_sprite = ExtResource("10_utwyh")
 frame_time = 0.12
 sfx_key = ""
+impact_sfx = false
 offset = Vector2(0, -5)
 
 [resource]

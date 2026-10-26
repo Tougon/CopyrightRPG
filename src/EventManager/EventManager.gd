@@ -31,6 +31,8 @@ signal on_overworld_change_floor(new_floor : int, teleport : bool, pos : Vector2
 signal on_overworld_floor_active(floor : Floor);
 signal on_player_enter_floor_change_zone(enter : bool);
 
+signal play_impact_sfx(position : Vector2);
+
 signal on_battle_queue(encounter : Encounter);
 signal on_battle_dequeue();
 

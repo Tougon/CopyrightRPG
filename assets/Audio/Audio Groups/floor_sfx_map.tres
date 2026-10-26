@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FloorSFXMap" load_steps=2 format=3 uid="uid://btkdpmxqag7nm"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scripts/Overworld/FloorSFXMap.gd" id="1_bsfb0"]
+
+[resource]
+script = ExtResource("1_bsfb0")
+floor_sfx_map = {
+0: "step_walk_common"
+}

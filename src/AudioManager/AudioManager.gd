@@ -7,6 +7,7 @@ const MAX_VOLUME_AMOUNT = 0.0;
 @export var sfx_source_count : int = 15;
 @export var common_audio_group : AudioGroup;
 @export var bgm_group : AudioGroup;
+@export var floor_sfx_map : FloorSFXMap
 
 # Runtime variables
 var _runtime_bgm_volume : float;
