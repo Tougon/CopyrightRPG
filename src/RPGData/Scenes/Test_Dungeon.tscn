@@ -2103,6 +2103,7 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_ph1gq")
 
 [node name="Tutorial" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers"]
+process_mode = 4
 
 [node name="Camera Point" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial"]
 position = Vector2(4, 32)
@@ -2117,6 +2118,22 @@ default_dialogue = "jcp_tutorial"
 object_id = "TutorialTrigger"
 
 [node name="CollisionShape2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial/TutorialTrigger/Collider" index="0"]
+position = Vector2(-5, 0)
+shape = SubResource("RectangleShape2D_8ytvc")
+
+[node name="Tutorial2" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers"]
+
+[node name="Camera Point" type="Node2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial2"]
+position = Vector2(4, 32)
+script = ExtResource("30_pvc07")
+object_id = "jcp_tutorial_camera_point"
+
+[node name="TutorialTrigger" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial2" instance=ExtResource("31_nwt8f")]
+position = Vector2(-6, 269)
+default_dialogue = "jcp_tutorial"
+object_id = "TutorialTrigger"
+
+[node name="CollisionShape2D" parent="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial2/TutorialTrigger/Collider" index="0"]
 position = Vector2(-5, 0)
 shape = SubResource("RectangleShape2D_8ytvc")
 
@@ -2316,4 +2333,5 @@ draw_limits = true
 [editable path="Areas/Main/1F/Environment/Visuals/Sorted Items/Props/Entryway E/Guard Rail41"]
 [editable path="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Intro/IntroTrigger"]
 [editable path="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial/TutorialTrigger"]
+[editable path="Areas/Main/1F/Environment/Visuals/Cutscene Helpers/Tutorial2/TutorialTrigger"]
 [editable path="Areas/Main/1F/Encounter Areas/EncounterArea_00"]

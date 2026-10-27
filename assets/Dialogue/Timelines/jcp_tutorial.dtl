@@ -7,6 +7,7 @@
 demo_boss: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi...
 join temp_character_1 center
 temp_character_1: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
+[end_timeline]
 [begin_battle path="res://assets/Encounters/tutorial_seal.tres"]
 [progress_quest quest="JCP_Main"]
 Test.

@@ -55,6 +55,7 @@ directories/dtl_directory={
 "demo_set_lvl_5": "res://assets/Dialogue/Timelines/demo_set_lvl_5.dtl",
 "generic_pickup": "res://assets/Dialogue/Timelines/generic/generic_pickup.dtl",
 "generic_pickup_empty": "res://assets/Dialogue/Timelines/generic/generic_pickup_empty.dtl",
+"initialize": "res://assets/Dialogue/Timelines/generic/initialize.dtl",
 "jcp_intro": "res://assets/Dialogue/Timelines/jcp_intro.dtl",
 "jcp_tutorial": "res://assets/Dialogue/Timelines/jcp_tutorial.dtl",
 "stop": "res://assets/Dialogue/Timelines/stop.dtl",

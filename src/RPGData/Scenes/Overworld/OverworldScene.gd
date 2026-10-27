@@ -38,6 +38,9 @@ var _battle_end_timestamp : float;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Forcing dialogue active to try and ensure the first time initialization never happens
+	Dialogic.start("initialize");
+	
 	EventManager.on_overworld_change_area.connect(_on_overworld_change_area);
 	EventManager.on_overworld_change_floor.connect(_on_overworld_change_floor);
 	EventManager.on_player_enter_floor_change_zone.connect(_on_player_enter_floor_change_zone);
