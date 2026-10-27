@@ -5,8 +5,11 @@
 [progress_quest quest="JCP_Main"]
 [fade in="true"]
 demo_boss: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi...
-join temp_character_1 center
+join temp_character_1 right [animation="Custom Fade In"]
 temp_character_1: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
+leave temp_character_1 [animation="Custom Fade Out"]
+join demo_boss right [animation="Custom Fade In"]
+demo_boss: Here's how it looks when we change character.
 [end_timeline]
 [begin_battle path="res://assets/Encounters/tutorial_seal.tres"]
 [progress_quest quest="JCP_Main"]

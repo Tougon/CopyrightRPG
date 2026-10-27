@@ -1,9 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b32paf0ll6um8"]
+[gd_scene load_steps=5 format=3 uid="uid://b32paf0ll6um8"]
 
 [ext_resource type="Script" path="res://addons/dialogic/Modules/Character/default_portrait.gd" id="1_wn77n"]
+[ext_resource type="Texture2D" uid="uid://c31jwxxehoj53" path="res://assets/Sprites/UI/Dialogue/Portraits/Temp Portrait.png" id="2_8c5n8"]
+[ext_resource type="Shader" path="res://assets/Shaders/DropShadowUI.gdshader" id="2_idso4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bshdc"]
+shader = ExtResource("2_idso4")
+shader_parameter/debug = false
+shader_parameter/border_scale = 1.0
+shader_parameter/shadow_offset = Vector2(20, 0)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/blur_amount = 0.0
+shader_parameter/shadow_scale = 1.0
+shader_parameter/disable_rotating = true
 
 [node name="DefaultPortrait" type="Node2D"]
 script = ExtResource("1_wn77n")
 
 [node name="Portrait" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bshdc")
+texture = ExtResource("2_8c5n8")
 centered = false
