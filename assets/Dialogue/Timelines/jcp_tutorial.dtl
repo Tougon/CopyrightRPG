@@ -10,6 +10,7 @@ temp_character_1: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi.
 leave temp_character_1 [animation="Custom Fade Out"]
 join demo_boss right [animation="Custom Fade In"]
 demo_boss: Here's how it looks when we change character.
+[queue_skit skit="post_tutorial"]
 [end_timeline]
 [begin_battle path="res://assets/Encounters/tutorial_seal.tres"]
 [progress_quest quest="JCP_Main"]

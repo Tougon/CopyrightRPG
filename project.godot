@@ -33,6 +33,10 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 CutsceneObjectManager="*res://src/CutsceneInterface/CutsceneObjectManager.gd"
 AudioManager="*res://src/AudioManager/AudioManager.tscn"
 SceneManager="*res://src/RPGData/Scripts/System/SceneManager.gd"
+DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+QuestManager="*res://addons/quest_manager/QuestManager.gd"
+SkitManager="*res://src/RPGData/Scenes/Overworld/Skits/SkitManager.gd"
 
 [dialogic]
 
@@ -55,6 +59,7 @@ directories/dtl_directory={
 "initialize": "res://assets/Dialogue/Timelines/generic/initialize.dtl",
 "jcp_intro": "res://assets/Dialogue/Timelines/jcp_intro.dtl",
 "jcp_tutorial": "res://assets/Dialogue/Timelines/jcp_tutorial.dtl",
+"skit_post_tutorial": "res://assets/Dialogue/Timelines/skits/skit_post_tutorial.dtl",
 "stop": "res://assets/Dialogue/Timelines/stop.dtl",
 "temp": "res://assets/Dialogue/Timelines/temp.dtl",
 "temp_cutscene": "res://assets/Dialogue/Timelines/temp_cutscene.dtl",

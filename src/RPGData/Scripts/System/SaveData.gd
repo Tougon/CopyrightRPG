@@ -15,6 +15,10 @@ var pickups : Array;
 
 var level_cap : int;
 
+var skits_seen : Array;
+var skits_queued : Array;
+var skits_disabled : Array;
+
 
 func _get_property_list() -> Array:
 	var ret: Array = []
@@ -79,6 +83,24 @@ func _get_property_list() -> Array:
 		"usage": PROPERTY_USAGE_STORAGE
 	})
 	
+	ret.append({
+		"name": "Skits Seen",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
+	ret.append({
+		"name": "Skits Queued",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
+	ret.append({
+		"name": "Skits Disabled",
+		"type": TYPE_ARRAY,
+		"usage": PROPERTY_USAGE_STORAGE
+	})
+	
 	return ret;
 
 
@@ -105,6 +127,12 @@ func _get(property):
 			return level_cap;
 		"Pickups":
 			return pickups;
+		"Skits Seen":
+			return skits_seen;
+		"Skits Queued":
+			return skits_queued;
+		"Skits Disabled":
+			return skits_disabled;
 
 
 func _set(property, val) -> bool:
@@ -140,6 +168,15 @@ func _set(property, val) -> bool:
 			notify_property_list_changed();
 		"Pickups":
 			pickups = val;
+			notify_property_list_changed();
+		"Skits Seen":
+			skits_seen = val;
+			notify_property_list_changed();
+		"Skits Queued":
+			skits_queued = val;
+			notify_property_list_changed();
+		"Skits Disabled":
+			skits_disabled = val;
 			notify_property_list_changed();
 	
 	return retval;

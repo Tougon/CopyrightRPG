@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://colkk4ps73x3b"]
+
+[ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/skit_prompt_ui.gd" id="1_4mwqe"]
+[ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="2_7es8b"]
+
+[node name="Skit Prompt UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4mwqe")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -80.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="Spacer" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_7es8b")
+theme_type_variation = &"StatLabels"
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 28
+text = "Skit Name"
+text_overrun_behavior = 2

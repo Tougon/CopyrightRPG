@@ -15,10 +15,6 @@ func animate() -> void:
 	else:
 		var original_modulation := Color(0,0,0,0)
 		node.set(modulation_property, original_modulation)
-		
-		var help = node.get_child(0);
-		print("PLEASE: " + help.name)
-		
 		node.get_child(0).get_child(0).material.set_shader_parameter("shadow_offset", Vector2(0.0, 0.0));
 
 	var tween := (node.create_tween() as Tween)

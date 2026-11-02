@@ -113,6 +113,9 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("interact") && _can_move:
 		if _sight.closest_interactable != null :
 			_sight.closest_interactable.interact();
+	
+	if Input.is_action_just_pressed("ui_aux_1") && _can_move:
+		SkitManager.play_queued_skit();
 
 
 func _get_movement_vector() -> Vector2:
