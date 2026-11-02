@@ -2281,10 +2281,8 @@ color = Color(0, 0, 0, 1)
 [node name="----------" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
 z_index = 200
-position = Vector2(0, 44)
-process_callback = 0
+position = Vector2(2874, 93)
 position_smoothing_speed = 500.0
 editor_draw_limits = true
 

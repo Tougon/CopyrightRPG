@@ -240,6 +240,10 @@ func _on_dialogue_end():
 		EventManager.overworld_cutscene_fade_start.emit(true);
 		await EventManager.overworld_cutscene_fade_completed;
 		player_controller._can_move = true;
+	
+	game_camera.set_follow_target(null);
+	await get_tree().process_frame;
+	game_camera.set_follow_target(player_controller.camera_offset);
 
 
 func _on_overworld_battle_queued(encounter : Encounter):
