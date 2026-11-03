@@ -135,9 +135,6 @@ func move(direction : Vector2, delta : float):
 	velocity = direction * speed;
 	var running = Input.is_action_pressed("run");
 	
-	if direction != Vector2.ZERO :
-		print("We're getting something");
-	
 	if running : 
 		velocity *= run_multiplier;
 		_running_time += delta;
@@ -156,7 +153,7 @@ func move(direction : Vector2, delta : float):
 	
 	var apply_run_endlag = false;
 	
-	if (Input.is_action_just_released("run") || (running && _prev_direction != direction)) && _prev_direction.length_squared() > 0:
+	if (Input.is_action_just_released("run") || (running && _prev_direction != direction)) && _prev_direction.length_squared() > 0 && direction.length_squared() > 0:
 		var can_skid = true;
 		
 		# If we stop running and we've been running for long enough, skid
