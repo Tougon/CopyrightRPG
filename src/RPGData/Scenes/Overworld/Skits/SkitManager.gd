@@ -58,15 +58,19 @@ func play_queued_skit():
 	if _skit_queue.size() > 0 :
 		print("PLAYING QUEUED SKIT");
 		var skit_info = skit_database.get_skit_from_name(_skit_queue[0]);
+		
+		Dialogic.timeline_ended.connect(_on_skit_ended);
 		EventManager.show_skit_ui.emit(tr(skit_info.skit_name_key), false);
+		EventManager.on_skit_play.emit(tr(skit_info.skit_name_key), skit_info.skit_dialogue)
 		
 		DataManager.current_save.skits_seen.append(_skit_queue[0]);
 		_skit_queue.remove_at(0);
 		_current_skit_timer = 0.0;
-		
-		# Play the dialogue sequence
-		Dialogic.Styles.change_style("skit_style", true);
-		Dialogic.start(skit_info.skit_dialogue);
+
+
+func _on_skit_ended():
+	Dialogic.timeline_ended.disconnect(_on_skit_ended);
+	EventManager.on_skit_end.emit();
 
 
 func _disable_queued_skit():

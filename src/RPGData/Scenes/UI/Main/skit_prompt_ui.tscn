@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://colkk4ps73x3b"]
+[gd_scene load_steps=8 format=3 uid="uid://colkk4ps73x3b"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/skit_prompt_ui.gd" id="1_4mwqe"]
-[ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="2_7es8b"]
 [ext_resource type="FontFile" uid="uid://dm8kuq1rngj1g" path="res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf" id="2_niy3g"]
 [ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ue734"]
+[ext_resource type="Theme" uid="uid://ddu4xmidfcls5" path="res://assets/Themes/Theme_UI_MainMenu_Button.tres" id="4_ru5l8"]
+[ext_resource type="FontFile" uid="uid://dt6ttvw4o5lkc" path="res://assets/Fonts/System/Genos-Bold.ttf" id="5_furdp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pllem"]
 font = ExtResource("2_niy3g")
@@ -56,9 +57,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("2_7es8b")
-theme_type_variation = &"StatLabels"
+theme = ExtResource("4_ru5l8")
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 28
+theme_override_fonts/font = ExtResource("5_furdp")
+theme_override_font_sizes/font_size = 36
 text = "Skit Name"
 text_overrun_behavior = 2

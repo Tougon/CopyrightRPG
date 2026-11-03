@@ -25,6 +25,8 @@ signal on_message_queue(message : String);
 # Skit Events
 signal queue_skit(skit_name : String);
 signal show_skit_ui(skit_name : String, show : bool)
+signal on_skit_play(skit_name : String, skit_dialogue : String);
+signal on_skit_end();
 
 # Global Overworld Events
 signal on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float, run : bool, skid : bool);

@@ -42,6 +42,7 @@ ControllerIcons="*res://addons/controller_icons/ControllerIcons.gd"
 [dialogic]
 
 directories/dch_directory={
+"character_player_a": "res://assets/Dialogue/Characters/character_player_a.dch",
 "demo_boss": "res://assets/Dialogue/Characters/demo_boss.dch",
 "temp_character_1": "res://assets/Dialogue/Characters/temp_character_1.dch"
 }

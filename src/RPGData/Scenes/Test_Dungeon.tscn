@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=4 uid="uid://cylb6rddir2mt"]
+[gd_scene load_steps=113 format=4 uid="uid://cylb6rddir2mt"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldScene.gd" id="1_ekr5d"]
 [ext_resource type="Script" path="res://src/RPGData/Scenes/Overworld/OverworldArea.gd" id="2_wplqd"]
@@ -75,6 +75,7 @@
 [ext_resource type="PackedScene" uid="uid://c2i840geeggtt" path="res://addons/FPSCounter/FPSCounter.tscn" id="49_cyut6"]
 [ext_resource type="Material" uid="uid://cc36s4fth3blt" path="res://assets/Materials/PostProcess/BleachBypassPresetB.tres" id="56_ruio5"]
 [ext_resource type="PackedScene" uid="uid://colkk4ps73x3b" path="res://src/RPGData/Scenes/UI/Main/skit_prompt_ui.tscn" id="57_emnsn"]
+[ext_resource type="PackedScene" uid="uid://b8rt8acohxqlo" path="res://src/RPGData/Scenes/UI/Main/skit_bg.tscn" id="58_4rqg0"]
 [ext_resource type="PackedScene" uid="uid://8jbg8nthbg7y" path="res://src/RPGData/Scenes/Overworld/Objects/JCP/table_a_side.tscn" id="65_feh83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lubrl"]
@@ -2239,6 +2240,8 @@ grow_vertical = 2
 [node name="Player UI" type="CanvasLayer" parent="UI"]
 
 [node name="Skit Prompt UI" parent="UI/Player UI" instance=ExtResource("57_emnsn")]
+
+[node name="Skit BG" parent="UI/Player UI" instance=ExtResource("58_4rqg0")]
 
 [node name="OverworldMainMenu" parent="UI/Player UI" instance=ExtResource("24_7k6yk")]
 visible = false
