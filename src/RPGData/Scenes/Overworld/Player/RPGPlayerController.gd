@@ -135,6 +135,9 @@ func move(direction : Vector2, delta : float):
 	velocity = direction * speed;
 	var running = Input.is_action_pressed("run");
 	
+	if direction != Vector2.ZERO :
+		print("We're getting something");
+	
 	if running : 
 		velocity *= run_multiplier;
 		_running_time += delta;

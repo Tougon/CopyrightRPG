@@ -1,7 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://colkk4ps73x3b"]
+[gd_scene load_steps=7 format=3 uid="uid://colkk4ps73x3b"]
 
 [ext_resource type="Script" path="res://src/RPGData/Scenes/UI/Main/skit_prompt_ui.gd" id="1_4mwqe"]
 [ext_resource type="Theme" uid="uid://b7qvhtwu2xk0f" path="res://assets/Themes/Theme_UI_MainMenu_Stat.tres" id="2_7es8b"]
+[ext_resource type="FontFile" uid="uid://dm8kuq1rngj1g" path="res://assets/Fonts/SometypeMono/SometypeMono-Bold.ttf" id="2_niy3g"]
+[ext_resource type="Script" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="2_ue734"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pllem"]
+font = ExtResource("2_niy3g")
+
+[sub_resource type="Texture2D" id="Texture2D_f045a"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_ue734")
+path = "ui_aux_1"
+show_mode = 0
+force_controller_icon_style = -1
+force_type = 0
+force_device = 16
+custom_label_settings = SubResource("LabelSettings_pllem")
 
 [node name="Skit Prompt UI" type="Control"]
 layout_mode = 3
@@ -28,6 +44,9 @@ grow_vertical = 0
 [node name="Button" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+texture = SubResource("Texture2D_f045a")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Spacer" type="TextureRect" parent="HBoxContainer"]
 custom_minimum_size = Vector2(10, 40)
