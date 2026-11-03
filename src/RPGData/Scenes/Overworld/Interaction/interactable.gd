@@ -91,7 +91,8 @@ func highlight(state : bool):
 
 func interact():
 	if Dialogic.current_timeline != null: return
-
+	
+	Dialogic.Styles.change_style("dialogue_style", true);
 	Dialogic.start(_get_interact_dialogue())
 	get_viewport().set_input_as_handled()
 

@@ -39,6 +39,7 @@ var _battle_end_timestamp : float;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Forcing dialogue active to try and ensure the first time initialization never happens
+	Dialogic.Styles.change_style("dialogue_style", true);
 	Dialogic.start("initialize");
 	
 	EventManager.on_overworld_change_area.connect(_on_overworld_change_area);

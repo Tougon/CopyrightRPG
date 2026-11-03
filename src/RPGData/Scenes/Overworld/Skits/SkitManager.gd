@@ -32,8 +32,6 @@ func _ready() -> void:
 
 
 func _skit_loop():
-	# TODO: Pause from a battle starting.
-	# Actually, how do we handle that?
 	if _dialogue_active || _battle_active || _skit_queue.size() == 0 :
 		return; 
 	
@@ -67,7 +65,7 @@ func play_queued_skit():
 		_current_skit_timer = 0.0;
 		
 		# Play the dialogue sequence
-		# NEEDS TO SET THE UI TO THE SKIT UI WHEN POSSIBLE
+		Dialogic.Styles.change_style("skit_style", true);
 		Dialogic.start(skit_info.skit_dialogue);
 
 
@@ -108,15 +106,12 @@ func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : f
 
 
 func _on_skit_queued(skit_name : String):
-	print("GET SKIT: " + str(skit_name));
-	
-	# Check if skit name is valid
+	var skit_info = skit_database.get_skit_from_name(skit_name);
+	if skit_info == null : return;
 	
 	# Enqueue
 	while _dialogue_active :
 		await get_tree().process_frame;
-	
-	print("SKIT CAN NOW BE PLAYED");
 	
 	_skit_queue.append(skit_name);
 	_skit_loop();

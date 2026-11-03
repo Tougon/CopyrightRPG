@@ -66,7 +66,8 @@ func _update_active_state():
 
 func interact():
 	if Dialogic.current_timeline != null: return
-
+	
+	Dialogic.Styles.change_style("dialogue_style", true);
 	Dialogic.start(_get_interact_dialogue())
 	get_viewport().set_input_as_handled()
 
@@ -100,4 +101,5 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	body.reset_locomotion_animation();
 	
+	Dialogic.Styles.change_style("dialogue_style", true);
 	Dialogic.start(_get_interact_dialogue())
