@@ -67,7 +67,7 @@ directories/dtl_directory={
 "temp_quest_win": "res://assets/Dialogue/Timelines/temp_quest_win.dtl"
 }
 layout/style_list=["res://assets/Themes/Dialogic/dialogue_style.tres", "res://assets/Themes/Dialogic/Dialogue Skit/skit_style.tres"]
-layout/default_style="res://assets/Themes/Dialogic/Dialogue Skit/skit_style.tres"
+layout/default_style=""
 glossary/default_case_sensitive=true
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
