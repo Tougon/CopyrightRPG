@@ -6,6 +6,10 @@ var _current_skit : String;
 func _ready() -> void:
 	super._ready();
 	
+	$Label.visible = false;
+	$"Portrait Area".visible = false;
+	$"Text Area".visible = false;
+	
 	EventManager.on_skit_play.connect(_on_skit_play);
 	EventManager.on_skit_end.connect(_on_skit_end);
 
@@ -25,6 +29,16 @@ func on_focus():
 	# Play the dialogue sequence
 	Dialogic.Styles.change_style("skit_style", true);
 	Dialogic.start(_current_skit);
+	
+	$Label.visible = true;
+	$"Portrait Area".visible = true;
+	$"Text Area".visible = true;
+
+
+func on_unfocus():
+	$Label.visible = false;
+	$"Portrait Area".visible = false;
+	$"Text Area".visible = false;
 
 
 # Needs to be overwritten otherwise you can manually close this

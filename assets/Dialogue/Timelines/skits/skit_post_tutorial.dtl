@@ -1,5 +1,5 @@
 join character_player_a (Skit_Default) left [animation="Instant In" length="0.0"]
 temp_character_1: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
 leave character_player_a [animation="Instant Out" length="0.0"]
-[custom_clear]
+[clear time="0.3" step="false"]
 [end_timeline]

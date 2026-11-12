@@ -289,9 +289,9 @@ mouse_filter = 2
 [node name="Box1" type="Control" parent="Portrait Area"]
 anchors_preset = 0
 offset_left = 235.0
-offset_top = 72.0
+offset_top = 82.0
 offset_right = 433.0
-offset_bottom = 270.0
+offset_bottom = 280.0
 pivot_offset = Vector2(99, 99)
 script = ExtResource("10_ltrbq")
 
@@ -345,9 +345,9 @@ anchor_top = 0.1
 anchor_right = 0.2
 anchor_bottom = 1.1
 offset_left = 235.0
-offset_top = 238.0
+offset_top = 241.0
 offset_right = 238.0
-offset_bottom = -287.0
+offset_bottom = -284.0
 grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
@@ -359,12 +359,12 @@ anchor_top = 0.1
 anchor_right = 0.4
 anchor_bottom = 1.1
 offset_left = 43.0
+offset_top = 10.0
 offset_right = 46.0
-offset_bottom = -525.0
+offset_bottom = -515.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="DialogicNode_PortraitContainer4" type="Control" parent="Portrait Area"]
 layout_mode = 1
@@ -373,8 +373,9 @@ anchor_top = 0.1
 anchor_right = 0.8
 anchor_bottom = 1.1
 offset_left = -46.0
+offset_top = 10.0
 offset_right = -43.0
-offset_bottom = -525.0
+offset_bottom = -515.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -387,13 +388,12 @@ anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 1.1
 offset_left = -238.0
-offset_top = 238.0
+offset_top = 241.0
 offset_right = -235.0
-offset_bottom = -287.0
+offset_bottom = -284.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Text Area" type="Control" parent="."]
 layout_mode = 1
