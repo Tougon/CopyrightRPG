@@ -117,6 +117,9 @@ func _on_skit_queued(skit_name : String):
 	while _dialogue_active :
 		await get_tree().process_frame;
 	
+	if DataManager.current_save.skits_disabled.has(skit_name) || _skit_queue.has(skit_name):
+		return;
+	
 	_skit_queue.append(skit_name);
 	_skit_loop();
 

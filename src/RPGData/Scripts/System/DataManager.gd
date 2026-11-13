@@ -98,6 +98,7 @@ func create_new_save():
 	party_data[1].unlocked = true;
 	party_data[2].unlocked = true;
 	party_data[3].unlocked = true;
+	
 	print("REMOVE THIS LATER")
 	for i in range(0, 100):
 		var item = item_database.get_item(i);
