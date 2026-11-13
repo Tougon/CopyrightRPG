@@ -12,6 +12,8 @@ const PORTRAIT_SCALE_SPEAKING : Vector2 = Vector2(1.0, 1.0);
 @export var portrait_color_default : Color;
 @export var portrait_color_speaking : Color;
 
+var _portrait_pos : Vector2;
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +41,9 @@ func set_speaking(speaking : bool) :
 
 
 func initialize_portrait (portrait : CanvasItem) :
+	_portrait_pos = portrait.get_child(0).position;
 	portrait.get_child(0).scale = PORTRAIT_SCALE_DEFAULT;
+	portrait.get_child(0).position = _portrait_pos + Vector2(19, 19);
 	portrait.modulate = portrait_color_default;
 
 
@@ -50,6 +54,7 @@ func tween_portrait (portrait : CanvasItem, speaking : bool) :
 		
 		tween.tween_property(portrait, "modulate", portrait_color_speaking, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
 		tween.tween_property(portrait.get_child(0), "scale", PORTRAIT_SCALE_SPEAKING, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
+		tween.tween_property(portrait.get_child(0), "position", _portrait_pos, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
 	
 	else :
 		var tween = get_tree().create_tween();
@@ -57,3 +62,4 @@ func tween_portrait (portrait : CanvasItem, speaking : bool) :
 		
 		tween.tween_property(portrait, "modulate", portrait_color_default, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
 		tween.tween_property(portrait.get_child(0), "scale", PORTRAIT_SCALE_DEFAULT, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
+		tween.tween_property(portrait.get_child(0), "position", _portrait_pos + Vector2(19, 19), 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT);
