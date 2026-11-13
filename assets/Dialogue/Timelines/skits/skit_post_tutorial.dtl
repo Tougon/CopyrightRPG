@@ -1,5 +1,7 @@
 join character_player_a (Skit_Default) left [animation="Instant In" length="0.0"]
-temp_character_1: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
+[wait time="0.3"]
+character_player_a: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
+temp_character_1: Yeah whatever I guess
+[custom_clear skit="true"]
 leave character_player_a [animation="Instant Out" length="0.0"]
-[clear time="0.3" step="false"]
 [end_timeline]

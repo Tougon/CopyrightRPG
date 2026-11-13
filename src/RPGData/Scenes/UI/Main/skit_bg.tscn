@@ -241,7 +241,7 @@ tween_resource = SubResource("Resource_bdl6l")
 play_on_start = false
 next_tween = ""
 
-[node name="Skit BG" type="Panel"]
+[node name="Skit BG" type="Panel" node_paths=PackedStringArray("player_boxes")]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -249,6 +249,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4ckbk")
+player_boxes = [NodePath("Portrait Area/Box1")]
 menu_name = "skit_bg"
 
 [node name="Distortion" type="ColorRect" parent="."]
@@ -294,6 +295,13 @@ offset_right = 433.0
 offset_bottom = 280.0
 pivot_offset = Vector2(99, 99)
 script = ExtResource("10_ltrbq")
+speaker_name = "Jam"
+border_color_default = Color(0.552941, 0.552941, 0.552941, 1)
+border_color_speaking = Color(1, 1, 0, 1)
+bg_color_default = Color(0.0588235, 0.0588235, 0.0588235, 1)
+bg_color_speaking = Color(0.164706, 0.164706, 0, 1)
+portrait_color_default = Color(0.745098, 0.745098, 0.745098, 1)
+portrait_color_speaking = Color(1, 1, 1, 1)
 
 [node name="BG" type="ColorRect" parent="Portrait Area/Box1"]
 layout_mode = 1

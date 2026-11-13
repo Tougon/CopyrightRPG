@@ -187,6 +187,9 @@ func update_name_label(character:DialogicCharacter):
 		else:
 			name_label.self_modulate = Color(1,1,1,1)
 			name_label.scale = Vector2(0.0, 1.0);
+	
+	# Invoke event for character change
+	dialogic.speaker_changed.emit(character);
 
 
 func update_typing_sound_mood(mood:Dictionary = {}) -> void:

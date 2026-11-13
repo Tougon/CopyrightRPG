@@ -91,6 +91,8 @@ signal signal_event(argument: Variant)
 ## Emitted when a signal event gets fired from a [class TextEvent] event.
 signal text_signal(argument: String)
 
+signal speaker_changed(speaker : DialogicCharacter)
+
 
 # Careful, this section is repopulated automatically at certain moments.
 #region SUBSYSTEMS

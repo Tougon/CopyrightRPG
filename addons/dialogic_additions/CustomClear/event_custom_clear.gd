@@ -3,11 +3,15 @@ extends DialogicEvent
 class_name DialogicCustomClearEvent
 
 # Define properties of the event here
+var is_skit := false;
 
 func _execute() -> void:
 	dialogic.Text.hide_textbox()
-	dialogic.Portraits.leave_all_characters();
-	await dialogic.get_tree().create_timer(0.5).timeout
+	if !is_skit :
+		dialogic.Portraits.leave_all_characters();
+		await dialogic.get_tree().create_timer(0.5).timeout
+	else :
+		await dialogic.get_tree().create_timer(0.3).timeout
 	finish()
 
 
@@ -33,6 +37,7 @@ func get_shortcode_parameters() -> Dictionary:
 	return {
 		#param_name 		: property_info
 		#"my_parameter"		: {"property": "property", "default": "Default"},
+		"skit"		: {"property": "is_skit", 	"default": false},
 	}
 
 # You can alternatively overwrite these 3 functions: to_text(), from_text(), is_valid_event()
@@ -44,5 +49,7 @@ func get_shortcode_parameters() -> Dictionary:
 
 func build_event_editor() -> void:
 	add_header_label('Custom Clear')
+	add_body_edit('is_skit', ValueType.BOOL, {
+			'left_text'		: 'Is Skit'})
 
 #endregion

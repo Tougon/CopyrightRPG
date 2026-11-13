@@ -25,7 +25,7 @@ func _set(property, what):
 		if hide_when_empty:
 			if animate_visibility : 
 				name_label_root.visible = true
-				# TODO: Don't hardcode it like this, we should be touching this anyway
+				# TODO: Don't hardcode it like this, we shouldn't be touching this anyway
 				if !what.is_empty():
 					var tween = get_tree().create_tween();
 					tween.tween_property(name_label_root, "scale", Vector2(1,1), 0.25).set_ease(Tween.EASE_OUT).set_delay(0.25)
