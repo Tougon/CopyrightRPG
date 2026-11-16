@@ -6,6 +6,7 @@ var skit_database : SkitDatabase = preload("res://assets/Dialogue/Skits/SkitData
 
 var _skit_queue : Array;
 
+var _paused : bool = false;
 var _dialogue_active : bool = false;
 var _battle_active : bool = false;
 var _current_skit_timer : float = 0.0;
@@ -24,6 +25,9 @@ func _ready() -> void:
 	Dialogic.timeline_started.connect(_on_dialogue_begin);
 	Dialogic.timeline_ended.connect(_on_dialogue_end);
 	
+	UIManager.on_menu_opened.connect(_on_menu_opened);
+	UIManager.on_all_menus_closed.connect(_on_all_menus_closed);
+	
 	await get_tree().process_frame;
 	
 	_skit_queue = DataManager.current_save.skits_queued;
@@ -41,15 +45,16 @@ func _skit_loop():
 	
 	await get_tree().process_frame;
 	
-	_current_skit_timer += get_process_delta_time();
-	
-	if _current_skit_timer >= MAX_SKIT_TIMER :
-		print("DISABLE THIS SKIT FOREVER")
-		var skit_info = skit_database.get_skit_from_name(_skit_queue[0]);
-		EventManager.show_skit_ui.emit(tr(skit_info.skit_name_key), false);
-		_disable_queued_skit();
+	if !_paused : 
+		_current_skit_timer += get_process_delta_time();
 		
-		await get_tree().create_timer(3.0);
+		if _current_skit_timer >= MAX_SKIT_TIMER :
+			print("DISABLE THIS SKIT FOREVER")
+			var skit_info = skit_database.get_skit_from_name(_skit_queue[0]);
+			EventManager.show_skit_ui.emit(tr(skit_info.skit_name_key), false);
+			_disable_queued_skit();
+			
+			await get_tree().create_timer(3.0);
 	
 	_skit_loop();
 
@@ -103,6 +108,15 @@ func _on_dialogue_end():
 	_skit_loop();
 
 
+func _on_menu_opened(menu : MenuPanel):
+	if menu.menu_name == "skit_bg" : return;
+	_paused = true;
+
+
+func _on_all_menus_closed():
+	_paused = false;
+
+
 func _on_overworld_player_moved(direction : Vector2, amount : Vector2, delta : float, run : bool, skid : bool):
 	if skid : return;
 	
@@ -132,3 +146,7 @@ func _exit_tree():
 		EventManager.overworld_battle_fade_start.disconnect(_on_battle_state_changed);
 		EventManager.on_overworld_player_moved.disconnect(_on_overworld_player_moved);
 		EventManager.queue_skit.disconnect(_on_skit_queued);
+	
+	if UIManager != null :
+		UIManager.on_menu_opened.disconnect(_on_menu_opened);
+		UIManager.on_all_menus_closed.disconnect(_on_all_menus_closed);
