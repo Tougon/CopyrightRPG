@@ -1,7 +1,13 @@
 join character_player_a (Skit_Default) left [animation="Instant In" length="0.0"]
+join character_player_b (SkitDefault) right [animation="Instant In" length="0.0"]
+join character_player_c (Skit_Default) leftmost [animation="Instant In" length="0.0"]
+join character_player_d (Skit_Default) rightmost [animation="Instant In" length="0.0"]
 [wait time="0.3"]
 character_player_a: "Cuz I'm plain" is quickly becoming your catchphrase, Tsumugi... So how much can we fit in here? Three lines.
 temp_character_1: Yeah whatever I guess
 [custom_clear skit="true"]
 leave character_player_a [animation="Instant Out" length="0.0"]
+leave character_player_b [animation="Instant Out" length="0.0"]
+leave character_player_c [animation="Instant Out" length="0.0"]
+leave character_player_d [animation="Instant Out" length="0.0"]
 [end_timeline]
