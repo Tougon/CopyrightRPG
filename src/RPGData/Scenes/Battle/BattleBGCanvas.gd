@@ -87,11 +87,16 @@ func _on_battle_begin(params : BattleParams):
 	
 	if params.enemies.size() > 0:
 		var enemy = params.enemies[0];
-		load_video_full(enemy.entity_video, enemy.entity_video_material, enemy.entity_thought_pattern_material, LoadType.ENTITY, enemy);
 		
-		if !_entity_to_color_mat_map.has(enemy):
-			var color = load_material(enemy.entity_thought_pattern_material);
-			_entity_to_color_mat_map[enemy] = color;
+		if !enemy.entity_video.is_empty() :
+			load_video_full(enemy.entity_video, enemy.entity_video_material, enemy.entity_thought_pattern_material, LoadType.ENTITY, enemy);
+			
+			if !_entity_to_color_mat_map.has(enemy):
+				var color = load_material(enemy.entity_thought_pattern_material);
+				_entity_to_color_mat_map[enemy] = color;
+		elif !params.video.is_empty() :
+			print("Load default")
+			load_video_full(params.video, params.video_mat, params.video_mat, LoadType.ENTITY, enemy)
 
 
 func _load_entity_spell_data(entity : EntityController):
@@ -230,11 +235,18 @@ func load_video_full(vid_path : String, mat1_path : String, mat2_path : String, 
 		
 		video_layer.stream = _video_main;
 		#video_layer.material = mat1;
-		video_layer.texture_repeat = (aux as Entity).entity_video_repeat_mode;
+		if aux != null :
+			video_layer.texture_repeat = (aux as Entity).entity_video_repeat_mode;
+		else : 
+			video_layer.texture_repeat = CanvasItem.TEXTURE_REPEAT_MIRROR;
+		
 		color_layer.stream = _video_main;
 		color_layer.material = _material_color_inst;
 		
-		color_layer.texture_repeat = (aux as Entity).entity_thought_repeat_mode;
+		if aux != null :
+			color_layer.texture_repeat = (aux as Entity).entity_thought_repeat_mode;
+		else : 
+			video_layer.texture_repeat = CanvasItem.TEXTURE_REPEAT_MIRROR;
 		
 		_set_static(false);
 		

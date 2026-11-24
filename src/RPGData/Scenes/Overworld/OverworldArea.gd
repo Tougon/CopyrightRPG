@@ -2,6 +2,10 @@ extends Node2D
 class_name OverworldArea
 
 @export var area_name_key : String;
+@export var area_bgm_key : String;
+@export var area_battle_bgm_key : String;
+@export_file("*.ogv") var area_battle_video : String;
+@export_file("*.tres") var area_battle_material : String;
 var _floors : Dictionary;
 
 # Called when the node enters the scene tree for the first time.

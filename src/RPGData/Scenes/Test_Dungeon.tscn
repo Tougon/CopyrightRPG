@@ -314,13 +314,16 @@ free_camera = NodePath("Free PhantomCamera")
 canvas_modulate = NodePath("UI/CanvasModulate")
 background_void = NodePath("UI/Void")
 flee_group_grow_rate = 0.3
-bgm_id = "broken_glass"
 
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="Main" type="Node2D" parent="Areas"]
 script = ExtResource("2_wplqd")
 area_name_key = "main"
+area_bgm_key = "broken_glass"
+area_battle_bgm_key = "swamp_thing"
+area_battle_video = "res://video/entity/video_entity_slime.ogv"
+area_battle_material = "res://assets/Materials/VideoMaterials/Entity/entity_slime_color.tres"
 
 [node name="1F" type="Node2D" parent="Areas/Main"]
 z_index = -10

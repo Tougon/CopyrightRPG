@@ -21,7 +21,7 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_u32xe"]
 script = ExtResource("2_c1rms")
-min = 8
+min = 7
 max = 10
 growth = SubResource("Curve_fslmg")
 
@@ -35,8 +35,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_i3d6x"]
 script = ExtResource("2_c1rms")
-min = 8
-max = 10
+min = 7
+max = 9
 growth = SubResource("Curve_p1ga6")
 
 [sub_resource type="Resource" id="Resource_pvc6i"]
@@ -49,8 +49,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_aptt0"]
 script = ExtResource("2_c1rms")
-min = 180
-max = 206
+min = 164
+max = 186
 growth = SubResource("Curve_7i6bh")
 
 [sub_resource type="Curve" id="Curve_k6ron"]
@@ -92,8 +92,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_4qt68"]
 script = ExtResource("2_c1rms")
-min = 140
-max = 175
+min = 120
+max = 136
 growth = SubResource("Curve_v7tns")
 
 [sub_resource type="Curve" id="Curve_hnfm3"]
@@ -102,8 +102,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_x0kwu"]
 script = ExtResource("2_c1rms")
-min = 8
-max = 18
+min = 11
+max = 24
 growth = SubResource("Curve_hnfm3")
 
 [sub_resource type="Curve" id="Curve_5etj0"]
@@ -112,8 +112,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_f8es4"]
 script = ExtResource("2_c1rms")
-min = 8
-max = 10
+min = 7
+max = 9
 growth = SubResource("Curve_5etj0")
 
 [sub_resource type="Curve" id="Curve_up3ke"]
@@ -122,8 +122,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_iu8tl"]
 script = ExtResource("2_c1rms")
-min = 8
-max = 10
+min = 5
+max = 8
 growth = SubResource("Curve_up3ke")
 
 [sub_resource type="Curve" id="Curve_sdigb"]
@@ -132,8 +132,8 @@ point_count = 2
 
 [sub_resource type="Resource" id="Resource_70cwv"]
 script = ExtResource("2_c1rms")
-min = 8
-max = 10
+min = 22
+max = 28
 growth = SubResource("Curve_sdigb")
 
 [resource]
@@ -153,7 +153,7 @@ sp_def = SubResource("Resource_iu8tl")
 spd = SubResource("Resource_70cwv")
 base_crit_chance_modifier = 1.0
 base_crit_resist_modifier = 1.0
-base_accuracy_modifier = 0.85
+base_accuracy_modifier = 0.9
 base_dodge_modifier = 1.0
 luck = SubResource("Resource_m1s8s")
 affinity = Array[ExtResource("1_s0cd5")]([])
@@ -171,11 +171,11 @@ center_offset = Vector2(0, -58)
 foot_offset = Vector2(0, -72)
 ui_offset = Vector2(0, 0)
 scale = Vector2(0.65, 0.65)
-entity_bgm_key = "swamp_thing"
-entity_video = "res://video/entity/video_entity_slime.ogv"
-entity_video_material = "res://assets/Materials/VideoMaterials/entity_test_00.tres"
+entity_bgm_key = ""
+entity_video = ""
+entity_video_material = ""
 entity_video_repeat_mode = 3
-entity_thought_pattern_material = "res://assets/Materials/VideoMaterials/Entity/entity_fume_color.tres"
+entity_thought_pattern_material = ""
 entity_thought_repeat_mode = 3
 move_list = SubResource("Resource_lg1m0")
 behavior = SubResource("Resource_fhavs")

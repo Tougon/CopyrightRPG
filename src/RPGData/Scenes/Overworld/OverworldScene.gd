@@ -16,9 +16,6 @@ static var battle_scene_window : Window = null;
 var _current_flee_group_chance : float = 0.0;
 var _current_flee_group : Array;
 
-@export_group("Cosmetic Parameters")
-@export var bgm_id : String;
-
 # Flooring
 @onready var _area_root : Node = $Areas;
 var _areas : Dictionary;
@@ -119,6 +116,9 @@ func _on_overworld_change_area(new_area : String):
 	
 	_can_change_area = false;
 	
+	var current_bgm_key = _areas[_current_area].area_bgm_key;
+	var new_bgm_key = _areas[new_area].area_bgm_key;
+	
 	_areas[_current_area].set_floor_active(_current_floor_index, false);
 	_areas[_current_area].set_area_active(false);
 	_areas[new_area].set_area_active(true);
@@ -131,6 +131,11 @@ func _on_overworld_change_area(new_area : String):
 	
 	_current_area = new_area;
 	DataManager.current_save.player_area = _current_area;
+	
+	# Update BGM
+	if current_bgm_key != new_bgm_key :
+		_bgm_time = AudioManager.get_bgm_time();
+		play_bgm(0.75, true, _bgm_time);
 	
 	game_camera.set_follow_target(null);
 	_areas[_current_area].put_player_on_floor(_current_floor_index, player_controller);
@@ -312,6 +317,12 @@ func _on_overworld_battle_queued(encounter : Encounter):
 		if enemy != null:
 			params.enemies.append(enemy);
 	
+	# Backgrounds
+	var area = _areas[_current_area];
+	params.bgm = area.area_battle_bgm_key;
+	params.video = area.area_battle_video;
+	params.video_mat = area.area_battle_material;
+	
 	canvas_modulate.visible = false;
 	background_void.visible = false;
 	
@@ -396,6 +407,7 @@ func _on_battle_end(result : BattleResult):
 						QuestManager.progress_quest(id, step, enemy, 1)
 	
 	_battle_end_timestamp = Time.get_unix_time_from_system();
+	
 	var bgm_offset = _battle_end_timestamp - _battle_start_timestamp;
 	play_bgm(0.75, true, _bgm_time + bgm_offset);
 	
@@ -434,7 +446,8 @@ func _on_menu_closing(menu : MenuPanel):
 
 # Audio Functions
 func play_bgm(fade_time : float = 0, crossfade : bool = false, start_time : float = 0):
-	EventManager.play_bgm.emit(bgm_id, fade_time, crossfade, start_time, 1);
+	var bgm_key = _areas[_current_area].area_bgm_key;
+	EventManager.play_bgm.emit(bgm_key, fade_time, crossfade, start_time, 1);
 	pass;
 
 

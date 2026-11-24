@@ -48,6 +48,8 @@ var _current_num_entities : int = 1;
 var _tutorial : Encounter.Tutorial;
 var is_tutorial_battle : bool = false;
 
+var _bgm_playing = false;
+
 
 func _ready():
 	Instance = self;
@@ -101,10 +103,14 @@ func begin_battle(params : BattleParams):
 	
 	_panic_battle = params.panic_battle;
 	
+	_bgm_playing = false;
+	
 	EventManager.on_battle_begin.emit(params);
 	
 	if _panic_battle :
 		AudioManager.play_bgm("full_throttle", 0, true, 0, 1);
+	elif !_bgm_playing :
+		AudioManager.play_bgm(params.bgm, 0, true, 0, 1);
 	
 	await get_tree().process_frame;
 	
@@ -1001,7 +1007,8 @@ func _on_enemy_register(entity : EntityController):
 		_reserve_controllers.append(entity);
 		return;
 	
-	if enemies.size() == 0 && !_panic_battle: 
+	if enemies.size() == 0 && !_panic_battle && !entity.current_entity.entity_bgm_key.is_empty(): 
+		_bgm_playing = true;
 		EventManager.play_bgm.emit(entity.current_entity.entity_bgm_key, 0, true, 0, 1);
 	
 	_adjust_enemy_name(entity);
