@@ -90,6 +90,7 @@ func _on_battle_state_changed(inactive : bool):
 	
 	if _battle_active :
 		_disable_queued_skit();
+		EventManager.show_skit_ui.emit("", false);
 	else :
 		await EventManager.overworld_battle_fade_completed;
 		await get_tree().create_timer(1.0);
